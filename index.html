@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yearn BTC Vaults - Yield Analytics</title>
+    <title>Yield Basis BTC Vaults - Yield Analytics</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
     <style>
         * {
@@ -233,7 +233,7 @@
         <header>
             <div class="header-top">
                 <div class="header-title">
-                    <h1 id="page-title">Yearn BTC Vaults - Yield Analytics</h1>
+                    <h1 id="page-title">Yield Basis BTC Vaults - Yield Analytics</h1>
                     <p class="subtitle">BTC-Denominated Performance Analysis</p>
                 </div>
                 <div class="market-selector">
@@ -263,76 +263,63 @@
         </div>
     </div>
 
+    <!-- Load all market data files with cache busting -->
+    <script src="yield_data.js?v=3"></script>
+    <script>
+        // Store wbtc data immediately after loading
+        const wbtcData = JSON.parse(JSON.stringify(yieldData));
+        console.log('Loaded WBTC data:', wbtcData.metadata.contract, wbtcData.data.length, 'points');
+    </script>
+    <script src="yield_cbbtc.js?v=3"></script>
+    <script>
+        // Store cbbtc data immediately after loading
+        const cbbtcData = JSON.parse(JSON.stringify(yieldData_cbbtc));
+        console.log('Loaded cbBTC data:', cbbtcData.metadata.contract, cbbtcData.data.length, 'points');
+    </script>
+    <script src="yield_tbtc.js?v=3"></script>
+    <script>
+        // Store tbtc data immediately after loading
+        const tbtcData = JSON.parse(JSON.stringify(yieldData_tbtc));
+        console.log('Loaded tBTC data:', tbtcData.metadata.contract, tbtcData.data.length, 'points');
+    </script>
+
     <script>
         // Market configurations
         const MARKETS = {
             wbtc: {
                 name: 'yb-WBTC',
-                file: 'yield_data.js',
-                url: 'https://raw.githubusercontent.com/nikcrv/YB/master/yield_data.js',
+                data: wbtcData,
                 contract: '0x6095a220C5567360d459462A25b1AD5aEAD45204'
             },
             cbbtc: {
                 name: 'yb-cbBTC',
-                file: 'yield_cbbtc.js',
-                url: 'https://raw.githubusercontent.com/nikcrv/YB/master/yield_cbbtc.js',
+                data: cbbtcData,
                 contract: '0xD6a1147666f6E4d7161caf436d9923D44d901112'
             },
             tbtc: {
                 name: 'yb-tBTC',
-                file: 'yield_tbtc.js',
-                url: 'https://raw.githubusercontent.com/nikcrv/YB/master/yield_tbtc.js',
+                data: tbtcData,
                 contract: '0x2B513eBe7070Cff91cf699a0BFe5075020C732FF'
             }
         };
 
         let currentMarket = 'wbtc';
-        let yieldData = null;
+        let currentYieldData = null;
         let originalData = null;
         let charts = {};
 
         // Load market data
-        async function loadMarketData(market) {
+        function loadMarketData(market) {
             const config = MARKETS[market];
-
-            try {
-                // Try to load from local file first
-                const response = await fetch(config.file);
-                if (!response.ok) {
-                    // Fallback to GitHub
-                    const ghResponse = await fetch(config.url);
-                    if (!ghResponse.ok) {
-                        throw new Error(`Failed to load data for ${config.name}`);
-                    }
-                    const scriptText = await ghResponse.text();
-                    const dataMatch = scriptText.match(/const yieldData = ({[\s\S]*});/);
-                    if (dataMatch) {
-                        yieldData = JSON.parse(dataMatch[1]);
-                    } else {
-                        throw new Error('Invalid data format');
-                    }
-                } else {
-                    const scriptText = await response.text();
-                    const dataMatch = scriptText.match(/const yieldData = ({[\s\S]*});/);
-                    if (dataMatch) {
-                        yieldData = JSON.parse(dataMatch[1]);
-                    } else {
-                        throw new Error('Invalid data format');
-                    }
-                }
-
-                originalData = JSON.parse(JSON.stringify(yieldData));
-                return true;
-            } catch (error) {
-                console.error('Error loading market data:', error);
-                showError(`Failed to load ${config.name} data: ${error.message}`);
-                return false;
-            }
+            currentYieldData = JSON.parse(JSON.stringify(config.data));
+            originalData = JSON.parse(JSON.stringify(config.data));
         }
 
         // Switch market
-        async function switchMarket(market) {
+        function switchMarket(market) {
             if (market === currentMarket) return;
+
+            console.log('Switching to market:', market);
 
             // Update active button
             document.querySelectorAll('.market-btn').forEach(btn => {
@@ -342,18 +329,15 @@
 
             currentMarket = market;
 
-            // Show loading
-            document.getElementById('content-area').innerHTML = '<div class="loading">Loading market data...</div>';
+            // Load market data
+            loadMarketData(market);
+            console.log('Loaded data:', currentYieldData);
 
-            // Load new market data
-            const success = await loadMarketData(market);
-            if (success) {
-                renderContent();
-                initializeDateInputs();
-                updateMetrics();
-                destroyCharts();
-                createCharts();
-            }
+            renderContent();
+            initializeDateInputs();
+            updateMetrics();
+            destroyCharts();
+            createCharts();
         }
 
         function showError(message) {
@@ -412,10 +396,10 @@
         }
 
         function initializeDateInputs() {
-            if (!yieldData || !yieldData.data || yieldData.data.length === 0) return;
+            if (!currentYieldData || !currentYieldData.data || currentYieldData.data.length === 0) return;
 
-            const startDate = new Date(yieldData.data[0].datetime);
-            const endDate = new Date(yieldData.data[yieldData.data.length - 1].datetime);
+            const startDate = new Date(currentYieldData.data[0].datetime);
+            const endDate = new Date(currentYieldData.data[currentYieldData.data.length - 1].datetime);
 
             document.getElementById('startDate').value = formatDateForInput(startDate);
             document.getElementById('endDate').value = formatDateForInput(endDate);
@@ -452,10 +436,10 @@
                 return;
             }
 
-            yieldData.data = filteredData;
-            yieldData.metadata.data_points = filteredData.length;
-            yieldData.metadata.start_date = filteredData[0].datetime;
-            yieldData.metadata.end_date = filteredData[filteredData.length - 1].datetime;
+            currentYieldData.data = filteredData;
+            currentYieldData.metadata.data_points = filteredData.length;
+            currentYieldData.metadata.start_date = filteredData[0].datetime;
+            currentYieldData.metadata.end_date = filteredData[filteredData.length - 1].datetime;
 
             const startPps = filteredData[0].pps_btc;
             const endPps = filteredData[filteredData.length - 1].pps_btc;
@@ -463,13 +447,13 @@
             const days = (filteredData[filteredData.length - 1].timestamp - filteredData[0].timestamp) / 86400;
             const apr = (totalReturn / days) * 365;
 
-            yieldData.metrics.start_pps = startPps;
-            yieldData.metrics.end_pps = endPps;
-            yieldData.metrics.total_return = totalReturn;
-            yieldData.metrics.total_return_pct = totalReturn * 100;
-            yieldData.metrics.apr = apr;
-            yieldData.metrics.apr_pct = apr * 100;
-            yieldData.metrics.days = days;
+            currentYieldData.metrics.start_pps = startPps;
+            currentYieldData.metrics.end_pps = endPps;
+            currentYieldData.metrics.total_return = totalReturn;
+            currentYieldData.metrics.total_return_pct = totalReturn * 100;
+            currentYieldData.metrics.apr = apr;
+            currentYieldData.metrics.apr_pct = apr * 100;
+            currentYieldData.metrics.days = days;
 
             updateMetrics();
             destroyCharts();
@@ -477,9 +461,9 @@
         }
 
         function resetDateFilter() {
-            yieldData.data = JSON.parse(JSON.stringify(originalData.data));
-            yieldData.metadata = JSON.parse(JSON.stringify(originalData.metadata));
-            yieldData.metrics = JSON.parse(JSON.stringify(originalData.metrics));
+            currentYieldData.data = JSON.parse(JSON.stringify(originalData.data));
+            currentYieldData.metadata = JSON.parse(JSON.stringify(originalData.metadata));
+            currentYieldData.metrics = JSON.parse(JSON.stringify(originalData.metrics));
 
             initializeDateInputs();
             updateMetrics();
@@ -488,35 +472,44 @@
         }
 
         function destroyCharts() {
-            Object.values(charts).forEach(chart => chart.destroy());
+            console.log('Destroying charts:', Object.keys(charts));
+            Object.values(charts).forEach(chart => {
+                if (chart) chart.destroy();
+            });
             charts = {};
         }
 
         function updateMetrics() {
-            document.getElementById('total-return').textContent = yieldData.metrics.total_return_pct.toFixed(4) + '%';
-            document.getElementById('total-return').className = 'metric-value ' + (yieldData.metrics.total_return >= 0 ? 'positive' : 'negative');
+            document.getElementById('total-return').textContent = currentYieldData.metrics.total_return_pct.toFixed(4) + '%';
+            document.getElementById('total-return').className = 'metric-value ' + (currentYieldData.metrics.total_return >= 0 ? 'positive' : 'negative');
 
-            document.getElementById('apr').textContent = yieldData.metrics.apr_pct.toFixed(2) + '%';
-            document.getElementById('apr').className = 'metric-value ' + (yieldData.metrics.apr >= 0 ? 'positive' : 'negative');
+            document.getElementById('apr').textContent = currentYieldData.metrics.apr_pct.toFixed(2) + '%';
+            document.getElementById('apr').className = 'metric-value ' + (currentYieldData.metrics.apr >= 0 ? 'positive' : 'negative');
 
-            document.getElementById('period').textContent = yieldData.metrics.days.toFixed(2) + ' days';
-            document.getElementById('data-points').textContent = yieldData.metadata.data_points;
-            document.getElementById('start-pps').textContent = yieldData.metrics.start_pps.toFixed(8) + ' BTC';
-            document.getElementById('end-pps').textContent = yieldData.metrics.end_pps.toFixed(8) + ' BTC';
+            document.getElementById('period').textContent = currentYieldData.metrics.days.toFixed(2) + ' days';
+            document.getElementById('data-points').textContent = currentYieldData.metadata.data_points;
+            document.getElementById('start-pps').textContent = currentYieldData.metrics.start_pps.toFixed(8) + ' BTC';
+            document.getElementById('end-pps').textContent = currentYieldData.metrics.end_pps.toFixed(8) + ' BTC';
+
+            const firstBlock = currentYieldData.data[0].block;
+            const lastBlock = currentYieldData.data[currentYieldData.data.length - 1].block;
 
             document.getElementById('contract-info').innerHTML = `
-                Contract: <code>${yieldData.metadata.contract}</code><br>
-                Period: ${yieldData.metadata.start_date} to ${yieldData.metadata.end_date}<br>
+                Contract: <code>${currentYieldData.metadata.contract}</code><br>
+                Period: ${currentYieldData.metadata.start_date} to ${currentYieldData.metadata.end_date}<br>
+                Blocks: ${firstBlock} to ${lastBlock}<br>
                 Generated: ${new Date().toISOString()}
             `;
         }
 
         function createCharts() {
-            const hasBtcPrices = yieldData.data.some(d => d.btc_price !== null);
+            console.log('Creating charts for', currentYieldData.data.length, 'data points');
+            const hasBtcPrices = currentYieldData.data.some(d => d.btc_price !== null);
 
             if (hasBtcPrices) {
-                const btcPrices = yieldData.data.map(d => d.btc_price);
-                const ybPrices = yieldData.data.map(d => d.btc_price * d.pps_btc);
+                const btcPrices = currentYieldData.data.map(d => d.btc_price);
+                const ybPrices = currentYieldData.data.map(d => d.btc_price * d.pps_btc);
+                console.log('BTC price range:', Math.min(...btcPrices), '-', Math.max(...btcPrices));
 
                 const btc0 = btcPrices[0];
                 const yb0 = ybPrices[0];
@@ -543,7 +536,7 @@
                 charts.priceComparison = new Chart(priceCompCtx, {
                     type: 'line',
                     data: {
-                        labels: yieldData.data.map(d => new Date(d.datetime).toLocaleString()),
+                        labels: currentYieldData.data.map(d => new Date(d.datetime).toLocaleString()),
                         datasets: [
                             {
                                 label: 'BTC Price (USD)',
@@ -650,9 +643,10 @@
 
             // PPS Chart
             const ppsCtx = document.getElementById('ppsChart').getContext('2d');
-            const ppsValues = yieldData.data.map(d => d.pps_btc);
+            const ppsValues = currentYieldData.data.map(d => d.pps_btc);
             const ppsMin = Math.min(...ppsValues);
             const ppsMax = Math.max(...ppsValues);
+            console.log('PPS range:', ppsMin, '-', ppsMax);
             const ppsRange = ppsMax - ppsMin;
             const ppsPadding = 0.15;
             const ppsAxisMin = ppsMin - ppsRange * ppsPadding;
@@ -661,7 +655,7 @@
             charts.pps = new Chart(ppsCtx, {
                 type: 'line',
                 data: {
-                    labels: yieldData.data.map(d => new Date(d.datetime).toLocaleString()),
+                    labels: currentYieldData.data.map(d => new Date(d.datetime).toLocaleString()),
                     datasets: [{
                         label: 'PPS (BTC)',
                         data: ppsValues,
@@ -729,7 +723,7 @@
 
             // Returns Chart
             const returnsCtx = document.getElementById('returnsChart').getContext('2d');
-            const returnValues = yieldData.data.map(d => d.ret_step_pct);
+            const returnValues = currentYieldData.data.map(d => d.ret_step_pct);
             const returnMin = Math.min(...returnValues);
             const returnMax = Math.max(...returnValues);
             const returnRange = returnMax - returnMin;
@@ -740,7 +734,7 @@
             charts.returns = new Chart(returnsCtx, {
                 type: 'bar',
                 data: {
-                    labels: yieldData.data.map(d => new Date(d.datetime).toLocaleString()),
+                    labels: currentYieldData.data.map(d => new Date(d.datetime).toLocaleString()),
                     datasets: [{
                         label: 'Step Return (%)',
                         data: returnValues,
@@ -786,8 +780,12 @@
         }
 
         // Initialize on page load
-        window.addEventListener('DOMContentLoaded', async () => {
-            await switchMarket('wbtc');
+        window.addEventListener('DOMContentLoaded', () => {
+            loadMarketData('wbtc');
+            renderContent();
+            initializeDateInputs();
+            updateMetrics();
+            createCharts();
         });
     </script>
 </body>
