@@ -632,18 +632,18 @@
             const currentTVL = aggregated.data[aggregated.data.length - 1].tvl_btc;
             const avgReturnPerDay = metrics.total_return_pct / metrics.days;
 
-            // Calculate real profit using PPS change (excludes deposits/withdrawals)
-            // Formula: profit = (PPS_end - PPS_start) × totalSupply_end
-            // This gives actual yield generated, independent of user deposits/withdrawals
+            // Calculate real yield using PPS change (CORRECT - excludes deposits/withdrawals)
+            // Formula: yield_pct = (PPS_end / PPS_start - 1) × 100
+            // Absolute profit: (PPS_end - PPS_start) × totalSupply_START
             let realProfitBTC = 0;
-            let realProfitPct = 0;
+            let realYieldPct = 0;
             let tvlStatus = 'neutral';
             let avgStartPPS = 0;
             let avgEndPPS = 0;
 
-            // Calculate profit for each selected market
-            let totalProfit = 0;
-            let totalEndTVL = 0;
+            // Calculate yield for each selected market
+            let totalProfitFromInitialCapital = 0;
+            let totalStartTVL = 0;
             let validMarkets = 0;
 
             selectedMarkets.forEach(marketKey => {
@@ -657,13 +657,14 @@
                 const endPoint = marketData[marketData.length - 1];
 
                 // Check if we have required data
-                if (startPoint.pps_btc && endPoint.pps_btc && endPoint.total_supply) {
+                if (startPoint.pps_btc && endPoint.pps_btc && startPoint.total_supply) {
                     const ppsDiff = endPoint.pps_btc - startPoint.pps_btc;
-                    const profit = ppsDiff * endPoint.total_supply;
-                    const endTVL = endPoint.total_supply * endPoint.pps_btc;
+                    // CORRECT: multiply by START totalSupply (initial capital)
+                    const profit = ppsDiff * startPoint.total_supply;
+                    const startTVL = startPoint.total_supply * startPoint.pps_btc;
 
-                    totalProfit += profit;
-                    totalEndTVL += endTVL;
+                    totalProfitFromInitialCapital += profit;
+                    totalStartTVL += startTVL;
                     validMarkets++;
 
                     avgStartPPS += startPoint.pps_btc;
@@ -672,12 +673,12 @@
             });
 
             if (validMarkets > 0) {
-                realProfitBTC = totalProfit;
+                realProfitBTC = totalProfitFromInitialCapital;
                 avgStartPPS /= validMarkets;
                 avgEndPPS /= validMarkets;
 
                 if (avgStartPPS > 0) {
-                    realProfitPct = ((avgEndPPS / avgStartPPS) - 1) * 100;
+                    realYieldPct = ((avgEndPPS / avgStartPPS) - 1) * 100;
                 }
 
                 if (realProfitBTC > 0.001) {
@@ -718,12 +719,12 @@
                     </div>
                     ${validMarkets > 0 ? `
                     <div class="metric-card highlight">
-                        <div class="metric-label">💰 Чистая прибыль (PPS)</div>
+                        <div class="metric-label">💰 Прибыль от начального капитала</div>
                         <div class="metric-value ${tvlStatus}">${realProfitBTC >= 0 ? '+' : ''}${realProfitBTC.toFixed(6)} BTC</div>
                     </div>
                     <div class="metric-card highlight">
-                        <div class="metric-label">📊 Чистая доходность</div>
-                        <div class="metric-value ${tvlStatus}">${realProfitPct >= 0 ? '+' : ''}${realProfitPct.toFixed(4)}%</div>
+                        <div class="metric-label">📊 Чистый рост PPS</div>
+                        <div class="metric-value ${tvlStatus}">${realYieldPct >= 0 ? '+' : ''}${realYieldPct.toFixed(4)}%</div>
                     </div>
                     ` : ''}
                     <div class="metric-card">
@@ -784,11 +785,14 @@
                         <br>
                         <strong>Методика расчета:</strong><br>
                         <br>
-                        <strong>Чистая прибыль (PPS):</strong> Рассчитывается как (PPS_конец - PPS_начало) × totalSupply_конец для каждого рынка.
-                        Этот метод <strong>НЕ учитывает</strong> депозиты/выводы пользователей и показывает только реальную прибыль от yield.<br>
+                        <strong>Прибыль от начального капитала:</strong> Рассчитывается как (PPS_конец - PPS_начало) × totalSupply_НАЧАЛО для каждого рынка.
+                        Показывает сколько BTC заработал начальный капитал (без учета депозитов/выводов в середине периода).<br>
+                        <br>
+                        <strong>Чистый рост PPS:</strong> Процентное изменение PPS = (PPS_конец / PPS_начало - 1) × 100%.
+                        Это самая точная метрика yield, полностью независимая от депозитов/выводов.<br>
                         <br>
                         <strong>Взвешенная доходность:</strong> Для каждой временной точки доходность взвешивается по TVL каждого рынка.
-                        Это дает более точную картину, чем простое усреднение.
+                        Дает более точную картину, чем простое усреднение.
                     </div>
                 </div>
             `;
