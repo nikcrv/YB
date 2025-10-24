@@ -471,7 +471,8 @@
                     timestampMap.get(ts).markets[marketKey] = {
                         pps_btc: point.pps_btc,
                         ret_step_pct: point.ret_step_pct,
-                        btc_price: point.btc_price
+                        btc_price: point.btc_price,
+                        tvl_btc: point.tvl_btc || null
                     };
                 });
             });
@@ -486,17 +487,43 @@
             sortedTimestamps.forEach((point, idx) => {
                 const marketKeys = Object.keys(point.markets);
 
-                // Average return across available markets at this timestamp
+                // Weighted average return by TVL across available markets at this timestamp
                 let avgRetStep = null;
+                let totalTVL = 0;
                 if (marketKeys.length > 0) {
-                    const validReturns = marketKeys
-                        .map(k => point.markets[k].ret_step_pct)
-                        .filter(r => r !== null && r !== undefined);
+                    // Check if TVL data is available
+                    const hasTVL = marketKeys.some(k => point.markets[k].tvl_btc !== null && point.markets[k].tvl_btc !== undefined);
 
-                    if (validReturns.length > 0) {
-                        avgRetStep = validReturns.reduce((sum, r) => sum + r, 0) / validReturns.length;
-                        if (idx > 0) {
-                            cumulativeReturn += avgRetStep;
+                    if (hasTVL) {
+                        // Use TVL-weighted average
+                        let weightedSum = 0;
+                        let tvlSum = 0;
+                        marketKeys.forEach(k => {
+                            const market = point.markets[k];
+                            if (market.ret_step_pct !== null && market.ret_step_pct !== undefined &&
+                                market.tvl_btc !== null && market.tvl_btc !== undefined && market.tvl_btc > 0) {
+                                weightedSum += market.ret_step_pct * market.tvl_btc;
+                                tvlSum += market.tvl_btc;
+                            }
+                        });
+                        if (tvlSum > 0) {
+                            avgRetStep = weightedSum / tvlSum;
+                            totalTVL = tvlSum;
+                            if (idx > 0) {
+                                cumulativeReturn += avgRetStep;
+                            }
+                        }
+                    } else {
+                        // Fallback to simple average if no TVL data
+                        const validReturns = marketKeys
+                            .map(k => point.markets[k].ret_step_pct)
+                            .filter(r => r !== null && r !== undefined);
+
+                        if (validReturns.length > 0) {
+                            avgRetStep = validReturns.reduce((sum, r) => sum + r, 0) / validReturns.length;
+                            if (idx > 0) {
+                                cumulativeReturn += avgRetStep;
+                            }
                         }
                     }
                 }
@@ -517,6 +544,7 @@
                     ret_step_pct: avgRetStep,
                     cumulative_return_pct: cumulativeReturn,
                     btc_price: avgBtcPrice,
+                    tvl_btc: totalTVL,
                     markets_count: marketKeys.length
                 });
             });
@@ -600,6 +628,7 @@
         function renderContent(aggregated, selectedMarkets) {
             const metrics = aggregated.metrics;
             const currentTrend = aggregated.data[aggregated.data.length - 1].cumulative_return_pct;
+            const currentTVL = aggregated.data[aggregated.data.length - 1].tvl_btc;
             const avgReturnPerDay = metrics.total_return_pct / metrics.days;
 
             // Determine overall status
@@ -638,6 +667,10 @@
                     <div class="metric-card">
                         <div class="metric-label">Активных рынков</div>
                         <div class="metric-value neutral">${metrics.markets_count} / 6</div>
+                    </div>
+                    <div class="metric-card highlight">
+                        <div class="metric-label">Общий TVL (BTC)</div>
+                        <div class="metric-value neutral">${currentTVL > 0 ? currentTVL.toFixed(4) + ' BTC' : 'N/A'}</div>
                     </div>
                 </div>
 
