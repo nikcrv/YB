@@ -2,18 +2,18 @@ const yieldData_syb_wbtc = {
   "metadata": {
     "contract": "0x37f45E64935e7B8383D2f034048B32770B04E8bd",
     "start_date": "2025-10-10T23:50:59",
-    "end_date": "2025-10-25T02:00:23",
-    "data_points": 20,
+    "end_date": "2025-10-25T02:16:47",
+    "data_points": 21,
     "step_seconds": 12
   },
   "metrics": {
-    "total_return": -0.05314463,
-    "total_return_pct": -5.314463,
-    "apr": -0.7569899419624428,
-    "apr_pct": -75.69899419624429,
-    "days": 14.08986111111111,
+    "total_return": -0.05314666,
+    "total_return_pct": -5.314666,
+    "apr": -0.7567256339504601,
+    "apr_pct": -75.67256339504601,
+    "days": 14.10125,
     "start_pps": 1.0,
-    "end_pps": 0.94685537
+    "end_pps": 0.94685334
   },
   "data": [
     {
@@ -252,23 +252,34 @@ const yieldData_syb_wbtc = {
       "datetime": "2025-10-25T01:51:11",
       "pps_btc": 0.94685651,
       "ret_step": -7.836395246358153e-06,
-      "ret_step_pct": -0.0007836395246358154,
-      "btc_price": 110919.40218327155,
+      "ret_step_pct": -0.0007836395246358153,
+      "btc_price": 111087.74174490428,
       "total_supply": 397.2660617619423,
       "tvl_btc": 376.1539567813571,
       "net_flow_shares": 0.0,
       "pps_yb": 0.9402118766090538
     },
     {
-      "block": 23650164,
-      "timestamp": 1761343223,
-      "datetime": "2025-10-25T02:00:23",
-      "pps_btc": 0.94685537,
-      "ret_step": -1.203983906706202e-06,
-      "ret_step_pct": -0.0001203983906706202,
-      "btc_price": 110919.40218327155,
+      "block": 23650245,
+      "timestamp": 1761344195,
+      "datetime": "2025-10-25T02:16:35",
+      "pps_btc": 1.0,
+      "ret_step": null,
+      "ret_step_pct": null,
+      "btc_price": 111087.74174490428,
+      "total_supply": 0.0,
+      "tvl_btc": 0.0
+    },
+    {
+      "block": 23650246,
+      "timestamp": 1761344207,
+      "datetime": "2025-10-25T02:16:47",
+      "pps_btc": 0.94685334,
+      "ret_step": null,
+      "ret_step_pct": null,
+      "btc_price": 111087.74174490428,
       "total_supply": 397.2660617619423,
-      "tvl_btc": 376.1535038980467,
+      "tvl_btc": 376.1526974479413,
       "net_flow_shares": 0.0,
       "pps_yb": 0.9402118766090538
     }
