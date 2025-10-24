@@ -2,18 +2,18 @@ const yieldData_cbbtc = {
   "metadata": {
     "contract": "0xD6a1147666f6E4d7161caf436d9923D44d901112",
     "start_date": "2025-10-10T23:49:23",
-    "end_date": "2025-10-25T02:00:11",
-    "data_points": 20,
+    "end_date": "2025-10-25T02:16:47",
+    "data_points": 21,
     "step_seconds": 12
   },
   "metrics": {
-    "total_return": 0.04894878,
-    "total_return_pct": 4.894878,
-    "apr": 2.448305605685125,
-    "apr_pct": 244.8305605685125,
-    "days": 14.090833333333334,
+    "total_return": 0.04894638,
+    "total_return_pct": 4.894638,
+    "apr": 2.4446140726727714,
+    "apr_pct": 244.46140726727717,
+    "days": 14.102361111111112,
     "start_pps": 1.0,
-    "end_pps": 1.04894878
+    "end_pps": 1.04894638
   },
   "data": [
     {
@@ -242,7 +242,7 @@ const yieldData_cbbtc = {
       "ret_step_pct": null,
       "btc_price": 110919.40218327155,
       "total_supply": 430.37252665890645,
-      "tvl_btc": 451.44311797669883,
+      "tvl_btc": 451.4431179766988,
       "net_flow_shares": 0.0
     },
     {
@@ -252,21 +252,32 @@ const yieldData_cbbtc = {
       "pps_btc": 1.0489503,
       "ret_step": -8.255804402490637e-06,
       "ret_step_pct": -0.0008255804402490637,
-      "btc_price": 110919.40218327155,
+      "btc_price": 111087.74174490428,
       "total_supply": 430.37252665890645,
-      "tvl_btc": 451.43939095061796,
+      "tvl_btc": 451.4393909506179,
       "net_flow_shares": 0.0
     },
     {
-      "block": 23650163,
-      "timestamp": 1761343211,
-      "datetime": "2025-10-25T02:00:11",
-      "pps_btc": 1.04894878,
-      "ret_step": -1.4490677013010053e-06,
-      "ret_step_pct": -0.00014490677013010054,
-      "btc_price": 110919.40218327155,
+      "block": 23650245,
+      "timestamp": 1761344195,
+      "datetime": "2025-10-25T02:16:35",
+      "pps_btc": 1.0,
+      "ret_step": null,
+      "ret_step_pct": null,
+      "btc_price": 111087.74174490428,
+      "total_supply": 0.0,
+      "tvl_btc": 0.0
+    },
+    {
+      "block": 23650246,
+      "timestamp": 1761344207,
+      "datetime": "2025-10-25T02:16:47",
+      "pps_btc": 1.04894638,
+      "ret_step": null,
+      "ret_step_pct": null,
+      "btc_price": 111087.74174490428,
       "total_supply": 430.37252665890645,
-      "tvl_btc": 451.43873678437745,
+      "tvl_btc": 451.43770389031346,
       "net_flow_shares": 0.0
     }
   ]
