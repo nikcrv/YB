@@ -220,7 +220,15 @@
                                 });
                             },
                             label: function(context) {
-                                return 'Locks: ' + context.parsed.y;
+                                const idx = context.dataIndex;
+                                const currentLocks = context.parsed.y;
+                                const prevLocks = idx > 0 ? context.dataset.data[idx - 1].y : 0;
+                                const lockSize = currentLocks - prevLocks;
+
+                                return [
+                                    'Lock #' + currentLocks,
+                                    'Total Locks: ' + currentLocks
+                                ];
                             }
                         }
                     }
@@ -307,7 +315,15 @@
                                 });
                             },
                             label: function(context) {
-                                return 'YB Locked: ' + (context.parsed.y / 1e6).toFixed(2) + 'M';
+                                const idx = context.dataIndex;
+                                const currentYB = context.parsed.y;
+                                const prevYB = idx > 0 ? context.dataset.data[idx - 1].y : 0;
+                                const lockSize = currentYB - prevYB;
+
+                                return [
+                                    'Lock Size: ' + (lockSize / 1e6).toFixed(2) + 'M YB',
+                                    'Total Locked: ' + (currentYB / 1e6).toFixed(2) + 'M YB'
+                                ];
                             }
                         }
                     }
