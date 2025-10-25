@@ -2,18 +2,18 @@ const yieldData = {
   "metadata": {
     "contract": "0x6095a220C5567360d459462A25b1AD5aEAD45204",
     "start_date": "2025-09-24T20:18:59",
-    "end_date": "2025-10-25T12:49:35",
-    "data_points": 33,
+    "end_date": "2025-10-25T12:56:23",
+    "data_points": 50,
     "step_seconds": 12
   },
   "metrics": {
-    "total_return": 0.00697431,
-    "total_return_pct": 0.697431,
-    "apr": 0.08617683725045792,
-    "apr_pct": 8.617683725045792,
-    "days": 30.687916666666666,
+    "total_return": 0.00697341,
+    "total_return_pct": 0.697341,
+    "apr": 0.08615147850905272,
+    "apr_pct": 8.615147850905272,
+    "days": 30.69263888888889,
     "start_pps": 1.0,
-    "end_pps": 1.00697431
+    "end_pps": 1.00697341
   },
   "data": [
     {
@@ -37,11 +37,7 @@ const yieldData = {
       "btc_price": 113706.62235194765,
       "total_supply": 0.5922271753715447,
       "tvl_btc": 0.5925127591600524,
-      "net_flow_shares": 0.5922271753715447,
-      "net_flow_btc": 0.59252756,
-      "deposits_btc": 0.59252756,
-      "withdrawals_btc": 0.0,
-      "total_withdrawable_btc": 0.59251058
+      "net_flow_shares": 0.5922271753715447
     },
     {
       "block": 23441199,
@@ -49,14 +45,11 @@ const yieldData = {
       "datetime": "2025-09-25T20:19:11",
       "pps_btc": 1.0081028,
       "ret_step": 0.007616906975118459,
-      "ret_step_pct": 0.7616906975118458,
+      "ret_step_pct": 0.7616906975118459,
       "btc_price": 111616.10223522937,
       "total_supply": 8.8852183888465,
       "tvl_btc": 8.957213536407645,
-      "net_flow_shares": 8.292991213474954,
-      "net_flow_btc": 8.37086224,
-      "deposits_btc": 8.41218485,
-      "withdrawals_btc": 0.04132261
+      "net_flow_shares": 8.292991213474954
     },
     {
       "block": 23448334,
@@ -68,10 +61,7 @@ const yieldData = {
       "btc_price": 109098.93823537027,
       "total_supply": 9.141927517633052,
       "tvl_btc": 9.217551736121516,
-      "net_flow_shares": 0.25670912878655217,
-      "net_flow_btc": 0.25858049,
-      "deposits_btc": 0.27870358,
-      "withdrawals_btc": 0.02012309
+      "net_flow_shares": 0.25670912878655217
     },
     {
       "block": 23455487,
@@ -83,11 +73,7 @@ const yieldData = {
       "btc_price": 109433.85846854272,
       "total_supply": 9.141927517633052,
       "tvl_btc": 9.213484218311097,
-      "net_flow_shares": 0.0,
-      "net_flow_btc": 0.0,
-      "deposits_btc": 0.0,
-      "withdrawals_btc": 0.0,
-      "total_withdrawable_btc": 9.07475459
+      "net_flow_shares": 0.0
     },
     {
       "block": 23462640,
@@ -99,11 +85,7 @@ const yieldData = {
       "btc_price": 110029.41811102814,
       "total_supply": 9.141927517633052,
       "tvl_btc": 9.2117492633068,
-      "net_flow_shares": 0.0,
-      "net_flow_btc": 0.0,
-      "deposits_btc": 0.0,
-      "withdrawals_btc": 0.0,
-      "total_withdrawable_btc": 9.07466435
+      "net_flow_shares": 0.0
     },
     {
       "block": 23469789,
@@ -114,12 +96,8 @@ const yieldData = {
       "ret_step_pct": -0.04234558432931731,
       "btc_price": 113872.94417496897,
       "total_supply": 9.141927517633052,
-      "tvl_btc": 9.2078484942543,
-      "net_flow_shares": 0.0,
-      "net_flow_btc": 0.0,
-      "deposits_btc": 0.0,
-      "withdrawals_btc": 0.0,
-      "total_withdrawable_btc": 8.63558961
+      "tvl_btc": 9.207848494254302,
+      "net_flow_shares": 0.0
     },
     {
       "block": 23476937,
@@ -131,10 +109,7 @@ const yieldData = {
       "btc_price": 113103.90379580077,
       "total_supply": 9.141927517633052,
       "tvl_btc": 9.21028518361485,
-      "net_flow_shares": 0.0,
-      "net_flow_btc": 0.0,
-      "deposits_btc": 0.0,
-      "withdrawals_btc": 0.0
+      "net_flow_shares": 0.0
     },
     {
       "block": 23484085,
@@ -146,11 +121,7 @@ const yieldData = {
       "btc_price": 117484.31421351855,
       "total_supply": 9.141927517633052,
       "tvl_btc": 9.215572783071774,
-      "net_flow_shares": 0.0,
-      "net_flow_btc": 0.0,
-      "deposits_btc": 0.0,
-      "withdrawals_btc": 0.0,
-      "total_withdrawable_btc": 8.87587251
+      "net_flow_shares": 0.0
     },
     {
       "block": 23491232,
@@ -162,11 +133,7 @@ const yieldData = {
       "btc_price": 119947.5083644721,
       "total_supply": 83.09337641308757,
       "tvl_btc": 83.91256742126374,
-      "net_flow_shares": 73.95144889545452,
-      "net_flow_btc": 74.70737033,
-      "deposits_btc": 74.70837834,
-      "withdrawals_btc": 0.00100801,
-      "total_withdrawable_btc": 83.05781653
+      "net_flow_shares": 73.95144889545452
     },
     {
       "block": 23498380,
@@ -174,15 +141,11 @@ const yieldData = {
       "datetime": "2025-10-03T20:14:59",
       "pps_btc": 1.0098883,
       "ret_step": 2.9330836667166144e-05,
-      "ret_step_pct": 0.002933083666716614,
+      "ret_step_pct": 0.0029330836667166146,
       "btc_price": 122390.74175091466,
       "total_supply": 82.18564730337648,
-      "tvl_btc": 82.99832363960647,
-      "net_flow_shares": -0.9077291097110785,
-      "net_flow_btc": -0.9160421,
-      "deposits_btc": 4.05513808,
-      "withdrawals_btc": 4.97118018,
-      "total_withdrawable_btc": 81.33647022
+      "tvl_btc": 82.99832363960645,
+      "net_flow_shares": -0.9077291097110785
     },
     {
       "block": 23505527,
@@ -190,14 +153,11 @@ const yieldData = {
       "datetime": "2025-10-04T20:12:59",
       "pps_btc": 1.00962183,
       "ret_step": -0.0002638608646124527,
-      "ret_step_pct": -0.026386086461245267,
+      "ret_step_pct": -0.02638608646124527,
       "btc_price": 121883.35577101377,
       "total_supply": 82.18564730337648,
-      "tvl_btc": 82.97642363016953,
-      "net_flow_shares": 0.0,
-      "net_flow_btc": 0.0,
-      "deposits_btc": 0.0,
-      "withdrawals_btc": 0.0
+      "tvl_btc": 82.97642363016952,
+      "net_flow_shares": 0.0
     },
     {
       "block": 23512675,
@@ -205,15 +165,11 @@ const yieldData = {
       "datetime": "2025-10-05T20:10:59",
       "pps_btc": 1.00953868,
       "ret_step": -8.235756946737176e-05,
-      "ret_step_pct": -0.008235756946737175,
+      "ret_step_pct": -0.008235756946737177,
       "btc_price": 122820.55381383385,
       "total_supply": 82.18535025096254,
-      "tvl_btc": 82.96929000769438,
-      "net_flow_shares": -0.000297052413952051,
-      "net_flow_btc": -0.00029988,
-      "deposits_btc": 0.0,
-      "withdrawals_btc": 0.00029988,
-      "total_withdrawable_btc": 81.35405333
+      "tvl_btc": 82.9692900076944,
+      "net_flow_shares": -0.000297052413952051
     },
     {
       "block": 23519822,
@@ -225,11 +181,7 @@ const yieldData = {
       "btc_price": 125194.70107404342,
       "total_supply": 82.18535025096254,
       "tvl_btc": 82.93751222016635,
-      "net_flow_shares": 0.0,
-      "net_flow_btc": 0.0,
-      "deposits_btc": 0.0,
-      "withdrawals_btc": 0.0,
-      "total_withdrawable_btc": 80.47805593
+      "net_flow_shares": 0.0
     },
     {
       "block": 23526970,
@@ -240,11 +192,8 @@ const yieldData = {
       "ret_step_pct": -0.1548052195347139,
       "btc_price": 121889.18038451842,
       "total_supply": 82.18535025096254,
-      "tvl_btc": 82.80912062229729,
-      "net_flow_shares": 0.0,
-      "net_flow_btc": 0.0,
-      "deposits_btc": 0.0,
-      "withdrawals_btc": 0.0
+      "tvl_btc": 82.8091206222973,
+      "net_flow_shares": 0.0
     },
     {
       "block": 23534117,
@@ -255,12 +204,8 @@ const yieldData = {
       "ret_step_pct": 0.0016296314234225079,
       "btc_price": 122170.82420533348,
       "total_supply": 82.90644998693774,
-      "tvl_btc": 83.5370546849574,
-      "net_flow_shares": 0.7210997359752095,
-      "net_flow_btc": 0.72691559,
-      "deposits_btc": 0.72698956,
-      "withdrawals_btc": 7.397e-05,
-      "total_withdrawable_btc": 82.20930884
+      "tvl_btc": 83.53705468495738,
+      "net_flow_shares": 0.7210997359752095
     },
     {
       "block": 23541265,
@@ -272,10 +217,7 @@ const yieldData = {
       "btc_price": 121192.61184310442,
       "total_supply": 82.90644998693774,
       "tvl_btc": 83.6017233740762,
-      "net_flow_shares": 0.0,
-      "net_flow_btc": 0.0,
-      "deposits_btc": 0.0,
-      "withdrawals_btc": 0.0
+      "net_flow_shares": 0.0
     },
     {
       "block": 23548413,
@@ -287,10 +229,7 @@ const yieldData = {
       "btc_price": 118812.02216356724,
       "total_supply": 82.90644998693774,
       "tvl_btc": 83.6150804322336,
-      "net_flow_shares": 0.0,
-      "net_flow_btc": 0.0,
-      "deposits_btc": 0.0,
-      "withdrawals_btc": 0.0
+      "net_flow_shares": 0.0
     },
     {
       "block": 23555560,
@@ -302,11 +241,7 @@ const yieldData = {
       "btc_price": 112030.36462224036,
       "total_supply": 90.41916289127873,
       "tvl_btc": 90.63329445702948,
-      "net_flow_shares": 7.5127129043409795,
-      "net_flow_btc": 7.74155613,
-      "deposits_btc": 7.80388067,
-      "withdrawals_btc": 0.06232454,
-      "total_withdrawable_btc": 90.45958005
+      "net_flow_shares": 7.5127129043409795
     },
     {
       "block": 23562708,
@@ -314,15 +249,11 @@ const yieldData = {
       "datetime": "2025-10-12T20:02:35",
       "pps_btc": 1.00189218,
       "ret_step": -0.00047490532446155687,
-      "ret_step_pct": -0.04749053244615569,
+      "ret_step_pct": -0.047490532446155684,
       "btc_price": 113766.07316288614,
       "total_supply": 90.41916289127873,
       "tvl_btc": 90.59025222291835,
-      "net_flow_shares": -2.9e-17,
-      "net_flow_btc": 0.0,
-      "deposits_btc": 0.0,
-      "withdrawals_btc": 0.0,
-      "total_withdrawable_btc": 86.28729518
+      "net_flow_shares": -2.9e-17
     },
     {
       "block": 23569855,
@@ -334,11 +265,7 @@ const yieldData = {
       "btc_price": 114460.25520200531,
       "total_supply": 90.41916289127873,
       "tvl_btc": 90.45045153840563,
-      "net_flow_shares": -1.2e-17,
-      "net_flow_btc": 0.0,
-      "deposits_btc": 0.0,
-      "withdrawals_btc": 0.0,
-      "total_withdrawable_btc": 82.01559898
+      "net_flow_shares": -1.2e-17
     },
     {
       "block": 23577003,
@@ -346,15 +273,11 @@ const yieldData = {
       "datetime": "2025-10-14T20:02:47",
       "pps_btc": 1.00308676,
       "ret_step": 0.0027397719293215774,
-      "ret_step_pct": 0.2739771929321578,
+      "ret_step_pct": 0.2739771929321577,
       "btc_price": 112668.23161517075,
       "total_supply": 450.6069509256848,
       "tvl_btc": 451.9978664375242,
-      "net_flow_shares": 360.1877880344061,
-      "net_flow_btc": 361.43311131,
-      "deposits_btc": 371.26477899,
-      "withdrawals_btc": 9.83166768,
-      "total_withdrawable_btc": 440.70640278
+      "net_flow_shares": 360.1877880344061
     },
     {
       "block": 23584150,
@@ -362,14 +285,11 @@ const yieldData = {
       "datetime": "2025-10-15T20:01:59",
       "pps_btc": 1.00332266,
       "ret_step": 0.0002351740740751079,
-      "ret_step_pct": 0.023517407407510793,
+      "ret_step_pct": 0.02351740740751079,
       "btc_price": 110767.84168895654,
       "total_supply": 448.952280998073,
       "tvl_btc": 450.44399678405404,
-      "net_flow_shares": -1.6546699276118753,
-      "net_flow_btc": -1.65920326,
-      "deposits_btc": 0.0,
-      "withdrawals_btc": 1.65920326
+      "net_flow_shares": -1.6546699276118753
     },
     {
       "block": 23591298,
@@ -377,14 +297,11 @@ const yieldData = {
       "datetime": "2025-10-16T20:05:35",
       "pps_btc": 1.00303238,
       "ret_step": -0.0002893186923536642,
-      "ret_step_pct": -0.028931869235366416,
+      "ret_step_pct": -0.02893186923536642,
       "btc_price": 108705.59082599828,
       "total_supply": 450.64527165456064,
-      "tvl_btc": 452.01179936342055,
-      "net_flow_shares": 1.6929906564877144,
-      "net_flow_btc": 1.69885657,
-      "deposits_btc": 3.00397043,
-      "withdrawals_btc": 1.30511386
+      "tvl_btc": 452.0117993634205,
+      "net_flow_shares": 1.6929906564877144
     },
     {
       "block": 23598446,
@@ -396,10 +313,7 @@ const yieldData = {
       "btc_price": 106825.8474195911,
       "total_supply": 451.6954668652685,
       "tvl_btc": 451.77002371902927,
-      "net_flow_shares": 1.0501952107078036,
-      "net_flow_btc": 1.18263622,
-      "deposits_btc": 46.6336766,
-      "withdrawals_btc": 45.45104038
+      "net_flow_shares": 1.0501952107078036
     },
     {
       "block": 23605593,
@@ -411,10 +325,7 @@ const yieldData = {
       "btc_price": 106992.63460145699,
       "total_supply": 455.8308423086037,
       "tvl_btc": 456.71061862580143,
-      "net_flow_shares": 4.135375443335223,
-      "net_flow_btc": 4.1622793,
-      "deposits_btc": 8.50856195,
-      "withdrawals_btc": 4.34628265
+      "net_flow_shares": 4.135375443335223
     },
     {
       "block": 23612741,
@@ -426,11 +337,7 @@ const yieldData = {
       "btc_price": 108430.33239110556,
       "total_supply": 462.25512512973745,
       "tvl_btc": 464.5428950822733,
-      "net_flow_shares": 6.424282821133735,
-      "net_flow_btc": 6.45652286,
-      "deposits_btc": 6.91301323,
-      "withdrawals_btc": 0.45649037,
-      "total_withdrawable_btc": 459.3060859
+      "net_flow_shares": 6.424282821133735
     },
     {
       "block": 23619888,
@@ -438,15 +345,11 @@ const yieldData = {
       "datetime": "2025-10-20T20:04:59",
       "pps_btc": 1.00451379,
       "ret_step": -0.0004332159492845981,
-      "ret_step_pct": -0.043321594928459814,
+      "ret_step_pct": -0.04332159492845981,
       "btc_price": 111427.00607037144,
       "total_supply": 461.6721076541278,
       "tvl_btc": 463.7559985969359,
-      "net_flow_shares": -0.5830174756096376,
-      "net_flow_btc": -0.58572479,
-      "deposits_btc": 0.0,
-      "withdrawals_btc": 0.58572479,
-      "total_withdrawable_btc": 448.40816268
+      "net_flow_shares": -0.5830174756096376
     },
     {
       "block": 23627036,
@@ -458,11 +361,7 @@ const yieldData = {
       "btc_price": 113348.64642768126,
       "total_supply": 461.4158198370261,
       "tvl_btc": 463.1499358419286,
-      "net_flow_shares": -0.2562878171016817,
-      "net_flow_btc": -0.25746221,
-      "deposits_btc": 0.0,
-      "withdrawals_btc": 0.25746221,
-      "total_withdrawable_btc": 415.1114126
+      "net_flow_shares": -0.2562878171016817
     },
     {
       "block": 23634183,
@@ -474,10 +373,7 @@ const yieldData = {
       "btc_price": 108483.40485103302,
       "total_supply": 461.30378696686967,
       "tvl_btc": 463.4557968112973,
-      "net_flow_shares": -0.11203287015645412,
-      "net_flow_btc": -0.11258288,
-      "deposits_btc": 0.0,
-      "withdrawals_btc": 0.11258288
+      "net_flow_shares": -0.11203287015645412
     },
     {
       "block": 23641331,
@@ -485,15 +381,11 @@ const yieldData = {
       "datetime": "2025-10-23T20:16:35",
       "pps_btc": 1.00729942,
       "ret_step": 0.002622127617337464,
-      "ret_step_pct": 0.26221276173374636,
+      "ret_step_pct": 0.2622127617337464,
       "btc_price": 110010.57252049325,
       "total_supply": 454.1048753340944,
       "tvl_btc": 457.4195775432056,
-      "net_flow_shares": -7.198911632775243,
-      "net_flow_btc": -7.20310962,
-      "deposits_btc": 13.91493869,
-      "withdrawals_btc": 21.11804831,
-      "total_withdrawable_btc": 449.54152912
+      "net_flow_shares": -7.198911632775243
     },
     {
       "block": 23648471,
@@ -505,27 +397,290 @@ const yieldData = {
       "btc_price": 110149.04389859618,
       "total_supply": 452.91941335244974,
       "tvl_btc": 456.1426913538727,
-      "net_flow_shares": -1.1854619816446876,
-      "net_flow_btc": -1.19408764,
-      "deposits_btc": 0.0,
-      "withdrawals_btc": 1.19408764,
-      "total_withdrawable_btc": 450.52135441
+      "net_flow_shares": -1.1854619816446876
     },
     {
-      "block": 23653385,
-      "timestamp": 1761382175,
-      "datetime": "2025-10-25T12:49:35",
-      "pps_btc": 1.00697431,
-      "ret_step": -0.00014135403001521165,
-      "ret_step_pct": -0.014135403001521165,
+      "block": 23648767,
+      "timestamp": 1761326339,
+      "datetime": "2025-10-24T21:18:59",
+      "pps_btc": 1.0,
+      "ret_step": null,
+      "ret_step_pct": null,
+      "btc_price": 110215.34810199725,
+      "total_supply": 0.0,
+      "tvl_btc": 0.0
+    },
+    {
+      "block": 23648768,
+      "timestamp": 1761326351,
+      "datetime": "2025-10-24T21:19:11",
+      "pps_btc": 1.00710727,
+      "ret_step": null,
+      "ret_step_pct": null,
+      "btc_price": 110215.34810199725,
+      "total_supply": 452.91821118433893,
+      "tvl_btc": 456.1372231991431,
+      "net_flow_shares": 0.0,
+      "net_flow_btc": 0.0,
+      "deposits_btc": 0.0,
+      "withdrawals_btc": 0.0,
+      "total_withdrawable_btc": 450.51938862
+    },
+    {
+      "block": 23649065,
+      "timestamp": 1761329951,
+      "datetime": "2025-10-24T22:19:11",
+      "pps_btc": 1.00709797,
+      "ret_step": -9.23436884732249e-06,
+      "ret_step_pct": -0.0009234368847322491,
+      "btc_price": 110342.829253726,
+      "total_supply": 452.91809107652404,
+      "tvl_btc": 456.1328900994425,
+      "net_flow_shares": -0.000120107814911163,
+      "net_flow_btc": -0.00012096,
+      "deposits_btc": 0.0,
+      "withdrawals_btc": 0.00012096,
+      "total_withdrawable_btc": 450.51840913
+    },
+    {
+      "block": 23649364,
+      "timestamp": 1761333551,
+      "datetime": "2025-10-24T23:19:11",
+      "pps_btc": 1.00708749,
+      "ret_step": -1.040613754786935e-05,
+      "ret_step_pct": -0.001040613754786935,
+      "btc_price": 110585.2481046863,
+      "total_supply": 452.9176810077963,
+      "tvl_btc": 456.12773054276227,
+      "net_flow_shares": -0.000410068727690252,
+      "net_flow_btc": -0.00041297,
+      "deposits_btc": 0.0,
+      "withdrawals_btc": 0.00041297,
+      "total_withdrawable_btc": 450.51742044
+    },
+    {
+      "block": 23649662,
+      "timestamp": 1761337151,
+      "datetime": "2025-10-25T00:19:11",
+      "pps_btc": 1.00707958,
+      "ret_step": -7.854332496971043e-06,
+      "ret_step_pct": -0.0007854332496971042,
+      "btc_price": 110630.57948719687,
+      "total_supply": 452.9176810077963,
+      "tvl_btc": 456.1241479639055,
+      "net_flow_shares": 0.0,
+      "net_flow_btc": 0.0,
+      "deposits_btc": 0.0,
+      "withdrawals_btc": 0.0,
+      "total_withdrawable_btc": 450.51659308
+    },
+    {
+      "block": 23649960,
+      "timestamp": 1761340763,
+      "datetime": "2025-10-25T01:19:23",
+      "pps_btc": 1.00707166,
+      "ret_step": -7.864323889875714e-06,
+      "ret_step_pct": -0.0007864323889875714,
+      "btc_price": 110919.40218327155,
+      "total_supply": 452.9176810077963,
+      "tvl_btc": 456.12056085587193,
+      "net_flow_shares": 0.0,
+      "net_flow_btc": 0.0,
+      "deposits_btc": 0.0,
+      "withdrawals_btc": 0.0,
+      "total_withdrawable_btc": 450.51576306
+    },
+    {
+      "block": 23650258,
+      "timestamp": 1761344351,
+      "datetime": "2025-10-25T02:19:11",
+      "pps_btc": 1.00706378,
+      "ret_step": -7.824666618063704e-06,
+      "ret_step_pct": -0.0007824666618063703,
+      "btc_price": 111087.74174490428,
+      "total_supply": 452.9176810077963,
+      "tvl_btc": 456.1169918645456,
+      "net_flow_shares": 0.0,
+      "net_flow_btc": 0.0,
+      "deposits_btc": 0.0,
+      "withdrawals_btc": 0.0,
+      "total_withdrawable_btc": 450.51493605
+    },
+    {
+      "block": 23650555,
+      "timestamp": 1761347951,
+      "datetime": "2025-10-25T03:19:11",
+      "pps_btc": 1.00705427,
+      "ret_step": -9.443294644158487e-06,
+      "ret_step_pct": -0.0009443294644158486,
+      "btc_price": 110995.20314850457,
+      "total_supply": 452.9159581633435,
+      "tvl_btc": 456.11094961953637,
+      "net_flow_shares": -0.001722844452891868,
+      "net_flow_btc": -0.00173501,
+      "deposits_btc": 0.0,
+      "withdrawals_btc": 0.00173501,
+      "total_withdrawable_btc": 450.51137384
+    },
+    {
+      "block": 23650852,
+      "timestamp": 1761351551,
+      "datetime": "2025-10-25T04:19:11",
+      "pps_btc": 1.00704487,
+      "ret_step": -9.334154354958447e-06,
+      "ret_step_pct": -0.0009334154354958447,
+      "btc_price": 110997.80437129698,
+      "total_supply": 452.91522572097625,
+      "tvl_btc": 456.1059546072012,
+      "net_flow_shares": -0.000732442367180606,
+      "net_flow_btc": -0.0007376,
+      "deposits_btc": 0.0,
+      "withdrawals_btc": 0.0007376,
+      "total_withdrawable_btc": 450.50970929
+    },
+    {
+      "block": 23651149,
+      "timestamp": 1761355151,
+      "datetime": "2025-10-25T05:19:11",
+      "pps_btc": 1.00703694,
+      "ret_step": -7.874524995097786e-06,
+      "ret_step_pct": -0.0007874524995097786,
+      "btc_price": 110742.40086612821,
+      "total_supply": 452.91522572097625,
+      "tvl_btc": 456.10236298946126,
+      "net_flow_shares": 0.0,
+      "net_flow_btc": 0.0,
+      "deposits_btc": 0.0,
+      "withdrawals_btc": 0.0,
+      "total_withdrawable_btc": 450.50886475
+    },
+    {
+      "block": 23651447,
+      "timestamp": 1761358751,
+      "datetime": "2025-10-25T06:19:11",
+      "pps_btc": 1.00702905,
+      "ret_step": -7.834866514429947e-06,
+      "ret_step_pct": -0.0007834866514429947,
+      "btc_price": 111108.65312045229,
+      "total_supply": 452.91522572097625,
+      "tvl_btc": 456.0987894883303,
+      "net_flow_shares": 0.0,
+      "net_flow_btc": 0.0,
+      "deposits_btc": 0.0,
+      "withdrawals_btc": 0.0,
+      "total_withdrawable_btc": 450.50802347
+    },
+    {
+      "block": 23651745,
+      "timestamp": 1761362351,
+      "datetime": "2025-10-25T07:19:11",
+      "pps_btc": 1.00702117,
+      "ret_step": -7.824997699917396e-06,
+      "ret_step_pct": -0.0007824997699917396,
+      "btc_price": 111080.28336353975,
+      "total_supply": 452.91522572097625,
+      "tvl_btc": 456.0952205163516,
+      "net_flow_shares": 0.0,
+      "net_flow_btc": 0.0,
+      "deposits_btc": 0.0,
+      "withdrawals_btc": 0.0,
+      "total_withdrawable_btc": 450.5071817
+    },
+    {
+      "block": 23652044,
+      "timestamp": 1761365951,
+      "datetime": "2025-10-25T08:19:11",
+      "pps_btc": 1.00701325,
+      "ret_step": -7.864780042310332e-06,
+      "ret_step_pct": -0.0007864780042310332,
+      "btc_price": 111036.626561223,
+      "total_supply": 452.91522572097625,
+      "tvl_btc": 456.0916334277639,
+      "net_flow_shares": 0.0,
+      "net_flow_btc": 0.0,
+      "deposits_btc": 0.0,
+      "withdrawals_btc": 0.0,
+      "total_withdrawable_btc": 450.50633167
+    },
+    {
+      "block": 23652344,
+      "timestamp": 1761369551,
+      "datetime": "2025-10-25T09:19:11",
+      "pps_btc": 1.00700536,
+      "ret_step": -7.83505082976813e-06,
+      "ret_step_pct": -0.0007835050829768129,
+      "btc_price": 111306.02452878485,
+      "total_supply": 452.91522572097625,
+      "tvl_btc": 456.088059926633,
+      "net_flow_shares": 3e-18,
+      "net_flow_btc": 0.0,
+      "deposits_btc": 0.0,
+      "withdrawals_btc": 0.0,
+      "total_withdrawable_btc": 450.50548338
+    },
+    {
+      "block": 23652640,
+      "timestamp": 1761373151,
+      "datetime": "2025-10-25T10:19:11",
+      "pps_btc": 1.00699574,
+      "ret_step": -9.553077254722855e-06,
+      "ret_step_pct": -0.0009553077254722855,
+      "btc_price": 111338.44291460582,
+      "total_supply": 452.9149356587214,
+      "tvl_btc": 456.0834107907065,
+      "net_flow_shares": -0.000290062254897352,
+      "net_flow_btc": -0.00029209,
+      "deposits_btc": 0.0,
+      "withdrawals_btc": 0.00029209,
+      "total_withdrawable_btc": 450.50275995
+    },
+    {
+      "block": 23652938,
+      "timestamp": 1761376751,
+      "datetime": "2025-10-25T11:19:11",
+      "pps_btc": 1.0069878,
+      "ret_step": -7.88483971143711e-06,
+      "ret_step_pct": -0.0007884839711437111,
+      "btc_price": 111471.77574252381,
+      "total_supply": 452.9149356587214,
+      "tvl_btc": 456.07981464611737,
+      "net_flow_shares": 0.0,
+      "net_flow_btc": 0.0,
+      "deposits_btc": 0.0,
+      "withdrawals_btc": 0.0,
+      "total_withdrawable_btc": 450.50189513
+    },
+    {
+      "block": 23653237,
+      "timestamp": 1761380351,
+      "datetime": "2025-10-25T12:19:11",
+      "pps_btc": 1.00697855,
+      "ret_step": -9.185811387188604e-06,
+      "ret_step_pct": -0.0009185811387188603,
       "btc_price": 111507.89326706811,
       "total_supply": 452.90495502420026,
-      "tvl_btc": 456.06365458107507,
-      "net_flow_shares": -0.014458328249461722,
-      "net_flow_btc": -0.01455965,
+      "tvl_btc": 456.0655748980844,
+      "net_flow_shares": -0.00998063452110538,
+      "net_flow_btc": -0.01005031,
       "deposits_btc": 0.0,
-      "withdrawals_btc": 0.01455965,
-      "total_withdrawable_btc": 450.49007963
+      "withdrawals_btc": 0.01005031,
+      "total_withdrawable_btc": 450.49055852
+    },
+    {
+      "block": 23653418,
+      "timestamp": 1761382583,
+      "datetime": "2025-10-25T12:56:23",
+      "pps_btc": 1.00697341,
+      "ret_step": -5.104378837066589e-06,
+      "ret_step_pct": -0.0005104378837066589,
+      "btc_price": 111507.89326706811,
+      "total_supply": 452.90495502420026,
+      "tvl_btc": 456.06324696661557,
+      "net_flow_shares": 0.0,
+      "net_flow_btc": 0.0,
+      "deposits_btc": 0.0,
+      "withdrawals_btc": 0.0,
+      "total_withdrawable_btc": 450.48997981
     }
   ]
 };
