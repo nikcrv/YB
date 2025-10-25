@@ -82,8 +82,8 @@
         }
 
         .chart-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(700px, 1fr));
+            display: flex;
+            flex-direction: column;
             gap: 20px;
         }
 
@@ -104,7 +104,7 @@
         }
 
         canvas {
-            max-height: 400px;
+            height: 400px;
         }
     </style>
 </head>
@@ -143,13 +143,13 @@
 
         <div class="chart-grid">
             <div class="chart-container">
-                <div class="chart-title">📊 Cumulative Locks Growth</div>
-                <canvas id="cumulativeChart"></canvas>
+                <div class="chart-title">💰 Total YB Locked</div>
+                <canvas id="ybChart"></canvas>
             </div>
 
             <div class="chart-container">
-                <div class="chart-title">💰 Total YB Locked</div>
-                <canvas id="ybChart"></canvas>
+                <div class="chart-title">📊 Cumulative Locks Growth</div>
+                <canvas id="cumulativeChart"></canvas>
             </div>
         </div>
     </div>
@@ -162,8 +162,8 @@
 
         // Обновить статистику
         document.getElementById('totalLocks').textContent = current.total_locks.toLocaleString();
-        document.getElementById('totalYB').textContent = (current.total_yb_locked / 1e6).toFixed(2) + 'M';
-        document.getElementById('totalVeYB').textContent = (current.total_veyb / 1e6).toFixed(2) + 'M';
+        document.getElementById('totalYB').textContent = (current.total_yb_locked / 1e6).toFixed(3) + 'M';
+        document.getElementById('totalVeYB').textContent = (current.total_veyb / 1e6).toFixed(3) + 'M';
         document.getElementById('avgWeight').textContent = (current.total_veyb / current.total_yb_locked).toFixed(3);
 
         // Подготовить данные с ВРЕМЕННОЙ осью
@@ -321,8 +321,8 @@
                                 const lockSize = currentYB - prevYB;
 
                                 return [
-                                    'Lock Size: ' + (lockSize / 1e6).toFixed(2) + 'M YB',
-                                    'Total Locked: ' + (currentYB / 1e6).toFixed(2) + 'M YB'
+                                    'Lock Size: ' + (lockSize / 1e6).toFixed(3) + 'M YB',
+                                    'Total Locked: ' + (currentYB / 1e6).toFixed(3) + 'M YB'
                                 ];
                             }
                         }
@@ -358,7 +358,7 @@
                         },
                         ticks: {
                             color: '#888888',
-                            callback: value => (value / 1e6).toFixed(1) + 'M'
+                            callback: value => (value / 1e6).toFixed(3) + 'M'
                         },
                         grid: {
                             color: '#2A2A2A'
