@@ -1,25 +1,25 @@
 const yieldData_tbtc = {
   "metadata": {
     "contract": "0x2B513eBe7070Cff91cf699a0BFe5075020C732FF",
-    "start_date": "2025-09-24T16:24:11",
-    "end_date": "2025-10-25T09:00:47",
-    "data_points": 738,
+    "start_date": "2025-09-24T20:24:11",
+    "end_date": "2025-10-25T13:24:23",
+    "data_points": 740,
     "step_seconds": 3612
   },
   "metrics": {
-    "total_return": 0.0703803205839382,
-    "total_return_pct": 7.03803205839382,
-    "apr": 1.2453117635745545,
-    "apr_pct": 124.53117635745545,
-    "days": 30.692083333333333,
+    "total_return": 0.07037660723780188,
+    "total_return_pct": 7.0376607237801885,
+    "apr": 1.244250186313481,
+    "apr_pct": 124.4250186313481,
+    "days": 30.708472222222223,
     "start_pps": 1.00027627915227,
-    "end_pps": 1.0706760443515155
+    "end_pps": 1.0706723299794592
   },
   "data": [
     {
       "block": 23434068,
       "timestamp": 1758731051,
-      "datetime": "2025-09-24T16:24:11",
+      "datetime": "2025-09-24T20:24:11",
       "pps_btc": 1.00027627915227,
       "ret_step": null,
       "ret_step_pct": null,
@@ -28,7 +28,7 @@ const yieldData_tbtc = {
     {
       "block": 23434365,
       "timestamp": 1758734663,
-      "datetime": "2025-09-24T17:24:23",
+      "datetime": "2025-09-24T21:24:23",
       "pps_btc": 1.0284889802977568,
       "ret_step": 0.02820490871721675,
       "ret_step_pct": 2.820490871721675,
@@ -37,7 +37,7 @@ const yieldData_tbtc = {
     {
       "block": 23434661,
       "timestamp": 1758738251,
-      "datetime": "2025-09-24T18:24:11",
+      "datetime": "2025-09-24T22:24:11",
       "pps_btc": 1.0284899218954113,
       "ret_step": 9.155155499210103e-07,
       "ret_step_pct": 9.155155499210103e-05,
@@ -46,7 +46,7 @@ const yieldData_tbtc = {
     {
       "block": 23434961,
       "timestamp": 1758741851,
-      "datetime": "2025-09-24T19:24:11",
+      "datetime": "2025-09-24T23:24:11",
       "pps_btc": 1.0284856733848102,
       "ret_step": -4.130823754923519e-06,
       "ret_step_pct": -0.0004130823754923519,
@@ -55,7 +55,7 @@ const yieldData_tbtc = {
     {
       "block": 23435260,
       "timestamp": 1758745451,
-      "datetime": "2025-09-24T20:24:11",
+      "datetime": "2025-09-25T00:24:11",
       "pps_btc": 1.028477134024469,
       "ret_step": -8.302848121611101e-06,
       "ret_step_pct": -0.0008302848121611101,
@@ -64,7 +64,7 @@ const yieldData_tbtc = {
     {
       "block": 23435560,
       "timestamp": 1758749051,
-      "datetime": "2025-09-24T21:24:11",
+      "datetime": "2025-09-25T01:24:11",
       "pps_btc": 1.0284749209203412,
       "ret_step": -2.1518262822752723e-06,
       "ret_step_pct": -0.00021518262822752722,
@@ -73,7 +73,7 @@ const yieldData_tbtc = {
     {
       "block": 23435857,
       "timestamp": 1758752651,
-      "datetime": "2025-09-24T22:24:11",
+      "datetime": "2025-09-25T02:24:11",
       "pps_btc": 1.0284715221305527,
       "ret_step": -3.304689029749562e-06,
       "ret_step_pct": -0.0003304689029749562,
@@ -82,7 +82,7 @@ const yieldData_tbtc = {
     {
       "block": 23436156,
       "timestamp": 1758756251,
-      "datetime": "2025-09-24T23:24:11",
+      "datetime": "2025-09-25T03:24:11",
       "pps_btc": 1.0284678150292146,
       "ret_step": -3.6044764082232177e-06,
       "ret_step_pct": -0.00036044764082232176,
@@ -91,7 +91,7 @@ const yieldData_tbtc = {
     {
       "block": 23436455,
       "timestamp": 1758759851,
-      "datetime": "2025-09-25T00:24:11",
+      "datetime": "2025-09-25T04:24:11",
       "pps_btc": 1.0284749767424604,
       "ret_step": 6.9634782353880125e-06,
       "ret_step_pct": 0.0006963478235388012,
@@ -100,7 +100,7 @@ const yieldData_tbtc = {
     {
       "block": 23436754,
       "timestamp": 1758763451,
-      "datetime": "2025-09-25T01:24:11",
+      "datetime": "2025-09-25T05:24:11",
       "pps_btc": 1.0284687637058016,
       "ret_step": -6.041018789224079e-06,
       "ret_step_pct": -0.000604101878922408,
@@ -109,7 +109,7 @@ const yieldData_tbtc = {
     {
       "block": 23437051,
       "timestamp": 1758767051,
-      "datetime": "2025-09-25T02:24:11",
+      "datetime": "2025-09-25T06:24:11",
       "pps_btc": 1.0284595196011108,
       "ret_step": -8.98822114686151e-06,
       "ret_step_pct": -0.000898822114686151,
@@ -118,7 +118,7 @@ const yieldData_tbtc = {
     {
       "block": 23437350,
       "timestamp": 1758770651,
-      "datetime": "2025-09-25T03:24:11",
+      "datetime": "2025-09-25T07:24:11",
       "pps_btc": 1.0284541214179301,
       "ret_step": -5.248804719828634e-06,
       "ret_step_pct": -0.0005248804719828634,
@@ -127,7 +127,7 @@ const yieldData_tbtc = {
     {
       "block": 23437646,
       "timestamp": 1758774251,
-      "datetime": "2025-09-25T04:24:11",
+      "datetime": "2025-09-25T08:24:11",
       "pps_btc": 1.0284081484793568,
       "ret_step": -4.4701010590387926e-05,
       "ret_step_pct": -0.004470101059038793,
@@ -136,7 +136,7 @@ const yieldData_tbtc = {
     {
       "block": 23437945,
       "timestamp": 1758777851,
-      "datetime": "2025-09-25T05:24:11",
+      "datetime": "2025-09-25T09:24:11",
       "pps_btc": 1.0281978404188523,
       "ret_step": -0.00020449863297522918,
       "ret_step_pct": -0.020449863297522918,
@@ -145,7 +145,7 @@ const yieldData_tbtc = {
     {
       "block": 23438241,
       "timestamp": 1758781451,
-      "datetime": "2025-09-25T06:24:11",
+      "datetime": "2025-09-25T10:24:11",
       "pps_btc": 1.0281819843359767,
       "ret_step": -1.5421237287364637e-05,
       "ret_step_pct": -0.0015421237287364636,
@@ -154,7 +154,7 @@ const yieldData_tbtc = {
     {
       "block": 23438539,
       "timestamp": 1758785051,
-      "datetime": "2025-09-25T07:24:11",
+      "datetime": "2025-09-25T11:24:11",
       "pps_btc": 1.0280995873905003,
       "ret_step": -8.013848397639725e-05,
       "ret_step_pct": -0.008013848397639725,
@@ -163,7 +163,7 @@ const yieldData_tbtc = {
     {
       "block": 23438837,
       "timestamp": 1758788651,
-      "datetime": "2025-09-25T08:24:11",
+      "datetime": "2025-09-25T12:24:11",
       "pps_btc": 1.028138392189003,
       "ret_step": 3.774420200018121e-05,
       "ret_step_pct": 0.003774420200018121,
@@ -172,7 +172,7 @@ const yieldData_tbtc = {
     {
       "block": 23439134,
       "timestamp": 1758792251,
-      "datetime": "2025-09-25T09:24:11",
+      "datetime": "2025-09-25T13:24:11",
       "pps_btc": 1.028174533334612,
       "ret_step": 3.5152024166572665e-05,
       "ret_step_pct": 0.0035152024166572667,
@@ -181,7 +181,7 @@ const yieldData_tbtc = {
     {
       "block": 23439433,
       "timestamp": 1758795851,
-      "datetime": "2025-09-25T10:24:11",
+      "datetime": "2025-09-25T14:24:11",
       "pps_btc": 1.028091632502072,
       "ret_step": -8.06291440336108e-05,
       "ret_step_pct": -0.00806291440336108,
@@ -190,7 +190,7 @@ const yieldData_tbtc = {
     {
       "block": 23439733,
       "timestamp": 1758799451,
-      "datetime": "2025-09-25T11:24:11",
+      "datetime": "2025-09-25T15:24:11",
       "pps_btc": 1.028106506821178,
       "ret_step": 1.446789239010952e-05,
       "ret_step_pct": 0.001446789239010952,
@@ -199,7 +199,7 @@ const yieldData_tbtc = {
     {
       "block": 23440032,
       "timestamp": 1758803051,
-      "datetime": "2025-09-25T12:24:11",
+      "datetime": "2025-09-25T16:24:11",
       "pps_btc": 1.0281730591853773,
       "ret_step": 6.473294717778755e-05,
       "ret_step_pct": 0.006473294717778755,
@@ -208,7 +208,7 @@ const yieldData_tbtc = {
     {
       "block": 23440331,
       "timestamp": 1758806651,
-      "datetime": "2025-09-25T13:24:11",
+      "datetime": "2025-09-25T17:24:11",
       "pps_btc": 1.0280736785533686,
       "ret_step": -9.66574946901433e-05,
       "ret_step_pct": -0.00966574946901433,
@@ -217,7 +217,7 @@ const yieldData_tbtc = {
     {
       "block": 23440630,
       "timestamp": 1758810251,
-      "datetime": "2025-09-25T14:24:11",
+      "datetime": "2025-09-25T18:24:11",
       "pps_btc": 1.0280764348192586,
       "ret_step": 2.681000348134989e-06,
       "ret_step_pct": 0.0002681000348134989,
@@ -226,7 +226,7 @@ const yieldData_tbtc = {
     {
       "block": 23440929,
       "timestamp": 1758813851,
-      "datetime": "2025-09-25T15:24:11",
+      "datetime": "2025-09-25T19:24:11",
       "pps_btc": 1.0280872556359537,
       "ret_step": 1.0525303691913099e-05,
       "ret_step_pct": 0.00105253036919131,
@@ -235,7 +235,7 @@ const yieldData_tbtc = {
     {
       "block": 23441224,
       "timestamp": 1758817451,
-      "datetime": "2025-09-25T16:24:11",
+      "datetime": "2025-09-25T20:24:11",
       "pps_btc": 1.0281668524702192,
       "ret_step": 7.742225558118025e-05,
       "ret_step_pct": 0.007742225558118025,
@@ -244,7 +244,7 @@ const yieldData_tbtc = {
     {
       "block": 23441522,
       "timestamp": 1758821051,
-      "datetime": "2025-09-25T17:24:11",
+      "datetime": "2025-09-25T21:24:11",
       "pps_btc": 1.0280660090395362,
       "ret_step": -9.808080317007196e-05,
       "ret_step_pct": -0.009808080317007197,
@@ -253,7 +253,7 @@ const yieldData_tbtc = {
     {
       "block": 23441821,
       "timestamp": 1758824651,
-      "datetime": "2025-09-25T18:24:11",
+      "datetime": "2025-09-25T22:24:11",
       "pps_btc": 1.0268300006015096,
       "ret_step": -0.0012022656397143961,
       "ret_step_pct": -0.1202265639714396,
@@ -262,7 +262,7 @@ const yieldData_tbtc = {
     {
       "block": 23442119,
       "timestamp": 1758828251,
-      "datetime": "2025-09-25T19:24:11",
+      "datetime": "2025-09-25T23:24:11",
       "pps_btc": 1.026743449713983,
       "ret_step": -8.428940279890646e-05,
       "ret_step_pct": -0.008428940279890646,
@@ -271,7 +271,7 @@ const yieldData_tbtc = {
     {
       "block": 23442416,
       "timestamp": 1758831851,
-      "datetime": "2025-09-25T20:24:11",
+      "datetime": "2025-09-26T00:24:11",
       "pps_btc": 1.0267342506040198,
       "ret_step": -8.959501972560498e-06,
       "ret_step_pct": -0.0008959501972560498,
@@ -280,7 +280,7 @@ const yieldData_tbtc = {
     {
       "block": 23442714,
       "timestamp": 1758835451,
-      "datetime": "2025-09-25T21:24:11",
+      "datetime": "2025-09-26T01:24:11",
       "pps_btc": 1.0264406832783495,
       "ret_step": -0.00028592337841824953,
       "ret_step_pct": -0.028592337841824952,
@@ -289,7 +289,7 @@ const yieldData_tbtc = {
     {
       "block": 23443008,
       "timestamp": 1758839051,
-      "datetime": "2025-09-25T22:24:11",
+      "datetime": "2025-09-26T02:24:11",
       "pps_btc": 1.0274859370292528,
       "ret_step": 0.0010183284508608569,
       "ret_step_pct": 0.10183284508608569,
@@ -298,7 +298,7 @@ const yieldData_tbtc = {
     {
       "block": 23443305,
       "timestamp": 1758842651,
-      "datetime": "2025-09-25T23:24:11",
+      "datetime": "2025-09-26T03:24:11",
       "pps_btc": 1.0277681941029173,
       "ret_step": 0.00027470650788708075,
       "ret_step_pct": 0.027470650788708074,
@@ -307,7 +307,7 @@ const yieldData_tbtc = {
     {
       "block": 23443601,
       "timestamp": 1758846251,
-      "datetime": "2025-09-26T00:24:11",
+      "datetime": "2025-09-26T04:24:11",
       "pps_btc": 1.0277767865002645,
       "ret_step": 8.360248348405872e-06,
       "ret_step_pct": 0.0008360248348405872,
@@ -316,7 +316,7 @@ const yieldData_tbtc = {
     {
       "block": 23443897,
       "timestamp": 1758849851,
-      "datetime": "2025-09-26T01:24:11",
+      "datetime": "2025-09-26T05:24:11",
       "pps_btc": 1.0279521716547644,
       "ret_step": 0.00017064517977407914,
       "ret_step_pct": 0.017064517977407913,
@@ -325,7 +325,7 @@ const yieldData_tbtc = {
     {
       "block": 23444196,
       "timestamp": 1758853451,
-      "datetime": "2025-09-26T02:24:11",
+      "datetime": "2025-09-26T06:24:11",
       "pps_btc": 1.0281760266097895,
       "ret_step": 0.00021776787013793304,
       "ret_step_pct": 0.021776787013793306,
@@ -334,7 +334,7 @@ const yieldData_tbtc = {
     {
       "block": 23444493,
       "timestamp": 1758857051,
-      "datetime": "2025-09-26T03:24:11",
+      "datetime": "2025-09-26T07:24:11",
       "pps_btc": 1.0281866870016558,
       "ret_step": 1.036825562027795e-05,
       "ret_step_pct": 0.001036825562027795,
@@ -343,7 +343,7 @@ const yieldData_tbtc = {
     {
       "block": 23444790,
       "timestamp": 1758860651,
-      "datetime": "2025-09-26T04:24:11",
+      "datetime": "2025-09-26T08:24:11",
       "pps_btc": 1.0281850931938599,
       "ret_step": -1.5501151845632028e-06,
       "ret_step_pct": -0.00015501151845632028,
@@ -352,7 +352,7 @@ const yieldData_tbtc = {
     {
       "block": 23445088,
       "timestamp": 1758864251,
-      "datetime": "2025-09-26T05:24:11",
+      "datetime": "2025-09-26T09:24:11",
       "pps_btc": 1.028181453297379,
       "ret_step": -3.5401179271227903e-06,
       "ret_step_pct": -0.000354011792712279,
@@ -361,7 +361,7 @@ const yieldData_tbtc = {
     {
       "block": 23445385,
       "timestamp": 1758867851,
-      "datetime": "2025-09-26T06:24:11",
+      "datetime": "2025-09-26T10:24:11",
       "pps_btc": 1.0281770622227417,
       "ret_step": -4.270719553614607e-06,
       "ret_step_pct": -0.0004270719553614607,
@@ -370,7 +370,7 @@ const yieldData_tbtc = {
     {
       "block": 23445682,
       "timestamp": 1758871451,
-      "datetime": "2025-09-26T07:24:11",
+      "datetime": "2025-09-26T11:24:11",
       "pps_btc": 1.028176442210547,
       "ret_step": -6.030208389366715e-07,
       "ret_step_pct": -6.030208389366715e-05,
@@ -379,7 +379,7 @@ const yieldData_tbtc = {
     {
       "block": 23445979,
       "timestamp": 1758875051,
-      "datetime": "2025-09-26T08:24:11",
+      "datetime": "2025-09-26T12:24:11",
       "pps_btc": 1.028184652670582,
       "ret_step": 7.985458232509946e-06,
       "ret_step_pct": 0.0007985458232509946,
@@ -388,7 +388,7 @@ const yieldData_tbtc = {
     {
       "block": 23446276,
       "timestamp": 1758878651,
-      "datetime": "2025-09-26T09:24:11",
+      "datetime": "2025-09-26T13:24:11",
       "pps_btc": 1.028183329228402,
       "ret_step": -1.2871639122345613e-06,
       "ret_step_pct": -0.00012871639122345613,
@@ -397,7 +397,7 @@ const yieldData_tbtc = {
     {
       "block": 23446573,
       "timestamp": 1758882251,
-      "datetime": "2025-09-26T10:24:11",
+      "datetime": "2025-09-26T14:24:11",
       "pps_btc": 1.0281753603696373,
       "ret_step": -7.750425958215266e-06,
       "ret_step_pct": -0.0007750425958215266,
@@ -406,7 +406,7 @@ const yieldData_tbtc = {
     {
       "block": 23446871,
       "timestamp": 1758885875,
-      "datetime": "2025-09-26T11:24:35",
+      "datetime": "2025-09-26T15:24:35",
       "pps_btc": 1.0281746348950775,
       "ret_step": -7.05594189242374e-07,
       "ret_step_pct": -7.05594189242374e-05,
@@ -415,7 +415,7 @@ const yieldData_tbtc = {
     {
       "block": 23447169,
       "timestamp": 1758889463,
-      "datetime": "2025-09-26T12:24:23",
+      "datetime": "2025-09-26T16:24:23",
       "pps_btc": 1.0281453251141988,
       "ret_step": -2.8506617342981803e-05,
       "ret_step_pct": -0.0028506617342981804,
@@ -424,7 +424,7 @@ const yieldData_tbtc = {
     {
       "block": 23447467,
       "timestamp": 1758893063,
-      "datetime": "2025-09-26T13:24:23",
+      "datetime": "2025-09-26T17:24:23",
       "pps_btc": 1.028150100827992,
       "ret_step": 4.644979339519487e-06,
       "ret_step_pct": 0.0004644979339519487,
@@ -433,7 +433,7 @@ const yieldData_tbtc = {
     {
       "block": 23447766,
       "timestamp": 1758896651,
-      "datetime": "2025-09-26T14:24:11",
+      "datetime": "2025-09-26T18:24:11",
       "pps_btc": 1.0281611297712774,
       "ret_step": 1.0726977779193085e-05,
       "ret_step_pct": 0.0010726977779193085,
@@ -442,7 +442,7 @@ const yieldData_tbtc = {
     {
       "block": 23448064,
       "timestamp": 1758900251,
-      "datetime": "2025-09-26T15:24:11",
+      "datetime": "2025-09-26T19:24:11",
       "pps_btc": 1.0281471635808115,
       "ret_step": -1.3583659274275319e-05,
       "ret_step_pct": -0.001358365927427532,
@@ -451,7 +451,7 @@ const yieldData_tbtc = {
     {
       "block": 23448361,
       "timestamp": 1758903875,
-      "datetime": "2025-09-26T16:24:35",
+      "datetime": "2025-09-26T20:24:35",
       "pps_btc": 1.0281369352586873,
       "ret_step": -9.948305540797285e-06,
       "ret_step_pct": -0.0009948305540797284,
@@ -460,7 +460,7 @@ const yieldData_tbtc = {
     {
       "block": 23448659,
       "timestamp": 1758907475,
-      "datetime": "2025-09-26T17:24:35",
+      "datetime": "2025-09-26T21:24:35",
       "pps_btc": 1.0281365586429423,
       "ret_step": -3.663089342483748e-07,
       "ret_step_pct": -3.663089342483748e-05,
@@ -469,7 +469,7 @@ const yieldData_tbtc = {
     {
       "block": 23448957,
       "timestamp": 1758911087,
-      "datetime": "2025-09-26T18:24:47",
+      "datetime": "2025-09-26T22:24:47",
       "pps_btc": 1.0284179156858781,
       "ret_step": 0.0002736572691348946,
       "ret_step_pct": 0.02736572691348946,
@@ -478,7 +478,7 @@ const yieldData_tbtc = {
     {
       "block": 23449255,
       "timestamp": 1758914675,
-      "datetime": "2025-09-26T19:24:35",
+      "datetime": "2025-09-26T23:24:35",
       "pps_btc": 1.0285217618456235,
       "ret_step": 0.00010097661481912666,
       "ret_step_pct": 0.010097661481912667,
@@ -487,7 +487,7 @@ const yieldData_tbtc = {
     {
       "block": 23449553,
       "timestamp": 1758918263,
-      "datetime": "2025-09-26T20:24:23",
+      "datetime": "2025-09-27T00:24:23",
       "pps_btc": 1.0285067847530949,
       "ret_step": -1.456176532588427e-05,
       "ret_step_pct": -0.001456176532588427,
@@ -496,7 +496,7 @@ const yieldData_tbtc = {
     {
       "block": 23449851,
       "timestamp": 1758921875,
-      "datetime": "2025-09-26T21:24:35",
+      "datetime": "2025-09-27T01:24:35",
       "pps_btc": 1.0278599444673329,
       "ret_step": -0.000628912026007971,
       "ret_step_pct": -0.0628912026007971,
@@ -505,7 +505,7 @@ const yieldData_tbtc = {
     {
       "block": 23450149,
       "timestamp": 1758925475,
-      "datetime": "2025-09-26T22:24:35",
+      "datetime": "2025-09-27T02:24:35",
       "pps_btc": 1.0276708790500129,
       "ret_step": -0.00018394083584801548,
       "ret_step_pct": -0.01839408358480155,
@@ -514,7 +514,7 @@ const yieldData_tbtc = {
     {
       "block": 23450447,
       "timestamp": 1758929063,
-      "datetime": "2025-09-26T23:24:23",
+      "datetime": "2025-09-27T03:24:23",
       "pps_btc": 1.0276429742982134,
       "ret_step": -2.715339353127956e-05,
       "ret_step_pct": -0.002715339353127956,
@@ -523,7 +523,7 @@ const yieldData_tbtc = {
     {
       "block": 23450746,
       "timestamp": 1758932651,
-      "datetime": "2025-09-27T00:24:11",
+      "datetime": "2025-09-27T04:24:11",
       "pps_btc": 1.0276515620031834,
       "ret_step": 8.35670090175104e-06,
       "ret_step_pct": 0.000835670090175104,
@@ -532,7 +532,7 @@ const yieldData_tbtc = {
     {
       "block": 23451043,
       "timestamp": 1758936251,
-      "datetime": "2025-09-27T01:24:11",
+      "datetime": "2025-09-27T05:24:11",
       "pps_btc": 1.0276427613013444,
       "ret_step": -8.563896717892341e-06,
       "ret_step_pct": -0.0008563896717892341,
@@ -541,7 +541,7 @@ const yieldData_tbtc = {
     {
       "block": 23451341,
       "timestamp": 1758939851,
-      "datetime": "2025-09-27T02:24:11",
+      "datetime": "2025-09-27T06:24:11",
       "pps_btc": 1.0276364915533822,
       "ret_step": -6.1010967997335685e-06,
       "ret_step_pct": -0.0006101096799733569,
@@ -550,7 +550,7 @@ const yieldData_tbtc = {
     {
       "block": 23451641,
       "timestamp": 1758943451,
-      "datetime": "2025-09-27T03:24:11",
+      "datetime": "2025-09-27T07:24:11",
       "pps_btc": 1.027628463961543,
       "ret_step": -7.811703754410704e-06,
       "ret_step_pct": -0.0007811703754410704,
@@ -559,7 +559,7 @@ const yieldData_tbtc = {
     {
       "block": 23451939,
       "timestamp": 1758947051,
-      "datetime": "2025-09-27T04:24:11",
+      "datetime": "2025-09-27T08:24:11",
       "pps_btc": 1.0276214702129747,
       "ret_step": -6.805717059731743e-06,
       "ret_step_pct": -0.0006805717059731743,
@@ -568,7 +568,7 @@ const yieldData_tbtc = {
     {
       "block": 23452238,
       "timestamp": 1758950651,
-      "datetime": "2025-09-27T05:24:11",
+      "datetime": "2025-09-27T09:24:11",
       "pps_btc": 1.0276149851881622,
       "ret_step": -6.3107136240098e-06,
       "ret_step_pct": -0.00063107136240098,
@@ -577,7 +577,7 @@ const yieldData_tbtc = {
     {
       "block": 23452535,
       "timestamp": 1758954251,
-      "datetime": "2025-09-27T06:24:11",
+      "datetime": "2025-09-27T10:24:11",
       "pps_btc": 1.0276079986366156,
       "ret_step": -6.798802710657943e-06,
       "ret_step_pct": -0.0006798802710657943,
@@ -586,7 +586,7 @@ const yieldData_tbtc = {
     {
       "block": 23452834,
       "timestamp": 1758957851,
-      "datetime": "2025-09-27T07:24:11",
+      "datetime": "2025-09-27T11:24:11",
       "pps_btc": 1.0276056471089787,
       "ret_step": -2.2883508495582967e-06,
       "ret_step_pct": -0.00022883508495582966,
@@ -595,7 +595,7 @@ const yieldData_tbtc = {
     {
       "block": 23453133,
       "timestamp": 1758961451,
-      "datetime": "2025-09-27T08:24:11",
+      "datetime": "2025-09-27T12:24:11",
       "pps_btc": 1.0275983148565293,
       "ret_step": -7.135278469917172e-06,
       "ret_step_pct": -0.0007135278469917171,
@@ -604,7 +604,7 @@ const yieldData_tbtc = {
     {
       "block": 23453431,
       "timestamp": 1758965051,
-      "datetime": "2025-09-27T09:24:11",
+      "datetime": "2025-09-27T13:24:11",
       "pps_btc": 1.027592248163283,
       "ret_step": -5.903759434530618e-06,
       "ret_step_pct": -0.0005903759434530618,
@@ -613,7 +613,7 @@ const yieldData_tbtc = {
     {
       "block": 23453727,
       "timestamp": 1758968651,
-      "datetime": "2025-09-27T10:24:11",
+      "datetime": "2025-09-27T14:24:11",
       "pps_btc": 1.027580374829144,
       "ret_step": -1.1554518983886245e-05,
       "ret_step_pct": -0.0011554518983886246,
@@ -622,7 +622,7 @@ const yieldData_tbtc = {
     {
       "block": 23454023,
       "timestamp": 1758972275,
-      "datetime": "2025-09-27T11:24:35",
+      "datetime": "2025-09-27T15:24:35",
       "pps_btc": 1.0275758756752926,
       "ret_step": -4.378396047393446e-06,
       "ret_step_pct": -0.0004378396047393446,
@@ -631,7 +631,7 @@ const yieldData_tbtc = {
     {
       "block": 23454321,
       "timestamp": 1758975887,
-      "datetime": "2025-09-27T12:24:47",
+      "datetime": "2025-09-27T16:24:47",
       "pps_btc": 1.0275604879479505,
       "ret_step": -1.4974784545157446e-05,
       "ret_step_pct": -0.0014974784545157447,
@@ -640,7 +640,7 @@ const yieldData_tbtc = {
     {
       "block": 23454619,
       "timestamp": 1758979475,
-      "datetime": "2025-09-27T13:24:35",
+      "datetime": "2025-09-27T17:24:35",
       "pps_btc": 1.0275626261964588,
       "ret_step": 2.0808979454835846e-06,
       "ret_step_pct": 0.00020808979454835846,
@@ -649,7 +649,7 @@ const yieldData_tbtc = {
     {
       "block": 23454917,
       "timestamp": 1758983087,
-      "datetime": "2025-09-27T14:24:47",
+      "datetime": "2025-09-27T18:24:47",
       "pps_btc": 1.027555850106393,
       "ret_step": -6.594332932035313e-06,
       "ret_step_pct": -0.0006594332932035313,
@@ -658,7 +658,7 @@ const yieldData_tbtc = {
     {
       "block": 23455215,
       "timestamp": 1758986675,
-      "datetime": "2025-09-27T15:24:35",
+      "datetime": "2025-09-27T19:24:35",
       "pps_btc": 1.0275495940416728,
       "ret_step": -6.088296533677705e-06,
       "ret_step_pct": -0.0006088296533677706,
@@ -667,7 +667,7 @@ const yieldData_tbtc = {
     {
       "block": 23455513,
       "timestamp": 1758990263,
-      "datetime": "2025-09-27T16:24:23",
+      "datetime": "2025-09-27T20:24:23",
       "pps_btc": 1.0275398257534647,
       "ret_step": -9.506390995383765e-06,
       "ret_step_pct": -0.0009506390995383765,
@@ -676,7 +676,7 @@ const yieldData_tbtc = {
     {
       "block": 23455811,
       "timestamp": 1758993875,
-      "datetime": "2025-09-27T17:24:35",
+      "datetime": "2025-09-27T21:24:35",
       "pps_btc": 1.027530222729161,
       "ret_step": -9.345646818809564e-06,
       "ret_step_pct": -0.0009345646818809564,
@@ -685,7 +685,7 @@ const yieldData_tbtc = {
     {
       "block": 23456109,
       "timestamp": 1758997451,
-      "datetime": "2025-09-27T18:24:11",
+      "datetime": "2025-09-27T22:24:11",
       "pps_btc": 1.0275225193245041,
       "ret_step": -7.497010293630539e-06,
       "ret_step_pct": -0.000749701029363054,
@@ -694,7 +694,7 @@ const yieldData_tbtc = {
     {
       "block": 23456408,
       "timestamp": 1759001051,
-      "datetime": "2025-09-27T19:24:11",
+      "datetime": "2025-09-27T23:24:11",
       "pps_btc": 1.027515958954871,
       "ret_step": -6.384648034078906e-06,
       "ret_step_pct": -0.0006384648034078906,
@@ -703,7 +703,7 @@ const yieldData_tbtc = {
     {
       "block": 23456707,
       "timestamp": 1759004651,
-      "datetime": "2025-09-27T20:24:11",
+      "datetime": "2025-09-28T00:24:11",
       "pps_btc": 1.0275098611123732,
       "ret_step": -5.934547726185555e-06,
       "ret_step_pct": -0.0005934547726185555,
@@ -712,7 +712,7 @@ const yieldData_tbtc = {
     {
       "block": 23457006,
       "timestamp": 1759008251,
-      "datetime": "2025-09-27T21:24:11",
+      "datetime": "2025-09-28T01:24:11",
       "pps_btc": 1.0275447381970844,
       "ret_step": 3.394330899509069e-05,
       "ret_step_pct": 0.003394330899509069,
@@ -721,7 +721,7 @@ const yieldData_tbtc = {
     {
       "block": 23457303,
       "timestamp": 1759011851,
-      "datetime": "2025-09-27T22:24:11",
+      "datetime": "2025-09-28T02:24:11",
       "pps_btc": 1.0275405827435609,
       "ret_step": -4.044060924293282e-06,
       "ret_step_pct": -0.0004044060924293282,
@@ -730,7 +730,7 @@ const yieldData_tbtc = {
     {
       "block": 23457601,
       "timestamp": 1759015451,
-      "datetime": "2025-09-27T23:24:11",
+      "datetime": "2025-09-28T03:24:11",
       "pps_btc": 1.027527882593016,
       "ret_step": -1.2359755670855607e-05,
       "ret_step_pct": -0.0012359755670855606,
@@ -739,7 +739,7 @@ const yieldData_tbtc = {
     {
       "block": 23457899,
       "timestamp": 1759019051,
-      "datetime": "2025-09-28T00:24:11",
+      "datetime": "2025-09-28T04:24:11",
       "pps_btc": 1.0275207133574247,
       "ret_step": -6.9771689049975835e-06,
       "ret_step_pct": -0.0006977168904997584,
@@ -748,7 +748,7 @@ const yieldData_tbtc = {
     {
       "block": 23458199,
       "timestamp": 1759022651,
-      "datetime": "2025-09-28T01:24:11",
+      "datetime": "2025-09-28T05:24:11",
       "pps_btc": 1.0275139157983537,
       "ret_step": -6.615495904508797e-06,
       "ret_step_pct": -0.0006615495904508797,
@@ -757,7 +757,7 @@ const yieldData_tbtc = {
     {
       "block": 23458497,
       "timestamp": 1759026251,
-      "datetime": "2025-09-28T02:24:11",
+      "datetime": "2025-09-28T06:24:11",
       "pps_btc": 1.0275067565887757,
       "ret_step": -6.967506199079032e-06,
       "ret_step_pct": -0.0006967506199079032,
@@ -766,7 +766,7 @@ const yieldData_tbtc = {
     {
       "block": 23458796,
       "timestamp": 1759029851,
-      "datetime": "2025-09-28T03:24:11",
+      "datetime": "2025-09-28T07:24:11",
       "pps_btc": 1.0274993511977872,
       "ret_step": -7.207145783802133e-06,
       "ret_step_pct": -0.0007207145783802133,
@@ -775,7 +775,7 @@ const yieldData_tbtc = {
     {
       "block": 23459095,
       "timestamp": 1759033451,
-      "datetime": "2025-09-28T04:24:11",
+      "datetime": "2025-09-28T08:24:11",
       "pps_btc": 1.0274927505991196,
       "ret_step": -6.4239443653881456e-06,
       "ret_step_pct": -0.0006423944365388146,
@@ -784,7 +784,7 @@ const yieldData_tbtc = {
     {
       "block": 23459393,
       "timestamp": 1759037051,
-      "datetime": "2025-09-28T05:24:11",
+      "datetime": "2025-09-28T09:24:11",
       "pps_btc": 1.0274855876591344,
       "ret_step": -6.971280314129096e-06,
       "ret_step_pct": -0.0006971280314129096,
@@ -793,7 +793,7 @@ const yieldData_tbtc = {
     {
       "block": 23459692,
       "timestamp": 1759040651,
-      "datetime": "2025-09-28T06:24:11",
+      "datetime": "2025-09-28T10:24:11",
       "pps_btc": 1.0274765154395977,
       "ret_step": -8.829534589776343e-06,
       "ret_step_pct": -0.0008829534589776343,
@@ -802,7 +802,7 @@ const yieldData_tbtc = {
     {
       "block": 23459991,
       "timestamp": 1759044251,
-      "datetime": "2025-09-28T07:24:11",
+      "datetime": "2025-09-28T11:24:11",
       "pps_btc": 1.0274024264942574,
       "ret_step": -7.210767762287942e-05,
       "ret_step_pct": -0.007210767762287942,
@@ -811,7 +811,7 @@ const yieldData_tbtc = {
     {
       "block": 23460287,
       "timestamp": 1759047851,
-      "datetime": "2025-09-28T08:24:11",
+      "datetime": "2025-09-28T12:24:11",
       "pps_btc": 1.0273948525181724,
       "ret_step": -7.371966319636033e-06,
       "ret_step_pct": -0.0007371966319636033,
@@ -820,7 +820,7 @@ const yieldData_tbtc = {
     {
       "block": 23460582,
       "timestamp": 1759051451,
-      "datetime": "2025-09-28T09:24:11",
+      "datetime": "2025-09-28T13:24:11",
       "pps_btc": 1.027387823872898,
       "ret_step": -6.8412307666362164e-06,
       "ret_step_pct": -0.0006841230766636217,
@@ -829,7 +829,7 @@ const yieldData_tbtc = {
     {
       "block": 23460879,
       "timestamp": 1759055051,
-      "datetime": "2025-09-28T10:24:11",
+      "datetime": "2025-09-28T14:24:11",
       "pps_btc": 1.0273795311724792,
       "ret_step": -8.071635876962585e-06,
       "ret_step_pct": -0.0008071635876962585,
@@ -838,7 +838,7 @@ const yieldData_tbtc = {
     {
       "block": 23461177,
       "timestamp": 1759058651,
-      "datetime": "2025-09-28T11:24:11",
+      "datetime": "2025-09-28T15:24:11",
       "pps_btc": 1.027372265989998,
       "ret_step": -7.071566310989022e-06,
       "ret_step_pct": -0.0007071566310989022,
@@ -847,7 +847,7 @@ const yieldData_tbtc = {
     {
       "block": 23461474,
       "timestamp": 1759062251,
-      "datetime": "2025-09-28T12:24:11",
+      "datetime": "2025-09-28T16:24:11",
       "pps_btc": 1.027365283175448,
       "ret_step": -6.796771512167705e-06,
       "ret_step_pct": -0.0006796771512167705,
@@ -856,7 +856,7 @@ const yieldData_tbtc = {
     {
       "block": 23461773,
       "timestamp": 1759065851,
-      "datetime": "2025-09-28T13:24:11",
+      "datetime": "2025-09-28T17:24:11",
       "pps_btc": 1.027356378475826,
       "ret_step": -8.667510736484855e-06,
       "ret_step_pct": -0.0008667510736484856,
@@ -865,7 +865,7 @@ const yieldData_tbtc = {
     {
       "block": 23462071,
       "timestamp": 1759069451,
-      "datetime": "2025-09-28T14:24:11",
+      "datetime": "2025-09-28T18:24:11",
       "pps_btc": 1.0273462848142587,
       "ret_step": -9.824888206892568e-06,
       "ret_step_pct": -0.000982488820689257,
@@ -874,7 +874,7 @@ const yieldData_tbtc = {
     {
       "block": 23462369,
       "timestamp": 1759073051,
-      "datetime": "2025-09-28T15:24:11",
+      "datetime": "2025-09-28T19:24:11",
       "pps_btc": 1.027339048639493,
       "ret_step": -7.0435595791707955e-06,
       "ret_step_pct": -0.0007043559579170796,
@@ -883,7 +883,7 @@ const yieldData_tbtc = {
     {
       "block": 23462665,
       "timestamp": 1759076651,
-      "datetime": "2025-09-28T16:24:11",
+      "datetime": "2025-09-28T20:24:11",
       "pps_btc": 1.0273251964612604,
       "ret_step": -1.3483550782049473e-05,
       "ret_step_pct": -0.0013483550782049474,
@@ -892,7 +892,7 @@ const yieldData_tbtc = {
     {
       "block": 23462964,
       "timestamp": 1759080251,
-      "datetime": "2025-09-28T17:24:11",
+      "datetime": "2025-09-28T21:24:11",
       "pps_btc": 1.0273177731636645,
       "ret_step": -7.22584982976997e-06,
       "ret_step_pct": -0.000722584982976997,
@@ -901,7 +901,7 @@ const yieldData_tbtc = {
     {
       "block": 23463262,
       "timestamp": 1759083851,
-      "datetime": "2025-09-28T18:24:11",
+      "datetime": "2025-09-28T22:24:11",
       "pps_btc": 1.0273112093783439,
       "ret_step": -6.389245365110905e-06,
       "ret_step_pct": -0.0006389245365110905,
@@ -910,7 +910,7 @@ const yieldData_tbtc = {
     {
       "block": 23463559,
       "timestamp": 1759087451,
-      "datetime": "2025-09-28T19:24:11",
+      "datetime": "2025-09-28T23:24:11",
       "pps_btc": 1.0273100935896964,
       "ret_step": -1.0861252531540042e-06,
       "ret_step_pct": -0.00010861252531540041,
@@ -919,7 +919,7 @@ const yieldData_tbtc = {
     {
       "block": 23463857,
       "timestamp": 1759091063,
-      "datetime": "2025-09-28T20:24:23",
+      "datetime": "2025-09-29T00:24:23",
       "pps_btc": 1.0273006101305775,
       "ret_step": -9.231350084199265e-06,
       "ret_step_pct": -0.0009231350084199265,
@@ -928,7 +928,7 @@ const yieldData_tbtc = {
     {
       "block": 23464155,
       "timestamp": 1759094651,
-      "datetime": "2025-09-28T21:24:11",
+      "datetime": "2025-09-29T01:24:11",
       "pps_btc": 1.0274012160185797,
       "ret_step": 9.793227708633722e-05,
       "ret_step_pct": 0.009793227708633723,
@@ -937,7 +937,7 @@ const yieldData_tbtc = {
     {
       "block": 23464452,
       "timestamp": 1759098251,
-      "datetime": "2025-09-28T22:24:11",
+      "datetime": "2025-09-29T02:24:11",
       "pps_btc": 1.0271801771257036,
       "ret_step": -0.00021514369404062656,
       "ret_step_pct": -0.021514369404062657,
@@ -946,7 +946,7 @@ const yieldData_tbtc = {
     {
       "block": 23464751,
       "timestamp": 1759101851,
-      "datetime": "2025-09-28T23:24:11",
+      "datetime": "2025-09-29T03:24:11",
       "pps_btc": 1.0271953207932407,
       "ret_step": 1.4742951503721197e-05,
       "ret_step_pct": 0.0014742951503721197,
@@ -955,7 +955,7 @@ const yieldData_tbtc = {
     {
       "block": 23465049,
       "timestamp": 1759105451,
-      "datetime": "2025-09-29T00:24:11",
+      "datetime": "2025-09-29T04:24:11",
       "pps_btc": 1.0270608842420406,
       "ret_step": -0.00013087730101451963,
       "ret_step_pct": -0.013087730101451964,
@@ -964,7 +964,7 @@ const yieldData_tbtc = {
     {
       "block": 23465348,
       "timestamp": 1759109051,
-      "datetime": "2025-09-29T01:24:11",
+      "datetime": "2025-09-29T05:24:11",
       "pps_btc": 1.0270529099348338,
       "ret_step": -7.764201060524226e-06,
       "ret_step_pct": -0.0007764201060524226,
@@ -973,7 +973,7 @@ const yieldData_tbtc = {
     {
       "block": 23465647,
       "timestamp": 1759112651,
-      "datetime": "2025-09-29T02:24:11",
+      "datetime": "2025-09-29T06:24:11",
       "pps_btc": 1.0269902101363857,
       "ret_step": -6.104826522722601e-05,
       "ret_step_pct": -0.006104826522722601,
@@ -982,7 +982,7 @@ const yieldData_tbtc = {
     {
       "block": 23465946,
       "timestamp": 1759116251,
-      "datetime": "2025-09-29T03:24:11",
+      "datetime": "2025-09-29T07:24:11",
       "pps_btc": 1.0269822467049108,
       "ret_step": -7.754145459610024e-06,
       "ret_step_pct": -0.0007754145459610024,
@@ -991,7 +991,7 @@ const yieldData_tbtc = {
     {
       "block": 23466242,
       "timestamp": 1759119851,
-      "datetime": "2025-09-29T04:24:11",
+      "datetime": "2025-09-29T08:24:11",
       "pps_btc": 1.026974283271841,
       "ret_step": -7.754207139784358e-06,
       "ret_step_pct": -0.0007754207139784358,
@@ -1000,7 +1000,7 @@ const yieldData_tbtc = {
     {
       "block": 23466539,
       "timestamp": 1759123451,
-      "datetime": "2025-09-29T05:24:11",
+      "datetime": "2025-09-29T09:24:11",
       "pps_btc": 1.0269050758767726,
       "ret_step": -6.738960867434179e-05,
       "ret_step_pct": -0.006738960867434179,
@@ -1009,7 +1009,7 @@ const yieldData_tbtc = {
     {
       "block": 23466839,
       "timestamp": 1759127051,
-      "datetime": "2025-09-29T06:24:11",
+      "datetime": "2025-09-29T10:24:11",
       "pps_btc": 1.0269468880163148,
       "ret_step": 4.071665485394622e-05,
       "ret_step_pct": 0.004071665485394622,
@@ -1018,7 +1018,7 @@ const yieldData_tbtc = {
     {
       "block": 23467139,
       "timestamp": 1759130651,
-      "datetime": "2025-09-29T07:24:11",
+      "datetime": "2025-09-29T11:24:11",
       "pps_btc": 1.026894660322244,
       "ret_step": -5.085724946474863e-05,
       "ret_step_pct": -0.005085724946474863,
@@ -1027,7 +1027,7 @@ const yieldData_tbtc = {
     {
       "block": 23467437,
       "timestamp": 1759134251,
-      "datetime": "2025-09-29T08:24:11",
+      "datetime": "2025-09-29T12:24:11",
       "pps_btc": 1.0268888392521989,
       "ret_step": -5.6686145813683785e-06,
       "ret_step_pct": -0.0005668614581368378,
@@ -1036,7 +1036,7 @@ const yieldData_tbtc = {
     {
       "block": 23467736,
       "timestamp": 1759137851,
-      "datetime": "2025-09-29T09:24:11",
+      "datetime": "2025-09-29T13:24:11",
       "pps_btc": 1.0266289999051839,
       "ret_step": -0.0002530355157081016,
       "ret_step_pct": -0.02530355157081016,
@@ -1045,7 +1045,7 @@ const yieldData_tbtc = {
     {
       "block": 23468030,
       "timestamp": 1759141451,
-      "datetime": "2025-09-29T10:24:11",
+      "datetime": "2025-09-29T14:24:11",
       "pps_btc": 1.026670675954118,
       "ret_step": 4.0595043524053055e-05,
       "ret_step_pct": 0.004059504352405306,
@@ -1054,7 +1054,7 @@ const yieldData_tbtc = {
     {
       "block": 23468328,
       "timestamp": 1759145051,
-      "datetime": "2025-09-29T11:24:11",
+      "datetime": "2025-09-29T15:24:11",
       "pps_btc": 1.0267561095341085,
       "ret_step": 8.32142010008008e-05,
       "ret_step_pct": 0.00832142010008008,
@@ -1063,7 +1063,7 @@ const yieldData_tbtc = {
     {
       "block": 23468627,
       "timestamp": 1759148651,
-      "datetime": "2025-09-29T12:24:11",
+      "datetime": "2025-09-29T16:24:11",
       "pps_btc": 1.026693326463559,
       "ret_step": -6.114701433634796e-05,
       "ret_step_pct": -0.006114701433634796,
@@ -1072,7 +1072,7 @@ const yieldData_tbtc = {
     {
       "block": 23468925,
       "timestamp": 1759152251,
-      "datetime": "2025-09-29T13:24:11",
+      "datetime": "2025-09-29T17:24:11",
       "pps_btc": 1.0266876902003303,
       "ret_step": -5.48972422756568e-06,
       "ret_step_pct": -0.000548972422756568,
@@ -1081,7 +1081,7 @@ const yieldData_tbtc = {
     {
       "block": 23469224,
       "timestamp": 1759155851,
-      "datetime": "2025-09-29T14:24:11",
+      "datetime": "2025-09-29T18:24:11",
       "pps_btc": 1.0266811954457298,
       "ret_step": -6.325930136880987e-06,
       "ret_step_pct": -0.0006325930136880987,
@@ -1090,7 +1090,7 @@ const yieldData_tbtc = {
     {
       "block": 23469524,
       "timestamp": 1759159451,
-      "datetime": "2025-09-29T15:24:11",
+      "datetime": "2025-09-29T19:24:11",
       "pps_btc": 1.0266764403994426,
       "ret_step": -4.6314730495103835e-06,
       "ret_step_pct": -0.00046314730495103834,
@@ -1099,7 +1099,7 @@ const yieldData_tbtc = {
     {
       "block": 23469822,
       "timestamp": 1759163051,
-      "datetime": "2025-09-29T16:24:11",
+      "datetime": "2025-09-29T20:24:11",
       "pps_btc": 1.0266685625429142,
       "ret_step": -7.67316383091153e-06,
       "ret_step_pct": -0.000767316383091153,
@@ -1108,7 +1108,7 @@ const yieldData_tbtc = {
     {
       "block": 23470119,
       "timestamp": 1759166651,
-      "datetime": "2025-09-29T17:24:11",
+      "datetime": "2025-09-29T21:24:11",
       "pps_btc": 1.026654253195893,
       "ret_step": -1.3937649932157029e-05,
       "ret_step_pct": -0.0013937649932157029,
@@ -1117,7 +1117,7 @@ const yieldData_tbtc = {
     {
       "block": 23470418,
       "timestamp": 1759170251,
-      "datetime": "2025-09-29T18:24:11",
+      "datetime": "2025-09-29T22:24:11",
       "pps_btc": 1.0266408897993924,
       "ret_step": -1.3016452675281683e-05,
       "ret_step_pct": -0.0013016452675281684,
@@ -1126,7 +1126,7 @@ const yieldData_tbtc = {
     {
       "block": 23470716,
       "timestamp": 1759173851,
-      "datetime": "2025-09-29T19:24:11",
+      "datetime": "2025-09-29T23:24:11",
       "pps_btc": 1.0266330884587715,
       "ret_step": -7.598899185145837e-06,
       "ret_step_pct": -0.0007598899185145836,
@@ -1135,7 +1135,7 @@ const yieldData_tbtc = {
     {
       "block": 23471015,
       "timestamp": 1759177451,
-      "datetime": "2025-09-29T20:24:11",
+      "datetime": "2025-09-30T00:24:11",
       "pps_btc": 1.0266800025919665,
       "ret_step": 4.5697078851576506e-05,
       "ret_step_pct": 0.00456970788515765,
@@ -1144,7 +1144,7 @@ const yieldData_tbtc = {
     {
       "block": 23471314,
       "timestamp": 1759181051,
-      "datetime": "2025-09-29T21:24:11",
+      "datetime": "2025-09-30T01:24:11",
       "pps_btc": 1.0267137539765672,
       "ret_step": 3.2874298238500726e-05,
       "ret_step_pct": 0.0032874298238500725,
@@ -1153,7 +1153,7 @@ const yieldData_tbtc = {
     {
       "block": 23471612,
       "timestamp": 1759184651,
-      "datetime": "2025-09-29T22:24:11",
+      "datetime": "2025-09-30T02:24:11",
       "pps_btc": 1.026708298355591,
       "ret_step": -5.3136728274485694e-06,
       "ret_step_pct": -0.000531367282744857,
@@ -1162,7 +1162,7 @@ const yieldData_tbtc = {
     {
       "block": 23471911,
       "timestamp": 1759188251,
-      "datetime": "2025-09-29T23:24:11",
+      "datetime": "2025-09-30T03:24:11",
       "pps_btc": 1.0267033082238497,
       "ret_step": -4.860320842250282e-06,
       "ret_step_pct": -0.0004860320842250282,
@@ -1171,7 +1171,7 @@ const yieldData_tbtc = {
     {
       "block": 23472208,
       "timestamp": 1759191851,
-      "datetime": "2025-09-30T00:24:11",
+      "datetime": "2025-09-30T04:24:11",
       "pps_btc": 1.0266980838463493,
       "ret_step": -5.088497775871529e-06,
       "ret_step_pct": -0.0005088497775871529,
@@ -1180,7 +1180,7 @@ const yieldData_tbtc = {
     {
       "block": 23472507,
       "timestamp": 1759195451,
-      "datetime": "2025-09-30T01:24:11",
+      "datetime": "2025-09-30T05:24:11",
       "pps_btc": 1.0267691057412778,
       "ret_step": 6.917505354880237e-05,
       "ret_step_pct": 0.006917505354880237,
@@ -1189,7 +1189,7 @@ const yieldData_tbtc = {
     {
       "block": 23472805,
       "timestamp": 1759199051,
-      "datetime": "2025-09-30T02:24:11",
+      "datetime": "2025-09-30T06:24:11",
       "pps_btc": 1.0268074626830879,
       "ret_step": 3.735693019558388e-05,
       "ret_step_pct": 0.003735693019558388,
@@ -1198,7 +1198,7 @@ const yieldData_tbtc = {
     {
       "block": 23473103,
       "timestamp": 1759202651,
-      "datetime": "2025-09-30T03:24:11",
+      "datetime": "2025-09-30T07:24:11",
       "pps_btc": 1.0267962852730061,
       "ret_step": -1.0885594902697718e-05,
       "ret_step_pct": -0.0010885594902697718,
@@ -1207,7 +1207,7 @@ const yieldData_tbtc = {
     {
       "block": 23473401,
       "timestamp": 1759206251,
-      "datetime": "2025-09-30T04:24:11",
+      "datetime": "2025-09-30T08:24:11",
       "pps_btc": 1.0268039059008125,
       "ret_step": 7.4217524115670285e-06,
       "ret_step_pct": 0.0007421752411567029,
@@ -1216,7 +1216,7 @@ const yieldData_tbtc = {
     {
       "block": 23473701,
       "timestamp": 1759209851,
-      "datetime": "2025-09-30T05:24:11",
+      "datetime": "2025-09-30T09:24:11",
       "pps_btc": 1.0267965354583697,
       "ret_step": -7.178042857598919e-06,
       "ret_step_pct": -0.0007178042857598919,
@@ -1225,7 +1225,7 @@ const yieldData_tbtc = {
     {
       "block": 23474001,
       "timestamp": 1759213451,
-      "datetime": "2025-09-30T06:24:11",
+      "datetime": "2025-09-30T10:24:11",
       "pps_btc": 1.0267890972331488,
       "ret_step": -7.244108218115988e-06,
       "ret_step_pct": -0.0007244108218115988,
@@ -1234,7 +1234,7 @@ const yieldData_tbtc = {
     {
       "block": 23474299,
       "timestamp": 1759217051,
-      "datetime": "2025-09-30T07:24:11",
+      "datetime": "2025-09-30T11:24:11",
       "pps_btc": 1.0267834918383727,
       "ret_step": -5.459149100115743e-06,
       "ret_step_pct": -0.0005459149100115743,
@@ -1243,7 +1243,7 @@ const yieldData_tbtc = {
     {
       "block": 23474597,
       "timestamp": 1759220651,
-      "datetime": "2025-09-30T08:24:11",
+      "datetime": "2025-09-30T12:24:11",
       "pps_btc": 1.0267792151283766,
       "ret_step": -4.165152663632035e-06,
       "ret_step_pct": -0.0004165152663632035,
@@ -1252,7 +1252,7 @@ const yieldData_tbtc = {
     {
       "block": 23474894,
       "timestamp": 1759224251,
-      "datetime": "2025-09-30T09:24:11",
+      "datetime": "2025-09-30T13:24:11",
       "pps_btc": 1.0267693436616174,
       "ret_step": -9.614011088042707e-06,
       "ret_step_pct": -0.0009614011088042707,
@@ -1261,7 +1261,7 @@ const yieldData_tbtc = {
     {
       "block": 23475191,
       "timestamp": 1759227851,
-      "datetime": "2025-09-30T10:24:11",
+      "datetime": "2025-09-30T14:24:11",
       "pps_btc": 1.0267622853298266,
       "ret_step": -6.874310997269263e-06,
       "ret_step_pct": -0.0006874310997269263,
@@ -1270,7 +1270,7 @@ const yieldData_tbtc = {
     {
       "block": 23475488,
       "timestamp": 1759231451,
-      "datetime": "2025-09-30T11:24:11",
+      "datetime": "2025-09-30T15:24:11",
       "pps_btc": 1.0267602486077427,
       "ret_step": -1.9836354656080343e-06,
       "ret_step_pct": -0.00019836354656080344,
@@ -1279,7 +1279,7 @@ const yieldData_tbtc = {
     {
       "block": 23475786,
       "timestamp": 1759235051,
-      "datetime": "2025-09-30T12:24:11",
+      "datetime": "2025-09-30T16:24:11",
       "pps_btc": 1.0267518503238446,
       "ret_step": -8.179401091417233e-06,
       "ret_step_pct": -0.0008179401091417233,
@@ -1288,7 +1288,7 @@ const yieldData_tbtc = {
     {
       "block": 23476084,
       "timestamp": 1759238651,
-      "datetime": "2025-09-30T13:24:11",
+      "datetime": "2025-09-30T17:24:11",
       "pps_btc": 1.0267435786583679,
       "ret_step": -8.05614859534761e-06,
       "ret_step_pct": -0.000805614859534761,
@@ -1297,7 +1297,7 @@ const yieldData_tbtc = {
     {
       "block": 23476381,
       "timestamp": 1759242251,
-      "datetime": "2025-09-30T14:24:11",
+      "datetime": "2025-09-30T18:24:11",
       "pps_btc": 1.0267396502795831,
       "ret_step": -3.8260563458328714e-06,
       "ret_step_pct": -0.0003826056345832871,
@@ -1306,7 +1306,7 @@ const yieldData_tbtc = {
     {
       "block": 23476678,
       "timestamp": 1759245851,
-      "datetime": "2025-09-30T15:24:11",
+      "datetime": "2025-09-30T19:24:11",
       "pps_btc": 1.026733265786499,
       "ret_step": -6.218220054679382e-06,
       "ret_step_pct": -0.0006218220054679382,
@@ -1315,7 +1315,7 @@ const yieldData_tbtc = {
     {
       "block": 23476977,
       "timestamp": 1759249451,
-      "datetime": "2025-09-30T16:24:11",
+      "datetime": "2025-09-30T20:24:11",
       "pps_btc": 1.0267260765010358,
       "ret_step": -7.002096554882596e-06,
       "ret_step_pct": -0.0007002096554882596,
@@ -1324,7 +1324,7 @@ const yieldData_tbtc = {
     {
       "block": 23477277,
       "timestamp": 1759253051,
-      "datetime": "2025-09-30T17:24:11",
+      "datetime": "2025-09-30T21:24:11",
       "pps_btc": 1.0267202260578343,
       "ret_step": -5.69815390419384e-06,
       "ret_step_pct": -0.000569815390419384,
@@ -1333,7 +1333,7 @@ const yieldData_tbtc = {
     {
       "block": 23477574,
       "timestamp": 1759256651,
-      "datetime": "2025-09-30T18:24:11",
+      "datetime": "2025-09-30T22:24:11",
       "pps_btc": 1.0267110277787412,
       "ret_step": -8.958895383270523e-06,
       "ret_step_pct": -0.0008958895383270523,
@@ -1342,7 +1342,7 @@ const yieldData_tbtc = {
     {
       "block": 23477873,
       "timestamp": 1759260251,
-      "datetime": "2025-09-30T19:24:11",
+      "datetime": "2025-09-30T23:24:11",
       "pps_btc": 1.0267028380947878,
       "ret_step": -7.976620228871154e-06,
       "ret_step_pct": -0.0007976620228871154,
@@ -1351,7 +1351,7 @@ const yieldData_tbtc = {
     {
       "block": 23478173,
       "timestamp": 1759263851,
-      "datetime": "2025-09-30T20:24:11",
+      "datetime": "2025-10-01T00:24:11",
       "pps_btc": 1.0266951227996675,
       "ret_step": -7.5146330896678635e-06,
       "ret_step_pct": -0.0007514633089667864,
@@ -1360,7 +1360,7 @@ const yieldData_tbtc = {
     {
       "block": 23478473,
       "timestamp": 1759267451,
-      "datetime": "2025-09-30T21:24:11",
+      "datetime": "2025-10-01T01:24:11",
       "pps_btc": 1.0266877403822212,
       "ret_step": -7.190467045358201e-06,
       "ret_step_pct": -0.0007190467045358201,
@@ -1369,7 +1369,7 @@ const yieldData_tbtc = {
     {
       "block": 23478769,
       "timestamp": 1759271051,
-      "datetime": "2025-09-30T22:24:11",
+      "datetime": "2025-10-01T02:24:11",
       "pps_btc": 1.0266805462518043,
       "ret_step": -7.007126056080817e-06,
       "ret_step_pct": -0.0007007126056080817,
@@ -1378,7 +1378,7 @@ const yieldData_tbtc = {
     {
       "block": 23479064,
       "timestamp": 1759274651,
-      "datetime": "2025-09-30T23:24:11",
+      "datetime": "2025-10-01T03:24:11",
       "pps_btc": 1.0266719502148818,
       "ret_step": -8.372650045595323e-06,
       "ret_step_pct": -0.0008372650045595323,
@@ -1387,7 +1387,7 @@ const yieldData_tbtc = {
     {
       "block": 23479363,
       "timestamp": 1759278251,
-      "datetime": "2025-10-01T00:24:11",
+      "datetime": "2025-10-01T04:24:11",
       "pps_btc": 1.0266652119474986,
       "ret_step": -6.563213674905294e-06,
       "ret_step_pct": -0.0006563213674905294,
@@ -1396,7 +1396,7 @@ const yieldData_tbtc = {
     {
       "block": 23479661,
       "timestamp": 1759281851,
-      "datetime": "2025-10-01T01:24:11",
+      "datetime": "2025-10-01T05:24:11",
       "pps_btc": 1.0266569330592075,
       "ret_step": -8.063863657559447e-06,
       "ret_step_pct": -0.0008063863657559447,
@@ -1405,7 +1405,7 @@ const yieldData_tbtc = {
     {
       "block": 23479959,
       "timestamp": 1759285451,
-      "datetime": "2025-10-01T02:24:11",
+      "datetime": "2025-10-01T06:24:11",
       "pps_btc": 1.0266492996311876,
       "ret_step": -7.435227654013007e-06,
       "ret_step_pct": -0.0007435227654013006,
@@ -1414,7 +1414,7 @@ const yieldData_tbtc = {
     {
       "block": 23480256,
       "timestamp": 1759289051,
-      "datetime": "2025-10-01T03:24:11",
+      "datetime": "2025-10-01T07:24:11",
       "pps_btc": 1.026642745537407,
       "ret_step": -6.383965569241109e-06,
       "ret_step_pct": -0.0006383965569241109,
@@ -1423,7 +1423,7 @@ const yieldData_tbtc = {
     {
       "block": 23480553,
       "timestamp": 1759292651,
-      "datetime": "2025-10-01T04:24:11",
+      "datetime": "2025-10-01T08:24:11",
       "pps_btc": 1.02663489799761,
       "ret_step": -7.643885695523151e-06,
       "ret_step_pct": -0.0007643885695523151,
@@ -1432,7 +1432,7 @@ const yieldData_tbtc = {
     {
       "block": 23480850,
       "timestamp": 1759296251,
-      "datetime": "2025-10-01T05:24:11",
+      "datetime": "2025-10-01T09:24:11",
       "pps_btc": 1.026627254492025,
       "ret_step": -7.4452033531610905e-06,
       "ret_step_pct": -0.000744520335316109,
@@ -1441,7 +1441,7 @@ const yieldData_tbtc = {
     {
       "block": 23481150,
       "timestamp": 1759299851,
-      "datetime": "2025-10-01T06:24:11",
+      "datetime": "2025-10-01T10:24:11",
       "pps_btc": 1.02661626097814,
       "ret_step": -1.0708379148302067e-05,
       "ret_step_pct": -0.0010708379148302066,
@@ -1450,7 +1450,7 @@ const yieldData_tbtc = {
     {
       "block": 23481449,
       "timestamp": 1759303451,
-      "datetime": "2025-10-01T07:24:11",
+      "datetime": "2025-10-01T11:24:11",
       "pps_btc": 1.0266086706069115,
       "ret_step": -7.39358172762824e-06,
       "ret_step_pct": -0.000739358172762824,
@@ -1459,7 +1459,7 @@ const yieldData_tbtc = {
     {
       "block": 23481745,
       "timestamp": 1759307051,
-      "datetime": "2025-10-01T08:24:11",
+      "datetime": "2025-10-01T12:24:11",
       "pps_btc": 1.0266017035472725,
       "ret_step": -6.786480417015383e-06,
       "ret_step_pct": -0.0006786480417015383,
@@ -1468,7 +1468,7 @@ const yieldData_tbtc = {
     {
       "block": 23482042,
       "timestamp": 1759310651,
-      "datetime": "2025-10-01T09:24:11",
+      "datetime": "2025-10-01T13:24:11",
       "pps_btc": 1.0263829542376608,
       "ret_step": -0.00021308099222498722,
       "ret_step_pct": -0.02130809922249872,
@@ -1477,7 +1477,7 @@ const yieldData_tbtc = {
     {
       "block": 23482338,
       "timestamp": 1759314251,
-      "datetime": "2025-10-01T10:24:11",
+      "datetime": "2025-10-01T14:24:11",
       "pps_btc": 1.026101844303251,
       "ret_step": -0.0002738840636909063,
       "ret_step_pct": -0.02738840636909063,
@@ -1486,7 +1486,7 @@ const yieldData_tbtc = {
     {
       "block": 23482633,
       "timestamp": 1759317851,
-      "datetime": "2025-10-01T11:24:11",
+      "datetime": "2025-10-01T15:24:11",
       "pps_btc": 1.0261572871817406,
       "ret_step": 5.403252980907866e-05,
       "ret_step_pct": 0.005403252980907866,
@@ -1495,7 +1495,7 @@ const yieldData_tbtc = {
     {
       "block": 23482930,
       "timestamp": 1759321451,
-      "datetime": "2025-10-01T12:24:11",
+      "datetime": "2025-10-01T16:24:11",
       "pps_btc": 1.0261389512773165,
       "ret_step": -1.7868512608177354e-05,
       "ret_step_pct": -0.0017868512608177354,
@@ -1504,7 +1504,7 @@ const yieldData_tbtc = {
     {
       "block": 23483227,
       "timestamp": 1759325051,
-      "datetime": "2025-10-01T13:24:11",
+      "datetime": "2025-10-01T17:24:11",
       "pps_btc": 1.0262196340138394,
       "ret_step": 7.862749622983009e-05,
       "ret_step_pct": 0.00786274962298301,
@@ -1513,7 +1513,7 @@ const yieldData_tbtc = {
     {
       "block": 23483526,
       "timestamp": 1759328651,
-      "datetime": "2025-10-01T14:24:11",
+      "datetime": "2025-10-01T18:24:11",
       "pps_btc": 1.0261616393279052,
       "ret_step": -5.6512937398486664e-05,
       "ret_step_pct": -0.005651293739848667,
@@ -1522,7 +1522,7 @@ const yieldData_tbtc = {
     {
       "block": 23483824,
       "timestamp": 1759332251,
-      "datetime": "2025-10-01T15:24:11",
+      "datetime": "2025-10-01T19:24:11",
       "pps_btc": 1.0261539155645705,
       "ret_step": -7.526848635414549e-06,
       "ret_step_pct": -0.0007526848635414549,
@@ -1531,7 +1531,7 @@ const yieldData_tbtc = {
     {
       "block": 23484122,
       "timestamp": 1759335851,
-      "datetime": "2025-10-01T16:24:11",
+      "datetime": "2025-10-01T20:24:11",
       "pps_btc": 1.02614672678523,
       "ret_step": -7.005556604535168e-06,
       "ret_step_pct": -0.0007005556604535168,
@@ -1540,7 +1540,7 @@ const yieldData_tbtc = {
     {
       "block": 23484421,
       "timestamp": 1759339451,
-      "datetime": "2025-10-01T17:24:11",
+      "datetime": "2025-10-01T21:24:11",
       "pps_btc": 1.0262829461539675,
       "ret_step": 0.00013274843176097503,
       "ret_step_pct": 0.013274843176097503,
@@ -1549,7 +1549,7 @@ const yieldData_tbtc = {
     {
       "block": 23484719,
       "timestamp": 1759343051,
-      "datetime": "2025-10-01T18:24:11",
+      "datetime": "2025-10-01T22:24:11",
       "pps_btc": 1.0262866525286638,
       "ret_step": 3.611455018568489e-06,
       "ret_step_pct": 0.0003611455018568489,
@@ -1558,7 +1558,7 @@ const yieldData_tbtc = {
     {
       "block": 23485014,
       "timestamp": 1759346663,
-      "datetime": "2025-10-01T19:24:23",
+      "datetime": "2025-10-01T23:24:23",
       "pps_btc": 1.0262791309177877,
       "ret_step": -7.328957126694117e-06,
       "ret_step_pct": -0.0007328957126694117,
@@ -1567,7 +1567,7 @@ const yieldData_tbtc = {
     {
       "block": 23485312,
       "timestamp": 1759350263,
-      "datetime": "2025-10-01T20:24:23",
+      "datetime": "2025-10-02T00:24:23",
       "pps_btc": 1.0262732813742488,
       "ret_step": -5.699758830576464e-06,
       "ret_step_pct": -0.0005699758830576464,
@@ -1576,7 +1576,7 @@ const yieldData_tbtc = {
     {
       "block": 23485610,
       "timestamp": 1759353899,
-      "datetime": "2025-10-01T21:24:59",
+      "datetime": "2025-10-02T01:24:59",
       "pps_btc": 1.0262671555245815,
       "ret_step": -5.969023824648418e-06,
       "ret_step_pct": -0.0005969023824648418,
@@ -1585,7 +1585,7 @@ const yieldData_tbtc = {
     {
       "block": 23485908,
       "timestamp": 1759357499,
-      "datetime": "2025-10-01T22:24:59",
+      "datetime": "2025-10-02T02:24:59",
       "pps_btc": 1.0262592364118397,
       "ret_step": -7.716424226712299e-06,
       "ret_step_pct": -0.00077164242267123,
@@ -1594,7 +1594,7 @@ const yieldData_tbtc = {
     {
       "block": 23486206,
       "timestamp": 1759361075,
-      "datetime": "2025-10-01T23:24:35",
+      "datetime": "2025-10-02T03:24:35",
       "pps_btc": 1.0261504858308277,
       "ret_step": -0.00010596794372562335,
       "ret_step_pct": -0.010596794372562335,
@@ -1603,7 +1603,7 @@ const yieldData_tbtc = {
     {
       "block": 23486504,
       "timestamp": 1759364651,
-      "datetime": "2025-10-02T00:24:11",
+      "datetime": "2025-10-02T04:24:11",
       "pps_btc": 1.0258796295576287,
       "ret_step": -0.00026395375428733624,
       "ret_step_pct": -0.026395375428733624,
@@ -1612,7 +1612,7 @@ const yieldData_tbtc = {
     {
       "block": 23486803,
       "timestamp": 1759368251,
-      "datetime": "2025-10-02T01:24:11",
+      "datetime": "2025-10-02T05:24:11",
       "pps_btc": 1.0252979699531988,
       "ret_step": -0.0005669862113168973,
       "ret_step_pct": -0.05669862113168973,
@@ -1621,7 +1621,7 @@ const yieldData_tbtc = {
     {
       "block": 23487102,
       "timestamp": 1759371851,
-      "datetime": "2025-10-02T02:24:11",
+      "datetime": "2025-10-02T06:24:11",
       "pps_btc": 1.025703593518132,
       "ret_step": 0.0003956153009371659,
       "ret_step_pct": 0.03956153009371659,
@@ -1630,7 +1630,7 @@ const yieldData_tbtc = {
     {
       "block": 23487400,
       "timestamp": 1759375451,
-      "datetime": "2025-10-02T03:24:11",
+      "datetime": "2025-10-02T07:24:11",
       "pps_btc": 1.0257142536750172,
       "ret_step": 1.0393018950732138e-05,
       "ret_step_pct": 0.0010393018950732138,
@@ -1639,7 +1639,7 @@ const yieldData_tbtc = {
     {
       "block": 23487698,
       "timestamp": 1759379051,
-      "datetime": "2025-10-02T04:24:11",
+      "datetime": "2025-10-02T08:24:11",
       "pps_btc": 1.0257071157020623,
       "ret_step": -6.959026775198313e-06,
       "ret_step_pct": -0.0006959026775198313,
@@ -1648,7 +1648,7 @@ const yieldData_tbtc = {
     {
       "block": 23487996,
       "timestamp": 1759382651,
-      "datetime": "2025-10-02T05:24:11",
+      "datetime": "2025-10-02T09:24:11",
       "pps_btc": 1.0257003481489944,
       "ret_step": -6.5979390844557375e-06,
       "ret_step_pct": -0.0006597939084455737,
@@ -1657,7 +1657,7 @@ const yieldData_tbtc = {
     {
       "block": 23488294,
       "timestamp": 1759386251,
-      "datetime": "2025-10-02T06:24:11",
+      "datetime": "2025-10-02T10:24:11",
       "pps_btc": 1.0257055405592712,
       "ret_step": 5.062307218857203e-06,
       "ret_step_pct": 0.0005062307218857203,
@@ -1666,7 +1666,7 @@ const yieldData_tbtc = {
     {
       "block": 23488592,
       "timestamp": 1759389851,
-      "datetime": "2025-10-02T07:24:11",
+      "datetime": "2025-10-02T11:24:11",
       "pps_btc": 1.025690313573952,
       "ret_step": -1.4845376881696874e-05,
       "ret_step_pct": -0.0014845376881696874,
@@ -1675,7 +1675,7 @@ const yieldData_tbtc = {
     {
       "block": 23488891,
       "timestamp": 1759393451,
-      "datetime": "2025-10-02T08:24:11",
+      "datetime": "2025-10-02T12:24:11",
       "pps_btc": 1.025683793258294,
       "ret_step": -6.3570022759856035e-06,
       "ret_step_pct": -0.0006357002275985603,
@@ -1684,7 +1684,7 @@ const yieldData_tbtc = {
     {
       "block": 23489186,
       "timestamp": 1759397063,
-      "datetime": "2025-10-02T09:24:23",
+      "datetime": "2025-10-02T13:24:23",
       "pps_btc": 1.0256772557262235,
       "ret_step": -6.373827990130558e-06,
       "ret_step_pct": -0.0006373827990130558,
@@ -1693,7 +1693,7 @@ const yieldData_tbtc = {
     {
       "block": 23489484,
       "timestamp": 1759400675,
-      "datetime": "2025-10-02T10:24:35",
+      "datetime": "2025-10-02T14:24:35",
       "pps_btc": 1.0256620338885793,
       "ret_step": -1.4840767462827559e-05,
       "ret_step_pct": -0.0014840767462827558,
@@ -1702,7 +1702,7 @@ const yieldData_tbtc = {
     {
       "block": 23489782,
       "timestamp": 1759404275,
-      "datetime": "2025-10-02T11:24:35",
+      "datetime": "2025-10-02T15:24:35",
       "pps_btc": 1.0257616015415054,
       "ret_step": 9.70764731814908e-05,
       "ret_step_pct": 0.00970764731814908,
@@ -1711,7 +1711,7 @@ const yieldData_tbtc = {
     {
       "block": 23490080,
       "timestamp": 1759407875,
-      "datetime": "2025-10-02T12:24:35",
+      "datetime": "2025-10-02T16:24:35",
       "pps_btc": 1.0264773660167925,
       "ret_step": 0.0006977883303599856,
       "ret_step_pct": 0.06977883303599856,
@@ -1720,7 +1720,7 @@ const yieldData_tbtc = {
     {
       "block": 23490378,
       "timestamp": 1759411451,
-      "datetime": "2025-10-02T13:24:11",
+      "datetime": "2025-10-02T17:24:11",
       "pps_btc": 1.026456475369194,
       "ret_step": -2.0351785913677167e-05,
       "ret_step_pct": -0.002035178591367717,
@@ -1729,7 +1729,7 @@ const yieldData_tbtc = {
     {
       "block": 23490677,
       "timestamp": 1759415051,
-      "datetime": "2025-10-02T14:24:11",
+      "datetime": "2025-10-02T18:24:11",
       "pps_btc": 1.0264564408723524,
       "ret_step": -3.360770038358639e-08,
       "ret_step_pct": -3.360770038358639e-06,
@@ -1738,7 +1738,7 @@ const yieldData_tbtc = {
     {
       "block": 23490974,
       "timestamp": 1759418663,
-      "datetime": "2025-10-02T15:24:23",
+      "datetime": "2025-10-02T19:24:23",
       "pps_btc": 1.0264734950290875,
       "ret_step": 1.661459371871272e-05,
       "ret_step_pct": 0.001661459371871272,
@@ -1747,7 +1747,7 @@ const yieldData_tbtc = {
     {
       "block": 23491272,
       "timestamp": 1759422251,
-      "datetime": "2025-10-02T16:24:11",
+      "datetime": "2025-10-02T20:24:11",
       "pps_btc": 1.0265571570665446,
       "ret_step": 8.150433290507734e-05,
       "ret_step_pct": 0.008150433290507735,
@@ -1756,7 +1756,7 @@ const yieldData_tbtc = {
     {
       "block": 23491572,
       "timestamp": 1759425851,
-      "datetime": "2025-10-02T17:24:11",
+      "datetime": "2025-10-02T21:24:11",
       "pps_btc": 1.0265490424513788,
       "ret_step": -7.904689095839587e-06,
       "ret_step_pct": -0.0007904689095839587,
@@ -1765,7 +1765,7 @@ const yieldData_tbtc = {
     {
       "block": 23491871,
       "timestamp": 1759429451,
-      "datetime": "2025-10-02T18:24:11",
+      "datetime": "2025-10-02T22:24:11",
       "pps_btc": 1.026530988088225,
       "ret_step": -1.7587433631730383e-05,
       "ret_step_pct": -0.0017587433631730382,
@@ -1774,7 +1774,7 @@ const yieldData_tbtc = {
     {
       "block": 23492169,
       "timestamp": 1759433051,
-      "datetime": "2025-10-02T19:24:11",
+      "datetime": "2025-10-02T23:24:11",
       "pps_btc": 1.0263783078493713,
       "ret_step": -0.00014873417424844258,
       "ret_step_pct": -0.014873417424844259,
@@ -1783,7 +1783,7 @@ const yieldData_tbtc = {
     {
       "block": 23492466,
       "timestamp": 1759436651,
-      "datetime": "2025-10-02T20:24:11",
+      "datetime": "2025-10-03T00:24:11",
       "pps_btc": 1.026370247819216,
       "ret_step": -7.852884354253976e-06,
       "ret_step_pct": -0.0007852884354253976,
@@ -1792,7 +1792,7 @@ const yieldData_tbtc = {
     {
       "block": 23492762,
       "timestamp": 1759440263,
-      "datetime": "2025-10-02T21:24:23",
+      "datetime": "2025-10-03T01:24:23",
       "pps_btc": 1.0263621610571492,
       "ret_step": -7.878991118468582e-06,
       "ret_step_pct": -0.0007878991118468582,
@@ -1801,7 +1801,7 @@ const yieldData_tbtc = {
     {
       "block": 23493060,
       "timestamp": 1759443875,
-      "datetime": "2025-10-02T22:24:35",
+      "datetime": "2025-10-03T02:24:35",
       "pps_btc": 1.0262860975154842,
       "ret_step": -7.410984596970121e-05,
       "ret_step_pct": -0.007410984596970121,
@@ -1810,7 +1810,7 @@ const yieldData_tbtc = {
     {
       "block": 23493358,
       "timestamp": 1759447487,
-      "datetime": "2025-10-02T23:24:47",
+      "datetime": "2025-10-03T03:24:47",
       "pps_btc": 1.0262567762041064,
       "ret_step": -2.857030943777509e-05,
       "ret_step_pct": -0.002857030943777509,
@@ -1819,7 +1819,7 @@ const yieldData_tbtc = {
     {
       "block": 23493656,
       "timestamp": 1759451111,
-      "datetime": "2025-10-03T00:25:11",
+      "datetime": "2025-10-03T04:25:11",
       "pps_btc": 1.0262486893139167,
       "ret_step": -7.87998713124272e-06,
       "ret_step_pct": -0.000787998713124272,
@@ -1828,7 +1828,7 @@ const yieldData_tbtc = {
     {
       "block": 23493954,
       "timestamp": 1759454723,
-      "datetime": "2025-10-03T01:25:23",
+      "datetime": "2025-10-03T05:25:23",
       "pps_btc": 1.0262406294745396,
       "ret_step": -7.85369030036987e-06,
       "ret_step_pct": -0.000785369030036987,
@@ -1837,7 +1837,7 @@ const yieldData_tbtc = {
     {
       "block": 23494251,
       "timestamp": 1759458311,
-      "datetime": "2025-10-03T02:25:11",
+      "datetime": "2025-10-03T06:25:11",
       "pps_btc": 1.0262326229200864,
       "ret_step": -7.801829535006379e-06,
       "ret_step_pct": -0.0007801829535006379,
@@ -1846,7 +1846,7 @@ const yieldData_tbtc = {
     {
       "block": 23494549,
       "timestamp": 1759461911,
-      "datetime": "2025-10-03T03:25:11",
+      "datetime": "2025-10-03T07:25:11",
       "pps_btc": 1.0262245897229356,
       "ret_step": -7.827852059626593e-06,
       "ret_step_pct": -0.0007827852059626593,
@@ -1855,7 +1855,7 @@ const yieldData_tbtc = {
     {
       "block": 23494847,
       "timestamp": 1759465499,
-      "datetime": "2025-10-03T04:24:59",
+      "datetime": "2025-10-03T08:24:59",
       "pps_btc": 1.0262165833723853,
       "ret_step": -7.801752784389613e-06,
       "ret_step_pct": -0.0007801752784389613,
@@ -1864,7 +1864,7 @@ const yieldData_tbtc = {
     {
       "block": 23495145,
       "timestamp": 1759469087,
-      "datetime": "2025-10-03T05:24:47",
+      "datetime": "2025-10-03T09:24:47",
       "pps_btc": 1.026177166284894,
       "ret_step": -3.8410105751515265e-05,
       "ret_step_pct": -0.0038410105751515264,
@@ -1873,7 +1873,7 @@ const yieldData_tbtc = {
     {
       "block": 23495443,
       "timestamp": 1759472675,
-      "datetime": "2025-10-03T06:24:35",
+      "datetime": "2025-10-03T10:24:35",
       "pps_btc": 1.0261420172664633,
       "ret_step": -3.4252387975104975e-05,
       "ret_step_pct": -0.0034252387975104975,
@@ -1882,7 +1882,7 @@ const yieldData_tbtc = {
     {
       "block": 23495741,
       "timestamp": 1759476263,
-      "datetime": "2025-10-03T07:24:23",
+      "datetime": "2025-10-03T11:24:23",
       "pps_btc": 1.0261340334011462,
       "ret_step": -7.78046818335945e-06,
       "ret_step_pct": -0.000778046818335945,
@@ -1891,7 +1891,7 @@ const yieldData_tbtc = {
     {
       "block": 23496040,
       "timestamp": 1759479851,
-      "datetime": "2025-10-03T08:24:11",
+      "datetime": "2025-10-03T12:24:11",
       "pps_btc": 1.0263912869346168,
       "ret_step": 0.0002507016872034094,
       "ret_step_pct": 0.02507016872034094,
@@ -1900,7 +1900,7 @@ const yieldData_tbtc = {
     {
       "block": 23496337,
       "timestamp": 1759483451,
-      "datetime": "2025-10-03T09:24:11",
+      "datetime": "2025-10-03T13:24:11",
       "pps_btc": 1.0262446635456128,
       "ret_step": -0.0001428533064049629,
       "ret_step_pct": -0.01428533064049629,
@@ -1909,7 +1909,7 @@ const yieldData_tbtc = {
     {
       "block": 23496636,
       "timestamp": 1759487051,
-      "datetime": "2025-10-03T10:24:11",
+      "datetime": "2025-10-03T14:24:11",
       "pps_btc": 1.0262384833568141,
       "ret_step": -6.022139766840612e-06,
       "ret_step_pct": -0.0006022139766840612,
@@ -1918,7 +1918,7 @@ const yieldData_tbtc = {
     {
       "block": 23496934,
       "timestamp": 1759490651,
-      "datetime": "2025-10-03T11:24:11",
+      "datetime": "2025-10-03T15:24:11",
       "pps_btc": 1.0262378429208334,
       "ret_step": -6.240615519573398e-07,
       "ret_step_pct": -6.240615519573398e-05,
@@ -1927,7 +1927,7 @@ const yieldData_tbtc = {
     {
       "block": 23497232,
       "timestamp": 1759494251,
-      "datetime": "2025-10-03T12:24:11",
+      "datetime": "2025-10-03T16:24:11",
       "pps_btc": 1.026230201033146,
       "ret_step": -7.4465073958420715e-06,
       "ret_step_pct": -0.0007446507395842072,
@@ -1936,7 +1936,7 @@ const yieldData_tbtc = {
     {
       "block": 23497529,
       "timestamp": 1759497851,
-      "datetime": "2025-10-03T13:24:11",
+      "datetime": "2025-10-03T17:24:11",
       "pps_btc": 1.026224620348746,
       "ret_step": -5.438043427968409e-06,
       "ret_step_pct": -0.0005438043427968409,
@@ -1945,7 +1945,7 @@ const yieldData_tbtc = {
     {
       "block": 23497827,
       "timestamp": 1759501451,
-      "datetime": "2025-10-03T14:24:11",
+      "datetime": "2025-10-03T18:24:11",
       "pps_btc": 1.0262201298879579,
       "ret_step": -4.375709468475809e-06,
       "ret_step_pct": -0.0004375709468475809,
@@ -1954,7 +1954,7 @@ const yieldData_tbtc = {
     {
       "block": 23498127,
       "timestamp": 1759505051,
-      "datetime": "2025-10-03T15:24:11",
+      "datetime": "2025-10-03T19:24:11",
       "pps_btc": 1.0262114967291864,
       "ret_step": -8.412579835530572e-06,
       "ret_step_pct": -0.0008412579835530572,
@@ -1963,7 +1963,7 @@ const yieldData_tbtc = {
     {
       "block": 23498426,
       "timestamp": 1759508651,
-      "datetime": "2025-10-03T16:24:11",
+      "datetime": "2025-10-03T20:24:11",
       "pps_btc": 1.0264615731005637,
       "ret_step": 0.00024368892004662202,
       "ret_step_pct": 0.0243688920046622,
@@ -1972,7 +1972,7 @@ const yieldData_tbtc = {
     {
       "block": 23498725,
       "timestamp": 1759512251,
-      "datetime": "2025-10-03T17:24:11",
+      "datetime": "2025-10-03T21:24:11",
       "pps_btc": 1.026201637815858,
       "ret_step": -0.0002532343065903168,
       "ret_step_pct": -0.02532343065903168,
@@ -1981,7 +1981,7 @@ const yieldData_tbtc = {
     {
       "block": 23499023,
       "timestamp": 1759515851,
-      "datetime": "2025-10-03T18:24:11",
+      "datetime": "2025-10-03T22:24:11",
       "pps_btc": 1.0265903087996595,
       "ret_step": 0.00037874718717931363,
       "ret_step_pct": 0.03787471871793136,
@@ -1990,7 +1990,7 @@ const yieldData_tbtc = {
     {
       "block": 23499322,
       "timestamp": 1759519451,
-      "datetime": "2025-10-03T19:24:11",
+      "datetime": "2025-10-03T23:24:11",
       "pps_btc": 1.0265822587729432,
       "ret_step": -7.841518322671964e-06,
       "ret_step_pct": -0.0007841518322671964,
@@ -1999,7 +1999,7 @@ const yieldData_tbtc = {
     {
       "block": 23499621,
       "timestamp": 1759523051,
-      "datetime": "2025-10-03T20:24:11",
+      "datetime": "2025-10-04T00:24:11",
       "pps_btc": 1.026574208541619,
       "ret_step": -7.841779122392304e-06,
       "ret_step_pct": -0.0007841779122392304,
@@ -2008,7 +2008,7 @@ const yieldData_tbtc = {
     {
       "block": 23499920,
       "timestamp": 1759526651,
-      "datetime": "2025-10-03T21:24:11",
+      "datetime": "2025-10-04T01:24:11",
       "pps_btc": 1.0265661585145878,
       "ret_step": -7.841641611648417e-06,
       "ret_step_pct": -0.0007841641611648417,
@@ -2017,7 +2017,7 @@ const yieldData_tbtc = {
     {
       "block": 23500218,
       "timestamp": 1759530251,
-      "datetime": "2025-10-03T22:24:11",
+      "datetime": "2025-10-04T02:24:11",
       "pps_btc": 1.0265581082829487,
       "ret_step": -7.841902416432135e-06,
       "ret_step_pct": -0.0007841902416432135,
@@ -2026,7 +2026,7 @@ const yieldData_tbtc = {
     {
       "block": 23500516,
       "timestamp": 1759533851,
-      "datetime": "2025-10-03T23:24:11",
+      "datetime": "2025-10-04T03:24:11",
       "pps_btc": 1.0265500582556029,
       "ret_step": -7.841764904497917e-06,
       "ret_step_pct": -0.0007841764904497917,
@@ -2035,7 +2035,7 @@ const yieldData_tbtc = {
     {
       "block": 23500816,
       "timestamp": 1759537451,
-      "datetime": "2025-10-04T00:24:11",
+      "datetime": "2025-10-04T04:24:11",
       "pps_btc": 1.026542008023649,
       "ret_step": -7.842025714343251e-06,
       "ret_step_pct": -0.0007842025714343251,
@@ -2044,7 +2044,7 @@ const yieldData_tbtc = {
     {
       "block": 23501114,
       "timestamp": 1759541051,
-      "datetime": "2025-10-04T01:24:11",
+      "datetime": "2025-10-04T05:24:11",
       "pps_btc": 1.0265345557907013,
       "ret_step": -7.2595499154792695e-06,
       "ret_step_pct": -0.000725954991547927,
@@ -2053,7 +2053,7 @@ const yieldData_tbtc = {
     {
       "block": 23501410,
       "timestamp": 1759544651,
-      "datetime": "2025-10-04T02:24:11",
+      "datetime": "2025-10-04T06:24:11",
       "pps_btc": 1.026760716622682,
       "ret_step": 0.0002203148746478931,
       "ret_step_pct": 0.02203148746478931,
@@ -2062,7 +2062,7 @@ const yieldData_tbtc = {
     {
       "block": 23501708,
       "timestamp": 1759548251,
-      "datetime": "2025-10-04T03:24:11",
+      "datetime": "2025-10-04T07:24:11",
       "pps_btc": 1.0267284158526844,
       "ret_step": -3.1458907099590573e-05,
       "ret_step_pct": -0.0031458907099590574,
@@ -2071,7 +2071,7 @@ const yieldData_tbtc = {
     {
       "block": 23502007,
       "timestamp": 1759551851,
-      "datetime": "2025-10-04T04:24:11",
+      "datetime": "2025-10-04T08:24:11",
       "pps_btc": 1.0267197838887716,
       "ret_step": -8.407251401147078e-06,
       "ret_step_pct": -0.0008407251401147078,
@@ -2080,7 +2080,7 @@ const yieldData_tbtc = {
     {
       "block": 23502304,
       "timestamp": 1759555451,
-      "datetime": "2025-10-04T05:24:11",
+      "datetime": "2025-10-04T09:24:11",
       "pps_btc": 1.0267123163772771,
       "ret_step": -7.273173860757108e-06,
       "ret_step_pct": -0.0007273173860757108,
@@ -2089,7 +2089,7 @@ const yieldData_tbtc = {
     {
       "block": 23502602,
       "timestamp": 1759559051,
-      "datetime": "2025-10-04T06:24:11",
+      "datetime": "2025-10-04T10:24:11",
       "pps_btc": 1.0267060982624603,
       "ret_step": -6.056336052014481e-06,
       "ret_step_pct": -0.0006056336052014482,
@@ -2098,7 +2098,7 @@ const yieldData_tbtc = {
     {
       "block": 23502900,
       "timestamp": 1759562651,
-      "datetime": "2025-10-04T07:24:11",
+      "datetime": "2025-10-04T11:24:11",
       "pps_btc": 1.02669953122844,
       "ret_step": -6.396216046140838e-06,
       "ret_step_pct": -0.0006396216046140838,
@@ -2107,7 +2107,7 @@ const yieldData_tbtc = {
     {
       "block": 23503198,
       "timestamp": 1759566251,
-      "datetime": "2025-10-04T08:24:11",
+      "datetime": "2025-10-04T12:24:11",
       "pps_btc": 1.0266928023780009,
       "ret_step": -6.5538653075617655e-06,
       "ret_step_pct": -0.0006553865307561765,
@@ -2116,7 +2116,7 @@ const yieldData_tbtc = {
     {
       "block": 23503497,
       "timestamp": 1759569851,
-      "datetime": "2025-10-04T09:24:11",
+      "datetime": "2025-10-04T13:24:11",
       "pps_btc": 1.0266859043761292,
       "ret_step": -6.718661955944383e-06,
       "ret_step_pct": -0.0006718661955944383,
@@ -2125,7 +2125,7 @@ const yieldData_tbtc = {
     {
       "block": 23503797,
       "timestamp": 1759573451,
-      "datetime": "2025-10-04T10:24:11",
+      "datetime": "2025-10-04T14:24:11",
       "pps_btc": 1.026678971396717,
       "ret_step": -6.752775490990947e-06,
       "ret_step_pct": -0.0006752775490990947,
@@ -2134,7 +2134,7 @@ const yieldData_tbtc = {
     {
       "block": 23504096,
       "timestamp": 1759577051,
-      "datetime": "2025-10-04T11:24:11",
+      "datetime": "2025-10-04T15:24:11",
       "pps_btc": 1.026671140147549,
       "ret_step": -7.627748679255788e-06,
       "ret_step_pct": -0.0007627748679255788,
@@ -2143,7 +2143,7 @@ const yieldData_tbtc = {
     {
       "block": 23504395,
       "timestamp": 1759580651,
-      "datetime": "2025-10-04T12:24:11",
+      "datetime": "2025-10-04T16:24:11",
       "pps_btc": 1.0266626914296257,
       "ret_step": -8.22923484744276e-06,
       "ret_step_pct": -0.000822923484744276,
@@ -2152,7 +2152,7 @@ const yieldData_tbtc = {
     {
       "block": 23504692,
       "timestamp": 1759584251,
-      "datetime": "2025-10-04T13:24:11",
+      "datetime": "2025-10-04T17:24:11",
       "pps_btc": 1.0266617783993786,
       "ret_step": -8.893186190973856e-07,
       "ret_step_pct": -8.893186190973856e-05,
@@ -2161,7 +2161,7 @@ const yieldData_tbtc = {
     {
       "block": 23504989,
       "timestamp": 1759587851,
-      "datetime": "2025-10-04T14:24:11",
+      "datetime": "2025-10-04T18:24:11",
       "pps_btc": 1.0266561651952635,
       "ret_step": -5.467432637725435e-06,
       "ret_step_pct": -0.0005467432637725434,
@@ -2170,7 +2170,7 @@ const yieldData_tbtc = {
     {
       "block": 23505284,
       "timestamp": 1759591463,
-      "datetime": "2025-10-04T15:24:23",
+      "datetime": "2025-10-04T19:24:23",
       "pps_btc": 1.02664904067489,
       "ret_step": -6.939538878779305e-06,
       "ret_step_pct": -0.0006939538878779305,
@@ -2179,7 +2179,7 @@ const yieldData_tbtc = {
     {
       "block": 23505583,
       "timestamp": 1759595051,
-      "datetime": "2025-10-04T16:24:11",
+      "datetime": "2025-10-04T20:24:11",
       "pps_btc": 1.0266116195245656,
       "ret_step": -3.6449798170325463e-05,
       "ret_step_pct": -0.0036449798170325462,
@@ -2188,7 +2188,7 @@ const yieldData_tbtc = {
     {
       "block": 23505882,
       "timestamp": 1759598651,
-      "datetime": "2025-10-04T17:24:11",
+      "datetime": "2025-10-04T21:24:11",
       "pps_btc": 1.0265945020143765,
       "ret_step": -1.6673793539416876e-05,
       "ret_step_pct": -0.0016673793539416877,
@@ -2197,7 +2197,7 @@ const yieldData_tbtc = {
     {
       "block": 23506181,
       "timestamp": 1759602251,
-      "datetime": "2025-10-04T18:24:11",
+      "datetime": "2025-10-04T22:24:11",
       "pps_btc": 1.0265875623536966,
       "ret_step": -6.759884907125497e-06,
       "ret_step_pct": -0.0006759884907125497,
@@ -2206,7 +2206,7 @@ const yieldData_tbtc = {
     {
       "block": 23506477,
       "timestamp": 1759605851,
-      "datetime": "2025-10-04T19:24:11",
+      "datetime": "2025-10-04T23:24:11",
       "pps_btc": 1.0265703226085898,
       "ret_step": -1.679325343399912e-05,
       "ret_step_pct": -0.001679325343399912,
@@ -2215,7 +2215,7 @@ const yieldData_tbtc = {
     {
       "block": 23506777,
       "timestamp": 1759609451,
-      "datetime": "2025-10-04T20:24:11",
+      "datetime": "2025-10-05T00:24:11",
       "pps_btc": 1.0265571699944702,
       "ret_step": -1.281219009537335e-05,
       "ret_step_pct": -0.001281219009537335,
@@ -2224,7 +2224,7 @@ const yieldData_tbtc = {
     {
       "block": 23507075,
       "timestamp": 1759613051,
-      "datetime": "2025-10-04T21:24:11",
+      "datetime": "2025-10-05T01:24:11",
       "pps_btc": 1.02654835183076,
       "ret_step": -8.59003664662388e-06,
       "ret_step_pct": -0.000859003664662388,
@@ -2233,7 +2233,7 @@ const yieldData_tbtc = {
     {
       "block": 23507375,
       "timestamp": 1759616651,
-      "datetime": "2025-10-04T22:24:11",
+      "datetime": "2025-10-05T02:24:11",
       "pps_btc": 1.026540656770518,
       "ret_step": -7.4960524054980225e-06,
       "ret_step_pct": -0.0007496052405498023,
@@ -2242,7 +2242,7 @@ const yieldData_tbtc = {
     {
       "block": 23507673,
       "timestamp": 1759620251,
-      "datetime": "2025-10-04T23:24:11",
+      "datetime": "2025-10-05T03:24:11",
       "pps_btc": 1.026533171799296,
       "ret_step": -7.291451315249033e-06,
       "ret_step_pct": -0.0007291451315249033,
@@ -2251,7 +2251,7 @@ const yieldData_tbtc = {
     {
       "block": 23507969,
       "timestamp": 1759623851,
-      "datetime": "2025-10-05T00:24:11",
+      "datetime": "2025-10-05T04:24:11",
       "pps_btc": 1.0265258012735141,
       "ret_step": -7.180017153416507e-06,
       "ret_step_pct": -0.0007180017153416507,
@@ -2260,7 +2260,7 @@ const yieldData_tbtc = {
     {
       "block": 23508267,
       "timestamp": 1759627451,
-      "datetime": "2025-10-05T01:24:11",
+      "datetime": "2025-10-05T05:24:11",
       "pps_btc": 1.0265183335209822,
       "ret_step": -7.274783081476824e-06,
       "ret_step_pct": -0.0007274783081476824,
@@ -2269,7 +2269,7 @@ const yieldData_tbtc = {
     {
       "block": 23508566,
       "timestamp": 1759631051,
-      "datetime": "2025-10-05T02:24:11",
+      "datetime": "2025-10-05T06:24:11",
       "pps_btc": 1.0265109213948842,
       "ret_step": -7.220646583805505e-06,
       "ret_step_pct": -0.0007220646583805505,
@@ -2278,7 +2278,7 @@ const yieldData_tbtc = {
     {
       "block": 23508863,
       "timestamp": 1759634651,
-      "datetime": "2025-10-05T03:24:11",
+      "datetime": "2025-10-05T07:24:11",
       "pps_btc": 1.026505749874968,
       "ret_step": -5.037958981613786e-06,
       "ret_step_pct": -0.0005037958981613786,
@@ -2287,7 +2287,7 @@ const yieldData_tbtc = {
     {
       "block": 23509160,
       "timestamp": 1759638251,
-      "datetime": "2025-10-05T04:24:11",
+      "datetime": "2025-10-05T08:24:11",
       "pps_btc": 1.0266290610798863,
       "ret_step": 0.00012012714486345327,
       "ret_step_pct": 0.012012714486345328,
@@ -2296,7 +2296,7 @@ const yieldData_tbtc = {
     {
       "block": 23509458,
       "timestamp": 1759641851,
-      "datetime": "2025-10-05T05:24:11",
+      "datetime": "2025-10-05T09:24:11",
       "pps_btc": 1.0265515410607884,
       "ret_step": -7.550927792405523e-05,
       "ret_step_pct": -0.007550927792405523,
@@ -2305,7 +2305,7 @@ const yieldData_tbtc = {
     {
       "block": 23509757,
       "timestamp": 1759645451,
-      "datetime": "2025-10-05T06:24:11",
+      "datetime": "2025-10-05T10:24:11",
       "pps_btc": 1.0265435217270011,
       "ret_step": -7.81191539472067e-06,
       "ret_step_pct": -0.000781191539472067,
@@ -2314,7 +2314,7 @@ const yieldData_tbtc = {
     {
       "block": 23510053,
       "timestamp": 1759649051,
-      "datetime": "2025-10-05T07:24:11",
+      "datetime": "2025-10-05T11:24:11",
       "pps_btc": 1.0264881048999102,
       "ret_step": -5.398390415824429e-05,
       "ret_step_pct": -0.005398390415824429,
@@ -2323,7 +2323,7 @@ const yieldData_tbtc = {
     {
       "block": 23510350,
       "timestamp": 1759652651,
-      "datetime": "2025-10-05T08:24:11",
+      "datetime": "2025-10-05T12:24:11",
       "pps_btc": 1.0264800959650466,
       "ret_step": -7.802267581293529e-06,
       "ret_step_pct": -0.0007802267581293529,
@@ -2332,7 +2332,7 @@ const yieldData_tbtc = {
     {
       "block": 23510648,
       "timestamp": 1759656251,
-      "datetime": "2025-10-05T09:24:11",
+      "datetime": "2025-10-05T13:24:11",
       "pps_btc": 1.0261807647153922,
       "ret_step": -0.0002916094046353674,
       "ret_step_pct": -0.02916094046353674,
@@ -2341,7 +2341,7 @@ const yieldData_tbtc = {
     {
       "block": 23510947,
       "timestamp": 1759659851,
-      "datetime": "2025-10-05T10:24:11",
+      "datetime": "2025-10-05T14:24:11",
       "pps_btc": 1.026285059420654,
       "ret_step": 0.00010163385326243061,
       "ret_step_pct": 0.01016338532624306,
@@ -2350,7 +2350,7 @@ const yieldData_tbtc = {
     {
       "block": 23511247,
       "timestamp": 1759663451,
-      "datetime": "2025-10-05T11:24:11",
+      "datetime": "2025-10-05T15:24:11",
       "pps_btc": 1.0261987482918167,
       "ret_step": -8.41005411167715e-05,
       "ret_step_pct": -0.00841005411167715,
@@ -2359,7 +2359,7 @@ const yieldData_tbtc = {
     {
       "block": 23511547,
       "timestamp": 1759667051,
-      "datetime": "2025-10-05T12:24:11",
+      "datetime": "2025-10-05T16:24:11",
       "pps_btc": 1.026181423509613,
       "ret_step": -1.6882482299488645e-05,
       "ret_step_pct": -0.0016882482299488645,
@@ -2368,7 +2368,7 @@ const yieldData_tbtc = {
     {
       "block": 23511847,
       "timestamp": 1759670651,
-      "datetime": "2025-10-05T13:24:11",
+      "datetime": "2025-10-05T17:24:11",
       "pps_btc": 1.0261704432322822,
       "ret_step": -1.0700132626816296e-05,
       "ret_step_pct": -0.0010700132626816296,
@@ -2377,7 +2377,7 @@ const yieldData_tbtc = {
     {
       "block": 23512147,
       "timestamp": 1759674251,
-      "datetime": "2025-10-05T14:24:11",
+      "datetime": "2025-10-05T18:24:11",
       "pps_btc": 1.0261637550764389,
       "ret_step": -6.51758768479466e-06,
       "ret_step_pct": -0.000651758768479466,
@@ -2386,7 +2386,7 @@ const yieldData_tbtc = {
     {
       "block": 23512444,
       "timestamp": 1759677851,
-      "datetime": "2025-10-05T15:24:11",
+      "datetime": "2025-10-05T19:24:11",
       "pps_btc": 1.0261561505434054,
       "ret_step": -7.410642790508167e-06,
       "ret_step_pct": -0.0007410642790508167,
@@ -2395,7 +2395,7 @@ const yieldData_tbtc = {
     {
       "block": 23512741,
       "timestamp": 1759681451,
-      "datetime": "2025-10-05T16:24:11",
+      "datetime": "2025-10-05T20:24:11",
       "pps_btc": 1.0261505256512227,
       "ret_step": -5.481516804054933e-06,
       "ret_step_pct": -0.0005481516804054933,
@@ -2404,7 +2404,7 @@ const yieldData_tbtc = {
     {
       "block": 23513041,
       "timestamp": 1759685051,
-      "datetime": "2025-10-05T17:24:11",
+      "datetime": "2025-10-05T21:24:11",
       "pps_btc": 1.0260900415059915,
       "ret_step": -5.894276104647234e-05,
       "ret_step_pct": -0.005894276104647234,
@@ -2413,7 +2413,7 @@ const yieldData_tbtc = {
     {
       "block": 23513338,
       "timestamp": 1759688651,
-      "datetime": "2025-10-05T18:24:11",
+      "datetime": "2025-10-05T22:24:11",
       "pps_btc": 1.026071287885806,
       "ret_step": -1.8276778281524228e-05,
       "ret_step_pct": -0.0018276778281524227,
@@ -2422,7 +2422,7 @@ const yieldData_tbtc = {
     {
       "block": 23513637,
       "timestamp": 1759692251,
-      "datetime": "2025-10-05T19:24:11",
+      "datetime": "2025-10-05T23:24:11",
       "pps_btc": 1.0260635891749355,
       "ret_step": -7.503095507413525e-06,
       "ret_step_pct": -0.0007503095507413525,
@@ -2431,7 +2431,7 @@ const yieldData_tbtc = {
     {
       "block": 23513937,
       "timestamp": 1759695851,
-      "datetime": "2025-10-05T20:24:11",
+      "datetime": "2025-10-06T00:24:11",
       "pps_btc": 1.0261080915487255,
       "ret_step": 4.337194522779202e-05,
       "ret_step_pct": 0.004337194522779202,
@@ -2440,7 +2440,7 @@ const yieldData_tbtc = {
     {
       "block": 23514236,
       "timestamp": 1759699451,
-      "datetime": "2025-10-05T21:24:11",
+      "datetime": "2025-10-06T01:24:11",
       "pps_btc": 1.0260797179059433,
       "ret_step": -2.7651709421103087e-05,
       "ret_step_pct": -0.0027651709421103086,
@@ -2449,7 +2449,7 @@ const yieldData_tbtc = {
     {
       "block": 23514534,
       "timestamp": 1759703051,
-      "datetime": "2025-10-05T22:24:11",
+      "datetime": "2025-10-06T02:24:11",
       "pps_btc": 1.0260719232956068,
       "ret_step": -7.596495867238749e-06,
       "ret_step_pct": -0.0007596495867238749,
@@ -2458,7 +2458,7 @@ const yieldData_tbtc = {
     {
       "block": 23514833,
       "timestamp": 1759706651,
-      "datetime": "2025-10-05T23:24:11",
+      "datetime": "2025-10-06T03:24:11",
       "pps_btc": 1.026158545907198,
       "ret_step": 8.442157866776694e-05,
       "ret_step_pct": 0.008442157866776694,
@@ -2467,7 +2467,7 @@ const yieldData_tbtc = {
     {
       "block": 23515131,
       "timestamp": 1759710251,
-      "datetime": "2025-10-06T00:24:11",
+      "datetime": "2025-10-06T04:24:11",
       "pps_btc": 1.0261434362239126,
       "ret_step": -1.4724511476172478e-05,
       "ret_step_pct": -0.001472451147617248,
@@ -2476,7 +2476,7 @@ const yieldData_tbtc = {
     {
       "block": 23515429,
       "timestamp": 1759713827,
-      "datetime": "2025-10-06T01:23:47",
+      "datetime": "2025-10-06T05:23:47",
       "pps_btc": 1.0261345422244819,
       "ret_step": -8.667403714474728e-06,
       "ret_step_pct": -0.0008667403714474728,
@@ -2485,7 +2485,7 @@ const yieldData_tbtc = {
     {
       "block": 23515727,
       "timestamp": 1759717451,
-      "datetime": "2025-10-06T02:24:11",
+      "datetime": "2025-10-06T06:24:11",
       "pps_btc": 1.0264193565934139,
       "ret_step": 0.00027756045353924624,
       "ret_step_pct": 0.027756045353924622,
@@ -2494,7 +2494,7 @@ const yieldData_tbtc = {
     {
       "block": 23516025,
       "timestamp": 1759721051,
-      "datetime": "2025-10-06T03:24:11",
+      "datetime": "2025-10-06T07:24:11",
       "pps_btc": 1.0264126481467872,
       "ret_step": -6.535775639454699e-06,
       "ret_step_pct": -0.0006535775639454699,
@@ -2503,7 +2503,7 @@ const yieldData_tbtc = {
     {
       "block": 23516323,
       "timestamp": 1759724651,
-      "datetime": "2025-10-06T04:24:11",
+      "datetime": "2025-10-06T08:24:11",
       "pps_btc": 1.0264056635007788,
       "ret_step": -6.804910306771791e-06,
       "ret_step_pct": -0.0006804910306771791,
@@ -2512,7 +2512,7 @@ const yieldData_tbtc = {
     {
       "block": 23516621,
       "timestamp": 1759728239,
-      "datetime": "2025-10-06T05:23:59",
+      "datetime": "2025-10-06T09:23:59",
       "pps_btc": 1.0263986932132865,
       "ret_step": -6.790967490063651e-06,
       "ret_step_pct": -0.0006790967490063651,
@@ -2521,7 +2521,7 @@ const yieldData_tbtc = {
     {
       "block": 23516919,
       "timestamp": 1759731839,
-      "datetime": "2025-10-06T06:23:59",
+      "datetime": "2025-10-06T10:23:59",
       "pps_btc": 1.026390992975415,
       "ret_step": -7.502189862891695e-06,
       "ret_step_pct": -0.0007502189862891695,
@@ -2530,7 +2530,7 @@ const yieldData_tbtc = {
     {
       "block": 23517217,
       "timestamp": 1759735427,
-      "datetime": "2025-10-06T07:23:47",
+      "datetime": "2025-10-06T11:23:47",
       "pps_btc": 1.0263833506215432,
       "ret_step": -7.445850483955929e-06,
       "ret_step_pct": -0.000744585048395593,
@@ -2539,7 +2539,7 @@ const yieldData_tbtc = {
     {
       "block": 23517515,
       "timestamp": 1759739027,
-      "datetime": "2025-10-06T08:23:47",
+      "datetime": "2025-10-06T12:23:47",
       "pps_btc": 1.026375861611356,
       "ret_step": -7.296503964625798e-06,
       "ret_step_pct": -0.0007296503964625798,
@@ -2548,7 +2548,7 @@ const yieldData_tbtc = {
     {
       "block": 23517813,
       "timestamp": 1759742603,
-      "datetime": "2025-10-06T09:23:23",
+      "datetime": "2025-10-06T13:23:23",
       "pps_btc": 1.0263794156479271,
       "ret_step": 3.462704749859715e-06,
       "ret_step_pct": 0.0003462704749859715,
@@ -2557,7 +2557,7 @@ const yieldData_tbtc = {
     {
       "block": 23518111,
       "timestamp": 1759746239,
-      "datetime": "2025-10-06T10:23:59",
+      "datetime": "2025-10-06T14:23:59",
       "pps_btc": 1.026372221489133,
       "ret_step": -7.009258646890839e-06,
       "ret_step_pct": -0.0007009258646890839,
@@ -2566,7 +2566,7 @@ const yieldData_tbtc = {
     {
       "block": 23518409,
       "timestamp": 1759749815,
-      "datetime": "2025-10-06T11:23:35",
+      "datetime": "2025-10-06T15:23:35",
       "pps_btc": 1.026361793739495,
       "ret_step": -1.0159812804336896e-05,
       "ret_step_pct": -0.0010159812804336895,
@@ -2575,7 +2575,7 @@ const yieldData_tbtc = {
     {
       "block": 23518707,
       "timestamp": 1759753439,
-      "datetime": "2025-10-06T12:23:59",
+      "datetime": "2025-10-06T16:23:59",
       "pps_btc": 1.0263568395365978,
       "ret_step": -4.826955687230545e-06,
       "ret_step_pct": -0.0004826955687230545,
@@ -2584,7 +2584,7 @@ const yieldData_tbtc = {
     {
       "block": 23519005,
       "timestamp": 1759757027,
-      "datetime": "2025-10-06T13:23:47",
+      "datetime": "2025-10-06T17:23:47",
       "pps_btc": 1.026349916072276,
       "ret_step": -6.745669785742314e-06,
       "ret_step_pct": -0.0006745669785742314,
@@ -2593,7 +2593,7 @@ const yieldData_tbtc = {
     {
       "block": 23519303,
       "timestamp": 1759760639,
-      "datetime": "2025-10-06T14:23:59",
+      "datetime": "2025-10-06T18:23:59",
       "pps_btc": 1.0270797211516427,
       "ret_step": 0.0007110684844791734,
       "ret_step_pct": 0.07110684844791734,
@@ -2602,7 +2602,7 @@ const yieldData_tbtc = {
     {
       "block": 23519601,
       "timestamp": 1759764251,
-      "datetime": "2025-10-06T15:24:11",
+      "datetime": "2025-10-06T19:24:11",
       "pps_btc": 1.0270715591860706,
       "ret_step": -7.946769276059857e-06,
       "ret_step_pct": -0.0007946769276059857,
@@ -2611,7 +2611,7 @@ const yieldData_tbtc = {
     {
       "block": 23519899,
       "timestamp": 1759767851,
-      "datetime": "2025-10-06T16:24:11",
+      "datetime": "2025-10-06T20:24:11",
       "pps_btc": 1.0270562222836097,
       "ret_step": -1.4932652280957058e-05,
       "ret_step_pct": -0.0014932652280957059,
@@ -2620,7 +2620,7 @@ const yieldData_tbtc = {
     {
       "block": 23520196,
       "timestamp": 1759771451,
-      "datetime": "2025-10-06T17:24:11",
+      "datetime": "2025-10-06T21:24:11",
       "pps_btc": 1.0270223217908856,
       "ret_step": -3.300743619334967e-05,
       "ret_step_pct": -0.003300743619334967,
@@ -2629,7 +2629,7 @@ const yieldData_tbtc = {
     {
       "block": 23520492,
       "timestamp": 1759775051,
-      "datetime": "2025-10-06T18:24:11",
+      "datetime": "2025-10-06T22:24:11",
       "pps_btc": 1.0270142154267898,
       "ret_step": -7.893074886201505e-06,
       "ret_step_pct": -0.0007893074886201505,
@@ -2638,7 +2638,7 @@ const yieldData_tbtc = {
     {
       "block": 23520791,
       "timestamp": 1759778651,
-      "datetime": "2025-10-06T19:24:11",
+      "datetime": "2025-10-06T23:24:11",
       "pps_btc": 1.0269518701832883,
       "ret_step": -6.070533646489165e-05,
       "ret_step_pct": -0.006070533646489165,
@@ -2647,7 +2647,7 @@ const yieldData_tbtc = {
     {
       "block": 23521089,
       "timestamp": 1759782251,
-      "datetime": "2025-10-06T20:24:11",
+      "datetime": "2025-10-07T00:24:11",
       "pps_btc": 1.026820560164055,
       "ret_step": -0.00012786384936397464,
       "ret_step_pct": -0.012786384936397464,
@@ -2656,7 +2656,7 @@ const yieldData_tbtc = {
     {
       "block": 23521387,
       "timestamp": 1759785851,
-      "datetime": "2025-10-06T21:24:11",
+      "datetime": "2025-10-07T01:24:11",
       "pps_btc": 1.0266999479698424,
       "ret_step": -0.00011746180286206851,
       "ret_step_pct": -0.011746180286206852,
@@ -2665,7 +2665,7 @@ const yieldData_tbtc = {
     {
       "block": 23521685,
       "timestamp": 1759789451,
-      "datetime": "2025-10-06T22:24:11",
+      "datetime": "2025-10-07T02:24:11",
       "pps_btc": 1.0268206233148263,
       "ret_step": 0.00011753711025559694,
       "ret_step_pct": 0.011753711025559693,
@@ -2674,7 +2674,7 @@ const yieldData_tbtc = {
     {
       "block": 23521983,
       "timestamp": 1759793051,
-      "datetime": "2025-10-06T23:24:11",
+      "datetime": "2025-10-07T03:24:11",
       "pps_btc": 1.0269922146664276,
       "ret_step": 0.00016710937402820023,
       "ret_step_pct": 0.016710937402820022,
@@ -2683,7 +2683,7 @@ const yieldData_tbtc = {
     {
       "block": 23522283,
       "timestamp": 1759796651,
-      "datetime": "2025-10-07T00:24:11",
+      "datetime": "2025-10-07T04:24:11",
       "pps_btc": 1.0269031620486657,
       "ret_step": -8.671206703445727e-05,
       "ret_step_pct": -0.008671206703445728,
@@ -2692,7 +2692,7 @@ const yieldData_tbtc = {
     {
       "block": 23522580,
       "timestamp": 1759800251,
-      "datetime": "2025-10-07T01:24:11",
+      "datetime": "2025-10-07T05:24:11",
       "pps_btc": 1.0269093379159966,
       "ret_step": 6.014069835657319e-06,
       "ret_step_pct": 0.0006014069835657319,
@@ -2701,7 +2701,7 @@ const yieldData_tbtc = {
     {
       "block": 23522879,
       "timestamp": 1759803851,
-      "datetime": "2025-10-07T02:24:11",
+      "datetime": "2025-10-07T06:24:11",
       "pps_btc": 1.0268888097860809,
       "ret_step": -1.999020668898742e-05,
       "ret_step_pct": -0.001999020668898742,
@@ -2710,7 +2710,7 @@ const yieldData_tbtc = {
     {
       "block": 23523174,
       "timestamp": 1759807451,
-      "datetime": "2025-10-07T03:24:11",
+      "datetime": "2025-10-07T07:24:11",
       "pps_btc": 1.0267611482875334,
       "ret_step": -0.0001243187162338181,
       "ret_step_pct": -0.01243187162338181,
@@ -2719,7 +2719,7 @@ const yieldData_tbtc = {
     {
       "block": 23523471,
       "timestamp": 1759811051,
-      "datetime": "2025-10-07T04:24:11",
+      "datetime": "2025-10-07T08:24:11",
       "pps_btc": 1.0267881190794745,
       "ret_step": 2.6267834526163937e-05,
       "ret_step_pct": 0.0026267834526163937,
@@ -2728,7 +2728,7 @@ const yieldData_tbtc = {
     {
       "block": 23523770,
       "timestamp": 1759814651,
-      "datetime": "2025-10-07T05:24:11",
+      "datetime": "2025-10-07T09:24:11",
       "pps_btc": 1.0267411119324843,
       "ret_step": -4.5780766369094106e-05,
       "ret_step_pct": -0.004578076636909411,
@@ -2737,7 +2737,7 @@ const yieldData_tbtc = {
     {
       "block": 23524066,
       "timestamp": 1759818251,
-      "datetime": "2025-10-07T06:24:11",
+      "datetime": "2025-10-07T10:24:11",
       "pps_btc": 1.026774113841315,
       "ret_step": 3.2142385696735514e-05,
       "ret_step_pct": 0.0032142385696735513,
@@ -2746,7 +2746,7 @@ const yieldData_tbtc = {
     {
       "block": 23524364,
       "timestamp": 1759821851,
-      "datetime": "2025-10-07T07:24:11",
+      "datetime": "2025-10-07T11:24:11",
       "pps_btc": 1.0266680106910513,
       "ret_step": -0.00010333640947229116,
       "ret_step_pct": -0.010333640947229116,
@@ -2755,7 +2755,7 @@ const yieldData_tbtc = {
     {
       "block": 23524663,
       "timestamp": 1759825451,
-      "datetime": "2025-10-07T08:24:11",
+      "datetime": "2025-10-07T12:24:11",
       "pps_btc": 1.026649036656776,
       "ret_step": -1.848117802222508e-05,
       "ret_step_pct": -0.001848117802222508,
@@ -2764,7 +2764,7 @@ const yieldData_tbtc = {
     {
       "block": 23524962,
       "timestamp": 1759829051,
-      "datetime": "2025-10-07T09:24:11",
+      "datetime": "2025-10-07T13:24:11",
       "pps_btc": 1.0264684581085055,
       "ret_step": -0.00017589121678681134,
       "ret_step_pct": -0.017589121678681135,
@@ -2773,7 +2773,7 @@ const yieldData_tbtc = {
     {
       "block": 23525262,
       "timestamp": 1759832651,
-      "datetime": "2025-10-07T10:24:11",
+      "datetime": "2025-10-07T14:24:11",
       "pps_btc": 1.026458477383286,
       "ret_step": -9.723362798482564e-06,
       "ret_step_pct": -0.0009723362798482564,
@@ -2782,7 +2782,7 @@ const yieldData_tbtc = {
     {
       "block": 23525559,
       "timestamp": 1759836251,
-      "datetime": "2025-10-07T11:24:11",
+      "datetime": "2025-10-07T15:24:11",
       "pps_btc": 1.0264512158082517,
       "ret_step": -7.074397254703058e-06,
       "ret_step_pct": -0.0007074397254703058,
@@ -2791,7 +2791,7 @@ const yieldData_tbtc = {
     {
       "block": 23525857,
       "timestamp": 1759839851,
-      "datetime": "2025-10-07T12:24:11",
+      "datetime": "2025-10-07T16:24:11",
       "pps_btc": 1.0264440743363767,
       "ret_step": -6.957439150391223e-06,
       "ret_step_pct": -0.0006957439150391224,
@@ -2800,7 +2800,7 @@ const yieldData_tbtc = {
     {
       "block": 23526156,
       "timestamp": 1759843439,
-      "datetime": "2025-10-07T13:23:59",
+      "datetime": "2025-10-07T17:23:59",
       "pps_btc": 1.0265292037820388,
       "ret_step": 8.293627270150148e-05,
       "ret_step_pct": 0.008293627270150148,
@@ -2809,7 +2809,7 @@ const yieldData_tbtc = {
     {
       "block": 23526454,
       "timestamp": 1759847039,
-      "datetime": "2025-10-07T14:23:59",
+      "datetime": "2025-10-07T18:23:59",
       "pps_btc": 1.0264498902302108,
       "ret_step": -7.726380461043708e-05,
       "ret_step_pct": -0.007726380461043708,
@@ -2818,7 +2818,7 @@ const yieldData_tbtc = {
     {
       "block": 23526752,
       "timestamp": 1759850651,
-      "datetime": "2025-10-07T15:24:11",
+      "datetime": "2025-10-07T19:24:11",
       "pps_btc": 1.0259431013456173,
       "ret_step": -0.0004937297859516981,
       "ret_step_pct": -0.04937297859516981,
@@ -2827,7 +2827,7 @@ const yieldData_tbtc = {
     {
       "block": 23527050,
       "timestamp": 1759854251,
-      "datetime": "2025-10-07T16:24:11",
+      "datetime": "2025-10-07T20:24:11",
       "pps_btc": 1.0254850252602343,
       "ret_step": -0.00044649268052224993,
       "ret_step_pct": -0.044649268052224994,
@@ -2836,7 +2836,7 @@ const yieldData_tbtc = {
     {
       "block": 23527348,
       "timestamp": 1759857839,
-      "datetime": "2025-10-07T17:23:59",
+      "datetime": "2025-10-07T21:23:59",
       "pps_btc": 1.025180319211132,
       "ret_step": -0.00029713359200428467,
       "ret_step_pct": -0.029713359200428467,
@@ -2845,7 +2845,7 @@ const yieldData_tbtc = {
     {
       "block": 23527646,
       "timestamp": 1759861427,
-      "datetime": "2025-10-07T18:23:47",
+      "datetime": "2025-10-07T22:23:47",
       "pps_btc": 1.0251564346526578,
       "ret_step": -2.3297909671796054e-05,
       "ret_step_pct": -0.0023297909671796055,
@@ -2854,7 +2854,7 @@ const yieldData_tbtc = {
     {
       "block": 23527944,
       "timestamp": 1759865039,
-      "datetime": "2025-10-07T19:23:59",
+      "datetime": "2025-10-07T23:23:59",
       "pps_btc": 1.0251452919742365,
       "ret_step": -1.0869246921240218e-05,
       "ret_step_pct": -0.001086924692124022,
@@ -2863,7 +2863,7 @@ const yieldData_tbtc = {
     {
       "block": 23528242,
       "timestamp": 1759868627,
-      "datetime": "2025-10-07T20:23:47",
+      "datetime": "2025-10-08T00:23:47",
       "pps_btc": 1.0264060795048935,
       "ret_step": 0.0012298622844269223,
       "ret_step_pct": 0.12298622844269223,
@@ -2872,7 +2872,7 @@ const yieldData_tbtc = {
     {
       "block": 23528540,
       "timestamp": 1759872215,
-      "datetime": "2025-10-07T21:23:35",
+      "datetime": "2025-10-08T01:23:35",
       "pps_btc": 1.0263979730080457,
       "ret_step": -7.897943133603927e-06,
       "ret_step_pct": -0.0007897943133603927,
@@ -2881,7 +2881,7 @@ const yieldData_tbtc = {
     {
       "block": 23528838,
       "timestamp": 1759875803,
-      "datetime": "2025-10-07T22:23:23",
+      "datetime": "2025-10-08T02:23:23",
       "pps_btc": 1.0263898663055604,
       "ret_step": -7.898205860143932e-06,
       "ret_step_pct": -0.0007898205860143931,
@@ -2890,7 +2890,7 @@ const yieldData_tbtc = {
     {
       "block": 23529136,
       "timestamp": 1759879379,
-      "datetime": "2025-10-07T23:22:59",
+      "datetime": "2025-10-08T03:22:59",
       "pps_btc": 1.0263817867871055,
       "ret_step": -7.871783150061514e-06,
       "ret_step_pct": -0.0007871783150061514,
@@ -2899,7 +2899,7 @@ const yieldData_tbtc = {
     {
       "block": 23529434,
       "timestamp": 1759882991,
-      "datetime": "2025-10-08T00:23:11",
+      "datetime": "2025-10-08T04:23:11",
       "pps_btc": 1.026373625921403,
       "ret_step": -7.951101439568653e-06,
       "ret_step_pct": -0.0007951101439568653,
@@ -2908,7 +2908,7 @@ const yieldData_tbtc = {
     {
       "block": 23529732,
       "timestamp": 1759886579,
-      "datetime": "2025-10-08T01:22:59",
+      "datetime": "2025-10-08T05:22:59",
       "pps_btc": 1.0263655194239198,
       "ret_step": -7.898193482846543e-06,
       "ret_step_pct": -0.0007898193482846544,
@@ -2917,7 +2917,7 @@ const yieldData_tbtc = {
     {
       "block": 23530030,
       "timestamp": 1759890167,
-      "datetime": "2025-10-08T02:22:47",
+      "datetime": "2025-10-08T06:22:47",
       "pps_btc": 1.0263574127207993,
       "ret_step": -7.898456219685891e-06,
       "ret_step_pct": -0.0007898456219685891,
@@ -2926,7 +2926,7 @@ const yieldData_tbtc = {
     {
       "block": 23530328,
       "timestamp": 1759893755,
-      "datetime": "2025-10-08T03:22:35",
+      "datetime": "2025-10-08T07:22:35",
       "pps_btc": 1.0263490506099524,
       "ret_step": -8.147367323620385e-06,
       "ret_step_pct": -0.0008147367323620385,
@@ -2935,7 +2935,7 @@ const yieldData_tbtc = {
     {
       "block": 23530626,
       "timestamp": 1759897367,
-      "datetime": "2025-10-08T04:22:47",
+      "datetime": "2025-10-08T08:22:47",
       "pps_btc": 1.026340896211677,
       "ret_step": -7.945053654609897e-06,
       "ret_step_pct": -0.0007945053654609897,
@@ -2944,7 +2944,7 @@ const yieldData_tbtc = {
     {
       "block": 23530924,
       "timestamp": 1759900979,
-      "datetime": "2025-10-08T05:22:59",
+      "datetime": "2025-10-08T09:22:59",
       "pps_btc": 1.0263327418132409,
       "ret_step": -7.945116935497426e-06,
       "ret_step_pct": -0.0007945116935497426,
@@ -2953,7 +2953,7 @@ const yieldData_tbtc = {
     {
       "block": 23531222,
       "timestamp": 1759904579,
-      "datetime": "2025-10-08T06:22:59",
+      "datetime": "2025-10-08T10:22:59",
       "pps_btc": 1.0263246145773184,
       "ret_step": -7.918714459253696e-06,
       "ret_step_pct": -0.0007918714459253696,
@@ -2962,7 +2962,7 @@ const yieldData_tbtc = {
     {
       "block": 23531520,
       "timestamp": 1759908179,
-      "datetime": "2025-10-08T07:22:59",
+      "datetime": "2025-10-08T11:22:59",
       "pps_btc": 1.0263164871358434,
       "ret_step": -7.91897744575015e-06,
       "ret_step_pct": -0.000791897744575015,
@@ -2971,7 +2971,7 @@ const yieldData_tbtc = {
     {
       "block": 23531818,
       "timestamp": 1759911791,
-      "datetime": "2025-10-08T08:23:11",
+      "datetime": "2025-10-08T12:23:11",
       "pps_btc": 1.0263083327369265,
       "ret_step": -7.945306364192397e-06,
       "ret_step_pct": -0.0007945306364192397,
@@ -2980,7 +2980,7 @@ const yieldData_tbtc = {
     {
       "block": 23532116,
       "timestamp": 1759915367,
-      "datetime": "2025-10-08T09:22:47",
+      "datetime": "2025-10-08T13:22:47",
       "pps_btc": 1.0262809760948464,
       "ret_step": -2.665538338478279e-05,
       "ret_step_pct": -0.002665538338478279,
@@ -2989,7 +2989,7 @@ const yieldData_tbtc = {
     {
       "block": 23532414,
       "timestamp": 1759918967,
-      "datetime": "2025-10-08T10:22:47",
+      "datetime": "2025-10-08T14:22:47",
       "pps_btc": 1.026270991523116,
       "ret_step": -9.728887081529854e-06,
       "ret_step_pct": -0.0009728887081529853,
@@ -2998,7 +2998,7 @@ const yieldData_tbtc = {
     {
       "block": 23532712,
       "timestamp": 1759922627,
-      "datetime": "2025-10-08T11:23:47",
+      "datetime": "2025-10-08T15:23:47",
       "pps_btc": 1.026250225441729,
       "ret_step": -2.0234500983368444e-05,
       "ret_step_pct": -0.0020234500983368443,
@@ -3007,7 +3007,7 @@ const yieldData_tbtc = {
     {
       "block": 23533009,
       "timestamp": 1759926251,
-      "datetime": "2025-10-08T12:24:11",
+      "datetime": "2025-10-08T16:24:11",
       "pps_btc": 1.026242097684523,
       "ret_step": -7.919859118570785e-06,
       "ret_step_pct": -0.0007919859118570785,
@@ -3016,7 +3016,7 @@ const yieldData_tbtc = {
     {
       "block": 23533306,
       "timestamp": 1759929851,
-      "datetime": "2025-10-08T13:24:11",
+      "datetime": "2025-10-08T17:24:11",
       "pps_btc": 1.026234023689642,
       "ret_step": -7.867534277941915e-06,
       "ret_step_pct": -0.0007867534277941915,
@@ -3025,7 +3025,7 @@ const yieldData_tbtc = {
     {
       "block": 23533604,
       "timestamp": 1759933451,
-      "datetime": "2025-10-08T14:24:11",
+      "datetime": "2025-10-08T18:24:11",
       "pps_btc": 1.026225949694603,
       "ret_step": -7.867596330674544e-06,
       "ret_step_pct": -0.0007867596330674544,
@@ -3034,7 +3034,7 @@ const yieldData_tbtc = {
     {
       "block": 23533902,
       "timestamp": 1759937051,
-      "datetime": "2025-10-08T15:24:11",
+      "datetime": "2025-10-08T19:24:11",
       "pps_btc": 1.0262178756994054,
       "ret_step": -7.867658384384804e-06,
       "ret_step_pct": -0.0007867658384384804,
@@ -3043,7 +3043,7 @@ const yieldData_tbtc = {
     {
       "block": 23534199,
       "timestamp": 1759940651,
-      "datetime": "2025-10-08T16:24:11",
+      "datetime": "2025-10-08T20:24:11",
       "pps_btc": 1.0262098017040497,
       "ret_step": -7.867720439069797e-06,
       "ret_step_pct": -0.0007867720439069797,
@@ -3052,7 +3052,7 @@ const yieldData_tbtc = {
     {
       "block": 23534495,
       "timestamp": 1759944251,
-      "datetime": "2025-10-08T17:24:11",
+      "datetime": "2025-10-08T21:24:11",
       "pps_btc": 1.0260721150173309,
       "ret_step": -0.00013417011462026228,
       "ret_step_pct": -0.013417011462026228,
@@ -3061,7 +3061,7 @@ const yieldData_tbtc = {
     {
       "block": 23534793,
       "timestamp": 1759947851,
-      "datetime": "2025-10-08T18:24:11",
+      "datetime": "2025-10-08T22:24:11",
       "pps_btc": 1.0259936742210856,
       "ret_step": -7.644764446591563e-05,
       "ret_step_pct": -0.007644764446591563,
@@ -3070,7 +3070,7 @@ const yieldData_tbtc = {
     {
       "block": 23535091,
       "timestamp": 1759951451,
-      "datetime": "2025-10-08T19:24:11",
+      "datetime": "2025-10-08T23:24:11",
       "pps_btc": 1.0259053231077409,
       "ret_step": -8.611272716836042e-05,
       "ret_step_pct": -0.008611272716836042,
@@ -3079,7 +3079,7 @@ const yieldData_tbtc = {
     {
       "block": 23535389,
       "timestamp": 1759955051,
-      "datetime": "2025-10-08T20:24:11",
+      "datetime": "2025-10-09T00:24:11",
       "pps_btc": 1.0258973291339761,
       "ret_step": -7.792116469963447e-06,
       "ret_step_pct": -0.0007792116469963447,
@@ -3088,7 +3088,7 @@ const yieldData_tbtc = {
     {
       "block": 23535687,
       "timestamp": 1759958651,
-      "datetime": "2025-10-08T21:24:11",
+      "datetime": "2025-10-09T01:24:11",
       "pps_btc": 1.0258893351600549,
       "ret_step": -7.792177339995818e-06,
       "ret_step_pct": -0.0007792177339995818,
@@ -3097,7 +3097,7 @@ const yieldData_tbtc = {
     {
       "block": 23535983,
       "timestamp": 1759962251,
-      "datetime": "2025-10-08T22:24:11",
+      "datetime": "2025-10-09T02:24:11",
       "pps_btc": 1.0257769985323648,
       "ret_step": -0.00010950170144068973,
       "ret_step_pct": -0.010950170144068972,
@@ -3106,7 +3106,7 @@ const yieldData_tbtc = {
     {
       "block": 23536283,
       "timestamp": 1759965851,
-      "datetime": "2025-10-08T23:24:11",
+      "datetime": "2025-10-09T03:24:11",
       "pps_btc": 1.0260605175592958,
       "ret_step": 0.00027639440866433264,
       "ret_step_pct": 0.027639440866433263,
@@ -3115,7 +3115,7 @@ const yieldData_tbtc = {
     {
       "block": 23536581,
       "timestamp": 1759969451,
-      "datetime": "2025-10-09T00:24:11",
+      "datetime": "2025-10-09T04:24:11",
       "pps_btc": 1.0260959568294097,
       "ret_step": 3.453916168430092e-05,
       "ret_step_pct": 0.003453916168430092,
@@ -3124,7 +3124,7 @@ const yieldData_tbtc = {
     {
       "block": 23536881,
       "timestamp": 1759973051,
-      "datetime": "2025-10-09T01:24:11",
+      "datetime": "2025-10-09T05:24:11",
       "pps_btc": 1.0259118288041023,
       "ret_step": -0.00017944523032350923,
       "ret_step_pct": -0.017944523032350924,
@@ -3133,7 +3133,7 @@ const yieldData_tbtc = {
     {
       "block": 23537180,
       "timestamp": 1759976651,
-      "datetime": "2025-10-09T02:24:11",
+      "datetime": "2025-10-09T06:24:11",
       "pps_btc": 1.0258014640204385,
       "ret_step": -0.00010757726011646673,
       "ret_step_pct": -0.010757726011646674,
@@ -3142,7 +3142,7 @@ const yieldData_tbtc = {
     {
       "block": 23537478,
       "timestamp": 1759980251,
-      "datetime": "2025-10-09T03:24:11",
+      "datetime": "2025-10-09T07:24:11",
       "pps_btc": 1.0255165900751961,
       "ret_step": -0.00027770865536276817,
       "ret_step_pct": -0.027770865536276817,
@@ -3151,7 +3151,7 @@ const yieldData_tbtc = {
     {
       "block": 23537774,
       "timestamp": 1759983851,
-      "datetime": "2025-10-09T04:24:11",
+      "datetime": "2025-10-09T08:24:11",
       "pps_btc": 1.025481409637131,
       "ret_step": -3.430508916738576e-05,
       "ret_step_pct": -0.003430508916738576,
@@ -3160,7 +3160,7 @@ const yieldData_tbtc = {
     {
       "block": 23538072,
       "timestamp": 1759987451,
-      "datetime": "2025-10-09T05:24:11",
+      "datetime": "2025-10-09T09:24:11",
       "pps_btc": 1.025476313064569,
       "ret_step": -4.969931696663749e-06,
       "ret_step_pct": -0.0004969931696663749,
@@ -3169,7 +3169,7 @@ const yieldData_tbtc = {
     {
       "block": 23538369,
       "timestamp": 1759991051,
-      "datetime": "2025-10-09T06:24:11",
+      "datetime": "2025-10-09T10:24:11",
       "pps_btc": 1.0254684884061525,
       "ret_step": -7.630267337122122e-06,
       "ret_step_pct": -0.0007630267337122122,
@@ -3178,7 +3178,7 @@ const yieldData_tbtc = {
     {
       "block": 23538668,
       "timestamp": 1759994651,
-      "datetime": "2025-10-09T07:24:11",
+      "datetime": "2025-10-09T11:24:11",
       "pps_btc": 1.0254606203120322,
       "ret_step": -7.672682494931742e-06,
       "ret_step_pct": -0.0007672682494931742,
@@ -3187,7 +3187,7 @@ const yieldData_tbtc = {
     {
       "block": 23538964,
       "timestamp": 1759998251,
-      "datetime": "2025-10-09T08:24:11",
+      "datetime": "2025-10-09T12:24:11",
       "pps_btc": 1.0255218733362295,
       "ret_step": 5.9732205200050125e-05,
       "ret_step_pct": 0.005973220520005013,
@@ -3196,7 +3196,7 @@ const yieldData_tbtc = {
     {
       "block": 23539263,
       "timestamp": 1760001851,
-      "datetime": "2025-10-09T09:24:11",
+      "datetime": "2025-10-09T13:24:11",
       "pps_btc": 1.0252121522855635,
       "ret_step": -0.00030201311031852884,
       "ret_step_pct": -0.030201311031852883,
@@ -3205,7 +3205,7 @@ const yieldData_tbtc = {
     {
       "block": 23539561,
       "timestamp": 1760005451,
-      "datetime": "2025-10-09T10:24:11",
+      "datetime": "2025-10-09T14:24:11",
       "pps_btc": 1.0251941390917705,
       "ret_step": -1.7570210958438377e-05,
       "ret_step_pct": -0.0017570210958438377,
@@ -3214,7 +3214,7 @@ const yieldData_tbtc = {
     {
       "block": 23539859,
       "timestamp": 1760009051,
-      "datetime": "2025-10-09T11:24:11",
+      "datetime": "2025-10-09T15:24:11",
       "pps_btc": 1.02522766359362,
       "ret_step": 3.270063744126228e-05,
       "ret_step_pct": 0.003270063744126228,
@@ -3223,7 +3223,7 @@ const yieldData_tbtc = {
     {
       "block": 23540156,
       "timestamp": 1760012651,
-      "datetime": "2025-10-09T12:24:11",
+      "datetime": "2025-10-09T16:24:11",
       "pps_btc": 1.025450080917157,
       "ret_step": 0.00021694432508523868,
       "ret_step_pct": 0.02169443250852387,
@@ -3232,7 +3232,7 @@ const yieldData_tbtc = {
     {
       "block": 23540455,
       "timestamp": 1760016251,
-      "datetime": "2025-10-09T13:24:11",
+      "datetime": "2025-10-09T17:24:11",
       "pps_btc": 1.026280950685329,
       "ret_step": 0.0008102488688956147,
       "ret_step_pct": 0.08102488688956147,
@@ -3241,7 +3241,7 @@ const yieldData_tbtc = {
     {
       "block": 23540753,
       "timestamp": 1760019851,
-      "datetime": "2025-10-09T14:24:11",
+      "datetime": "2025-10-09T18:24:11",
       "pps_btc": 1.0262728398816836,
       "ret_step": -7.90310259582113e-06,
       "ret_step_pct": -0.000790310259582113,
@@ -3250,7 +3250,7 @@ const yieldData_tbtc = {
     {
       "block": 23541049,
       "timestamp": 1760023451,
-      "datetime": "2025-10-09T15:24:11",
+      "datetime": "2025-10-09T19:24:11",
       "pps_btc": 1.026264729077879,
       "ret_step": -7.90316521043378e-06,
       "ret_step_pct": -0.000790316521043378,
@@ -3259,7 +3259,7 @@ const yieldData_tbtc = {
     {
       "block": 23541348,
       "timestamp": 1760027051,
-      "datetime": "2025-10-09T16:24:11",
+      "datetime": "2025-10-09T20:24:11",
       "pps_btc": 1.026411945310005,
       "ret_step": 0.00014344859367641032,
       "ret_step_pct": 0.014344859367641032,
@@ -3268,7 +3268,7 @@ const yieldData_tbtc = {
     {
       "block": 23541647,
       "timestamp": 1760030651,
-      "datetime": "2025-10-09T17:24:11",
+      "datetime": "2025-10-09T21:24:11",
       "pps_btc": 1.0258640346913133,
       "ret_step": -0.0005338116154973282,
       "ret_step_pct": -0.05338116154973282,
@@ -3277,7 +3277,7 @@ const yieldData_tbtc = {
     {
       "block": 23541947,
       "timestamp": 1760034251,
-      "datetime": "2025-10-09T18:24:11",
+      "datetime": "2025-10-09T22:24:11",
       "pps_btc": 1.025853822739994,
       "ret_step": -9.954488093770455e-06,
       "ret_step_pct": -0.0009954488093770455,
@@ -3286,7 +3286,7 @@ const yieldData_tbtc = {
     {
       "block": 23542247,
       "timestamp": 1760037851,
-      "datetime": "2025-10-09T19:24:11",
+      "datetime": "2025-10-09T23:24:11",
       "pps_btc": 1.0259426100573177,
       "ret_step": 8.654967730821472e-05,
       "ret_step_pct": 0.008654967730821472,
@@ -3295,7 +3295,7 @@ const yieldData_tbtc = {
     {
       "block": 23542546,
       "timestamp": 1760041451,
-      "datetime": "2025-10-09T20:24:11",
+      "datetime": "2025-10-10T00:24:11",
       "pps_btc": 1.0258285447263418,
       "ret_step": -0.00011118100550438231,
       "ret_step_pct": -0.01111810055043823,
@@ -3304,7 +3304,7 @@ const yieldData_tbtc = {
     {
       "block": 23542843,
       "timestamp": 1760045051,
-      "datetime": "2025-10-09T21:24:11",
+      "datetime": "2025-10-10T01:24:11",
       "pps_btc": 1.0258219580781607,
       "ret_step": -6.420808053079774e-06,
       "ret_step_pct": -0.0006420808053079774,
@@ -3313,7 +3313,7 @@ const yieldData_tbtc = {
     {
       "block": 23543139,
       "timestamp": 1760048651,
-      "datetime": "2025-10-09T22:24:11",
+      "datetime": "2025-10-10T02:24:11",
       "pps_btc": 1.026427308223548,
       "ret_step": 0.0005901122905590782,
       "ret_step_pct": 0.05901122905590782,
@@ -3322,7 +3322,7 @@ const yieldData_tbtc = {
     {
       "block": 23543437,
       "timestamp": 1760052251,
-      "datetime": "2025-10-09T23:24:11",
+      "datetime": "2025-10-10T03:24:11",
       "pps_btc": 1.0267766943034995,
       "ret_step": 0.0003403904759277774,
       "ret_step_pct": 0.03403904759277774,
@@ -3331,7 +3331,7 @@ const yieldData_tbtc = {
     {
       "block": 23543736,
       "timestamp": 1760055851,
-      "datetime": "2025-10-10T00:24:11",
+      "datetime": "2025-10-10T04:24:11",
       "pps_btc": 1.0267686810384133,
       "ret_step": -7.804291946434072e-06,
       "ret_step_pct": -0.0007804291946434072,
@@ -3340,7 +3340,7 @@ const yieldData_tbtc = {
     {
       "block": 23544030,
       "timestamp": 1760059451,
-      "datetime": "2025-10-10T01:24:11",
+      "datetime": "2025-10-10T05:24:11",
       "pps_btc": 1.0267601705888347,
       "ret_step": -8.288575348792324e-06,
       "ret_step_pct": -0.0008288575348792324,
@@ -3349,7 +3349,7 @@ const yieldData_tbtc = {
     {
       "block": 23544327,
       "timestamp": 1760063051,
-      "datetime": "2025-10-10T02:24:11",
+      "datetime": "2025-10-10T06:24:11",
       "pps_btc": 1.0267520417454787,
       "ret_step": -7.916983526271967e-06,
       "ret_step_pct": -0.0007916983526271967,
@@ -3358,7 +3358,7 @@ const yieldData_tbtc = {
     {
       "block": 23544626,
       "timestamp": 1760066651,
-      "datetime": "2025-10-10T03:24:11",
+      "datetime": "2025-10-10T07:24:11",
       "pps_btc": 1.026743913107416,
       "ret_step": -7.916846261001159e-06,
       "ret_step_pct": -0.0007916846261001159,
@@ -3367,7 +3367,7 @@ const yieldData_tbtc = {
     {
       "block": 23544925,
       "timestamp": 1760070251,
-      "datetime": "2025-10-10T04:24:11",
+      "datetime": "2025-10-10T08:24:11",
       "pps_btc": 1.0267357844691938,
       "ret_step": -7.916909093373507e-06,
       "ret_step_pct": -0.0007916909093373507,
@@ -3376,7 +3376,7 @@ const yieldData_tbtc = {
     {
       "block": 23545225,
       "timestamp": 1760073851,
-      "datetime": "2025-10-10T05:24:11",
+      "datetime": "2025-10-10T09:24:11",
       "pps_btc": 1.026727655625359,
       "ret_step": -7.917172029733516e-06,
       "ret_step_pct": -0.0007917172029733516,
@@ -3385,7 +3385,7 @@ const yieldData_tbtc = {
     {
       "block": 23545524,
       "timestamp": 1760077451,
-      "datetime": "2025-10-10T06:24:11",
+      "datetime": "2025-10-10T10:24:11",
       "pps_btc": 1.0267195269868177,
       "ret_step": -7.917034762691778e-06,
       "ret_step_pct": -0.0007917034762691778,
@@ -3394,7 +3394,7 @@ const yieldData_tbtc = {
     {
       "block": 23545822,
       "timestamp": 1760081051,
-      "datetime": "2025-10-10T07:24:11",
+      "datetime": "2025-10-10T11:24:11",
       "pps_btc": 1.0267113981426639,
       "ret_step": -7.917297704217492e-06,
       "ret_step_pct": -0.0007917297704217492,
@@ -3403,7 +3403,7 @@ const yieldData_tbtc = {
     {
       "block": 23546121,
       "timestamp": 1760084651,
-      "datetime": "2025-10-10T08:24:11",
+      "datetime": "2025-10-10T12:24:11",
       "pps_btc": 1.0267032695038032,
       "ret_step": -7.917160435994797e-06,
       "ret_step_pct": -0.0007917160435994797,
@@ -3412,7 +3412,7 @@ const yieldData_tbtc = {
     {
       "block": 23546416,
       "timestamp": 1760088251,
-      "datetime": "2025-10-10T09:24:11",
+      "datetime": "2025-10-10T13:24:11",
       "pps_btc": 1.026695140864783,
       "ret_step": -7.917223273349954e-06,
       "ret_step_pct": -0.0007917223273349954,
@@ -3421,7 +3421,7 @@ const yieldData_tbtc = {
     {
       "block": 23546714,
       "timestamp": 1760091851,
-      "datetime": "2025-10-10T10:24:11",
+      "datetime": "2025-10-10T14:24:11",
       "pps_btc": 1.0266870120201506,
       "ret_step": -7.917486222621148e-06,
       "ret_step_pct": -0.0007917486222621148,
@@ -3430,7 +3430,7 @@ const yieldData_tbtc = {
     {
       "block": 23547013,
       "timestamp": 1760095451,
-      "datetime": "2025-10-10T11:24:11",
+      "datetime": "2025-10-10T15:24:11",
       "pps_btc": 1.0266788833808111,
       "ret_step": -7.917348952630426e-06,
       "ret_step_pct": -0.0007917348952630426,
@@ -3439,7 +3439,7 @@ const yieldData_tbtc = {
     {
       "block": 23547312,
       "timestamp": 1760099051,
-      "datetime": "2025-10-10T12:24:11",
+      "datetime": "2025-10-10T16:24:11",
       "pps_btc": 1.0266707545358593,
       "ret_step": -7.91761190706879e-06,
       "ret_step_pct": -0.000791761190706879,
@@ -3448,7 +3448,7 @@ const yieldData_tbtc = {
     {
       "block": 23547611,
       "timestamp": 1760102651,
-      "datetime": "2025-10-10T13:24:11",
+      "datetime": "2025-10-10T17:24:11",
       "pps_btc": 1.0266626258962008,
       "ret_step": -7.917474635897096e-06,
       "ret_step_pct": -0.0007917474635897096,
@@ -3457,7 +3457,7 @@ const yieldData_tbtc = {
     {
       "block": 23547908,
       "timestamp": 1760106251,
-      "datetime": "2025-10-10T14:24:11",
+      "datetime": "2025-10-10T18:24:11",
       "pps_btc": 1.0266295542493118,
       "ret_step": -3.221276985739389e-05,
       "ret_step_pct": -0.003221276985739389,
@@ -3466,7 +3466,7 @@ const yieldData_tbtc = {
     {
       "block": 23548203,
       "timestamp": 1760109851,
-      "datetime": "2025-10-10T15:24:11",
+      "datetime": "2025-10-10T19:24:11",
       "pps_btc": 1.0267741374697166,
       "ret_step": 0.00014083290297500894,
       "ret_step_pct": 0.014083290297500894,
@@ -3475,7 +3475,7 @@ const yieldData_tbtc = {
     {
       "block": 23548502,
       "timestamp": 1760113451,
-      "datetime": "2025-10-10T16:24:11",
+      "datetime": "2025-10-10T20:24:11",
       "pps_btc": 1.0261261874777057,
       "ret_step": -0.0006310540637569998,
       "ret_step_pct": -0.06310540637569997,
@@ -3484,7 +3484,7 @@ const yieldData_tbtc = {
     {
       "block": 23548797,
       "timestamp": 1760117051,
-      "datetime": "2025-10-10T17:24:11",
+      "datetime": "2025-10-10T21:24:11",
       "pps_btc": 1.0259720103224017,
       "ret_step": -0.00015025165246307755,
       "ret_step_pct": -0.015025165246307755,
@@ -3493,7 +3493,7 @@ const yieldData_tbtc = {
     {
       "block": 23549095,
       "timestamp": 1760120651,
-      "datetime": "2025-10-10T18:24:11",
+      "datetime": "2025-10-10T22:24:11",
       "pps_btc": 1.0262164545700745,
       "ret_step": 0.00023825625379013,
       "ret_step_pct": 0.023825625379013,
@@ -3502,7 +3502,7 @@ const yieldData_tbtc = {
     {
       "block": 23549392,
       "timestamp": 1760124251,
-      "datetime": "2025-10-10T19:24:11",
+      "datetime": "2025-10-10T23:24:11",
       "pps_btc": 1.0263230713479292,
       "ret_step": 0.00010389306990726462,
       "ret_step_pct": 0.010389306990726462,
@@ -3511,7 +3511,7 @@ const yieldData_tbtc = {
     {
       "block": 23549690,
       "timestamp": 1760127851,
-      "datetime": "2025-10-10T20:24:11",
+      "datetime": "2025-10-11T00:24:11",
       "pps_btc": 1.02631144708664,
       "ret_step": -1.1326122946784377e-05,
       "ret_step_pct": -0.0011326122946784378,
@@ -3520,7 +3520,7 @@ const yieldData_tbtc = {
     {
       "block": 23549989,
       "timestamp": 1760131451,
-      "datetime": "2025-10-10T21:24:11",
+      "datetime": "2025-10-11T01:24:11",
       "pps_btc": 0.9867978296912869,
       "ret_step": -0.038500610616318466,
       "ret_step_pct": -3.8500610616318465,
@@ -3529,7 +3529,7 @@ const yieldData_tbtc = {
     {
       "block": 23550286,
       "timestamp": 1760135051,
-      "datetime": "2025-10-10T22:24:11",
+      "datetime": "2025-10-11T02:24:11",
       "pps_btc": 1.0070908470340103,
       "ret_step": 0.02056451355296556,
       "ret_step_pct": 2.056451355296556,
@@ -3538,7 +3538,7 @@ const yieldData_tbtc = {
     {
       "block": 23550585,
       "timestamp": 1760138651,
-      "datetime": "2025-10-10T23:24:11",
+      "datetime": "2025-10-11T03:24:11",
       "pps_btc": 1.0072398704312793,
       "ret_step": 0.00014797413531032652,
       "ret_step_pct": 0.014797413531032652,
@@ -3547,7 +3547,7 @@ const yieldData_tbtc = {
     {
       "block": 23550883,
       "timestamp": 1760142251,
-      "datetime": "2025-10-11T00:24:11",
+      "datetime": "2025-10-11T04:24:11",
       "pps_btc": 1.0061991681345865,
       "ret_step": -0.0010332219039810655,
       "ret_step_pct": -0.10332219039810656,
@@ -3556,7 +3556,7 @@ const yieldData_tbtc = {
     {
       "block": 23551182,
       "timestamp": 1760145851,
-      "datetime": "2025-10-11T01:24:11",
+      "datetime": "2025-10-11T05:24:11",
       "pps_btc": 1.0065650860444004,
       "ret_step": 0.0003636634986413682,
       "ret_step_pct": 0.03636634986413682,
@@ -3565,7 +3565,7 @@ const yieldData_tbtc = {
     {
       "block": 23551481,
       "timestamp": 1760149451,
-      "datetime": "2025-10-11T02:24:11",
+      "datetime": "2025-10-11T06:24:11",
       "pps_btc": 1.0079612608551183,
       "ret_step": 0.001387068586100724,
       "ret_step_pct": 0.1387068586100724,
@@ -3574,7 +3574,7 @@ const yieldData_tbtc = {
     {
       "block": 23551779,
       "timestamp": 1760153051,
-      "datetime": "2025-10-11T03:24:11",
+      "datetime": "2025-10-11T07:24:11",
       "pps_btc": 1.0079390223839604,
       "ret_step": -2.206282326671233e-05,
       "ret_step_pct": -0.002206282326671233,
@@ -3583,7 +3583,7 @@ const yieldData_tbtc = {
     {
       "block": 23552077,
       "timestamp": 1760156651,
-      "datetime": "2025-10-11T04:24:11",
+      "datetime": "2025-10-11T08:24:11",
       "pps_btc": 1.0079352210964418,
       "ret_step": -3.7713467125464187e-06,
       "ret_step_pct": -0.0003771346712546419,
@@ -3592,7 +3592,7 @@ const yieldData_tbtc = {
     {
       "block": 23552375,
       "timestamp": 1760160251,
-      "datetime": "2025-10-11T05:24:11",
+      "datetime": "2025-10-11T09:24:11",
       "pps_btc": 1.0079274228187847,
       "ret_step": -7.736883773943286e-06,
       "ret_step_pct": -0.0007736883773943286,
@@ -3601,7 +3601,7 @@ const yieldData_tbtc = {
     {
       "block": 23552673,
       "timestamp": 1760163851,
-      "datetime": "2025-10-11T06:24:11",
+      "datetime": "2025-10-11T10:24:11",
       "pps_btc": 1.0079210937530343,
       "ret_step": -6.279287185778756e-06,
       "ret_step_pct": -0.0006279287185778756,
@@ -3610,7 +3610,7 @@ const yieldData_tbtc = {
     {
       "block": 23552969,
       "timestamp": 1760167451,
-      "datetime": "2025-10-11T07:24:11",
+      "datetime": "2025-10-11T11:24:11",
       "pps_btc": 1.0080151278552978,
       "ret_step": 9.329510300581694e-05,
       "ret_step_pct": 0.009329510300581694,
@@ -3619,7 +3619,7 @@ const yieldData_tbtc = {
     {
       "block": 23553267,
       "timestamp": 1760171051,
-      "datetime": "2025-10-11T08:24:11",
+      "datetime": "2025-10-11T12:24:11",
       "pps_btc": 1.0101739831804133,
       "ret_step": 0.002141689410662723,
       "ret_step_pct": 0.2141689410662723,
@@ -3628,7 +3628,7 @@ const yieldData_tbtc = {
     {
       "block": 23553567,
       "timestamp": 1760174651,
-      "datetime": "2025-10-11T09:24:11",
+      "datetime": "2025-10-11T13:24:11",
       "pps_btc": 1.0101663509710912,
       "ret_step": -7.555341405767442e-06,
       "ret_step_pct": -0.0007555341405767442,
@@ -3637,7 +3637,7 @@ const yieldData_tbtc = {
     {
       "block": 23553867,
       "timestamp": 1760178251,
-      "datetime": "2025-10-11T10:24:11",
+      "datetime": "2025-10-11T14:24:11",
       "pps_btc": 1.0101586552886512,
       "ret_step": -7.618232811280045e-06,
       "ret_step_pct": -0.0007618232811280045,
@@ -3646,7 +3646,7 @@ const yieldData_tbtc = {
     {
       "block": 23554165,
       "timestamp": 1760181851,
-      "datetime": "2025-10-11T11:24:11",
+      "datetime": "2025-10-11T15:24:11",
       "pps_btc": 1.0093666196996007,
       "ret_step": -0.000784070487248565,
       "ret_step_pct": -0.0784070487248565,
@@ -3655,7 +3655,7 @@ const yieldData_tbtc = {
     {
       "block": 23554465,
       "timestamp": 1760185451,
-      "datetime": "2025-10-11T12:24:11",
+      "datetime": "2025-10-11T16:24:11",
       "pps_btc": 1.0093588947157912,
       "ret_step": -7.653298275153032e-06,
       "ret_step_pct": -0.0007653298275153032,
@@ -3664,7 +3664,7 @@ const yieldData_tbtc = {
     {
       "block": 23554762,
       "timestamp": 1760189051,
-      "datetime": "2025-10-11T13:24:11",
+      "datetime": "2025-10-11T17:24:11",
       "pps_btc": 1.0093512395954443,
       "ret_step": -7.584141168261543e-06,
       "ret_step_pct": -0.0007584141168261543,
@@ -3673,7 +3673,7 @@ const yieldData_tbtc = {
     {
       "block": 23555060,
       "timestamp": 1760192651,
-      "datetime": "2025-10-11T14:24:11",
+      "datetime": "2025-10-11T18:24:11",
       "pps_btc": 1.009343586234118,
       "ret_step": -7.582455963828336e-06,
       "ret_step_pct": -0.0007582455963828336,
@@ -3682,7 +3682,7 @@ const yieldData_tbtc = {
     {
       "block": 23555358,
       "timestamp": 1760196251,
-      "datetime": "2025-10-11T15:24:11",
+      "datetime": "2025-10-11T19:24:11",
       "pps_btc": 1.009352834545543,
       "ret_step": 9.162698957089174e-06,
       "ret_step_pct": 0.0009162698957089173,
@@ -3691,7 +3691,7 @@ const yieldData_tbtc = {
     {
       "block": 23555654,
       "timestamp": 1760199851,
-      "datetime": "2025-10-11T16:24:11",
+      "datetime": "2025-10-11T20:24:11",
       "pps_btc": 1.0093451800967643,
       "ret_step": -7.583521358126848e-06,
       "ret_step_pct": -0.0007583521358126848,
@@ -3700,7 +3700,7 @@ const yieldData_tbtc = {
     {
       "block": 23555952,
       "timestamp": 1760203451,
-      "datetime": "2025-10-11T17:24:11",
+      "datetime": "2025-10-11T21:24:11",
       "pps_btc": 1.0093388547030682,
       "ret_step": -6.266829049942652e-06,
       "ret_step_pct": -0.0006266829049942652,
@@ -3709,7 +3709,7 @@ const yieldData_tbtc = {
     {
       "block": 23556248,
       "timestamp": 1760207051,
-      "datetime": "2025-10-11T18:24:11",
+      "datetime": "2025-10-11T22:24:11",
       "pps_btc": 1.0093314067830002,
       "ret_step": -7.379008579147646e-06,
       "ret_step_pct": -0.0007379008579147646,
@@ -3718,7 +3718,7 @@ const yieldData_tbtc = {
     {
       "block": 23556547,
       "timestamp": 1760210651,
-      "datetime": "2025-10-11T19:24:11",
+      "datetime": "2025-10-11T23:24:11",
       "pps_btc": 1.0093252276569444,
       "ret_step": -6.121999190922307e-06,
       "ret_step_pct": -0.0006121999190922307,
@@ -3727,7 +3727,7 @@ const yieldData_tbtc = {
     {
       "block": 23556847,
       "timestamp": 1760214251,
-      "datetime": "2025-10-11T20:24:11",
+      "datetime": "2025-10-12T00:24:11",
       "pps_btc": 1.0095359377950521,
       "ret_step": 0.00020876337213614703,
       "ret_step_pct": 0.020876337213614704,
@@ -3736,7 +3736,7 @@ const yieldData_tbtc = {
     {
       "block": 23557146,
       "timestamp": 1760217851,
-      "datetime": "2025-10-11T21:24:11",
+      "datetime": "2025-10-12T01:24:11",
       "pps_btc": 1.0113305652085713,
       "ret_step": 0.0017776756094873521,
       "ret_step_pct": 0.17776756094873522,
@@ -3745,7 +3745,7 @@ const yieldData_tbtc = {
     {
       "block": 23557445,
       "timestamp": 1760221451,
-      "datetime": "2025-10-11T22:24:11",
+      "datetime": "2025-10-12T02:24:11",
       "pps_btc": 1.0113248271279172,
       "ret_step": -5.6737933685042034e-06,
       "ret_step_pct": -0.0005673793368504203,
@@ -3754,7 +3754,7 @@ const yieldData_tbtc = {
     {
       "block": 23557741,
       "timestamp": 1760225051,
-      "datetime": "2025-10-11T23:24:11",
+      "datetime": "2025-10-12T03:24:11",
       "pps_btc": 1.0113171029668018,
       "ret_step": -7.637665869627674e-06,
       "ret_step_pct": -0.0007637665869627674,
@@ -3763,7 +3763,7 @@ const yieldData_tbtc = {
     {
       "block": 23558040,
       "timestamp": 1760228651,
-      "datetime": "2025-10-12T00:24:11",
+      "datetime": "2025-10-12T04:24:11",
       "pps_btc": 1.0113093781698796,
       "ret_step": -7.638352895881539e-06,
       "ret_step_pct": -0.000763835289588154,
@@ -3772,7 +3772,7 @@ const yieldData_tbtc = {
     {
       "block": 23558338,
       "timestamp": 1760232251,
-      "datetime": "2025-10-12T01:24:11",
+      "datetime": "2025-10-12T05:24:11",
       "pps_btc": 1.0116493631715726,
       "ret_step": 0.0003361829812238964,
       "ret_step_pct": 0.03361829812238964,
@@ -3781,7 +3781,7 @@ const yieldData_tbtc = {
     {
       "block": 23558637,
       "timestamp": 1760235839,
-      "datetime": "2025-10-12T02:23:59",
+      "datetime": "2025-10-12T06:23:59",
       "pps_btc": 1.0116582261150688,
       "ret_step": 8.760884767915258e-06,
       "ret_step_pct": 0.0008760884767915258,
@@ -3790,7 +3790,7 @@ const yieldData_tbtc = {
     {
       "block": 23558934,
       "timestamp": 1760239451,
-      "datetime": "2025-10-12T03:24:11",
+      "datetime": "2025-10-12T07:24:11",
       "pps_btc": 1.0118964426380224,
       "ret_step": 0.0002354713447724524,
       "ret_step_pct": 0.02354713447724524,
@@ -3799,7 +3799,7 @@ const yieldData_tbtc = {
     {
       "block": 23559233,
       "timestamp": 1760243051,
-      "datetime": "2025-10-12T04:24:11",
+      "datetime": "2025-10-12T08:24:11",
       "pps_btc": 1.0118888122855725,
       "ret_step": -7.540645592133528e-06,
       "ret_step_pct": -0.0007540645592133529,
@@ -3808,7 +3808,7 @@ const yieldData_tbtc = {
     {
       "block": 23559531,
       "timestamp": 1760246627,
-      "datetime": "2025-10-12T05:23:47",
+      "datetime": "2025-10-12T09:23:47",
       "pps_btc": 1.0119180219987807,
       "ret_step": 2.8866524516933306e-05,
       "ret_step_pct": 0.0028866524516933307,
@@ -3817,7 +3817,7 @@ const yieldData_tbtc = {
     {
       "block": 23559829,
       "timestamp": 1760250227,
-      "datetime": "2025-10-12T06:23:47",
+      "datetime": "2025-10-12T10:23:47",
       "pps_btc": 1.011910248525353,
       "ret_step": -7.681920134490268e-06,
       "ret_step_pct": -0.0007681920134490268,
@@ -3826,7 +3826,7 @@ const yieldData_tbtc = {
     {
       "block": 23560127,
       "timestamp": 1760253815,
-      "datetime": "2025-10-12T07:23:35",
+      "datetime": "2025-10-12T11:23:35",
       "pps_btc": 1.011904352268551,
       "ret_step": -5.826857481369082e-06,
       "ret_step_pct": -0.0005826857481369082,
@@ -3835,7 +3835,7 @@ const yieldData_tbtc = {
     {
       "block": 23560425,
       "timestamp": 1760257415,
-      "datetime": "2025-10-12T08:23:35",
+      "datetime": "2025-10-12T12:23:35",
       "pps_btc": 1.0118965778122067,
       "ret_step": -7.682995262165573e-06,
       "ret_step_pct": -0.0007682995262165573,
@@ -3844,7 +3844,7 @@ const yieldData_tbtc = {
     {
       "block": 23560723,
       "timestamp": 1760261003,
-      "datetime": "2025-10-12T09:23:23",
+      "datetime": "2025-10-12T13:23:23",
       "pps_btc": 1.0118894005845287,
       "ret_step": -7.092847070788285e-06,
       "ret_step_pct": -0.0007092847070788285,
@@ -3853,7 +3853,7 @@ const yieldData_tbtc = {
     {
       "block": 23561021,
       "timestamp": 1760264579,
-      "datetime": "2025-10-12T10:22:59",
+      "datetime": "2025-10-12T14:22:59",
       "pps_btc": 1.0118816768770302,
       "ret_step": -7.632956224255652e-06,
       "ret_step_pct": -0.0007632956224255652,
@@ -3862,7 +3862,7 @@ const yieldData_tbtc = {
     {
       "block": 23561319,
       "timestamp": 1760268167,
-      "datetime": "2025-10-12T11:22:47",
+      "datetime": "2025-10-12T15:22:47",
       "pps_btc": 1.011873927527702,
       "ret_step": -7.6583552261474e-06,
       "ret_step_pct": -0.00076583552261474,
@@ -3871,7 +3871,7 @@ const yieldData_tbtc = {
     {
       "block": 23561617,
       "timestamp": 1760271767,
-      "datetime": "2025-10-12T12:22:47",
+      "datetime": "2025-10-12T16:22:47",
       "pps_btc": 1.0117937644709711,
       "ret_step": -7.922237597987658e-05,
       "ret_step_pct": -0.007922237597987658,
@@ -3880,7 +3880,7 @@ const yieldData_tbtc = {
     {
       "block": 23561915,
       "timestamp": 1760275367,
-      "datetime": "2025-10-12T13:22:47",
+      "datetime": "2025-10-12T17:22:47",
       "pps_btc": 1.011798298887011,
       "ret_step": 4.481561558154962e-06,
       "ret_step_pct": 0.0004481561558154962,
@@ -3889,7 +3889,7 @@ const yieldData_tbtc = {
     {
       "block": 23562213,
       "timestamp": 1760278967,
-      "datetime": "2025-10-12T14:22:47",
+      "datetime": "2025-10-12T18:22:47",
       "pps_btc": 1.0117905302531083,
       "ret_step": -7.67804602075491e-06,
       "ret_step_pct": -0.000767804602075491,
@@ -3898,7 +3898,7 @@ const yieldData_tbtc = {
     {
       "block": 23562511,
       "timestamp": 1760282579,
-      "datetime": "2025-10-12T15:22:59",
+      "datetime": "2025-10-12T19:22:59",
       "pps_btc": 1.0100812417421061,
       "ret_step": -0.0016893699435736186,
       "ret_step_pct": -0.16893699435736187,
@@ -3907,7 +3907,7 @@ const yieldData_tbtc = {
     {
       "block": 23562809,
       "timestamp": 1760286167,
-      "datetime": "2025-10-12T16:22:47",
+      "datetime": "2025-10-12T20:22:47",
       "pps_btc": 1.0094819746874264,
       "ret_step": -0.0005932859951405095,
       "ret_step_pct": -0.05932859951405095,
@@ -3916,7 +3916,7 @@ const yieldData_tbtc = {
     {
       "block": 23563107,
       "timestamp": 1760289743,
-      "datetime": "2025-10-12T17:22:23",
+      "datetime": "2025-10-12T21:22:23",
       "pps_btc": 1.0084647552078636,
       "ret_step": -0.0010076648271781766,
       "ret_step_pct": -0.10076648271781766,
@@ -3925,7 +3925,7 @@ const yieldData_tbtc = {
     {
       "block": 23563405,
       "timestamp": 1760293379,
-      "datetime": "2025-10-12T18:22:59",
+      "datetime": "2025-10-12T22:22:59",
       "pps_btc": 1.0084570289586634,
       "ret_step": -7.66139734699154e-06,
       "ret_step_pct": -0.000766139734699154,
@@ -3934,7 +3934,7 @@ const yieldData_tbtc = {
     {
       "block": 23563703,
       "timestamp": 1760296955,
-      "datetime": "2025-10-12T19:22:35",
+      "datetime": "2025-10-12T23:22:35",
       "pps_btc": 1.0084494839373892,
       "ret_step": -7.48174791551606e-06,
       "ret_step_pct": -0.000748174791551606,
@@ -3943,7 +3943,7 @@ const yieldData_tbtc = {
     {
       "block": 23564001,
       "timestamp": 1760300543,
-      "datetime": "2025-10-12T20:22:23",
+      "datetime": "2025-10-13T00:22:23",
       "pps_btc": 1.0084419139440814,
       "ret_step": -7.50656669309178e-06,
       "ret_step_pct": -0.000750656669309178,
@@ -3952,7 +3952,7 @@ const yieldData_tbtc = {
     {
       "block": 23564299,
       "timestamp": 1760304143,
-      "datetime": "2025-10-12T21:22:23",
+      "datetime": "2025-10-13T01:22:23",
       "pps_btc": 1.0072657173394666,
       "ret_step": -0.0011663503751194169,
       "ret_step_pct": -0.1166350375119417,
@@ -3961,7 +3961,7 @@ const yieldData_tbtc = {
     {
       "block": 23564597,
       "timestamp": 1760307755,
-      "datetime": "2025-10-12T22:22:35",
+      "datetime": "2025-10-13T02:22:35",
       "pps_btc": 1.0068780169270175,
       "ret_step": -0.0003849038101615515,
       "ret_step_pct": -0.03849038101615515,
@@ -3970,7 +3970,7 @@ const yieldData_tbtc = {
     {
       "block": 23564895,
       "timestamp": 1760311355,
-      "datetime": "2025-10-12T23:22:35",
+      "datetime": "2025-10-13T03:22:35",
       "pps_btc": 1.0068704639919266,
       "ret_step": -7.501340742387532e-06,
       "ret_step_pct": -0.0007501340742387532,
@@ -3979,7 +3979,7 @@ const yieldData_tbtc = {
     {
       "block": 23565193,
       "timestamp": 1760314967,
-      "datetime": "2025-10-13T00:22:47",
+      "datetime": "2025-10-13T04:22:47",
       "pps_btc": 1.0065609393721102,
       "ret_step": -0.0003074125529406203,
       "ret_step_pct": -0.03074125529406203,
@@ -3988,7 +3988,7 @@ const yieldData_tbtc = {
     {
       "block": 23565491,
       "timestamp": 1760318543,
-      "datetime": "2025-10-13T01:22:23",
+      "datetime": "2025-10-13T05:22:23",
       "pps_btc": 1.0065534236026037,
       "ret_step": -7.466780413027268e-06,
       "ret_step_pct": -0.0007466780413027268,
@@ -3997,7 +3997,7 @@ const yieldData_tbtc = {
     {
       "block": 23565789,
       "timestamp": 1760322155,
-      "datetime": "2025-10-13T02:22:35",
+      "datetime": "2025-10-13T06:22:35",
       "pps_btc": 1.0062450172056359,
       "ret_step": -0.00030639843821103196,
       "ret_step_pct": -0.030639843821103196,
@@ -4006,7 +4006,7 @@ const yieldData_tbtc = {
     {
       "block": 23566087,
       "timestamp": 1760325731,
-      "datetime": "2025-10-13T03:22:11",
+      "datetime": "2025-10-13T07:22:11",
       "pps_btc": 1.0062375554879093,
       "ret_step": -7.415408373717319e-06,
       "ret_step_pct": -0.0007415408373717319,
@@ -4015,7 +4015,7 @@ const yieldData_tbtc = {
     {
       "block": 23566385,
       "timestamp": 1760329355,
-      "datetime": "2025-10-13T04:22:35",
+      "datetime": "2025-10-13T08:22:35",
       "pps_btc": 1.0062299956834309,
       "ret_step": -7.512942085185209e-06,
       "ret_step_pct": -0.0007512942085185209,
@@ -4024,7 +4024,7 @@ const yieldData_tbtc = {
     {
       "block": 23566683,
       "timestamp": 1760332979,
-      "datetime": "2025-10-13T05:22:59",
+      "datetime": "2025-10-13T09:22:59",
       "pps_btc": 1.0062224355210991,
       "ret_step": -7.513354167704116e-06,
       "ret_step_pct": -0.0007513354167704116,
@@ -4033,7 +4033,7 @@ const yieldData_tbtc = {
     {
       "block": 23566981,
       "timestamp": 1760336579,
-      "datetime": "2025-10-13T06:22:59",
+      "datetime": "2025-10-13T10:22:59",
       "pps_btc": 1.0062149257735056,
       "ret_step": -7.463307643101673e-06,
       "ret_step_pct": -0.0007463307643101673,
@@ -4042,7 +4042,7 @@ const yieldData_tbtc = {
     {
       "block": 23567279,
       "timestamp": 1760340167,
-      "datetime": "2025-10-13T07:22:47",
+      "datetime": "2025-10-13T11:22:47",
       "pps_btc": 1.0062074408332022,
       "ret_step": -7.438709277325734e-06,
       "ret_step_pct": -0.0007438709277325734,
@@ -4051,7 +4051,7 @@ const yieldData_tbtc = {
     {
       "block": 23567577,
       "timestamp": 1760343791,
-      "datetime": "2025-10-13T08:23:11",
+      "datetime": "2025-10-13T12:23:11",
       "pps_btc": 1.0061998808232189,
       "ret_step": -7.513371176322094e-06,
       "ret_step_pct": -0.0007513371176322095,
@@ -4060,7 +4060,7 @@ const yieldData_tbtc = {
     {
       "block": 23567875,
       "timestamp": 1760347367,
-      "datetime": "2025-10-13T09:22:47",
+      "datetime": "2025-10-13T13:22:47",
       "pps_btc": 1.0061908650574012,
       "ret_step": -8.960213561431535e-06,
       "ret_step_pct": -0.0008960213561431535,
@@ -4069,7 +4069,7 @@ const yieldData_tbtc = {
     {
       "block": 23568173,
       "timestamp": 1760351027,
-      "datetime": "2025-10-13T10:23:47",
+      "datetime": "2025-10-13T14:23:47",
       "pps_btc": 1.0061832282621752,
       "ret_step": -7.589807750395683e-06,
       "ret_step_pct": -0.0007589807750395683,
@@ -4078,7 +4078,7 @@ const yieldData_tbtc = {
     {
       "block": 23568471,
       "timestamp": 1760354627,
-      "datetime": "2025-10-13T11:23:47",
+      "datetime": "2025-10-13T15:23:47",
       "pps_btc": 1.0061757179746604,
       "ret_step": -7.464135063750127e-06,
       "ret_step_pct": -0.0007464135063750127,
@@ -4087,7 +4087,7 @@ const yieldData_tbtc = {
     {
       "block": 23568769,
       "timestamp": 1760358227,
-      "datetime": "2025-10-13T12:23:47",
+      "datetime": "2025-10-13T16:23:47",
       "pps_btc": 1.0061682073694247,
       "ret_step": -7.464506548488528e-06,
       "ret_step_pct": -0.0007464506548488528,
@@ -4096,7 +4096,7 @@ const yieldData_tbtc = {
     {
       "block": 23569066,
       "timestamp": 1760361851,
-      "datetime": "2025-10-13T13:24:11",
+      "datetime": "2025-10-13T17:24:11",
       "pps_btc": 1.0061606474220792,
       "ret_step": -7.513601891073556e-06,
       "ret_step_pct": -0.0007513601891073556,
@@ -4105,7 +4105,7 @@ const yieldData_tbtc = {
     {
       "block": 23569365,
       "timestamp": 1760365451,
-      "datetime": "2025-10-13T14:24:11",
+      "datetime": "2025-10-13T18:24:11",
       "pps_btc": 1.0061531378895132,
       "ret_step": -7.463552251998175e-06,
       "ret_step_pct": -0.0007463552251998175,
@@ -4114,7 +4114,7 @@ const yieldData_tbtc = {
     {
       "block": 23569662,
       "timestamp": 1760369051,
-      "datetime": "2025-10-13T15:24:11",
+      "datetime": "2025-10-13T19:24:11",
       "pps_btc": 1.0061456294613609,
       "ret_step": -7.4625102973902455e-06,
       "ret_step_pct": -0.0007462510297390246,
@@ -4123,7 +4123,7 @@ const yieldData_tbtc = {
     {
       "block": 23569960,
       "timestamp": 1760372651,
-      "datetime": "2025-10-13T16:24:11",
+      "datetime": "2025-10-13T20:24:11",
       "pps_btc": 1.006138119704931,
       "ret_step": -7.463886151189009e-06,
       "ret_step_pct": -0.0007463886151189009,
@@ -4132,7 +4132,7 @@ const yieldData_tbtc = {
     {
       "block": 23570256,
       "timestamp": 1760376251,
-      "datetime": "2025-10-13T17:24:11",
+      "datetime": "2025-10-13T21:24:11",
       "pps_btc": 1.0061306097660716,
       "ret_step": -7.464123177879822e-06,
       "ret_step_pct": -0.0007464123177879822,
@@ -4141,7 +4141,7 @@ const yieldData_tbtc = {
     {
       "block": 23570552,
       "timestamp": 1760379851,
-      "datetime": "2025-10-13T18:24:11",
+      "datetime": "2025-10-13T22:24:11",
       "pps_btc": 1.0061211223387763,
       "ret_step": -9.429617987378253e-06,
       "ret_step_pct": -0.0009429617987378253,
@@ -4150,7 +4150,7 @@ const yieldData_tbtc = {
     {
       "block": 23570852,
       "timestamp": 1760383451,
-      "datetime": "2025-10-13T19:24:11",
+      "datetime": "2025-10-13T23:24:11",
       "pps_btc": 1.0061136115223348,
       "ret_step": -7.465121519341281e-06,
       "ret_step_pct": -0.0007465121519341281,
@@ -4159,7 +4159,7 @@ const yieldData_tbtc = {
     {
       "block": 23571151,
       "timestamp": 1760387051,
-      "datetime": "2025-10-13T20:24:11",
+      "datetime": "2025-10-14T00:24:11",
       "pps_btc": 1.0061052328635882,
       "ret_step": -8.327746141872966e-06,
       "ret_step_pct": -0.0008327746141872966,
@@ -4168,7 +4168,7 @@ const yieldData_tbtc = {
     {
       "block": 23571450,
       "timestamp": 1760390651,
-      "datetime": "2025-10-13T21:24:11",
+      "datetime": "2025-10-14T01:24:11",
       "pps_btc": 1.0060977257530046,
       "ret_step": -7.461556046279749e-06,
       "ret_step_pct": -0.0007461556046279749,
@@ -4177,7 +4177,7 @@ const yieldData_tbtc = {
     {
       "block": 23571749,
       "timestamp": 1760394251,
-      "datetime": "2025-10-13T22:24:11",
+      "datetime": "2025-10-14T02:24:11",
       "pps_btc": 1.0060908036421712,
       "ret_step": -6.8801575198236425e-06,
       "ret_step_pct": -0.0006880157519823642,
@@ -4186,7 +4186,7 @@ const yieldData_tbtc = {
     {
       "block": 23572047,
       "timestamp": 1760397839,
-      "datetime": "2025-10-13T23:23:59",
+      "datetime": "2025-10-14T03:23:59",
       "pps_btc": 1.0060835074336718,
       "ret_step": -7.252037761306273e-06,
       "ret_step_pct": -0.0007252037761306273,
@@ -4195,7 +4195,7 @@ const yieldData_tbtc = {
     {
       "block": 23572345,
       "timestamp": 1760401451,
-      "datetime": "2025-10-14T00:24:11",
+      "datetime": "2025-10-14T04:24:11",
       "pps_btc": 1.0060759748010066,
       "ret_step": -7.4870849283945795e-06,
       "ret_step_pct": -0.000748708492839458,
@@ -4204,7 +4204,7 @@ const yieldData_tbtc = {
     {
       "block": 23572643,
       "timestamp": 1760405039,
-      "datetime": "2025-10-14T01:23:59",
+      "datetime": "2025-10-14T05:23:59",
       "pps_btc": 1.0060684929528583,
       "ret_step": -7.436663170330498e-06,
       "ret_step_pct": -0.0007436663170330498,
@@ -4213,7 +4213,7 @@ const yieldData_tbtc = {
     {
       "block": 23572941,
       "timestamp": 1760408627,
-      "datetime": "2025-10-14T02:23:47",
+      "datetime": "2025-10-14T06:23:47",
       "pps_btc": 1.0060610110729007,
       "ret_step": -7.436750092123779e-06,
       "ret_step_pct": -0.0007436750092123779,
@@ -4222,7 +4222,7 @@ const yieldData_tbtc = {
     {
       "block": 23573239,
       "timestamp": 1760412239,
-      "datetime": "2025-10-14T03:23:59",
+      "datetime": "2025-10-14T07:23:59",
       "pps_btc": 1.0064974442185577,
       "ret_step": 0.00043380385568437207,
       "ret_step_pct": 0.04338038556843721,
@@ -4231,7 +4231,7 @@ const yieldData_tbtc = {
     {
       "block": 23573537,
       "timestamp": 1760415851,
-      "datetime": "2025-10-14T04:24:11",
+      "datetime": "2025-10-14T08:24:11",
       "pps_btc": 1.006489933851593,
       "ret_step": -7.461883791114871e-06,
       "ret_step_pct": -0.0007461883791114871,
@@ -4240,7 +4240,7 @@ const yieldData_tbtc = {
     {
       "block": 23573835,
       "timestamp": 1760419451,
-      "datetime": "2025-10-14T05:24:11",
+      "datetime": "2025-10-14T09:24:11",
       "pps_btc": 1.0072633791205545,
       "ret_step": 0.0007684580271974002,
       "ret_step_pct": 0.07684580271974002,
@@ -4249,7 +4249,7 @@ const yieldData_tbtc = {
     {
       "block": 23574133,
       "timestamp": 1760423039,
-      "datetime": "2025-10-14T06:23:59",
+      "datetime": "2025-10-14T10:23:59",
       "pps_btc": 1.008863175755873,
       "ret_step": 0.0015882604971852946,
       "ret_step_pct": 0.15882604971852946,
@@ -4258,7 +4258,7 @@ const yieldData_tbtc = {
     {
       "block": 23574430,
       "timestamp": 1760426651,
-      "datetime": "2025-10-14T07:24:11",
+      "datetime": "2025-10-14T11:24:11",
       "pps_btc": 1.0112873324246645,
       "ret_step": 0.0024028597009451685,
       "ret_step_pct": 0.24028597009451685,
@@ -4267,7 +4267,7 @@ const yieldData_tbtc = {
     {
       "block": 23574729,
       "timestamp": 1760430251,
-      "datetime": "2025-10-14T08:24:11",
+      "datetime": "2025-10-14T12:24:11",
       "pps_btc": 1.0114603750010034,
       "ret_step": 0.00017111118748419779,
       "ret_step_pct": 0.01711111874841978,
@@ -4276,7 +4276,7 @@ const yieldData_tbtc = {
     {
       "block": 23575027,
       "timestamp": 1760433851,
-      "datetime": "2025-10-14T09:24:11",
+      "datetime": "2025-10-14T13:24:11",
       "pps_btc": 1.013680666282239,
       "ret_step": 0.002195134219898076,
       "ret_step_pct": 0.2195134219898076,
@@ -4285,7 +4285,7 @@ const yieldData_tbtc = {
     {
       "block": 23575325,
       "timestamp": 1760437439,
-      "datetime": "2025-10-14T10:23:59",
+      "datetime": "2025-10-14T14:23:59",
       "pps_btc": 1.015402512308696,
       "ret_step": 0.0016986079381113397,
       "ret_step_pct": 0.16986079381113398,
@@ -4294,7 +4294,7 @@ const yieldData_tbtc = {
     {
       "block": 23575623,
       "timestamp": 1760441051,
-      "datetime": "2025-10-14T11:24:11",
+      "datetime": "2025-10-14T15:24:11",
       "pps_btc": 1.0160460378246277,
       "ret_step": 0.000633763958756056,
       "ret_step_pct": 0.0633763958756056,
@@ -4303,7 +4303,7 @@ const yieldData_tbtc = {
     {
       "block": 23575921,
       "timestamp": 1760444627,
-      "datetime": "2025-10-14T12:23:47",
+      "datetime": "2025-10-14T16:23:47",
       "pps_btc": 1.01604215257063,
       "ret_step": -3.823895623793187e-06,
       "ret_step_pct": -0.0003823895623793187,
@@ -4312,7 +4312,7 @@ const yieldData_tbtc = {
     {
       "block": 23576219,
       "timestamp": 1760448215,
-      "datetime": "2025-10-14T13:23:35",
+      "datetime": "2025-10-14T17:23:35",
       "pps_btc": 1.0160215320266957,
       "ret_step": -2.0294968946120143e-05,
       "ret_step_pct": -0.0020294968946120142,
@@ -4321,7 +4321,7 @@ const yieldData_tbtc = {
     {
       "block": 23576517,
       "timestamp": 1760451851,
-      "datetime": "2025-10-14T14:24:11",
+      "datetime": "2025-10-14T18:24:11",
       "pps_btc": 1.0161375199083507,
       "ret_step": 0.00011415888147920025,
       "ret_step_pct": 0.011415888147920024,
@@ -4330,7 +4330,7 @@ const yieldData_tbtc = {
     {
       "block": 23576812,
       "timestamp": 1760455451,
-      "datetime": "2025-10-14T15:24:11",
+      "datetime": "2025-10-14T19:24:11",
       "pps_btc": 1.0161267850652942,
       "ret_step": -1.0564360478822017e-05,
       "ret_step_pct": -0.0010564360478822017,
@@ -4339,7 +4339,7 @@ const yieldData_tbtc = {
     {
       "block": 23577109,
       "timestamp": 1760459051,
-      "datetime": "2025-10-14T16:24:11",
+      "datetime": "2025-10-14T20:24:11",
       "pps_btc": 1.0159613760989594,
       "ret_step": -0.0001627837871866247,
       "ret_step_pct": -0.01627837871866247,
@@ -4348,7 +4348,7 @@ const yieldData_tbtc = {
     {
       "block": 23577408,
       "timestamp": 1760462651,
-      "datetime": "2025-10-14T17:24:11",
+      "datetime": "2025-10-14T21:24:11",
       "pps_btc": 1.0159533598851074,
       "ret_step": -7.890274217766308e-06,
       "ret_step_pct": -0.0007890274217766309,
@@ -4357,7 +4357,7 @@ const yieldData_tbtc = {
     {
       "block": 23577706,
       "timestamp": 1760466251,
-      "datetime": "2025-10-14T18:24:11",
+      "datetime": "2025-10-14T22:24:11",
       "pps_btc": 1.015840470420689,
       "ret_step": -0.0001111167784624862,
       "ret_step_pct": -0.01111167784624862,
@@ -4366,7 +4366,7 @@ const yieldData_tbtc = {
     {
       "block": 23578003,
       "timestamp": 1760469851,
-      "datetime": "2025-10-14T19:24:11",
+      "datetime": "2025-10-14T23:24:11",
       "pps_btc": 1.0158140588756683,
       "ret_step": -2.5999697580139936e-05,
       "ret_step_pct": -0.0025999697580139937,
@@ -4375,7 +4375,7 @@ const yieldData_tbtc = {
     {
       "block": 23578303,
       "timestamp": 1760473451,
-      "datetime": "2025-10-14T20:24:11",
+      "datetime": "2025-10-15T00:24:11",
       "pps_btc": 1.0158061075100617,
       "ret_step": -7.827579798811602e-06,
       "ret_step_pct": -0.0007827579798811602,
@@ -4384,7 +4384,7 @@ const yieldData_tbtc = {
     {
       "block": 23578599,
       "timestamp": 1760477051,
-      "datetime": "2025-10-14T21:24:11",
+      "datetime": "2025-10-15T01:24:11",
       "pps_btc": 1.0157981567793937,
       "ret_step": -7.827016011370306e-06,
       "ret_step_pct": -0.0007827016011370306,
@@ -4393,7 +4393,7 @@ const yieldData_tbtc = {
     {
       "block": 23578898,
       "timestamp": 1760480651,
-      "datetime": "2025-10-14T22:24:11",
+      "datetime": "2025-10-15T02:24:11",
       "pps_btc": 1.0157902060552664,
       "ret_step": -7.827070835161695e-06,
       "ret_step_pct": -0.0007827070835161695,
@@ -4402,7 +4402,7 @@ const yieldData_tbtc = {
     {
       "block": 23579196,
       "timestamp": 1760484251,
-      "datetime": "2025-10-14T23:24:11",
+      "datetime": "2025-10-15T03:24:11",
       "pps_btc": 1.0157822553517475,
       "ret_step": -7.827111810648254e-06,
       "ret_step_pct": -0.0007827111810648254,
@@ -4411,7 +4411,7 @@ const yieldData_tbtc = {
     {
       "block": 23579496,
       "timestamp": 1760487851,
-      "datetime": "2025-10-15T00:24:11",
+      "datetime": "2025-10-15T04:24:11",
       "pps_btc": 1.0157743047517467,
       "ret_step": -7.827071164968173e-06,
       "ret_step_pct": -0.0007827071164968173,
@@ -4420,7 +4420,7 @@ const yieldData_tbtc = {
     {
       "block": 23579795,
       "timestamp": 1760491439,
-      "datetime": "2025-10-15T01:23:59",
+      "datetime": "2025-10-15T05:23:59",
       "pps_btc": 1.0157663803950403,
       "ret_step": -7.801296675259666e-06,
       "ret_step_pct": -0.0007801296675259666,
@@ -4429,7 +4429,7 @@ const yieldData_tbtc = {
     {
       "block": 23580093,
       "timestamp": 1760495015,
-      "datetime": "2025-10-15T02:23:35",
+      "datetime": "2025-10-15T06:23:35",
       "pps_btc": 1.0157584828047936,
       "ret_step": -7.77500653600443e-06,
       "ret_step_pct": -0.000777500653600443,
@@ -4438,7 +4438,7 @@ const yieldData_tbtc = {
     {
       "block": 23580391,
       "timestamp": 1760498603,
-      "datetime": "2025-10-15T03:23:23",
+      "datetime": "2025-10-15T07:23:23",
       "pps_btc": 1.0157505584332585,
       "ret_step": -7.801432790704923e-06,
       "ret_step_pct": -0.0007801432790704923,
@@ -4447,7 +4447,7 @@ const yieldData_tbtc = {
     {
       "block": 23580689,
       "timestamp": 1760502239,
-      "datetime": "2025-10-15T04:23:59",
+      "datetime": "2025-10-15T08:23:59",
       "pps_btc": 1.015742528189267,
       "ret_step": -7.905724417046077e-06,
       "ret_step_pct": -0.0007905724417046077,
@@ -4456,7 +4456,7 @@ const yieldData_tbtc = {
     {
       "block": 23580986,
       "timestamp": 1760505851,
-      "datetime": "2025-10-15T05:24:11",
+      "datetime": "2025-10-15T09:24:11",
       "pps_btc": 1.0157345510692666,
       "ret_step": -7.85348627132662e-06,
       "ret_step_pct": -0.000785348627132662,
@@ -4465,7 +4465,7 @@ const yieldData_tbtc = {
     {
       "block": 23581282,
       "timestamp": 1760509451,
-      "datetime": "2025-10-15T06:24:11",
+      "datetime": "2025-10-15T10:24:11",
       "pps_btc": 1.01572660034025,
       "ret_step": -7.827565782967848e-06,
       "ret_step_pct": -0.0007827565782967848,
@@ -4474,7 +4474,7 @@ const yieldData_tbtc = {
     {
       "block": 23581579,
       "timestamp": 1760513051,
-      "datetime": "2025-10-15T07:24:11",
+      "datetime": "2025-10-15T11:24:11",
       "pps_btc": 1.0156707853639915,
       "ret_step": -5.4950787190077514e-05,
       "ret_step_pct": -0.005495078719007751,
@@ -4483,7 +4483,7 @@ const yieldData_tbtc = {
     {
       "block": 23581877,
       "timestamp": 1760516651,
-      "datetime": "2025-10-15T08:24:11",
+      "datetime": "2025-10-15T12:24:11",
       "pps_btc": 1.0155347582148557,
       "ret_step": -0.00013392838614233372,
       "ret_step_pct": -0.013392838614233371,
@@ -4492,7 +4492,7 @@ const yieldData_tbtc = {
     {
       "block": 23582176,
       "timestamp": 1760520251,
-      "datetime": "2025-10-15T09:24:11",
+      "datetime": "2025-10-15T13:24:11",
       "pps_btc": 1.015526778076513,
       "ret_step": -7.858065199997467e-06,
       "ret_step_pct": -0.0007858065199997467,
@@ -4501,7 +4501,7 @@ const yieldData_tbtc = {
     {
       "block": 23582476,
       "timestamp": 1760523851,
-      "datetime": "2025-10-15T10:24:11",
+      "datetime": "2025-10-15T14:24:11",
       "pps_btc": 1.0158981026199962,
       "ret_step": 0.0003656472202404783,
       "ret_step_pct": 0.03656472202404783,
@@ -4510,7 +4510,7 @@ const yieldData_tbtc = {
     {
       "block": 23582775,
       "timestamp": 1760527439,
-      "datetime": "2025-10-15T11:23:59",
+      "datetime": "2025-10-15T15:23:59",
       "pps_btc": 1.0158832938420141,
       "ret_step": -1.4577030849722263e-05,
       "ret_step_pct": -0.0014577030849722264,
@@ -4519,7 +4519,7 @@ const yieldData_tbtc = {
     {
       "block": 23583073,
       "timestamp": 1760531051,
-      "datetime": "2025-10-15T12:24:11",
+      "datetime": "2025-10-15T16:24:11",
       "pps_btc": 1.0158237127555383,
       "ret_step": -5.864953862043113e-05,
       "ret_step_pct": -0.005864953862043113,
@@ -4528,7 +4528,7 @@ const yieldData_tbtc = {
     {
       "block": 23583367,
       "timestamp": 1760534651,
-      "datetime": "2025-10-15T13:24:11",
+      "datetime": "2025-10-15T17:24:11",
       "pps_btc": 1.0157721209250417,
       "ret_step": -5.078817303510591e-05,
       "ret_step_pct": -0.005078817303510591,
@@ -4537,7 +4537,7 @@ const yieldData_tbtc = {
     {
       "block": 23583666,
       "timestamp": 1760538251,
-      "datetime": "2025-10-15T14:24:11",
+      "datetime": "2025-10-15T18:24:11",
       "pps_btc": 1.0157397068861167,
       "ret_step": -3.191073889236322e-05,
       "ret_step_pct": -0.003191073889236322,
@@ -4546,7 +4546,7 @@ const yieldData_tbtc = {
     {
       "block": 23583963,
       "timestamp": 1760541851,
-      "datetime": "2025-10-15T15:24:11",
+      "datetime": "2025-10-15T19:24:11",
       "pps_btc": 1.0157084494199888,
       "ret_step": -3.077310645228576e-05,
       "ret_step_pct": -0.003077310645228576,
@@ -4555,7 +4555,7 @@ const yieldData_tbtc = {
     {
       "block": 23584260,
       "timestamp": 1760545451,
-      "datetime": "2025-10-15T16:24:11",
+      "datetime": "2025-10-15T20:24:11",
       "pps_btc": 1.015672374754343,
       "ret_step": -3.5516752535106024e-05,
       "ret_step_pct": -0.0035516752535106025,
@@ -4564,7 +4564,7 @@ const yieldData_tbtc = {
     {
       "block": 23584555,
       "timestamp": 1760549051,
-      "datetime": "2025-10-15T17:24:11",
+      "datetime": "2025-10-15T21:24:11",
       "pps_btc": 1.0156189854975608,
       "ret_step": -5.256543163831651e-05,
       "ret_step_pct": -0.005256543163831651,
@@ -4573,7 +4573,7 @@ const yieldData_tbtc = {
     {
       "block": 23584854,
       "timestamp": 1760552651,
-      "datetime": "2025-10-15T18:24:11",
+      "datetime": "2025-10-15T22:24:11",
       "pps_btc": 1.0155480722954655,
       "ret_step": -6.982264324314496e-05,
       "ret_step_pct": -0.006982264324314496,
@@ -4582,7 +4582,7 @@ const yieldData_tbtc = {
     {
       "block": 23585154,
       "timestamp": 1760556251,
-      "datetime": "2025-10-15T19:24:11",
+      "datetime": "2025-10-15T23:24:11",
       "pps_btc": 1.0155473352801132,
       "ret_step": -7.257316245907572e-07,
       "ret_step_pct": -7.257316245907572e-05,
@@ -4591,7 +4591,7 @@ const yieldData_tbtc = {
     {
       "block": 23585452,
       "timestamp": 1760559851,
-      "datetime": "2025-10-15T20:24:11",
+      "datetime": "2025-10-16T00:24:11",
       "pps_btc": 1.0155420831458861,
       "ret_step": -5.171727643379942e-06,
       "ret_step_pct": -0.0005171727643379943,
@@ -4600,7 +4600,7 @@ const yieldData_tbtc = {
     {
       "block": 23585752,
       "timestamp": 1760563451,
-      "datetime": "2025-10-15T21:24:11",
+      "datetime": "2025-10-16T01:24:11",
       "pps_btc": 1.0155338442667892,
       "ret_step": -8.11278944878984e-06,
       "ret_step_pct": -0.000811278944878984,
@@ -4609,7 +4609,7 @@ const yieldData_tbtc = {
     {
       "block": 23586049,
       "timestamp": 1760567051,
-      "datetime": "2025-10-15T22:24:11",
+      "datetime": "2025-10-16T02:24:11",
       "pps_btc": 1.0155256544722062,
       "ret_step": -8.064521561014044e-06,
       "ret_step_pct": -0.0008064521561014044,
@@ -4618,7 +4618,7 @@ const yieldData_tbtc = {
     {
       "block": 23586347,
       "timestamp": 1760570651,
-      "datetime": "2025-10-15T23:24:11",
+      "datetime": "2025-10-16T03:24:11",
       "pps_btc": 1.0155137819038136,
       "ret_step": -1.169105708001288e-05,
       "ret_step_pct": -0.001169105708001288,
@@ -4627,7 +4627,7 @@ const yieldData_tbtc = {
     {
       "block": 23586641,
       "timestamp": 1760574251,
-      "datetime": "2025-10-16T00:24:11",
+      "datetime": "2025-10-16T04:24:11",
       "pps_btc": 1.0155055224537206,
       "ret_step": -8.13327228047045e-06,
       "ret_step_pct": -0.000813327228047045,
@@ -4636,7 +4636,7 @@ const yieldData_tbtc = {
     {
       "block": 23586938,
       "timestamp": 1760577851,
-      "datetime": "2025-10-16T01:24:11",
+      "datetime": "2025-10-16T05:24:11",
       "pps_btc": 1.0154972596814558,
       "ret_step": -8.136609877712956e-06,
       "ret_step_pct": -0.0008136609877712957,
@@ -4645,7 +4645,7 @@ const yieldData_tbtc = {
     {
       "block": 23587235,
       "timestamp": 1760581451,
-      "datetime": "2025-10-16T02:24:11",
+      "datetime": "2025-10-16T06:24:11",
       "pps_btc": 1.0154894384722613,
       "ret_step": -7.70185160027254e-06,
       "ret_step_pct": -0.000770185160027254,
@@ -4654,7 +4654,7 @@ const yieldData_tbtc = {
     {
       "block": 23587533,
       "timestamp": 1760585051,
-      "datetime": "2025-10-16T03:24:11",
+      "datetime": "2025-10-16T07:24:11",
       "pps_btc": 1.0154884792508307,
       "ret_step": -9.445902579686965e-07,
       "ret_step_pct": -9.445902579686964e-05,
@@ -4663,7 +4663,7 @@ const yieldData_tbtc = {
     {
       "block": 23587829,
       "timestamp": 1760588651,
-      "datetime": "2025-10-16T04:24:11",
+      "datetime": "2025-10-16T08:24:11",
       "pps_btc": 1.015483948656447,
       "ret_step": -4.461492647212909e-06,
       "ret_step_pct": -0.0004461492647212909,
@@ -4672,7 +4672,7 @@ const yieldData_tbtc = {
     {
       "block": 23588128,
       "timestamp": 1760592251,
-      "datetime": "2025-10-16T05:24:11",
+      "datetime": "2025-10-16T09:24:11",
       "pps_btc": 1.0154756432754435,
       "ret_step": -8.178741785780634e-06,
       "ret_step_pct": -0.0008178741785780634,
@@ -4681,7 +4681,7 @@ const yieldData_tbtc = {
     {
       "block": 23588426,
       "timestamp": 1760595851,
-      "datetime": "2025-10-16T06:24:11",
+      "datetime": "2025-10-16T10:24:11",
       "pps_btc": 1.015467477119117,
       "ret_step": -8.041705756844003e-06,
       "ret_step_pct": -0.0008041705756844003,
@@ -4690,7 +4690,7 @@ const yieldData_tbtc = {
     {
       "block": 23588722,
       "timestamp": 1760599451,
-      "datetime": "2025-10-16T07:24:11",
+      "datetime": "2025-10-16T11:24:11",
       "pps_btc": 1.0154598887427488,
       "ret_step": -7.47279114215872e-06,
       "ret_step_pct": -0.000747279114215872,
@@ -4699,7 +4699,7 @@ const yieldData_tbtc = {
     {
       "block": 23589016,
       "timestamp": 1760603051,
-      "datetime": "2025-10-16T08:24:11",
+      "datetime": "2025-10-16T12:24:11",
       "pps_btc": 1.0154484960008716,
       "ret_step": -1.1219292857976368e-05,
       "ret_step_pct": -0.0011219292857976369,
@@ -4708,7 +4708,7 @@ const yieldData_tbtc = {
     {
       "block": 23589313,
       "timestamp": 1760606651,
-      "datetime": "2025-10-16T09:24:11",
+      "datetime": "2025-10-16T13:24:11",
       "pps_btc": 1.0154402189287162,
       "ret_step": -8.151149160040605e-06,
       "ret_step_pct": -0.0008151149160040605,
@@ -4717,7 +4717,7 @@ const yieldData_tbtc = {
     {
       "block": 23589608,
       "timestamp": 1760610251,
-      "datetime": "2025-10-16T10:24:11",
+      "datetime": "2025-10-16T14:24:11",
       "pps_btc": 1.0154294883656856,
       "ret_step": -1.0567400060143061e-05,
       "ret_step_pct": -0.001056740006014306,
@@ -4726,7 +4726,7 @@ const yieldData_tbtc = {
     {
       "block": 23589906,
       "timestamp": 1760613851,
-      "datetime": "2025-10-16T11:24:11",
+      "datetime": "2025-10-16T15:24:11",
       "pps_btc": 1.015430158175505,
       "ret_step": 6.596320344409596e-07,
       "ret_step_pct": 6.596320344409597e-05,
@@ -4735,7 +4735,7 @@ const yieldData_tbtc = {
     {
       "block": 23590204,
       "timestamp": 1760617451,
-      "datetime": "2025-10-16T12:24:11",
+      "datetime": "2025-10-16T16:24:11",
       "pps_btc": 1.0154253151522412,
       "ret_step": -4.769430201259535e-06,
       "ret_step_pct": -0.0004769430201259535,
@@ -4744,7 +4744,7 @@ const yieldData_tbtc = {
     {
       "block": 23590502,
       "timestamp": 1760621063,
-      "datetime": "2025-10-16T13:24:23",
+      "datetime": "2025-10-16T17:24:23",
       "pps_btc": 1.0154171185807255,
       "ret_step": -8.072057485234253e-06,
       "ret_step_pct": -0.0008072057485234253,
@@ -4753,7 +4753,7 @@ const yieldData_tbtc = {
     {
       "block": 23590800,
       "timestamp": 1760624687,
-      "datetime": "2025-10-16T14:24:47",
+      "datetime": "2025-10-16T18:24:47",
       "pps_btc": 1.0154088257325824,
       "ret_step": -8.166937499047807e-06,
       "ret_step_pct": -0.0008166937499047807,
@@ -4762,7 +4762,7 @@ const yieldData_tbtc = {
     {
       "block": 23591098,
       "timestamp": 1760628323,
-      "datetime": "2025-10-16T15:25:23",
+      "datetime": "2025-10-16T19:25:23",
       "pps_btc": 1.015400490373071,
       "ret_step": -8.20887045726171e-06,
       "ret_step_pct": -0.000820887045726171,
@@ -4771,7 +4771,7 @@ const yieldData_tbtc = {
     {
       "block": 23591396,
       "timestamp": 1760631911,
-      "datetime": "2025-10-16T16:25:11",
+      "datetime": "2025-10-16T20:25:11",
       "pps_btc": 1.0148606023130309,
       "ret_step": -0.0005316996250826118,
       "ret_step_pct": -0.05316996250826118,
@@ -4780,7 +4780,7 @@ const yieldData_tbtc = {
     {
       "block": 23591694,
       "timestamp": 1760635499,
-      "datetime": "2025-10-16T17:24:59",
+      "datetime": "2025-10-16T21:24:59",
       "pps_btc": 1.0185257671579389,
       "ret_step": 0.0036114958414529374,
       "ret_step_pct": 0.36114958414529374,
@@ -4789,7 +4789,7 @@ const yieldData_tbtc = {
     {
       "block": 23591992,
       "timestamp": 1760639075,
-      "datetime": "2025-10-16T18:24:35",
+      "datetime": "2025-10-16T22:24:35",
       "pps_btc": 1.0190214584329962,
       "ret_step": 0.00048667524282738065,
       "ret_step_pct": 0.048667524282738066,
@@ -4798,7 +4798,7 @@ const yieldData_tbtc = {
     {
       "block": 23592290,
       "timestamp": 1760642651,
-      "datetime": "2025-10-16T19:24:11",
+      "datetime": "2025-10-16T23:24:11",
       "pps_btc": 1.0195513743543785,
       "ret_step": 0.0005200243007610822,
       "ret_step_pct": 0.05200243007610822,
@@ -4807,7 +4807,7 @@ const yieldData_tbtc = {
     {
       "block": 23592589,
       "timestamp": 1760646251,
-      "datetime": "2025-10-16T20:24:11",
+      "datetime": "2025-10-17T00:24:11",
       "pps_btc": 1.0206824202790041,
       "ret_step": 0.0011093564807774915,
       "ret_step_pct": 0.11093564807774915,
@@ -4816,7 +4816,7 @@ const yieldData_tbtc = {
     {
       "block": 23592886,
       "timestamp": 1760649851,
-      "datetime": "2025-10-16T21:24:11",
+      "datetime": "2025-10-17T01:24:11",
       "pps_btc": 1.0223941858155683,
       "ret_step": 0.0016770794740407265,
       "ret_step_pct": 0.16770794740407266,
@@ -4825,7 +4825,7 @@ const yieldData_tbtc = {
     {
       "block": 23593186,
       "timestamp": 1760653451,
-      "datetime": "2025-10-16T22:24:11",
+      "datetime": "2025-10-17T02:24:11",
       "pps_btc": 1.0224441140413056,
       "ret_step": 4.8834614310287806e-05,
       "ret_step_pct": 0.004883461431028781,
@@ -4834,7 +4834,7 @@ const yieldData_tbtc = {
     {
       "block": 23593485,
       "timestamp": 1760657051,
-      "datetime": "2025-10-16T23:24:11",
+      "datetime": "2025-10-17T03:24:11",
       "pps_btc": 1.0224435101851752,
       "ret_step": -5.906006226963374e-07,
       "ret_step_pct": -5.906006226963374e-05,
@@ -4843,7 +4843,7 @@ const yieldData_tbtc = {
     {
       "block": 23593781,
       "timestamp": 1760660651,
-      "datetime": "2025-10-17T00:24:11",
+      "datetime": "2025-10-17T04:24:11",
       "pps_btc": 1.0224445436606615,
       "ret_step": 1.0107898148141473e-06,
       "ret_step_pct": 0.00010107898148141473,
@@ -4852,7 +4852,7 @@ const yieldData_tbtc = {
     {
       "block": 23594080,
       "timestamp": 1760664251,
-      "datetime": "2025-10-17T01:24:11",
+      "datetime": "2025-10-17T05:24:11",
       "pps_btc": 1.02243602050982,
       "ret_step": -8.33605195945057e-06,
       "ret_step_pct": -0.000833605195945057,
@@ -4861,7 +4861,7 @@ const yieldData_tbtc = {
     {
       "block": 23594378,
       "timestamp": 1760667851,
-      "datetime": "2025-10-17T02:24:11",
+      "datetime": "2025-10-17T06:24:11",
       "pps_btc": 1.022427617615682,
       "ret_step": -8.218503622035973e-06,
       "ret_step_pct": -0.0008218503622035972,
@@ -4870,7 +4870,7 @@ const yieldData_tbtc = {
     {
       "block": 23594677,
       "timestamp": 1760671451,
-      "datetime": "2025-10-17T03:24:11",
+      "datetime": "2025-10-17T07:24:11",
       "pps_btc": 1.0224191344258364,
       "ret_step": -8.297105535230883e-06,
       "ret_step_pct": -0.0008297105535230883,
@@ -4879,7 +4879,7 @@ const yieldData_tbtc = {
     {
       "block": 23594976,
       "timestamp": 1760675051,
-      "datetime": "2025-10-17T04:24:11",
+      "datetime": "2025-10-17T08:24:11",
       "pps_btc": 1.0224117876514507,
       "ret_step": -7.18567771121161e-06,
       "ret_step_pct": -0.000718567771121161,
@@ -4888,7 +4888,7 @@ const yieldData_tbtc = {
     {
       "block": 23595274,
       "timestamp": 1760678651,
-      "datetime": "2025-10-17T05:24:11",
+      "datetime": "2025-10-17T09:24:11",
       "pps_btc": 1.0251862788465236,
       "ret_step": 0.0027136729335310744,
       "ret_step_pct": 0.27136729335310744,
@@ -4897,7 +4897,7 @@ const yieldData_tbtc = {
     {
       "block": 23595570,
       "timestamp": 1760682251,
-      "datetime": "2025-10-17T06:24:11",
+      "datetime": "2025-10-17T10:24:11",
       "pps_btc": 1.0274492330704978,
       "ret_step": 0.0022073590630966584,
       "ret_step_pct": 0.22073590630966583,
@@ -4906,7 +4906,7 @@ const yieldData_tbtc = {
     {
       "block": 23595867,
       "timestamp": 1760685851,
-      "datetime": "2025-10-17T07:24:11",
+      "datetime": "2025-10-17T11:24:11",
       "pps_btc": 1.0328721135934653,
       "ret_step": 0.005278003378095354,
       "ret_step_pct": 0.5278003378095354,
@@ -4915,7 +4915,7 @@ const yieldData_tbtc = {
     {
       "block": 23596166,
       "timestamp": 1760689451,
-      "datetime": "2025-10-17T08:24:11",
+      "datetime": "2025-10-17T12:24:11",
       "pps_btc": 1.0468909278301257,
       "ret_step": 0.01357265246312782,
       "ret_step_pct": 1.357265246312782,
@@ -4924,7 +4924,7 @@ const yieldData_tbtc = {
     {
       "block": 23596465,
       "timestamp": 1760693051,
-      "datetime": "2025-10-17T09:24:11",
+      "datetime": "2025-10-17T13:24:11",
       "pps_btc": 1.0601493145852279,
       "ret_step": 0.012664534960277678,
       "ret_step_pct": 1.2664534960277678,
@@ -4933,7 +4933,7 @@ const yieldData_tbtc = {
     {
       "block": 23596764,
       "timestamp": 1760696651,
-      "datetime": "2025-10-17T10:24:11",
+      "datetime": "2025-10-17T14:24:11",
       "pps_btc": 1.0608354723839801,
       "ret_step": 0.0006472275077785122,
       "ret_step_pct": 0.06472275077785122,
@@ -4942,7 +4942,7 @@ const yieldData_tbtc = {
     {
       "block": 23597063,
       "timestamp": 1760700251,
-      "datetime": "2025-10-17T11:24:11",
+      "datetime": "2025-10-17T15:24:11",
       "pps_btc": 1.0621866846106076,
       "ret_step": 0.0012737245895361616,
       "ret_step_pct": 0.12737245895361615,
@@ -4951,7 +4951,7 @@ const yieldData_tbtc = {
     {
       "block": 23597360,
       "timestamp": 1760703851,
-      "datetime": "2025-10-17T12:24:11",
+      "datetime": "2025-10-17T16:24:11",
       "pps_btc": 1.0638503428962418,
       "ret_step": 0.0015662578996121419,
       "ret_step_pct": 0.15662578996121418,
@@ -4960,7 +4960,7 @@ const yieldData_tbtc = {
     {
       "block": 23597659,
       "timestamp": 1760707451,
-      "datetime": "2025-10-17T13:24:11",
+      "datetime": "2025-10-17T17:24:11",
       "pps_btc": 1.0622849755041304,
       "ret_step": -0.001471416917392638,
       "ret_step_pct": -0.1471416917392638,
@@ -4969,7 +4969,7 @@ const yieldData_tbtc = {
     {
       "block": 23597959,
       "timestamp": 1760711051,
-      "datetime": "2025-10-17T14:24:11",
+      "datetime": "2025-10-17T18:24:11",
       "pps_btc": 1.0626483099947532,
       "ret_step": 0.00034203109241045577,
       "ret_step_pct": 0.034203109241045575,
@@ -4978,7 +4978,7 @@ const yieldData_tbtc = {
     {
       "block": 23598257,
       "timestamp": 1760714651,
-      "datetime": "2025-10-17T15:24:11",
+      "datetime": "2025-10-17T19:24:11",
       "pps_btc": 1.06275460429682,
       "ret_step": 0.00010002773360365464,
       "ret_step_pct": 0.010002773360365464,
@@ -4987,7 +4987,7 @@ const yieldData_tbtc = {
     {
       "block": 23598557,
       "timestamp": 1760718251,
-      "datetime": "2025-10-17T16:24:11",
+      "datetime": "2025-10-17T20:24:11",
       "pps_btc": 1.0651832334583435,
       "ret_step": 0.002285221020642416,
       "ret_step_pct": 0.2285221020642416,
@@ -4996,7 +4996,7 @@ const yieldData_tbtc = {
     {
       "block": 23598856,
       "timestamp": 1760721851,
-      "datetime": "2025-10-17T17:24:11",
+      "datetime": "2025-10-17T21:24:11",
       "pps_btc": 1.0651527401045533,
       "ret_step": null,
       "ret_step_pct": null,
@@ -5005,7 +5005,7 @@ const yieldData_tbtc = {
     {
       "block": 23599150,
       "timestamp": 1760725451,
-      "datetime": "2025-10-17T18:24:11",
+      "datetime": "2025-10-17T22:24:11",
       "pps_btc": 1.06619573878473,
       "ret_step": 0.0009792010487381455,
       "ret_step_pct": 0.09792010487381456,
@@ -5014,7 +5014,7 @@ const yieldData_tbtc = {
     {
       "block": 23599449,
       "timestamp": 1760729051,
-      "datetime": "2025-10-17T19:24:11",
+      "datetime": "2025-10-17T23:24:11",
       "pps_btc": 1.066165560421672,
       "ret_step": null,
       "ret_step_pct": null,
@@ -5023,7 +5023,7 @@ const yieldData_tbtc = {
     {
       "block": 23599746,
       "timestamp": 1760732651,
-      "datetime": "2025-10-17T20:24:11",
+      "datetime": "2025-10-18T00:24:11",
       "pps_btc": 1.0661561510983524,
       "ret_step": null,
       "ret_step_pct": null,
@@ -5032,7 +5032,7 @@ const yieldData_tbtc = {
     {
       "block": 23600044,
       "timestamp": 1760736251,
-      "datetime": "2025-10-17T21:24:11",
+      "datetime": "2025-10-18T01:24:11",
       "pps_btc": 1.0661469892281776,
       "ret_step": null,
       "ret_step_pct": null,
@@ -5041,7 +5041,7 @@ const yieldData_tbtc = {
     {
       "block": 23600344,
       "timestamp": 1760739851,
-      "datetime": "2025-10-17T22:24:11",
+      "datetime": "2025-10-18T02:24:11",
       "pps_btc": 1.066138119910625,
       "ret_step": null,
       "ret_step_pct": null,
@@ -5050,7 +5050,7 @@ const yieldData_tbtc = {
     {
       "block": 23600641,
       "timestamp": 1760743451,
-      "datetime": "2025-10-17T23:24:11",
+      "datetime": "2025-10-18T03:24:11",
       "pps_btc": 1.0661287466903664,
       "ret_step": null,
       "ret_step_pct": null,
@@ -5059,7 +5059,7 @@ const yieldData_tbtc = {
     {
       "block": 23600937,
       "timestamp": 1760747051,
-      "datetime": "2025-10-18T00:24:11",
+      "datetime": "2025-10-18T04:24:11",
       "pps_btc": 1.0661456266878249,
       "ret_step": null,
       "ret_step_pct": null,
@@ -5068,7 +5068,7 @@ const yieldData_tbtc = {
     {
       "block": 23601232,
       "timestamp": 1760750651,
-      "datetime": "2025-10-18T01:24:11",
+      "datetime": "2025-10-18T05:24:11",
       "pps_btc": 1.0662534101881813,
       "ret_step": null,
       "ret_step_pct": null,
@@ -5077,7 +5077,7 @@ const yieldData_tbtc = {
     {
       "block": 23601530,
       "timestamp": 1760754251,
-      "datetime": "2025-10-18T02:24:11",
+      "datetime": "2025-10-18T06:24:11",
       "pps_btc": 1.0662455639873702,
       "ret_step": null,
       "ret_step_pct": null,
@@ -5086,7 +5086,7 @@ const yieldData_tbtc = {
     {
       "block": 23601830,
       "timestamp": 1760757851,
-      "datetime": "2025-10-18T03:24:11",
+      "datetime": "2025-10-18T07:24:11",
       "pps_btc": 1.0657171749340975,
       "ret_step": null,
       "ret_step_pct": null,
@@ -5095,7 +5095,7 @@ const yieldData_tbtc = {
     {
       "block": 23602130,
       "timestamp": 1760761451,
-      "datetime": "2025-10-18T04:24:11",
+      "datetime": "2025-10-18T08:24:11",
       "pps_btc": 1.0657232538902432,
       "ret_step": null,
       "ret_step_pct": null,
@@ -5104,7 +5104,7 @@ const yieldData_tbtc = {
     {
       "block": 23602430,
       "timestamp": 1760765051,
-      "datetime": "2025-10-18T05:24:11",
+      "datetime": "2025-10-18T09:24:11",
       "pps_btc": 1.0657145098694385,
       "ret_step": null,
       "ret_step_pct": null,
@@ -5113,7 +5113,7 @@ const yieldData_tbtc = {
     {
       "block": 23602727,
       "timestamp": 1760768651,
-      "datetime": "2025-10-18T06:24:11",
+      "datetime": "2025-10-18T10:24:11",
       "pps_btc": 1.065705636156171,
       "ret_step": null,
       "ret_step_pct": null,
@@ -5122,7 +5122,7 @@ const yieldData_tbtc = {
     {
       "block": 23603023,
       "timestamp": 1760772251,
-      "datetime": "2025-10-18T07:24:11",
+      "datetime": "2025-10-18T11:24:11",
       "pps_btc": 1.0661156416812108,
       "ret_step": null,
       "ret_step_pct": null,
@@ -5131,7 +5131,7 @@ const yieldData_tbtc = {
     {
       "block": 23603320,
       "timestamp": 1760775851,
-      "datetime": "2025-10-18T08:24:11",
+      "datetime": "2025-10-18T12:24:11",
       "pps_btc": 1.066091019330621,
       "ret_step": null,
       "ret_step_pct": null,
@@ -5140,7 +5140,7 @@ const yieldData_tbtc = {
     {
       "block": 23603619,
       "timestamp": 1760779451,
-      "datetime": "2025-10-18T09:24:11",
+      "datetime": "2025-10-18T13:24:11",
       "pps_btc": 1.0660826587185217,
       "ret_step": null,
       "ret_step_pct": null,
@@ -5149,7 +5149,7 @@ const yieldData_tbtc = {
     {
       "block": 23603918,
       "timestamp": 1760783051,
-      "datetime": "2025-10-18T10:24:11",
+      "datetime": "2025-10-18T14:24:11",
       "pps_btc": 1.0660765423045755,
       "ret_step": null,
       "ret_step_pct": null,
@@ -5158,7 +5158,7 @@ const yieldData_tbtc = {
     {
       "block": 23604217,
       "timestamp": 1760786651,
-      "datetime": "2025-10-18T11:24:11",
+      "datetime": "2025-10-18T15:24:11",
       "pps_btc": 1.066067474262762,
       "ret_step": null,
       "ret_step_pct": null,
@@ -5167,7 +5167,7 @@ const yieldData_tbtc = {
     {
       "block": 23604513,
       "timestamp": 1760790251,
-      "datetime": "2025-10-18T12:24:11",
+      "datetime": "2025-10-18T16:24:11",
       "pps_btc": 1.0660584460477631,
       "ret_step": null,
       "ret_step_pct": null,
@@ -5176,7 +5176,7 @@ const yieldData_tbtc = {
     {
       "block": 23604807,
       "timestamp": 1760793851,
-      "datetime": "2025-10-18T13:24:11",
+      "datetime": "2025-10-18T17:24:11",
       "pps_btc": 1.0660496575780398,
       "ret_step": null,
       "ret_step_pct": null,
@@ -5185,7 +5185,7 @@ const yieldData_tbtc = {
     {
       "block": 23605103,
       "timestamp": 1760797451,
-      "datetime": "2025-10-18T14:24:11",
+      "datetime": "2025-10-18T18:24:11",
       "pps_btc": 1.066058542047434,
       "ret_step": null,
       "ret_step_pct": null,
@@ -5194,7 +5194,7 @@ const yieldData_tbtc = {
     {
       "block": 23605401,
       "timestamp": 1760801051,
-      "datetime": "2025-10-18T15:24:11",
+      "datetime": "2025-10-18T19:24:11",
       "pps_btc": 1.066049636829438,
       "ret_step": null,
       "ret_step_pct": null,
@@ -5203,7 +5203,7 @@ const yieldData_tbtc = {
     {
       "block": 23605701,
       "timestamp": 1760804651,
-      "datetime": "2025-10-18T16:24:11",
+      "datetime": "2025-10-18T20:24:11",
       "pps_btc": 1.0660418493409762,
       "ret_step": null,
       "ret_step_pct": null,
@@ -5212,7 +5212,7 @@ const yieldData_tbtc = {
     {
       "block": 23606000,
       "timestamp": 1760808251,
-      "datetime": "2025-10-18T17:24:11",
+      "datetime": "2025-10-18T21:24:11",
       "pps_btc": 1.0660329364747918,
       "ret_step": null,
       "ret_step_pct": null,
@@ -5221,7 +5221,7 @@ const yieldData_tbtc = {
     {
       "block": 23606296,
       "timestamp": 1760811851,
-      "datetime": "2025-10-18T18:24:11",
+      "datetime": "2025-10-18T22:24:11",
       "pps_btc": 1.0660240982835538,
       "ret_step": null,
       "ret_step_pct": null,
@@ -5230,7 +5230,7 @@ const yieldData_tbtc = {
     {
       "block": 23606595,
       "timestamp": 1760815451,
-      "datetime": "2025-10-18T19:24:11",
+      "datetime": "2025-10-18T23:24:11",
       "pps_btc": 1.0660151207797937,
       "ret_step": null,
       "ret_step_pct": null,
@@ -5239,7 +5239,7 @@ const yieldData_tbtc = {
     {
       "block": 23606892,
       "timestamp": 1760819051,
-      "datetime": "2025-10-18T20:24:11",
+      "datetime": "2025-10-19T00:24:11",
       "pps_btc": 1.0660062438928042,
       "ret_step": null,
       "ret_step_pct": null,
@@ -5248,7 +5248,7 @@ const yieldData_tbtc = {
     {
       "block": 23607189,
       "timestamp": 1760822651,
-      "datetime": "2025-10-18T21:24:11",
+      "datetime": "2025-10-19T01:24:11",
       "pps_btc": 1.0659974806384702,
       "ret_step": null,
       "ret_step_pct": null,
@@ -5257,7 +5257,7 @@ const yieldData_tbtc = {
     {
       "block": 23607486,
       "timestamp": 1760826251,
-      "datetime": "2025-10-18T22:24:11",
+      "datetime": "2025-10-19T02:24:11",
       "pps_btc": 1.0659884374360298,
       "ret_step": null,
       "ret_step_pct": null,
@@ -5266,7 +5266,7 @@ const yieldData_tbtc = {
     {
       "block": 23607785,
       "timestamp": 1760829851,
-      "datetime": "2025-10-18T23:24:11",
+      "datetime": "2025-10-19T03:24:11",
       "pps_btc": 1.0659794895484638,
       "ret_step": null,
       "ret_step_pct": null,
@@ -5275,7 +5275,7 @@ const yieldData_tbtc = {
     {
       "block": 23608083,
       "timestamp": 1760833451,
-      "datetime": "2025-10-19T00:24:11",
+      "datetime": "2025-10-19T04:24:11",
       "pps_btc": 1.0659704250707311,
       "ret_step": null,
       "ret_step_pct": null,
@@ -5284,7 +5284,7 @@ const yieldData_tbtc = {
     {
       "block": 23608380,
       "timestamp": 1760837051,
-      "datetime": "2025-10-19T01:24:11",
+      "datetime": "2025-10-19T05:24:11",
       "pps_btc": 1.0659612731540715,
       "ret_step": null,
       "ret_step_pct": null,
@@ -5293,7 +5293,7 @@ const yieldData_tbtc = {
     {
       "block": 23608679,
       "timestamp": 1760840651,
-      "datetime": "2025-10-19T02:24:11",
+      "datetime": "2025-10-19T06:24:11",
       "pps_btc": 1.065952185633972,
       "ret_step": null,
       "ret_step_pct": null,
@@ -5302,7 +5302,7 @@ const yieldData_tbtc = {
     {
       "block": 23608975,
       "timestamp": 1760844251,
-      "datetime": "2025-10-19T03:24:11",
+      "datetime": "2025-10-19T07:24:11",
       "pps_btc": 1.065943073963789,
       "ret_step": null,
       "ret_step_pct": null,
@@ -5311,7 +5311,7 @@ const yieldData_tbtc = {
     {
       "block": 23609273,
       "timestamp": 1760847851,
-      "datetime": "2025-10-19T04:24:11",
+      "datetime": "2025-10-19T08:24:11",
       "pps_btc": 1.0659353508383207,
       "ret_step": null,
       "ret_step_pct": null,
@@ -5320,7 +5320,7 @@ const yieldData_tbtc = {
     {
       "block": 23609572,
       "timestamp": 1760851451,
-      "datetime": "2025-10-19T05:24:11",
+      "datetime": "2025-10-19T09:24:11",
       "pps_btc": 1.065926277375291,
       "ret_step": null,
       "ret_step_pct": null,
@@ -5329,7 +5329,7 @@ const yieldData_tbtc = {
     {
       "block": 23609872,
       "timestamp": 1760855051,
-      "datetime": "2025-10-19T06:24:11",
+      "datetime": "2025-10-19T10:24:11",
       "pps_btc": 1.065917324264631,
       "ret_step": null,
       "ret_step_pct": null,
@@ -5338,7 +5338,7 @@ const yieldData_tbtc = {
     {
       "block": 23610170,
       "timestamp": 1760858651,
-      "datetime": "2025-10-19T07:24:11",
+      "datetime": "2025-10-19T11:24:11",
       "pps_btc": 1.0659077012212945,
       "ret_step": null,
       "ret_step_pct": null,
@@ -5347,7 +5347,7 @@ const yieldData_tbtc = {
     {
       "block": 23610469,
       "timestamp": 1760862251,
-      "datetime": "2025-10-19T08:24:11",
+      "datetime": "2025-10-19T12:24:11",
       "pps_btc": 1.0658985202972784,
       "ret_step": null,
       "ret_step_pct": null,
@@ -5356,7 +5356,7 @@ const yieldData_tbtc = {
     {
       "block": 23610769,
       "timestamp": 1760865851,
-      "datetime": "2025-10-19T09:24:11",
+      "datetime": "2025-10-19T13:24:11",
       "pps_btc": 1.0658916526580249,
       "ret_step": null,
       "ret_step_pct": null,
@@ -5365,7 +5365,7 @@ const yieldData_tbtc = {
     {
       "block": 23611066,
       "timestamp": 1760869451,
-      "datetime": "2025-10-19T10:24:11",
+      "datetime": "2025-10-19T14:24:11",
       "pps_btc": 1.0662050487613284,
       "ret_step": null,
       "ret_step_pct": null,
@@ -5374,7 +5374,7 @@ const yieldData_tbtc = {
     {
       "block": 23611366,
       "timestamp": 1760873051,
-      "datetime": "2025-10-19T11:24:11",
+      "datetime": "2025-10-19T15:24:11",
       "pps_btc": 1.0673006025701774,
       "ret_step": null,
       "ret_step_pct": null,
@@ -5383,7 +5383,7 @@ const yieldData_tbtc = {
     {
       "block": 23611662,
       "timestamp": 1760876651,
-      "datetime": "2025-10-19T12:24:11",
+      "datetime": "2025-10-19T16:24:11",
       "pps_btc": 1.0672777015165056,
       "ret_step": null,
       "ret_step_pct": null,
@@ -5392,7 +5392,7 @@ const yieldData_tbtc = {
     {
       "block": 23611958,
       "timestamp": 1760880251,
-      "datetime": "2025-10-19T13:24:11",
+      "datetime": "2025-10-19T17:24:11",
       "pps_btc": 1.067268389556146,
       "ret_step": null,
       "ret_step_pct": null,
@@ -5401,7 +5401,7 @@ const yieldData_tbtc = {
     {
       "block": 23612256,
       "timestamp": 1760883851,
-      "datetime": "2025-10-19T14:24:11",
+      "datetime": "2025-10-19T18:24:11",
       "pps_btc": 1.068444748888305,
       "ret_step": null,
       "ret_step_pct": null,
@@ -5410,7 +5410,7 @@ const yieldData_tbtc = {
     {
       "block": 23612551,
       "timestamp": 1760887451,
-      "datetime": "2025-10-19T15:24:11",
+      "datetime": "2025-10-19T19:24:11",
       "pps_btc": 1.0683720087967357,
       "ret_step": null,
       "ret_step_pct": null,
@@ -5419,7 +5419,7 @@ const yieldData_tbtc = {
     {
       "block": 23612850,
       "timestamp": 1760891051,
-      "datetime": "2025-10-19T16:24:11",
+      "datetime": "2025-10-19T20:24:11",
       "pps_btc": 1.0683463868294956,
       "ret_step": null,
       "ret_step_pct": null,
@@ -5428,7 +5428,7 @@ const yieldData_tbtc = {
     {
       "block": 23613149,
       "timestamp": 1760894651,
-      "datetime": "2025-10-19T17:24:11",
+      "datetime": "2025-10-19T21:24:11",
       "pps_btc": 1.068277584580321,
       "ret_step": null,
       "ret_step_pct": null,
@@ -5437,7 +5437,7 @@ const yieldData_tbtc = {
     {
       "block": 23613447,
       "timestamp": 1760898251,
-      "datetime": "2025-10-19T18:24:11",
+      "datetime": "2025-10-19T22:24:11",
       "pps_btc": 1.0681964260013597,
       "ret_step": null,
       "ret_step_pct": null,
@@ -5446,7 +5446,7 @@ const yieldData_tbtc = {
     {
       "block": 23613746,
       "timestamp": 1760901851,
-      "datetime": "2025-10-19T19:24:11",
+      "datetime": "2025-10-19T23:24:11",
       "pps_btc": 1.068150667511957,
       "ret_step": null,
       "ret_step_pct": null,
@@ -5455,7 +5455,7 @@ const yieldData_tbtc = {
     {
       "block": 23614044,
       "timestamp": 1760905451,
-      "datetime": "2025-10-19T20:24:11",
+      "datetime": "2025-10-20T00:24:11",
       "pps_btc": 1.0681336877530982,
       "ret_step": null,
       "ret_step_pct": null,
@@ -5464,7 +5464,7 @@ const yieldData_tbtc = {
     {
       "block": 23614341,
       "timestamp": 1760909051,
-      "datetime": "2025-10-19T21:24:11",
+      "datetime": "2025-10-20T01:24:11",
       "pps_btc": 1.0681393380625923,
       "ret_step": null,
       "ret_step_pct": null,
@@ -5473,7 +5473,7 @@ const yieldData_tbtc = {
     {
       "block": 23614639,
       "timestamp": 1760912651,
-      "datetime": "2025-10-19T22:24:11",
+      "datetime": "2025-10-20T02:24:11",
       "pps_btc": 1.0680650249080803,
       "ret_step": null,
       "ret_step_pct": null,
@@ -5482,7 +5482,7 @@ const yieldData_tbtc = {
     {
       "block": 23614937,
       "timestamp": 1760916251,
-      "datetime": "2025-10-19T23:24:11",
+      "datetime": "2025-10-20T03:24:11",
       "pps_btc": 1.0680526954735399,
       "ret_step": null,
       "ret_step_pct": null,
@@ -5491,7 +5491,7 @@ const yieldData_tbtc = {
     {
       "block": 23615237,
       "timestamp": 1760919851,
-      "datetime": "2025-10-20T00:24:11",
+      "datetime": "2025-10-20T04:24:11",
       "pps_btc": 1.0684549019145624,
       "ret_step": null,
       "ret_step_pct": null,
@@ -5500,7 +5500,7 @@ const yieldData_tbtc = {
     {
       "block": 23615535,
       "timestamp": 1760923451,
-      "datetime": "2025-10-20T01:24:11",
+      "datetime": "2025-10-20T05:24:11",
       "pps_btc": 1.068480376348013,
       "ret_step": null,
       "ret_step_pct": null,
@@ -5509,7 +5509,7 @@ const yieldData_tbtc = {
     {
       "block": 23615831,
       "timestamp": 1760927051,
-      "datetime": "2025-10-20T02:24:11",
+      "datetime": "2025-10-20T06:24:11",
       "pps_btc": 1.068476960999527,
       "ret_step": null,
       "ret_step_pct": null,
@@ -5518,7 +5518,7 @@ const yieldData_tbtc = {
     {
       "block": 23616126,
       "timestamp": 1760930651,
-      "datetime": "2025-10-20T03:24:11",
+      "datetime": "2025-10-20T07:24:11",
       "pps_btc": 1.0684682552151223,
       "ret_step": null,
       "ret_step_pct": null,
@@ -5527,7 +5527,7 @@ const yieldData_tbtc = {
     {
       "block": 23616421,
       "timestamp": 1760934251,
-      "datetime": "2025-10-20T04:24:11",
+      "datetime": "2025-10-20T08:24:11",
       "pps_btc": 1.068656643172785,
       "ret_step": null,
       "ret_step_pct": null,
@@ -5536,7 +5536,7 @@ const yieldData_tbtc = {
     {
       "block": 23616719,
       "timestamp": 1760937851,
-      "datetime": "2025-10-20T05:24:11",
+      "datetime": "2025-10-20T09:24:11",
       "pps_btc": 1.0686156163373717,
       "ret_step": null,
       "ret_step_pct": null,
@@ -5545,7 +5545,7 @@ const yieldData_tbtc = {
     {
       "block": 23617012,
       "timestamp": 1760941451,
-      "datetime": "2025-10-20T06:24:11",
+      "datetime": "2025-10-20T10:24:11",
       "pps_btc": 1.0684808714352563,
       "ret_step": null,
       "ret_step_pct": null,
@@ -5554,7 +5554,7 @@ const yieldData_tbtc = {
     {
       "block": 23617310,
       "timestamp": 1760945051,
-      "datetime": "2025-10-20T07:24:11",
+      "datetime": "2025-10-20T11:24:11",
       "pps_btc": 1.0684344243432575,
       "ret_step": null,
       "ret_step_pct": null,
@@ -5563,7 +5563,7 @@ const yieldData_tbtc = {
     {
       "block": 23617610,
       "timestamp": 1760948651,
-      "datetime": "2025-10-20T08:24:11",
+      "datetime": "2025-10-20T12:24:11",
       "pps_btc": 1.0683820681478797,
       "ret_step": null,
       "ret_step_pct": null,
@@ -5572,7 +5572,7 @@ const yieldData_tbtc = {
     {
       "block": 23617906,
       "timestamp": 1760952251,
-      "datetime": "2025-10-20T09:24:11",
+      "datetime": "2025-10-20T13:24:11",
       "pps_btc": 1.0683687498346641,
       "ret_step": null,
       "ret_step_pct": null,
@@ -5581,7 +5581,7 @@ const yieldData_tbtc = {
     {
       "block": 23618202,
       "timestamp": 1760955851,
-      "datetime": "2025-10-20T10:24:11",
+      "datetime": "2025-10-20T14:24:11",
       "pps_btc": 1.068360125650492,
       "ret_step": null,
       "ret_step_pct": null,
@@ -5590,7 +5590,7 @@ const yieldData_tbtc = {
     {
       "block": 23618495,
       "timestamp": 1760959451,
-      "datetime": "2025-10-20T11:24:11",
+      "datetime": "2025-10-20T15:24:11",
       "pps_btc": 1.0683407947221857,
       "ret_step": null,
       "ret_step_pct": null,
@@ -5599,7 +5599,7 @@ const yieldData_tbtc = {
     {
       "block": 23618792,
       "timestamp": 1760963051,
-      "datetime": "2025-10-20T12:24:11",
+      "datetime": "2025-10-20T16:24:11",
       "pps_btc": 1.0682927888062708,
       "ret_step": null,
       "ret_step_pct": null,
@@ -5608,7 +5608,7 @@ const yieldData_tbtc = {
     {
       "block": 23619090,
       "timestamp": 1760966651,
-      "datetime": "2025-10-20T13:24:11",
+      "datetime": "2025-10-20T17:24:11",
       "pps_btc": 1.0683090182180035,
       "ret_step": null,
       "ret_step_pct": null,
@@ -5617,7 +5617,7 @@ const yieldData_tbtc = {
     {
       "block": 23619387,
       "timestamp": 1760970251,
-      "datetime": "2025-10-20T14:24:11",
+      "datetime": "2025-10-20T18:24:11",
       "pps_btc": 1.0682711625109576,
       "ret_step": -3.54351656686502e-05,
       "ret_step_pct": -0.00354351656686502,
@@ -5626,7 +5626,7 @@ const yieldData_tbtc = {
     {
       "block": 23619684,
       "timestamp": 1760973851,
-      "datetime": "2025-10-20T15:24:11",
+      "datetime": "2025-10-20T19:24:11",
       "pps_btc": 1.0682430924704356,
       "ret_step": -2.6276138032266763e-05,
       "ret_step_pct": -0.002627613803226676,
@@ -5635,7 +5635,7 @@ const yieldData_tbtc = {
     {
       "block": 23619983,
       "timestamp": 1760977451,
-      "datetime": "2025-10-20T16:24:11",
+      "datetime": "2025-10-20T20:24:11",
       "pps_btc": 1.068249521562027,
       "ret_step": 6.01837880970986e-06,
       "ret_step_pct": 0.000601837880970986,
@@ -5644,7 +5644,7 @@ const yieldData_tbtc = {
     {
       "block": 23620278,
       "timestamp": 1760981051,
-      "datetime": "2025-10-20T17:24:11",
+      "datetime": "2025-10-20T21:24:11",
       "pps_btc": 1.068640968866794,
       "ret_step": 0.0003664380810529705,
       "ret_step_pct": 0.03664380810529705,
@@ -5653,7 +5653,7 @@ const yieldData_tbtc = {
     {
       "block": 23620575,
       "timestamp": 1760984651,
-      "datetime": "2025-10-20T18:24:11",
+      "datetime": "2025-10-20T22:24:11",
       "pps_btc": 1.0685979063436808,
       "ret_step": -4.029653023578001e-05,
       "ret_step_pct": -0.004029653023578001,
@@ -5662,7 +5662,7 @@ const yieldData_tbtc = {
     {
       "block": 23620872,
       "timestamp": 1760988251,
-      "datetime": "2025-10-20T19:24:11",
+      "datetime": "2025-10-20T23:24:11",
       "pps_btc": 1.068600684592294,
       "ret_step": 2.5999008576023394e-06,
       "ret_step_pct": 0.00025999008576023397,
@@ -5671,7 +5671,7 @@ const yieldData_tbtc = {
     {
       "block": 23621165,
       "timestamp": 1760991851,
-      "datetime": "2025-10-20T20:24:11",
+      "datetime": "2025-10-21T00:24:11",
       "pps_btc": 1.0685941847230944,
       "ret_step": -6.082598760415274e-06,
       "ret_step_pct": -0.0006082598760415274,
@@ -5680,7 +5680,7 @@ const yieldData_tbtc = {
     {
       "block": 23621462,
       "timestamp": 1760995451,
-      "datetime": "2025-10-20T21:24:11",
+      "datetime": "2025-10-21T01:24:11",
       "pps_btc": 1.0685853485005776,
       "ret_step": -8.269016099096343e-06,
       "ret_step_pct": -0.0008269016099096343,
@@ -5689,7 +5689,7 @@ const yieldData_tbtc = {
     {
       "block": 23621760,
       "timestamp": 1760999051,
-      "datetime": "2025-10-20T22:24:11",
+      "datetime": "2025-10-21T02:24:11",
       "pps_btc": 1.068576501575971,
       "ret_step": -8.279099670521282e-06,
       "ret_step_pct": -0.0008279099670521282,
@@ -5698,7 +5698,7 @@ const yieldData_tbtc = {
     {
       "block": 23622060,
       "timestamp": 1761002651,
-      "datetime": "2025-10-20T23:24:11",
+      "datetime": "2025-10-21T03:24:11",
       "pps_btc": 1.0685676553487071,
       "ret_step": -8.278515624070247e-06,
       "ret_step_pct": -0.0008278515624070247,
@@ -5707,7 +5707,7 @@ const yieldData_tbtc = {
     {
       "block": 23622358,
       "timestamp": 1761006251,
-      "datetime": "2025-10-21T00:24:11",
+      "datetime": "2025-10-21T04:24:11",
       "pps_btc": 1.0685587910969219,
       "ret_step": -8.295452085705624e-06,
       "ret_step_pct": -0.0008295452085705624,
@@ -5716,7 +5716,7 @@ const yieldData_tbtc = {
     {
       "block": 23622658,
       "timestamp": 1761009851,
-      "datetime": "2025-10-21T01:24:11",
+      "datetime": "2025-10-21T05:24:11",
       "pps_btc": 1.0685499688708409,
       "ret_step": -8.256191567858053e-06,
       "ret_step_pct": -0.0008256191567858054,
@@ -5725,7 +5725,7 @@ const yieldData_tbtc = {
     {
       "block": 23622955,
       "timestamp": 1761013451,
-      "datetime": "2025-10-21T02:24:11",
+      "datetime": "2025-10-21T06:24:11",
       "pps_btc": 1.0685035465559414,
       "ret_step": -4.34442152935856e-05,
       "ret_step_pct": -0.00434442152935856,
@@ -5734,7 +5734,7 @@ const yieldData_tbtc = {
     {
       "block": 23623253,
       "timestamp": 1761017051,
-      "datetime": "2025-10-21T03:24:11",
+      "datetime": "2025-10-21T07:24:11",
       "pps_btc": 1.0685018746991168,
       "ret_step": -1.5646712918771487e-06,
       "ret_step_pct": -0.00015646712918771487,
@@ -5743,7 +5743,7 @@ const yieldData_tbtc = {
     {
       "block": 23623546,
       "timestamp": 1761020663,
-      "datetime": "2025-10-21T04:24:23",
+      "datetime": "2025-10-21T08:24:23",
       "pps_btc": 1.068211140817514,
       "ret_step": -0.00027209487272517025,
       "ret_step_pct": -0.027209487272517024,
@@ -5752,7 +5752,7 @@ const yieldData_tbtc = {
     {
       "block": 23623840,
       "timestamp": 1761024251,
-      "datetime": "2025-10-21T05:24:11",
+      "datetime": "2025-10-21T09:24:11",
       "pps_btc": 1.0680189053173952,
       "ret_step": -0.00017996020896359125,
       "ret_step_pct": -0.017996020896359124,
@@ -5761,7 +5761,7 @@ const yieldData_tbtc = {
     {
       "block": 23624137,
       "timestamp": 1761027851,
-      "datetime": "2025-10-21T06:24:11",
+      "datetime": "2025-10-21T10:24:11",
       "pps_btc": 1.06802174651862,
       "ret_step": 2.6602536815157297e-06,
       "ret_step_pct": 0.00026602536815157295,
@@ -5770,7 +5770,7 @@ const yieldData_tbtc = {
     {
       "block": 23624434,
       "timestamp": 1761031451,
-      "datetime": "2025-10-21T07:24:11",
+      "datetime": "2025-10-21T11:24:11",
       "pps_btc": 1.0680293790015853,
       "ret_step": 7.1463741166846495e-06,
       "ret_step_pct": 0.0007146374116684649,
@@ -5779,7 +5779,7 @@ const yieldData_tbtc = {
     {
       "block": 23624729,
       "timestamp": 1761035051,
-      "datetime": "2025-10-21T08:24:11",
+      "datetime": "2025-10-21T12:24:11",
       "pps_btc": 1.0680342131618954,
       "ret_step": 4.526242821652591e-06,
       "ret_step_pct": 0.0004526242821652591,
@@ -5788,7 +5788,7 @@ const yieldData_tbtc = {
     {
       "block": 23625027,
       "timestamp": 1761038651,
-      "datetime": "2025-10-21T09:24:11",
+      "datetime": "2025-10-21T13:24:11",
       "pps_btc": 1.0680052101261177,
       "ret_step": -2.7155530618997732e-05,
       "ret_step_pct": -0.0027155530618997734,
@@ -5797,7 +5797,7 @@ const yieldData_tbtc = {
     {
       "block": 23625326,
       "timestamp": 1761042251,
-      "datetime": "2025-10-21T10:24:11",
+      "datetime": "2025-10-21T14:24:11",
       "pps_btc": 1.0679972898820655,
       "ret_step": -7.4159226726559886e-06,
       "ret_step_pct": -0.0007415922672655989,
@@ -5806,7 +5806,7 @@ const yieldData_tbtc = {
     {
       "block": 23625622,
       "timestamp": 1761045851,
-      "datetime": "2025-10-21T11:24:11",
+      "datetime": "2025-10-21T15:24:11",
       "pps_btc": 1.0679969076468214,
       "ret_step": -3.578990767150811e-07,
       "ret_step_pct": -3.578990767150811e-05,
@@ -5815,7 +5815,7 @@ const yieldData_tbtc = {
     {
       "block": 23625918,
       "timestamp": 1761049451,
-      "datetime": "2025-10-21T12:24:11",
+      "datetime": "2025-10-21T16:24:11",
       "pps_btc": 1.0680101948350236,
       "ret_step": 1.2441223478350158e-05,
       "ret_step_pct": 0.0012441223478350158,
@@ -5824,7 +5824,7 @@ const yieldData_tbtc = {
     {
       "block": 23626214,
       "timestamp": 1761053051,
-      "datetime": "2025-10-21T13:24:11",
+      "datetime": "2025-10-21T17:24:11",
       "pps_btc": 1.068001510939253,
       "ret_step": -8.13091093381408e-06,
       "ret_step_pct": -0.000813091093381408,
@@ -5833,7 +5833,7 @@ const yieldData_tbtc = {
     {
       "block": 23626512,
       "timestamp": 1761056651,
-      "datetime": "2025-10-21T14:24:11",
+      "datetime": "2025-10-21T18:24:11",
       "pps_btc": 1.068923255451759,
       "ret_step": 0.0008630554386531715,
       "ret_step_pct": 0.08630554386531715,
@@ -5842,7 +5842,7 @@ const yieldData_tbtc = {
     {
       "block": 23626810,
       "timestamp": 1761060251,
-      "datetime": "2025-10-21T15:24:11",
+      "datetime": "2025-10-21T19:24:11",
       "pps_btc": 1.0677051318189803,
       "ret_step": -0.0011395800648605287,
       "ret_step_pct": -0.11395800648605287,
@@ -5851,7 +5851,7 @@ const yieldData_tbtc = {
     {
       "block": 23627107,
       "timestamp": 1761063851,
-      "datetime": "2025-10-21T16:24:11",
+      "datetime": "2025-10-21T20:24:11",
       "pps_btc": 1.0666489610519205,
       "ret_step": -0.0009891970503695894,
       "ret_step_pct": -0.09891970503695895,
@@ -5860,7 +5860,7 @@ const yieldData_tbtc = {
     {
       "block": 23627399,
       "timestamp": 1761067451,
-      "datetime": "2025-10-21T17:24:11",
+      "datetime": "2025-10-21T21:24:11",
       "pps_btc": 1.0664166275451128,
       "ret_step": -0.0002178162781677625,
       "ret_step_pct": -0.02178162781677625,
@@ -5869,7 +5869,7 @@ const yieldData_tbtc = {
     {
       "block": 23627696,
       "timestamp": 1761071051,
-      "datetime": "2025-10-21T18:24:11",
+      "datetime": "2025-10-21T22:24:11",
       "pps_btc": 1.0664032056780464,
       "ret_step": -1.258595066850757e-05,
       "ret_step_pct": -0.001258595066850757,
@@ -5878,7 +5878,7 @@ const yieldData_tbtc = {
     {
       "block": 23627993,
       "timestamp": 1761074651,
-      "datetime": "2025-10-21T19:24:11",
+      "datetime": "2025-10-21T23:24:11",
       "pps_btc": 1.0663926254751097,
       "ret_step": -9.921390783703466e-06,
       "ret_step_pct": -0.0009921390783703466,
@@ -5887,7 +5887,7 @@ const yieldData_tbtc = {
     {
       "block": 23628290,
       "timestamp": 1761078251,
-      "datetime": "2025-10-21T20:24:11",
+      "datetime": "2025-10-22T00:24:11",
       "pps_btc": 1.0676334414616797,
       "ret_step": 0.001163563922825395,
       "ret_step_pct": 0.1163563922825395,
@@ -5896,7 +5896,7 @@ const yieldData_tbtc = {
     {
       "block": 23628585,
       "timestamp": 1761081851,
-      "datetime": "2025-10-21T21:24:11",
+      "datetime": "2025-10-22T01:24:11",
       "pps_btc": 1.0686060918721416,
       "ret_step": 0.000911034042854926,
       "ret_step_pct": 0.0911034042854926,
@@ -5905,7 +5905,7 @@ const yieldData_tbtc = {
     {
       "block": 23628883,
       "timestamp": 1761085451,
-      "datetime": "2025-10-21T22:24:11",
+      "datetime": "2025-10-22T02:24:11",
       "pps_btc": 1.069889587700367,
       "ret_step": 0.0012010934973958325,
       "ret_step_pct": 0.12010934973958325,
@@ -5914,7 +5914,7 @@ const yieldData_tbtc = {
     {
       "block": 23629182,
       "timestamp": 1761089051,
-      "datetime": "2025-10-21T23:24:11",
+      "datetime": "2025-10-22T03:24:11",
       "pps_btc": 1.0697607212289533,
       "ret_step": -0.00012044838354823425,
       "ret_step_pct": -0.012044838354823425,
@@ -5923,7 +5923,7 @@ const yieldData_tbtc = {
     {
       "block": 23629482,
       "timestamp": 1761092651,
-      "datetime": "2025-10-22T00:24:11",
+      "datetime": "2025-10-22T04:24:11",
       "pps_btc": 1.0695443116555334,
       "ret_step": -0.0002022971764855511,
       "ret_step_pct": -0.02022971764855511,
@@ -5932,7 +5932,7 @@ const yieldData_tbtc = {
     {
       "block": 23629780,
       "timestamp": 1761096251,
-      "datetime": "2025-10-22T01:24:11",
+      "datetime": "2025-10-22T05:24:11",
       "pps_btc": 1.0694285684036955,
       "ret_step": -0.00010821735067605057,
       "ret_step_pct": -0.010821735067605058,
@@ -5941,7 +5941,7 @@ const yieldData_tbtc = {
     {
       "block": 23630074,
       "timestamp": 1761099851,
-      "datetime": "2025-10-22T02:24:11",
+      "datetime": "2025-10-22T06:24:11",
       "pps_btc": 1.0694213956452092,
       "ret_step": -6.707094515823123e-06,
       "ret_step_pct": -0.0006707094515823123,
@@ -5950,7 +5950,7 @@ const yieldData_tbtc = {
     {
       "block": 23630371,
       "timestamp": 1761103451,
-      "datetime": "2025-10-22T03:24:11",
+      "datetime": "2025-10-22T07:24:11",
       "pps_btc": 1.0693832345666903,
       "ret_step": -3.568385547030078e-05,
       "ret_step_pct": -0.003568385547030078,
@@ -5959,7 +5959,7 @@ const yieldData_tbtc = {
     {
       "block": 23630668,
       "timestamp": 1761107051,
-      "datetime": "2025-10-22T04:24:11",
+      "datetime": "2025-10-22T08:24:11",
       "pps_btc": 1.0693757716527748,
       "ret_step": -6.978708543677461e-06,
       "ret_step_pct": -0.0006978708543677461,
@@ -5968,7 +5968,7 @@ const yieldData_tbtc = {
     {
       "block": 23630963,
       "timestamp": 1761110651,
-      "datetime": "2025-10-22T05:24:11",
+      "datetime": "2025-10-22T09:24:11",
       "pps_btc": 1.0693671739376327,
       "ret_step": -8.039938223615066e-06,
       "ret_step_pct": -0.0008039938223615066,
@@ -5977,7 +5977,7 @@ const yieldData_tbtc = {
     {
       "block": 23631263,
       "timestamp": 1761114251,
-      "datetime": "2025-10-22T06:24:11",
+      "datetime": "2025-10-22T10:24:11",
       "pps_btc": 1.0691280527289435,
       "ret_step": -0.00022361001395691143,
       "ret_step_pct": -0.02236100139569114,
@@ -5986,7 +5986,7 @@ const yieldData_tbtc = {
     {
       "block": 23631562,
       "timestamp": 1761117851,
-      "datetime": "2025-10-22T07:24:11",
+      "datetime": "2025-10-22T11:24:11",
       "pps_btc": 1.0691188811989114,
       "ret_step": -8.578514059779575e-06,
       "ret_step_pct": -0.0008578514059779575,
@@ -5995,7 +5995,7 @@ const yieldData_tbtc = {
     {
       "block": 23631859,
       "timestamp": 1761121451,
-      "datetime": "2025-10-22T08:24:11",
+      "datetime": "2025-10-22T12:24:11",
       "pps_btc": 1.0691675062002892,
       "ret_step": 4.548137932353402e-05,
       "ret_step_pct": 0.004548137932353402,
@@ -6004,7 +6004,7 @@ const yieldData_tbtc = {
     {
       "block": 23632157,
       "timestamp": 1761125051,
-      "datetime": "2025-10-22T09:24:11",
+      "datetime": "2025-10-22T13:24:11",
       "pps_btc": 1.069160144419444,
       "ret_step": -6.885526171022544e-06,
       "ret_step_pct": -0.0006885526171022544,
@@ -6013,7 +6013,7 @@ const yieldData_tbtc = {
     {
       "block": 23632454,
       "timestamp": 1761128651,
-      "datetime": "2025-10-22T10:24:11",
+      "datetime": "2025-10-22T14:24:11",
       "pps_btc": 1.0691515379671586,
       "ret_step": -8.049731679970467e-06,
       "ret_step_pct": -0.0008049731679970467,
@@ -6022,7 +6022,7 @@ const yieldData_tbtc = {
     {
       "block": 23632750,
       "timestamp": 1761132251,
-      "datetime": "2025-10-22T11:24:11",
+      "datetime": "2025-10-22T15:24:11",
       "pps_btc": 1.0689463568102853,
       "ret_step": -0.00019191026677432195,
       "ret_step_pct": -0.019191026677432194,
@@ -6031,7 +6031,7 @@ const yieldData_tbtc = {
     {
       "block": 23633046,
       "timestamp": 1761135851,
-      "datetime": "2025-10-22T12:24:11",
+      "datetime": "2025-10-22T16:24:11",
       "pps_btc": 1.0689543398054338,
       "ret_step": 7.468097063738634e-06,
       "ret_step_pct": 0.0007468097063738635,
@@ -6040,7 +6040,7 @@ const yieldData_tbtc = {
     {
       "block": 23633343,
       "timestamp": 1761139451,
-      "datetime": "2025-10-22T13:24:11",
+      "datetime": "2025-10-22T17:24:11",
       "pps_btc": 1.0689455811302833,
       "ret_step": -8.193685010039077e-06,
       "ret_step_pct": -0.0008193685010039077,
@@ -6049,7 +6049,7 @@ const yieldData_tbtc = {
     {
       "block": 23633637,
       "timestamp": 1761143051,
-      "datetime": "2025-10-22T14:24:11",
+      "datetime": "2025-10-22T18:24:11",
       "pps_btc": 1.0689365223045282,
       "ret_step": -8.474543433198317e-06,
       "ret_step_pct": -0.0008474543433198317,
@@ -6058,7 +6058,7 @@ const yieldData_tbtc = {
     {
       "block": 23633932,
       "timestamp": 1761146651,
-      "datetime": "2025-10-22T15:24:11",
+      "datetime": "2025-10-22T19:24:11",
       "pps_btc": 1.068927261912743,
       "ret_step": -8.663182136675853e-06,
       "ret_step_pct": -0.0008663182136675853,
@@ -6067,7 +6067,7 @@ const yieldData_tbtc = {
     {
       "block": 23634229,
       "timestamp": 1761150251,
-      "datetime": "2025-10-22T16:24:11",
+      "datetime": "2025-10-22T20:24:11",
       "pps_btc": 1.0689185720026433,
       "ret_step": -8.12956167292547e-06,
       "ret_step_pct": -0.000812956167292547,
@@ -6076,7 +6076,7 @@ const yieldData_tbtc = {
     {
       "block": 23634528,
       "timestamp": 1761153851,
-      "datetime": "2025-10-22T17:24:11",
+      "datetime": "2025-10-22T21:24:11",
       "pps_btc": 1.0689100546543544,
       "ret_step": null,
       "ret_step_pct": null,
@@ -6085,7 +6085,7 @@ const yieldData_tbtc = {
     {
       "block": 23634827,
       "timestamp": 1761157451,
-      "datetime": "2025-10-22T18:24:11",
+      "datetime": "2025-10-22T22:24:11",
       "pps_btc": 1.0689016528335826,
       "ret_step": null,
       "ret_step_pct": null,
@@ -6094,7 +6094,7 @@ const yieldData_tbtc = {
     {
       "block": 23635123,
       "timestamp": 1761161051,
-      "datetime": "2025-10-22T19:24:11",
+      "datetime": "2025-10-22T23:24:11",
       "pps_btc": 1.0688925231916084,
       "ret_step": null,
       "ret_step_pct": null,
@@ -6103,7 +6103,7 @@ const yieldData_tbtc = {
     {
       "block": 23635421,
       "timestamp": 1761164651,
-      "datetime": "2025-10-22T20:24:11",
+      "datetime": "2025-10-23T00:24:11",
       "pps_btc": 1.0688835050791654,
       "ret_step": null,
       "ret_step_pct": null,
@@ -6112,7 +6112,7 @@ const yieldData_tbtc = {
     {
       "block": 23635719,
       "timestamp": 1761168251,
-      "datetime": "2025-10-22T21:24:11",
+      "datetime": "2025-10-23T01:24:11",
       "pps_btc": 1.0685573727150686,
       "ret_step": null,
       "ret_step_pct": null,
@@ -6121,7 +6121,7 @@ const yieldData_tbtc = {
     {
       "block": 23636016,
       "timestamp": 1761171851,
-      "datetime": "2025-10-22T22:24:11",
+      "datetime": "2025-10-23T02:24:11",
       "pps_btc": 1.0685001492676525,
       "ret_step": null,
       "ret_step_pct": null,
@@ -6130,7 +6130,7 @@ const yieldData_tbtc = {
     {
       "block": 23636315,
       "timestamp": 1761175451,
-      "datetime": "2025-10-22T23:24:11",
+      "datetime": "2025-10-23T03:24:11",
       "pps_btc": 1.0684930870422136,
       "ret_step": null,
       "ret_step_pct": null,
@@ -6139,7 +6139,7 @@ const yieldData_tbtc = {
     {
       "block": 23636610,
       "timestamp": 1761179051,
-      "datetime": "2025-10-23T00:24:11",
+      "datetime": "2025-10-23T04:24:11",
       "pps_btc": 1.0684840210180402,
       "ret_step": null,
       "ret_step_pct": null,
@@ -6148,7 +6148,7 @@ const yieldData_tbtc = {
     {
       "block": 23636909,
       "timestamp": 1761182651,
-      "datetime": "2025-10-23T01:24:11",
+      "datetime": "2025-10-23T05:24:11",
       "pps_btc": 1.0684749078688558,
       "ret_step": -8.529045830308337e-06,
       "ret_step_pct": -0.0008529045830308337,
@@ -6157,7 +6157,7 @@ const yieldData_tbtc = {
     {
       "block": 23637207,
       "timestamp": 1761186251,
-      "datetime": "2025-10-23T02:24:11",
+      "datetime": "2025-10-23T06:24:11",
       "pps_btc": 1.0684251025760343,
       "ret_step": null,
       "ret_step_pct": null,
@@ -6166,7 +6166,7 @@ const yieldData_tbtc = {
     {
       "block": 23637505,
       "timestamp": 1761189851,
-      "datetime": "2025-10-23T03:24:11",
+      "datetime": "2025-10-23T07:24:11",
       "pps_btc": 1.0684682161661712,
       "ret_step": null,
       "ret_step_pct": null,
@@ -6175,7 +6175,7 @@ const yieldData_tbtc = {
     {
       "block": 23637804,
       "timestamp": 1761193451,
-      "datetime": "2025-10-23T04:24:11",
+      "datetime": "2025-10-23T08:24:11",
       "pps_btc": 1.068463693945857,
       "ret_step": null,
       "ret_step_pct": null,
@@ -6184,7 +6184,7 @@ const yieldData_tbtc = {
     {
       "block": 23638103,
       "timestamp": 1761197051,
-      "datetime": "2025-10-23T05:24:11",
+      "datetime": "2025-10-23T09:24:11",
       "pps_btc": 1.068454830748293,
       "ret_step": null,
       "ret_step_pct": null,
@@ -6193,7 +6193,7 @@ const yieldData_tbtc = {
     {
       "block": 23638396,
       "timestamp": 1761200651,
-      "datetime": "2025-10-23T06:24:11",
+      "datetime": "2025-10-23T10:24:11",
       "pps_btc": 1.0700918437367417,
       "ret_step": null,
       "ret_step_pct": null,
@@ -6202,7 +6202,7 @@ const yieldData_tbtc = {
     {
       "block": 23638694,
       "timestamp": 1761204251,
-      "datetime": "2025-10-23T07:24:11",
+      "datetime": "2025-10-23T11:24:11",
       "pps_btc": 1.0706875560633715,
       "ret_step": null,
       "ret_step_pct": null,
@@ -6211,7 +6211,7 @@ const yieldData_tbtc = {
     {
       "block": 23638993,
       "timestamp": 1761207851,
-      "datetime": "2025-10-23T08:24:11",
+      "datetime": "2025-10-23T12:24:11",
       "pps_btc": 1.070631690258406,
       "ret_step": null,
       "ret_step_pct": null,
@@ -6220,7 +6220,7 @@ const yieldData_tbtc = {
     {
       "block": 23639289,
       "timestamp": 1761211451,
-      "datetime": "2025-10-23T09:24:11",
+      "datetime": "2025-10-23T13:24:11",
       "pps_btc": 1.0706227555986396,
       "ret_step": null,
       "ret_step_pct": null,
@@ -6229,7 +6229,7 @@ const yieldData_tbtc = {
     {
       "block": 23639586,
       "timestamp": 1761215051,
-      "datetime": "2025-10-23T10:24:11",
+      "datetime": "2025-10-23T14:24:11",
       "pps_btc": 1.0705786482831645,
       "ret_step": null,
       "ret_step_pct": null,
@@ -6238,7 +6238,7 @@ const yieldData_tbtc = {
     {
       "block": 23639884,
       "timestamp": 1761218651,
-      "datetime": "2025-10-23T11:24:11",
+      "datetime": "2025-10-23T15:24:11",
       "pps_btc": 1.0705929600858022,
       "ret_step": null,
       "ret_step_pct": null,
@@ -6247,7 +6247,7 @@ const yieldData_tbtc = {
     {
       "block": 23640180,
       "timestamp": 1761222251,
-      "datetime": "2025-10-23T12:24:11",
+      "datetime": "2025-10-23T16:24:11",
       "pps_btc": 1.0708752813413331,
       "ret_step": null,
       "ret_step_pct": null,
@@ -6256,7 +6256,7 @@ const yieldData_tbtc = {
     {
       "block": 23640479,
       "timestamp": 1761225851,
-      "datetime": "2025-10-23T13:24:11",
+      "datetime": "2025-10-23T17:24:11",
       "pps_btc": 1.070883762200249,
       "ret_step": null,
       "ret_step_pct": null,
@@ -6265,7 +6265,7 @@ const yieldData_tbtc = {
     {
       "block": 23640778,
       "timestamp": 1761229451,
-      "datetime": "2025-10-23T14:24:11",
+      "datetime": "2025-10-23T18:24:11",
       "pps_btc": 1.0708735197705077,
       "ret_step": null,
       "ret_step_pct": null,
@@ -6274,7 +6274,7 @@ const yieldData_tbtc = {
     {
       "block": 23641075,
       "timestamp": 1761233051,
-      "datetime": "2025-10-23T15:24:11",
+      "datetime": "2025-10-23T19:24:11",
       "pps_btc": 1.0708658143041805,
       "ret_step": null,
       "ret_step_pct": null,
@@ -6283,7 +6283,7 @@ const yieldData_tbtc = {
     {
       "block": 23641369,
       "timestamp": 1761236651,
-      "datetime": "2025-10-23T16:24:11",
+      "datetime": "2025-10-23T20:24:11",
       "pps_btc": 1.0708574229218168,
       "ret_step": null,
       "ret_step_pct": null,
@@ -6292,7 +6292,7 @@ const yieldData_tbtc = {
     {
       "block": 23641666,
       "timestamp": 1761240251,
-      "datetime": "2025-10-23T17:24:11",
+      "datetime": "2025-10-23T21:24:11",
       "pps_btc": 1.0708484945646393,
       "ret_step": null,
       "ret_step_pct": null,
@@ -6301,7 +6301,7 @@ const yieldData_tbtc = {
     {
       "block": 23641964,
       "timestamp": 1761243851,
-      "datetime": "2025-10-23T18:24:11",
+      "datetime": "2025-10-23T22:24:11",
       "pps_btc": 1.0710696554291064,
       "ret_step": null,
       "ret_step_pct": null,
@@ -6310,7 +6310,7 @@ const yieldData_tbtc = {
     {
       "block": 23642263,
       "timestamp": 1761247451,
-      "datetime": "2025-10-23T19:24:11",
+      "datetime": "2025-10-23T23:24:11",
       "pps_btc": 1.071057877874351,
       "ret_step": null,
       "ret_step_pct": null,
@@ -6319,7 +6319,7 @@ const yieldData_tbtc = {
     {
       "block": 23642558,
       "timestamp": 1761251051,
-      "datetime": "2025-10-23T20:24:11",
+      "datetime": "2025-10-24T00:24:11",
       "pps_btc": 1.0710490554031622,
       "ret_step": null,
       "ret_step_pct": null,
@@ -6328,7 +6328,7 @@ const yieldData_tbtc = {
     {
       "block": 23642849,
       "timestamp": 1761254651,
-      "datetime": "2025-10-23T21:24:11",
+      "datetime": "2025-10-24T01:24:11",
       "pps_btc": 1.0710417306322433,
       "ret_step": null,
       "ret_step_pct": null,
@@ -6337,7 +6337,7 @@ const yieldData_tbtc = {
     {
       "block": 23643142,
       "timestamp": 1761258251,
-      "datetime": "2025-10-23T22:24:11",
+      "datetime": "2025-10-24T02:24:11",
       "pps_btc": 1.0710319172612248,
       "ret_step": null,
       "ret_step_pct": null,
@@ -6346,7 +6346,7 @@ const yieldData_tbtc = {
     {
       "block": 23643441,
       "timestamp": 1761261851,
-      "datetime": "2025-10-23T23:24:11",
+      "datetime": "2025-10-24T03:24:11",
       "pps_btc": 1.071027461337083,
       "ret_step": null,
       "ret_step_pct": null,
@@ -6355,7 +6355,7 @@ const yieldData_tbtc = {
     {
       "block": 23643739,
       "timestamp": 1761265451,
-      "datetime": "2025-10-24T00:24:11",
+      "datetime": "2025-10-24T04:24:11",
       "pps_btc": 1.0710166044643563,
       "ret_step": null,
       "ret_step_pct": null,
@@ -6364,7 +6364,7 @@ const yieldData_tbtc = {
     {
       "block": 23644036,
       "timestamp": 1761269051,
-      "datetime": "2025-10-24T01:24:11",
+      "datetime": "2025-10-24T05:24:11",
       "pps_btc": 1.0710079706339122,
       "ret_step": null,
       "ret_step_pct": null,
@@ -6373,7 +6373,7 @@ const yieldData_tbtc = {
     {
       "block": 23644330,
       "timestamp": 1761272651,
-      "datetime": "2025-10-24T02:24:11",
+      "datetime": "2025-10-24T06:24:11",
       "pps_btc": 1.070998578681538,
       "ret_step": null,
       "ret_step_pct": null,
@@ -6382,7 +6382,7 @@ const yieldData_tbtc = {
     {
       "block": 23644626,
       "timestamp": 1761276251,
-      "datetime": "2025-10-24T03:24:11",
+      "datetime": "2025-10-24T07:24:11",
       "pps_btc": 1.0709899430217065,
       "ret_step": null,
       "ret_step_pct": null,
@@ -6391,7 +6391,7 @@ const yieldData_tbtc = {
     {
       "block": 23644924,
       "timestamp": 1761279851,
-      "datetime": "2025-10-24T04:24:11",
+      "datetime": "2025-10-24T08:24:11",
       "pps_btc": 1.0709813226445617,
       "ret_step": null,
       "ret_step_pct": null,
@@ -6400,7 +6400,7 @@ const yieldData_tbtc = {
     {
       "block": 23645221,
       "timestamp": 1761283451,
-      "datetime": "2025-10-24T05:24:11",
+      "datetime": "2025-10-24T09:24:11",
       "pps_btc": 1.0709727320364733,
       "ret_step": null,
       "ret_step_pct": null,
@@ -6409,7 +6409,7 @@ const yieldData_tbtc = {
     {
       "block": 23645518,
       "timestamp": 1761287051,
-      "datetime": "2025-10-24T06:24:11",
+      "datetime": "2025-10-24T10:24:11",
       "pps_btc": 1.0709640128199447,
       "ret_step": null,
       "ret_step_pct": null,
@@ -6418,7 +6418,7 @@ const yieldData_tbtc = {
     {
       "block": 23645816,
       "timestamp": 1761290651,
-      "datetime": "2025-10-24T07:24:11",
+      "datetime": "2025-10-24T11:24:11",
       "pps_btc": 1.0709499976679564,
       "ret_step": null,
       "ret_step_pct": null,
@@ -6427,7 +6427,7 @@ const yieldData_tbtc = {
     {
       "block": 23646114,
       "timestamp": 1761294251,
-      "datetime": "2025-10-24T08:24:11",
+      "datetime": "2025-10-24T12:24:11",
       "pps_btc": 1.070939806801964,
       "ret_step": null,
       "ret_step_pct": null,
@@ -6436,7 +6436,7 @@ const yieldData_tbtc = {
     {
       "block": 23646410,
       "timestamp": 1761297851,
-      "datetime": "2025-10-24T09:24:11",
+      "datetime": "2025-10-24T13:24:11",
       "pps_btc": 1.0709309692475297,
       "ret_step": null,
       "ret_step_pct": null,
@@ -6445,7 +6445,7 @@ const yieldData_tbtc = {
     {
       "block": 23646709,
       "timestamp": 1761301451,
-      "datetime": "2025-10-24T10:24:11",
+      "datetime": "2025-10-24T14:24:11",
       "pps_btc": 1.0709211228724713,
       "ret_step": null,
       "ret_step_pct": null,
@@ -6454,7 +6454,7 @@ const yieldData_tbtc = {
     {
       "block": 23647006,
       "timestamp": 1761305051,
-      "datetime": "2025-10-24T11:24:11",
+      "datetime": "2025-10-24T15:24:11",
       "pps_btc": 1.0709146153012779,
       "ret_step": null,
       "ret_step_pct": null,
@@ -6463,7 +6463,7 @@ const yieldData_tbtc = {
     {
       "block": 23647304,
       "timestamp": 1761308651,
-      "datetime": "2025-10-24T12:24:11",
+      "datetime": "2025-10-24T16:24:11",
       "pps_btc": 1.0709020769720543,
       "ret_step": null,
       "ret_step_pct": null,
@@ -6472,7 +6472,7 @@ const yieldData_tbtc = {
     {
       "block": 23647603,
       "timestamp": 1761312251,
-      "datetime": "2025-10-24T13:24:11",
+      "datetime": "2025-10-24T17:24:11",
       "pps_btc": 1.0708484901430935,
       "ret_step": null,
       "ret_step_pct": null,
@@ -6481,7 +6481,7 @@ const yieldData_tbtc = {
     {
       "block": 23647901,
       "timestamp": 1761315851,
-      "datetime": "2025-10-24T14:24:11",
+      "datetime": "2025-10-24T18:24:11",
       "pps_btc": 1.0708466848226459,
       "ret_step": null,
       "ret_step_pct": null,
@@ -6490,7 +6490,7 @@ const yieldData_tbtc = {
     {
       "block": 23648197,
       "timestamp": 1761319451,
-      "datetime": "2025-10-24T15:24:11",
+      "datetime": "2025-10-24T19:24:11",
       "pps_btc": 1.070828878592081,
       "ret_step": null,
       "ret_step_pct": null,
@@ -6499,7 +6499,7 @@ const yieldData_tbtc = {
     {
       "block": 23648495,
       "timestamp": 1761323051,
-      "datetime": "2025-10-24T16:24:11",
+      "datetime": "2025-10-24T20:24:11",
       "pps_btc": 1.070820104921292,
       "ret_step": null,
       "ret_step_pct": null,
@@ -6508,7 +6508,7 @@ const yieldData_tbtc = {
     {
       "block": 23648793,
       "timestamp": 1761326651,
-      "datetime": "2025-10-24T17:24:11",
+      "datetime": "2025-10-24T21:24:11",
       "pps_btc": 1.070811249650319,
       "ret_step": null,
       "ret_step_pct": null,
@@ -6517,7 +6517,7 @@ const yieldData_tbtc = {
     {
       "block": 23649090,
       "timestamp": 1761330251,
-      "datetime": "2025-10-24T18:24:11",
+      "datetime": "2025-10-24T22:24:11",
       "pps_btc": 1.070803746874161,
       "ret_step": null,
       "ret_step_pct": null,
@@ -6526,7 +6526,7 @@ const yieldData_tbtc = {
     {
       "block": 23649389,
       "timestamp": 1761333851,
-      "datetime": "2025-10-24T19:24:11",
+      "datetime": "2025-10-24T23:24:11",
       "pps_btc": 1.0707936950655368,
       "ret_step": null,
       "ret_step_pct": null,
@@ -6535,7 +6535,7 @@ const yieldData_tbtc = {
     {
       "block": 23649687,
       "timestamp": 1761337451,
-      "datetime": "2025-10-24T20:24:11",
+      "datetime": "2025-10-25T00:24:11",
       "pps_btc": 1.0707850836077881,
       "ret_step": null,
       "ret_step_pct": null,
@@ -6544,7 +6544,7 @@ const yieldData_tbtc = {
     {
       "block": 23649984,
       "timestamp": 1761341051,
-      "datetime": "2025-10-24T21:24:11",
+      "datetime": "2025-10-25T01:24:11",
       "pps_btc": 1.0707782318902077,
       "ret_step": null,
       "ret_step_pct": null,
@@ -6553,7 +6553,7 @@ const yieldData_tbtc = {
     {
       "block": 23650283,
       "timestamp": 1761344651,
-      "datetime": "2025-10-24T22:24:11",
+      "datetime": "2025-10-25T02:24:11",
       "pps_btc": 1.0707678700327612,
       "ret_step": null,
       "ret_step_pct": null,
@@ -6562,7 +6562,7 @@ const yieldData_tbtc = {
     {
       "block": 23650580,
       "timestamp": 1761348251,
-      "datetime": "2025-10-24T23:24:11",
+      "datetime": "2025-10-25T03:24:11",
       "pps_btc": 1.0707592212109278,
       "ret_step": null,
       "ret_step_pct": null,
@@ -6571,7 +6571,7 @@ const yieldData_tbtc = {
     {
       "block": 23650877,
       "timestamp": 1761351851,
-      "datetime": "2025-10-25T00:24:11",
+      "datetime": "2025-10-25T04:24:11",
       "pps_btc": 1.0707505789425364,
       "ret_step": null,
       "ret_step_pct": null,
@@ -6580,7 +6580,7 @@ const yieldData_tbtc = {
     {
       "block": 23651173,
       "timestamp": 1761355451,
-      "datetime": "2025-10-25T01:24:11",
+      "datetime": "2025-10-25T05:24:11",
       "pps_btc": 1.070741898856311,
       "ret_step": null,
       "ret_step_pct": null,
@@ -6589,7 +6589,7 @@ const yieldData_tbtc = {
     {
       "block": 23651472,
       "timestamp": 1761359051,
-      "datetime": "2025-10-25T02:24:11",
+      "datetime": "2025-10-25T06:24:11",
       "pps_btc": 1.0707332802437013,
       "ret_step": null,
       "ret_step_pct": null,
@@ -6598,7 +6598,7 @@ const yieldData_tbtc = {
     {
       "block": 23651770,
       "timestamp": 1761362651,
-      "datetime": "2025-10-25T03:24:11",
+      "datetime": "2025-10-25T07:24:11",
       "pps_btc": 1.070724806021619,
       "ret_step": null,
       "ret_step_pct": null,
@@ -6607,7 +6607,7 @@ const yieldData_tbtc = {
     {
       "block": 23652069,
       "timestamp": 1761366251,
-      "datetime": "2025-10-25T04:24:11",
+      "datetime": "2025-10-25T08:24:11",
       "pps_btc": 1.0707158402539136,
       "ret_step": null,
       "ret_step_pct": null,
@@ -6616,7 +6616,7 @@ const yieldData_tbtc = {
     {
       "block": 23652369,
       "timestamp": 1761369851,
-      "datetime": "2025-10-25T05:24:11",
+      "datetime": "2025-10-25T09:24:11",
       "pps_btc": 1.070707280352387,
       "ret_step": null,
       "ret_step_pct": null,
@@ -6625,7 +6625,7 @@ const yieldData_tbtc = {
     {
       "block": 23652665,
       "timestamp": 1761373451,
-      "datetime": "2025-10-25T06:24:11",
+      "datetime": "2025-10-25T10:24:11",
       "pps_btc": 1.0706987382206932,
       "ret_step": null,
       "ret_step_pct": null,
@@ -6634,7 +6634,7 @@ const yieldData_tbtc = {
     {
       "block": 23652963,
       "timestamp": 1761377051,
-      "datetime": "2025-10-25T07:24:11",
+      "datetime": "2025-10-25T11:24:11",
       "pps_btc": 1.070690177369189,
       "ret_step": null,
       "ret_step_pct": null,
@@ -6643,20 +6643,54 @@ const yieldData_tbtc = {
     {
       "block": 23653262,
       "timestamp": 1761380651,
-      "datetime": "2025-10-25T08:24:11",
+      "datetime": "2025-10-25T12:24:11",
       "pps_btc": 1.0706857349265717,
       "ret_step": null,
       "ret_step_pct": null,
       "btc_price": 111507.89326706811
     },
     {
-      "block": 23653440,
-      "timestamp": 1761382847,
-      "datetime": "2025-10-25T09:00:47",
-      "pps_btc": 1.0706760443515155,
-      "ret_step": -9.05081177423699e-06,
-      "ret_step_pct": -0.000905081177423699,
-      "btc_price": 111507.89326706811
+      "block": 23653555,
+      "timestamp": 1761384239,
+      "datetime": "2025-10-25T13:23:59",
+      "pps_btc": 1.0,
+      "ret_step": null,
+      "ret_step_pct": null,
+      "btc_price": 111738.98925653729,
+      "total_supply": 0.0,
+      "tvl_btc": 0.0
+    },
+    {
+      "block": 23653556,
+      "timestamp": 1761384251,
+      "datetime": "2025-10-25T13:24:11",
+      "pps_btc": 1.070672359873873,
+      "ret_step": null,
+      "ret_step_pct": null,
+      "btc_price": 111738.98925653729,
+      "total_supply": 418.501671626863,
+      "tvl_btc": 448.0781723718941,
+      "net_flow_shares": 0.0,
+      "net_flow_btc": 0.0,
+      "deposits_btc": 0.0,
+      "withdrawals_btc": 0.0,
+      "total_withdrawable_btc": 445.74457406350166
+    },
+    {
+      "block": 23653557,
+      "timestamp": 1761384263,
+      "datetime": "2025-10-25T13:24:23",
+      "pps_btc": 1.0706723299794592,
+      "ret_step": -2.7921159566986124e-08,
+      "ret_step_pct": -2.7921159566986126e-06,
+      "btc_price": 111738.98925653729,
+      "total_supply": 418.501671626863,
+      "tvl_btc": 448.07815986103196,
+      "net_flow_shares": 0.0,
+      "net_flow_btc": 0.0,
+      "deposits_btc": 0.0,
+      "withdrawals_btc": 0.0,
+      "total_withdrawable_btc": 445.7445598338389
     }
   ]
 };
