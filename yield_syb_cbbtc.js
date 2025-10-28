@@ -2,18 +2,18 @@ const yieldData_syb_cbbtc = {
   "metadata": {
     "contract": "0x3dAe83d236b4Ec301A8d0553f8c13Cb9b7925B6a",
     "start_date": "2025-10-10T19:49:35",
-    "end_date": "2025-10-28T19:49:35",
-    "data_points": 433,
+    "end_date": "2025-10-28T20:50:11",
+    "data_points": 435,
     "step_seconds": 3600
   },
   "metrics": {
-    "total_return": -0.03221924416793284,
-    "total_return_pct": -3.221924416793284,
-    "apr": -0.4852589533518453,
-    "apr_pct": -48.52589533518453,
-    "days": 18.0,
+    "total_return": -0.0322074856824536,
+    "total_return_pct": -3.22074856824536,
+    "apr": -0.48433426800068996,
+    "apr_pct": -48.433426800069,
+    "days": 18.042083333333334,
     "start_pps": 1.00608195,
-    "end_pps": 0.97366675
+    "end_pps": 0.97367858
   },
   "data": [
     {
@@ -4337,13 +4337,33 @@ const yieldData_syb_cbbtc = {
       "pps_yb": 0.9282718292912234
     },
     {
-      "block": 23678100,
-      "timestamp": 1761680975,
-      "datetime": "2025-10-28T19:49:35",
-      "pps_btc": 0.97366675,
-      "ret_step": -8.616837028415863e-06,
-      "ret_step_pct": -0.0008616837028415864,
-      "btc_price": 114879.04201216743,
+      "block": 23678103,
+      "timestamp": 1761681011,
+      "datetime": "2025-10-28T19:50:11",
+      "pps_btc": 0.97366667,
+      "ret_step": null,
+      "ret_step_pct": null,
+      "btc_price": 113794.77088444383,
+      "pps_yb": 0.9282718292912234
+    },
+    {
+      "block": 23678401,
+      "timestamp": 1761684599,
+      "datetime": "2025-10-28T20:49:59",
+      "pps_btc": 0.97367836,
+      "ret_step": 1.2006162232091195e-05,
+      "ret_step_pct": 0.0012006162232091194,
+      "btc_price": 113794.77088444383,
+      "pps_yb": 0.9282718292912234
+    },
+    {
+      "block": 23678402,
+      "timestamp": 1761684611,
+      "datetime": "2025-10-28T20:50:11",
+      "pps_btc": 0.97367858,
+      "ret_step": 2.2594730358390628e-07,
+      "ret_step_pct": 2.259473035839063e-05,
+      "btc_price": 113794.77088444383,
       "pps_yb": 0.9282718292912234
     }
   ]
