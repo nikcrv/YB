@@ -2,18 +2,18 @@ const yieldData_syb_cbbtc = {
   "metadata": {
     "contract": "0x3dAe83d236b4Ec301A8d0553f8c13Cb9b7925B6a",
     "start_date": "2025-10-10T19:49:35",
-    "end_date": "2025-11-01T01:50:35",
-    "data_points": 512,
+    "end_date": "2025-11-01T02:51:11",
+    "data_points": 513,
     "step_seconds": 3600
   },
   "metrics": {
-    "total_return": -0.03267278575070351,
-    "total_return_pct": -3.267278575070351,
-    "apr": -0.43478961519806464,
-    "apr_pct": -43.47896151980647,
-    "days": 21.250694444444445,
+    "total_return": -0.032680488900531414,
+    "total_return_pct": -3.2680488900531413,
+    "apr": -0.43422912958270776,
+    "apr_pct": -43.42291295827078,
+    "days": 21.29277777777778,
     "start_pps": 1.00608195,
-    "end_pps": 0.97321045
+    "end_pps": 0.9732027
   },
   "data": [
     {
@@ -5122,18 +5122,28 @@ const yieldData_syb_cbbtc = {
       "datetime": "2025-11-01T01:50:11",
       "pps_btc": 0.97321051,
       "ret_step": -7.901619595687792e-06,
-      "ret_step_pct": -0.0007901619595687791,
-      "btc_price": 109633.20394742656,
+      "ret_step_pct": -0.0007901619595687792,
+      "btc_price": 109717.24113095991,
       "pps_yb": 0.9282718292912234
     },
     {
-      "block": 23701317,
-      "timestamp": 1761961835,
-      "datetime": "2025-11-01T01:50:35",
-      "pps_btc": 0.97321045,
-      "ret_step": -6.165161533243204e-08,
-      "ret_step_pct": -6.1651615332432035e-06,
-      "btc_price": 109633.20394742656,
+      "block": 23701614,
+      "timestamp": 1761965411,
+      "datetime": "2025-11-01T02:50:11",
+      "pps_btc": 0.97320283,
+      "ret_step": null,
+      "ret_step_pct": null,
+      "btc_price": 109717.24113095991,
+      "pps_yb": 0.9282718292912234
+    },
+    {
+      "block": 23701619,
+      "timestamp": 1761965471,
+      "datetime": "2025-11-01T02:51:11",
+      "pps_btc": 0.9732027,
+      "ret_step": -1.33579554017532e-07,
+      "ret_step_pct": -1.3357955401753199e-05,
+      "btc_price": 109717.24113095991,
       "pps_yb": 0.9282718292912234
     }
   ]
