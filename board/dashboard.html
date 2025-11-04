@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YieldBasis - BTC History (Synchronized)</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #0f172a;
+            color: #e2e8f0;
+            padding: 40px 20px;
+        }
+        .container { max-width: 1400px; margin: 0 auto; }
+        h1 { font-size: 2em; margin-bottom: 20px; text-align: center; color: #94a3b8; font-weight: 400; }
+        .loading { text-align: center; font-size: 1.5em; color: #667eea; padding: 50px; }
+        .answer {
+            background: linear-gradient(135deg, #059669 0%, #047857 100%);
+            border-radius: 20px; padding: 50px; text-align: center; font-size: 2.5em;
+            font-weight: 700; border: 3px solid #10b981; margin-bottom: 60px;
+            box-shadow: 0 20px 60px rgba(16, 185, 129, 0.2);
+        }
+        .answer.negative {
+            background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
+            border-color: #ef4444; box-shadow: 0 20px 60px rgba(239, 68, 68, 0.2);
+        }
+        .main-metric {
+            background: #1e293b; border: 2px solid #334155; border-radius: 16px;
+            padding: 40px; margin-bottom: 40px;
+        }
+        .metric-row {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 20px 0; border-bottom: 1px solid #334155;
+        }
+        .metric-row:last-child { border-bottom: none; }
+        .metric-label { font-size: 1.1em; color: #94a3b8; }
+        .metric-value { font-size: 1.6em; font-weight: 600; color: #e2e8f0; }
+        .chart-container {
+            background: #1e293b; border: 2px solid #334155; border-radius: 16px;
+            padding: 30px; margin-bottom: 40px;
+        }
+        .chart-wrapper { position: relative; height: 500px; }
+        .footer { text-align: center; color: #64748b; padding: 20px; font-size: 0.9em; }
+        .chart-controls {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 20px;
+            padding: 15px;
+            background: #0f172a;
+            border-radius: 8px;
+            flex-wrap: wrap;
+        }
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+        }
+        .checkbox-group input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+        }
+        .checkbox-group label {
+            cursor: pointer;
+            color: #94a3b8;
+        }
+        .success-badge {
+            background: #10b981; color: white; padding: 10px 20px;
+            border-radius: 8px; display: inline-block; margin-bottom: 20px;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="loading" id="loading">Loading synchronized data...</div>
+        <div id="content" style="display:none;">
+            <h1>YieldBasis - BTC History</h1>
+            <div style="text-align: center;">
+                <span class="success-badge">✅ Синхронизированные данные</span>
+            </div>
+
+            <div class="answer" id="answerBox">
+                <span id="finalProfit">0.00000000 BTC</span>
+            </div>
+
+            <div class="main-metric" id="metricsBox"></div>
+
+            <div class="chart-container">
+                <h2 style="color: #94a3b8; font-size: 1.3em; margin-bottom: 20px;">Баланс BTC в протоколе</h2>
+
+                <div class="chart-controls">
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="toggleWithdrawable" checked>
+                        <label for="toggleWithdrawable">Баланс доступный к выводу (TVL)</label>
+                    </div>
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="toggleDeposits" checked>
+                        <label for="toggleDeposits">Депозиты (Deposits)</label>
+                    </div>
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="toggleWithdrawals" checked>
+                        <label for="toggleWithdrawals">Выводы (Withdrawals)</label>
+                    </div>
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="toggleAdminFees" checked>
+                        <label for="toggleAdminFees">Admin Fees</label>
+                    </div>
+                </div>
+
+                <div class="chart-wrapper">
+                    <canvas id="profitChart"></canvas>
+                </div>
+            </div>
+
+            <div class="chart-container">
+                <h2 style="color: #94a3b8; font-size: 1.3em; margin-bottom: 20px;">TVL по рынкам</h2>
+                <div class="chart-wrapper">
+                    <canvas id="tvlByMarketChart"></canvas>
+                </div>
+            </div>
+
+            <div class="chart-container">
+                <h2 style="color: #94a3b8; font-size: 1.3em; margin-bottom: 20px;">Admin Fees</h2>
+                <div class="chart-wrapper">
+                    <canvas id="adminFeesChart"></canvas>
+                </div>
+            </div>
+
+            <div class="footer" id="footer"></div>
+        </div>
+    </div>
+
+    <!-- Load SYNCHRONIZED data files -->
+    <script src="yield_data_sync.js"></script>
+    <script src="yield_cbbtc_sync.js"></script>
+    <script src="yield_tbtc_sync.js"></script>
+
+    <script>
+    window.addEventListener('load', function() {
+        try {
+            console.log('Loading synchronized data...');
+
+            // Проверяем что данные загружены
+            if (typeof yieldData === 'undefined' ||
+                typeof yieldData_cbbtc === 'undefined' ||
+                typeof yieldData_tbtc === 'undefined') {
+                throw new Error('Synchronized data files not found. Run: python collect_sync.py');
+            }
+
+            // Данные УЖЕ синхронизированы - просто складываем!
+            const wbtcData = yieldData.data;
+            const cbbtcData = yieldData_cbbtc.data;
+            const tbtcData = yieldData_tbtc.data;
+
+            console.log('WBTC points:', wbtcData.length);
+            console.log('cbBTC points:', cbbtcData.length);
+            console.log('tBTC points:', tbtcData.length);
+
+            // Проверяем синхронизацию
+            if (wbtcData.length !== cbbtcData.length || wbtcData.length !== tbtcData.length) {
+                throw new Error('Data is not synchronized! Re-run collect_sync.py');
+            }
+
+            // Объединяем данные
+            let cumulativeDeposits = 0;
+            let cumulativeWithdrawals = 0;
+
+            const profitData = wbtcData.map((wbtc, i) => {
+                const cbbtc = cbbtcData[i];
+                const tbtc = tbtcData[i];
+
+                // Проверяем что timestamps совпадают
+                if (wbtc.timestamp !== cbbtc.timestamp || wbtc.timestamp !== tbtc.timestamp) {
+                    console.warn(`Timestamp mismatch at index ${i}`);
+                }
+
+                // Складываем данные всех рынков
+                const totalWithdrawable = (wbtc.total_withdrawable_btc || 0) +
+                                         (cbbtc.total_withdrawable_btc || 0) +
+                                         (tbtc.total_withdrawable_btc || 0);
+
+                const deposits = (wbtc.deposits_btc || 0) +
+                                (cbbtc.deposits_btc || 0) +
+                                (tbtc.deposits_btc || 0);
+
+                const withdrawals = (wbtc.withdrawals_btc || 0) +
+                                   (cbbtc.withdrawals_btc || 0) +
+                                   (tbtc.withdrawals_btc || 0);
+
+                const adminFees = (wbtc.admin_fees_btc || 0) +
+                                 (cbbtc.admin_fees_btc || 0) +
+                                 (tbtc.admin_fees_btc || 0);
+
+                // Накапливаем
+                cumulativeDeposits += deposits;
+                cumulativeWithdrawals += withdrawals;
+
+                // Вычисляем прибыль
+                const netDeposited = cumulativeDeposits - cumulativeWithdrawals;
+                const profit = totalWithdrawable - netDeposited + adminFees;
+
+                return {
+                    timestamp: wbtc.timestamp,
+                    date: new Date(wbtc.timestamp * 1000).toLocaleDateString('ru-RU'),
+                    profit: profit,
+                    withdrawable: totalWithdrawable,
+                    deposits: cumulativeDeposits,
+                    withdrawals: cumulativeWithdrawals,
+                    admin_fees: adminFees
+                };
+            });
+
+            console.log('Profit data points:', profitData.length);
+
+            // Обновляем метрики
+            const lastPoint = profitData[profitData.length - 1];
+            const finalProfit = lastPoint.profit;
+            const finalTVL = lastPoint.withdrawable;  // TVL для расчета процентов
+
+            document.getElementById('finalProfit').textContent = finalProfit.toFixed(8) + ' BTC';
+            document.getElementById('answerBox').className = 'answer';  // Всегда зеленый
+
+            const metricsHTML = `
+                <div class="metric-row">
+                    <div class="metric-label">TVL (Withdrawable)</div>
+                    <div class="metric-value">${lastPoint.withdrawable.toFixed(2)} BTC</div>
+                </div>
+                <div class="metric-row">
+                    <div class="metric-label">Total Deposits</div>
+                    <div class="metric-value">${lastPoint.deposits.toFixed(2)} BTC</div>
+                </div>
+                <div class="metric-row">
+                    <div class="metric-label">Total Withdrawals</div>
+                    <div class="metric-value">${lastPoint.withdrawals.toFixed(2)} BTC</div>
+                </div>
+                <div class="metric-row">
+                    <div class="metric-label">Net Deposited</div>
+                    <div class="metric-value">${(lastPoint.deposits - lastPoint.withdrawals).toFixed(2)} BTC</div>
+                </div>
+                <div class="metric-row">
+                    <div class="metric-label">Admin Fees</div>
+                    <div class="metric-value">${lastPoint.admin_fees.toFixed(4)} BTC</div>
+                </div>
+            `;
+            document.getElementById('metricsBox').innerHTML = metricsHTML;
+
+            // Footer
+            const startDate = new Date(profitData[0].timestamp * 1000).toLocaleDateString('ru-RU');
+            const endDate = new Date(profitData[profitData.length - 1].timestamp * 1000).toLocaleDateString('ru-RU');
+            document.getElementById('footer').textContent =
+                `Synchronized data | Points: ${profitData.length} | Period: ${startDate} - ${endDate}`;
+
+            // Profit Chart
+            let profitChart = new Chart(document.getElementById('profitChart'), {
+                type: 'line',
+                data: {
+                    labels: profitData.map(d => d.date),
+                    datasets: [{
+                        label: 'Баланс BTC в протоколе',
+                        data: profitData.map(d => d.profit),
+                        borderColor: '#10b981',  // Всегда зеленый
+                        backgroundColor: 'rgba(16, 185, 129, 0.1)',
+                        borderWidth: 2,
+                        fill: true,
+                        tension: 0.4,
+                        pointRadius: 0,
+                        pointHoverRadius: 5
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: true, labels: { color: '#94a3b8', font: { size: 14 } } },
+                        tooltip: {
+                            backgroundColor: '#1e293b',
+                            titleColor: '#e2e8f0',
+                            bodyColor: '#e2e8f0',
+                            borderColor: '#334155',
+                            borderWidth: 1,
+                            padding: 12,
+                            displayColors: false,
+                            callbacks: {
+                                title: ctx => {
+                                    const index = ctx[0].dataIndex;
+                                    const point = profitData[index];
+                                    const wbtc = wbtcData[index];
+
+                                    // Форматируем дату и время
+                                    const date = new Date(point.timestamp * 1000);
+                                    const dateStr = date.toLocaleDateString('ru-RU');
+                                    const timeStr = date.toLocaleTimeString('ru-RU');
+
+                                    return [
+                                        `📅 ${dateStr} ${timeStr}`,
+                                        `🔗 Блок: ${wbtc.block}`
+                                    ];
+                                },
+                                label: ctx => {
+                                    return '';  // Пустая строка, чтобы не было дублирования
+                                },
+                                afterLabel: ctx => {
+                                    const point = profitData[ctx.dataIndex];
+                                    const netDeposited = point.deposits - point.withdrawals;
+                                    const percentOfTVL = (point.profit / finalTVL * 100).toFixed(2);
+
+                                    return [
+                                        '',
+                                        '📊 РАСЧЕТ БАЛАНСА BTC В ПРОТОКОЛЕ:',
+                                        '─────────────────────',
+                                        `TVL (доступно):        +${point.withdrawable.toFixed(4)} BTC`,
+                                        `Чистые депозиты:      -${netDeposited.toFixed(4)} BTC`,
+                                        `  (Deposits: ${point.deposits.toFixed(2)} BTC)`,
+                                        `  (Withdrawals: ${point.withdrawals.toFixed(2)} BTC)`,
+                                        `Admin Fees:           +${point.admin_fees.toFixed(4)} BTC`,
+                                        '─────────────────────',
+                                        `💰 БАЛАНС:            ${point.profit.toFixed(4)} BTC (${percentOfTVL}% от TVL)`,
+                                        '',
+                                        'Формула: TVL - (Deposits - Withdrawals) + Admin Fees'
+                                    ];
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        x: { ticks: { color: '#64748b' }, grid: { color: '#1e293b' } },
+                        y: {
+                            position: 'left',
+                            ticks: { color: '#64748b' },
+                            grid: { color: '#1e293b' },
+                            title: {
+                                display: true,
+                                text: 'BTC',
+                                color: '#94a3b8'
+                            }
+                        },
+                        y1: {
+                            position: 'right',
+                            ticks: {
+                                color: '#64748b',
+                                maxTicksLimit: 10,
+                                callback: function(value) {
+                                    return value.toFixed(3) + '%';
+                                }
+                            },
+                            grid: { display: false },
+                            title: {
+                                display: true,
+                                text: '% от TVL',
+                                color: '#94a3b8'
+                            },
+                            // Связываем с левой осью через afterDataLimits
+                            afterDataLimits: function(axis) {
+                                const leftAxis = axis.chart.scales.y;
+                                const percentPerBTC = 100 / finalTVL;
+
+                                // Синхронизируем min/max с левой осью
+                                axis.min = leftAxis.min * percentPerBTC;
+                                axis.max = leftAxis.max * percentPerBTC;
+                            }
+                        }
+                    }
+                }
+            });
+
+            // TVL by Market Chart
+            new Chart(document.getElementById('tvlByMarketChart'), {
+                type: 'line',
+                data: {
+                    labels: profitData.map(d => d.date),
+                    datasets: [
+                        {
+                            label: 'WBTC TVL',
+                            data: wbtcData.map(d => d.total_withdrawable_btc),
+                            borderColor: '#f97316',
+                            backgroundColor: 'rgba(249, 115, 22, 0.1)',
+                            borderWidth: 2,
+                            fill: false,
+                            tension: 0.4,
+                            pointRadius: 0,
+                            pointHoverRadius: 5
+                        },
+                        {
+                            label: 'cbBTC TVL',
+                            data: cbbtcData.map(d => d.total_withdrawable_btc),
+                            borderColor: '#3b82f6',
+                            backgroundColor: 'rgba(59, 130, 246, 0.1)',
+                            borderWidth: 2,
+                            fill: false,
+                            tension: 0.4,
+                            pointRadius: 0,
+                            pointHoverRadius: 5
+                        },
+                        {
+                            label: 'tBTC TVL',
+                            data: tbtcData.map(d => d.total_withdrawable_btc),
+                            borderColor: '#8b5cf6',
+                            backgroundColor: 'rgba(139, 92, 246, 0.1)',
+                            borderWidth: 2,
+                            fill: false,
+                            tension: 0.4,
+                            pointRadius: 0,
+                            pointHoverRadius: 5
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: true, labels: { color: '#94a3b8', font: { size: 14 } } },
+                        tooltip: {
+                            backgroundColor: '#1e293b',
+                            titleColor: '#e2e8f0',
+                            bodyColor: '#e2e8f0',
+                            borderColor: '#334155',
+                            borderWidth: 1,
+                            padding: 12,
+                            callbacks: {
+                                title: ctx => {
+                                    const index = ctx[0].dataIndex;
+                                    const point = profitData[index];
+                                    const wbtc = wbtcData[index];
+
+                                    // Форматируем дату и время
+                                    const date = new Date(point.timestamp * 1000);
+                                    const dateStr = date.toLocaleDateString('ru-RU');
+                                    const timeStr = date.toLocaleTimeString('ru-RU');
+
+                                    return [
+                                        `📅 ${dateStr} ${timeStr}`,
+                                        `🔗 Блок: ${wbtc.block}`
+                                    ];
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        x: { ticks: { color: '#64748b' }, grid: { color: '#1e293b' } },
+                        y: { beginAtZero: true, ticks: { color: '#64748b' }, grid: { color: '#1e293b' } }
+                    }
+                }
+            });
+
+            // Admin Fees Chart
+            new Chart(document.getElementById('adminFeesChart'), {
+                type: 'line',
+                data: {
+                    datasets: [{
+                        label: 'Admin Fees (BTC)',
+                        data: profitData.map(d => ({ x: d.date, y: d.admin_fees })),
+                        borderColor: '#f59e0b',
+                        backgroundColor: 'rgba(245, 158, 11, 0.1)',
+                        borderWidth: 2,
+                        fill: false,
+                        stepped: 'after',
+                        pointRadius: 0,
+                        pointHoverRadius: 5
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: true, labels: { color: '#94a3b8', font: { size: 14 } } },
+                        tooltip: {
+                            backgroundColor: '#1e293b',
+                            titleColor: '#e2e8f0',
+                            bodyColor: '#e2e8f0',
+                            borderColor: '#334155',
+                            borderWidth: 1,
+                            padding: 12,
+                            displayColors: false,
+                            callbacks: {
+                                title: ctx => {
+                                    const index = ctx[0].dataIndex;
+                                    const point = profitData[index];
+                                    const wbtc = wbtcData[index];
+
+                                    // Форматируем дату и время
+                                    const date = new Date(point.timestamp * 1000);
+                                    const dateStr = date.toLocaleDateString('ru-RU');
+                                    const timeStr = date.toLocaleTimeString('ru-RU');
+
+                                    return [
+                                        `📅 ${dateStr} ${timeStr}`,
+                                        `🔗 Блок: ${wbtc.block}`
+                                    ];
+                                },
+                                label: ctx => {
+                                    return '';
+                                },
+                                afterLabel: ctx => {
+                                    const point = profitData[ctx.dataIndex];
+                                    const index = ctx.dataIndex;
+
+                                    // Находим соответствующие точки из исходных данных
+                                    const wbtc = wbtcData[index];
+                                    const cbbtc = cbbtcData[index];
+                                    const tbtc = tbtcData[index];
+
+                                    return [
+                                        '',
+                                        '💼 ADMIN FEES ПО РЫНКАМ:',
+                                        '─────────────────────',
+                                        `WBTC:   ${wbtc.admin_fees_btc.toFixed(8)} BTC`,
+                                        `cbBTC:  ${cbbtc.admin_fees_btc.toFixed(8)} BTC`,
+                                        `tBTC:   ${tbtc.admin_fees_btc.toFixed(8)} BTC`,
+                                        '─────────────────────',
+                                        `ИТОГО:  ${point.admin_fees.toFixed(8)} BTC`,
+                                        '',
+                                        'Admin Fees = накопленные комиссии протокола'
+                                    ];
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        x: { type: 'category', ticks: { color: '#64748b' }, grid: { color: '#1e293b' } },
+                        y: { beginAtZero: true, ticks: { color: '#64748b' }, grid: { color: '#1e293b' } }
+                    }
+                }
+            });
+
+            // Функция обновления графика на основе чекбоксов
+            function updateChart() {
+                const includeWithdrawable = document.getElementById('toggleWithdrawable').checked;
+                const includeDeposits = document.getElementById('toggleDeposits').checked;
+                const includeWithdrawals = document.getElementById('toggleWithdrawals').checked;
+                const includeAdminFees = document.getElementById('toggleAdminFees').checked;
+
+                // Пересчитываем профит на основе выбранных компонентов
+                let cumulativeDeposits = 0;
+                let cumulativeWithdrawals = 0;
+
+                const recalculatedData = profitData.map(point => {
+                    let profit = 0;
+
+                    // Включаем выбранные компоненты в расчет
+                    if (includeWithdrawable) {
+                        profit += point.withdrawable;
+                    }
+                    if (includeDeposits) {
+                        profit -= point.deposits;
+                    }
+                    if (includeWithdrawals) {
+                        profit += point.withdrawals;
+                    }
+                    if (includeAdminFees) {
+                        profit += point.admin_fees;
+                    }
+
+                    return profit;
+                });
+
+                // Обновляем данные графика
+                profitChart.data.datasets[0].data = recalculatedData;
+
+                // Цвет всегда зеленый - это баланс протокола, не профит/убыток
+                profitChart.data.datasets[0].borderColor = '#10b981';
+                profitChart.data.datasets[0].backgroundColor = 'rgba(16, 185, 129, 0.1)';
+
+                // Обновляем финальное значение в заголовке
+                const finalValue = recalculatedData[recalculatedData.length - 1];
+                document.getElementById('finalProfit').textContent = finalValue.toFixed(8) + ' BTC';
+                document.getElementById('answerBox').className = 'answer';  // Всегда зеленый
+
+                profitChart.update();
+            }
+
+            // Подключаем чекбоксы к функции обновления
+            document.getElementById('toggleWithdrawable').addEventListener('change', updateChart);
+            document.getElementById('toggleDeposits').addEventListener('change', updateChart);
+            document.getElementById('toggleWithdrawals').addEventListener('change', updateChart);
+            document.getElementById('toggleAdminFees').addEventListener('change', updateChart);
+
+            // Показываем контент
+            document.getElementById('loading').style.display = 'none';
+            document.getElementById('content').style.display = 'block';
+
+        } catch (error) {
+            document.getElementById('loading').innerHTML = `
+                <div style="color: #ef4444;">
+                    <h2>Error: ${error.message}</h2>
+                    <p style="margin-top: 20px; color: #94a3b8;">
+                        Run: <code style="background: #1e293b; padding: 5px 10px; border-radius: 4px;">python collect_sync.py</code>
+                    </p>
+                </div>
+            `;
+            console.error('Error:', error);
+        }
+    });
+    </script>
+</body>
+</html>
