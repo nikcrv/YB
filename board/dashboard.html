@@ -87,27 +87,45 @@
                 <span id="finalProfit">0.00000000 BTC</span>
             </div>
 
-            <div class="main-metric" id="metricsBox"></div>
-
             <div class="chart-container">
-                <h2 style="color: #94a3b8; font-size: 1.3em; margin-bottom: 20px;">Баланс BTC в протоколе</h2>
+                <h2 style="color: #94a3b8; font-size: 1.3em; margin-bottom: 20px;">Accumulated Revenue</h2>
 
-                <div class="chart-controls">
-                    <div class="checkbox-group">
-                        <input type="checkbox" id="toggleWithdrawable" checked>
-                        <label for="toggleWithdrawable">Баланс доступный к выводу (TVL)</label>
+                <div class="chart-controls" style="justify-content: space-between;">
+                    <div style="display: flex; gap: 20px; flex-wrap: wrap;">
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="toggleWithdrawable" checked>
+                            <label for="toggleWithdrawable">TVL</label>
+                        </div>
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="toggleDeposits" checked>
+                            <label for="toggleDeposits">Deposits</label>
+                        </div>
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="toggleWithdrawals" checked>
+                            <label for="toggleWithdrawals">Withdrawals</label>
+                        </div>
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="toggleAdminFees" checked>
+                            <label for="toggleAdminFees">Admin Fees</label>
+                        </div>
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="toggleYbEmission" checked>
+                            <label for="toggleYbEmission">YB Emission</label>
+                        </div>
                     </div>
-                    <div class="checkbox-group">
-                        <input type="checkbox" id="toggleDeposits" checked>
-                        <label for="toggleDeposits">Депозиты (Deposits)</label>
-                    </div>
-                    <div class="checkbox-group">
-                        <input type="checkbox" id="toggleWithdrawals" checked>
-                        <label for="toggleWithdrawals">Выводы (Withdrawals)</label>
-                    </div>
-                    <div class="checkbox-group">
-                        <input type="checkbox" id="toggleAdminFees" checked>
-                        <label for="toggleAdminFees">Admin Fees</label>
+                    <div style="display: flex; gap: 20px; flex-wrap: wrap;">
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="toggleWbtc" checked>
+                            <label for="toggleWbtc">WBTC</label>
+                        </div>
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="toggleCbbtc" checked>
+                            <label for="toggleCbbtc">cbBTC</label>
+                        </div>
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="toggleTbtc" checked>
+                            <label for="toggleTbtc">tBTC</label>
+                        </div>
                     </div>
                 </div>
 
@@ -116,8 +134,10 @@
                 </div>
             </div>
 
+            <div class="main-metric" id="metricsBox"></div>
+
             <div class="chart-container">
-                <h2 style="color: #94a3b8; font-size: 1.3em; margin-bottom: 20px;">TVL по рынкам</h2>
+                <h2 style="color: #94a3b8; font-size: 1.3em; margin-bottom: 20px;">TVL by Markets</h2>
                 <div class="chart-wrapper">
                     <canvas id="tvlByMarketChart"></canvas>
                 </div>
@@ -140,7 +160,7 @@
     <script src="yield_tbtc_sync.js"></script>
 
     <script>
-    window.addEventListener('load', function() {
+    window.addEventListener('load', async function() {
         try {
             console.log('Loading synchronized data...');
 
@@ -224,6 +244,9 @@
             document.getElementById('finalProfit').textContent = finalProfit.toFixed(8) + ' BTC';
             document.getElementById('answerBox').className = 'answer';  // Всегда зеленый
 
+            // Вычисляем YB emission для метрик (будет обновлено после загрузки данных)
+            let totalYbEmissionBtc = 0;
+
             const metricsHTML = `
                 <div class="metric-row">
                     <div class="metric-label">TVL (Withdrawable)</div>
@@ -245,6 +268,10 @@
                     <div class="metric-label">Admin Fees</div>
                     <div class="metric-value">${lastPoint.admin_fees.toFixed(4)} BTC</div>
                 </div>
+                <div class="metric-row" id="ybEmissionMetric" style="display:none;">
+                    <div class="metric-label">YB Emission</div>
+                    <div class="metric-value" id="ybEmissionValue">0.0000 BTC</div>
+                </div>
             `;
             document.getElementById('metricsBox').innerHTML = metricsHTML;
 
@@ -254,22 +281,106 @@
             document.getElementById('footer').textContent =
                 `Synchronized data | Points: ${profitData.length} | Period: ${startDate} - ${endDate}`;
 
+            // Загрузка данных YB emission
+            let ybEmissionData = null;
+            try {
+                const ybResponse = await fetch('yb_emission_cumulative.json');
+                ybEmissionData = await ybResponse.json();
+                console.log('YB emission data loaded:', ybEmissionData.length, 'days');
+            } catch (error) {
+                console.log('YB emission data not available:', error.message);
+            }
+
+            // Подготовка данных YB emission для суммирования с интерполяцией (по рынкам)
+            if (ybEmissionData) {
+                // Создаем массивы дат с данными для каждого рынка
+                const ybDatesWbtc = ybEmissionData.map(item => ({
+                    timestamp: new Date(item.date).getTime() / 1000,
+                    value: item.cumulative_WBTC_btc || 0
+                })).sort((a, b) => a.timestamp - b.timestamp);
+
+                const ybDatesCbbtc = ybEmissionData.map(item => ({
+                    timestamp: new Date(item.date).getTime() / 1000,
+                    value: item.cumulative_cbBTC_btc || 0
+                })).sort((a, b) => a.timestamp - b.timestamp);
+
+                const ybDatesTbtc = ybEmissionData.map(item => ({
+                    timestamp: new Date(item.date).getTime() / 1000,
+                    value: item.cumulative_tBTC_btc || 0
+                })).sort((a, b) => a.timestamp - b.timestamp);
+
+                console.log('YB emission по рынкам будет интерполироваться и суммироваться');
+
+                // Функция линейной интерполяции для конкретного рынка
+                function interpolateYbEmission(timestamp, ybDates) {
+                    if (ybDates.length === 0) return 0;
+
+                    // Если раньше первой даты - возвращаем 0
+                    if (timestamp < ybDates[0].timestamp) return 0;
+
+                    // Если позже последней даты - возвращаем последнее значение
+                    if (timestamp >= ybDates[ybDates.length - 1].timestamp) {
+                        return ybDates[ybDates.length - 1].value;
+                    }
+
+                    // Находим ближайшие точки
+                    for (let i = 0; i < ybDates.length - 1; i++) {
+                        if (timestamp >= ybDates[i].timestamp && timestamp < ybDates[i + 1].timestamp) {
+                            const lower = ybDates[i];
+                            const upper = ybDates[i + 1];
+
+                            // Линейная интерполяция
+                            const ratio = (timestamp - lower.timestamp) / (upper.timestamp - lower.timestamp);
+                            return lower.value + ratio * (upper.value - lower.value);
+                        }
+                    }
+
+                    return 0;
+                }
+
+                // Добавляем YB emission к каждой точке profitData с интерполяцией (по рынкам)
+                profitData.forEach(point => {
+                    point.yb_emission_wbtc_btc = interpolateYbEmission(point.timestamp, ybDatesWbtc);
+                    point.yb_emission_cbbtc_btc = interpolateYbEmission(point.timestamp, ybDatesCbbtc);
+                    point.yb_emission_tbtc_btc = interpolateYbEmission(point.timestamp, ybDatesTbtc);
+                });
+
+                // Обновляем метрику YB emission
+                const lastPointIndex = profitData.length - 1;
+                const totalYbEmission = (profitData[lastPointIndex].yb_emission_wbtc_btc || 0) +
+                                       (profitData[lastPointIndex].yb_emission_cbbtc_btc || 0) +
+                                       (profitData[lastPointIndex].yb_emission_tbtc_btc || 0);
+
+                document.getElementById('ybEmissionMetric').style.display = 'flex';
+                document.getElementById('ybEmissionValue').textContent = totalYbEmission.toFixed(4) + ' BTC';
+            } else {
+                profitData.forEach(point => {
+                    point.yb_emission_wbtc_btc = 0;
+                    point.yb_emission_cbbtc_btc = 0;
+                    point.yb_emission_tbtc_btc = 0;
+                });
+            }
+
             // Profit Chart
+            const datasets = [{
+                label: 'Protocol BTC Balance',
+                data: profitData.map(d => d.profit),
+                borderColor: '#10b981',  // Всегда зеленый
+                backgroundColor: 'rgba(16, 185, 129, 0.1)',
+                borderWidth: 2,
+                fill: true,
+                tension: 0.4,
+                pointRadius: 0,
+                pointHoverRadius: 5,
+                stepped: false,
+                spanGaps: true
+            }];
+
             let profitChart = new Chart(document.getElementById('profitChart'), {
                 type: 'line',
                 data: {
                     labels: profitData.map(d => d.date),
-                    datasets: [{
-                        label: 'Баланс BTC в протоколе',
-                        data: profitData.map(d => d.profit),
-                        borderColor: '#10b981',  // Всегда зеленый
-                        backgroundColor: 'rgba(16, 185, 129, 0.1)',
-                        borderWidth: 2,
-                        fill: true,
-                        tension: 0.4,
-                        pointRadius: 0,
-                        pointHoverRadius: 5
-                    }]
+                    datasets: datasets
                 },
                 options: {
                     responsive: true,
@@ -308,20 +419,50 @@
                                     const netDeposited = point.deposits - point.withdrawals;
                                     const percentOfTVL = (point.profit / finalTVL * 100).toFixed(2);
 
-                                    return [
+                                    const lines = [
                                         '',
-                                        '📊 РАСЧЕТ БАЛАНСА BTC В ПРОТОКОЛЕ:',
+                                        '📊 ACCUMULATED REVENUE CALCULATION:',
                                         '─────────────────────',
-                                        `TVL (доступно):        +${point.withdrawable.toFixed(4)} BTC`,
-                                        `Чистые депозиты:      -${netDeposited.toFixed(4)} BTC`,
+                                        `TVL (available):       +${point.withdrawable.toFixed(4)} BTC`,
+                                        `Net Deposited:        -${netDeposited.toFixed(4)} BTC`,
                                         `  (Deposits: ${point.deposits.toFixed(2)} BTC)`,
                                         `  (Withdrawals: ${point.withdrawals.toFixed(2)} BTC)`,
-                                        `Admin Fees:           +${point.admin_fees.toFixed(4)} BTC`,
-                                        '─────────────────────',
-                                        `💰 БАЛАНС:            ${point.profit.toFixed(4)} BTC (${percentOfTVL}% от TVL)`,
-                                        '',
-                                        'Формула: TVL - (Deposits - Withdrawals) + Admin Fees'
+                                        `Admin Fees:           +${point.admin_fees.toFixed(4)} BTC`
                                     ];
+
+                                    // Добавляем YB emission по рынкам если есть
+                                    const totalYbEmission = (point.yb_emission_wbtc_btc || 0) +
+                                                           (point.yb_emission_cbbtc_btc || 0) +
+                                                           (point.yb_emission_tbtc_btc || 0);
+
+                                    if (totalYbEmission > 0) {
+                                        lines.push('');
+                                        lines.push('YB Emission by Market:');
+                                        if (point.yb_emission_wbtc_btc) {
+                                            lines.push(`  WBTC:  +${point.yb_emission_wbtc_btc.toFixed(4)} BTC`);
+                                        }
+                                        if (point.yb_emission_cbbtc_btc) {
+                                            lines.push(`  cbBTC: +${point.yb_emission_cbbtc_btc.toFixed(4)} BTC`);
+                                        }
+                                        if (point.yb_emission_tbtc_btc) {
+                                            lines.push(`  tBTC:  +${point.yb_emission_tbtc_btc.toFixed(4)} BTC`);
+                                        }
+                                        lines.push(`  TOTAL: +${totalYbEmission.toFixed(4)} BTC`);
+                                    }
+
+                                    const totalProfit = point.profit + totalYbEmission;
+
+                                    lines.push('─────────────────────');
+                                    lines.push(`💰 BALANCE (w/o YB):  ${point.profit.toFixed(4)} BTC (${percentOfTVL}% of TVL)`);
+
+                                    if (totalYbEmission > 0) {
+                                        lines.push(`💰 BALANCE (w/ YB):   ${totalProfit.toFixed(4)} BTC`);
+                                    }
+
+                                    lines.push('');
+                                    lines.push('Formula: TVL - (Deposits - Withdrawals) + Admin Fees + YB');
+
+                                    return lines;
                                 }
                             }
                         }
@@ -532,26 +673,78 @@
                 const includeDeposits = document.getElementById('toggleDeposits').checked;
                 const includeWithdrawals = document.getElementById('toggleWithdrawals').checked;
                 const includeAdminFees = document.getElementById('toggleAdminFees').checked;
+                const includeYbEmission = document.getElementById('toggleYbEmission').checked;
 
-                // Пересчитываем профит на основе выбранных компонентов
+                // Выбранные рынки
+                const includeWbtc = document.getElementById('toggleWbtc').checked;
+                const includeCbbtc = document.getElementById('toggleCbbtc').checked;
+                const includeTbtc = document.getElementById('toggleTbtc').checked;
+
+                // Пересчитываем профит на основе выбранных рынков и компонентов
                 let cumulativeDeposits = 0;
                 let cumulativeWithdrawals = 0;
 
-                const recalculatedData = profitData.map(point => {
+                const recalculatedData = profitData.map((point, i) => {
+                    const wbtc = wbtcData[i];
+                    const cbbtc = cbbtcData[i];
+                    const tbtc = tbtcData[i];
+
+                    // Суммируем только выбранные рынки
+                    let withdrawable = 0;
+                    let deposits = 0;
+                    let withdrawals = 0;
+                    let adminFees = 0;
+
+                    if (includeWbtc) {
+                        withdrawable += wbtc.total_withdrawable_btc || 0;
+                        deposits += wbtc.deposits_btc || 0;
+                        withdrawals += wbtc.withdrawals_btc || 0;
+                        adminFees += wbtc.admin_fees_btc || 0;
+                    }
+                    if (includeCbbtc) {
+                        withdrawable += cbbtc.total_withdrawable_btc || 0;
+                        deposits += cbbtc.deposits_btc || 0;
+                        withdrawals += cbbtc.withdrawals_btc || 0;
+                        adminFees += cbbtc.admin_fees_btc || 0;
+                    }
+                    if (includeTbtc) {
+                        withdrawable += tbtc.total_withdrawable_btc || 0;
+                        deposits += tbtc.deposits_btc || 0;
+                        withdrawals += tbtc.withdrawals_btc || 0;
+                        adminFees += tbtc.admin_fees_btc || 0;
+                    }
+
+                    // Накапливаем депозиты/выводы
+                    cumulativeDeposits += deposits;
+                    cumulativeWithdrawals += withdrawals;
+
+                    // Вычисляем баланс на основе выбранных компонентов
                     let profit = 0;
 
-                    // Включаем выбранные компоненты в расчет
                     if (includeWithdrawable) {
-                        profit += point.withdrawable;
+                        profit += withdrawable;
                     }
                     if (includeDeposits) {
-                        profit -= point.deposits;
+                        profit -= cumulativeDeposits;
                     }
                     if (includeWithdrawals) {
-                        profit += point.withdrawals;
+                        profit += cumulativeWithdrawals;
                     }
                     if (includeAdminFees) {
-                        profit += point.admin_fees;
+                        profit += adminFees;
+                    }
+
+                    // Добавляем YB эмиссию по рынкам если галочка активна
+                    if (includeYbEmission) {
+                        if (includeWbtc && point.yb_emission_wbtc_btc) {
+                            profit += point.yb_emission_wbtc_btc;
+                        }
+                        if (includeCbbtc && point.yb_emission_cbbtc_btc) {
+                            profit += point.yb_emission_cbbtc_btc;
+                        }
+                        if (includeTbtc && point.yb_emission_tbtc_btc) {
+                            profit += point.yb_emission_tbtc_btc;
+                        }
                     }
 
                     return profit;
@@ -577,6 +770,22 @@
             document.getElementById('toggleDeposits').addEventListener('change', updateChart);
             document.getElementById('toggleWithdrawals').addEventListener('change', updateChart);
             document.getElementById('toggleAdminFees').addEventListener('change', updateChart);
+
+            // Подключаем галочки рынков
+            document.getElementById('toggleWbtc').addEventListener('change', updateChart);
+            document.getElementById('toggleCbbtc').addEventListener('change', updateChart);
+            document.getElementById('toggleTbtc').addEventListener('change', updateChart);
+
+            // Обработчик для YB emission
+            if (ybEmissionData && ybEmissionData.length > 0) {
+                document.getElementById('toggleYbEmission').addEventListener('change', updateChart);
+                // Вызываем updateChart чтобы добавить YB emission с самого начала
+                updateChart();
+            } else {
+                // Если данных нет, отключаем галочку
+                document.getElementById('toggleYbEmission').disabled = true;
+                document.getElementById('toggleYbEmission').checked = false;
+            }
 
             // Показываем контент
             document.getElementById('loading').style.display = 'none';
