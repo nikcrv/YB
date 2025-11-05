@@ -750,7 +750,7 @@
                 endLabel.textContent = endDate;
             }
 
-            // Фильтрация данных по диапазону
+            // Фильтрация данных по диапазону (без пересчета)
             function filterDataByRange() {
                 profitData.length = 0;
                 wbtcData.length = 0;
@@ -764,8 +764,8 @@
                     tbtcData.push(fullTbtcData[i]);
                 }
 
-                // Обновляем все графики
-                updateAllCharts();
+                // Обновляем графики БЕЗ пересчета (просто меняем диапазон)
+                updateChartsRange();
             }
 
             // Обработчики ползунков
@@ -837,14 +837,28 @@
             // Инициализация ползунка
             updateSliderUI();
 
-            // Функция обновления всех графиков
-            function updateAllCharts() {
-                // Обновляем labels
+            // Хранилище рассчитанных данных для ВСЕГО диапазона
+            let fullRecalculatedData = null;
+
+            // Функция обновления графиков БЕЗ пересчета (только изменение диапазона)
+            function updateChartsRange() {
                 const labels = profitData.map(d => d.date);
                 profitChart.data.labels = labels;
 
-                // Вызываем updateChart для пересчета с чекбоксами
-                updateChart();
+                // Берем нужный диапазон из уже рассчитанных данных
+                if (fullRecalculatedData) {
+                    const rangeData = fullRecalculatedData.slice(currentRangeStart, currentRangeEnd + 1);
+                    profitChart.data.datasets[0].data = rangeData;
+                } else {
+                    // Если еще не рассчитывали - используем исходные данные
+                    profitChart.data.datasets[0].data = profitData.map(d => d.profit);
+                }
+
+                // Обновляем финальное значение
+                const finalValue = profitChart.data.datasets[0].data[profitChart.data.datasets[0].data.length - 1];
+                document.getElementById('finalProfit').textContent = finalValue.toFixed(8) + ' BTC';
+
+                profitChart.update();
 
                 // Обновляем TVL график
                 tvlByMarketChart.data.labels = labels;
@@ -852,6 +866,12 @@
                 tvlByMarketChart.data.datasets[1].data = cbbtcData.map(d => d.total_withdrawable_btc);
                 tvlByMarketChart.data.datasets[2].data = tbtcData.map(d => d.total_withdrawable_btc);
                 tvlByMarketChart.update();
+            }
+
+            // Функция обновления всех графиков С пересчетом (при изменении чекбоксов)
+            function updateAllCharts() {
+                // Вызываем updateChart для пересчета с чекбоксами
+                updateChart();
             }
 
             // ====== END RANGE SLIDER LOGIC ======
@@ -869,14 +889,14 @@
                 const includeCbbtc = document.getElementById('toggleCbbtc').checked;
                 const includeTbtc = document.getElementById('toggleTbtc').checked;
 
-                // Пересчитываем профит на основе выбранных рынков и компонентов
+                // Пересчитываем профит для ВСЕХ данных (не только текущего диапазона)
                 let cumulativeDeposits = 0;
                 let cumulativeWithdrawals = 0;
 
-                const recalculatedData = profitData.map((point, i) => {
-                    const wbtc = wbtcData[i];
-                    const cbbtc = cbbtcData[i];
-                    const tbtc = tbtcData[i];
+                fullRecalculatedData = fullProfitData.map((point, i) => {
+                    const wbtc = fullWbtcData[i];
+                    const cbbtc = fullCbbtcData[i];
+                    const tbtc = fullTbtcData[i];
 
                     // Суммируем только выбранные рынки
                     let withdrawable = 0;
@@ -939,15 +959,18 @@
                     return profit;
                 });
 
+                // Применяем текущий диапазон к рассчитанным данным
+                const rangeData = fullRecalculatedData.slice(currentRangeStart, currentRangeEnd + 1);
+
                 // Обновляем данные графика
-                profitChart.data.datasets[0].data = recalculatedData;
+                profitChart.data.datasets[0].data = rangeData;
 
                 // Цвет всегда зеленый - это баланс протокола, не профит/убыток
                 profitChart.data.datasets[0].borderColor = '#10b981';
                 profitChart.data.datasets[0].backgroundColor = 'rgba(16, 185, 129, 0.1)';
 
                 // Обновляем финальное значение в заголовке
-                const finalValue = recalculatedData[recalculatedData.length - 1];
+                const finalValue = rangeData[rangeData.length - 1];
                 document.getElementById('finalProfit').textContent = finalValue.toFixed(8) + ' BTC';
                 document.getElementById('answerBox').className = 'answer';  // Всегда зеленый
 
@@ -995,6 +1018,7 @@
     </script>
 </body>
 </html>
+
 
 
 
