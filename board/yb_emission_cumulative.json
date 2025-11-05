@@ -338,17 +338,17 @@
   {
     "date": "2025-11-05",
     "daily_cbBTC": 33967.46387937277,
-    "daily_WBTC": 38438.84059466021,
+    "daily_WBTC": 38641.12012947331,
     "daily_tBTC": 46613.326545611126,
-    "daily_total": 119019.6310196441,
+    "daily_total": 119221.91055445721,
     "cumulative_cbBTC": 1206448.7121769316,
-    "cumulative_WBTC": 1130766.1662912655,
+    "cumulative_WBTC": 1130968.4458260785,
     "cumulative_tBTC": 1597555.148881807,
-    "cumulative_total": 3934770.027350004,
-    "cumulative_total_btc": 20.493149104682015,
+    "cumulative_total": 3934972.306884817,
+    "cumulative_total_btc": 20.494202621060086,
     "cumulative_cbBTC_btc": 6.283450665208146,
-    "cumulative_WBTC_btc": 5.889279293901486,
+    "cumulative_WBTC_btc": 5.890332810279555,
     "cumulative_tBTC_btc": 8.320419145572385,
-    "daily_total_btc": 0.619880457540357
+    "daily_total_btc": 0.6209339739184266
   }
 ]
