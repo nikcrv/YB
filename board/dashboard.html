@@ -14,7 +14,31 @@
             padding: 40px 20px;
         }
         .container { max-width: 1400px; margin: 0 auto; }
-        h1 { font-size: 2em; margin-bottom: 20px; text-align: center; color: #94a3b8; font-weight: 400; }
+        .header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; }
+        h1 { font-size: 2em; color: #94a3b8; font-weight: 400; flex-grow: 1; text-align: center; margin: 0; }
+        .back-button {
+            background: #334155;
+            border: 1px solid #475569;
+            color: #e2e8f0;
+            padding: 10px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 0.9em;
+            font-weight: 500;
+            transition: all 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .back-button:hover {
+            background: #475569;
+            border-color: #667eea;
+            transform: translateX(-2px);
+        }
+        .back-button::before {
+            content: '←';
+            font-size: 1.2em;
+        }
         .loading { text-align: center; font-size: 1.5em; color: #667eea; padding: 50px; }
         .answer {
             background: linear-gradient(135deg, #059669 0%, #047857 100%);
@@ -72,13 +96,105 @@
             border-radius: 8px; display: inline-block; margin-bottom: 20px;
             font-weight: 600;
         }
+        .compact-range {
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 1px solid #334155;
+        }
+        .period-buttons {
+            display: flex;
+            gap: 6px;
+            margin-bottom: 12px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        .period-label {
+            color: #64748b;
+            font-size: 0.85em;
+            margin-right: 8px;
+        }
+        .period-button {
+            background: #0f172a;
+            color: #94a3b8;
+            border: 1px solid #334155;
+            padding: 4px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.8em;
+            transition: all 0.2s;
+        }
+        .period-button:hover {
+            border-color: #667eea;
+            color: #e2e8f0;
+        }
+        .period-button.active {
+            background: #667eea;
+            border-color: #667eea;
+            color: white;
+            font-weight: 500;
+        }
+        .range-slider {
+            width: 100%;
+            height: 4px;
+            background: #334155;
+            border-radius: 2px;
+            position: relative;
+            margin: 15px 0 8px 0;
+        }
+        .range-slider input[type="range"] {
+            position: absolute;
+            width: 100%;
+            height: 4px;
+            background: transparent;
+            pointer-events: none;
+            -webkit-appearance: none;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        .range-slider input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 14px;
+            height: 14px;
+            background: #667eea;
+            border-radius: 50%;
+            cursor: pointer;
+            pointer-events: all;
+            border: 2px solid #0f172a;
+        }
+        .range-slider input[type="range"]::-moz-range-thumb {
+            width: 14px;
+            height: 14px;
+            background: #667eea;
+            border-radius: 50%;
+            cursor: pointer;
+            pointer-events: all;
+            border: 2px solid #0f172a;
+        }
+        .range-fill {
+            position: absolute;
+            height: 4px;
+            background: #667eea;
+            border-radius: 2px;
+            pointer-events: none;
+        }
+        .range-labels {
+            display: flex;
+            justify-content: space-between;
+            color: #64748b;
+            font-size: 0.75em;
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="loading" id="loading">Loading synchronized data...</div>
         <div id="content" style="display:none;">
-            <h1>YieldBasis - BTC History</h1>
+            <div class="header">
+                <a href="https://nikcrv.github.io/YB/" class="back-button">Back to Vaults</a>
+                <h1>YieldBasis - BTC History</h1>
+                <div style="width: 140px;"></div> <!-- Spacer for centering -->
+            </div>
 
             <div class="answer" id="answerBox">
                 <span id="finalProfit">0.00000000 BTC</span>
@@ -129,6 +245,25 @@
                 <div class="chart-wrapper">
                     <canvas id="profitChart"></canvas>
                 </div>
+
+                <div class="compact-range">
+                    <div class="period-buttons">
+                        <span class="period-label">Period:</span>
+                        <button class="period-button" data-days="7">7d</button>
+                        <button class="period-button" data-days="14">14d</button>
+                        <button class="period-button" data-days="30">30d</button>
+                        <button class="period-button active" data-days="all">All</button>
+                    </div>
+                    <div class="range-slider">
+                        <div class="range-fill" id="rangeFill"></div>
+                        <input type="range" id="rangeStart" min="0" max="100" value="0">
+                        <input type="range" id="rangeEnd" min="0" max="100" value="100">
+                    </div>
+                    <div class="range-labels">
+                        <span id="startLabel">Start</span>
+                        <span id="endLabel">End</span>
+                    </div>
+                </div>
             </div>
 
             <div class="main-metric" id="metricsBox"></div>
@@ -140,13 +275,6 @@
                 </div>
             </div>
 
-            <div class="chart-container">
-                <h2 style="color: #94a3b8; font-size: 1.3em; margin-bottom: 20px;">Admin Fees</h2>
-                <div class="chart-wrapper">
-                    <canvas id="adminFeesChart"></canvas>
-                </div>
-            </div>
-
             <div class="footer" id="footer"></div>
         </div>
     </div>
@@ -155,6 +283,7 @@
     <script src="yield_data_sync.js"></script>
     <script src="yield_cbbtc_sync.js"></script>
     <script src="yield_tbtc_sync.js"></script>
+    <script src="yb_emission_data.js"></script>
 
     <script>
     window.addEventListener('load', async function() {
@@ -222,7 +351,7 @@
 
                 return {
                     timestamp: wbtc.timestamp,
-                    date: new Date(wbtc.timestamp * 1000).toLocaleDateString('ru-RU'),
+                    date: new Date(wbtc.timestamp * 1000).toLocaleDateString('en-US'),
                     profit: profit,
                     withdrawable: totalWithdrawable,
                     deposits: cumulativeDeposits,
@@ -273,35 +402,38 @@
             document.getElementById('metricsBox').innerHTML = metricsHTML;
 
             // Footer
-            const startDate = new Date(profitData[0].timestamp * 1000).toLocaleDateString('ru-RU');
-            const endDate = new Date(profitData[profitData.length - 1].timestamp * 1000).toLocaleDateString('ru-RU');
+            const startDate = new Date(profitData[0].timestamp * 1000).toLocaleDateString('en-US');
+            const endDate = new Date(profitData[profitData.length - 1].timestamp * 1000).toLocaleDateString('en-US');
             document.getElementById('footer').textContent =
                 `Synchronized data | Points: ${profitData.length} | Period: ${startDate} - ${endDate}`;
 
-            // Загрузка данных YB emission
-            let ybEmissionData = null;
+            // Загрузка данных YB emission (из JS файла для решения CORS проблемы)
+            let ybEmissionDataArray = null;
             try {
-                const ybResponse = await fetch('yb_emission_cumulative.json');
-                ybEmissionData = await ybResponse.json();
-                console.log('YB emission data loaded:', ybEmissionData.length, 'days');
+                if (typeof ybEmissionData !== 'undefined') {
+                    ybEmissionDataArray = ybEmissionData;
+                    console.log('YB emission data loaded:', ybEmissionDataArray.length, 'days');
+                } else {
+                    console.log('YB emission data not available: ybEmissionData is undefined');
+                }
             } catch (error) {
                 console.log('YB emission data not available:', error.message);
             }
 
             // Подготовка данных YB emission для суммирования с интерполяцией (по рынкам)
-            if (ybEmissionData) {
+            if (ybEmissionDataArray) {
                 // Создаем массивы дат с данными для каждого рынка
-                const ybDatesWbtc = ybEmissionData.map(item => ({
+                const ybDatesWbtc = ybEmissionDataArray.map(item => ({
                     timestamp: new Date(item.date).getTime() / 1000,
                     value: item.cumulative_WBTC_btc || 0
                 })).sort((a, b) => a.timestamp - b.timestamp);
 
-                const ybDatesCbbtc = ybEmissionData.map(item => ({
+                const ybDatesCbbtc = ybEmissionDataArray.map(item => ({
                     timestamp: new Date(item.date).getTime() / 1000,
                     value: item.cumulative_cbBTC_btc || 0
                 })).sort((a, b) => a.timestamp - b.timestamp);
 
-                const ybDatesTbtc = ybEmissionData.map(item => ({
+                const ybDatesTbtc = ybEmissionDataArray.map(item => ({
                     timestamp: new Date(item.date).getTime() / 1000,
                     value: item.cumulative_tBTC_btc || 0
                 })).sort((a, b) => a.timestamp - b.timestamp);
@@ -359,6 +491,7 @@
             }
 
             // Profit Chart
+            let profitChart;  // Объявляем переменную заранее
             const datasets = [{
                 label: 'Protocol BTC Balance',
                 data: profitData.map(d => d.profit),
@@ -373,7 +506,7 @@
                 spanGaps: true
             }];
 
-            let profitChart = new Chart(document.getElementById('profitChart'), {
+            profitChart = new Chart(document.getElementById('profitChart'), {
                 type: 'line',
                 data: {
                     labels: profitData.map(d => d.date),
@@ -400,8 +533,8 @@
 
                                     // Форматируем дату и время
                                     const date = new Date(point.timestamp * 1000);
-                                    const dateStr = date.toLocaleDateString('ru-RU');
-                                    const timeStr = date.toLocaleTimeString('ru-RU');
+                                    const dateStr = date.toLocaleDateString('en-US');
+                                    const timeStr = date.toLocaleTimeString('en-US');
 
                                     return [
                                         `📅 ${dateStr} ${timeStr}`,
@@ -488,7 +621,7 @@
                             grid: { display: false },
                             title: {
                                 display: true,
-                                text: '% от TVL',
+                                text: '% of TVL',
                                 color: '#94a3b8'
                             },
                             // Связываем с левой осью через afterDataLimits
@@ -506,7 +639,7 @@
             });
 
             // TVL by Market Chart
-            new Chart(document.getElementById('tvlByMarketChart'), {
+            const tvlByMarketChart = new Chart(document.getElementById('tvlByMarketChart'), {
                 type: 'line',
                 data: {
                     labels: profitData.map(d => d.date),
@@ -566,8 +699,8 @@
 
                                     // Форматируем дату и время
                                     const date = new Date(point.timestamp * 1000);
-                                    const dateStr = date.toLocaleDateString('ru-RU');
-                                    const timeStr = date.toLocaleTimeString('ru-RU');
+                                    const dateStr = date.toLocaleDateString('en-US');
+                                    const timeStr = date.toLocaleTimeString('en-US');
 
                                     return [
                                         `📅 ${dateStr} ${timeStr}`,
@@ -584,85 +717,144 @@
                 }
             });
 
-            // Admin Fees Chart
-            new Chart(document.getElementById('adminFeesChart'), {
-                type: 'line',
-                data: {
-                    datasets: [{
-                        label: 'Admin Fees (BTC)',
-                        data: profitData.map(d => ({ x: d.date, y: d.admin_fees })),
-                        borderColor: '#f59e0b',
-                        backgroundColor: 'rgba(245, 158, 11, 0.1)',
-                        borderWidth: 2,
-                        fill: false,
-                        stepped: 'after',
-                        pointRadius: 0,
-                        pointHoverRadius: 5
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: {
-                        legend: { display: true, labels: { color: '#94a3b8', font: { size: 14 } } },
-                        tooltip: {
-                            backgroundColor: '#1e293b',
-                            titleColor: '#e2e8f0',
-                            bodyColor: '#e2e8f0',
-                            borderColor: '#334155',
-                            borderWidth: 1,
-                            padding: 12,
-                            displayColors: false,
-                            callbacks: {
-                                title: ctx => {
-                                    const index = ctx[0].dataIndex;
-                                    const point = profitData[index];
-                                    const wbtc = wbtcData[index];
+            // ====== RANGE SLIDER LOGIC ======
 
-                                    // Форматируем дату и время
-                                    const date = new Date(point.timestamp * 1000);
-                                    const dateStr = date.toLocaleDateString('ru-RU');
-                                    const timeStr = date.toLocaleTimeString('ru-RU');
+            // Хранилище полных данных
+            const fullProfitData = [...profitData];
+            const fullWbtcData = [...wbtcData];
+            const fullCbbtcData = [...cbbtcData];
+            const fullTbtcData = [...tbtcData];
 
-                                    return [
-                                        `📅 ${dateStr} ${timeStr}`,
-                                        `🔗 Блок: ${wbtc.block}`
-                                    ];
-                                },
-                                label: ctx => {
-                                    return '';
-                                },
-                                afterLabel: ctx => {
-                                    const point = profitData[ctx.dataIndex];
-                                    const index = ctx.dataIndex;
+            let currentRangeStart = 0;
+            let currentRangeEnd = fullProfitData.length - 1;
 
-                                    // Находим соответствующие точки из исходных данных
-                                    const wbtc = wbtcData[index];
-                                    const cbbtc = cbbtcData[index];
-                                    const tbtc = tbtcData[index];
+            // Обновление визуального ползунка
+            function updateSliderUI() {
+                const rangeStart = document.getElementById('rangeStart');
+                const rangeEnd = document.getElementById('rangeEnd');
+                const rangeFill = document.getElementById('rangeFill');
+                const startLabel = document.getElementById('startLabel');
+                const endLabel = document.getElementById('endLabel');
 
-                                    return [
-                                        '',
-                                        '💼 ADMIN FEES ПО РЫНКАМ:',
-                                        '─────────────────────',
-                                        `WBTC:   ${wbtc.admin_fees_btc.toFixed(8)} BTC`,
-                                        `cbBTC:  ${cbbtc.admin_fees_btc.toFixed(8)} BTC`,
-                                        `tBTC:   ${tbtc.admin_fees_btc.toFixed(8)} BTC`,
-                                        '─────────────────────',
-                                        `ИТОГО:  ${point.admin_fees.toFixed(8)} BTC`,
-                                        '',
-                                        'Admin Fees = накопленные комиссии протокола'
-                                    ];
-                                }
-                            }
-                        }
-                    },
-                    scales: {
-                        x: { type: 'category', ticks: { color: '#64748b' }, grid: { color: '#1e293b' } },
-                        y: { beginAtZero: true, ticks: { color: '#64748b' }, grid: { color: '#1e293b' } }
-                    }
+                const startPercent = (parseInt(rangeStart.value) / parseInt(rangeStart.max)) * 100;
+                const endPercent = (parseInt(rangeEnd.value) / parseInt(rangeEnd.max)) * 100;
+
+                rangeFill.style.left = startPercent + '%';
+                rangeFill.style.width = (endPercent - startPercent) + '%';
+
+                // Обновляем метки
+                const startDate = new Date(fullProfitData[currentRangeStart].timestamp * 1000).toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+                const endDate = new Date(fullProfitData[currentRangeEnd].timestamp * 1000).toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+
+                startLabel.textContent = startDate;
+                endLabel.textContent = endDate;
+            }
+
+            // Фильтрация данных по диапазону
+            function filterDataByRange() {
+                profitData.length = 0;
+                wbtcData.length = 0;
+                cbbtcData.length = 0;
+                tbtcData.length = 0;
+
+                for (let i = currentRangeStart; i <= currentRangeEnd; i++) {
+                    profitData.push(fullProfitData[i]);
+                    wbtcData.push(fullWbtcData[i]);
+                    cbbtcData.push(fullCbbtcData[i]);
+                    tbtcData.push(fullTbtcData[i]);
                 }
+
+                // Обновляем все графики
+                updateAllCharts();
+            }
+
+            // Обработчики ползунков
+            document.getElementById('rangeStart').addEventListener('input', function() {
+                let startValue = parseInt(this.value);
+                let endValue = parseInt(document.getElementById('rangeEnd').value);
+
+                if (startValue >= endValue) {
+                    startValue = endValue - 1;
+                    this.value = startValue;
+                }
+
+                currentRangeStart = Math.floor((startValue / 100) * (fullProfitData.length - 1));
+                updateSliderUI();
             });
+
+            document.getElementById('rangeEnd').addEventListener('input', function() {
+                let startValue = parseInt(document.getElementById('rangeStart').value);
+                let endValue = parseInt(this.value);
+
+                if (endValue <= startValue) {
+                    endValue = startValue + 1;
+                    this.value = endValue;
+                }
+
+                currentRangeEnd = Math.floor((endValue / 100) * (fullProfitData.length - 1));
+                updateSliderUI();
+            });
+
+            document.getElementById('rangeStart').addEventListener('change', filterDataByRange);
+            document.getElementById('rangeEnd').addEventListener('change', filterDataByRange);
+
+            // Обработчики кнопок периодов
+            document.querySelectorAll('.period-button').forEach(button => {
+                button.addEventListener('click', function() {
+                    // Убираем active со всех кнопок
+                    document.querySelectorAll('.period-button').forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+
+                    const days = this.getAttribute('data-days');
+
+                    if (days === 'all') {
+                        currentRangeStart = 0;
+                        currentRangeEnd = fullProfitData.length - 1;
+                    } else {
+                        const daysNum = parseInt(days);
+                        currentRangeEnd = fullProfitData.length - 1;
+
+                        // Ищем точку N дней назад
+                        const endTimestamp = fullProfitData[currentRangeEnd].timestamp;
+                        const targetTimestamp = endTimestamp - (daysNum * 86400);
+
+                        currentRangeStart = fullProfitData.findIndex(p => p.timestamp >= targetTimestamp);
+                        if (currentRangeStart === -1) currentRangeStart = 0;
+                    }
+
+                    // Обновляем ползунки
+                    const startPercent = (currentRangeStart / (fullProfitData.length - 1)) * 100;
+                    const endPercent = (currentRangeEnd / (fullProfitData.length - 1)) * 100;
+
+                    document.getElementById('rangeStart').value = startPercent;
+                    document.getElementById('rangeEnd').value = endPercent;
+
+                    updateSliderUI();
+                    filterDataByRange();
+                });
+            });
+
+            // Инициализация ползунка
+            updateSliderUI();
+
+            // Функция обновления всех графиков
+            function updateAllCharts() {
+                // Обновляем labels
+                const labels = profitData.map(d => d.date);
+                profitChart.data.labels = labels;
+
+                // Вызываем updateChart для пересчета с чекбоксами
+                updateChart();
+
+                // Обновляем TVL график
+                tvlByMarketChart.data.labels = labels;
+                tvlByMarketChart.data.datasets[0].data = wbtcData.map(d => d.total_withdrawable_btc);
+                tvlByMarketChart.data.datasets[1].data = cbbtcData.map(d => d.total_withdrawable_btc);
+                tvlByMarketChart.data.datasets[2].data = tbtcData.map(d => d.total_withdrawable_btc);
+                tvlByMarketChart.update();
+            }
+
+            // ====== END RANGE SLIDER LOGIC ======
 
             // Функция обновления графика на основе чекбоксов
             function updateChart() {
@@ -774,7 +966,7 @@
             document.getElementById('toggleTbtc').addEventListener('change', updateChart);
 
             // Обработчик для YB emission
-            if (ybEmissionData && ybEmissionData.length > 0) {
+            if (ybEmissionDataArray && ybEmissionDataArray.length > 0) {
                 document.getElementById('toggleYbEmission').addEventListener('change', updateChart);
                 // Вызываем updateChart чтобы добавить YB emission с самого начала
                 updateChart();
