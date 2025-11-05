@@ -2,18 +2,18 @@ const yieldData_syb_cbbtc = {
   "metadata": {
     "contract": "0x3dAe83d236b4Ec301A8d0553f8c13Cb9b7925B6a",
     "start_date": "2025-10-10T19:49:35",
-    "end_date": "2025-11-05T08:50:23",
-    "data_points": 615,
+    "end_date": "2025-11-05T09:50:47",
+    "data_points": 616,
     "step_seconds": 3600
   },
   "metrics": {
-    "total_return": -0.08382986097703075,
-    "total_return_pct": -8.382986097703075,
-    "apr": -0.7138218401807574,
-    "apr_pct": -71.38218401807575,
-    "days": 25.54222222222222,
+    "total_return": -0.08384224565404438,
+    "total_return_pct": -8.384224565404438,
+    "apr": -0.7132895264554322,
+    "apr_pct": -71.32895264554321,
+    "days": 25.58416666666667,
     "start_pps": 1.00608195,
-    "end_pps": 0.92174224
+    "end_pps": 0.92172978
   },
   "data": [
     {
@@ -6152,18 +6152,28 @@ const yieldData_syb_cbbtc = {
       "datetime": "2025-11-05T08:50:11",
       "pps_btc": 0.92174233,
       "ret_step": -1.653363150573312e-05,
-      "ret_step_pct": -0.0016533631505733118,
-      "btc_price": 101999.4559589914,
+      "ret_step_pct": -0.001653363150573312,
+      "btc_price": 101773.61102518206,
       "pps_yb": 0.8370780127502196
     },
     {
-      "block": 23732018,
-      "timestamp": 1762332623,
-      "datetime": "2025-11-05T08:50:23",
-      "pps_btc": 0.92174224,
-      "ret_step": -9.764117049935202e-08,
-      "ret_step_pct": -9.764117049935203e-06,
-      "btc_price": 101999.4559589914,
+      "block": 23732316,
+      "timestamp": 1762336211,
+      "datetime": "2025-11-05T09:50:11",
+      "pps_btc": 0.92172986,
+      "ret_step": null,
+      "ret_step_pct": null,
+      "btc_price": 101773.61102518206,
+      "pps_yb": 0.8370780127502196
+    },
+    {
+      "block": 23732319,
+      "timestamp": 1762336247,
+      "datetime": "2025-11-05T09:50:47",
+      "pps_btc": 0.92172978,
+      "ret_step": -8.679332575815652e-08,
+      "ret_step_pct": -8.679332575815651e-06,
+      "btc_price": 101773.61102518206,
       "pps_yb": 0.8370780127502196
     }
   ]
