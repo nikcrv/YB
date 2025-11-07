@@ -9,11 +9,11 @@ const ybEmissionData = [
     "cumulative_WBTC": 23818.395072450956,
     "cumulative_tBTC": 26966.96805533862,
     "cumulative_total": 73186.69022169846,
-    "cumulative_total_btc": 0.3646358943683982,
-    "cumulative_cbBTC_btc": 0.1116094731867618,
-    "cumulative_WBTC_btc": 0.11866968930216841,
-    "cumulative_tBTC_btc": 0.134356731879468,
-    "daily_total_btc": 0.3646358943683982
+    "cumulative_total_btc": 0.3633383221228458,
+    "cumulative_cbBTC_btc": 0.11121230615799542,
+    "cumulative_WBTC_btc": 0.1182473981958758,
+    "cumulative_tBTC_btc": 0.13387861776897456,
+    "daily_total_btc": 0.3633383221228458
   },
   {
     "date": "2025-10-16",
@@ -25,11 +25,11 @@ const ybEmissionData = [
     "cumulative_WBTC": 81512.30006339072,
     "cumulative_tBTC": 93811.66514908924,
     "cumulative_total": 258146.8183277679,
-    "cumulative_total_btc": 1.2861573012000265,
-    "cumulative_cbBTC_btc": 0.41264586536640113,
-    "cumulative_WBTC_btc": 0.406116335437555,
-    "cumulative_tBTC_btc": 0.4673951003960703,
-    "daily_total_btc": 0.9215214068316282
+    "cumulative_total_btc": 1.2815804560697834,
+    "cumulative_cbBTC_btc": 0.41117744760937025,
+    "cumulative_WBTC_btc": 0.40467115328882,
+    "cumulative_tBTC_btc": 0.4657318551715933,
+    "daily_total_btc": 0.9182421339469378
   },
   {
     "date": "2025-10-17",
@@ -41,11 +41,11 @@ const ybEmissionData = [
     "cumulative_WBTC": 141212.72550206474,
     "cumulative_tBTC": 158119.5494661085,
     "cumulative_total": 440911.9754812681,
-    "cumulative_total_btc": 2.196742768805844,
-    "cumulative_cbBTC_btc": 0.7053883781958,
-    "cumulative_WBTC_btc": 0.7035600093905916,
-    "cumulative_tBTC_btc": 0.7877943812194519,
-    "daily_total_btc": 0.9105854676058172
+    "cumulative_total_btc": 2.188925566792976,
+    "cumulative_cbBTC_btc": 0.7028782238308066,
+    "cumulative_WBTC_btc": 0.7010563613532882,
+    "cumulative_tBTC_btc": 0.7849909816088811,
+    "daily_total_btc": 0.9073451107231923
   },
   {
     "date": "2025-10-18",
@@ -57,11 +57,11 @@ const ybEmissionData = [
     "cumulative_WBTC": 203659.14587548788,
     "cumulative_tBTC": 221770.60930736066,
     "cumulative_total": 628257.7604321933,
-    "cumulative_total_btc": 3.130150163576604,
-    "cumulative_cbBTC_btc": 1.0105440056520791,
-    "cumulative_WBTC_btc": 1.014684973150972,
-    "cumulative_tBTC_btc": 1.104921184773553,
-    "daily_total_btc": 0.9334073947707604
+    "cumulative_total_btc": 3.119011391888469,
+    "cumulative_cbBTC_btc": 1.0069479420859433,
+    "cumulative_WBTC_btc": 1.0110741737769267,
+    "cumulative_tBTC_btc": 1.1009892760255993,
+    "daily_total_btc": 0.9300858250954934
   },
   {
     "date": "2025-10-19",
@@ -73,11 +73,11 @@ const ybEmissionData = [
     "cumulative_WBTC": 257064.4491334632,
     "cumulative_tBTC": 285549.38630274526,
     "cumulative_total": 811286.809468379,
-    "cumulative_total_btc": 4.042050411948816,
-    "cumulative_cbBTC_btc": 1.33860145720584,
-    "cumulative_WBTC_btc": 1.2807646449942798,
-    "cumulative_tBTC_btc": 1.4226843097486965,
-    "daily_total_btc": 0.9119002483722122
+    "cumulative_total_btc": 4.027666604675115,
+    "cumulative_cbBTC_btc": 1.3338379873293076,
+    "cumulative_WBTC_btc": 1.2762069898591264,
+    "cumulative_tBTC_btc": 1.4176216274866817,
+    "daily_total_btc": 0.9086552127866462
   },
   {
     "date": "2025-10-20",
@@ -89,11 +89,11 @@ const ybEmissionData = [
     "cumulative_WBTC": 319341.8478060382,
     "cumulative_tBTC": 350692.75383249094,
     "cumulative_total": 1000910.2576995562,
-    "cumulative_total_btc": 4.986805741497729,
-    "cumulative_cbBTC_btc": 1.6485120505801054,
-    "cumulative_WBTC_btc": 1.5910474969052277,
-    "cumulative_tBTC_btc": 1.7472461940123956,
-    "daily_total_btc": 0.9447553295489125
+    "cumulative_total_btc": 4.969059982443105,
+    "cumulative_cbBTC_btc": 1.6426457507551895,
+    "cumulative_WBTC_btc": 1.5853856871239502,
+    "cumulative_tBTC_btc": 1.7410285445639653,
+    "daily_total_btc": 0.9413933777679891
   },
   {
     "date": "2025-10-21",
@@ -105,11 +105,11 @@ const ybEmissionData = [
     "cumulative_WBTC": 373690.83871942497,
     "cumulative_tBTC": 423344.729522779,
     "cumulative_total": 1180376.3692281228,
-    "cumulative_total_btc": 5.880954471106982,
-    "cumulative_cbBTC_btc": 1.9099075992092973,
-    "cumulative_WBTC_btc": 1.861828876001494,
-    "cumulative_tBTC_btc": 2.1092179958961905,
-    "daily_total_btc": 0.8941487296092531
+    "cumulative_total_btc": 5.860026845996777,
+    "cumulative_cbBTC_btc": 1.9031111122737576,
+    "cumulative_WBTC_btc": 1.855203479235078,
+    "cumulative_tBTC_btc": 2.1017122544879423,
+    "daily_total_btc": 0.8909668635536729
   },
   {
     "date": "2025-10-22",
@@ -121,11 +121,11 @@ const ybEmissionData = [
     "cumulative_WBTC": 424136.27723685105,
     "cumulative_tBTC": 500765.8494876132,
     "cumulative_total": 1362089.5621362496,
-    "cumulative_total_btc": 6.786298768189944,
-    "cumulative_cbBTC_btc": 2.1781861023514275,
-    "cumulative_WBTC_btc": 2.113161700793647,
-    "cumulative_tBTC_btc": 2.49495096504487,
-    "daily_total_btc": 0.9053442970829622
+    "cumulative_total_btc": 6.762149437123997,
+    "cumulative_cbBTC_btc": 2.170434935020644,
+    "cumulative_WBTC_btc": 2.105641925544796,
+    "cumulative_tBTC_btc": 2.486072576558558,
+    "daily_total_btc": 0.90212259112722
   },
   {
     "date": "2025-10-23",
@@ -137,11 +137,11 @@ const ybEmissionData = [
     "cumulative_WBTC": 483220.7057040503,
     "cumulative_tBTC": 584226.2071753412,
     "cumulative_total": 1554598.9293265124,
-    "cumulative_total_btc": 7.745432526897673,
-    "cumulative_cbBTC_btc": 2.4271231650519383,
-    "cumulative_WBTC_btc": 2.407536311151356,
-    "cumulative_tBTC_btc": 2.9107730506943783,
-    "daily_total_btc": 0.9591337587077284
+    "cumulative_total_btc": 7.717870077802775,
+    "cumulative_cbBTC_btc": 2.418486144659407,
+    "cumulative_WBTC_btc": 2.398968991406489,
+    "cumulative_tBTC_btc": 2.900414941736879,
+    "daily_total_btc": 0.9557206406787772
   },
   {
     "date": "2025-10-24",
@@ -153,11 +153,11 @@ const ybEmissionData = [
     "cumulative_WBTC": 540880.1371355589,
     "cumulative_tBTC": 665961.6215284697,
     "cumulative_total": 1746903.5097454223,
-    "cumulative_total_btc": 8.703545982496998,
-    "cumulative_cbBTC_btc": 2.6907337799153876,
-    "cumulative_WBTC_btc": 2.69481120068541,
-    "cumulative_tBTC_btc": 3.3180010018961994,
-    "daily_total_btc": 0.9581134555993245
+    "cumulative_total_btc": 8.672574046164893,
+    "cumulative_cbBTC_btc": 2.681158690005393,
+    "cumulative_WBTC_btc": 2.6852216011012273,
+    "cumulative_tBTC_btc": 3.306193755058273,
+    "daily_total_btc": 0.9547039683621191
   },
   {
     "date": "2025-10-25",
@@ -169,11 +169,11 @@ const ybEmissionData = [
     "cumulative_WBTC": 600625.4532574462,
     "cumulative_tBTC": 748292.0835038987,
     "cumulative_total": 1934756.7781401742,
-    "cumulative_total_btc": 9.639481797105523,
-    "cumulative_cbBTC_btc": 2.918809623569228,
-    "cumulative_WBTC_btc": 2.992478532169245,
-    "cumulative_tBTC_btc": 3.7281936413670493,
-    "daily_total_btc": 0.9359358146085253
+    "cumulative_total_btc": 9.605179293609268,
+    "cumulative_cbBTC_btc": 2.9084229161273973,
+    "cumulative_WBTC_btc": 2.9818296708017153,
+    "cumulative_tBTC_btc": 3.714926706680155,
+    "daily_total_btc": 0.9326052474443735
   },
   {
     "date": "2025-10-26",
@@ -185,11 +185,11 @@ const ybEmissionData = [
     "cumulative_WBTC": 653605.3174960946,
     "cumulative_tBTC": 825849.1328567954,
     "cumulative_total": 2125150.0564921997,
-    "cumulative_total_btc": 10.588072628625858,
-    "cumulative_cbBTC_btc": 3.2170302294193314,
-    "cumulative_WBTC_btc": 3.2564385516981558,
-    "cumulative_tBTC_btc": 4.114603847508371,
-    "daily_total_btc": 0.9485908315203362
+    "cumulative_total_btc": 10.550394524552765,
+    "cumulative_cbBTC_btc": 3.205582291343931,
+    "cumulative_WBTC_btc": 3.2448503774418898,
+    "cumulative_tBTC_btc": 4.099961855766943,
+    "daily_total_btc": 0.9452152309434969
   },
   {
     "date": "2025-10-27",
@@ -201,11 +201,11 @@ const ybEmissionData = [
     "cumulative_WBTC": 704116.0664856449,
     "cumulative_tBTC": 892293.6094447022,
     "cumulative_total": 2303249.9340061867,
-    "cumulative_total_btc": 11.475414410683396,
-    "cumulative_cbBTC_btc": 3.5216694305798573,
-    "cumulative_WBTC_btc": 3.508096770934879,
-    "cumulative_tBTC_btc": 4.4456482091686595,
-    "daily_total_btc": 0.8873417820575379
+    "cumulative_total_btc": 11.434578663365356,
+    "cumulative_cbBTC_btc": 3.5091374210281203,
+    "cumulative_WBTC_btc": 3.4956130602662903,
+    "cumulative_tBTC_btc": 4.4298281820709455,
+    "daily_total_btc": 0.8841841388125927
   },
   {
     "date": "2025-10-28",
@@ -217,11 +217,11 @@ const ybEmissionData = [
     "cumulative_WBTC": 754100.1300283791,
     "cumulative_tBTC": 979925.9638017393,
     "cumulative_total": 2502350.5141303763,
-    "cumulative_total_btc": 12.467387375753026,
-    "cumulative_cbBTC_btc": 3.8280001638631815,
-    "cumulative_WBTC_btc": 3.7571309007590488,
-    "cumulative_tBTC_btc": 4.882256311130796,
-    "daily_total_btc": 0.9919729650696303
+    "cumulative_total_btc": 12.423021650701878,
+    "cumulative_cbBTC_btc": 3.814378063446538,
+    "cumulative_WBTC_btc": 3.7437609916112486,
+    "cumulative_tBTC_btc": 4.864882595644091,
+    "daily_total_btc": 0.9884429873365215
   },
   {
     "date": "2025-10-29",
@@ -233,11 +233,11 @@ const ybEmissionData = [
     "cumulative_WBTC": 800849.8557174692,
     "cumulative_tBTC": 1056513.949547885,
     "cumulative_total": 2679789.958857199,
-    "cumulative_total_btc": 13.351438702957525,
-    "cumulative_cbBTC_btc": 4.097549638581874,
-    "cumulative_WBTC_btc": 3.9900506842125796,
-    "cumulative_tBTC_btc": 5.263838380163072,
-    "daily_total_btc": 0.8840513272045004
+    "cumulative_total_btc": 13.303927043884133,
+    "cumulative_cbBTC_btc": 4.082968334963899,
+    "cumulative_WBTC_btc": 3.9758519201683824,
+    "cumulative_tBTC_btc": 5.245106788751853,
+    "daily_total_btc": 0.8809053931822579
   },
   {
     "date": "2025-10-30",
@@ -249,11 +249,11 @@ const ybEmissionData = [
     "cumulative_WBTC": 854423.7488207584,
     "cumulative_tBTC": 1136052.949443035,
     "cumulative_total": 2877160.350007832,
-    "cumulative_total_btc": 14.33479139838676,
-    "cumulative_cbBTC_btc": 4.417697881898034,
-    "cumulative_WBTC_btc": 4.256970316284192,
-    "cumulative_tBTC_btc": 5.660123200204534,
-    "daily_total_btc": 0.983352695429234
+    "cumulative_total_btc": 14.283780437174208,
+    "cumulative_cbBTC_btc": 4.401977317221548,
+    "cumulative_WBTC_btc": 4.241821707444903,
+    "cumulative_tBTC_btc": 5.6399814125077565,
+    "daily_total_btc": 0.9798533932900731
   },
   {
     "date": "2025-10-31",
@@ -265,11 +265,11 @@ const ybEmissionData = [
     "cumulative_WBTC": 902765.0871905127,
     "cumulative_tBTC": 1213651.4799478617,
     "cumulative_total": 3051078.0332241785,
-    "cumulative_total_btc": 15.20129635678793,
-    "cumulative_cbBTC_btc": 4.656736335329336,
-    "cumulative_WBTC_btc": 4.497819944789385,
-    "cumulative_tBTC_btc": 6.04674007666921,
-    "daily_total_btc": 0.8665049584011709
+    "cumulative_total_btc": 15.14720190104832,
+    "cumulative_cbBTC_btc": 4.6401651422106625,
+    "cumulative_WBTC_btc": 4.481814262364839,
+    "cumulative_tBTC_btc": 6.025222496472817,
+    "daily_total_btc": 0.86342146387411
   },
   {
     "date": "2025-11-01",
@@ -281,11 +281,11 @@ const ybEmissionData = [
     "cumulative_WBTC": 950530.7186008187,
     "cumulative_tBTC": 1300462.5744624438,
     "cumulative_total": 3248709.520248563,
-    "cumulative_total_btc": 16.185949902510476,
-    "cumulative_cbBTC_btc": 4.97089221719874,
-    "cumulative_WBTC_btc": 4.735801245441294,
-    "cumulative_tBTC_btc": 6.479256439870442,
-    "daily_total_btc": 0.9846535457225445
+    "cumulative_total_btc": 16.12835151550094,
+    "cumulative_cbBTC_btc": 4.953203087093098,
+    "cumulative_WBTC_btc": 4.718948696497419,
+    "cumulative_tBTC_btc": 6.456199731910423,
+    "daily_total_btc": 0.9811496144526198
   },
   {
     "date": "2025-11-02",
@@ -297,11 +297,11 @@ const ybEmissionData = [
     "cumulative_WBTC": 997388.607401063,
     "cumulative_tBTC": 1382729.1123861352,
     "cumulative_total": 3437484.5532193715,
-    "cumulative_total_btc": 17.126478197658418,
-    "cumulative_cbBTC_btc": 5.268087678457581,
-    "cumulative_WBTC_btc": 4.969259926782596,
-    "cumulative_tBTC_btc": 6.88913059241824,
-    "daily_total_btc": 0.9405282951479412
+    "cumulative_total_btc": 17.06553290094858,
+    "cumulative_cbBTC_btc": 5.249340965738736,
+    "cumulative_WBTC_btc": 4.9515766052514065,
+    "cumulative_tBTC_btc": 6.864615329958433,
+    "daily_total_btc": 0.937181385447637
   },
   {
     "date": "2025-11-03",
@@ -313,11 +313,11 @@ const ybEmissionData = [
     "cumulative_WBTC": 1036163.6440480767,
     "cumulative_tBTC": 1468047.6011239279,
     "cumulative_total": 3606246.489102898,
-    "cumulative_total_btc": 17.967295827746952,
-    "cumulative_cbBTC_btc": 5.490637786446844,
-    "cumulative_WBTC_btc": 5.162447651546782,
-    "cumulative_tBTC_btc": 7.314210389753325,
-    "daily_total_btc": 0.8408176300885342
+    "cumulative_total_btc": 17.903358445953813,
+    "cumulative_cbBTC_btc": 5.471099119760133,
+    "cumulative_WBTC_btc": 5.144076863329765,
+    "cumulative_tBTC_btc": 7.288182462863915,
+    "daily_total_btc": 0.837825545005238
   },
   {
     "date": "2025-11-04",
@@ -329,11 +329,11 @@ const ybEmissionData = [
     "cumulative_WBTC": 1092327.3256966053,
     "cumulative_tBTC": 1550941.822336196,
     "cumulative_total": 3815750.3963303603,
-    "cumulative_total_btc": 19.01110098349521,
-    "cumulative_cbBTC_btc": 5.841618842279634,
-    "cumulative_WBTC_btc": 5.442270310925106,
-    "cumulative_tBTC_btc": 7.72721183029047,
-    "daily_total_btc": 1.043805155748257
+    "cumulative_total_btc": 18.943449176927164,
+    "cumulative_cbBTC_btc": 5.820831194667575,
+    "cumulative_WBTC_btc": 5.422903761944835,
+    "cumulative_tBTC_btc": 7.6997142203147515,
+    "daily_total_btc": 1.0400907309733471
   },
   {
     "date": "2025-11-05",
@@ -345,11 +345,11 @@ const ybEmissionData = [
     "cumulative_WBTC": 1149479.827095598,
     "cumulative_tBTC": 1626879.7349883877,
     "cumulative_total": 4003820.605640143,
-    "cumulative_total_btc": 19.94811765644475,
-    "cumulative_cbBTC_btc": 6.115543059313934,
-    "cumulative_WBTC_btc": 5.727019537866293,
-    "cumulative_tBTC_btc": 8.105555059264523,
-    "daily_total_btc": 0.9370166729495434
+    "cumulative_total_btc": 19.87713143643245,
+    "cumulative_cbBTC_btc": 6.0937806407950665,
+    "cumulative_WBTC_btc": 5.70663969672382,
+    "cumulative_tBTC_btc": 8.076711098913565,
+    "daily_total_btc": 0.9336822595052904
   },
   {
     "date": "2025-11-06",
@@ -361,26 +361,26 @@ const ybEmissionData = [
     "cumulative_WBTC": 1199160.3994712052,
     "cumulative_tBTC": 1704084.0882978844,
     "cumulative_total": 4182963.9268351514,
-    "cumulative_total_btc": 20.84065815726795,
-    "cumulative_cbBTC_btc": 6.375908526413057,
-    "cumulative_WBTC_btc": 5.9745415925737575,
-    "cumulative_tBTC_btc": 8.490208038281134,
-    "daily_total_btc": 0.8925405008231969
+    "cumulative_total_btc": 20.76649579415019,
+    "cumulative_cbBTC_btc": 6.353219586372239,
+    "cumulative_WBTC_btc": 5.9532809337353,
+    "cumulative_tBTC_btc": 8.459995274042655,
+    "daily_total_btc": 0.8893643577177419
   },
   {
     "date": "2025-11-07",
-    "daily_cbBTC": 37654.29488645615,
-    "daily_WBTC": 30952.511261557494,
-    "daily_tBTC": 47554.080826661004,
-    "daily_total": 116160.88697467465,
-    "cumulative_cbBTC": 1317373.7339525179,
-    "cumulative_WBTC": 1230112.9107327627,
-    "cumulative_tBTC": 1751638.1691245455,
-    "cumulative_total": 4299124.813809826,
-    "cumulative_total_btc": 21.419403128304758,
-    "cumulative_cbBTC_btc": 6.563512412463141,
-    "cumulative_WBTC_btc": 6.128755379160047,
-    "cumulative_tBTC_btc": 8.72713533668157,
-    "daily_total_btc": 0.5787449710368107
+    "daily_cbBTC": 40414.77999117192,
+    "daily_WBTC": 33692.263790878154,
+    "daily_tBTC": 52102.46797347206,
+    "daily_total": 126209.51175552214,
+    "cumulative_cbBTC": 1320134.2190572338,
+    "cumulative_WBTC": 1232852.6632620834,
+    "cumulative_tBTC": 1756186.5562713565,
+    "cumulative_total": 4309173.438590674,
+    "cumulative_total_btc": 21.39306808616511,
+    "cumulative_cbBTC_btc": 6.553860417464267,
+    "cumulative_WBTC_btc": 6.120547557724105,
+    "cumulative_tBTC_btc": 8.718660110976733,
+    "daily_total_btc": 0.6265722920149126
   }
 ];
