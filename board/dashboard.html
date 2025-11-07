@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>YieldBasis - Revenue Dashboard</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns"></script>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
@@ -493,8 +494,8 @@
             // Profit Chart
             let profitChart;  // Объявляем переменную заранее
             const datasets = [{
-                label: 'in BTC',
-                data: profitData.map(d => d.profit),
+                label: 'Protocol BTC Balance',
+                data: profitData.map(d => ({x: d.timestamp * 1000, y: d.profit})),
                 borderColor: '#10b981',  // Всегда зеленый
                 backgroundColor: 'rgba(16, 185, 129, 0.1)',
                 borderWidth: 2,
@@ -509,7 +510,6 @@
             profitChart = new Chart(document.getElementById('profitChart'), {
                 type: 'line',
                 data: {
-                    labels: profitData.map(d => d.date),
                     datasets: datasets
                 },
                 options: {
@@ -598,7 +598,17 @@
                         }
                     },
                     scales: {
-                        x: { ticks: { color: '#64748b' }, grid: { color: '#1e293b' } },
+                        x: {
+                            type: 'time',
+                            time: {
+                                unit: 'day',
+                                displayFormats: {
+                                    day: 'MMM dd'
+                                }
+                            },
+                            ticks: { color: '#64748b' },
+                            grid: { color: '#1e293b' }
+                        },
                         y: {
                             position: 'left',
                             ticks: { color: '#64748b' },
@@ -642,11 +652,10 @@
             const tvlByMarketChart = new Chart(document.getElementById('tvlByMarketChart'), {
                 type: 'line',
                 data: {
-                    labels: profitData.map(d => d.date),
                     datasets: [
                         {
                             label: 'WBTC TVL',
-                            data: wbtcData.map(d => d.total_withdrawable_btc),
+                            data: wbtcData.map((d, i) => ({x: profitData[i].timestamp * 1000, y: d.total_withdrawable_btc})),
                             borderColor: '#f97316',
                             backgroundColor: 'rgba(249, 115, 22, 0.1)',
                             borderWidth: 2,
@@ -657,7 +666,7 @@
                         },
                         {
                             label: 'cbBTC TVL',
-                            data: cbbtcData.map(d => d.total_withdrawable_btc),
+                            data: cbbtcData.map((d, i) => ({x: profitData[i].timestamp * 1000, y: d.total_withdrawable_btc})),
                             borderColor: '#3b82f6',
                             backgroundColor: 'rgba(59, 130, 246, 0.1)',
                             borderWidth: 2,
@@ -668,7 +677,7 @@
                         },
                         {
                             label: 'tBTC TVL',
-                            data: tbtcData.map(d => d.total_withdrawable_btc),
+                            data: tbtcData.map((d, i) => ({x: profitData[i].timestamp * 1000, y: d.total_withdrawable_btc})),
                             borderColor: '#8b5cf6',
                             backgroundColor: 'rgba(139, 92, 246, 0.1)',
                             borderWidth: 2,
@@ -711,7 +720,17 @@
                         }
                     },
                     scales: {
-                        x: { ticks: { color: '#64748b' }, grid: { color: '#1e293b' } },
+                        x: {
+                            type: 'time',
+                            time: {
+                                unit: 'day',
+                                displayFormats: {
+                                    day: 'MMM dd'
+                                }
+                            },
+                            ticks: { color: '#64748b' },
+                            grid: { color: '#1e293b' }
+                        },
                         y: { beginAtZero: true, ticks: { color: '#64748b' }, grid: { color: '#1e293b' } }
                     }
                 }
@@ -842,29 +861,40 @@
 
             // Функция обновления графиков БЕЗ пересчета (только изменение диапазона)
             function updateChartsRange() {
-                const labels = profitData.map(d => d.date);
-                profitChart.data.labels = labels;
-
                 // Берем нужный диапазон из уже рассчитанных данных
                 if (fullRecalculatedData) {
                     const rangeData = fullRecalculatedData.slice(currentRangeStart, currentRangeEnd + 1);
-                    profitChart.data.datasets[0].data = rangeData;
+                    profitChart.data.datasets[0].data = profitData.map((d, i) => ({
+                        x: d.timestamp * 1000,
+                        y: rangeData[i]
+                    }));
                 } else {
                     // Если еще не рассчитывали - используем исходные данные
-                    profitChart.data.datasets[0].data = profitData.map(d => d.profit);
+                    profitChart.data.datasets[0].data = profitData.map(d => ({
+                        x: d.timestamp * 1000,
+                        y: d.profit
+                    }));
                 }
 
                 // Обновляем финальное значение
-                const finalValue = profitChart.data.datasets[0].data[profitChart.data.datasets[0].data.length - 1];
-                document.getElementById('finalProfit').textContent = finalValue.toFixed(8) + ' BTC';
+                const lastData = profitChart.data.datasets[0].data[profitChart.data.datasets[0].data.length - 1];
+                document.getElementById('finalProfit').textContent = lastData.y.toFixed(8) + ' BTC';
 
                 profitChart.update();
 
                 // Обновляем TVL график
-                tvlByMarketChart.data.labels = labels;
-                tvlByMarketChart.data.datasets[0].data = wbtcData.map(d => d.total_withdrawable_btc);
-                tvlByMarketChart.data.datasets[1].data = cbbtcData.map(d => d.total_withdrawable_btc);
-                tvlByMarketChart.data.datasets[2].data = tbtcData.map(d => d.total_withdrawable_btc);
+                tvlByMarketChart.data.datasets[0].data = wbtcData.map((d, i) => ({
+                    x: profitData[i].timestamp * 1000,
+                    y: d.total_withdrawable_btc
+                }));
+                tvlByMarketChart.data.datasets[1].data = cbbtcData.map((d, i) => ({
+                    x: profitData[i].timestamp * 1000,
+                    y: d.total_withdrawable_btc
+                }));
+                tvlByMarketChart.data.datasets[2].data = tbtcData.map((d, i) => ({
+                    x: profitData[i].timestamp * 1000,
+                    y: d.total_withdrawable_btc
+                }));
                 tvlByMarketChart.update();
             }
 
@@ -962,8 +992,11 @@
                 // Применяем текущий диапазон к рассчитанным данным
                 const rangeData = fullRecalculatedData.slice(currentRangeStart, currentRangeEnd + 1);
 
-                // Обновляем данные графика
-                profitChart.data.datasets[0].data = rangeData;
+                // Обновляем данные графика с timestamps
+                profitChart.data.datasets[0].data = profitData.map((d, i) => ({
+                    x: d.timestamp * 1000,
+                    y: rangeData[i]
+                }));
 
                 // Цвет всегда зеленый - это баланс протокола, не профит/убыток
                 profitChart.data.datasets[0].borderColor = '#10b981';
