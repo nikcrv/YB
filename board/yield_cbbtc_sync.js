@@ -2,7 +2,7 @@ const yieldData_cbbtc = {
   "metadata": {
     "market": "cbBTC",
     "contract": "0xD6a1147666f6E4d7161caf436d9923D44d901112",
-    "collected": "2025-11-07T23:27:09.618036",
+    "collected": "2025-11-07T23:32:53.885819",
     "points": 5993,
     "synchronized": true,
     "transaction_based": true,
