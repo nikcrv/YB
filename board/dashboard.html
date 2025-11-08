@@ -413,7 +413,7 @@
             try {
                 if (typeof ybEmissionData !== 'undefined') {
                     ybEmissionDataArray = ybEmissionData;
-                    console.log('YB emission data loaded:', ybEmissionDataArray.length, 'days');
+                    console.log('YB emission data loaded:', ybEmissionDataArray.length, 'points');
                 } else {
                     console.log('YB emission data not available: ybEmissionData is undefined');
                 }
@@ -423,19 +423,19 @@
 
             // Подготовка данных YB emission для суммирования с интерполяцией (по рынкам)
             if (ybEmissionDataArray) {
-                // Создаем массивы дат с данными для каждого рынка
+                // Создаем массивы с данными для каждого рынка (hourly данные - используем timestamp напрямую)
                 const ybDatesWbtc = ybEmissionDataArray.map(item => ({
-                    timestamp: new Date(item.date).getTime() / 1000,
+                    timestamp: item.timestamp,  // Используем timestamp напрямую (hourly данные)
                     value: item.cumulative_WBTC_btc || 0
                 })).sort((a, b) => a.timestamp - b.timestamp);
 
                 const ybDatesCbbtc = ybEmissionDataArray.map(item => ({
-                    timestamp: new Date(item.date).getTime() / 1000,
+                    timestamp: item.timestamp,
                     value: item.cumulative_cbBTC_btc || 0
                 })).sort((a, b) => a.timestamp - b.timestamp);
 
                 const ybDatesTbtc = ybEmissionDataArray.map(item => ({
-                    timestamp: new Date(item.date).getTime() / 1000,
+                    timestamp: item.timestamp,
                     value: item.cumulative_tBTC_btc || 0
                 })).sort((a, b) => a.timestamp - b.timestamp);
 
