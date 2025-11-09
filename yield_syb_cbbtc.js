@@ -2,18 +2,18 @@ const yieldData_syb_cbbtc = {
   "metadata": {
     "contract": "0x3dAe83d236b4Ec301A8d0553f8c13Cb9b7925B6a",
     "start_date": "2025-10-10T19:49:35",
-    "end_date": "2025-11-08T23:40:23",
-    "data_points": 701,
+    "end_date": "2025-11-09T01:15:47",
+    "data_points": 703,
     "step_seconds": 3600
   },
   "metrics": {
-    "total_return": -0.07705363365280532,
-    "total_return_pct": -7.705363365280532,
-    "apr": -0.6334671996624236,
-    "apr_pct": -63.34671996624236,
-    "days": 29.16027777777778,
+    "total_return": -0.07706541201738089,
+    "total_return_pct": -7.706541201738089,
+    "apr": -0.6326909010136709,
+    "apr_pct": -63.26909010136709,
+    "days": 29.22652777777778,
     "start_pps": 1.00608195,
-    "end_pps": 0.92855968
+    "end_pps": 0.92854783
   },
   "data": [
     {
@@ -7017,13 +7017,33 @@ const yieldData_syb_cbbtc = {
       "pps_yb": 0.8370780127502196
     },
     {
-      "block": 23757883,
-      "timestamp": 1762645223,
-      "datetime": "2025-11-08T23:40:23",
-      "pps_btc": 0.92855968,
-      "ret_step": -9.02464812326196e-06,
-      "ret_step_pct": -0.0009024648123261961,
-      "btc_price": 102371.4061315383,
+      "block": 23757932,
+      "timestamp": 1762645811,
+      "datetime": "2025-11-08T23:50:11",
+      "pps_btc": 0.92855799,
+      "ret_step": null,
+      "ret_step_pct": null,
+      "btc_price": 102290.13714655167,
+      "pps_yb": 0.8370780127502196
+    },
+    {
+      "block": 23758232,
+      "timestamp": 1762649411,
+      "datetime": "2025-11-09T00:50:11",
+      "pps_btc": 0.92855128,
+      "ret_step": -7.226258426789263e-06,
+      "ret_step_pct": -0.0007226258426789263,
+      "btc_price": 101773.3793240841,
+      "pps_yb": 0.8370780127502196
+    },
+    {
+      "block": 23758360,
+      "timestamp": 1762650947,
+      "datetime": "2025-11-09T01:15:47",
+      "pps_btc": 0.92854783,
+      "ret_step": -3.71546523526412e-06,
+      "ret_step_pct": -0.00037154652352641205,
+      "btc_price": 101773.3793240841,
       "pps_yb": 0.8370780127502196
     }
   ]
