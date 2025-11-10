@@ -2,8 +2,8 @@ const yieldData = {
   "metadata": {
     "market": "WBTC",
     "contract": "0x6095a220C5567360d459462A25b1AD5aEAD45204",
-    "collected": "2025-11-10T18:22:23.660903",
-    "points": 6264,
+    "collected": "2025-11-10T19:23:27.243771",
+    "points": 6265,
     "synchronized": true,
     "transaction_based": true,
     "zero_loss": true,
@@ -50118,6 +50118,14 @@ const yieldData = {
       "block": 23769318,
       "timestamp": 1762783211,
       "total_withdrawable_btc": 467.36102816,
+      "deposits_btc": 0.0,
+      "withdrawals_btc": 0.0,
+      "admin_fees_btc": 7.191502669744141
+    },
+    {
+      "block": 23769616,
+      "timestamp": 1762786811,
+      "total_withdrawable_btc": 467.73453407,
       "deposits_btc": 0.0,
       "withdrawals_btc": 0.0,
       "admin_fees_btc": 7.191502669744141
