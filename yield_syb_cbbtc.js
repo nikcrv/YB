@@ -2,18 +2,18 @@ const yieldData_syb_cbbtc = {
   "metadata": {
     "contract": "0x3dAe83d236b4Ec301A8d0553f8c13Cb9b7925B6a",
     "start_date": "2025-10-10T19:49:35",
-    "end_date": "2025-11-10T09:50:23",
-    "data_points": 736,
+    "end_date": "2025-11-10T10:50:59",
+    "data_points": 737,
     "step_seconds": 3600
   },
   "metrics": {
-    "total_return": -0.07430098512352797,
-    "total_return_pct": -7.430098512352796,
-    "apr": -0.6020416713274107,
-    "apr_pct": -60.20416713274107,
-    "days": 30.58388888888889,
+    "total_return": -0.07430886718522284,
+    "total_return_pct": -7.4308867185222836,
+    "apr": -0.6015779257005732,
+    "apr_pct": -60.157792570057325,
+    "days": 30.625972222222224,
     "start_pps": 1.00608195,
-    "end_pps": 0.93132907
+    "end_pps": 0.93132114
   },
   "data": [
     {
@@ -7362,18 +7362,28 @@ const yieldData_syb_cbbtc = {
       "datetime": "2025-11-10T09:50:11",
       "pps_btc": 0.93132909,
       "ret_step": -8.418006145208909e-06,
-      "ret_step_pct": -0.000841800614520891,
-      "btc_price": 105994.61417480832,
+      "ret_step_pct": -0.0008418006145208908,
+      "btc_price": 106322.74289214246,
       "pps_yb": 0.8370780127502196
     },
     {
-      "block": 23768076,
-      "timestamp": 1762768223,
-      "datetime": "2025-11-10T09:50:23",
-      "pps_btc": 0.93132907,
-      "ret_step": -2.1474686246512496e-08,
-      "ret_step_pct": -2.1474686246512496e-06,
-      "btc_price": 105994.61417480832,
+      "block": 23768375,
+      "timestamp": 1762771811,
+      "datetime": "2025-11-10T10:50:11",
+      "pps_btc": 0.93132125,
+      "ret_step": null,
+      "ret_step_pct": null,
+      "btc_price": 106322.74289214246,
+      "pps_yb": 0.8370780127502196
+    },
+    {
+      "block": 23768379,
+      "timestamp": 1762771859,
+      "datetime": "2025-11-10T10:50:59",
+      "pps_btc": 0.93132114,
+      "ret_step": -1.1811176862978269e-07,
+      "ret_step_pct": -1.1811176862978269e-05,
+      "btc_price": 106322.74289214246,
       "pps_yb": 0.8370780127502196
     }
   ]
