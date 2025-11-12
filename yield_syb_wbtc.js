@@ -2,18 +2,18 @@ const yieldData_syb_wbtc = {
   "metadata": {
     "contract": "0x37f45E64935e7B8383D2f034048B32770B04E8bd",
     "start_date": "2025-10-10T19:51:11",
-    "end_date": "2025-11-12T03:21:59",
-    "data_points": 777,
+    "end_date": "2025-11-12T04:22:35",
+    "data_points": 778,
     "step_seconds": 3600
   },
   "metrics": {
-    "total_return": -0.07759762089369876,
-    "total_return_pct": -7.759762089369877,
-    "apr": -0.5984404252746303,
-    "apr_pct": -59.844042527463024,
-    "days": 32.31305555555556,
+    "total_return": -0.07760012053008598,
+    "total_return_pct": -7.760012053008599,
+    "apr": -0.5979758900714252,
+    "apr_pct": -59.79758900714251,
+    "days": 32.35513888888889,
     "start_pps": 1.00814663,
-    "end_pps": 0.92991685
+    "end_pps": 0.92991433
   },
   "data": [
     {
@@ -7777,13 +7777,23 @@ const yieldData_syb_wbtc = {
       "pps_yb": 0.89930783972299
     },
     {
-      "block": 23780431,
-      "timestamp": 1762917719,
-      "datetime": "2025-11-12T03:21:59",
-      "pps_btc": 0.92991685,
-      "ret_step": -4.495005344701152e-06,
-      "ret_step_pct": -0.00044950053447011517,
-      "btc_price": 103166.96340808774,
+      "block": 23780577,
+      "timestamp": 1762919471,
+      "datetime": "2025-11-12T03:51:11",
+      "pps_btc": 0.92991314,
+      "ret_step": null,
+      "ret_step_pct": null,
+      "btc_price": 103342.08145942238,
+      "pps_yb": 0.89930783972299
+    },
+    {
+      "block": 23780734,
+      "timestamp": 1762921355,
+      "datetime": "2025-11-12T04:22:35",
+      "pps_btc": 0.92991433,
+      "ret_step": 1.2796894127122454e-06,
+      "ret_step_pct": 0.00012796894127122454,
+      "btc_price": 103342.08145942238,
       "pps_yb": 0.89930783972299
     }
   ]
