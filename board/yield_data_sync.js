@@ -2,8 +2,8 @@ const yieldData = {
   "metadata": {
     "market": "WBTC",
     "contract": "0x6095a220C5567360d459462A25b1AD5aEAD45204",
-    "collected": "2025-11-12T15:17:37.435349",
-    "points": 6427,
+    "collected": "2025-11-12T16:18:38.085728",
+    "points": 6434,
     "synchronized": true,
     "transaction_based": true,
     "zero_loss": true,
@@ -51424,6 +51424,62 @@ const yieldData = {
       "total_withdrawable_btc": 483.43883191,
       "deposits_btc": 0.0,
       "withdrawals_btc": 0.0,
+      "admin_fees_btc": 7.191502669744141
+    },
+    {
+      "block": 23782815,
+      "timestamp": 1762946483,
+      "total_withdrawable_btc": 476.10252257,
+      "deposits_btc": 0,
+      "withdrawals_btc": 7.29507229,
+      "admin_fees_btc": 7.191502669744141
+    },
+    {
+      "block": 23782820,
+      "timestamp": 1762946543,
+      "total_withdrawable_btc": 473.59705143,
+      "deposits_btc": 0,
+      "withdrawals_btc": 2.49839063,
+      "admin_fees_btc": 7.191502669744141
+    },
+    {
+      "block": 23782821,
+      "timestamp": 1762946555,
+      "total_withdrawable_btc": 473.58050245,
+      "deposits_btc": 1e-08,
+      "withdrawals_btc": 0,
+      "admin_fees_btc": 7.191502669744141
+    },
+    {
+      "block": 23782948,
+      "timestamp": 1762948079,
+      "total_withdrawable_btc": 473.54446033,
+      "deposits_btc": 1e-08,
+      "withdrawals_btc": 0,
+      "admin_fees_btc": 7.191502669744141
+    },
+    {
+      "block": 23782998,
+      "timestamp": 1762948691,
+      "total_withdrawable_btc": 473.60391409,
+      "deposits_btc": 0.06688203,
+      "withdrawals_btc": 0,
+      "admin_fees_btc": 7.191502669744141
+    },
+    {
+      "block": 23783008,
+      "timestamp": 1762948811,
+      "total_withdrawable_btc": 473.60293336,
+      "deposits_btc": 0.0,
+      "withdrawals_btc": 0.0,
+      "admin_fees_btc": 7.191502669744141
+    },
+    {
+      "block": 23783081,
+      "timestamp": 1762949699,
+      "total_withdrawable_btc": 473.59841217,
+      "deposits_btc": 0.00010757,
+      "withdrawals_btc": 0,
       "admin_fees_btc": 7.191502669744141
     }
   ]
