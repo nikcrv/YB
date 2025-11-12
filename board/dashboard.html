@@ -185,12 +185,78 @@
             color: #64748b;
             font-size: 0.75em;
         }
+
+        .deprecated-banner {
+            background: linear-gradient(135deg, #d97706 0%, #b45309 100%);
+            border: 2px solid #b45309;
+            border-radius: 12px;
+            padding: 25px 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 40px rgba(180, 83, 9, 0.3);
+        }
+
+        .deprecated-banner h2 {
+            color: #fef3c7;
+            font-size: 1.5em;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .deprecated-banner p {
+            color: #fef3c7;
+            font-size: 1.1em;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .deprecated-links {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .deprecated-link {
+            background: #fef3c7;
+            color: #78350f;
+            padding: 12px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .deprecated-link:hover {
+            background: #fde68a;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(253, 230, 138, 0.4);
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="loading" id="loading">Loading synchronized data...</div>
         <div id="content" style="display:none;">
+            <div class="deprecated-banner">
+                <h2>Market Migration in Progress</h2>
+                <p>
+                    This dashboard shows data for markets that are being migrated to new infrastructure.
+                    Please visit the new information panels for the latest data and features.
+                </p>
+                <div class="deprecated-links">
+                    <a href="https://nikcrv.github.io/YB/ybrain/" class="deprecated-link">
+                        New Vaults Dashboard
+                    </a>
+                    <a href="https://nikcrv.github.io/YB/ybrain/dashboard" class="deprecated-link">
+                        New Revenue Dashboard
+                    </a>
+                </div>
+            </div>
+
             <div class="header">
                 <a href="https://nikcrv.github.io/YB/" class="back-button">Back to Vaults</a>
                 <h1>YieldBasis Revenue Dashboard</h1>
