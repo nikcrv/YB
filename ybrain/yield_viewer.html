@@ -267,37 +267,37 @@
     </div>
 
     <!-- Load all market data files with cache busting -->
-    <script src="yield_data.js?v=3"></script>
+    <script src="vaults_yield_data.js?v=4"></script>
     <script>
         // Store wbtc data immediately after loading
         const wbtcData = JSON.parse(JSON.stringify(yieldData));
         console.log('Loaded WBTC data:', wbtcData.metadata.contract, wbtcData.data.length, 'points');
     </script>
-    <script src="yield_cbbtc.js?v=3"></script>
+    <script src="vaults_yield_cbbtc.js?v=4"></script>
     <script>
         // Store cbbtc data immediately after loading
         const cbbtcData = JSON.parse(JSON.stringify(yieldData_cbbtc));
         console.log('Loaded cbBTC data:', cbbtcData.metadata.contract, cbbtcData.data.length, 'points');
     </script>
-    <script src="yield_tbtc.js?v=3"></script>
+    <script src="vaults_yield_tbtc.js?v=4"></script>
     <script>
         // Store tbtc data immediately after loading
         const tbtcData = JSON.parse(JSON.stringify(yieldData_tbtc));
         console.log('Loaded tBTC data:', tbtcData.metadata.contract, tbtcData.data.length, 'points');
     </script>
-    <script src="yield_syb_wbtc.js?v=3"></script>
+    <script src="vaults_yield_syb_wbtc.js?v=4"></script>
     <script>
         // Store syb_wbtc data immediately after loading
         const sybWbtcData = JSON.parse(JSON.stringify(yieldData_syb_wbtc));
         console.log('Loaded syb-WBTC data:', sybWbtcData.metadata.contract, sybWbtcData.data.length, 'points');
     </script>
-    <script src="yield_syb_cbbtc.js?v=3"></script>
+    <script src="vaults_yield_syb_cbbtc.js?v=4"></script>
     <script>
         // Store syb_cbbtc data immediately after loading
         const sybCbbtcData = JSON.parse(JSON.stringify(yieldData_syb_cbbtc));
         console.log('Loaded syb-cbBTC data:', sybCbbtcData.metadata.contract, sybCbbtcData.data.length, 'points');
     </script>
-    <script src="yield_syb_tbtc.js?v=3"></script>
+    <script src="vaults_yield_syb_tbtc.js?v=4"></script>
     <script>
         // Store syb_tbtc data immediately after loading
         const sybTbtcData = JSON.parse(JSON.stringify(yieldData_syb_tbtc));
