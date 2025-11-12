@@ -10322,17 +10322,17 @@ const ybEmissionData = [
     "timestamp": 1762974000,
     "datetime": "2025-11-12T19:00:00",
     "hourly_cbBTC": 989.4193385575317,
-    "hourly_WBTC": 1054.5250050270158,
+    "hourly_WBTC": 1281.0947306728765,
     "hourly_tBTC": 671.3793611279375,
-    "hourly_total": 2715.323704712485,
+    "hourly_total": 2941.8934303583455,
     "cumulative_cbBTC": 1611585.3007271453,
-    "cumulative_WBTC": 1528731.2525430059,
+    "cumulative_WBTC": 1528957.8222686518,
     "cumulative_tBTC": 2091708.5937111517,
-    "cumulative_total": 5232025.146981303,
-    "cumulative_total_btc": 24.734900092173856,
+    "cumulative_total": 5232251.716706948,
+    "cumulative_total_btc": 24.73597122225644,
     "cumulative_cbBTC_btc": 7.618923893456651,
-    "cumulative_WBTC_btc": 7.227223443536362,
+    "cumulative_WBTC_btc": 7.228294573618944,
     "cumulative_tBTC_btc": 9.888752755180843,
-    "hourly_total_btc": 0.012836952932599257
+    "hourly_total_btc": 0.013908083015182102
   }
 ];
