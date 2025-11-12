@@ -226,10 +226,76 @@
             border-radius: 8px;
             margin: 20px 0;
         }
+
+        .deprecated-banner {
+            background: linear-gradient(135deg, #d97706 0%, #b45309 100%);
+            border: 2px solid #b45309;
+            border-radius: 12px;
+            padding: 25px 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 40px rgba(180, 83, 9, 0.3);
+        }
+
+        .deprecated-banner h2 {
+            color: #fef3c7;
+            font-size: 1.5em;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .deprecated-banner p {
+            color: #fef3c7;
+            font-size: 1.1em;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .deprecated-links {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .deprecated-link {
+            background: #fef3c7;
+            color: #78350f;
+            padding: 12px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .deprecated-link:hover {
+            background: #fde68a;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(253, 230, 138, 0.4);
+        }
     </style>
 </head>
 <body>
     <div class="container">
+        <div class="deprecated-banner">
+            <h2>Deprecated Markets</h2>
+            <p>
+                These markets are deprecated and no longer actively maintained.
+                Please visit the new information panels for up-to-date data and active markets.
+            </p>
+            <div class="deprecated-links">
+                <a href="https://nikcrv.github.io/YB/ybrain/" class="deprecated-link">
+                    New Vaults Dashboard
+                </a>
+                <a href="https://nikcrv.github.io/YB/ybrain/dashboard" class="deprecated-link">
+                    New Revenue Dashboard
+                </a>
+            </div>
+        </div>
+
         <header>
             <div class="header-top">
                 <div class="header-title">
@@ -243,7 +309,7 @@
                     <button class="market-btn" data-market="syb_cbbtc" onclick="switchMarket('syb_cbbtc')">syb-cbBTC</button>
                     <button class="market-btn" data-market="syb_wbtc" onclick="switchMarket('syb_wbtc')">syb-WBTC</button>
                     <button class="market-btn" data-market="syb_tbtc" onclick="switchMarket('syb_tbtc')">syb-tBTC</button>
-                    <a href="board/dashboard" style="padding: 10px 20px; background: #10b981; border: none; border-radius: 6px; color: #0f172a; font-weight: 600; cursor: pointer; text-decoration: none; display: inline-block; transition: all 0.2s;" onmouseover="this.style.background='#059669'" onmouseout="this.style.background='#10b981'">📊 Dashboard</a>
+                    <a href="/ybrain/dashboard" style="padding: 10px 20px; background: #10b981; border: none; border-radius: 6px; color: #0f172a; font-weight: 600; cursor: pointer; text-decoration: none; display: inline-block; transition: all 0.2s;" onmouseover="this.style.background='#059669'" onmouseout="this.style.background='#10b981'">📊 Dashboard</a>
                 </div>
             </div>
             <div class="date-filters">
@@ -268,37 +334,37 @@
     </div>
 
     <!-- Load all market data files with cache busting -->
-    <script src="yield_data.js?v=4"></script>
+    <script src="vaults_yield_data.js?v=5"></script>
     <script>
         // Store wbtc data immediately after loading
         const wbtcData = JSON.parse(JSON.stringify(yieldData));
         console.log('Loaded WBTC data:', wbtcData.metadata.contract, wbtcData.data.length, 'points');
     </script>
-    <script src="yield_cbbtc.js?v=4"></script>
+    <script src="vaults_yield_cbbtc.js?v=5"></script>
     <script>
         // Store cbbtc data immediately after loading
         const cbbtcData = JSON.parse(JSON.stringify(yieldData_cbbtc));
         console.log('Loaded cbBTC data:', cbbtcData.metadata.contract, cbbtcData.data.length, 'points');
     </script>
-    <script src="yield_tbtc.js?v=4"></script>
+    <script src="vaults_yield_tbtc.js?v=5"></script>
     <script>
         // Store tbtc data immediately after loading
         const tbtcData = JSON.parse(JSON.stringify(yieldData_tbtc));
         console.log('Loaded tBTC data:', tbtcData.metadata.contract, tbtcData.data.length, 'points');
     </script>
-    <script src="yield_syb_wbtc.js?v=4"></script>
+    <script src="vaults_yield_syb_wbtc.js?v=5"></script>
     <script>
         // Store syb_wbtc data immediately after loading
         const sybWbtcData = JSON.parse(JSON.stringify(yieldData_syb_wbtc));
         console.log('Loaded syb-WBTC data:', sybWbtcData.metadata.contract, sybWbtcData.data.length, 'points');
     </script>
-    <script src="yield_syb_cbbtc.js?v=4"></script>
+    <script src="vaults_yield_syb_cbbtc.js?v=5"></script>
     <script>
         // Store syb_cbbtc data immediately after loading
         const sybCbbtcData = JSON.parse(JSON.stringify(yieldData_syb_cbbtc));
         console.log('Loaded syb-cbBTC data:', sybCbbtcData.metadata.contract, sybCbbtcData.data.length, 'points');
     </script>
-    <script src="yield_syb_tbtc.js?v=4"></script>
+    <script src="vaults_yield_syb_tbtc.js?v=5"></script>
     <script>
         // Store syb_tbtc data immediately after loading
         const sybTbtcData = JSON.parse(JSON.stringify(yieldData_syb_tbtc));
@@ -931,4 +997,5 @@
 </body>
 
 </html>
+
 
