@@ -2,8 +2,8 @@ const yieldData_tbtc = {
   "metadata": {
     "market": "tBTC",
     "contract": "0x2B513eBe7070Cff91cf699a0BFe5075020C732FF",
-    "collected": "2025-11-13T18:40:52.229877",
-    "points": 6985,
+    "collected": "2025-11-13T19:41:57.996282",
+    "points": 6987,
     "synchronized": true,
     "transaction_based": true,
     "zero_loss": true,
@@ -55886,6 +55886,22 @@ const yieldData_tbtc = {
       "block": 23790826,
       "timestamp": 1763043443,
       "total_withdrawable_btc": 96.14854539015974,
+      "deposits_btc": 0.0,
+      "withdrawals_btc": 0.0,
+      "admin_fees_btc": 0.0
+    },
+    {
+      "block": 23790962,
+      "timestamp": 1763045087,
+      "total_withdrawable_btc": 96.15772192553229,
+      "deposits_btc": 0.0,
+      "withdrawals_btc": 0.0,
+      "admin_fees_btc": 0.0
+    },
+    {
+      "block": 23791039,
+      "timestamp": 1763046011,
+      "total_withdrawable_btc": 96.15746822734418,
       "deposits_btc": 0.0,
       "withdrawals_btc": 0.0,
       "admin_fees_btc": 0.0
