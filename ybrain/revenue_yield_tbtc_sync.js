@@ -2,7 +2,7 @@ const yieldData_tbtc = {
   "metadata": {
     "market": "tBTC",
     "contract": "0xaC0a340C1644321D0BBc6404946d828c1EBfAC92",
-    "collected": "2025-11-13T23:48:04.931821",
+    "collected": "2025-11-13T23:53:57.031407",
     "points": 589,
     "synchronized": true,
     "transaction_based": true,
