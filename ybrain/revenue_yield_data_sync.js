@@ -2,7 +2,7 @@ const yieldData = {
   "metadata": {
     "market": "WBTC",
     "contract": "0xfBF3C16676055776Ab9B286492D8f13e30e2E763",
-    "collected": "2025-11-14T02:16:43.438495",
+    "collected": "2025-11-14T02:26:20.225803",
     "points": 589,
     "synchronized": true,
     "transaction_based": true,
