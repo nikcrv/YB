@@ -223,6 +223,10 @@
                             <label for="toggleAdminFees">Admin Fees</label>
                         </div>
                         <div class="checkbox-group">
+                            <input type="checkbox" id="toggleAdminFeeWithdrawals" checked>
+                            <label for="toggleAdminFeeWithdrawals">Include Admin Fee Withdrawals</label>
+                        </div>
+                        <div class="checkbox-group">
                             <input type="checkbox" id="toggleYbEmission" checked>
                             <label for="toggleYbEmission">YB Emission</label>
                         </div>
@@ -312,11 +316,13 @@
                 throw new Error('Data is not synchronized! Re-run collect_sync.py');
             }
 
-            // Объединяем данные
-            let cumulativeDeposits = 0;
-            let cumulativeWithdrawals = 0;
+            // Функция для пересчета profit data
+            function recalculateProfitData() {
+                let cumulativeDeposits = 0;
+                let cumulativeWithdrawals = 0;
+                let cumulativeAdminFeeWithdrawals = 0;
 
-            const profitData = wbtcData.map((wbtc, i) => {
+                return wbtcData.map((wbtc, i) => {
                 const cbbtc = cbbtcData[i];
                 const tbtc = tbtcData[i];
 
@@ -338,6 +344,10 @@
                                    (cbbtc.withdrawals_btc || 0) +
                                    (tbtc.withdrawals_btc || 0);
 
+                const adminFeeWithdrawals = (wbtc.admin_fee_withdrawals_btc || 0) +
+                                           (cbbtc.admin_fee_withdrawals_btc || 0) +
+                                           (tbtc.admin_fee_withdrawals_btc || 0);
+
                 const adminFees = (wbtc.admin_fees_btc || 0) +
                                  (cbbtc.admin_fees_btc || 0) +
                                  (tbtc.admin_fees_btc || 0);
@@ -345,10 +355,21 @@
                 // Накапливаем
                 cumulativeDeposits += deposits;
                 cumulativeWithdrawals += withdrawals;
+                cumulativeAdminFeeWithdrawals += adminFeeWithdrawals;
+
+                // Добавляем admin fee withdrawals к withdrawals если checkbox активен
+                const includeAdminFeeWithdrawals = document.getElementById('toggleAdminFeeWithdrawals')?.checked ?? true;
+                const effectiveWithdrawals = includeAdminFeeWithdrawals
+                    ? cumulativeWithdrawals + cumulativeAdminFeeWithdrawals
+                    : cumulativeWithdrawals;
 
                 // Вычисляем прибыль
-                const netDeposited = cumulativeDeposits - cumulativeWithdrawals;
-                const profit = totalWithdrawable - netDeposited + adminFees;
+                // Если включен checkbox, компенсируем уменьшение adminFees добавлением выведенной суммы
+                const effectiveAdminFees = includeAdminFeeWithdrawals
+                    ? adminFees + cumulativeAdminFeeWithdrawals
+                    : adminFees;
+                const netDeposited = cumulativeDeposits - effectiveWithdrawals;
+                const profit = totalWithdrawable - netDeposited + effectiveAdminFees;
 
                 return {
                     timestamp: wbtc.timestamp,
@@ -356,10 +377,15 @@
                     profit: profit,
                     withdrawable: totalWithdrawable,
                     deposits: cumulativeDeposits,
-                    withdrawals: cumulativeWithdrawals,
-                    admin_fees: adminFees
+                    withdrawals: effectiveWithdrawals,
+                    admin_fees: adminFees,
+                    admin_fee_withdrawals: cumulativeAdminFeeWithdrawals
                 };
-            });
+                });
+            }
+
+            // Вызываем функцию для первоначального расчета
+            let profitData = recalculateProfitData();
 
             console.log('Profit data points:', profitData.length);
 
@@ -394,6 +420,10 @@
                 <div class="metric-row">
                     <div class="metric-label">Admin Fees</div>
                     <div class="metric-value">${lastPoint.admin_fees.toFixed(4)} BTC</div>
+                </div>
+                <div class="metric-row">
+                    <div class="metric-label">Admin Fee Withdrawals</div>
+                    <div class="metric-value">${lastPoint.admin_fee_withdrawals.toFixed(4)} BTC</div>
                 </div>
                 <div class="metric-row" id="ybEmissionMetric" style="display:none;">
                     <div class="metric-label">YB Emission</div>
@@ -922,6 +952,7 @@
                 // Пересчитываем профит для ВСЕХ данных (не только текущего диапазона)
                 let cumulativeDeposits = 0;
                 let cumulativeWithdrawals = 0;
+                let cumulativeAdminFeeWithdrawals = 0;
 
                 fullRecalculatedData = fullProfitData.map((point, i) => {
                     const wbtc = fullWbtcData[i];
@@ -933,29 +964,34 @@
                     let deposits = 0;
                     let withdrawals = 0;
                     let adminFees = 0;
+                    let adminFeeWithdrawals = 0;
 
                     if (includeWbtc) {
                         withdrawable += wbtc.total_withdrawable_btc || 0;
                         deposits += wbtc.deposits_btc || 0;
                         withdrawals += wbtc.withdrawals_btc || 0;
                         adminFees += wbtc.admin_fees_btc || 0;
+                        adminFeeWithdrawals += wbtc.admin_fee_withdrawals_btc || 0;
                     }
                     if (includeCbbtc) {
                         withdrawable += cbbtc.total_withdrawable_btc || 0;
                         deposits += cbbtc.deposits_btc || 0;
                         withdrawals += cbbtc.withdrawals_btc || 0;
                         adminFees += cbbtc.admin_fees_btc || 0;
+                        adminFeeWithdrawals += cbbtc.admin_fee_withdrawals_btc || 0;
                     }
                     if (includeTbtc) {
                         withdrawable += tbtc.total_withdrawable_btc || 0;
                         deposits += tbtc.deposits_btc || 0;
                         withdrawals += tbtc.withdrawals_btc || 0;
                         adminFees += tbtc.admin_fees_btc || 0;
+                        adminFeeWithdrawals += tbtc.admin_fee_withdrawals_btc || 0;
                     }
 
                     // Накапливаем депозиты/выводы
                     cumulativeDeposits += deposits;
                     cumulativeWithdrawals += withdrawals;
+                    cumulativeAdminFeeWithdrawals += adminFeeWithdrawals;
 
                     // Вычисляем баланс на основе выбранных компонентов
                     let profit = 0;
@@ -966,11 +1002,33 @@
                     if (includeDeposits) {
                         profit -= cumulativeDeposits;
                     }
+                    // Обработка admin fee withdrawals (независимо от других галочек)
+                    const includeAdminFeeWithdrawals = document.getElementById('toggleAdminFeeWithdrawals')?.checked ?? true;
+                    let adminFeeWithdrawalsAdded = false;
+
                     if (includeWithdrawals) {
-                        profit += cumulativeWithdrawals;
+                        const effectiveWithdrawals = includeAdminFeeWithdrawals
+                            ? cumulativeWithdrawals + cumulativeAdminFeeWithdrawals
+                            : cumulativeWithdrawals;
+                        profit += effectiveWithdrawals;
+                        if (includeAdminFeeWithdrawals) {
+                            adminFeeWithdrawalsAdded = true;
+                        }
                     }
+
                     if (includeAdminFees) {
-                        profit += adminFees;
+                        const effectiveAdminFees = includeAdminFeeWithdrawals
+                            ? adminFees + cumulativeAdminFeeWithdrawals
+                            : adminFees;
+                        profit += effectiveAdminFees;
+                        if (includeAdminFeeWithdrawals) {
+                            adminFeeWithdrawalsAdded = true;
+                        }
+                    }
+
+                    // Если admin fee withdrawals включены, но они еще не были добавлены ни через withdrawals, ни через admin fees
+                    if (includeAdminFeeWithdrawals && !adminFeeWithdrawalsAdded) {
+                        profit += cumulativeAdminFeeWithdrawals;
                     }
 
                     // Добавляем YB эмиссию по рынкам если галочка активна
@@ -1010,11 +1068,35 @@
                 profitChart.update();
             }
 
+            // Функция для обновления метрик и графика при изменении Admin Fee Withdrawals checkbox
+            function updateMetricsAndChart() {
+                // Пересчитываем profitData
+                profitData = recalculateProfitData();
+
+                // Обновляем метрики
+                const lastPoint = profitData[profitData.length - 1];
+                document.getElementById('finalProfit').textContent = lastPoint.profit.toFixed(8) + ' BTC';
+
+                // Обновляем metrics box
+                document.querySelector('#metricsBox .metric-row:nth-child(2) .metric-value').textContent =
+                    lastPoint.deposits.toFixed(2) + ' BTC';
+                document.querySelector('#metricsBox .metric-row:nth-child(3) .metric-value').textContent =
+                    lastPoint.withdrawals.toFixed(2) + ' BTC';
+                document.querySelector('#metricsBox .metric-row:nth-child(4) .metric-value').textContent =
+                    (lastPoint.deposits - lastPoint.withdrawals).toFixed(2) + ' BTC';
+                document.querySelector('#metricsBox .metric-row:nth-child(6) .metric-value').textContent =
+                    lastPoint.admin_fee_withdrawals.toFixed(4) + ' BTC';
+
+                // Обновляем график
+                updateChart();
+            }
+
             // Подключаем чекбоксы к функции обновления
             document.getElementById('toggleWithdrawable').addEventListener('change', updateChart);
             document.getElementById('toggleDeposits').addEventListener('change', updateChart);
             document.getElementById('toggleWithdrawals').addEventListener('change', updateChart);
             document.getElementById('toggleAdminFees').addEventListener('change', updateChart);
+            document.getElementById('toggleAdminFeeWithdrawals').addEventListener('change', updateMetricsAndChart);
 
             // Подключаем галочки рынков
             document.getElementById('toggleWbtc').addEventListener('change', updateChart);
@@ -1051,7 +1133,6 @@
     </script>
 </body>
 </html>
-
 
 
 
