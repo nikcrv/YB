@@ -1,4 +1,4 @@
-// Last updated: 2025-11-14 22:17:50 UTC
+// Last updated: 2025-11-14 22:19:11 UTC
 const yieldData = {
   "metadata": {
     "contract": "0xfBF3C16676055776Ab9B286492D8f13e30e2E763",
