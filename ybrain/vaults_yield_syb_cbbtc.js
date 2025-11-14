@@ -1,19 +1,20 @@
+// Last updated: 2025-11-14 12:19:43 UTC
 const yieldData_syb_cbbtc = {
   "metadata": {
     "contract": "0xf3081A2eB8927C0462864EC3FdbE927C842A0893",
     "start_date": "2025-11-12T20:09:47",
-    "end_date": "2025-11-14T11:59:35",
-    "data_points": 41,
+    "end_date": "2025-11-14T12:19:35",
+    "data_points": 42,
     "step_seconds": 3600
   },
   "metrics": {
-    "total_return": -0.00046778400203526514,
-    "total_return_pct": -0.04677840020352651,
-    "apr": -0.09778823656490705,
-    "apr_pct": -9.778823656490705,
-    "days": 1.6595833333333334,
+    "total_return": -0.00046980509947096175,
+    "total_return_pct": -0.046980509947096176,
+    "apr": -0.09741551398944859,
+    "apr_pct": -9.741551398944859,
+    "days": 1.6734722222222222,
     "start_pps": 0.99945701,
-    "end_pps": 0.99898948
+    "end_pps": 0.99898746
   },
   "data": [
     {
@@ -412,18 +413,28 @@ const yieldData_syb_cbbtc = {
       "datetime": "2025-11-14T11:09:47",
       "pps_btc": 0.99899614,
       "ret_step": -8.568868363374668e-05,
-      "ret_step_pct": -0.00856886836337467,
+      "ret_step_pct": -0.008568868363374667,
       "btc_price": 96564.41622007711,
       "pps_yb": 0.9956983320737051
     },
     {
-      "block": 23796092,
-      "timestamp": 1763107175,
-      "datetime": "2025-11-14T11:59:35",
-      "pps_btc": 0.99898948,
-      "ret_step": -6.666692425858622e-06,
-      "ret_step_pct": -0.0006666692425858623,
-      "btc_price": 96564.41622007711,
+      "block": 23796143,
+      "timestamp": 1763107787,
+      "datetime": "2025-11-14T12:09:47",
+      "pps_btc": 0.99898881,
+      "ret_step": null,
+      "ret_step_pct": null,
+      "btc_price": 97079.06996428588,
+      "pps_yb": 0.9956983320737051
+    },
+    {
+      "block": 23796192,
+      "timestamp": 1763108375,
+      "datetime": "2025-11-14T12:19:35",
+      "pps_btc": 0.99898746,
+      "ret_step": -1.3513664882792831e-06,
+      "ret_step_pct": -0.00013513664882792832,
+      "btc_price": 97079.06996428588,
       "pps_yb": 0.9956983320737051
     }
   ]
