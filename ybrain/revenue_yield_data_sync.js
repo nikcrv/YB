@@ -1,4 +1,4 @@
-// Last updated: 2025-11-14 18:32:06 UTC
+// Last updated: 2025-11-14 18:32:23 UTC
 const yieldData = {
   "metadata": {
     "market": "WBTC",
