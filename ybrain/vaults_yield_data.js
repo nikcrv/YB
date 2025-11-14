@@ -1,19 +1,20 @@
+// Last updated: 2025-11-14 12:32:30 UTC
 const yieldData = {
   "metadata": {
     "contract": "0xfBF3C16676055776Ab9B286492D8f13e30e2E763",
     "start_date": "2025-11-12T20:07:11",
-    "end_date": "2025-11-14T09:13:59",
-    "data_points": 39,
+    "end_date": "2025-11-14T12:32:23",
+    "data_points": 42,
     "step_seconds": 3600
   },
   "metrics": {
-    "total_return": -2.3844630588436452e-05,
-    "total_return_pct": -0.002384463058843645,
-    "apr": -0.005612396489248047,
-    "apr_pct": -0.5612396489248047,
-    "days": 1.5463888888888888,
+    "total_return": -0.0014560934298066608,
+    "total_return_pct": -0.14560934298066608,
+    "apr": -0.27079540856425977,
+    "apr_pct": -27.079540856425975,
+    "days": 1.6841666666666666,
     "start_pps": 0.99938642,
-    "end_pps": 0.99936259
+    "end_pps": 0.99793122
   },
   "data": [
     {
@@ -359,13 +360,40 @@ const yieldData = {
       "btc_price": 97848.91128621758
     },
     {
-      "block": 23795270,
-      "timestamp": 1763097239,
-      "datetime": "2025-11-14T09:13:59",
-      "pps_btc": 0.99936259,
-      "ret_step": -9.205859437473358e-07,
-      "ret_step_pct": -9.205859437473357e-05,
-      "btc_price": 97848.91128621758
+      "block": 23795535,
+      "timestamp": 1763100431,
+      "datetime": "2025-11-14T10:07:11",
+      "pps_btc": 0.99925257,
+      "ret_step": null,
+      "ret_step_pct": null,
+      "btc_price": 97446.6368086517
+    },
+    {
+      "block": 23795831,
+      "timestamp": 1763104031,
+      "datetime": "2025-11-14T11:07:11",
+      "pps_btc": 0.99793983,
+      "ret_step": -0.0013137219151710562,
+      "ret_step_pct": -0.1313721915171056,
+      "btc_price": 96564.41622007711
+    },
+    {
+      "block": 23796130,
+      "timestamp": 1763107631,
+      "datetime": "2025-11-14T12:07:11",
+      "pps_btc": 0.99793337,
+      "ret_step": null,
+      "ret_step_pct": null,
+      "btc_price": 97079.06996428588
+    },
+    {
+      "block": 23796256,
+      "timestamp": 1763109143,
+      "datetime": "2025-11-14T12:32:23",
+      "pps_btc": 0.99793122,
+      "ret_step": null,
+      "ret_step_pct": null,
+      "btc_price": 97079.06996428588
     }
   ]
 };
