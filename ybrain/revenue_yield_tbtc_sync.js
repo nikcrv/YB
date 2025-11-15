@@ -1,10 +1,10 @@
-// Last updated: 2025-11-15 23:12:09 UTC
+// Last updated: 2025-11-15 23:26:18 UTC
 const yieldData_tbtc = {
   "metadata": {
     "market": "tBTC",
     "contract": "0xaC0a340C1644321D0BBc6404946d828c1EBfAC92",
-    "collected": "2025-11-15T23:10:44.580092",
-    "points": 948,
+    "collected": "2025-11-15T23:24:58.651141",
+    "points": 953,
     "synchronized": true,
     "transaction_based": true,
     "zero_loss": true,
@@ -8538,6 +8538,51 @@ const yieldData_tbtc = {
       "block": 23806533,
       "timestamp": 1763233211,
       "total_withdrawable_btc": 438.87649921051565,
+      "deposits_btc": 0.0,
+      "withdrawals_btc": 0.0,
+      "admin_fee_withdrawals_btc": 0.0,
+      "admin_fees_btc": 0.4007176149540667
+    },
+    {
+      "block": 23806587,
+      "timestamp": 1763233859,
+      "total_withdrawable_btc": 438.8752665978422,
+      "deposits_btc": 0.0,
+      "withdrawals_btc": 0.0,
+      "admin_fee_withdrawals_btc": 0.0,
+      "admin_fees_btc": 0.4007176149540667
+    },
+    {
+      "block": 23806590,
+      "timestamp": 1763233895,
+      "total_withdrawable_btc": 438.87519456268706,
+      "deposits_btc": 0.0,
+      "withdrawals_btc": 0.0,
+      "admin_fee_withdrawals_btc": 0.0,
+      "admin_fees_btc": 0.4007176149540667
+    },
+    {
+      "block": 23806594,
+      "timestamp": 1763233943,
+      "total_withdrawable_btc": 438.8750989470185,
+      "deposits_btc": 0.0,
+      "withdrawals_btc": 0.0,
+      "admin_fee_withdrawals_btc": 0.0,
+      "admin_fees_btc": 0.4007176149540667
+    },
+    {
+      "block": 23806632,
+      "timestamp": 1763234399,
+      "total_withdrawable_btc": 438.87425806740913,
+      "deposits_btc": 0.0,
+      "withdrawals_btc": 0.0,
+      "admin_fee_withdrawals_btc": 0.0,
+      "admin_fees_btc": 0.4007176149540667
+    },
+    {
+      "block": 23806635,
+      "timestamp": 1763234447,
+      "total_withdrawable_btc": 438.87416415039684,
       "deposits_btc": 0.0,
       "withdrawals_btc": 0.0,
       "admin_fee_withdrawals_btc": 0.0,
