@@ -1,10 +1,10 @@
-// Last updated: 2025-11-15 18:11:07 UTC
+// Last updated: 2025-11-15 18:23:52 UTC
 const yieldData = {
   "metadata": {
     "market": "WBTC",
     "contract": "0xfBF3C16676055776Ab9B286492D8f13e30e2E763",
-    "collected": "2025-11-15T18:10:19.693321",
-    "points": 917,
+    "collected": "2025-11-15T18:22:59.975069",
+    "points": 922,
     "synchronized": true,
     "transaction_based": true,
     "zero_loss": true,
@@ -8260,6 +8260,51 @@ const yieldData = {
       "timestamp": 1763215307,
       "total_withdrawable_btc": 425.86232692,
       "deposits_btc": 0.09999052,
+      "withdrawals_btc": 0,
+      "admin_fee_withdrawals_btc": 0.0,
+      "admin_fees_btc": 0.6561801948971577
+    },
+    {
+      "block": 23805100,
+      "timestamp": 1763215835,
+      "total_withdrawable_btc": 425.91608154,
+      "deposits_btc": 0.05450089,
+      "withdrawals_btc": 0,
+      "admin_fee_withdrawals_btc": 0.0,
+      "admin_fees_btc": 0.6561801948971577
+    },
+    {
+      "block": 23805110,
+      "timestamp": 1763215955,
+      "total_withdrawable_btc": 425.92619693,
+      "deposits_btc": 0.01023863,
+      "withdrawals_btc": 0,
+      "admin_fee_withdrawals_btc": 0.0,
+      "admin_fees_btc": 0.6561801948971577
+    },
+    {
+      "block": 23805134,
+      "timestamp": 1763216243,
+      "total_withdrawable_btc": 425.93098831,
+      "deposits_btc": 0.00501,
+      "withdrawals_btc": 0,
+      "admin_fee_withdrawals_btc": 0.0,
+      "admin_fees_btc": 0.6561801948971577
+    },
+    {
+      "block": 23805136,
+      "timestamp": 1763216267,
+      "total_withdrawable_btc": 425.98442168,
+      "deposits_btc": 0.05271199,
+      "withdrawals_btc": 0,
+      "admin_fee_withdrawals_btc": 0.0,
+      "admin_fees_btc": 0.6561801948971577
+    },
+    {
+      "block": 23805142,
+      "timestamp": 1763216351,
+      "total_withdrawable_btc": 426.02406733,
+      "deposits_btc": 0.03975526,
       "withdrawals_btc": 0,
       "admin_fee_withdrawals_btc": 0.0,
       "admin_fees_btc": 0.6561801948971577
