@@ -1,10 +1,10 @@
-// Last updated: 2025-11-17 01:59:35 UTC
+// Last updated: 2025-11-17 02:12:43 UTC
 const yieldData_cbbtc = {
   "metadata": {
     "market": "cbBTC",
     "contract": "0xAC0cfa7742069a8af0c63e14FFD0fe6b3e1Bf8D2",
-    "collected": "2025-11-17T01:58:33.874443",
-    "points": 1035,
+    "collected": "2025-11-17T02:11:43.855162",
+    "points": 1040,
     "synchronized": true,
     "transaction_based": true,
     "zero_loss": true,
@@ -9322,6 +9322,51 @@ const yieldData_cbbtc = {
       "timestamp": 1763329547,
       "total_withdrawable_btc": 390.91334085,
       "deposits_btc": 0.0421326,
+      "withdrawals_btc": 0,
+      "admin_fee_withdrawals_btc": 0.0,
+      "admin_fees_btc": 0.5257032702043085
+    },
+    {
+      "block": 23814585,
+      "timestamp": 1763330411,
+      "total_withdrawable_btc": 391.34718922,
+      "deposits_btc": 0.0,
+      "withdrawals_btc": 0.0,
+      "admin_fee_withdrawals_btc": 0.0,
+      "admin_fees_btc": 0.5257032702043085
+    },
+    {
+      "block": 23814593,
+      "timestamp": 1763330507,
+      "total_withdrawable_btc": 393.22377186,
+      "deposits_btc": 1.86347072,
+      "withdrawals_btc": 0,
+      "admin_fee_withdrawals_btc": 0.0,
+      "admin_fees_btc": 0.5257032702043085
+    },
+    {
+      "block": 23814606,
+      "timestamp": 1763330663,
+      "total_withdrawable_btc": 398.03045195,
+      "deposits_btc": 4.8,
+      "withdrawals_btc": 0,
+      "admin_fee_withdrawals_btc": 0.0,
+      "admin_fees_btc": 0.5257032702043085
+    },
+    {
+      "block": 23814625,
+      "timestamp": 1763330891,
+      "total_withdrawable_btc": 398.07725298,
+      "deposits_btc": 0.05237707,
+      "withdrawals_btc": 0,
+      "admin_fee_withdrawals_btc": 0.0,
+      "admin_fees_btc": 0.5257032702043085
+    },
+    {
+      "block": 23814638,
+      "timestamp": 1763331059,
+      "total_withdrawable_btc": 398.43830771,
+      "deposits_btc": 0.37,
       "withdrawals_btc": 0,
       "admin_fee_withdrawals_btc": 0.0,
       "admin_fees_btc": 0.5257032702043085
