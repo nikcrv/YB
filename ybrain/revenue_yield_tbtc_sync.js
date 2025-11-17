@@ -1,14 +1,14 @@
-// Last updated: 2025-11-18 02:56:24 UTC
+// Last updated: 2025-11-18 03:09:21 UTC
 const yieldData_tbtc = {
   "metadata": {
     "market": "tBTC",
     "contract": "0xaC0a340C1644321D0BBc6404946d828c1EBfAC92",
-    "collected": "2025-11-18T02:55:17.468300",
-    "points": 1102,
+    "collected": "2025-11-18T03:08:11.289194",
+    "points": 1107,
     "synchronized": true,
     "transaction_based": true,
     "zero_loss": true,
-    "incremental_update": false
+    "incremental_update": true
   },
   "data": [
     {
@@ -9928,6 +9928,51 @@ const yieldData_tbtc = {
       "withdrawals_btc": 0,
       "admin_fee_withdrawals_btc": 0.0,
       "admin_fees_btc": 0.9283988392058788
+    },
+    {
+      "block": 23822006,
+      "timestamp": 1763420399,
+      "total_withdrawable_btc": 429.36083808884274,
+      "deposits_btc": 0.4931222720464371,
+      "withdrawals_btc": 0,
+      "admin_fee_withdrawals_btc": 0.0,
+      "admin_fees_btc": 0.9324323341612752
+    },
+    {
+      "block": 23822007,
+      "timestamp": 1763420411,
+      "total_withdrawable_btc": 429.36082443085775,
+      "deposits_btc": 0.0,
+      "withdrawals_btc": 0.0,
+      "admin_fee_withdrawals_btc": 0.0,
+      "admin_fees_btc": 0.9324323341612752
+    },
+    {
+      "block": 23822020,
+      "timestamp": 1763420567,
+      "total_withdrawable_btc": 429.36064654815857,
+      "deposits_btc": 0.0,
+      "withdrawals_btc": 0.0,
+      "admin_fee_withdrawals_btc": 0.0,
+      "admin_fees_btc": 0.9324323341612752
+    },
+    {
+      "block": 23822022,
+      "timestamp": 1763420591,
+      "total_withdrawable_btc": 430.4042230768669,
+      "deposits_btc": 1.0,
+      "withdrawals_btc": 0,
+      "admin_fee_withdrawals_btc": 0.0,
+      "admin_fees_btc": 0.9338734461576375
+    },
+    {
+      "block": 23822028,
+      "timestamp": 1763420663,
+      "total_withdrawable_btc": 432.1071246667174,
+      "deposits_btc": 1.62,
+      "withdrawals_btc": 0,
+      "admin_fee_withdrawals_btc": 0.0,
+      "admin_fees_btc": 0.9366331616165079
     }
   ]
 };
