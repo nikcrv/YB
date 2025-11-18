@@ -1,20 +1,20 @@
-// Last updated: 2025-11-19 00:17:29 UTC
+// Last updated: 2025-11-19 01:34:36 UTC
 const yieldData_syb_tbtc = {
   "metadata": {
     "contract": "0x30ba8b27F2128c770B90C965FF671E08b9310D21",
     "start_date": "2025-11-12T20:19:11",
-    "end_date": "2025-11-19T00:15:47",
-    "data_points": 149,
+    "end_date": "2025-11-19T01:32:35",
+    "data_points": 151,
     "step_seconds": 3600
   },
   "metrics": {
-    "total_return": -0.023922497686871564,
-    "total_return_pct": -2.392249768687156,
-    "apr": -0.7615781763803279,
-    "apr_pct": -76.1578176380328,
-    "days": 6.164305555555556,
+    "total_return": -0.023936228525333364,
+    "total_return_pct": -2.3936228525333365,
+    "apr": -0.7588271993877971,
+    "apr_pct": -75.8827199387797,
+    "days": 6.217638888888889,
     "start_pps": 0.9994484405610258,
-    "end_pps": 0.9755391375535573
+    "end_pps": 0.9755254142884691
   },
   "data": [
     {
@@ -1498,14 +1498,34 @@ const yieldData_syb_tbtc = {
       "pps_yb": 0.9895391461961313
     },
     {
-      "block": 23828313,
-      "timestamp": 1763496947,
-      "datetime": "2025-11-19T00:15:47",
-      "pps_btc": 0.9755391375535573,
+      "block": 23828332,
+      "timestamp": 1763497175,
+      "datetime": "2025-11-19T00:19:35",
+      "pps_btc": 0.9755378548436601,
       "ret_step": null,
       "ret_step_pct": null,
       "btc_price": null,
-      "pps_yb": 0.98955191349431
+      "pps_yb": 0.989550780593056
+    },
+    {
+      "block": 23828630,
+      "timestamp": 1763500775,
+      "datetime": "2025-11-19T01:19:35",
+      "pps_btc": 0.9755266818578656,
+      "ret_step": null,
+      "ret_step_pct": null,
+      "btc_price": null,
+      "pps_yb": 0.9895477370397658
+    },
+    {
+      "block": 23828695,
+      "timestamp": 1763501555,
+      "datetime": "2025-11-19T01:32:35",
+      "pps_btc": 0.9755254142884691,
+      "ret_step": -1.299369274246755e-06,
+      "ret_step_pct": -0.0001299369274246755,
+      "btc_price": null,
+      "pps_yb": 0.9895489630288853
     }
   ]
 };
