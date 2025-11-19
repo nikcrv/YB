@@ -1,4 +1,4 @@
-// Last updated: 2025-11-19 10:19:42 UTC
+// Last updated: 2025-11-19 10:21:01 UTC
 const yieldData_syb_wbtc = {
   "metadata": {
     "contract": "0xbc56e3edB67b56d598aCE07668b138815F45d7aa",
@@ -1612,8 +1612,8 @@ const yieldData_syb_wbtc = {
       "timestamp": 1763533175,
       "datetime": "2025-11-19T10:19:35",
       "pps_btc": 0.96737961,
-      "ret_step": -2.475698973032516e-05,
-      "ret_step_pct": -0.0024756989730325162,
+      "ret_step": null,
+      "ret_step_pct": null,
       "btc_price": null,
       "pps_yb": 0.9858423722907184
     }
