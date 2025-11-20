@@ -1,3 +1,4 @@
+// Last updated: 2025-11-20 14:40:12 UTC
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -268,37 +269,37 @@
     </div>
 
     <!-- Load all market data files with cache busting -->
-    <script src="vaults_yield_data.js?v=5"></script>
+    <script src="vaults_yield_wbtc.js?v=6"></script>
     <script>
         // Store wbtc data immediately after loading
-        const wbtcData = JSON.parse(JSON.stringify(yieldData));
+        const wbtcData = JSON.parse(JSON.stringify(yieldData_wbtc));
         console.log('Loaded WBTC data:', wbtcData.metadata.contract, wbtcData.data.length, 'points');
     </script>
-    <script src="vaults_yield_cbbtc.js?v=5"></script>
+    <script src="vaults_yield_cbbtc.js?v=6"></script>
     <script>
         // Store cbbtc data immediately after loading
         const cbbtcData = JSON.parse(JSON.stringify(yieldData_cbbtc));
         console.log('Loaded cbBTC data:', cbbtcData.metadata.contract, cbbtcData.data.length, 'points');
     </script>
-    <script src="vaults_yield_tbtc.js?v=5"></script>
+    <script src="vaults_yield_tbtc.js?v=6"></script>
     <script>
         // Store tbtc data immediately after loading
         const tbtcData = JSON.parse(JSON.stringify(yieldData_tbtc));
         console.log('Loaded tBTC data:', tbtcData.metadata.contract, tbtcData.data.length, 'points');
     </script>
-    <script src="vaults_yield_syb_wbtc.js?v=5"></script>
+    <script src="vaults_yield_syb_wbtc.js?v=6"></script>
     <script>
         // Store syb_wbtc data immediately after loading
         const sybWbtcData = JSON.parse(JSON.stringify(yieldData_syb_wbtc));
         console.log('Loaded syb-WBTC data:', sybWbtcData.metadata.contract, sybWbtcData.data.length, 'points');
     </script>
-    <script src="vaults_yield_syb_cbbtc.js?v=5"></script>
+    <script src="vaults_yield_syb_cbbtc.js?v=6"></script>
     <script>
         // Store syb_cbbtc data immediately after loading
         const sybCbbtcData = JSON.parse(JSON.stringify(yieldData_syb_cbbtc));
         console.log('Loaded syb-cbBTC data:', sybCbbtcData.metadata.contract, sybCbbtcData.data.length, 'points');
     </script>
-    <script src="vaults_yield_syb_tbtc.js?v=5"></script>
+    <script src="vaults_yield_syb_tbtc.js?v=6"></script>
     <script>
         // Store syb_tbtc data immediately after loading
         const sybTbtcData = JSON.parse(JSON.stringify(yieldData_syb_tbtc));
