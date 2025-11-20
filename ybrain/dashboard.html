@@ -186,10 +186,51 @@
             color: #64748b;
             font-size: 0.75em;
         }
+    
+        /* Contract Version Selector */
+        .contract-selector {
+            display: flex;
+            gap: 10px;
+            background: #1e1b4b;
+            padding: 6px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            justify-content: center;
+            max-width: 400px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .contract-btn {
+            padding: 10px 20px;
+            background: transparent;
+            border: none;
+            border-radius: 6px;
+            color: #94a3b8;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 0.95em;
+        }
+
+        .contract-btn:hover {
+            background: #312e81;
+            color: #e2e8f0;
+        }
+
+        .contract-btn.active {
+            background: #8b5cf6;
+            color: #fff;
+        }
     </style>
 </head>
 <body>
     <div class="container">
+        <div class="contract-selector">
+            <button class="contract-btn active" data-version="new" onclick="switchContractVersion('new')">NEW Contracts</button>
+            <button class="contract-btn" data-version="old" onclick="switchContractVersion('old')">OLD Contracts</button>
+        </div>
+
         <div class="loading" id="loading">Loading synchronized data...</div>
         <div id="content" style="display:none;">
             <div class="header">
