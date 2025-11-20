@@ -1,4 +1,4 @@
-// Last updated: 2025-11-20 14:36:13 UTC
+// Last updated: 2025-11-20 10:52:51 UTC
 const adminFeeWithdrawalsData = [
   {
     "block": 23784237,
