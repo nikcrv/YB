@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -227,6 +226,37 @@
             border-radius: 8px;
             margin: 20px 0;
         }
+
+        .contract-selector {
+            display: flex;
+            gap: 10px;
+            background: #0f172a;
+            padding: 6px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+
+        .contract-btn {
+            padding: 10px 20px;
+            background: transparent;
+            border: none;
+            border-radius: 6px;
+            color: #94a3b8;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 0.95em;
+        }
+
+        .contract-btn:hover {
+            background: #1e293b;
+            color: #e2e8f0;
+        }
+
+        .contract-btn.active {
+            background: #8b5cf6;
+            color: #ffffff;
+        }
     </style>
 </head>
 <body>
@@ -237,14 +267,20 @@
                     <h1 id="page-title">Yield Basis BTC Vaults - Yield Analytics</h1>
                     <p class="subtitle">BTC-Denominated Performance Analysis</p>
                 </div>
-                <div class="market-selector">
-                    <button class="market-btn active" data-market="cbbtc" onclick="switchMarket('cbbtc')">yb-cbBTC</button>
-                    <button class="market-btn" data-market="wbtc" onclick="switchMarket('wbtc')">yb-WBTC</button>
-                    <button class="market-btn" data-market="tbtc" onclick="switchMarket('tbtc')">yb-tBTC</button>
-                    <button class="market-btn" data-market="syb_cbbtc" onclick="switchMarket('syb_cbbtc')">syb-cbBTC</button>
-                    <button class="market-btn" data-market="syb_wbtc" onclick="switchMarket('syb_wbtc')">syb-WBTC</button>
-                    <button class="market-btn" data-market="syb_tbtc" onclick="switchMarket('syb_tbtc')">syb-tBTC</button>
-                    <a href="/YB/ybrain/dashboard" style="padding: 10px 20px; background: #10b981; border: none; border-radius: 6px; color: #0f172a; font-weight: 600; cursor: pointer; text-decoration: none; display: inline-block; transition: all 0.2s;" onmouseover="this.style.background='#059669'" onmouseout="this.style.background='#10b981'">📊 Dashboard</a>
+                <div>
+                    <div class="contract-selector">
+                        <button class="contract-btn active" data-version="new" onclick="switchContractVersion('new')">NEW</button>
+                        <button class="contract-btn" data-version="old" onclick="switchContractVersion('old')">OLD</button>
+                    </div>
+                    <div class="market-selector">
+                        <button class="market-btn active" data-market="cbbtc" onclick="switchMarket('cbbtc')">yb-cbBTC</button>
+                        <button class="market-btn" data-market="wbtc" onclick="switchMarket('wbtc')">yb-WBTC</button>
+                        <button class="market-btn" data-market="tbtc" onclick="switchMarket('tbtc')">yb-tBTC</button>
+                        <button class="market-btn" data-market="syb_cbbtc" onclick="switchMarket('syb_cbbtc')">syb-cbBTC</button>
+                        <button class="market-btn" data-market="syb_wbtc" onclick="switchMarket('syb_wbtc')">syb-WBTC</button>
+                        <button class="market-btn" data-market="syb_tbtc" onclick="switchMarket('syb_tbtc')">syb-tBTC</button>
+                        <a href="/YB/ybrain/dashboard" style="padding: 10px 20px; background: #10b981; border: none; border-radius: 6px; color: #0f172a; font-weight: 600; cursor: pointer; text-decoration: none; display: inline-block; transition: all 0.2s;" onmouseover="this.style.background='#059669'" onmouseout="this.style.background='#10b981'">📊 Dashboard</a>
+                    </div>
                 </div>
             </div>
             <div class="date-filters">
@@ -269,6 +305,7 @@
     </div>
 
     <!-- Load all market data files with cache busting -->
+    <!-- NEW contract data -->
     <script src="vaults_yield_wbtc.js?v=6"></script>
     <script>
         // Store wbtc data immediately after loading
@@ -306,41 +343,114 @@
         console.log('Loaded syb-tBTC data:', sybTbtcData.metadata.contract, sybTbtcData.data.length, 'points');
     </script>
 
+    <!-- OLD contract data -->
+    <script src="old_vaults_yield_wbtc.js?v=6"></script>
     <script>
-        // Market configurations
+        // Store old wbtc data immediately after loading
+        const oldWbtcData = JSON.parse(JSON.stringify(yieldData_yb_wbtc));
+        console.log('Loaded OLD WBTC data:', oldWbtcData.metadata.contract, oldWbtcData.data.length, 'points');
+    </script>
+    <script src="old_vaults_yield_cbbtc.js?v=6"></script>
+    <script>
+        // Store old cbbtc data immediately after loading
+        const oldCbbtcData = JSON.parse(JSON.stringify(yieldData_yb_cbbtc));
+        console.log('Loaded OLD cbBTC data:', oldCbbtcData.metadata.contract, oldCbbtcData.data.length, 'points');
+    </script>
+    <script src="old_vaults_yield_tbtc.js?v=6"></script>
+    <script>
+        // Store old tbtc data immediately after loading
+        const oldTbtcData = JSON.parse(JSON.stringify(yieldData_yb_tbtc));
+        console.log('Loaded OLD tBTC data:', oldTbtcData.metadata.contract, oldTbtcData.data.length, 'points');
+    </script>
+    <script src="old_vaults_yield_syb_wbtc.js?v=6"></script>
+    <script>
+        // Store old syb_wbtc data immediately after loading
+        const oldSybWbtcData = JSON.parse(JSON.stringify(yieldData_syb_wbtc));
+        console.log('Loaded OLD syb-WBTC data:', oldSybWbtcData.metadata.contract, oldSybWbtcData.data.length, 'points');
+    </script>
+    <script src="old_vaults_yield_syb_cbbtc.js?v=6"></script>
+    <script>
+        // Store old syb_cbbtc data immediately after loading
+        const oldSybCbbtcData = JSON.parse(JSON.stringify(yieldData_syb_cbbtc));
+        console.log('Loaded OLD syb-cbBTC data:', oldSybCbbtcData.metadata.contract, oldSybCbbtcData.data.length, 'points');
+    </script>
+    <script src="old_vaults_yield_syb_tbtc.js?v=6"></script>
+    <script>
+        // Store old syb_tbtc data immediately after loading
+        const oldSybTbtcData = JSON.parse(JSON.stringify(yieldData_syb_tbtc));
+        console.log('Loaded OLD syb-tBTC data:', oldSybTbtcData.metadata.contract, oldSybTbtcData.data.length, 'points');
+    </script>
+
+    <script>
+        // Market configurations for NEW and OLD contracts
         const MARKETS = {
-            wbtc: {
-                name: 'yb-WBTC',
-                data: wbtcData,
-                contract: '0x6095a220C5567360d459462A25b1AD5aEAD45204'
+            new: {
+                wbtc: {
+                    name: 'yb-WBTC',
+                    data: wbtcData,
+                    contract: '0x6095a220C5567360d459462A25b1AD5aEAD45204'
+                },
+                cbbtc: {
+                    name: 'yb-cbBTC',
+                    data: cbbtcData,
+                    contract: '0xD6a1147666f6E4d7161caf436d9923D44d901112'
+                },
+                tbtc: {
+                    name: 'yb-tBTC',
+                    data: tbtcData,
+                    contract: '0x2B513eBe7070Cff91cf699a0BFe5075020C732FF'
+                },
+                syb_wbtc: {
+                    name: 'syb-WBTC',
+                    data: sybWbtcData,
+                    contract: '0x37f45E64935e7B8383D2f034048B32770B04E8bd'
+                },
+                syb_cbbtc: {
+                    name: 'syb-cbBTC',
+                    data: sybCbbtcData,
+                    contract: '0x3dAe83d236b4Ec301A8d0553f8c13Cb9b7925B6a'
+                },
+                syb_tbtc: {
+                    name: 'syb-tBTC',
+                    data: sybTbtcData,
+                    contract: '0x2a4671fd269dF5B3DA03103c74063dA10D03E23C'
+                }
             },
-            cbbtc: {
-                name: 'yb-cbBTC',
-                data: cbbtcData,
-                contract: '0xD6a1147666f6E4d7161caf436d9923D44d901112'
-            },
-            tbtc: {
-                name: 'yb-tBTC',
-                data: tbtcData,
-                contract: '0x2B513eBe7070Cff91cf699a0BFe5075020C732FF'
-            },
-            syb_wbtc: {
-                name: 'syb-WBTC',
-                data: sybWbtcData,
-                contract: '0x37f45E64935e7B8383D2f034048B32770B04E8bd'
-            },
-            syb_cbbtc: {
-                name: 'syb-cbBTC',
-                data: sybCbbtcData,
-                contract: '0x3dAe83d236b4Ec301A8d0553f8c13Cb9b7925B6a'
-            },
-            syb_tbtc: {
-                name: 'syb-tBTC',
-                data: sybTbtcData,
-                contract: '0x2a4671fd269dF5B3DA03103c74063dA10D03E23C'
+            old: {
+                wbtc: {
+                    name: 'yb-WBTC',
+                    data: oldWbtcData,
+                    contract: oldWbtcData.metadata.contract
+                },
+                cbbtc: {
+                    name: 'yb-cbBTC',
+                    data: oldCbbtcData,
+                    contract: oldCbbtcData.metadata.contract
+                },
+                tbtc: {
+                    name: 'yb-tBTC',
+                    data: oldTbtcData,
+                    contract: oldTbtcData.metadata.contract
+                },
+                syb_wbtc: {
+                    name: 'syb-WBTC',
+                    data: oldSybWbtcData,
+                    contract: oldSybWbtcData.metadata.contract
+                },
+                syb_cbbtc: {
+                    name: 'syb-cbBTC',
+                    data: oldSybCbbtcData,
+                    contract: oldSybCbbtcData.metadata.contract
+                },
+                syb_tbtc: {
+                    name: 'syb-tBTC',
+                    data: oldSybTbtcData,
+                    contract: oldSybTbtcData.metadata.contract
+                }
             }
         };
 
+        let currentContractVersion = 'new';
         let currentMarket = 'cbbtc';
         let currentYieldData = null;
         let originalData = null;
@@ -348,9 +458,34 @@
 
         // Load market data
         function loadMarketData(market) {
-            const config = MARKETS[market];
+            const config = MARKETS[currentContractVersion][market];
             currentYieldData = JSON.parse(JSON.stringify(config.data));
             originalData = JSON.parse(JSON.stringify(config.data));
+        }
+
+        // Switch contract version
+        function switchContractVersion(version) {
+            if (version === currentContractVersion) return;
+
+            console.log('Switching to contract version:', version);
+
+            // Update active button
+            document.querySelectorAll('.contract-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            document.querySelector(`[data-version="${version}"]`).classList.add('active');
+
+            currentContractVersion = version;
+
+            // Reload market data with new contract version
+            loadMarketData(currentMarket);
+            console.log('Loaded data for', version, 'contract:', currentYieldData);
+
+            renderContent();
+            initializeDateInputs();
+            updateMetrics();
+            destroyCharts();
+            createCharts();
         }
 
         // Switch market
@@ -422,7 +557,7 @@
                 </div>
 
                 <div class="chart-container">
-                    <h2 class="chart-title">BTC vs ${MARKETS[currentMarket].name} Price (USD)</h2>
+                    <h2 class="chart-title">BTC vs ${MARKETS[currentContractVersion][currentMarket].name} Price (USD)</h2>
                     <canvas id="priceComparisonChart"></canvas>
                 </div>
 
@@ -540,8 +675,7 @@
             document.getElementById('contract-info').innerHTML = `
                 Contract: <code>${currentYieldData.metadata.contract}</code><br>
                 Period: ${currentYieldData.metadata.start_date} to ${currentYieldData.metadata.end_date}<br>
-                Blocks: ${firstBlock} to ${lastBlock}<br>
-                Generated: ${new Date().toISOString()}
+                Blocks: ${firstBlock} to ${lastBlock}
             `;
         }
 
@@ -594,7 +728,7 @@
                                 pointHoverRadius: 4
                             },
                             {
-                                label: `${MARKETS[currentMarket].name} Price (USD)`,
+                                label: `${MARKETS[currentContractVersion][currentMarket].name} Price (USD)`,
                                 data: ybPrices,
                                 borderColor: '#f59e0b',
                                 backgroundColor: 'rgba(245, 158, 11, 0.1)',
@@ -666,7 +800,7 @@
                                 max: ybAxisMaxPadded,
                                 title: {
                                     display: true,
-                                    text: `${MARKETS[currentMarket].name} Price (USD)`,
+                                    text: `${MARKETS[currentContractVersion][currentMarket].name} Price (USD)`,
                                     color: '#f59e0b'
                                 },
                                 ticks: {

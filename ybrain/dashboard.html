@@ -1,4 +1,4 @@
-
+// Last updated: 2025-11-20 14:39:51 UTC
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -332,22 +332,73 @@
     <script src="revenue_yield_tbtc_sync.js?v=6"></script>
     <script src="yb_emission_data.js?v=6"></script>
 
+    <!-- Load OLD contract data files -->
+    <script src="old_revenue_yield_wbtc_sync.js?v=6"></script>
+    <script src="old_revenue_yield_cbbtc_sync.js?v=6"></script>
+    <script src="old_revenue_yield_tbtc_sync.js?v=6"></script>
+    <script src="old_yb_emission_data.js?v=6"></script>
+
     <script>
+    // Глобальная переменная для текущей версии контракта
+    // Загружаем из localStorage или используем 'new' по умолчанию
+    let currentContractVersion = localStorage.getItem('contractVersion') || 'new';
+
+    // Функция переключения между NEW и OLD контрактами
+    function switchContractVersion(version) {
+        // Сохраняем выбор в localStorage
+        localStorage.setItem('contractVersion', version);
+        currentContractVersion = version;
+
+        // Перезагружаем данные
+        location.reload();
+    }
+
+    // При загрузке страницы обновляем активную кнопку
+    document.addEventListener('DOMContentLoaded', function() {
+        document.querySelectorAll('.contract-btn').forEach(btn => {
+            btn.classList.remove('active');
+            if (btn.getAttribute('data-version') === currentContractVersion) {
+                btn.classList.add('active');
+            }
+        });
+    });
+
     window.addEventListener('load', async function() {
         try {
             console.log('Loading synchronized data...');
+            console.log('Contract version:', currentContractVersion);
 
-            // Проверяем что данные загружены
-            if (typeof yieldData_wbtc === 'undefined' ||
-                typeof yieldData_cbbtc === 'undefined' ||
-                typeof yieldData_tbtc === 'undefined') {
-                throw new Error('Synchronized data files not found. Run: python collect_sync.py');
+            // Выбираем источник данных в зависимости от версии контракта
+            let yieldDataSource_wbtc, yieldDataSource_cbbtc, yieldDataSource_tbtc, ybEmissionDataSource;
+
+            if (currentContractVersion === 'old') {
+                // Проверяем что OLD данные загружены
+                if (typeof old_yieldData_wbtc === 'undefined' ||
+                    typeof old_yieldData_cbbtc === 'undefined' ||
+                    typeof old_yieldData_tbtc === 'undefined') {
+                    throw new Error('OLD contract data files not found.');
+                }
+                yieldDataSource_wbtc = old_yieldData_wbtc;
+                yieldDataSource_cbbtc = old_yieldData_cbbtc;
+                yieldDataSource_tbtc = old_yieldData_tbtc;
+                ybEmissionDataSource = typeof old_ybEmissionData !== 'undefined' ? old_ybEmissionData : null;
+            } else {
+                // NEW контракты (по умолчанию)
+                if (typeof yieldData_wbtc === 'undefined' ||
+                    typeof yieldData_cbbtc === 'undefined' ||
+                    typeof yieldData_tbtc === 'undefined') {
+                    throw new Error('Synchronized data files not found. Run: python collect_sync.py');
+                }
+                yieldDataSource_wbtc = yieldData_wbtc;
+                yieldDataSource_cbbtc = yieldData_cbbtc;
+                yieldDataSource_tbtc = yieldData_tbtc;
+                ybEmissionDataSource = typeof ybEmissionData !== 'undefined' ? ybEmissionData : null;
             }
 
             // Данные УЖЕ синхронизированы - просто складываем!
-            const wbtcData = yieldData_wbtc.data;
-            const cbbtcData = yieldData_cbbtc.data;
-            const tbtcData = yieldData_tbtc.data;
+            const wbtcData = yieldDataSource_wbtc.data;
+            const cbbtcData = yieldDataSource_cbbtc.data;
+            const tbtcData = yieldDataSource_tbtc.data;
 
             console.log('WBTC points:', wbtcData.length);
             console.log('cbBTC points:', cbbtcData.length);
@@ -363,6 +414,9 @@
                 let cumulativeDeposits = 0;
                 let cumulativeWithdrawals = 0;
                 let cumulativeAdminFeeWithdrawals = 0;
+
+                // Для отслеживания пиков admin fees в OLD контрактах
+                let prevAdminFees = { wbtc: 0, cbbtc: 0, tbtc: 0 };
 
                 return wbtcData.map((wbtc, i) => {
                 const cbbtc = cbbtcData[i];
@@ -386,9 +440,29 @@
                                    (cbbtc.withdrawals_btc || 0) +
                                    (tbtc.withdrawals_btc || 0);
 
-                const adminFeeWithdrawals = (wbtc.admin_fee_withdrawals_btc || 0) +
-                                           (cbbtc.admin_fee_withdrawals_btc || 0) +
-                                           (tbtc.admin_fee_withdrawals_btc || 0);
+                // Обработка admin fee withdrawals
+                if (currentContractVersion === 'old') {
+                    // Для OLD контрактов отслеживаем пики admin_fees перед сбросами
+                    // т.к. эти суммы были выведены и попали в withdrawals_btc
+                    ['wbtc', 'cbbtc', 'tbtc'].forEach(market => {
+                        const currentData = market === 'wbtc' ? wbtc : (market === 'cbbtc' ? cbbtc : tbtc);
+                        const currentAdminFee = currentData.admin_fees_btc || 0;
+                        const prevAdminFee = prevAdminFees[market];
+
+                        // Обнаружение сброса: предыдущее значение было высоким, текущее упало
+                        if (prevAdminFee > 0.5 && currentAdminFee < prevAdminFee * 0.5) {
+                            cumulativeAdminFeeWithdrawals += prevAdminFee;
+                        }
+
+                        prevAdminFees[market] = currentAdminFee;
+                    });
+                } else {
+                    // Для NEW контрактов используем admin_fee_withdrawals_btc
+                    const adminFeeWithdrawals = (wbtc.admin_fee_withdrawals_btc || 0) +
+                                                (cbbtc.admin_fee_withdrawals_btc || 0) +
+                                                (tbtc.admin_fee_withdrawals_btc || 0);
+                    cumulativeAdminFeeWithdrawals += adminFeeWithdrawals;
+                }
 
                 const adminFees = (wbtc.admin_fees_btc || 0) +
                                  (cbbtc.admin_fees_btc || 0) +
@@ -397,19 +471,26 @@
                 // Накапливаем
                 cumulativeDeposits += deposits;
                 cumulativeWithdrawals += withdrawals;
-                cumulativeAdminFeeWithdrawals += adminFeeWithdrawals;
 
-                // Добавляем admin fee withdrawals к withdrawals если checkbox активен
+                // Обработка чекбокса "Include Admin Fee Withdrawals"
                 const includeAdminFeeWithdrawals = document.getElementById('toggleAdminFeeWithdrawals')?.checked ?? true;
-                const effectiveWithdrawals = includeAdminFeeWithdrawals
-                    ? cumulativeWithdrawals + cumulativeAdminFeeWithdrawals
-                    : cumulativeWithdrawals;
+
+                let effectiveWithdrawals;
+                if (currentContractVersion === 'old') {
+                    // Для OLD: admin fees уже в withdrawals, вычитаем если чекбокс ВЫКЛЮЧЕН
+                    effectiveWithdrawals = includeAdminFeeWithdrawals
+                        ? cumulativeWithdrawals
+                        : cumulativeWithdrawals - cumulativeAdminFeeWithdrawals;
+                } else {
+                    // Для NEW: добавляем admin fee withdrawals если чекбокс ВКЛЮЧЕН
+                    effectiveWithdrawals = includeAdminFeeWithdrawals
+                        ? cumulativeWithdrawals + cumulativeAdminFeeWithdrawals
+                        : cumulativeWithdrawals;
+                }
 
                 // Вычисляем прибыль
-                // Если включен checkbox, компенсируем уменьшение adminFees добавлением выведенной суммы
-                const effectiveAdminFees = includeAdminFeeWithdrawals
-                    ? adminFees + cumulativeAdminFeeWithdrawals
-                    : adminFees;
+                // Admin fees всегда только текущие невыведенные (для обоих типов контрактов)
+                const effectiveAdminFees = adminFees;
                 const netDeposited = cumulativeDeposits - effectiveWithdrawals;
                 const profit = totalWithdrawable - netDeposited + effectiveAdminFees;
 
@@ -483,11 +564,11 @@
             // Загрузка данных YB emission (из JS файла для решения CORS проблемы)
             let ybEmissionDataArray = null;
             try {
-                if (typeof ybEmissionData !== 'undefined') {
-                    ybEmissionDataArray = ybEmissionData;
+                if (ybEmissionDataSource) {
+                    ybEmissionDataArray = ybEmissionDataSource;
                     console.log('YB emission data loaded:', ybEmissionDataArray.length, 'points');
                 } else {
-                    console.log('YB emission data not available: ybEmissionData is undefined');
+                    console.log('YB emission data not available');
                 }
             } catch (error) {
                 console.log('YB emission data not available:', error.message);
@@ -495,18 +576,25 @@
 
             // Подготовка данных YB emission для суммирования с интерполяцией (по рынкам)
             if (ybEmissionDataArray) {
+                // Фильтруем записи без BTC полей (неполные записи)
+                const validYbData = ybEmissionDataArray.filter(item => 
+                    item.cumulative_WBTC_btc !== undefined &&
+                    item.cumulative_cbBTC_btc !== undefined &&
+                    item.cumulative_tBTC_btc !== undefined
+                );
+
                 // Создаем массивы с данными для каждого рынка (hourly данные - используем timestamp напрямую)
-                const ybDatesWbtc = ybEmissionDataArray.map(item => ({
+                const ybDatesWbtc = validYbData.map(item => ({
                     timestamp: item.timestamp,  // Используем timestamp напрямую (hourly данные)
                     value: item.cumulative_WBTC_btc || 0
                 })).sort((a, b) => a.timestamp - b.timestamp);
 
-                const ybDatesCbbtc = ybEmissionDataArray.map(item => ({
+                const ybDatesCbbtc = validYbData.map(item => ({
                     timestamp: item.timestamp,
                     value: item.cumulative_cbBTC_btc || 0
                 })).sort((a, b) => a.timestamp - b.timestamp);
 
-                const ybDatesTbtc = ybEmissionDataArray.map(item => ({
+                const ybDatesTbtc = validYbData.map(item => ({
                     timestamp: item.timestamp,
                     value: item.cumulative_tBTC_btc || 0
                 })).sort((a, b) => a.timestamp - b.timestamp);
@@ -996,6 +1084,9 @@
                 let cumulativeWithdrawals = 0;
                 let cumulativeAdminFeeWithdrawals = 0;
 
+                // Для отслеживания пиков admin fees в OLD контрактах
+                let prevAdminFees = { wbtc: 0, cbbtc: 0, tbtc: 0 };
+
                 fullRecalculatedData = fullProfitData.map((point, i) => {
                     const wbtc = fullWbtcData[i];
                     const cbbtc = fullCbbtcData[i];
@@ -1006,34 +1097,60 @@
                     let deposits = 0;
                     let withdrawals = 0;
                     let adminFees = 0;
-                    let adminFeeWithdrawals = 0;
 
                     if (includeWbtc) {
                         withdrawable += wbtc.total_withdrawable_btc || 0;
                         deposits += wbtc.deposits_btc || 0;
                         withdrawals += wbtc.withdrawals_btc || 0;
                         adminFees += wbtc.admin_fees_btc || 0;
-                        adminFeeWithdrawals += wbtc.admin_fee_withdrawals_btc || 0;
                     }
                     if (includeCbbtc) {
                         withdrawable += cbbtc.total_withdrawable_btc || 0;
                         deposits += cbbtc.deposits_btc || 0;
                         withdrawals += cbbtc.withdrawals_btc || 0;
                         adminFees += cbbtc.admin_fees_btc || 0;
-                        adminFeeWithdrawals += cbbtc.admin_fee_withdrawals_btc || 0;
                     }
                     if (includeTbtc) {
                         withdrawable += tbtc.total_withdrawable_btc || 0;
                         deposits += tbtc.deposits_btc || 0;
                         withdrawals += tbtc.withdrawals_btc || 0;
                         adminFees += tbtc.admin_fees_btc || 0;
-                        adminFeeWithdrawals += tbtc.admin_fee_withdrawals_btc || 0;
+                    }
+
+                    // Обработка admin_fee_withdrawals
+                    if (currentContractVersion === 'old') {
+                        // Для OLD контрактов отслеживаем пики admin_fees перед сбросами
+                        const markets = [
+                            { name: 'wbtc', data: wbtc, include: includeWbtc },
+                            { name: 'cbbtc', data: cbbtc, include: includeCbbtc },
+                            { name: 'tbtc', data: tbtc, include: includeTbtc }
+                        ];
+
+                        markets.forEach(({ name, data, include }) => {
+                            if (include) {
+                                const currentAdminFee = data.admin_fees_btc || 0;
+                                const prevAdminFee = prevAdminFees[name];
+
+                                // Обнаружение сброса
+                                if (prevAdminFee > 0.5 && currentAdminFee < prevAdminFee * 0.5) {
+                                    cumulativeAdminFeeWithdrawals += prevAdminFee;
+                                }
+
+                                prevAdminFees[name] = currentAdminFee;
+                            }
+                        });
+                    } else {
+                        // Для NEW контрактов используем admin_fee_withdrawals_btc
+                        let adminFeeWithdrawals = 0;
+                        if (includeWbtc) adminFeeWithdrawals += wbtc.admin_fee_withdrawals_btc || 0;
+                        if (includeCbbtc) adminFeeWithdrawals += cbbtc.admin_fee_withdrawals_btc || 0;
+                        if (includeTbtc) adminFeeWithdrawals += tbtc.admin_fee_withdrawals_btc || 0;
+                        cumulativeAdminFeeWithdrawals += adminFeeWithdrawals;
                     }
 
                     // Накапливаем депозиты/выводы
                     cumulativeDeposits += deposits;
                     cumulativeWithdrawals += withdrawals;
-                    cumulativeAdminFeeWithdrawals += adminFeeWithdrawals;
 
                     // Вычисляем баланс на основе выбранных компонентов
                     let profit = 0;
@@ -1049,9 +1166,18 @@
                     let adminFeeWithdrawalsAdded = false;
 
                     if (includeWithdrawals) {
-                        const effectiveWithdrawals = includeAdminFeeWithdrawals
-                            ? cumulativeWithdrawals + cumulativeAdminFeeWithdrawals
-                            : cumulativeWithdrawals;
+                        let effectiveWithdrawals;
+                        if (currentContractVersion === 'old') {
+                            // Для OLD: admin fees уже в withdrawals, вычитаем если чекбокс ВЫКЛЮЧЕН
+                            effectiveWithdrawals = includeAdminFeeWithdrawals
+                                ? cumulativeWithdrawals
+                                : cumulativeWithdrawals - cumulativeAdminFeeWithdrawals;
+                        } else {
+                            // Для NEW: добавляем admin fee withdrawals если чекбокс ВКЛЮЧЕН
+                            effectiveWithdrawals = includeAdminFeeWithdrawals
+                                ? cumulativeWithdrawals + cumulativeAdminFeeWithdrawals
+                                : cumulativeWithdrawals;
+                        }
                         profit += effectiveWithdrawals;
                         if (includeAdminFeeWithdrawals) {
                             adminFeeWithdrawalsAdded = true;
@@ -1059,13 +1185,8 @@
                     }
 
                     if (includeAdminFees) {
-                        const effectiveAdminFees = includeAdminFeeWithdrawals
-                            ? adminFees + cumulativeAdminFeeWithdrawals
-                            : adminFees;
-                        profit += effectiveAdminFees;
-                        if (includeAdminFeeWithdrawals) {
-                            adminFeeWithdrawalsAdded = true;
-                        }
+                        // Admin fees всегда только текущие невыведенные (для обоих типов контрактов)
+                        profit += adminFees;
                     }
 
                     // Если admin fee withdrawals включены, но они еще не были добавлены ни через withdrawals, ни через admin fees
@@ -1128,6 +1249,14 @@
                     (lastPoint.deposits - lastPoint.withdrawals).toFixed(2) + ' BTC';
                 document.querySelector('#metricsBox .metric-row:nth-child(6) .metric-value').textContent =
                     lastPoint.admin_fee_withdrawals.toFixed(4) + ' BTC';
+                
+                // Обновляем YB Emission метрику
+                if (lastPoint.yb_emission_wbtc_btc !== undefined) {
+                    const totalYbEmission = (lastPoint.yb_emission_wbtc_btc || 0) +
+                                           (lastPoint.yb_emission_cbbtc_btc || 0) +
+                                           (lastPoint.yb_emission_tbtc_btc || 0);
+                    document.getElementById('ybEmissionValue').textContent = totalYbEmission.toFixed(4) + ' BTC';
+                }
 
                 // Обновляем график
                 updateChart();
@@ -1175,7 +1304,6 @@
     </script>
 </body>
 </html>
-
 
 
 
