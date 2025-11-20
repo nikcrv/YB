@@ -1,3 +1,4 @@
+// Last updated: 2025-11-20 14:39:51 UTC
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -285,10 +286,10 @@
     </div>
 
     <!-- Load SYNCHRONIZED data files -->
-    <script src="revenue_yield_data_sync.js"></script>
-    <script src="revenue_yield_cbbtc_sync.js"></script>
-    <script src="revenue_yield_tbtc_sync.js"></script>
-    <script src="yb_emission_data.js"></script>
+    <script src="revenue_yield_wbtc_sync.js?v=6"></script>
+    <script src="revenue_yield_cbbtc_sync.js?v=6"></script>
+    <script src="revenue_yield_tbtc_sync.js?v=6"></script>
+    <script src="yb_emission_data.js?v=6"></script>
 
     <script>
     window.addEventListener('load', async function() {
@@ -296,14 +297,14 @@
             console.log('Loading synchronized data...');
 
             // Проверяем что данные загружены
-            if (typeof yieldData === 'undefined' ||
+            if (typeof yieldData_wbtc === 'undefined' ||
                 typeof yieldData_cbbtc === 'undefined' ||
                 typeof yieldData_tbtc === 'undefined') {
                 throw new Error('Synchronized data files not found. Run: python collect_sync.py');
             }
 
             // Данные УЖЕ синхронизированы - просто складываем!
-            const wbtcData = yieldData.data;
+            const wbtcData = yieldData_wbtc.data;
             const cbbtcData = yieldData_cbbtc.data;
             const tbtcData = yieldData_tbtc.data;
 
