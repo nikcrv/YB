@@ -1,20 +1,20 @@
-// Last updated: 2025-11-20 11:02:33 UTC
+// Last updated: 2025-11-20 12:33:43 UTC
 const yieldData_syb_wbtc = {
   "metadata": {
     "contract": "0xbc56e3edB67b56d598aCE07668b138815F45d7aa",
     "start_date": "2025-11-12T20:08:23",
-    "end_date": "2025-11-20T15:00:59",
-    "data_points": 188,
+    "end_date": "2025-11-20T16:32:11",
+    "data_points": 190,
     "step_seconds": 3600
   },
   "metrics": {
-    "total_return": -0.02352022450764074,
-    "total_return_pct": -2.3520224507640743,
-    "apr": -0.6723151744501118,
-    "apr_pct": -67.23151744501118,
-    "days": 7.786527777777778,
+    "total_return": -0.023020446528899546,
+    "total_return_pct": -2.3020446528899545,
+    "apr": -0.661391023164059,
+    "apr_pct": -66.1391023164059,
+    "days": 7.849861111111111,
     "start_pps": 0.99936376,
-    "end_pps": 0.9758585
+    "end_pps": 0.97635796
   },
   "data": [
     {
@@ -1888,13 +1888,33 @@ const yieldData_syb_wbtc = {
       "pps_yb": 0.9843328425489919
     },
     {
-      "block": 23839817,
-      "timestamp": 1763636459,
-      "datetime": "2025-11-20T15:00:59",
-      "pps_btc": 0.9758585,
+      "block": 23839854,
+      "timestamp": 1763636903,
+      "datetime": "2025-11-20T15:08:23",
+      "pps_btc": 0.97588118,
       "ret_step": null,
       "ret_step_pct": null,
-      "btc_price": 91818.1874727911,
+      "btc_price": 91718.60185264867,
+      "pps_yb": 0.9843328425489919
+    },
+    {
+      "block": 23840152,
+      "timestamp": 1763640503,
+      "datetime": "2025-11-20T16:08:23",
+      "pps_btc": 0.97624328,
+      "ret_step": 0.00037104927056795994,
+      "ret_step_pct": 0.037104927056795994,
+      "btc_price": 91901.93837343162,
+      "pps_yb": 0.9843328425489919
+    },
+    {
+      "block": 23840271,
+      "timestamp": 1763641931,
+      "datetime": "2025-11-20T16:32:11",
+      "pps_btc": 0.97635796,
+      "ret_step": 0.00011747071897898237,
+      "ret_step_pct": 0.011747071897898236,
+      "btc_price": 91901.93837343162,
       "pps_yb": 0.9843328425489919
     }
   ]
