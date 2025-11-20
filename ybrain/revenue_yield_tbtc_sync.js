@@ -1,10 +1,10 @@
-// Last updated: 2025-11-20 12:45:51 UTC
+// Last updated: 2025-11-20 13:41:28 UTC
 const yieldData_tbtc = {
   "metadata": {
     "market": "tBTC",
     "contract": "0xaC0a340C1644321D0BBc6404946d828c1EBfAC92",
-    "collected": "2025-11-20T16:44:35.183507",
-    "points": 1283,
+    "collected": "2025-11-20T17:40:11.829776",
+    "points": 1288,
     "synchronized": true,
     "transaction_based": true,
     "zero_loss": true,
@@ -11553,6 +11553,51 @@ const yieldData_tbtc = {
       "block": 23840313,
       "timestamp": 1763642447,
       "total_withdrawable_btc": 446.79282422231995,
+      "deposits_btc": 0.0,
+      "withdrawals_btc": 0.0,
+      "admin_fee_withdrawals_btc": 0.0,
+      "admin_fees_btc": 1.5915418743327279
+    },
+    {
+      "block": 23840390,
+      "timestamp": 1763643371,
+      "total_withdrawable_btc": 446.7906420593301,
+      "deposits_btc": 0.0,
+      "withdrawals_btc": 0.0,
+      "admin_fee_withdrawals_btc": 0.0,
+      "admin_fees_btc": 1.5915418743327279
+    },
+    {
+      "block": 23840410,
+      "timestamp": 1763643611,
+      "total_withdrawable_btc": 446.78977762361575,
+      "deposits_btc": 0.0,
+      "withdrawals_btc": 0.0,
+      "admin_fee_withdrawals_btc": 0.0,
+      "admin_fees_btc": 1.5915418743327279
+    },
+    {
+      "block": 23840495,
+      "timestamp": 1763644643,
+      "total_withdrawable_btc": 446.7867219740067,
+      "deposits_btc": 0.0,
+      "withdrawals_btc": 0.0,
+      "admin_fee_withdrawals_btc": 0.0,
+      "admin_fees_btc": 1.5915418743327279
+    },
+    {
+      "block": 23840570,
+      "timestamp": 1763645543,
+      "total_withdrawable_btc": 446.7844929624487,
+      "deposits_btc": 0.0,
+      "withdrawals_btc": 0.0,
+      "admin_fee_withdrawals_btc": 0.0,
+      "admin_fees_btc": 1.5915418743327279
+    },
+    {
+      "block": 23840582,
+      "timestamp": 1763645687,
+      "total_withdrawable_btc": 446.78420960119246,
       "deposits_btc": 0.0,
       "withdrawals_btc": 0.0,
       "admin_fee_withdrawals_btc": 0.0,
