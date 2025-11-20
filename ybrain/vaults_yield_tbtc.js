@@ -1,20 +1,20 @@
-// Last updated: 2025-11-20 13:42:00 UTC
+// Last updated: 2025-11-20 13:44:17 UTC
 const yieldData_tbtc = {
   "metadata": {
     "contract": "0xaC0a340C1644321D0BBc6404946d828c1EBfAC92",
     "start_date": "2025-11-12T20:14:11",
-    "end_date": "2025-11-20T17:40:35",
+    "end_date": "2025-11-20T17:42:47",
     "data_points": 191,
     "step_seconds": 3600
   },
   "metrics": {
-    "total_return": -0.015097600924531236,
-    "total_return_pct": -1.5097600924531236,
-    "apr": -0.5051300481219828,
-    "apr_pct": -50.51300481219828,
-    "days": 7.8933333333333335,
+    "total_return": -0.015098263259849335,
+    "total_return_pct": -1.5098263259849336,
+    "apr": -0.5050780644740264,
+    "apr_pct": -50.507806447402636,
+    "days": 7.894861111111111,
     "start_pps": 0.9995132006214766,
-    "end_pps": 0.9844229491996926
+    "end_pps": 0.9844222871867989
   },
   "data": [
     {
@@ -1715,7 +1715,7 @@ const yieldData_tbtc = {
       "datetime": "2025-11-20T16:14:35",
       "pps_btc": 0.9844506421159432,
       "ret_step": -1.917878501677452e-05,
-      "ret_step_pct": -0.0019178785016774522,
+      "ret_step_pct": -0.001917878501677452,
       "btc_price": 91901.93837343162
     },
     {
@@ -1723,17 +1723,17 @@ const yieldData_tbtc = {
       "timestamp": 1763644475,
       "datetime": "2025-11-20T17:14:35",
       "pps_btc": 0.9844312234891572,
-      "ret_step": -1.9725343206882668e-05,
-      "ret_step_pct": -0.0019725343206882665,
+      "ret_step": null,
+      "ret_step_pct": null,
       "btc_price": 91798.67091546213
     },
     {
-      "block": 23840611,
-      "timestamp": 1763646035,
-      "datetime": "2025-11-20T17:40:35",
-      "pps_btc": 0.9844229491996926,
-      "ret_step": -8.40514732487265e-06,
-      "ret_step_pct": -0.000840514732487265,
+      "block": 23840622,
+      "timestamp": 1763646167,
+      "datetime": "2025-11-20T17:42:47",
+      "pps_btc": 0.9844222871867989,
+      "ret_step": null,
+      "ret_step_pct": null,
       "btc_price": 91798.67091546213
     }
   ]
