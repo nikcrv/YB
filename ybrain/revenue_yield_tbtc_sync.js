@@ -1,10 +1,10 @@
-// Last updated: 2025-11-20 11:01:53 UTC
+// Last updated: 2025-11-20 12:32:52 UTC
 const yieldData_tbtc = {
   "metadata": {
     "market": "tBTC",
     "contract": "0xaC0a340C1644321D0BBc6404946d828c1EBfAC92",
-    "collected": "2025-11-20T15:00:44.815208",
-    "points": 1272,
+    "collected": "2025-11-20T16:31:09.039598",
+    "points": 1279,
     "synchronized": true,
     "transaction_based": true,
     "zero_loss": true,
@@ -11454,6 +11454,69 @@ const yieldData_tbtc = {
       "block": 23839813,
       "timestamp": 1763636411,
       "total_withdrawable_btc": 446.80687883509063,
+      "deposits_btc": 0.0,
+      "withdrawals_btc": 0.0,
+      "admin_fee_withdrawals_btc": 0.0,
+      "admin_fees_btc": 1.5915418743327279
+    },
+    {
+      "block": 23839832,
+      "timestamp": 1763636639,
+      "total_withdrawable_btc": 446.8065842655084,
+      "deposits_btc": 0.0,
+      "withdrawals_btc": 0.0,
+      "admin_fee_withdrawals_btc": 0.0,
+      "admin_fees_btc": 1.5915418743327279
+    },
+    {
+      "block": 23839852,
+      "timestamp": 1763636879,
+      "total_withdrawable_btc": 446.8060335240301,
+      "deposits_btc": 0.0,
+      "withdrawals_btc": 0.0,
+      "admin_fee_withdrawals_btc": 0.0,
+      "admin_fees_btc": 1.5915418743327279
+    },
+    {
+      "block": 23839937,
+      "timestamp": 1763637899,
+      "total_withdrawable_btc": 446.8026732118356,
+      "deposits_btc": 0.0,
+      "withdrawals_btc": 0.0,
+      "admin_fee_withdrawals_btc": 0.0,
+      "admin_fees_btc": 1.5915418743327279
+    },
+    {
+      "block": 23839945,
+      "timestamp": 1763637995,
+      "total_withdrawable_btc": 446.80241956363426,
+      "deposits_btc": 0.0,
+      "withdrawals_btc": 0.0,
+      "admin_fee_withdrawals_btc": 0.0,
+      "admin_fees_btc": 1.5915418743327279
+    },
+    {
+      "block": 23840111,
+      "timestamp": 1763640011,
+      "total_withdrawable_btc": 446.79779534012926,
+      "deposits_btc": 0.0,
+      "withdrawals_btc": 0.0,
+      "admin_fee_withdrawals_btc": 0.0,
+      "admin_fees_btc": 1.5915418743327279
+    },
+    {
+      "block": 23840209,
+      "timestamp": 1763641187,
+      "total_withdrawable_btc": 446.79530093336916,
+      "deposits_btc": 0.0,
+      "withdrawals_btc": 0.0,
+      "admin_fee_withdrawals_btc": 0.0,
+      "admin_fees_btc": 1.5915418743327279
+    },
+    {
+      "block": 23840239,
+      "timestamp": 1763641547,
+      "total_withdrawable_btc": 446.7945863532864,
       "deposits_btc": 0.0,
       "withdrawals_btc": 0.0,
       "admin_fee_withdrawals_btc": 0.0,
