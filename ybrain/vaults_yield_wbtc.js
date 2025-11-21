@@ -1,20 +1,20 @@
-// Last updated: 2025-11-21 18:05:00 UTC
+// Last updated: 2025-11-21 18:19:44 UTC
 const yieldData_wbtc = {
   "metadata": {
     "contract": "0xfBF3C16676055776Ab9B286492D8f13e30e2E763",
     "start_date": "2025-11-12T20:07:11",
-    "end_date": "2025-11-21T22:02:23",
-    "data_points": 219,
+    "end_date": "2025-11-21T22:17:11",
+    "data_points": 220,
     "step_seconds": 3600
   },
   "metrics": {
-    "total_return": -0.04662379742962687,
-    "total_return_pct": -4.662379742962687,
-    "apr": -0.8532893340603652,
-    "apr_pct": -85.32893340603651,
-    "days": 9.08,
+    "total_return": -0.0471335201853153,
+    "total_return_pct": -4.7133520185315305,
+    "apr": -0.856094192652737,
+    "apr_pct": -85.6094192652737,
+    "days": 9.090277777777779,
     "start_pps": 0.99938642,
-    "end_pps": 0.95279123
+    "end_pps": 0.95228182
   },
   "data": [
     {
@@ -1980,12 +1980,21 @@ const yieldData_wbtc = {
       "btc_price": 84739.6255398434
     },
     {
-      "block": 23849027,
-      "timestamp": 1763748143,
-      "datetime": "2025-11-21T22:02:23",
-      "pps_btc": 0.95279123,
+      "block": 23849050,
+      "timestamp": 1763748431,
+      "datetime": "2025-11-21T22:07:11",
+      "pps_btc": 0.952799,
       "ret_step": null,
       "ret_step_pct": null,
+      "btc_price": 84913.0729874851
+    },
+    {
+      "block": 23849100,
+      "timestamp": 1763749031,
+      "datetime": "2025-11-21T22:17:11",
+      "pps_btc": 0.95228182,
+      "ret_step": -0.0005428007376162234,
+      "ret_step_pct": -0.05428007376162233,
       "btc_price": 84913.0729874851
     }
   ]
