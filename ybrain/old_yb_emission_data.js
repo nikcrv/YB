@@ -1,5 +1,5 @@
-// Last updated: 2025-11-21 13:33:08 UTC
-const ybEmissionData = [
+// Last updated: 2025-11-21 13:38:16 UTC
+const old_ybEmissionData = [
   {
     "timestamp": 1760508000,
     "datetime": "2025-10-15T06:00:00",
