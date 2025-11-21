@@ -1,3 +1,4 @@
+// Last updated: 2025-11-21 17:26:20 UTC
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -303,7 +304,7 @@
                         <button class="market-btn" data-market="syb_cbbtc" onclick="switchMarket('syb_cbbtc')">syb-cbBTC</button>
                         <button class="market-btn" data-market="syb_wbtc" onclick="switchMarket('syb_wbtc')">syb-WBTC</button>
                         <button class="market-btn" data-market="syb_tbtc" onclick="switchMarket('syb_tbtc')">syb-tBTC</button>
-                        <a href="/YB/ybrain/dashboard" style="padding: 10px 20px; background: #10b981; border: none; border-radius: 6px; color: #0f172a; font-weight: 600; cursor: pointer; text-decoration: none; display: inline-block; transition: all 0.2s;" onmouseover="this.style.background='#059669'" onmouseout="this.style.background='#10b981'">📊 Dashboard</a>
+                        <a href="dashboard.html" style="padding: 10px 20px; background: #10b981; border: none; border-radius: 6px; color: #0f172a; font-weight: 600; cursor: pointer; text-decoration: none; display: inline-block; transition: all 0.2s;" onmouseover="this.style.background='#059669'" onmouseout="this.style.background='#10b981'">📊 Dashboard</a>
                     </div>
                 </div>
             </div>
@@ -414,37 +415,37 @@
     </script>
 
     <!-- PPS Data Files -->
-    <script src="pps_collector/pps_data_wbtc.js?v=1"></script>
+    <script src="pps_data_wbtc.js?v=1"></script>
     <script>
         var ppsData_wbtc = JSON.parse(JSON.stringify(ppsData));
         console.log('Loaded PPS WBTC data:', ppsData_wbtc.data.length, 'points');
     </script>
 
-    <script src="pps_collector/pps_data_cbbtc.js?v=1"></script>
+    <script src="pps_data_cbbtc.js?v=1"></script>
     <script>
         var ppsData_cbbtc = JSON.parse(JSON.stringify(ppsData));
         console.log('Loaded PPS cbBTC data:', ppsData_cbbtc.data.length, 'points');
     </script>
 
-    <script src="pps_collector/pps_data_tbtc.js?v=1"></script>
+    <script src="pps_data_tbtc.js?v=1"></script>
     <script>
         var ppsData_tbtc = JSON.parse(JSON.stringify(ppsData));
         console.log('Loaded PPS tBTC data:', ppsData_tbtc.data.length, 'points');
     </script>
 
-    <script src="pps_collector/pps_data_old_wbtc.js?v=1"></script>
+    <script src="pps_data_old_wbtc.js?v=1"></script>
     <script>
         var ppsData_old_wbtc = JSON.parse(JSON.stringify(ppsData));
         console.log('Loaded OLD PPS WBTC data:', ppsData_old_wbtc.data.length, 'points');
     </script>
 
-    <script src="pps_collector/pps_data_old_cbbtc.js?v=1"></script>
+    <script src="pps_data_old_cbbtc.js?v=1"></script>
     <script>
         var ppsData_old_cbbtc = JSON.parse(JSON.stringify(ppsData));
         console.log('Loaded OLD PPS cbBTC data:', ppsData_old_cbbtc.data.length, 'points');
     </script>
 
-    <script src="pps_collector/pps_data_old_tbtc.js?v=1"></script>
+    <script src="pps_data_old_tbtc.js?v=1"></script>
     <script>
         var ppsData_old_tbtc = JSON.parse(JSON.stringify(ppsData));
         console.log('Loaded OLD PPS tBTC data:', ppsData_old_tbtc.data.length, 'points');
