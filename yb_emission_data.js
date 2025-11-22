@@ -1,4 +1,4 @@
-// Last updated: 2025-11-22 21:17:50 UTC
+// Last updated: 2025-11-22 21:36:36 UTC
 const ybEmissionData = [
   {
     "timestamp": 1762963200,
@@ -3499,13 +3499,13 @@ const ybEmissionData = [
   {
     "timestamp": 1763845200,
     "datetime": "2025-11-22T21:00:00",
-    "hourly_cbBTC": 0,
-    "hourly_WBTC": 189.77454776672116,
-    "hourly_tBTC": 0,
-    "hourly_total": 189.77454776672116,
-    "cumulative_cbBTC": 453288.6271625001,
-    "cumulative_WBTC": 528745.8481936491,
-    "cumulative_tBTC": 468616.3130994601,
-    "cumulative_total": 1450650.7884556092
+    "hourly_cbBTC": 1521.2325982197235,
+    "hourly_WBTC": 1043.7556252926893,
+    "hourly_tBTC": 1561.6744131217129,
+    "hourly_total": 4126.662636634126,
+    "cumulative_cbBTC": 454809.8597607198,
+    "cumulative_WBTC": 529599.829271175,
+    "cumulative_tBTC": 470177.9875125818,
+    "cumulative_total": 1454587.6765444765
   }
 ];
