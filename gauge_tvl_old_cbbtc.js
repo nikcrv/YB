@@ -1,0 +1,8973 @@
+// Last updated: 2025-11-22 17:01:06 UTC
+const gaugeTvlData_old_cbbtc = [
+  {
+    "block": 23434009,
+    "timestamp": 1758730343,
+    "datetime": "2025-09-24T16:12:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23434309,
+    "timestamp": 1758733967,
+    "datetime": "2025-09-24T17:12:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23434609,
+    "timestamp": 1758737615,
+    "datetime": "2025-09-24T18:13:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23434909,
+    "timestamp": 1758741227,
+    "datetime": "2025-09-24T19:13:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23435209,
+    "timestamp": 1758744839,
+    "datetime": "2025-09-24T20:13:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23435509,
+    "timestamp": 1758748439,
+    "datetime": "2025-09-24T21:13:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23435809,
+    "timestamp": 1758752063,
+    "datetime": "2025-09-24T22:14:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23436109,
+    "timestamp": 1758755675,
+    "datetime": "2025-09-24T23:14:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23436409,
+    "timestamp": 1758759299,
+    "datetime": "2025-09-25T00:14:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23436709,
+    "timestamp": 1758762911,
+    "datetime": "2025-09-25T01:15:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23437009,
+    "timestamp": 1758766535,
+    "datetime": "2025-09-25T02:15:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23437309,
+    "timestamp": 1758770159,
+    "datetime": "2025-09-25T03:15:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23437609,
+    "timestamp": 1758773807,
+    "datetime": "2025-09-25T04:16:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23437909,
+    "timestamp": 1758777419,
+    "datetime": "2025-09-25T05:16:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23438209,
+    "timestamp": 1758781043,
+    "datetime": "2025-09-25T06:17:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23438509,
+    "timestamp": 1758784691,
+    "datetime": "2025-09-25T07:18:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23438809,
+    "timestamp": 1758788315,
+    "datetime": "2025-09-25T08:18:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23439109,
+    "timestamp": 1758791951,
+    "datetime": "2025-09-25T09:19:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23439409,
+    "timestamp": 1758795563,
+    "datetime": "2025-09-25T10:19:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23439709,
+    "timestamp": 1758799163,
+    "datetime": "2025-09-25T11:19:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23440009,
+    "timestamp": 1758802775,
+    "datetime": "2025-09-25T12:19:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23440309,
+    "timestamp": 1758806387,
+    "datetime": "2025-09-25T13:19:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23440609,
+    "timestamp": 1758809999,
+    "datetime": "2025-09-25T14:19:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23440909,
+    "timestamp": 1758813611,
+    "datetime": "2025-09-25T15:20:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23441209,
+    "timestamp": 1758817271,
+    "datetime": "2025-09-25T16:21:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23441509,
+    "timestamp": 1758820895,
+    "datetime": "2025-09-25T17:21:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23441809,
+    "timestamp": 1758824507,
+    "datetime": "2025-09-25T18:21:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23442109,
+    "timestamp": 1758828131,
+    "datetime": "2025-09-25T19:22:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23442409,
+    "timestamp": 1758831767,
+    "datetime": "2025-09-25T20:22:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23442709,
+    "timestamp": 1758835391,
+    "datetime": "2025-09-25T21:23:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23443009,
+    "timestamp": 1758839063,
+    "datetime": "2025-09-25T22:24:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23443309,
+    "timestamp": 1758842699,
+    "datetime": "2025-09-25T23:24:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23443609,
+    "timestamp": 1758846347,
+    "datetime": "2025-09-26T00:25:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23443909,
+    "timestamp": 1758849995,
+    "datetime": "2025-09-26T01:26:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23444209,
+    "timestamp": 1758853607,
+    "datetime": "2025-09-26T02:26:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23444509,
+    "timestamp": 1758857243,
+    "datetime": "2025-09-26T03:27:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23444809,
+    "timestamp": 1758860879,
+    "datetime": "2025-09-26T04:27:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23445109,
+    "timestamp": 1758864503,
+    "datetime": "2025-09-26T05:28:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23445409,
+    "timestamp": 1758868139,
+    "datetime": "2025-09-26T06:28:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23445709,
+    "timestamp": 1758871775,
+    "datetime": "2025-09-26T07:29:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23446009,
+    "timestamp": 1758875411,
+    "datetime": "2025-09-26T08:30:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23446309,
+    "timestamp": 1758879059,
+    "datetime": "2025-09-26T09:30:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23446609,
+    "timestamp": 1758882695,
+    "datetime": "2025-09-26T10:31:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23446909,
+    "timestamp": 1758886331,
+    "datetime": "2025-09-26T11:32:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23447209,
+    "timestamp": 1758889955,
+    "datetime": "2025-09-26T12:32:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23447509,
+    "timestamp": 1758893567,
+    "datetime": "2025-09-26T13:32:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23447809,
+    "timestamp": 1758897167,
+    "datetime": "2025-09-26T14:32:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23448109,
+    "timestamp": 1758900803,
+    "datetime": "2025-09-26T15:33:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23448409,
+    "timestamp": 1758904451,
+    "datetime": "2025-09-26T16:34:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23448709,
+    "timestamp": 1758908087,
+    "datetime": "2025-09-26T17:34:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23449009,
+    "timestamp": 1758911711,
+    "datetime": "2025-09-26T18:35:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23449309,
+    "timestamp": 1758915323,
+    "datetime": "2025-09-26T19:35:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23449609,
+    "timestamp": 1758918935,
+    "datetime": "2025-09-26T20:35:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23449909,
+    "timestamp": 1758922583,
+    "datetime": "2025-09-26T21:36:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23450209,
+    "timestamp": 1758926207,
+    "datetime": "2025-09-26T22:36:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23450509,
+    "timestamp": 1758929807,
+    "datetime": "2025-09-26T23:36:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23450809,
+    "timestamp": 1758933407,
+    "datetime": "2025-09-27T00:36:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23451109,
+    "timestamp": 1758937043,
+    "datetime": "2025-09-27T01:37:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23451409,
+    "timestamp": 1758940667,
+    "datetime": "2025-09-27T02:37:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23451709,
+    "timestamp": 1758944279,
+    "datetime": "2025-09-27T03:37:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23452009,
+    "timestamp": 1758947891,
+    "datetime": "2025-09-27T04:38:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23452309,
+    "timestamp": 1758951503,
+    "datetime": "2025-09-27T05:38:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23452609,
+    "timestamp": 1758955139,
+    "datetime": "2025-09-27T06:38:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23452909,
+    "timestamp": 1758958751,
+    "datetime": "2025-09-27T07:39:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23453209,
+    "timestamp": 1758962375,
+    "datetime": "2025-09-27T08:39:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23453509,
+    "timestamp": 1758965999,
+    "datetime": "2025-09-27T09:39:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23453809,
+    "timestamp": 1758969671,
+    "datetime": "2025-09-27T10:41:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23454109,
+    "timestamp": 1758973307,
+    "datetime": "2025-09-27T11:41:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23454409,
+    "timestamp": 1758976955,
+    "datetime": "2025-09-27T12:42:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23454709,
+    "timestamp": 1758980567,
+    "datetime": "2025-09-27T13:42:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23455009,
+    "timestamp": 1758984203,
+    "datetime": "2025-09-27T14:43:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23455309,
+    "timestamp": 1758987815,
+    "datetime": "2025-09-27T15:43:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23455609,
+    "timestamp": 1758991427,
+    "datetime": "2025-09-27T16:43:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23455909,
+    "timestamp": 1758995051,
+    "datetime": "2025-09-27T17:44:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23456209,
+    "timestamp": 1758998651,
+    "datetime": "2025-09-27T18:44:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23456509,
+    "timestamp": 1759002263,
+    "datetime": "2025-09-27T19:44:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23456809,
+    "timestamp": 1759005875,
+    "datetime": "2025-09-27T20:44:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23457109,
+    "timestamp": 1759009487,
+    "datetime": "2025-09-27T21:44:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23457409,
+    "timestamp": 1759013135,
+    "datetime": "2025-09-27T22:45:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23457709,
+    "timestamp": 1759016759,
+    "datetime": "2025-09-27T23:45:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23458009,
+    "timestamp": 1759020371,
+    "datetime": "2025-09-28T00:46:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23458309,
+    "timestamp": 1759023983,
+    "datetime": "2025-09-28T01:46:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23458609,
+    "timestamp": 1759027607,
+    "datetime": "2025-09-28T02:46:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23458909,
+    "timestamp": 1759031207,
+    "datetime": "2025-09-28T03:46:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23459209,
+    "timestamp": 1759034819,
+    "datetime": "2025-09-28T04:46:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23459509,
+    "timestamp": 1759038443,
+    "datetime": "2025-09-28T05:47:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23459809,
+    "timestamp": 1759042055,
+    "datetime": "2025-09-28T06:47:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23460109,
+    "timestamp": 1759045667,
+    "datetime": "2025-09-28T07:47:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23460409,
+    "timestamp": 1759049339,
+    "datetime": "2025-09-28T08:48:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23460709,
+    "timestamp": 1759052999,
+    "datetime": "2025-09-28T09:49:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23461009,
+    "timestamp": 1759056623,
+    "datetime": "2025-09-28T10:50:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23461309,
+    "timestamp": 1759060247,
+    "datetime": "2025-09-28T11:50:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23461609,
+    "timestamp": 1759063871,
+    "datetime": "2025-09-28T12:51:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23461909,
+    "timestamp": 1759067483,
+    "datetime": "2025-09-28T13:51:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23462209,
+    "timestamp": 1759071119,
+    "datetime": "2025-09-28T14:51:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23462509,
+    "timestamp": 1759074755,
+    "datetime": "2025-09-28T15:52:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23462809,
+    "timestamp": 1759078391,
+    "datetime": "2025-09-28T16:53:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23463109,
+    "timestamp": 1759082015,
+    "datetime": "2025-09-28T17:53:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23463409,
+    "timestamp": 1759085639,
+    "datetime": "2025-09-28T18:53:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23463709,
+    "timestamp": 1759089263,
+    "datetime": "2025-09-28T19:54:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23464009,
+    "timestamp": 1759092887,
+    "datetime": "2025-09-28T20:54:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23464309,
+    "timestamp": 1759096499,
+    "datetime": "2025-09-28T21:54:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23464609,
+    "timestamp": 1759100135,
+    "datetime": "2025-09-28T22:55:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23464909,
+    "timestamp": 1759103747,
+    "datetime": "2025-09-28T23:55:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23465209,
+    "timestamp": 1759107383,
+    "datetime": "2025-09-29T00:56:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23465509,
+    "timestamp": 1759110983,
+    "datetime": "2025-09-29T01:56:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23465809,
+    "timestamp": 1759114607,
+    "datetime": "2025-09-29T02:56:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23466109,
+    "timestamp": 1759118243,
+    "datetime": "2025-09-29T03:57:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23466409,
+    "timestamp": 1759121867,
+    "datetime": "2025-09-29T04:57:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23466709,
+    "timestamp": 1759125491,
+    "datetime": "2025-09-29T05:58:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23467009,
+    "timestamp": 1759129091,
+    "datetime": "2025-09-29T06:58:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23467309,
+    "timestamp": 1759132715,
+    "datetime": "2025-09-29T07:58:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23467609,
+    "timestamp": 1759136327,
+    "datetime": "2025-09-29T08:58:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23467909,
+    "timestamp": 1759139951,
+    "datetime": "2025-09-29T09:59:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23468209,
+    "timestamp": 1759143623,
+    "datetime": "2025-09-29T11:00:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23468509,
+    "timestamp": 1759147235,
+    "datetime": "2025-09-29T12:00:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23468809,
+    "timestamp": 1759150847,
+    "datetime": "2025-09-29T13:00:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23469109,
+    "timestamp": 1759154471,
+    "datetime": "2025-09-29T14:01:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23469409,
+    "timestamp": 1759158071,
+    "datetime": "2025-09-29T15:01:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23469709,
+    "timestamp": 1759161695,
+    "datetime": "2025-09-29T16:01:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23470009,
+    "timestamp": 1759165319,
+    "datetime": "2025-09-29T17:01:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23470309,
+    "timestamp": 1759168943,
+    "datetime": "2025-09-29T18:02:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23470609,
+    "timestamp": 1759172567,
+    "datetime": "2025-09-29T19:02:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23470909,
+    "timestamp": 1759176179,
+    "datetime": "2025-09-29T20:02:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23471209,
+    "timestamp": 1759179779,
+    "datetime": "2025-09-29T21:02:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23471509,
+    "timestamp": 1759183415,
+    "datetime": "2025-09-29T22:03:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23471809,
+    "timestamp": 1759187015,
+    "datetime": "2025-09-29T23:03:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23472109,
+    "timestamp": 1759190651,
+    "datetime": "2025-09-30T00:04:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23472409,
+    "timestamp": 1759194263,
+    "datetime": "2025-09-30T01:04:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23472709,
+    "timestamp": 1759197899,
+    "datetime": "2025-09-30T02:04:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23473009,
+    "timestamp": 1759201523,
+    "datetime": "2025-09-30T03:05:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23473309,
+    "timestamp": 1759205123,
+    "datetime": "2025-09-30T04:05:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23473609,
+    "timestamp": 1759208747,
+    "datetime": "2025-09-30T05:05:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23473909,
+    "timestamp": 1759212347,
+    "datetime": "2025-09-30T06:05:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23474209,
+    "timestamp": 1759215971,
+    "datetime": "2025-09-30T07:06:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23474509,
+    "timestamp": 1759219595,
+    "datetime": "2025-09-30T08:06:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23474809,
+    "timestamp": 1759223219,
+    "datetime": "2025-09-30T09:06:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23475109,
+    "timestamp": 1759226855,
+    "datetime": "2025-09-30T10:07:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23475409,
+    "timestamp": 1759230491,
+    "datetime": "2025-09-30T11:08:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23475709,
+    "timestamp": 1759234127,
+    "datetime": "2025-09-30T12:08:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23476009,
+    "timestamp": 1759237739,
+    "datetime": "2025-09-30T13:08:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23476309,
+    "timestamp": 1759241387,
+    "datetime": "2025-09-30T14:09:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23476609,
+    "timestamp": 1759245023,
+    "datetime": "2025-09-30T15:10:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23476909,
+    "timestamp": 1759248635,
+    "datetime": "2025-09-30T16:10:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23477209,
+    "timestamp": 1759252235,
+    "datetime": "2025-09-30T17:10:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23477509,
+    "timestamp": 1759255871,
+    "datetime": "2025-09-30T18:11:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23477809,
+    "timestamp": 1759259471,
+    "datetime": "2025-09-30T19:11:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23478109,
+    "timestamp": 1759263083,
+    "datetime": "2025-09-30T20:11:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23478409,
+    "timestamp": 1759266683,
+    "datetime": "2025-09-30T21:11:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23478709,
+    "timestamp": 1759270331,
+    "datetime": "2025-09-30T22:12:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23479009,
+    "timestamp": 1759273991,
+    "datetime": "2025-09-30T23:13:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23479309,
+    "timestamp": 1759277591,
+    "datetime": "2025-10-01T00:13:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23479609,
+    "timestamp": 1759281227,
+    "datetime": "2025-10-01T01:13:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23479909,
+    "timestamp": 1759284851,
+    "datetime": "2025-10-01T02:14:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23480209,
+    "timestamp": 1759288487,
+    "datetime": "2025-10-01T03:14:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23480509,
+    "timestamp": 1759292123,
+    "datetime": "2025-10-01T04:15:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23480809,
+    "timestamp": 1759295747,
+    "datetime": "2025-10-01T05:15:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23481109,
+    "timestamp": 1759299359,
+    "datetime": "2025-10-01T06:15:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23481409,
+    "timestamp": 1759302971,
+    "datetime": "2025-10-01T07:16:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23481709,
+    "timestamp": 1759306619,
+    "datetime": "2025-10-01T08:16:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23482009,
+    "timestamp": 1759310243,
+    "datetime": "2025-10-01T09:17:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23482309,
+    "timestamp": 1759313903,
+    "datetime": "2025-10-01T10:18:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23482609,
+    "timestamp": 1759317539,
+    "datetime": "2025-10-01T11:18:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23482909,
+    "timestamp": 1759321199,
+    "datetime": "2025-10-01T12:19:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23483209,
+    "timestamp": 1759324811,
+    "datetime": "2025-10-01T13:20:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23483509,
+    "timestamp": 1759328447,
+    "datetime": "2025-10-01T14:20:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23483809,
+    "timestamp": 1759332071,
+    "datetime": "2025-10-01T15:21:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23484109,
+    "timestamp": 1759335695,
+    "datetime": "2025-10-01T16:21:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23484409,
+    "timestamp": 1759339307,
+    "datetime": "2025-10-01T17:21:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23484709,
+    "timestamp": 1759342931,
+    "datetime": "2025-10-01T18:22:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23485009,
+    "timestamp": 1759346603,
+    "datetime": "2025-10-01T19:23:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23485309,
+    "timestamp": 1759350227,
+    "datetime": "2025-10-01T20:23:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23485609,
+    "timestamp": 1759353887,
+    "datetime": "2025-10-01T21:24:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23485909,
+    "timestamp": 1759357511,
+    "datetime": "2025-10-01T22:25:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23486209,
+    "timestamp": 1759361111,
+    "datetime": "2025-10-01T23:25:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23486509,
+    "timestamp": 1759364711,
+    "datetime": "2025-10-02T00:25:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23486809,
+    "timestamp": 1759368323,
+    "datetime": "2025-10-02T01:25:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23487109,
+    "timestamp": 1759371935,
+    "datetime": "2025-10-02T02:25:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23487409,
+    "timestamp": 1759375559,
+    "datetime": "2025-10-02T03:25:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23487709,
+    "timestamp": 1759379183,
+    "datetime": "2025-10-02T04:26:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23488009,
+    "timestamp": 1759382807,
+    "datetime": "2025-10-02T05:26:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23488309,
+    "timestamp": 1759386431,
+    "datetime": "2025-10-02T06:27:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23488609,
+    "timestamp": 1759390055,
+    "datetime": "2025-10-02T07:27:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23488909,
+    "timestamp": 1759393667,
+    "datetime": "2025-10-02T08:27:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23489209,
+    "timestamp": 1759397339,
+    "datetime": "2025-10-02T09:28:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23489509,
+    "timestamp": 1759400975,
+    "datetime": "2025-10-02T10:29:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23489809,
+    "timestamp": 1759404599,
+    "datetime": "2025-10-02T11:29:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23490109,
+    "timestamp": 1759408223,
+    "datetime": "2025-10-02T12:30:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23490409,
+    "timestamp": 1759411823,
+    "datetime": "2025-10-02T13:30:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23490709,
+    "timestamp": 1759415435,
+    "datetime": "2025-10-02T14:30:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23491009,
+    "timestamp": 1759419095,
+    "datetime": "2025-10-02T15:31:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23491309,
+    "timestamp": 1759422695,
+    "datetime": "2025-10-02T16:31:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23491609,
+    "timestamp": 1759426295,
+    "datetime": "2025-10-02T17:31:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23491909,
+    "timestamp": 1759429907,
+    "datetime": "2025-10-02T18:31:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23492209,
+    "timestamp": 1759433531,
+    "datetime": "2025-10-02T19:32:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23492509,
+    "timestamp": 1759437179,
+    "datetime": "2025-10-02T20:32:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23492809,
+    "timestamp": 1759440839,
+    "datetime": "2025-10-02T21:33:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23493109,
+    "timestamp": 1759444487,
+    "datetime": "2025-10-02T22:34:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23493409,
+    "timestamp": 1759448111,
+    "datetime": "2025-10-02T23:35:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23493709,
+    "timestamp": 1759451747,
+    "datetime": "2025-10-03T00:35:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23494009,
+    "timestamp": 1759455383,
+    "datetime": "2025-10-03T01:36:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23494309,
+    "timestamp": 1759459007,
+    "datetime": "2025-10-03T02:36:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23494609,
+    "timestamp": 1759462643,
+    "datetime": "2025-10-03T03:37:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23494909,
+    "timestamp": 1759466243,
+    "datetime": "2025-10-03T04:37:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23495209,
+    "timestamp": 1759469855,
+    "datetime": "2025-10-03T05:37:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23495509,
+    "timestamp": 1759473467,
+    "datetime": "2025-10-03T06:37:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23495809,
+    "timestamp": 1759477079,
+    "datetime": "2025-10-03T07:37:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23496109,
+    "timestamp": 1759480679,
+    "datetime": "2025-10-03T08:37:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23496409,
+    "timestamp": 1759484315,
+    "datetime": "2025-10-03T09:38:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23496709,
+    "timestamp": 1759487927,
+    "datetime": "2025-10-03T10:38:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23497009,
+    "timestamp": 1759491563,
+    "datetime": "2025-10-03T11:39:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23497309,
+    "timestamp": 1759495175,
+    "datetime": "2025-10-03T12:39:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23497609,
+    "timestamp": 1759498811,
+    "datetime": "2025-10-03T13:40:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23497909,
+    "timestamp": 1759502435,
+    "datetime": "2025-10-03T14:40:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23498209,
+    "timestamp": 1759506047,
+    "datetime": "2025-10-03T15:40:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23498509,
+    "timestamp": 1759509647,
+    "datetime": "2025-10-03T16:40:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23498809,
+    "timestamp": 1759513259,
+    "datetime": "2025-10-03T17:40:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23499109,
+    "timestamp": 1759516895,
+    "datetime": "2025-10-03T18:41:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23499409,
+    "timestamp": 1759520495,
+    "datetime": "2025-10-03T19:41:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23499709,
+    "timestamp": 1759524119,
+    "datetime": "2025-10-03T20:41:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23500009,
+    "timestamp": 1759527743,
+    "datetime": "2025-10-03T21:42:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23500309,
+    "timestamp": 1759531355,
+    "datetime": "2025-10-03T22:42:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23500609,
+    "timestamp": 1759534967,
+    "datetime": "2025-10-03T23:42:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23500909,
+    "timestamp": 1759538567,
+    "datetime": "2025-10-04T00:42:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23501209,
+    "timestamp": 1759542203,
+    "datetime": "2025-10-04T01:43:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23501509,
+    "timestamp": 1759545851,
+    "datetime": "2025-10-04T02:44:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23501809,
+    "timestamp": 1759549475,
+    "datetime": "2025-10-04T03:44:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23502109,
+    "timestamp": 1759553087,
+    "datetime": "2025-10-04T04:44:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23502409,
+    "timestamp": 1759556723,
+    "datetime": "2025-10-04T05:45:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23502709,
+    "timestamp": 1759560359,
+    "datetime": "2025-10-04T06:45:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23503009,
+    "timestamp": 1759563971,
+    "datetime": "2025-10-04T07:46:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23503309,
+    "timestamp": 1759567583,
+    "datetime": "2025-10-04T08:46:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23503609,
+    "timestamp": 1759571195,
+    "datetime": "2025-10-04T09:46:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23503909,
+    "timestamp": 1759574795,
+    "datetime": "2025-10-04T10:46:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23504209,
+    "timestamp": 1759578419,
+    "datetime": "2025-10-04T11:46:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23504509,
+    "timestamp": 1759582019,
+    "datetime": "2025-10-04T12:46:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23504809,
+    "timestamp": 1759585667,
+    "datetime": "2025-10-04T13:47:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23505109,
+    "timestamp": 1759589315,
+    "datetime": "2025-10-04T14:48:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23505409,
+    "timestamp": 1759592963,
+    "datetime": "2025-10-04T15:49:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23505709,
+    "timestamp": 1759596575,
+    "datetime": "2025-10-04T16:49:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23506009,
+    "timestamp": 1759600187,
+    "datetime": "2025-10-04T17:49:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23506309,
+    "timestamp": 1759603787,
+    "datetime": "2025-10-04T18:49:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23506609,
+    "timestamp": 1759607435,
+    "datetime": "2025-10-04T19:50:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23506909,
+    "timestamp": 1759611047,
+    "datetime": "2025-10-04T20:50:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23507209,
+    "timestamp": 1759614659,
+    "datetime": "2025-10-04T21:50:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23507509,
+    "timestamp": 1759618271,
+    "datetime": "2025-10-04T22:51:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23507809,
+    "timestamp": 1759621931,
+    "datetime": "2025-10-04T23:52:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23508109,
+    "timestamp": 1759625555,
+    "datetime": "2025-10-05T00:52:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23508409,
+    "timestamp": 1759629155,
+    "datetime": "2025-10-05T01:52:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23508709,
+    "timestamp": 1759632791,
+    "datetime": "2025-10-05T02:53:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23509009,
+    "timestamp": 1759636427,
+    "datetime": "2025-10-05T03:53:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23509309,
+    "timestamp": 1759640051,
+    "datetime": "2025-10-05T04:54:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23509609,
+    "timestamp": 1759643675,
+    "datetime": "2025-10-05T05:54:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23509909,
+    "timestamp": 1759647299,
+    "datetime": "2025-10-05T06:54:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23510209,
+    "timestamp": 1759650947,
+    "datetime": "2025-10-05T07:55:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23510509,
+    "timestamp": 1759654559,
+    "datetime": "2025-10-05T08:55:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23510809,
+    "timestamp": 1759658183,
+    "datetime": "2025-10-05T09:56:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23511109,
+    "timestamp": 1759661795,
+    "datetime": "2025-10-05T10:56:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23511409,
+    "timestamp": 1759665395,
+    "datetime": "2025-10-05T11:56:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23511709,
+    "timestamp": 1759668995,
+    "datetime": "2025-10-05T12:56:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23512009,
+    "timestamp": 1759672595,
+    "datetime": "2025-10-05T13:56:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23512309,
+    "timestamp": 1759676219,
+    "datetime": "2025-10-05T14:56:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23512609,
+    "timestamp": 1759679867,
+    "datetime": "2025-10-05T15:57:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23512909,
+    "timestamp": 1759683467,
+    "datetime": "2025-10-05T16:57:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23513209,
+    "timestamp": 1759687091,
+    "datetime": "2025-10-05T17:58:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23513509,
+    "timestamp": 1759690715,
+    "datetime": "2025-10-05T18:58:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23513809,
+    "timestamp": 1759694315,
+    "datetime": "2025-10-05T19:58:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23514109,
+    "timestamp": 1759697927,
+    "datetime": "2025-10-05T20:58:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23514409,
+    "timestamp": 1759701539,
+    "datetime": "2025-10-05T21:58:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23514709,
+    "timestamp": 1759705163,
+    "datetime": "2025-10-05T22:59:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23515009,
+    "timestamp": 1759708775,
+    "datetime": "2025-10-05T23:59:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23515309,
+    "timestamp": 1759712387,
+    "datetime": "2025-10-06T00:59:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23515609,
+    "timestamp": 1759716011,
+    "datetime": "2025-10-06T02:00:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23515909,
+    "timestamp": 1759719659,
+    "datetime": "2025-10-06T03:00:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23516209,
+    "timestamp": 1759723283,
+    "datetime": "2025-10-06T04:01:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23516509,
+    "timestamp": 1759726895,
+    "datetime": "2025-10-06T05:01:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23516809,
+    "timestamp": 1759730507,
+    "datetime": "2025-10-06T06:01:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23517109,
+    "timestamp": 1759734131,
+    "datetime": "2025-10-06T07:02:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23517409,
+    "timestamp": 1759737755,
+    "datetime": "2025-10-06T08:02:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23517709,
+    "timestamp": 1759741355,
+    "datetime": "2025-10-06T09:02:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23518009,
+    "timestamp": 1759745003,
+    "datetime": "2025-10-06T10:03:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23518309,
+    "timestamp": 1759748615,
+    "datetime": "2025-10-06T11:03:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23518609,
+    "timestamp": 1759752251,
+    "datetime": "2025-10-06T12:04:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23518909,
+    "timestamp": 1759755875,
+    "datetime": "2025-10-06T13:04:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23519209,
+    "timestamp": 1759759499,
+    "datetime": "2025-10-06T14:04:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23519509,
+    "timestamp": 1759763123,
+    "datetime": "2025-10-06T15:05:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23519809,
+    "timestamp": 1759766759,
+    "datetime": "2025-10-06T16:05:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23520109,
+    "timestamp": 1759770395,
+    "datetime": "2025-10-06T17:06:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23520409,
+    "timestamp": 1759774043,
+    "datetime": "2025-10-06T18:07:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23520709,
+    "timestamp": 1759777667,
+    "datetime": "2025-10-06T19:07:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23521009,
+    "timestamp": 1759781267,
+    "datetime": "2025-10-06T20:07:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23521309,
+    "timestamp": 1759784903,
+    "datetime": "2025-10-06T21:08:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23521609,
+    "timestamp": 1759788527,
+    "datetime": "2025-10-06T22:08:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23521909,
+    "timestamp": 1759792151,
+    "datetime": "2025-10-06T23:09:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23522209,
+    "timestamp": 1759795763,
+    "datetime": "2025-10-07T00:09:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23522509,
+    "timestamp": 1759799387,
+    "datetime": "2025-10-07T01:09:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23522809,
+    "timestamp": 1759803011,
+    "datetime": "2025-10-07T02:10:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23523109,
+    "timestamp": 1759806659,
+    "datetime": "2025-10-07T03:10:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23523409,
+    "timestamp": 1759810295,
+    "datetime": "2025-10-07T04:11:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23523709,
+    "timestamp": 1759813907,
+    "datetime": "2025-10-07T05:11:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23524009,
+    "timestamp": 1759817567,
+    "datetime": "2025-10-07T06:12:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23524309,
+    "timestamp": 1759821191,
+    "datetime": "2025-10-07T07:13:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23524609,
+    "timestamp": 1759824803,
+    "datetime": "2025-10-07T08:13:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23524909,
+    "timestamp": 1759828415,
+    "datetime": "2025-10-07T09:13:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23525209,
+    "timestamp": 1759832015,
+    "datetime": "2025-10-07T10:13:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23525509,
+    "timestamp": 1759835639,
+    "datetime": "2025-10-07T11:13:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23525809,
+    "timestamp": 1759839275,
+    "datetime": "2025-10-07T12:14:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23526109,
+    "timestamp": 1759842875,
+    "datetime": "2025-10-07T13:14:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23526409,
+    "timestamp": 1759846499,
+    "datetime": "2025-10-07T14:14:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23526709,
+    "timestamp": 1759850135,
+    "datetime": "2025-10-07T15:15:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23527009,
+    "timestamp": 1759853759,
+    "datetime": "2025-10-07T16:15:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23527309,
+    "timestamp": 1759857371,
+    "datetime": "2025-10-07T17:16:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23527609,
+    "timestamp": 1759860983,
+    "datetime": "2025-10-07T18:16:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23527909,
+    "timestamp": 1759864619,
+    "datetime": "2025-10-07T19:16:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23528209,
+    "timestamp": 1759868231,
+    "datetime": "2025-10-07T20:17:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23528509,
+    "timestamp": 1759871843,
+    "datetime": "2025-10-07T21:17:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23528809,
+    "timestamp": 1759875455,
+    "datetime": "2025-10-07T22:17:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23529109,
+    "timestamp": 1759879055,
+    "datetime": "2025-10-07T23:17:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23529409,
+    "timestamp": 1759882679,
+    "datetime": "2025-10-08T00:17:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23529709,
+    "timestamp": 1759886303,
+    "datetime": "2025-10-08T01:18:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23530009,
+    "timestamp": 1759889915,
+    "datetime": "2025-10-08T02:18:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23530309,
+    "timestamp": 1759893527,
+    "datetime": "2025-10-08T03:18:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23530609,
+    "timestamp": 1759897151,
+    "datetime": "2025-10-08T04:19:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23530909,
+    "timestamp": 1759900799,
+    "datetime": "2025-10-08T05:19:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23531209,
+    "timestamp": 1759904423,
+    "datetime": "2025-10-08T06:20:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23531509,
+    "timestamp": 1759908047,
+    "datetime": "2025-10-08T07:20:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23531809,
+    "timestamp": 1759911683,
+    "datetime": "2025-10-08T08:21:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23532109,
+    "timestamp": 1759915283,
+    "datetime": "2025-10-08T09:21:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23532409,
+    "timestamp": 1759918907,
+    "datetime": "2025-10-08T10:21:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23532709,
+    "timestamp": 1759922591,
+    "datetime": "2025-10-08T11:23:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23533009,
+    "timestamp": 1759926251,
+    "datetime": "2025-10-08T12:24:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23533309,
+    "timestamp": 1759929887,
+    "datetime": "2025-10-08T13:24:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23533609,
+    "timestamp": 1759933511,
+    "datetime": "2025-10-08T14:25:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23533909,
+    "timestamp": 1759937135,
+    "datetime": "2025-10-08T15:25:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23534209,
+    "timestamp": 1759940771,
+    "datetime": "2025-10-08T16:26:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23534509,
+    "timestamp": 1759944419,
+    "datetime": "2025-10-08T17:26:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23534809,
+    "timestamp": 1759948043,
+    "datetime": "2025-10-08T18:27:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23535109,
+    "timestamp": 1759951679,
+    "datetime": "2025-10-08T19:27:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23535409,
+    "timestamp": 1759955291,
+    "datetime": "2025-10-08T20:28:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23535709,
+    "timestamp": 1759958927,
+    "datetime": "2025-10-08T21:28:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23536009,
+    "timestamp": 1759962563,
+    "datetime": "2025-10-08T22:29:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23536309,
+    "timestamp": 1759966163,
+    "datetime": "2025-10-08T23:29:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23536609,
+    "timestamp": 1759969787,
+    "datetime": "2025-10-09T00:29:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23536909,
+    "timestamp": 1759973387,
+    "datetime": "2025-10-09T01:29:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23537209,
+    "timestamp": 1759977011,
+    "datetime": "2025-10-09T02:30:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23537509,
+    "timestamp": 1759980623,
+    "datetime": "2025-10-09T03:30:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23537809,
+    "timestamp": 1759984271,
+    "datetime": "2025-10-09T04:31:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23538109,
+    "timestamp": 1759987895,
+    "datetime": "2025-10-09T05:31:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23538409,
+    "timestamp": 1759991531,
+    "datetime": "2025-10-09T06:32:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23538709,
+    "timestamp": 1759995179,
+    "datetime": "2025-10-09T07:32:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23539009,
+    "timestamp": 1759998791,
+    "datetime": "2025-10-09T08:33:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23539309,
+    "timestamp": 1760002427,
+    "datetime": "2025-10-09T09:33:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23539609,
+    "timestamp": 1760006027,
+    "datetime": "2025-10-09T10:33:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23539909,
+    "timestamp": 1760009651,
+    "datetime": "2025-10-09T11:34:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23540209,
+    "timestamp": 1760013287,
+    "datetime": "2025-10-09T12:34:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23540509,
+    "timestamp": 1760016899,
+    "datetime": "2025-10-09T13:34:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23540809,
+    "timestamp": 1760020535,
+    "datetime": "2025-10-09T14:35:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23541109,
+    "timestamp": 1760024171,
+    "datetime": "2025-10-09T15:36:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23541409,
+    "timestamp": 1760027783,
+    "datetime": "2025-10-09T16:36:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23541709,
+    "timestamp": 1760031395,
+    "datetime": "2025-10-09T17:36:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23542009,
+    "timestamp": 1760034995,
+    "datetime": "2025-10-09T18:36:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23542309,
+    "timestamp": 1760038607,
+    "datetime": "2025-10-09T19:36:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23542609,
+    "timestamp": 1760042207,
+    "datetime": "2025-10-09T20:36:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23542909,
+    "timestamp": 1760045867,
+    "datetime": "2025-10-09T21:37:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23543209,
+    "timestamp": 1760049491,
+    "datetime": "2025-10-09T22:38:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23543509,
+    "timestamp": 1760053127,
+    "datetime": "2025-10-09T23:38:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23543809,
+    "timestamp": 1760056775,
+    "datetime": "2025-10-10T00:39:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23544109,
+    "timestamp": 1760060411,
+    "datetime": "2025-10-10T01:40:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23544409,
+    "timestamp": 1760064035,
+    "datetime": "2025-10-10T02:40:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23544709,
+    "timestamp": 1760067647,
+    "datetime": "2025-10-10T03:40:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23545009,
+    "timestamp": 1760071259,
+    "datetime": "2025-10-10T04:40:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23545309,
+    "timestamp": 1760074859,
+    "datetime": "2025-10-10T05:40:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23545609,
+    "timestamp": 1760078483,
+    "datetime": "2025-10-10T06:41:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23545909,
+    "timestamp": 1760082095,
+    "datetime": "2025-10-10T07:41:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23546209,
+    "timestamp": 1760085731,
+    "datetime": "2025-10-10T08:42:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23546509,
+    "timestamp": 1760089379,
+    "datetime": "2025-10-10T09:42:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23546809,
+    "timestamp": 1760092991,
+    "datetime": "2025-10-10T10:43:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23547109,
+    "timestamp": 1760096603,
+    "datetime": "2025-10-10T11:43:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23547409,
+    "timestamp": 1760100215,
+    "datetime": "2025-10-10T12:43:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23547709,
+    "timestamp": 1760103827,
+    "datetime": "2025-10-10T13:43:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23548009,
+    "timestamp": 1760107499,
+    "datetime": "2025-10-10T14:44:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23548309,
+    "timestamp": 1760111123,
+    "datetime": "2025-10-10T15:45:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23548609,
+    "timestamp": 1760114735,
+    "datetime": "2025-10-10T16:45:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23548909,
+    "timestamp": 1760118407,
+    "datetime": "2025-10-10T17:46:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23549209,
+    "timestamp": 1760122043,
+    "datetime": "2025-10-10T18:47:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23549509,
+    "timestamp": 1760125667,
+    "datetime": "2025-10-10T19:47:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23549809,
+    "timestamp": 1760129279,
+    "datetime": "2025-10-10T20:47:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23550109,
+    "timestamp": 1760132903,
+    "datetime": "2025-10-10T21:48:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23550409,
+    "timestamp": 1760136527,
+    "datetime": "2025-10-10T22:48:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23550709,
+    "timestamp": 1760140151,
+    "datetime": "2025-10-10T23:49:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23551009,
+    "timestamp": 1760143763,
+    "datetime": "2025-10-11T00:49:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23551309,
+    "timestamp": 1760147387,
+    "datetime": "2025-10-11T01:49:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23551609,
+    "timestamp": 1760150999,
+    "datetime": "2025-10-11T02:49:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23551909,
+    "timestamp": 1760154611,
+    "datetime": "2025-10-11T03:50:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23552209,
+    "timestamp": 1760158247,
+    "datetime": "2025-10-11T04:50:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23552509,
+    "timestamp": 1760161871,
+    "datetime": "2025-10-11T05:51:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23552809,
+    "timestamp": 1760165483,
+    "datetime": "2025-10-11T06:51:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23553109,
+    "timestamp": 1760169143,
+    "datetime": "2025-10-11T07:52:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23553409,
+    "timestamp": 1760172755,
+    "datetime": "2025-10-11T08:52:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23553709,
+    "timestamp": 1760176355,
+    "datetime": "2025-10-11T09:52:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23554009,
+    "timestamp": 1760179967,
+    "datetime": "2025-10-11T10:52:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23554309,
+    "timestamp": 1760183579,
+    "datetime": "2025-10-11T11:52:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23554609,
+    "timestamp": 1760187203,
+    "datetime": "2025-10-11T12:53:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23554909,
+    "timestamp": 1760190827,
+    "datetime": "2025-10-11T13:53:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23555209,
+    "timestamp": 1760194451,
+    "datetime": "2025-10-11T14:54:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23555509,
+    "timestamp": 1760198099,
+    "datetime": "2025-10-11T15:54:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23555809,
+    "timestamp": 1760201723,
+    "datetime": "2025-10-11T16:55:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23556109,
+    "timestamp": 1760205359,
+    "datetime": "2025-10-11T17:55:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23556409,
+    "timestamp": 1760208983,
+    "datetime": "2025-10-11T18:56:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23556709,
+    "timestamp": 1760212595,
+    "datetime": "2025-10-11T19:56:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23557009,
+    "timestamp": 1760216207,
+    "datetime": "2025-10-11T20:56:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23557309,
+    "timestamp": 1760219807,
+    "datetime": "2025-10-11T21:56:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23557609,
+    "timestamp": 1760223443,
+    "datetime": "2025-10-11T22:57:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23557909,
+    "timestamp": 1760227067,
+    "datetime": "2025-10-11T23:57:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23558209,
+    "timestamp": 1760230703,
+    "datetime": "2025-10-12T00:58:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23558509,
+    "timestamp": 1760234303,
+    "datetime": "2025-10-12T01:58:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23558809,
+    "timestamp": 1760237939,
+    "datetime": "2025-10-12T02:58:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23559109,
+    "timestamp": 1760241551,
+    "datetime": "2025-10-12T03:59:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23559409,
+    "timestamp": 1760245163,
+    "datetime": "2025-10-12T04:59:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23559709,
+    "timestamp": 1760248763,
+    "datetime": "2025-10-12T05:59:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23560009,
+    "timestamp": 1760252387,
+    "datetime": "2025-10-12T06:59:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23560309,
+    "timestamp": 1760256011,
+    "datetime": "2025-10-12T08:00:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23560609,
+    "timestamp": 1760259623,
+    "datetime": "2025-10-12T09:00:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23560909,
+    "timestamp": 1760263235,
+    "datetime": "2025-10-12T10:00:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23561209,
+    "timestamp": 1760266847,
+    "datetime": "2025-10-12T11:00:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23561509,
+    "timestamp": 1760270459,
+    "datetime": "2025-10-12T12:00:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23561809,
+    "timestamp": 1760274095,
+    "datetime": "2025-10-12T13:01:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23562109,
+    "timestamp": 1760277707,
+    "datetime": "2025-10-12T14:01:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23562409,
+    "timestamp": 1760281355,
+    "datetime": "2025-10-12T15:02:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23562709,
+    "timestamp": 1760284967,
+    "datetime": "2025-10-12T16:02:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23563009,
+    "timestamp": 1760288567,
+    "datetime": "2025-10-12T17:02:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23563309,
+    "timestamp": 1760292191,
+    "datetime": "2025-10-12T18:03:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23563609,
+    "timestamp": 1760295827,
+    "datetime": "2025-10-12T19:03:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23563909,
+    "timestamp": 1760299439,
+    "datetime": "2025-10-12T20:03:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23564209,
+    "timestamp": 1760303063,
+    "datetime": "2025-10-12T21:04:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23564509,
+    "timestamp": 1760306687,
+    "datetime": "2025-10-12T22:04:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23564809,
+    "timestamp": 1760310323,
+    "datetime": "2025-10-12T23:05:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23565109,
+    "timestamp": 1760313947,
+    "datetime": "2025-10-13T00:05:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23565409,
+    "timestamp": 1760317559,
+    "datetime": "2025-10-13T01:05:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23565709,
+    "timestamp": 1760321183,
+    "datetime": "2025-10-13T02:06:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23566009,
+    "timestamp": 1760324795,
+    "datetime": "2025-10-13T03:06:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23566309,
+    "timestamp": 1760328419,
+    "datetime": "2025-10-13T04:06:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23566609,
+    "timestamp": 1760332079,
+    "datetime": "2025-10-13T05:07:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23566909,
+    "timestamp": 1760335715,
+    "datetime": "2025-10-13T06:08:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23567209,
+    "timestamp": 1760339315,
+    "datetime": "2025-10-13T07:08:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23567509,
+    "timestamp": 1760342975,
+    "datetime": "2025-10-13T08:09:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23567809,
+    "timestamp": 1760346575,
+    "datetime": "2025-10-13T09:09:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23568109,
+    "timestamp": 1760350259,
+    "datetime": "2025-10-13T10:10:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23568409,
+    "timestamp": 1760353883,
+    "datetime": "2025-10-13T11:11:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23568709,
+    "timestamp": 1760357495,
+    "datetime": "2025-10-13T12:11:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23569009,
+    "timestamp": 1760361143,
+    "datetime": "2025-10-13T13:12:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23569309,
+    "timestamp": 1760364779,
+    "datetime": "2025-10-13T14:12:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23569609,
+    "timestamp": 1760368403,
+    "datetime": "2025-10-13T15:13:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23569909,
+    "timestamp": 1760372039,
+    "datetime": "2025-10-13T16:13:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23570209,
+    "timestamp": 1760375651,
+    "datetime": "2025-10-13T17:14:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23570509,
+    "timestamp": 1760379335,
+    "datetime": "2025-10-13T18:15:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23570809,
+    "timestamp": 1760382935,
+    "datetime": "2025-10-13T19:15:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23571109,
+    "timestamp": 1760386547,
+    "datetime": "2025-10-13T20:15:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23571409,
+    "timestamp": 1760390147,
+    "datetime": "2025-10-13T21:15:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23571709,
+    "timestamp": 1760393771,
+    "datetime": "2025-10-13T22:16:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23572009,
+    "timestamp": 1760397383,
+    "datetime": "2025-10-13T23:16:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23572309,
+    "timestamp": 1760401007,
+    "datetime": "2025-10-14T00:16:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23572609,
+    "timestamp": 1760404631,
+    "datetime": "2025-10-14T01:17:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23572909,
+    "timestamp": 1760408243,
+    "datetime": "2025-10-14T02:17:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23573209,
+    "timestamp": 1760411867,
+    "datetime": "2025-10-14T03:17:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23573509,
+    "timestamp": 1760415515,
+    "datetime": "2025-10-14T04:18:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23573809,
+    "timestamp": 1760419139,
+    "datetime": "2025-10-14T05:18:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23574109,
+    "timestamp": 1760422739,
+    "datetime": "2025-10-14T06:18:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23574409,
+    "timestamp": 1760426399,
+    "datetime": "2025-10-14T07:19:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23574709,
+    "timestamp": 1760430011,
+    "datetime": "2025-10-14T08:20:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23575009,
+    "timestamp": 1760433635,
+    "datetime": "2025-10-14T09:20:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23575309,
+    "timestamp": 1760437247,
+    "datetime": "2025-10-14T10:20:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23575609,
+    "timestamp": 1760440883,
+    "datetime": "2025-10-14T11:21:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23575909,
+    "timestamp": 1760444483,
+    "datetime": "2025-10-14T12:21:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23576209,
+    "timestamp": 1760448095,
+    "datetime": "2025-10-14T13:21:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23576509,
+    "timestamp": 1760451743,
+    "datetime": "2025-10-14T14:22:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23576809,
+    "timestamp": 1760455415,
+    "datetime": "2025-10-14T15:23:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23577109,
+    "timestamp": 1760459051,
+    "datetime": "2025-10-14T16:24:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23577409,
+    "timestamp": 1760462663,
+    "datetime": "2025-10-14T17:24:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23577709,
+    "timestamp": 1760466287,
+    "datetime": "2025-10-14T18:24:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23578009,
+    "timestamp": 1760469923,
+    "datetime": "2025-10-14T19:25:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23578309,
+    "timestamp": 1760473523,
+    "datetime": "2025-10-14T20:25:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23578609,
+    "timestamp": 1760477171,
+    "datetime": "2025-10-14T21:26:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23578909,
+    "timestamp": 1760480783,
+    "datetime": "2025-10-14T22:26:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23579209,
+    "timestamp": 1760484407,
+    "datetime": "2025-10-14T23:26:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23579509,
+    "timestamp": 1760488007,
+    "datetime": "2025-10-15T00:26:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23579809,
+    "timestamp": 1760491607,
+    "datetime": "2025-10-15T01:26:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23580109,
+    "timestamp": 1760495207,
+    "datetime": "2025-10-15T02:26:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23580409,
+    "timestamp": 1760498819,
+    "datetime": "2025-10-15T03:26:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23580709,
+    "timestamp": 1760502479,
+    "datetime": "2025-10-15T04:27:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23581009,
+    "timestamp": 1760506127,
+    "datetime": "2025-10-15T05:28:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23581309,
+    "timestamp": 1760509787,
+    "datetime": "2025-10-15T06:29:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23581609,
+    "timestamp": 1760513411,
+    "datetime": "2025-10-15T07:30:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23581909,
+    "timestamp": 1760517035,
+    "datetime": "2025-10-15T08:30:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23582209,
+    "timestamp": 1760520647,
+    "datetime": "2025-10-15T09:30:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23582509,
+    "timestamp": 1760524247,
+    "datetime": "2025-10-15T10:30:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23582809,
+    "timestamp": 1760527847,
+    "datetime": "2025-10-15T11:30:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23583109,
+    "timestamp": 1760531495,
+    "datetime": "2025-10-15T12:31:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23583409,
+    "timestamp": 1760535167,
+    "datetime": "2025-10-15T13:32:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23583709,
+    "timestamp": 1760538779,
+    "datetime": "2025-10-15T14:32:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23584009,
+    "timestamp": 1760542403,
+    "datetime": "2025-10-15T15:33:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23584309,
+    "timestamp": 1760546039,
+    "datetime": "2025-10-15T16:33:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23584609,
+    "timestamp": 1760549699,
+    "datetime": "2025-10-15T17:34:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23584909,
+    "timestamp": 1760553311,
+    "datetime": "2025-10-15T18:35:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23585209,
+    "timestamp": 1760556911,
+    "datetime": "2025-10-15T19:35:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23585509,
+    "timestamp": 1760560535,
+    "datetime": "2025-10-15T20:35:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23585809,
+    "timestamp": 1760564147,
+    "datetime": "2025-10-15T21:35:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23586109,
+    "timestamp": 1760567783,
+    "datetime": "2025-10-15T22:36:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23586409,
+    "timestamp": 1760571395,
+    "datetime": "2025-10-15T23:36:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23586709,
+    "timestamp": 1760575091,
+    "datetime": "2025-10-16T00:38:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23587009,
+    "timestamp": 1760578703,
+    "datetime": "2025-10-16T01:38:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23587309,
+    "timestamp": 1760582363,
+    "datetime": "2025-10-16T02:39:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23587609,
+    "timestamp": 1760585999,
+    "datetime": "2025-10-16T03:39:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23587909,
+    "timestamp": 1760589611,
+    "datetime": "2025-10-16T04:40:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23588209,
+    "timestamp": 1760593223,
+    "datetime": "2025-10-16T05:40:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23588509,
+    "timestamp": 1760596859,
+    "datetime": "2025-10-16T06:40:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23588809,
+    "timestamp": 1760600519,
+    "datetime": "2025-10-16T07:41:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23589109,
+    "timestamp": 1760604179,
+    "datetime": "2025-10-16T08:42:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23589409,
+    "timestamp": 1760607827,
+    "datetime": "2025-10-16T09:43:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23589709,
+    "timestamp": 1760611475,
+    "datetime": "2025-10-16T10:44:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23590009,
+    "timestamp": 1760615099,
+    "datetime": "2025-10-16T11:44:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23590309,
+    "timestamp": 1760618723,
+    "datetime": "2025-10-16T12:45:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23590609,
+    "timestamp": 1760622359,
+    "datetime": "2025-10-16T13:45:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23590909,
+    "timestamp": 1760626007,
+    "datetime": "2025-10-16T14:46:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23591209,
+    "timestamp": 1760629655,
+    "datetime": "2025-10-16T15:47:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23591509,
+    "timestamp": 1760633279,
+    "datetime": "2025-10-16T16:47:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23591809,
+    "timestamp": 1760636879,
+    "datetime": "2025-10-16T17:47:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23592109,
+    "timestamp": 1760640479,
+    "datetime": "2025-10-16T18:47:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23592409,
+    "timestamp": 1760644079,
+    "datetime": "2025-10-16T19:47:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23592709,
+    "timestamp": 1760647691,
+    "datetime": "2025-10-16T20:48:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23593009,
+    "timestamp": 1760651327,
+    "datetime": "2025-10-16T21:48:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23593309,
+    "timestamp": 1760654927,
+    "datetime": "2025-10-16T22:48:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23593609,
+    "timestamp": 1760658563,
+    "datetime": "2025-10-16T23:49:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23593909,
+    "timestamp": 1760662199,
+    "datetime": "2025-10-17T00:49:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23594209,
+    "timestamp": 1760665811,
+    "datetime": "2025-10-17T01:50:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23594509,
+    "timestamp": 1760669435,
+    "datetime": "2025-10-17T02:50:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23594809,
+    "timestamp": 1760673035,
+    "datetime": "2025-10-17T03:50:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23595109,
+    "timestamp": 1760676659,
+    "datetime": "2025-10-17T04:50:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23595409,
+    "timestamp": 1760680307,
+    "datetime": "2025-10-17T05:51:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23595709,
+    "timestamp": 1760683931,
+    "datetime": "2025-10-17T06:52:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23596009,
+    "timestamp": 1760687555,
+    "datetime": "2025-10-17T07:52:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23596309,
+    "timestamp": 1760691179,
+    "datetime": "2025-10-17T08:52:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23596609,
+    "timestamp": 1760694791,
+    "datetime": "2025-10-17T09:53:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23596909,
+    "timestamp": 1760698403,
+    "datetime": "2025-10-17T10:53:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23597209,
+    "timestamp": 1760702015,
+    "datetime": "2025-10-17T11:53:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23597509,
+    "timestamp": 1760705639,
+    "datetime": "2025-10-17T12:53:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23597809,
+    "timestamp": 1760709251,
+    "datetime": "2025-10-17T13:54:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23598109,
+    "timestamp": 1760712851,
+    "datetime": "2025-10-17T14:54:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23598409,
+    "timestamp": 1760716475,
+    "datetime": "2025-10-17T15:54:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23598709,
+    "timestamp": 1760720075,
+    "datetime": "2025-10-17T16:54:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23599009,
+    "timestamp": 1760723747,
+    "datetime": "2025-10-17T17:55:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23599309,
+    "timestamp": 1760727371,
+    "datetime": "2025-10-17T18:56:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23599609,
+    "timestamp": 1760730995,
+    "datetime": "2025-10-17T19:56:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23599909,
+    "timestamp": 1760734631,
+    "datetime": "2025-10-17T20:57:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23600209,
+    "timestamp": 1760738231,
+    "datetime": "2025-10-17T21:57:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23600509,
+    "timestamp": 1760741831,
+    "datetime": "2025-10-17T22:57:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23600809,
+    "timestamp": 1760745503,
+    "datetime": "2025-10-17T23:58:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23601109,
+    "timestamp": 1760749175,
+    "datetime": "2025-10-18T00:59:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23601409,
+    "timestamp": 1760752799,
+    "datetime": "2025-10-18T01:59:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23601709,
+    "timestamp": 1760756399,
+    "datetime": "2025-10-18T02:59:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23602009,
+    "timestamp": 1760759999,
+    "datetime": "2025-10-18T03:59:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23602309,
+    "timestamp": 1760763599,
+    "datetime": "2025-10-18T04:59:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23602609,
+    "timestamp": 1760767211,
+    "datetime": "2025-10-18T06:00:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23602909,
+    "timestamp": 1760770859,
+    "datetime": "2025-10-18T07:00:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23603209,
+    "timestamp": 1760774507,
+    "datetime": "2025-10-18T08:01:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23603509,
+    "timestamp": 1760778131,
+    "datetime": "2025-10-18T09:02:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23603809,
+    "timestamp": 1760781731,
+    "datetime": "2025-10-18T10:02:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23604109,
+    "timestamp": 1760785343,
+    "datetime": "2025-10-18T11:02:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23604409,
+    "timestamp": 1760788979,
+    "datetime": "2025-10-18T12:02:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23604709,
+    "timestamp": 1760792639,
+    "datetime": "2025-10-18T13:03:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23605009,
+    "timestamp": 1760796311,
+    "datetime": "2025-10-18T14:05:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23605309,
+    "timestamp": 1760799935,
+    "datetime": "2025-10-18T15:05:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23605609,
+    "timestamp": 1760803547,
+    "datetime": "2025-10-18T16:05:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23605909,
+    "timestamp": 1760807159,
+    "datetime": "2025-10-18T17:05:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23606209,
+    "timestamp": 1760810807,
+    "datetime": "2025-10-18T18:06:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23606509,
+    "timestamp": 1760814407,
+    "datetime": "2025-10-18T19:06:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23606809,
+    "timestamp": 1760818043,
+    "datetime": "2025-10-18T20:07:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23607109,
+    "timestamp": 1760821679,
+    "datetime": "2025-10-18T21:07:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23607409,
+    "timestamp": 1760825303,
+    "datetime": "2025-10-18T22:08:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23607709,
+    "timestamp": 1760828939,
+    "datetime": "2025-10-18T23:08:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23608009,
+    "timestamp": 1760832551,
+    "datetime": "2025-10-19T00:09:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23608309,
+    "timestamp": 1760836199,
+    "datetime": "2025-10-19T01:09:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23608609,
+    "timestamp": 1760839811,
+    "datetime": "2025-10-19T02:10:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23608909,
+    "timestamp": 1760843435,
+    "datetime": "2025-10-19T03:10:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23609209,
+    "timestamp": 1760847059,
+    "datetime": "2025-10-19T04:10:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23609509,
+    "timestamp": 1760850695,
+    "datetime": "2025-10-19T05:11:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23609809,
+    "timestamp": 1760854295,
+    "datetime": "2025-10-19T06:11:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23610109,
+    "timestamp": 1760857919,
+    "datetime": "2025-10-19T07:11:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23610409,
+    "timestamp": 1760861531,
+    "datetime": "2025-10-19T08:12:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23610709,
+    "timestamp": 1760865131,
+    "datetime": "2025-10-19T09:12:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23611009,
+    "timestamp": 1760868767,
+    "datetime": "2025-10-19T10:12:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23611309,
+    "timestamp": 1760872367,
+    "datetime": "2025-10-19T11:12:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23611609,
+    "timestamp": 1760876015,
+    "datetime": "2025-10-19T12:13:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23611909,
+    "timestamp": 1760879663,
+    "datetime": "2025-10-19T13:14:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23612209,
+    "timestamp": 1760883287,
+    "datetime": "2025-10-19T14:14:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23612509,
+    "timestamp": 1760886947,
+    "datetime": "2025-10-19T15:15:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23612809,
+    "timestamp": 1760890547,
+    "datetime": "2025-10-19T16:15:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23613109,
+    "timestamp": 1760894171,
+    "datetime": "2025-10-19T17:16:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23613409,
+    "timestamp": 1760897795,
+    "datetime": "2025-10-19T18:16:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23613709,
+    "timestamp": 1760901407,
+    "datetime": "2025-10-19T19:16:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23614009,
+    "timestamp": 1760905031,
+    "datetime": "2025-10-19T20:17:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23614309,
+    "timestamp": 1760908667,
+    "datetime": "2025-10-19T21:17:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23614609,
+    "timestamp": 1760912291,
+    "datetime": "2025-10-19T22:18:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23614909,
+    "timestamp": 1760915915,
+    "datetime": "2025-10-19T23:18:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23615209,
+    "timestamp": 1760919515,
+    "datetime": "2025-10-20T00:18:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23615509,
+    "timestamp": 1760923127,
+    "datetime": "2025-10-20T01:18:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23615809,
+    "timestamp": 1760926787,
+    "datetime": "2025-10-20T02:19:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23616109,
+    "timestamp": 1760930447,
+    "datetime": "2025-10-20T03:20:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23616409,
+    "timestamp": 1760934107,
+    "datetime": "2025-10-20T04:21:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23616709,
+    "timestamp": 1760937731,
+    "datetime": "2025-10-20T05:22:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23617009,
+    "timestamp": 1760941415,
+    "datetime": "2025-10-20T06:23:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23617309,
+    "timestamp": 1760945039,
+    "datetime": "2025-10-20T07:23:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23617609,
+    "timestamp": 1760948639,
+    "datetime": "2025-10-20T08:23:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23617909,
+    "timestamp": 1760952287,
+    "datetime": "2025-10-20T09:24:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23618209,
+    "timestamp": 1760955935,
+    "datetime": "2025-10-20T10:25:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23618509,
+    "timestamp": 1760959619,
+    "datetime": "2025-10-20T11:26:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23618809,
+    "timestamp": 1760963255,
+    "datetime": "2025-10-20T12:27:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23619109,
+    "timestamp": 1760966879,
+    "datetime": "2025-10-20T13:27:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23619409,
+    "timestamp": 1760970515,
+    "datetime": "2025-10-20T14:28:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23619709,
+    "timestamp": 1760974151,
+    "datetime": "2025-10-20T15:29:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23620009,
+    "timestamp": 1760977763,
+    "datetime": "2025-10-20T16:29:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23620309,
+    "timestamp": 1760981435,
+    "datetime": "2025-10-20T17:30:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23620609,
+    "timestamp": 1760985059,
+    "datetime": "2025-10-20T18:30:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23620909,
+    "timestamp": 1760988695,
+    "datetime": "2025-10-20T19:31:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23621209,
+    "timestamp": 1760992379,
+    "datetime": "2025-10-20T20:32:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23621509,
+    "timestamp": 1760996015,
+    "datetime": "2025-10-20T21:33:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23621809,
+    "timestamp": 1760999639,
+    "datetime": "2025-10-20T22:33:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23622109,
+    "timestamp": 1761003239,
+    "datetime": "2025-10-20T23:33:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23622409,
+    "timestamp": 1761006863,
+    "datetime": "2025-10-21T00:34:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23622709,
+    "timestamp": 1761010463,
+    "datetime": "2025-10-21T01:34:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23623009,
+    "timestamp": 1761014099,
+    "datetime": "2025-10-21T02:34:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23623309,
+    "timestamp": 1761017735,
+    "datetime": "2025-10-21T03:35:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23623609,
+    "timestamp": 1761021431,
+    "datetime": "2025-10-21T04:37:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23623909,
+    "timestamp": 1761025103,
+    "datetime": "2025-10-21T05:38:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23624209,
+    "timestamp": 1761028727,
+    "datetime": "2025-10-21T06:38:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23624509,
+    "timestamp": 1761032363,
+    "datetime": "2025-10-21T07:39:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23624809,
+    "timestamp": 1761036011,
+    "datetime": "2025-10-21T08:40:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23625109,
+    "timestamp": 1761039635,
+    "datetime": "2025-10-21T09:40:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23625409,
+    "timestamp": 1761043259,
+    "datetime": "2025-10-21T10:40:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23625709,
+    "timestamp": 1761046907,
+    "datetime": "2025-10-21T11:41:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23626009,
+    "timestamp": 1761050567,
+    "datetime": "2025-10-21T12:42:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23626309,
+    "timestamp": 1761054191,
+    "datetime": "2025-10-21T13:43:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23626609,
+    "timestamp": 1761057827,
+    "datetime": "2025-10-21T14:43:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23626909,
+    "timestamp": 1761061463,
+    "datetime": "2025-10-21T15:44:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23627209,
+    "timestamp": 1761065111,
+    "datetime": "2025-10-21T16:45:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23627509,
+    "timestamp": 1761068771,
+    "datetime": "2025-10-21T17:46:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23627809,
+    "timestamp": 1761072419,
+    "datetime": "2025-10-21T18:46:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23628109,
+    "timestamp": 1761076055,
+    "datetime": "2025-10-21T19:47:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23628409,
+    "timestamp": 1761079715,
+    "datetime": "2025-10-21T20:48:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23628709,
+    "timestamp": 1761083339,
+    "datetime": "2025-10-21T21:48:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23629009,
+    "timestamp": 1761086963,
+    "datetime": "2025-10-21T22:49:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23629309,
+    "timestamp": 1761090575,
+    "datetime": "2025-10-21T23:49:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23629609,
+    "timestamp": 1761094199,
+    "datetime": "2025-10-22T00:49:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23629909,
+    "timestamp": 1761097823,
+    "datetime": "2025-10-22T01:50:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23630209,
+    "timestamp": 1761101495,
+    "datetime": "2025-10-22T02:51:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23630509,
+    "timestamp": 1761105143,
+    "datetime": "2025-10-22T03:52:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23630809,
+    "timestamp": 1761108755,
+    "datetime": "2025-10-22T04:52:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23631109,
+    "timestamp": 1761112403,
+    "datetime": "2025-10-22T05:53:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23631409,
+    "timestamp": 1761116003,
+    "datetime": "2025-10-22T06:53:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23631709,
+    "timestamp": 1761119639,
+    "datetime": "2025-10-22T07:53:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23632009,
+    "timestamp": 1761123263,
+    "datetime": "2025-10-22T08:54:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23632309,
+    "timestamp": 1761126911,
+    "datetime": "2025-10-22T09:55:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23632609,
+    "timestamp": 1761130535,
+    "datetime": "2025-10-22T10:55:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23632909,
+    "timestamp": 1761134183,
+    "datetime": "2025-10-22T11:56:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23633209,
+    "timestamp": 1761137819,
+    "datetime": "2025-10-22T12:56:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23633509,
+    "timestamp": 1761141467,
+    "datetime": "2025-10-22T13:57:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23633809,
+    "timestamp": 1761145163,
+    "datetime": "2025-10-22T14:59:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23634109,
+    "timestamp": 1761148799,
+    "datetime": "2025-10-22T15:59:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23634409,
+    "timestamp": 1761152423,
+    "datetime": "2025-10-22T17:00:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23634709,
+    "timestamp": 1761156023,
+    "datetime": "2025-10-22T18:00:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23635009,
+    "timestamp": 1761159659,
+    "datetime": "2025-10-22T19:00:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23635309,
+    "timestamp": 1761163295,
+    "datetime": "2025-10-22T20:01:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23635609,
+    "timestamp": 1761166919,
+    "datetime": "2025-10-22T21:01:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23635909,
+    "timestamp": 1761170567,
+    "datetime": "2025-10-22T22:02:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23636209,
+    "timestamp": 1761174179,
+    "datetime": "2025-10-22T23:02:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23636509,
+    "timestamp": 1761177827,
+    "datetime": "2025-10-23T00:03:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23636809,
+    "timestamp": 1761181451,
+    "datetime": "2025-10-23T01:04:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23637109,
+    "timestamp": 1761185051,
+    "datetime": "2025-10-23T02:04:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23637409,
+    "timestamp": 1761188687,
+    "datetime": "2025-10-23T03:04:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23637709,
+    "timestamp": 1761192311,
+    "datetime": "2025-10-23T04:05:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23638009,
+    "timestamp": 1761195911,
+    "datetime": "2025-10-23T05:05:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23638309,
+    "timestamp": 1761199583,
+    "datetime": "2025-10-23T06:06:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23638609,
+    "timestamp": 1761203219,
+    "datetime": "2025-10-23T07:06:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23638909,
+    "timestamp": 1761206843,
+    "datetime": "2025-10-23T08:07:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23639209,
+    "timestamp": 1761210479,
+    "datetime": "2025-10-23T09:07:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23639509,
+    "timestamp": 1761214115,
+    "datetime": "2025-10-23T10:08:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23639809,
+    "timestamp": 1761217751,
+    "datetime": "2025-10-23T11:09:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23640109,
+    "timestamp": 1761221399,
+    "datetime": "2025-10-23T12:09:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23640409,
+    "timestamp": 1761225011,
+    "datetime": "2025-10-23T13:10:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23640709,
+    "timestamp": 1761228611,
+    "datetime": "2025-10-23T14:10:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23641009,
+    "timestamp": 1761232247,
+    "datetime": "2025-10-23T15:10:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23641309,
+    "timestamp": 1761235931,
+    "datetime": "2025-10-23T16:12:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23641609,
+    "timestamp": 1761239567,
+    "datetime": "2025-10-23T17:12:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23641909,
+    "timestamp": 1761243191,
+    "datetime": "2025-10-23T18:13:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23642209,
+    "timestamp": 1761246803,
+    "datetime": "2025-10-23T19:13:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23642509,
+    "timestamp": 1761250463,
+    "datetime": "2025-10-23T20:14:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23642809,
+    "timestamp": 1761254159,
+    "datetime": "2025-10-23T21:15:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23643109,
+    "timestamp": 1761257831,
+    "datetime": "2025-10-23T22:17:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23643409,
+    "timestamp": 1761261467,
+    "datetime": "2025-10-23T23:17:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23643709,
+    "timestamp": 1761265079,
+    "datetime": "2025-10-24T00:17:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23644009,
+    "timestamp": 1761268727,
+    "datetime": "2025-10-24T01:18:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23644309,
+    "timestamp": 1761272387,
+    "datetime": "2025-10-24T02:19:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23644609,
+    "timestamp": 1761276047,
+    "datetime": "2025-10-24T03:20:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23644909,
+    "timestamp": 1761279671,
+    "datetime": "2025-10-24T04:21:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23645209,
+    "timestamp": 1761283307,
+    "datetime": "2025-10-24T05:21:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23645509,
+    "timestamp": 1761286943,
+    "datetime": "2025-10-24T06:22:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23645809,
+    "timestamp": 1761290567,
+    "datetime": "2025-10-24T07:22:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23646109,
+    "timestamp": 1761294191,
+    "datetime": "2025-10-24T08:23:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23646409,
+    "timestamp": 1761297839,
+    "datetime": "2025-10-24T09:23:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23646709,
+    "timestamp": 1761301451,
+    "datetime": "2025-10-24T10:24:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23647009,
+    "timestamp": 1761305087,
+    "datetime": "2025-10-24T11:24:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23647309,
+    "timestamp": 1761308711,
+    "datetime": "2025-10-24T12:25:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23647609,
+    "timestamp": 1761312323,
+    "datetime": "2025-10-24T13:25:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23647909,
+    "timestamp": 1761315947,
+    "datetime": "2025-10-24T14:25:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23648209,
+    "timestamp": 1761319595,
+    "datetime": "2025-10-24T15:26:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23648509,
+    "timestamp": 1761323219,
+    "datetime": "2025-10-24T16:26:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23648809,
+    "timestamp": 1761326855,
+    "datetime": "2025-10-24T17:27:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23649109,
+    "timestamp": 1761330479,
+    "datetime": "2025-10-24T18:27:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23649409,
+    "timestamp": 1761334091,
+    "datetime": "2025-10-24T19:28:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23649709,
+    "timestamp": 1761337715,
+    "datetime": "2025-10-24T20:28:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23650009,
+    "timestamp": 1761341351,
+    "datetime": "2025-10-24T21:29:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23650309,
+    "timestamp": 1761344963,
+    "datetime": "2025-10-24T22:29:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23650609,
+    "timestamp": 1761348599,
+    "datetime": "2025-10-24T23:29:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23650909,
+    "timestamp": 1761352247,
+    "datetime": "2025-10-25T00:30:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23651209,
+    "timestamp": 1761355883,
+    "datetime": "2025-10-25T01:31:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23651509,
+    "timestamp": 1761359495,
+    "datetime": "2025-10-25T02:31:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23651809,
+    "timestamp": 1761363119,
+    "datetime": "2025-10-25T03:31:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23652109,
+    "timestamp": 1761366731,
+    "datetime": "2025-10-25T04:32:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23652409,
+    "timestamp": 1761370343,
+    "datetime": "2025-10-25T05:32:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23652709,
+    "timestamp": 1761373979,
+    "datetime": "2025-10-25T06:32:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23653009,
+    "timestamp": 1761377603,
+    "datetime": "2025-10-25T07:33:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23653309,
+    "timestamp": 1761381227,
+    "datetime": "2025-10-25T08:33:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23653609,
+    "timestamp": 1761384899,
+    "datetime": "2025-10-25T09:34:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23653909,
+    "timestamp": 1761388511,
+    "datetime": "2025-10-25T10:35:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23654209,
+    "timestamp": 1761392111,
+    "datetime": "2025-10-25T11:35:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23654509,
+    "timestamp": 1761395759,
+    "datetime": "2025-10-25T12:35:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23654809,
+    "timestamp": 1761399371,
+    "datetime": "2025-10-25T13:36:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23655109,
+    "timestamp": 1761402971,
+    "datetime": "2025-10-25T14:36:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23655409,
+    "timestamp": 1761406595,
+    "datetime": "2025-10-25T15:36:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23655709,
+    "timestamp": 1761410219,
+    "datetime": "2025-10-25T16:36:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23656009,
+    "timestamp": 1761413843,
+    "datetime": "2025-10-25T17:37:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23656309,
+    "timestamp": 1761417443,
+    "datetime": "2025-10-25T18:37:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23656609,
+    "timestamp": 1761421055,
+    "datetime": "2025-10-25T19:37:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23656909,
+    "timestamp": 1761424727,
+    "datetime": "2025-10-25T20:38:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23657209,
+    "timestamp": 1761428339,
+    "datetime": "2025-10-25T21:38:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23657509,
+    "timestamp": 1761431951,
+    "datetime": "2025-10-25T22:39:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23657809,
+    "timestamp": 1761435587,
+    "datetime": "2025-10-25T23:39:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23658109,
+    "timestamp": 1761439187,
+    "datetime": "2025-10-26T00:39:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23658409,
+    "timestamp": 1761442799,
+    "datetime": "2025-10-26T01:39:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23658709,
+    "timestamp": 1761446411,
+    "datetime": "2025-10-26T02:40:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23659009,
+    "timestamp": 1761450011,
+    "datetime": "2025-10-26T03:40:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23659309,
+    "timestamp": 1761453623,
+    "datetime": "2025-10-26T04:40:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23659609,
+    "timestamp": 1761457235,
+    "datetime": "2025-10-26T05:40:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23659909,
+    "timestamp": 1761460859,
+    "datetime": "2025-10-26T06:40:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23660209,
+    "timestamp": 1761464495,
+    "datetime": "2025-10-26T07:41:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23660509,
+    "timestamp": 1761468131,
+    "datetime": "2025-10-26T08:42:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23660809,
+    "timestamp": 1761471743,
+    "datetime": "2025-10-26T09:42:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23661109,
+    "timestamp": 1761475391,
+    "datetime": "2025-10-26T10:43:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23661409,
+    "timestamp": 1761479015,
+    "datetime": "2025-10-26T11:43:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23661709,
+    "timestamp": 1761482615,
+    "datetime": "2025-10-26T12:43:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23662009,
+    "timestamp": 1761486215,
+    "datetime": "2025-10-26T13:43:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23662309,
+    "timestamp": 1761489815,
+    "datetime": "2025-10-26T14:43:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23662609,
+    "timestamp": 1761493475,
+    "datetime": "2025-10-26T15:44:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23662909,
+    "timestamp": 1761497075,
+    "datetime": "2025-10-26T16:44:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23663209,
+    "timestamp": 1761500723,
+    "datetime": "2025-10-26T17:45:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23663509,
+    "timestamp": 1761504347,
+    "datetime": "2025-10-26T18:45:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23663809,
+    "timestamp": 1761507959,
+    "datetime": "2025-10-26T19:45:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23664109,
+    "timestamp": 1761511571,
+    "datetime": "2025-10-26T20:46:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23664409,
+    "timestamp": 1761515219,
+    "datetime": "2025-10-26T21:46:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23664709,
+    "timestamp": 1761518831,
+    "datetime": "2025-10-26T22:47:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23665009,
+    "timestamp": 1761522443,
+    "datetime": "2025-10-26T23:47:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23665309,
+    "timestamp": 1761526091,
+    "datetime": "2025-10-27T00:48:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23665609,
+    "timestamp": 1761529715,
+    "datetime": "2025-10-27T01:48:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23665909,
+    "timestamp": 1761533339,
+    "datetime": "2025-10-27T02:48:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23666209,
+    "timestamp": 1761536963,
+    "datetime": "2025-10-27T03:49:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23666509,
+    "timestamp": 1761540623,
+    "datetime": "2025-10-27T04:50:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23666809,
+    "timestamp": 1761544259,
+    "datetime": "2025-10-27T05:50:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23667109,
+    "timestamp": 1761547859,
+    "datetime": "2025-10-27T06:50:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23667409,
+    "timestamp": 1761551495,
+    "datetime": "2025-10-27T07:51:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23667709,
+    "timestamp": 1761555119,
+    "datetime": "2025-10-27T08:51:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23668009,
+    "timestamp": 1761558743,
+    "datetime": "2025-10-27T09:52:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23668309,
+    "timestamp": 1761562403,
+    "datetime": "2025-10-27T10:53:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23668609,
+    "timestamp": 1761566039,
+    "datetime": "2025-10-27T11:53:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23668909,
+    "timestamp": 1761569675,
+    "datetime": "2025-10-27T12:54:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23669209,
+    "timestamp": 1761573287,
+    "datetime": "2025-10-27T13:54:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23669509,
+    "timestamp": 1761576935,
+    "datetime": "2025-10-27T14:55:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23669809,
+    "timestamp": 1761580559,
+    "datetime": "2025-10-27T15:55:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23670109,
+    "timestamp": 1761584183,
+    "datetime": "2025-10-27T16:56:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23670409,
+    "timestamp": 1761587795,
+    "datetime": "2025-10-27T17:56:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23670709,
+    "timestamp": 1761591431,
+    "datetime": "2025-10-27T18:57:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23671009,
+    "timestamp": 1761595055,
+    "datetime": "2025-10-27T19:57:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23671309,
+    "timestamp": 1761598715,
+    "datetime": "2025-10-27T20:58:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23671609,
+    "timestamp": 1761602339,
+    "datetime": "2025-10-27T21:58:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23671909,
+    "timestamp": 1761605963,
+    "datetime": "2025-10-27T22:59:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23672209,
+    "timestamp": 1761609575,
+    "datetime": "2025-10-27T23:59:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23672509,
+    "timestamp": 1761613199,
+    "datetime": "2025-10-28T00:59:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23672809,
+    "timestamp": 1761616835,
+    "datetime": "2025-10-28T02:00:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23673109,
+    "timestamp": 1761620459,
+    "datetime": "2025-10-28T03:00:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23673409,
+    "timestamp": 1761624095,
+    "datetime": "2025-10-28T04:01:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23673709,
+    "timestamp": 1761627707,
+    "datetime": "2025-10-28T05:01:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23674009,
+    "timestamp": 1761631343,
+    "datetime": "2025-10-28T06:02:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23674309,
+    "timestamp": 1761634979,
+    "datetime": "2025-10-28T07:02:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23674609,
+    "timestamp": 1761638603,
+    "datetime": "2025-10-28T08:03:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23674909,
+    "timestamp": 1761642227,
+    "datetime": "2025-10-28T09:03:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23675209,
+    "timestamp": 1761645863,
+    "datetime": "2025-10-28T10:04:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23675509,
+    "timestamp": 1761649487,
+    "datetime": "2025-10-28T11:04:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23675809,
+    "timestamp": 1761653135,
+    "datetime": "2025-10-28T12:05:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23676109,
+    "timestamp": 1761656771,
+    "datetime": "2025-10-28T13:06:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23676409,
+    "timestamp": 1761660431,
+    "datetime": "2025-10-28T14:07:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23676709,
+    "timestamp": 1761664031,
+    "datetime": "2025-10-28T15:07:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23677009,
+    "timestamp": 1761667679,
+    "datetime": "2025-10-28T16:07:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23677309,
+    "timestamp": 1761671363,
+    "datetime": "2025-10-28T17:09:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23677609,
+    "timestamp": 1761674999,
+    "datetime": "2025-10-28T18:09:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23677909,
+    "timestamp": 1761678647,
+    "datetime": "2025-10-28T19:10:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23678209,
+    "timestamp": 1761682283,
+    "datetime": "2025-10-28T20:11:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23678509,
+    "timestamp": 1761685931,
+    "datetime": "2025-10-28T21:12:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23678809,
+    "timestamp": 1761689591,
+    "datetime": "2025-10-28T22:13:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23679109,
+    "timestamp": 1761693227,
+    "datetime": "2025-10-28T23:13:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23679409,
+    "timestamp": 1761696839,
+    "datetime": "2025-10-29T00:13:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23679709,
+    "timestamp": 1761700451,
+    "datetime": "2025-10-29T01:14:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23680009,
+    "timestamp": 1761704099,
+    "datetime": "2025-10-29T02:14:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23680309,
+    "timestamp": 1761707723,
+    "datetime": "2025-10-29T03:15:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23680609,
+    "timestamp": 1761711347,
+    "datetime": "2025-10-29T04:15:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23680909,
+    "timestamp": 1761715007,
+    "datetime": "2025-10-29T05:16:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23681209,
+    "timestamp": 1761718619,
+    "datetime": "2025-10-29T06:16:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23681509,
+    "timestamp": 1761722231,
+    "datetime": "2025-10-29T07:17:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23681809,
+    "timestamp": 1761725855,
+    "datetime": "2025-10-29T08:17:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23682109,
+    "timestamp": 1761729503,
+    "datetime": "2025-10-29T09:18:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23682409,
+    "timestamp": 1761733115,
+    "datetime": "2025-10-29T10:18:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23682709,
+    "timestamp": 1761736739,
+    "datetime": "2025-10-29T11:18:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23683009,
+    "timestamp": 1761740399,
+    "datetime": "2025-10-29T12:19:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23683309,
+    "timestamp": 1761744011,
+    "datetime": "2025-10-29T13:20:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23683609,
+    "timestamp": 1761747659,
+    "datetime": "2025-10-29T14:20:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23683909,
+    "timestamp": 1761751295,
+    "datetime": "2025-10-29T15:21:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23684209,
+    "timestamp": 1761754895,
+    "datetime": "2025-10-29T16:21:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23684509,
+    "timestamp": 1761758519,
+    "datetime": "2025-10-29T17:21:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23684809,
+    "timestamp": 1761762155,
+    "datetime": "2025-10-29T18:22:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23685109,
+    "timestamp": 1761765779,
+    "datetime": "2025-10-29T19:22:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23685409,
+    "timestamp": 1761769403,
+    "datetime": "2025-10-29T20:23:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23685709,
+    "timestamp": 1761773027,
+    "datetime": "2025-10-29T21:23:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23686009,
+    "timestamp": 1761776639,
+    "datetime": "2025-10-29T22:23:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23686309,
+    "timestamp": 1761780263,
+    "datetime": "2025-10-29T23:24:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23686609,
+    "timestamp": 1761783863,
+    "datetime": "2025-10-30T00:24:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23686909,
+    "timestamp": 1761787475,
+    "datetime": "2025-10-30T01:24:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23687209,
+    "timestamp": 1761791123,
+    "datetime": "2025-10-30T02:25:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23687509,
+    "timestamp": 1761794747,
+    "datetime": "2025-10-30T03:25:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23687809,
+    "timestamp": 1761798383,
+    "datetime": "2025-10-30T04:26:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23688109,
+    "timestamp": 1761802031,
+    "datetime": "2025-10-30T05:27:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23688409,
+    "timestamp": 1761805679,
+    "datetime": "2025-10-30T06:27:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23688709,
+    "timestamp": 1761809327,
+    "datetime": "2025-10-30T07:28:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23689009,
+    "timestamp": 1761812927,
+    "datetime": "2025-10-30T08:28:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23689309,
+    "timestamp": 1761816539,
+    "datetime": "2025-10-30T09:28:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23689609,
+    "timestamp": 1761820139,
+    "datetime": "2025-10-30T10:28:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23689909,
+    "timestamp": 1761823751,
+    "datetime": "2025-10-30T11:29:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23690209,
+    "timestamp": 1761827387,
+    "datetime": "2025-10-30T12:29:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23690509,
+    "timestamp": 1761830987,
+    "datetime": "2025-10-30T13:29:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23690809,
+    "timestamp": 1761834611,
+    "datetime": "2025-10-30T14:30:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23691109,
+    "timestamp": 1761838259,
+    "datetime": "2025-10-30T15:30:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23691409,
+    "timestamp": 1761841895,
+    "datetime": "2025-10-30T16:31:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23691709,
+    "timestamp": 1761845531,
+    "datetime": "2025-10-30T17:32:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23692009,
+    "timestamp": 1761849143,
+    "datetime": "2025-10-30T18:32:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23692309,
+    "timestamp": 1761852815,
+    "datetime": "2025-10-30T19:33:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23692609,
+    "timestamp": 1761856439,
+    "datetime": "2025-10-30T20:33:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23692909,
+    "timestamp": 1761860099,
+    "datetime": "2025-10-30T21:34:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23693209,
+    "timestamp": 1761863747,
+    "datetime": "2025-10-30T22:35:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23693509,
+    "timestamp": 1761867371,
+    "datetime": "2025-10-30T23:36:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23693809,
+    "timestamp": 1761870995,
+    "datetime": "2025-10-31T00:36:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23694109,
+    "timestamp": 1761874643,
+    "datetime": "2025-10-31T01:37:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23694409,
+    "timestamp": 1761878243,
+    "datetime": "2025-10-31T02:37:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23694709,
+    "timestamp": 1761881891,
+    "datetime": "2025-10-31T03:38:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23695009,
+    "timestamp": 1761885515,
+    "datetime": "2025-10-31T04:38:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23695309,
+    "timestamp": 1761889163,
+    "datetime": "2025-10-31T05:39:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23695609,
+    "timestamp": 1761892775,
+    "datetime": "2025-10-31T06:39:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23695909,
+    "timestamp": 1761896435,
+    "datetime": "2025-10-31T07:40:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23696209,
+    "timestamp": 1761900071,
+    "datetime": "2025-10-31T08:41:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23696509,
+    "timestamp": 1761903731,
+    "datetime": "2025-10-31T09:42:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23696809,
+    "timestamp": 1761907331,
+    "datetime": "2025-10-31T10:42:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23697109,
+    "timestamp": 1761910943,
+    "datetime": "2025-10-31T11:42:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23697409,
+    "timestamp": 1761914579,
+    "datetime": "2025-10-31T12:42:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23697709,
+    "timestamp": 1761918203,
+    "datetime": "2025-10-31T13:43:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23698009,
+    "timestamp": 1761921803,
+    "datetime": "2025-10-31T14:43:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23698309,
+    "timestamp": 1761925415,
+    "datetime": "2025-10-31T15:43:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23698609,
+    "timestamp": 1761929087,
+    "datetime": "2025-10-31T16:44:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23698909,
+    "timestamp": 1761932723,
+    "datetime": "2025-10-31T17:45:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23699209,
+    "timestamp": 1761936335,
+    "datetime": "2025-10-31T18:45:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23699509,
+    "timestamp": 1761939983,
+    "datetime": "2025-10-31T19:46:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23699809,
+    "timestamp": 1761943619,
+    "datetime": "2025-10-31T20:46:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23700109,
+    "timestamp": 1761947267,
+    "datetime": "2025-10-31T21:47:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23700409,
+    "timestamp": 1761950903,
+    "datetime": "2025-10-31T22:48:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23700709,
+    "timestamp": 1761954515,
+    "datetime": "2025-10-31T23:48:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23701009,
+    "timestamp": 1761958127,
+    "datetime": "2025-11-01T00:48:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23701309,
+    "timestamp": 1761961739,
+    "datetime": "2025-11-01T01:48:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23701609,
+    "timestamp": 1761965351,
+    "datetime": "2025-11-01T02:49:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23701909,
+    "timestamp": 1761968963,
+    "datetime": "2025-11-01T03:49:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23702209,
+    "timestamp": 1761972587,
+    "datetime": "2025-11-01T04:49:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23702509,
+    "timestamp": 1761976199,
+    "datetime": "2025-11-01T05:49:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23702809,
+    "timestamp": 1761979823,
+    "datetime": "2025-11-01T06:50:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23703109,
+    "timestamp": 1761983423,
+    "datetime": "2025-11-01T07:50:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23703409,
+    "timestamp": 1761987071,
+    "datetime": "2025-11-01T08:51:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23703709,
+    "timestamp": 1761990695,
+    "datetime": "2025-11-01T09:51:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23704009,
+    "timestamp": 1761994319,
+    "datetime": "2025-11-01T10:51:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23704309,
+    "timestamp": 1761997943,
+    "datetime": "2025-11-01T11:52:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23704609,
+    "timestamp": 1762001543,
+    "datetime": "2025-11-01T12:52:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23704909,
+    "timestamp": 1762005167,
+    "datetime": "2025-11-01T13:52:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23705209,
+    "timestamp": 1762008791,
+    "datetime": "2025-11-01T14:53:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23705509,
+    "timestamp": 1762012415,
+    "datetime": "2025-11-01T15:53:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23705809,
+    "timestamp": 1762016027,
+    "datetime": "2025-11-01T16:53:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23706109,
+    "timestamp": 1762019651,
+    "datetime": "2025-11-01T17:54:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23706409,
+    "timestamp": 1762023359,
+    "datetime": "2025-11-01T18:55:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23706709,
+    "timestamp": 1762027007,
+    "datetime": "2025-11-01T19:56:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23707009,
+    "timestamp": 1762030643,
+    "datetime": "2025-11-01T20:57:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23707309,
+    "timestamp": 1762034243,
+    "datetime": "2025-11-01T21:57:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23707609,
+    "timestamp": 1762037843,
+    "datetime": "2025-11-01T22:57:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23707909,
+    "timestamp": 1762041479,
+    "datetime": "2025-11-01T23:57:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23708209,
+    "timestamp": 1762045091,
+    "datetime": "2025-11-02T00:58:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23708509,
+    "timestamp": 1762048691,
+    "datetime": "2025-11-02T01:58:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23708809,
+    "timestamp": 1762052315,
+    "datetime": "2025-11-02T02:58:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23709109,
+    "timestamp": 1762055963,
+    "datetime": "2025-11-02T03:59:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23709409,
+    "timestamp": 1762059587,
+    "datetime": "2025-11-02T04:59:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23709709,
+    "timestamp": 1762063187,
+    "datetime": "2025-11-02T05:59:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23710009,
+    "timestamp": 1762066799,
+    "datetime": "2025-11-02T06:59:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23710309,
+    "timestamp": 1762070423,
+    "datetime": "2025-11-02T08:00:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23710609,
+    "timestamp": 1762074035,
+    "datetime": "2025-11-02T09:00:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23710909,
+    "timestamp": 1762077647,
+    "datetime": "2025-11-02T10:00:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23711209,
+    "timestamp": 1762081283,
+    "datetime": "2025-11-02T11:01:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23711509,
+    "timestamp": 1762084883,
+    "datetime": "2025-11-02T12:01:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23711809,
+    "timestamp": 1762088519,
+    "datetime": "2025-11-02T13:01:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23712109,
+    "timestamp": 1762092179,
+    "datetime": "2025-11-02T14:02:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23712409,
+    "timestamp": 1762095791,
+    "datetime": "2025-11-02T15:03:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23712709,
+    "timestamp": 1762099391,
+    "datetime": "2025-11-02T16:03:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23713009,
+    "timestamp": 1762103027,
+    "datetime": "2025-11-02T17:03:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23713309,
+    "timestamp": 1762106675,
+    "datetime": "2025-11-02T18:04:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23713609,
+    "timestamp": 1762110275,
+    "datetime": "2025-11-02T19:04:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23713909,
+    "timestamp": 1762113875,
+    "datetime": "2025-11-02T20:04:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23714209,
+    "timestamp": 1762117487,
+    "datetime": "2025-11-02T21:04:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23714509,
+    "timestamp": 1762121135,
+    "datetime": "2025-11-02T22:05:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23714809,
+    "timestamp": 1762124759,
+    "datetime": "2025-11-02T23:05:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23715109,
+    "timestamp": 1762128371,
+    "datetime": "2025-11-03T00:06:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23715409,
+    "timestamp": 1762131983,
+    "datetime": "2025-11-03T01:06:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23715709,
+    "timestamp": 1762135595,
+    "datetime": "2025-11-03T02:06:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23716009,
+    "timestamp": 1762139243,
+    "datetime": "2025-11-03T03:07:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23716309,
+    "timestamp": 1762142867,
+    "datetime": "2025-11-03T04:07:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23716609,
+    "timestamp": 1762146515,
+    "datetime": "2025-11-03T05:08:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23716909,
+    "timestamp": 1762150127,
+    "datetime": "2025-11-03T06:08:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23717209,
+    "timestamp": 1762153751,
+    "datetime": "2025-11-03T07:09:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23717509,
+    "timestamp": 1762157363,
+    "datetime": "2025-11-03T08:09:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23717809,
+    "timestamp": 1762160963,
+    "datetime": "2025-11-03T09:09:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23718109,
+    "timestamp": 1762164575,
+    "datetime": "2025-11-03T10:09:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23718409,
+    "timestamp": 1762168175,
+    "datetime": "2025-11-03T11:09:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23718709,
+    "timestamp": 1762171799,
+    "datetime": "2025-11-03T12:09:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23719009,
+    "timestamp": 1762175423,
+    "datetime": "2025-11-03T13:10:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23719309,
+    "timestamp": 1762179023,
+    "datetime": "2025-11-03T14:10:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23719609,
+    "timestamp": 1762182623,
+    "datetime": "2025-11-03T15:10:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23719909,
+    "timestamp": 1762186295,
+    "datetime": "2025-11-03T16:11:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23720209,
+    "timestamp": 1762189919,
+    "datetime": "2025-11-03T17:11:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23720509,
+    "timestamp": 1762193543,
+    "datetime": "2025-11-03T18:12:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23720809,
+    "timestamp": 1762197179,
+    "datetime": "2025-11-03T19:12:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23721109,
+    "timestamp": 1762200803,
+    "datetime": "2025-11-03T20:13:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23721409,
+    "timestamp": 1762204415,
+    "datetime": "2025-11-03T21:13:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23721709,
+    "timestamp": 1762208039,
+    "datetime": "2025-11-03T22:13:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23722009,
+    "timestamp": 1762211675,
+    "datetime": "2025-11-03T23:14:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23722309,
+    "timestamp": 1762215287,
+    "datetime": "2025-11-04T00:14:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23722609,
+    "timestamp": 1762218911,
+    "datetime": "2025-11-04T01:15:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23722909,
+    "timestamp": 1762222523,
+    "datetime": "2025-11-04T02:15:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23723209,
+    "timestamp": 1762226147,
+    "datetime": "2025-11-04T03:15:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23723509,
+    "timestamp": 1762229759,
+    "datetime": "2025-11-04T04:15:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23723809,
+    "timestamp": 1762233383,
+    "datetime": "2025-11-04T05:16:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23724109,
+    "timestamp": 1762236995,
+    "datetime": "2025-11-04T06:16:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23724409,
+    "timestamp": 1762240607,
+    "datetime": "2025-11-04T07:16:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23724709,
+    "timestamp": 1762244207,
+    "datetime": "2025-11-04T08:16:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23725009,
+    "timestamp": 1762247831,
+    "datetime": "2025-11-04T09:17:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23725309,
+    "timestamp": 1762251455,
+    "datetime": "2025-11-04T10:17:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23725609,
+    "timestamp": 1762255067,
+    "datetime": "2025-11-04T11:17:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23725909,
+    "timestamp": 1762258679,
+    "datetime": "2025-11-04T12:17:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23726209,
+    "timestamp": 1762262339,
+    "datetime": "2025-11-04T13:18:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23726509,
+    "timestamp": 1762265987,
+    "datetime": "2025-11-04T14:19:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23726809,
+    "timestamp": 1762269611,
+    "datetime": "2025-11-04T15:20:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23727109,
+    "timestamp": 1762273259,
+    "datetime": "2025-11-04T16:20:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23727409,
+    "timestamp": 1762276883,
+    "datetime": "2025-11-04T17:21:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23727709,
+    "timestamp": 1762280507,
+    "datetime": "2025-11-04T18:21:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23728009,
+    "timestamp": 1762284155,
+    "datetime": "2025-11-04T19:22:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23728309,
+    "timestamp": 1762287755,
+    "datetime": "2025-11-04T20:22:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23728609,
+    "timestamp": 1762291379,
+    "datetime": "2025-11-04T21:22:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23728909,
+    "timestamp": 1762295039,
+    "datetime": "2025-11-04T22:23:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23729209,
+    "timestamp": 1762298651,
+    "datetime": "2025-11-04T23:24:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23729509,
+    "timestamp": 1762302275,
+    "datetime": "2025-11-05T00:24:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23729809,
+    "timestamp": 1762305887,
+    "datetime": "2025-11-05T01:24:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23730109,
+    "timestamp": 1762309511,
+    "datetime": "2025-11-05T02:25:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23730409,
+    "timestamp": 1762313123,
+    "datetime": "2025-11-05T03:25:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23730709,
+    "timestamp": 1762316759,
+    "datetime": "2025-11-05T04:25:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23731009,
+    "timestamp": 1762320419,
+    "datetime": "2025-11-05T05:26:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23731309,
+    "timestamp": 1762324091,
+    "datetime": "2025-11-05T06:28:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23731609,
+    "timestamp": 1762327715,
+    "datetime": "2025-11-05T07:28:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23731909,
+    "timestamp": 1762331315,
+    "datetime": "2025-11-05T08:28:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23732209,
+    "timestamp": 1762334915,
+    "datetime": "2025-11-05T09:28:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23732509,
+    "timestamp": 1762338551,
+    "datetime": "2025-11-05T10:29:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23732809,
+    "timestamp": 1762342175,
+    "datetime": "2025-11-05T11:29:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23733109,
+    "timestamp": 1762345811,
+    "datetime": "2025-11-05T12:30:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23733409,
+    "timestamp": 1762349483,
+    "datetime": "2025-11-05T13:31:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23733709,
+    "timestamp": 1762353095,
+    "datetime": "2025-11-05T14:31:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23734009,
+    "timestamp": 1762356767,
+    "datetime": "2025-11-05T15:32:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23734309,
+    "timestamp": 1762360379,
+    "datetime": "2025-11-05T16:32:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23734609,
+    "timestamp": 1762363991,
+    "datetime": "2025-11-05T17:33:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23734909,
+    "timestamp": 1762367615,
+    "datetime": "2025-11-05T18:33:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23735209,
+    "timestamp": 1762371239,
+    "datetime": "2025-11-05T19:33:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23735509,
+    "timestamp": 1762374863,
+    "datetime": "2025-11-05T20:34:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23735809,
+    "timestamp": 1762378499,
+    "datetime": "2025-11-05T21:34:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23736109,
+    "timestamp": 1762382147,
+    "datetime": "2025-11-05T22:35:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23736409,
+    "timestamp": 1762385759,
+    "datetime": "2025-11-05T23:35:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23736709,
+    "timestamp": 1762389431,
+    "datetime": "2025-11-06T00:37:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23737009,
+    "timestamp": 1762393055,
+    "datetime": "2025-11-06T01:37:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23737309,
+    "timestamp": 1762396667,
+    "datetime": "2025-11-06T02:37:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23737609,
+    "timestamp": 1762400303,
+    "datetime": "2025-11-06T03:38:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23737909,
+    "timestamp": 1762403927,
+    "datetime": "2025-11-06T04:38:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23738209,
+    "timestamp": 1762407563,
+    "datetime": "2025-11-06T05:39:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23738509,
+    "timestamp": 1762411175,
+    "datetime": "2025-11-06T06:39:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23738809,
+    "timestamp": 1762414775,
+    "datetime": "2025-11-06T07:39:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23739109,
+    "timestamp": 1762418399,
+    "datetime": "2025-11-06T08:39:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23739409,
+    "timestamp": 1762422047,
+    "datetime": "2025-11-06T09:40:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23739709,
+    "timestamp": 1762425647,
+    "datetime": "2025-11-06T10:40:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23740009,
+    "timestamp": 1762429307,
+    "datetime": "2025-11-06T11:41:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23740309,
+    "timestamp": 1762432919,
+    "datetime": "2025-11-06T12:41:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23740609,
+    "timestamp": 1762436543,
+    "datetime": "2025-11-06T13:42:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23740909,
+    "timestamp": 1762440155,
+    "datetime": "2025-11-06T14:42:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23741209,
+    "timestamp": 1762443815,
+    "datetime": "2025-11-06T15:43:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23741509,
+    "timestamp": 1762447451,
+    "datetime": "2025-11-06T16:44:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23741809,
+    "timestamp": 1762451063,
+    "datetime": "2025-11-06T17:44:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23742109,
+    "timestamp": 1762454675,
+    "datetime": "2025-11-06T18:44:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23742409,
+    "timestamp": 1762458287,
+    "datetime": "2025-11-06T19:44:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23742709,
+    "timestamp": 1762461911,
+    "datetime": "2025-11-06T20:45:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23743009,
+    "timestamp": 1762465547,
+    "datetime": "2025-11-06T21:45:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23743309,
+    "timestamp": 1762469159,
+    "datetime": "2025-11-06T22:45:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23743609,
+    "timestamp": 1762472771,
+    "datetime": "2025-11-06T23:46:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23743909,
+    "timestamp": 1762476383,
+    "datetime": "2025-11-07T00:46:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23744209,
+    "timestamp": 1762480019,
+    "datetime": "2025-11-07T01:46:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23744509,
+    "timestamp": 1762483667,
+    "datetime": "2025-11-07T02:47:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23744809,
+    "timestamp": 1762487279,
+    "datetime": "2025-11-07T03:47:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23745109,
+    "timestamp": 1762490915,
+    "datetime": "2025-11-07T04:48:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23745409,
+    "timestamp": 1762494527,
+    "datetime": "2025-11-07T05:48:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23745709,
+    "timestamp": 1762498163,
+    "datetime": "2025-11-07T06:49:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23746009,
+    "timestamp": 1762501799,
+    "datetime": "2025-11-07T07:49:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23746309,
+    "timestamp": 1762505399,
+    "datetime": "2025-11-07T08:49:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23746609,
+    "timestamp": 1762509023,
+    "datetime": "2025-11-07T09:50:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23746909,
+    "timestamp": 1762512647,
+    "datetime": "2025-11-07T10:50:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23747209,
+    "timestamp": 1762516307,
+    "datetime": "2025-11-07T11:51:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23747509,
+    "timestamp": 1762519931,
+    "datetime": "2025-11-07T12:52:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23747809,
+    "timestamp": 1762523567,
+    "datetime": "2025-11-07T13:52:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23748109,
+    "timestamp": 1762527179,
+    "datetime": "2025-11-07T14:52:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23748409,
+    "timestamp": 1762530791,
+    "datetime": "2025-11-07T15:53:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23748709,
+    "timestamp": 1762534415,
+    "datetime": "2025-11-07T16:53:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23749009,
+    "timestamp": 1762538075,
+    "datetime": "2025-11-07T17:54:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23749309,
+    "timestamp": 1762541711,
+    "datetime": "2025-11-07T18:55:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23749609,
+    "timestamp": 1762545311,
+    "datetime": "2025-11-07T19:55:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23749909,
+    "timestamp": 1762548935,
+    "datetime": "2025-11-07T20:55:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23750209,
+    "timestamp": 1762552535,
+    "datetime": "2025-11-07T21:55:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23750509,
+    "timestamp": 1762556147,
+    "datetime": "2025-11-07T22:55:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23750809,
+    "timestamp": 1762559771,
+    "datetime": "2025-11-07T23:56:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23751109,
+    "timestamp": 1762563431,
+    "datetime": "2025-11-08T00:57:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23751409,
+    "timestamp": 1762567055,
+    "datetime": "2025-11-08T01:57:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23751709,
+    "timestamp": 1762570679,
+    "datetime": "2025-11-08T02:57:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23752009,
+    "timestamp": 1762574315,
+    "datetime": "2025-11-08T03:58:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23752309,
+    "timestamp": 1762577939,
+    "datetime": "2025-11-08T04:58:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23752609,
+    "timestamp": 1762581563,
+    "datetime": "2025-11-08T05:59:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23752909,
+    "timestamp": 1762585187,
+    "datetime": "2025-11-08T06:59:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23753209,
+    "timestamp": 1762588811,
+    "datetime": "2025-11-08T08:00:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23753509,
+    "timestamp": 1762592435,
+    "datetime": "2025-11-08T09:00:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23753809,
+    "timestamp": 1762596083,
+    "datetime": "2025-11-08T10:01:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23754109,
+    "timestamp": 1762599683,
+    "datetime": "2025-11-08T11:01:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23754409,
+    "timestamp": 1762603319,
+    "datetime": "2025-11-08T12:01:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23754709,
+    "timestamp": 1762606943,
+    "datetime": "2025-11-08T13:02:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23755009,
+    "timestamp": 1762610591,
+    "datetime": "2025-11-08T14:03:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23755309,
+    "timestamp": 1762614215,
+    "datetime": "2025-11-08T15:03:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23755609,
+    "timestamp": 1762617827,
+    "datetime": "2025-11-08T16:03:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23755909,
+    "timestamp": 1762621427,
+    "datetime": "2025-11-08T17:03:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23756209,
+    "timestamp": 1762625027,
+    "datetime": "2025-11-08T18:03:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23756509,
+    "timestamp": 1762628627,
+    "datetime": "2025-11-08T19:03:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23756809,
+    "timestamp": 1762632275,
+    "datetime": "2025-11-08T20:04:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23757109,
+    "timestamp": 1762635887,
+    "datetime": "2025-11-08T21:04:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23757409,
+    "timestamp": 1762639511,
+    "datetime": "2025-11-08T22:05:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23757709,
+    "timestamp": 1762643135,
+    "datetime": "2025-11-08T23:05:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23758009,
+    "timestamp": 1762646735,
+    "datetime": "2025-11-09T00:05:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23758309,
+    "timestamp": 1762650335,
+    "datetime": "2025-11-09T01:05:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23758609,
+    "timestamp": 1762653947,
+    "datetime": "2025-11-09T02:05:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23758909,
+    "timestamp": 1762657559,
+    "datetime": "2025-11-09T03:05:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23759209,
+    "timestamp": 1762661183,
+    "datetime": "2025-11-09T04:06:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23759509,
+    "timestamp": 1762664795,
+    "datetime": "2025-11-09T05:06:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23759809,
+    "timestamp": 1762668419,
+    "datetime": "2025-11-09T06:06:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23760109,
+    "timestamp": 1762672055,
+    "datetime": "2025-11-09T07:07:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23760409,
+    "timestamp": 1762675655,
+    "datetime": "2025-11-09T08:07:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23760709,
+    "timestamp": 1762679255,
+    "datetime": "2025-11-09T09:07:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23761009,
+    "timestamp": 1762682915,
+    "datetime": "2025-11-09T10:08:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23761309,
+    "timestamp": 1762686563,
+    "datetime": "2025-11-09T11:09:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23761609,
+    "timestamp": 1762690187,
+    "datetime": "2025-11-09T12:09:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23761909,
+    "timestamp": 1762693811,
+    "datetime": "2025-11-09T13:10:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23762209,
+    "timestamp": 1762697435,
+    "datetime": "2025-11-09T14:10:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23762509,
+    "timestamp": 1762701059,
+    "datetime": "2025-11-09T15:10:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23762809,
+    "timestamp": 1762704683,
+    "datetime": "2025-11-09T16:11:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23763109,
+    "timestamp": 1762708307,
+    "datetime": "2025-11-09T17:11:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23763409,
+    "timestamp": 1762711907,
+    "datetime": "2025-11-09T18:11:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23763709,
+    "timestamp": 1762715519,
+    "datetime": "2025-11-09T19:11:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23764009,
+    "timestamp": 1762719131,
+    "datetime": "2025-11-09T20:12:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23764309,
+    "timestamp": 1762722767,
+    "datetime": "2025-11-09T21:12:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23764609,
+    "timestamp": 1762726367,
+    "datetime": "2025-11-09T22:12:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23764909,
+    "timestamp": 1762729991,
+    "datetime": "2025-11-09T23:13:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23765209,
+    "timestamp": 1762733603,
+    "datetime": "2025-11-10T00:13:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23765509,
+    "timestamp": 1762737263,
+    "datetime": "2025-11-10T01:14:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23765809,
+    "timestamp": 1762740875,
+    "datetime": "2025-11-10T02:14:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23766109,
+    "timestamp": 1762744487,
+    "datetime": "2025-11-10T03:14:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23766409,
+    "timestamp": 1762748111,
+    "datetime": "2025-11-10T04:15:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23766709,
+    "timestamp": 1762751747,
+    "datetime": "2025-11-10T05:15:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23767009,
+    "timestamp": 1762755359,
+    "datetime": "2025-11-10T06:15:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23767309,
+    "timestamp": 1762758959,
+    "datetime": "2025-11-10T07:15:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23767609,
+    "timestamp": 1762762583,
+    "datetime": "2025-11-10T08:16:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23767909,
+    "timestamp": 1762766195,
+    "datetime": "2025-11-10T09:16:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23768209,
+    "timestamp": 1762769819,
+    "datetime": "2025-11-10T10:16:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23768509,
+    "timestamp": 1762773431,
+    "datetime": "2025-11-10T11:17:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23768809,
+    "timestamp": 1762777055,
+    "datetime": "2025-11-10T12:17:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23769109,
+    "timestamp": 1762780667,
+    "datetime": "2025-11-10T13:17:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23769409,
+    "timestamp": 1762784315,
+    "datetime": "2025-11-10T14:18:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23769709,
+    "timestamp": 1762787927,
+    "datetime": "2025-11-10T15:18:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23770009,
+    "timestamp": 1762791587,
+    "datetime": "2025-11-10T16:19:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23770309,
+    "timestamp": 1762795223,
+    "datetime": "2025-11-10T17:20:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23770609,
+    "timestamp": 1762798847,
+    "datetime": "2025-11-10T18:20:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23770909,
+    "timestamp": 1762802471,
+    "datetime": "2025-11-10T19:21:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23771209,
+    "timestamp": 1762806107,
+    "datetime": "2025-11-10T20:21:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23771509,
+    "timestamp": 1762809767,
+    "datetime": "2025-11-10T21:22:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23771809,
+    "timestamp": 1762813391,
+    "datetime": "2025-11-10T22:23:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23772109,
+    "timestamp": 1762817051,
+    "datetime": "2025-11-10T23:24:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23772409,
+    "timestamp": 1762820651,
+    "datetime": "2025-11-11T00:24:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23772709,
+    "timestamp": 1762824311,
+    "datetime": "2025-11-11T01:25:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23773009,
+    "timestamp": 1762827971,
+    "datetime": "2025-11-11T02:26:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23773309,
+    "timestamp": 1762831607,
+    "datetime": "2025-11-11T03:26:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23773609,
+    "timestamp": 1762835255,
+    "datetime": "2025-11-11T04:27:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23773909,
+    "timestamp": 1762838879,
+    "datetime": "2025-11-11T05:27:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23774209,
+    "timestamp": 1762842479,
+    "datetime": "2025-11-11T06:27:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23774509,
+    "timestamp": 1762846103,
+    "datetime": "2025-11-11T07:28:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23774809,
+    "timestamp": 1762849775,
+    "datetime": "2025-11-11T08:29:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23775109,
+    "timestamp": 1762853423,
+    "datetime": "2025-11-11T09:30:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23775409,
+    "timestamp": 1762857047,
+    "datetime": "2025-11-11T10:30:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23775709,
+    "timestamp": 1762860695,
+    "datetime": "2025-11-11T11:31:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23776009,
+    "timestamp": 1762864295,
+    "datetime": "2025-11-11T12:31:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23776309,
+    "timestamp": 1762867943,
+    "datetime": "2025-11-11T13:32:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23776609,
+    "timestamp": 1762871555,
+    "datetime": "2025-11-11T14:32:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23776909,
+    "timestamp": 1762875191,
+    "datetime": "2025-11-11T15:33:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23777209,
+    "timestamp": 1762878827,
+    "datetime": "2025-11-11T16:33:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23777509,
+    "timestamp": 1762882451,
+    "datetime": "2025-11-11T17:34:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23777809,
+    "timestamp": 1762886099,
+    "datetime": "2025-11-11T18:34:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23778109,
+    "timestamp": 1762889711,
+    "datetime": "2025-11-11T19:35:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23778409,
+    "timestamp": 1762893335,
+    "datetime": "2025-11-11T20:35:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23778709,
+    "timestamp": 1762896959,
+    "datetime": "2025-11-11T21:35:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23779009,
+    "timestamp": 1762900571,
+    "datetime": "2025-11-11T22:36:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23779309,
+    "timestamp": 1762904195,
+    "datetime": "2025-11-11T23:36:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23779609,
+    "timestamp": 1762907819,
+    "datetime": "2025-11-12T00:36:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23779909,
+    "timestamp": 1762911443,
+    "datetime": "2025-11-12T01:37:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23780209,
+    "timestamp": 1762915043,
+    "datetime": "2025-11-12T02:37:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23780509,
+    "timestamp": 1762918655,
+    "datetime": "2025-11-12T03:37:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23780809,
+    "timestamp": 1762922255,
+    "datetime": "2025-11-12T04:37:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23781109,
+    "timestamp": 1762925891,
+    "datetime": "2025-11-12T05:38:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23781409,
+    "timestamp": 1762929515,
+    "datetime": "2025-11-12T06:38:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23781709,
+    "timestamp": 1762933139,
+    "datetime": "2025-11-12T07:38:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23782009,
+    "timestamp": 1762936763,
+    "datetime": "2025-11-12T08:39:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23782309,
+    "timestamp": 1762940387,
+    "datetime": "2025-11-12T09:39:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23782609,
+    "timestamp": 1762944011,
+    "datetime": "2025-11-12T10:40:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23782909,
+    "timestamp": 1762947611,
+    "datetime": "2025-11-12T11:40:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23783209,
+    "timestamp": 1762951259,
+    "datetime": "2025-11-12T12:40:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23783509,
+    "timestamp": 1762954895,
+    "datetime": "2025-11-12T13:41:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23783809,
+    "timestamp": 1762958531,
+    "datetime": "2025-11-12T14:42:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23784109,
+    "timestamp": 1762962167,
+    "datetime": "2025-11-12T15:42:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23784409,
+    "timestamp": 1762965779,
+    "datetime": "2025-11-12T16:42:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23784709,
+    "timestamp": 1762969391,
+    "datetime": "2025-11-12T17:43:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23785009,
+    "timestamp": 1762973015,
+    "datetime": "2025-11-12T18:43:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23785309,
+    "timestamp": 1762976651,
+    "datetime": "2025-11-12T19:44:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23785609,
+    "timestamp": 1762980287,
+    "datetime": "2025-11-12T20:44:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23785909,
+    "timestamp": 1762983911,
+    "datetime": "2025-11-12T21:45:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23786209,
+    "timestamp": 1762987547,
+    "datetime": "2025-11-12T22:45:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23786509,
+    "timestamp": 1762991195,
+    "datetime": "2025-11-12T23:46:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23786809,
+    "timestamp": 1762994831,
+    "datetime": "2025-11-13T00:47:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23787109,
+    "timestamp": 1762998479,
+    "datetime": "2025-11-13T01:47:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23787409,
+    "timestamp": 1763002091,
+    "datetime": "2025-11-13T02:48:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23787709,
+    "timestamp": 1763005751,
+    "datetime": "2025-11-13T03:49:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23788009,
+    "timestamp": 1763009399,
+    "datetime": "2025-11-13T04:49:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23788309,
+    "timestamp": 1763013071,
+    "datetime": "2025-11-13T05:51:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23788609,
+    "timestamp": 1763016683,
+    "datetime": "2025-11-13T06:51:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23788909,
+    "timestamp": 1763020283,
+    "datetime": "2025-11-13T07:51:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23789209,
+    "timestamp": 1763023919,
+    "datetime": "2025-11-13T08:51:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23789509,
+    "timestamp": 1763027555,
+    "datetime": "2025-11-13T09:52:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23789809,
+    "timestamp": 1763031167,
+    "datetime": "2025-11-13T10:52:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23790109,
+    "timestamp": 1763034767,
+    "datetime": "2025-11-13T11:52:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23790409,
+    "timestamp": 1763038391,
+    "datetime": "2025-11-13T12:53:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23790709,
+    "timestamp": 1763042015,
+    "datetime": "2025-11-13T13:53:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23791009,
+    "timestamp": 1763045651,
+    "datetime": "2025-11-13T14:54:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23791309,
+    "timestamp": 1763049287,
+    "datetime": "2025-11-13T15:54:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23791609,
+    "timestamp": 1763052947,
+    "datetime": "2025-11-13T16:55:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23791909,
+    "timestamp": 1763056571,
+    "datetime": "2025-11-13T17:56:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23792209,
+    "timestamp": 1763060183,
+    "datetime": "2025-11-13T18:56:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23792509,
+    "timestamp": 1763063783,
+    "datetime": "2025-11-13T19:56:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23792809,
+    "timestamp": 1763067431,
+    "datetime": "2025-11-13T20:57:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23793109,
+    "timestamp": 1763071079,
+    "datetime": "2025-11-13T21:57:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23793409,
+    "timestamp": 1763074703,
+    "datetime": "2025-11-13T22:58:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23793709,
+    "timestamp": 1763078339,
+    "datetime": "2025-11-13T23:58:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23794009,
+    "timestamp": 1763081987,
+    "datetime": "2025-11-14T00:59:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23794309,
+    "timestamp": 1763085635,
+    "datetime": "2025-11-14T02:00:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23794609,
+    "timestamp": 1763089259,
+    "datetime": "2025-11-14T03:00:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23794909,
+    "timestamp": 1763092883,
+    "datetime": "2025-11-14T04:01:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23795209,
+    "timestamp": 1763096507,
+    "datetime": "2025-11-14T05:01:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23795509,
+    "timestamp": 1763100119,
+    "datetime": "2025-11-14T06:01:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23795809,
+    "timestamp": 1763103767,
+    "datetime": "2025-11-14T07:02:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23796109,
+    "timestamp": 1763107379,
+    "datetime": "2025-11-14T08:02:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23796409,
+    "timestamp": 1763110991,
+    "datetime": "2025-11-14T09:03:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23796709,
+    "timestamp": 1763114627,
+    "datetime": "2025-11-14T10:03:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23797009,
+    "timestamp": 1763118263,
+    "datetime": "2025-11-14T11:04:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23797309,
+    "timestamp": 1763121887,
+    "datetime": "2025-11-14T12:04:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23797609,
+    "timestamp": 1763125487,
+    "datetime": "2025-11-14T13:04:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23797909,
+    "timestamp": 1763129111,
+    "datetime": "2025-11-14T14:05:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23798209,
+    "timestamp": 1763132711,
+    "datetime": "2025-11-14T15:05:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23798509,
+    "timestamp": 1763136323,
+    "datetime": "2025-11-14T16:05:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23798809,
+    "timestamp": 1763139935,
+    "datetime": "2025-11-14T17:05:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23799109,
+    "timestamp": 1763143559,
+    "datetime": "2025-11-14T18:05:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23799409,
+    "timestamp": 1763147183,
+    "datetime": "2025-11-14T19:06:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23799709,
+    "timestamp": 1763150831,
+    "datetime": "2025-11-14T20:07:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23800009,
+    "timestamp": 1763154455,
+    "datetime": "2025-11-14T21:07:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23800309,
+    "timestamp": 1763158055,
+    "datetime": "2025-11-14T22:07:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23800609,
+    "timestamp": 1763161655,
+    "datetime": "2025-11-14T23:07:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23800909,
+    "timestamp": 1763165267,
+    "datetime": "2025-11-15T00:07:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23801209,
+    "timestamp": 1763168879,
+    "datetime": "2025-11-15T01:07:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23801509,
+    "timestamp": 1763172491,
+    "datetime": "2025-11-15T02:08:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23801809,
+    "timestamp": 1763176127,
+    "datetime": "2025-11-15T03:08:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23802109,
+    "timestamp": 1763179763,
+    "datetime": "2025-11-15T04:09:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23802409,
+    "timestamp": 1763183399,
+    "datetime": "2025-11-15T05:09:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23802709,
+    "timestamp": 1763186999,
+    "datetime": "2025-11-15T06:09:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23803009,
+    "timestamp": 1763190611,
+    "datetime": "2025-11-15T07:10:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23803309,
+    "timestamp": 1763194223,
+    "datetime": "2025-11-15T08:10:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23803609,
+    "timestamp": 1763197835,
+    "datetime": "2025-11-15T09:10:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23803909,
+    "timestamp": 1763201471,
+    "datetime": "2025-11-15T10:11:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23804209,
+    "timestamp": 1763205071,
+    "datetime": "2025-11-15T11:11:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23804509,
+    "timestamp": 1763208707,
+    "datetime": "2025-11-15T12:11:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23804809,
+    "timestamp": 1763212331,
+    "datetime": "2025-11-15T13:12:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23805109,
+    "timestamp": 1763215943,
+    "datetime": "2025-11-15T14:12:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23805409,
+    "timestamp": 1763219603,
+    "datetime": "2025-11-15T15:13:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23805709,
+    "timestamp": 1763223215,
+    "datetime": "2025-11-15T16:13:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23806009,
+    "timestamp": 1763226827,
+    "datetime": "2025-11-15T17:13:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23806309,
+    "timestamp": 1763230487,
+    "datetime": "2025-11-15T18:14:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23806609,
+    "timestamp": 1763234123,
+    "datetime": "2025-11-15T19:15:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23806909,
+    "timestamp": 1763237735,
+    "datetime": "2025-11-15T20:15:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23807209,
+    "timestamp": 1763241347,
+    "datetime": "2025-11-15T21:15:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23807509,
+    "timestamp": 1763244995,
+    "datetime": "2025-11-15T22:16:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23807809,
+    "timestamp": 1763248631,
+    "datetime": "2025-11-15T23:17:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23808109,
+    "timestamp": 1763252231,
+    "datetime": "2025-11-16T00:17:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23808409,
+    "timestamp": 1763255843,
+    "datetime": "2025-11-16T01:17:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23808709,
+    "timestamp": 1763259467,
+    "datetime": "2025-11-16T02:17:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23809009,
+    "timestamp": 1763263091,
+    "datetime": "2025-11-16T03:18:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23809309,
+    "timestamp": 1763266727,
+    "datetime": "2025-11-16T04:18:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23809609,
+    "timestamp": 1763270339,
+    "datetime": "2025-11-16T05:18:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23809909,
+    "timestamp": 1763273951,
+    "datetime": "2025-11-16T06:19:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23810209,
+    "timestamp": 1763277575,
+    "datetime": "2025-11-16T07:19:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23810509,
+    "timestamp": 1763281175,
+    "datetime": "2025-11-16T08:19:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23810809,
+    "timestamp": 1763284799,
+    "datetime": "2025-11-16T09:19:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23811109,
+    "timestamp": 1763288423,
+    "datetime": "2025-11-16T10:20:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23811409,
+    "timestamp": 1763292023,
+    "datetime": "2025-11-16T11:20:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23811709,
+    "timestamp": 1763295635,
+    "datetime": "2025-11-16T12:20:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23812009,
+    "timestamp": 1763299271,
+    "datetime": "2025-11-16T13:21:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23812309,
+    "timestamp": 1763302883,
+    "datetime": "2025-11-16T14:21:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23812609,
+    "timestamp": 1763306495,
+    "datetime": "2025-11-16T15:21:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23812909,
+    "timestamp": 1763310131,
+    "datetime": "2025-11-16T16:22:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23813209,
+    "timestamp": 1763313755,
+    "datetime": "2025-11-16T17:22:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23813509,
+    "timestamp": 1763317391,
+    "datetime": "2025-11-16T18:23:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23813809,
+    "timestamp": 1763321027,
+    "datetime": "2025-11-16T19:23:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23814109,
+    "timestamp": 1763324651,
+    "datetime": "2025-11-16T20:24:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23814409,
+    "timestamp": 1763328287,
+    "datetime": "2025-11-16T21:24:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23814709,
+    "timestamp": 1763331923,
+    "datetime": "2025-11-16T22:25:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23815009,
+    "timestamp": 1763335559,
+    "datetime": "2025-11-16T23:25:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23815309,
+    "timestamp": 1763339159,
+    "datetime": "2025-11-17T00:25:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23815609,
+    "timestamp": 1763342783,
+    "datetime": "2025-11-17T01:26:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23815909,
+    "timestamp": 1763346419,
+    "datetime": "2025-11-17T02:26:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23816209,
+    "timestamp": 1763350031,
+    "datetime": "2025-11-17T03:27:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23816509,
+    "timestamp": 1763353667,
+    "datetime": "2025-11-17T04:27:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23816809,
+    "timestamp": 1763357315,
+    "datetime": "2025-11-17T05:28:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23817109,
+    "timestamp": 1763360927,
+    "datetime": "2025-11-17T06:28:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23817409,
+    "timestamp": 1763364527,
+    "datetime": "2025-11-17T07:28:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23817709,
+    "timestamp": 1763368175,
+    "datetime": "2025-11-17T08:29:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23818009,
+    "timestamp": 1763371799,
+    "datetime": "2025-11-17T09:29:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23818309,
+    "timestamp": 1763375447,
+    "datetime": "2025-11-17T10:30:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23818609,
+    "timestamp": 1763379071,
+    "datetime": "2025-11-17T11:31:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23818909,
+    "timestamp": 1763382683,
+    "datetime": "2025-11-17T12:31:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23819209,
+    "timestamp": 1763386331,
+    "datetime": "2025-11-17T13:32:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23819509,
+    "timestamp": 1763390003,
+    "datetime": "2025-11-17T14:33:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23819809,
+    "timestamp": 1763393651,
+    "datetime": "2025-11-17T15:34:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23820109,
+    "timestamp": 1763397311,
+    "datetime": "2025-11-17T16:35:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23820409,
+    "timestamp": 1763400971,
+    "datetime": "2025-11-17T17:36:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23820709,
+    "timestamp": 1763404607,
+    "datetime": "2025-11-17T18:36:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23821009,
+    "timestamp": 1763408231,
+    "datetime": "2025-11-17T19:37:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23821309,
+    "timestamp": 1763411867,
+    "datetime": "2025-11-17T20:37:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23821609,
+    "timestamp": 1763415587,
+    "datetime": "2025-11-17T21:39:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23821909,
+    "timestamp": 1763419235,
+    "datetime": "2025-11-17T22:40:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23822209,
+    "timestamp": 1763422859,
+    "datetime": "2025-11-17T23:40:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23822509,
+    "timestamp": 1763426519,
+    "datetime": "2025-11-18T00:41:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23822809,
+    "timestamp": 1763430155,
+    "datetime": "2025-11-18T01:42:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23823109,
+    "timestamp": 1763433791,
+    "datetime": "2025-11-18T02:43:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23823409,
+    "timestamp": 1763437415,
+    "datetime": "2025-11-18T03:43:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23823709,
+    "timestamp": 1763441039,
+    "datetime": "2025-11-18T04:43:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23824009,
+    "timestamp": 1763444723,
+    "datetime": "2025-11-18T05:45:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23824309,
+    "timestamp": 1763448371,
+    "datetime": "2025-11-18T06:46:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23824609,
+    "timestamp": 1763451995,
+    "datetime": "2025-11-18T07:46:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23824909,
+    "timestamp": 1763455655,
+    "datetime": "2025-11-18T08:47:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23825209,
+    "timestamp": 1763459279,
+    "datetime": "2025-11-18T09:47:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23825509,
+    "timestamp": 1763462891,
+    "datetime": "2025-11-18T10:48:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23825809,
+    "timestamp": 1763466515,
+    "datetime": "2025-11-18T11:48:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23826109,
+    "timestamp": 1763470151,
+    "datetime": "2025-11-18T12:49:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23826409,
+    "timestamp": 1763473799,
+    "datetime": "2025-11-18T13:49:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23826709,
+    "timestamp": 1763477507,
+    "datetime": "2025-11-18T14:51:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23827009,
+    "timestamp": 1763481131,
+    "datetime": "2025-11-18T15:52:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23827309,
+    "timestamp": 1763484743,
+    "datetime": "2025-11-18T16:52:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23827609,
+    "timestamp": 1763488403,
+    "datetime": "2025-11-18T17:53:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23827909,
+    "timestamp": 1763492051,
+    "datetime": "2025-11-18T18:54:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23828209,
+    "timestamp": 1763495687,
+    "datetime": "2025-11-18T19:54:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23828509,
+    "timestamp": 1763499311,
+    "datetime": "2025-11-18T20:55:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23828809,
+    "timestamp": 1763502923,
+    "datetime": "2025-11-18T21:55:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23829109,
+    "timestamp": 1763506559,
+    "datetime": "2025-11-18T22:55:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23829409,
+    "timestamp": 1763510183,
+    "datetime": "2025-11-18T23:56:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23829709,
+    "timestamp": 1763513843,
+    "datetime": "2025-11-19T00:57:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23830009,
+    "timestamp": 1763517479,
+    "datetime": "2025-11-19T01:57:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23830309,
+    "timestamp": 1763521187,
+    "datetime": "2025-11-19T02:59:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23830609,
+    "timestamp": 1763524823,
+    "datetime": "2025-11-19T04:00:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23830909,
+    "timestamp": 1763528435,
+    "datetime": "2025-11-19T05:00:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23831209,
+    "timestamp": 1763532095,
+    "datetime": "2025-11-19T06:01:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23831509,
+    "timestamp": 1763535707,
+    "datetime": "2025-11-19T07:01:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23831809,
+    "timestamp": 1763539331,
+    "datetime": "2025-11-19T08:02:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23832109,
+    "timestamp": 1763542955,
+    "datetime": "2025-11-19T09:02:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23832409,
+    "timestamp": 1763546567,
+    "datetime": "2025-11-19T10:02:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23832709,
+    "timestamp": 1763550215,
+    "datetime": "2025-11-19T11:03:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23833009,
+    "timestamp": 1763553875,
+    "datetime": "2025-11-19T12:04:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23833309,
+    "timestamp": 1763557547,
+    "datetime": "2025-11-19T13:05:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23833609,
+    "timestamp": 1763561171,
+    "datetime": "2025-11-19T14:06:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23833909,
+    "timestamp": 1763564831,
+    "datetime": "2025-11-19T15:07:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23834209,
+    "timestamp": 1763568491,
+    "datetime": "2025-11-19T16:08:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23834509,
+    "timestamp": 1763572115,
+    "datetime": "2025-11-19T17:08:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23834809,
+    "timestamp": 1763575763,
+    "datetime": "2025-11-19T18:09:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23835109,
+    "timestamp": 1763579399,
+    "datetime": "2025-11-19T19:09:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23835409,
+    "timestamp": 1763583035,
+    "datetime": "2025-11-19T20:10:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23835709,
+    "timestamp": 1763586683,
+    "datetime": "2025-11-19T21:11:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23836009,
+    "timestamp": 1763590295,
+    "datetime": "2025-11-19T22:11:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23836309,
+    "timestamp": 1763593943,
+    "datetime": "2025-11-19T23:12:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23836609,
+    "timestamp": 1763597579,
+    "datetime": "2025-11-20T00:12:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23836909,
+    "timestamp": 1763601215,
+    "datetime": "2025-11-20T01:13:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23837209,
+    "timestamp": 1763604815,
+    "datetime": "2025-11-20T02:13:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23837509,
+    "timestamp": 1763608415,
+    "datetime": "2025-11-20T03:13:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23837809,
+    "timestamp": 1763612063,
+    "datetime": "2025-11-20T04:14:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23838109,
+    "timestamp": 1763615699,
+    "datetime": "2025-11-20T05:14:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23838409,
+    "timestamp": 1763619335,
+    "datetime": "2025-11-20T06:15:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23838709,
+    "timestamp": 1763622983,
+    "datetime": "2025-11-20T07:16:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23839009,
+    "timestamp": 1763626631,
+    "datetime": "2025-11-20T08:17:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23839309,
+    "timestamp": 1763630303,
+    "datetime": "2025-11-20T09:18:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23839609,
+    "timestamp": 1763633927,
+    "datetime": "2025-11-20T10:18:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23839909,
+    "timestamp": 1763637563,
+    "datetime": "2025-11-20T11:19:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23840209,
+    "timestamp": 1763641187,
+    "datetime": "2025-11-20T12:19:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23840509,
+    "timestamp": 1763644811,
+    "datetime": "2025-11-20T13:20:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23840809,
+    "timestamp": 1763648447,
+    "datetime": "2025-11-20T14:20:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23841109,
+    "timestamp": 1763652107,
+    "datetime": "2025-11-20T15:21:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23841409,
+    "timestamp": 1763655767,
+    "datetime": "2025-11-20T16:22:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23841709,
+    "timestamp": 1763659391,
+    "datetime": "2025-11-20T17:23:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23842009,
+    "timestamp": 1763663003,
+    "datetime": "2025-11-20T18:23:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23842309,
+    "timestamp": 1763666627,
+    "datetime": "2025-11-20T19:23:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23842609,
+    "timestamp": 1763670251,
+    "datetime": "2025-11-20T20:24:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23842909,
+    "timestamp": 1763673887,
+    "datetime": "2025-11-20T21:24:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23843209,
+    "timestamp": 1763677559,
+    "datetime": "2025-11-20T22:25:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23843509,
+    "timestamp": 1763681219,
+    "datetime": "2025-11-20T23:26:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23843809,
+    "timestamp": 1763684831,
+    "datetime": "2025-11-21T00:27:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23844109,
+    "timestamp": 1763688443,
+    "datetime": "2025-11-21T01:27:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23844409,
+    "timestamp": 1763692079,
+    "datetime": "2025-11-21T02:27:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23844709,
+    "timestamp": 1763695715,
+    "datetime": "2025-11-21T03:28:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23845009,
+    "timestamp": 1763699339,
+    "datetime": "2025-11-21T04:28:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23845309,
+    "timestamp": 1763702963,
+    "datetime": "2025-11-21T05:29:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23845609,
+    "timestamp": 1763706575,
+    "datetime": "2025-11-21T06:29:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23845909,
+    "timestamp": 1763710187,
+    "datetime": "2025-11-21T07:29:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23846209,
+    "timestamp": 1763713799,
+    "datetime": "2025-11-21T08:29:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23846509,
+    "timestamp": 1763717459,
+    "datetime": "2025-11-21T09:30:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23846809,
+    "timestamp": 1763721119,
+    "datetime": "2025-11-21T10:31:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23847109,
+    "timestamp": 1763724767,
+    "datetime": "2025-11-21T11:32:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23847409,
+    "timestamp": 1763728379,
+    "datetime": "2025-11-21T12:32:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23847709,
+    "timestamp": 1763732075,
+    "datetime": "2025-11-21T13:34:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23848009,
+    "timestamp": 1763735711,
+    "datetime": "2025-11-21T14:35:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23848309,
+    "timestamp": 1763739395,
+    "datetime": "2025-11-21T15:36:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23848609,
+    "timestamp": 1763743067,
+    "datetime": "2025-11-21T16:37:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23848909,
+    "timestamp": 1763746727,
+    "datetime": "2025-11-21T17:38:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23849209,
+    "timestamp": 1763750351,
+    "datetime": "2025-11-21T18:39:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23849509,
+    "timestamp": 1763754011,
+    "datetime": "2025-11-21T19:40:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23849809,
+    "timestamp": 1763757611,
+    "datetime": "2025-11-21T20:40:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23850109,
+    "timestamp": 1763761247,
+    "datetime": "2025-11-21T21:40:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23850409,
+    "timestamp": 1763764895,
+    "datetime": "2025-11-21T22:41:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23850709,
+    "timestamp": 1763768555,
+    "datetime": "2025-11-21T23:42:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23851009,
+    "timestamp": 1763772227,
+    "datetime": "2025-11-22T00:43:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23851309,
+    "timestamp": 1763775899,
+    "datetime": "2025-11-22T01:44:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23851329,
+    "timestamp": 1763776139,
+    "datetime": "2025-11-22T01:48:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23851330,
+    "timestamp": 1763776151,
+    "datetime": "2025-11-22T01:49:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23851446,
+    "timestamp": 1763777543,
+    "datetime": "2025-11-22T02:12:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23851447,
+    "timestamp": 1763777555,
+    "datetime": "2025-11-22T02:12:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23851533,
+    "timestamp": 1763778599,
+    "datetime": "2025-11-22T02:29:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23851534,
+    "timestamp": 1763778611,
+    "datetime": "2025-11-22T02:30:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23851616,
+    "timestamp": 1763779619,
+    "datetime": "2025-11-22T02:46:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23851617,
+    "timestamp": 1763779631,
+    "datetime": "2025-11-22T02:47:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23851705,
+    "timestamp": 1763780687,
+    "datetime": "2025-11-22T03:04:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23851706,
+    "timestamp": 1763780699,
+    "datetime": "2025-11-22T03:04:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23851785,
+    "timestamp": 1763781695,
+    "datetime": "2025-11-22T03:21:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23851786,
+    "timestamp": 1763781719,
+    "datetime": "2025-11-22T03:21:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23851869,
+    "timestamp": 1763782715,
+    "datetime": "2025-11-22T03:38:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23851870,
+    "timestamp": 1763782727,
+    "datetime": "2025-11-22T03:38:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23851953,
+    "timestamp": 1763783747,
+    "datetime": "2025-11-22T03:55:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23851954,
+    "timestamp": 1763783759,
+    "datetime": "2025-11-22T03:55:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23852037,
+    "timestamp": 1763784767,
+    "datetime": "2025-11-22T04:12:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23852038,
+    "timestamp": 1763784779,
+    "datetime": "2025-11-22T04:12:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23852122,
+    "timestamp": 1763785799,
+    "datetime": "2025-11-22T04:29:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23852123,
+    "timestamp": 1763785811,
+    "datetime": "2025-11-22T04:30:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23852209,
+    "timestamp": 1763786843,
+    "datetime": "2025-11-22T04:47:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23852210,
+    "timestamp": 1763786855,
+    "datetime": "2025-11-22T04:47:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23852293,
+    "timestamp": 1763787863,
+    "datetime": "2025-11-22T05:04:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23852294,
+    "timestamp": 1763787875,
+    "datetime": "2025-11-22T05:04:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23852378,
+    "timestamp": 1763788883,
+    "datetime": "2025-11-22T05:21:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23852379,
+    "timestamp": 1763788895,
+    "datetime": "2025-11-22T05:21:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23852461,
+    "timestamp": 1763789903,
+    "datetime": "2025-11-22T05:38:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23852462,
+    "timestamp": 1763789915,
+    "datetime": "2025-11-22T05:38:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23852549,
+    "timestamp": 1763790995,
+    "datetime": "2025-11-22T05:56:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23852550,
+    "timestamp": 1763791007,
+    "datetime": "2025-11-22T05:56:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23852635,
+    "timestamp": 1763792027,
+    "datetime": "2025-11-22T06:13:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23852636,
+    "timestamp": 1763792039,
+    "datetime": "2025-11-22T06:13:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23852720,
+    "timestamp": 1763793047,
+    "datetime": "2025-11-22T06:30:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23852721,
+    "timestamp": 1763793059,
+    "datetime": "2025-11-22T06:30:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23852802,
+    "timestamp": 1763794055,
+    "datetime": "2025-11-22T06:47:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23852803,
+    "timestamp": 1763794067,
+    "datetime": "2025-11-22T06:47:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23852888,
+    "timestamp": 1763795087,
+    "datetime": "2025-11-22T07:04:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23852889,
+    "timestamp": 1763795099,
+    "datetime": "2025-11-22T07:04:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23852975,
+    "timestamp": 1763796143,
+    "datetime": "2025-11-22T07:22:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23852976,
+    "timestamp": 1763796155,
+    "datetime": "2025-11-22T07:22:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23853059,
+    "timestamp": 1763797175,
+    "datetime": "2025-11-22T07:39:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23853060,
+    "timestamp": 1763797187,
+    "datetime": "2025-11-22T07:39:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23853149,
+    "timestamp": 1763798255,
+    "datetime": "2025-11-22T07:57:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23853150,
+    "timestamp": 1763798267,
+    "datetime": "2025-11-22T07:57:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23853236,
+    "timestamp": 1763799299,
+    "datetime": "2025-11-22T08:14:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23853237,
+    "timestamp": 1763799311,
+    "datetime": "2025-11-22T08:15:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23853323,
+    "timestamp": 1763800355,
+    "datetime": "2025-11-22T08:32:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23853324,
+    "timestamp": 1763800367,
+    "datetime": "2025-11-22T08:32:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23853413,
+    "timestamp": 1763801435,
+    "datetime": "2025-11-22T08:50:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23853414,
+    "timestamp": 1763801447,
+    "datetime": "2025-11-22T08:50:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23853502,
+    "timestamp": 1763802515,
+    "datetime": "2025-11-22T09:08:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23853503,
+    "timestamp": 1763802527,
+    "datetime": "2025-11-22T09:08:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23853584,
+    "timestamp": 1763803547,
+    "datetime": "2025-11-22T09:25:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23853585,
+    "timestamp": 1763803559,
+    "datetime": "2025-11-22T09:25:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23853672,
+    "timestamp": 1763804603,
+    "datetime": "2025-11-22T09:43:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23853673,
+    "timestamp": 1763804615,
+    "datetime": "2025-11-22T09:43:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23853758,
+    "timestamp": 1763805659,
+    "datetime": "2025-11-22T10:00:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23853759,
+    "timestamp": 1763805671,
+    "datetime": "2025-11-22T10:01:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23853843,
+    "timestamp": 1763806703,
+    "datetime": "2025-11-22T10:18:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23853844,
+    "timestamp": 1763806715,
+    "datetime": "2025-11-22T10:18:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23853931,
+    "timestamp": 1763807771,
+    "datetime": "2025-11-22T10:36:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23853932,
+    "timestamp": 1763807783,
+    "datetime": "2025-11-22T10:36:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23854019,
+    "timestamp": 1763808827,
+    "datetime": "2025-11-22T10:53:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23854020,
+    "timestamp": 1763808839,
+    "datetime": "2025-11-22T10:53:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23854104,
+    "timestamp": 1763809871,
+    "datetime": "2025-11-22T11:11:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23854105,
+    "timestamp": 1763809883,
+    "datetime": "2025-11-22T11:11:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23854193,
+    "timestamp": 1763810951,
+    "datetime": "2025-11-22T11:29:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23854194,
+    "timestamp": 1763810963,
+    "datetime": "2025-11-22T11:29:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23854284,
+    "timestamp": 1763812043,
+    "datetime": "2025-11-22T11:47:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23854285,
+    "timestamp": 1763812055,
+    "datetime": "2025-11-22T11:47:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23854370,
+    "timestamp": 1763813087,
+    "datetime": "2025-11-22T12:04:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23854371,
+    "timestamp": 1763813099,
+    "datetime": "2025-11-22T12:04:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23854456,
+    "timestamp": 1763814119,
+    "datetime": "2025-11-22T12:21:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23854457,
+    "timestamp": 1763814131,
+    "datetime": "2025-11-22T12:22:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23854542,
+    "timestamp": 1763815151,
+    "datetime": "2025-11-22T12:39:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23854543,
+    "timestamp": 1763815163,
+    "datetime": "2025-11-22T12:39:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23854632,
+    "timestamp": 1763816255,
+    "datetime": "2025-11-22T12:57:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23854633,
+    "timestamp": 1763816267,
+    "datetime": "2025-11-22T12:57:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23854718,
+    "timestamp": 1763817323,
+    "datetime": "2025-11-22T13:15:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23854719,
+    "timestamp": 1763817335,
+    "datetime": "2025-11-22T13:15:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23854804,
+    "timestamp": 1763818367,
+    "datetime": "2025-11-22T13:32:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23854805,
+    "timestamp": 1763818379,
+    "datetime": "2025-11-22T13:32:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23854891,
+    "timestamp": 1763819423,
+    "datetime": "2025-11-22T13:50:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23854892,
+    "timestamp": 1763819435,
+    "datetime": "2025-11-22T13:50:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23854980,
+    "timestamp": 1763820503,
+    "datetime": "2025-11-22T14:08:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23854981,
+    "timestamp": 1763820515,
+    "datetime": "2025-11-22T14:08:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23855070,
+    "timestamp": 1763821583,
+    "datetime": "2025-11-22T14:26:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23855071,
+    "timestamp": 1763821595,
+    "datetime": "2025-11-22T14:26:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23855159,
+    "timestamp": 1763822651,
+    "datetime": "2025-11-22T14:44:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23855160,
+    "timestamp": 1763822663,
+    "datetime": "2025-11-22T14:44:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23855247,
+    "timestamp": 1763823719,
+    "datetime": "2025-11-22T15:01:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23855248,
+    "timestamp": 1763823731,
+    "datetime": "2025-11-22T15:02:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23855336,
+    "timestamp": 1763824799,
+    "datetime": "2025-11-22T15:19:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23855337,
+    "timestamp": 1763824811,
+    "datetime": "2025-11-22T15:20:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23855427,
+    "timestamp": 1763825903,
+    "datetime": "2025-11-22T15:38:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23855428,
+    "timestamp": 1763825915,
+    "datetime": "2025-11-22T15:38:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23855519,
+    "timestamp": 1763827019,
+    "datetime": "2025-11-22T15:56:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23855520,
+    "timestamp": 1763827031,
+    "datetime": "2025-11-22T15:57:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23855612,
+    "timestamp": 1763828171,
+    "datetime": "2025-11-22T16:16:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23855613,
+    "timestamp": 1763828183,
+    "datetime": "2025-11-22T16:16:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23855708,
+    "timestamp": 1763829323,
+    "datetime": "2025-11-22T16:35:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23855709,
+    "timestamp": 1763829335,
+    "datetime": "2025-11-22T16:35:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23855805,
+    "timestamp": 1763830511,
+    "datetime": "2025-11-22T16:55:11",
+    "tvl_btc": 0.0
+  }
+];
