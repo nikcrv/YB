@@ -1,4 +1,4 @@
-// Last updated: 2025-11-22 01:30:28 UTC
+// Last updated: 2025-11-22 02:01:09 UTC
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -224,6 +224,25 @@
                 grid-template-columns: 1fr;
             }
         }
+
+        .back-button {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 24px;
+            background: #3b82f6;
+            color: #f1f5f9;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.2s;
+            border: 1px solid rgba(59, 130, 246, 0.3);
+        }
+
+        .back-button:hover {
+            background: #2563eb;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+        }
     </style>
 </head>
 <body>
@@ -231,6 +250,7 @@
         <div class="header">
             <h1>Fundamental Value Dashboard</h1>
             <p>Price Per Share (PPS) Growth - YieldBasis Markets</p>
+            <a href="index.html" class="back-button">← Back to Vaults</a>
         </div>
 
         <div class="loading" id="loading">Loading data...</div>
