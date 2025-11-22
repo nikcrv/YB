@@ -1,4 +1,4 @@
-// Last updated: 2025-11-22 01:28:36 UTC
+// Last updated: 2025-11-22 01:59:15 UTC
 const gaugeTvlData_old_cbbtc = [
   {
     "block": 23549518,
@@ -3107,5 +3107,59 @@ const gaugeTvlData_old_cbbtc = [
     "timestamp": 1763749679,
     "datetime": "2025-11-21T18:27:59",
     "tvl_btc": 86.39421869603082
+  },
+  {
+    "block": 23849154,
+    "timestamp": 1763749691,
+    "datetime": "2025-11-21T18:28:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23849454,
+    "timestamp": 1763753327,
+    "datetime": "2025-11-21T19:28:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23849754,
+    "timestamp": 1763756951,
+    "datetime": "2025-11-21T20:29:11",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23850054,
+    "timestamp": 1763760587,
+    "datetime": "2025-11-21T21:29:47",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23850354,
+    "timestamp": 1763764235,
+    "datetime": "2025-11-21T22:30:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23850654,
+    "timestamp": 1763767895,
+    "datetime": "2025-11-21T23:31:35",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23850954,
+    "timestamp": 1763771543,
+    "datetime": "2025-11-22T00:32:23",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23851254,
+    "timestamp": 1763775239,
+    "datetime": "2025-11-22T01:33:59",
+    "tvl_btc": 0.0
+  },
+  {
+    "block": 23851358,
+    "timestamp": 1763776487,
+    "datetime": "2025-11-22T01:54:47",
+    "tvl_btc": 0.0
   }
 ];
