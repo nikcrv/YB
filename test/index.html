@@ -1,4 +1,4 @@
-// Last updated: 2025-11-21 17:26:20 UTC
+// Last updated: 2025-11-22 01:11:05 UTC
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -191,7 +191,7 @@
         }
 
         .metric-value.negative {
-            color: #ef4444;
+            color: #f1f5f9;
         }
 
         .chart-container {
@@ -296,6 +296,8 @@
                     <div class="contract-selector">
                         <button class="contract-btn active" data-version="new" onclick="switchContractVersion('new')">NEW</button>
                         <button class="contract-btn" data-version="old" onclick="switchContractVersion('old')">OLD</button>
+                        <a href="pps_dashboard.html" style="padding: 10px 20px; background: #3b82f6; border: none; border-radius: 6px; color: #f1f5f9; font-weight: 600; cursor: pointer; text-decoration: none; display: inline-block; transition: all 0.2s; margin-left: auto;" onmouseover="this.style.background='#2563eb'" onmouseout="this.style.background='#3b82f6'">📈 PPS Analytics</a>
+                        <a href="dashboard.html" style="padding: 10px 20px; background: #10b981; border: none; border-radius: 6px; color: #0f172a; font-weight: 600; cursor: pointer; text-decoration: none; display: inline-block; transition: all 0.2s; margin-left: 10px;" onmouseover="this.style.background='#059669'" onmouseout="this.style.background='#10b981'">📊 Dashboard</a>
                     </div>
                     <div class="market-selector">
                         <button class="market-btn active" data-market="cbbtc" onclick="switchMarket('cbbtc')">yb-cbBTC</button>
@@ -304,7 +306,6 @@
                         <button class="market-btn" data-market="syb_cbbtc" onclick="switchMarket('syb_cbbtc')">syb-cbBTC</button>
                         <button class="market-btn" data-market="syb_wbtc" onclick="switchMarket('syb_wbtc')">syb-WBTC</button>
                         <button class="market-btn" data-market="syb_tbtc" onclick="switchMarket('syb_tbtc')">syb-tBTC</button>
-                        <a href="dashboard.html" style="padding: 10px 20px; background: #10b981; border: none; border-radius: 6px; color: #0f172a; font-weight: 600; cursor: pointer; text-decoration: none; display: inline-block; transition: all 0.2s;" onmouseover="this.style.background='#059669'" onmouseout="this.style.background='#10b981'">📊 Dashboard</a>
                     </div>
                 </div>
             </div>
@@ -328,6 +329,10 @@
                 <label class="checkbox-label">
                     <input type="checkbox" id="fundamental-yield-toggle" onchange="toggleFundamentalYield()" checked>
                     <span>Show Fundamental Yield (PPS)</span>
+                </label>
+                <label class="checkbox-label" id="emission-toggle-label">
+                    <input type="checkbox" id="emission-toggle" onchange="toggleEmission()" checked>
+                    <span>Add YB Emission</span>
                 </label>
             </div>
         </header>
@@ -398,58 +403,31 @@
     <script src="old_vaults_yield_syb_wbtc.js?v=6"></script>
     <script>
         // Store old syb_wbtc data immediately after loading
-        const oldSybWbtcData = JSON.parse(JSON.stringify(yieldData_syb_wbtc));
+        const oldSybWbtcData = JSON.parse(JSON.stringify(yieldData_old_syb_wbtc));
         console.log('Loaded OLD syb-WBTC data:', oldSybWbtcData.metadata.contract, oldSybWbtcData.data.length, 'points');
     </script>
     <script src="old_vaults_yield_syb_cbbtc.js?v=6"></script>
     <script>
         // Store old syb_cbbtc data immediately after loading
-        const oldSybCbbtcData = JSON.parse(JSON.stringify(yieldData_syb_cbbtc));
+        const oldSybCbbtcData = JSON.parse(JSON.stringify(yieldData_old_syb_cbbtc));
         console.log('Loaded OLD syb-cbBTC data:', oldSybCbbtcData.metadata.contract, oldSybCbbtcData.data.length, 'points');
     </script>
     <script src="old_vaults_yield_syb_tbtc.js?v=6"></script>
     <script>
         // Store old syb_tbtc data immediately after loading
-        const oldSybTbtcData = JSON.parse(JSON.stringify(yieldData_syb_tbtc));
+        const oldSybTbtcData = JSON.parse(JSON.stringify(yieldData_old_syb_tbtc));
         console.log('Loaded OLD syb-tBTC data:', oldSybTbtcData.metadata.contract, oldSybTbtcData.data.length, 'points');
     </script>
 
     <!-- PPS Data Files -->
     <script src="pps_data_wbtc.js?v=1"></script>
-    <script>
-        var ppsData_wbtc = JSON.parse(JSON.stringify(ppsData));
-        console.log('Loaded PPS WBTC data:', ppsData_wbtc.data.length, 'points');
-    </script>
-
     <script src="pps_data_cbbtc.js?v=1"></script>
-    <script>
-        var ppsData_cbbtc = JSON.parse(JSON.stringify(ppsData));
-        console.log('Loaded PPS cbBTC data:', ppsData_cbbtc.data.length, 'points');
-    </script>
-
     <script src="pps_data_tbtc.js?v=1"></script>
-    <script>
-        var ppsData_tbtc = JSON.parse(JSON.stringify(ppsData));
-        console.log('Loaded PPS tBTC data:', ppsData_tbtc.data.length, 'points');
-    </script>
 
+    <!-- OLD PPS Data Files -->
     <script src="pps_data_old_wbtc.js?v=1"></script>
-    <script>
-        var ppsData_old_wbtc = JSON.parse(JSON.stringify(ppsData));
-        console.log('Loaded OLD PPS WBTC data:', ppsData_old_wbtc.data.length, 'points');
-    </script>
-
     <script src="pps_data_old_cbbtc.js?v=1"></script>
-    <script>
-        var ppsData_old_cbbtc = JSON.parse(JSON.stringify(ppsData));
-        console.log('Loaded OLD PPS cbBTC data:', ppsData_old_cbbtc.data.length, 'points');
-    </script>
-
     <script src="pps_data_old_tbtc.js?v=1"></script>
-    <script>
-        var ppsData_old_tbtc = JSON.parse(JSON.stringify(ppsData));
-        console.log('Loaded OLD PPS tBTC data:', ppsData_old_tbtc.data.length, 'points');
-    </script>
 
     <!-- YB Emission Data Files -->
     <script src="yb_emission_data.js?v=6"></script>
@@ -462,7 +440,7 @@
 
     <script src="old_yb_emission_data.js?v=6"></script>
     <script>
-        var emissionData_old = ybEmissionData ? JSON.parse(JSON.stringify(ybEmissionData)) : null;
+        var emissionData_old = old_ybEmissionData ? JSON.parse(JSON.stringify(old_ybEmissionData)) : null;
         if (emissionData_old) {
             console.log('Loaded YB Emission (OLD) data:', emissionData_old.length, 'points');
         }
@@ -574,6 +552,69 @@
         let charts = {};
         let showFundamentalYield = true;
         let showWithdrawableYield = true;
+        let showEmission = true; // Enable/disable YB Emission functionality
+        let showEmissionFundamental = true; // Show emission for Fundamental
+        let showEmissionWithdrawable = true; // Show emission for Withdrawable
+
+        // TVL interpolation function
+        function getTVLAt(timestamp, market) {
+            // Select correct TVL dataset based on contract version
+            const isOld = currentContractVersion === 'old';
+
+            const tvlDataMap = isOld ? {
+                'wbtc': typeof gaugeTvlData_old_wbtc !== 'undefined' ? gaugeTvlData_old_wbtc : null,
+                'cbbtc': typeof gaugeTvlData_old_cbbtc !== 'undefined' ? gaugeTvlData_old_cbbtc : null,
+                'tbtc': typeof gaugeTvlData_old_tbtc !== 'undefined' ? gaugeTvlData_old_tbtc : null
+            } : {
+                'wbtc': typeof gaugeTvlData_new_wbtc !== 'undefined' ? gaugeTvlData_new_wbtc : null,
+                'cbbtc': typeof gaugeTvlData_new_cbbtc !== 'undefined' ? gaugeTvlData_new_cbbtc : null,
+                'tbtc': typeof gaugeTvlData_new_tbtc !== 'undefined' ? gaugeTvlData_new_tbtc : null
+            };
+
+            const baseMarket = market || 'wbtc';
+            const tvlData = tvlDataMap[baseMarket];
+
+            // Fallback to fixed values if no data available
+            if (!tvlData || tvlData.length === 0) {
+                const fallbackTVL = {
+                    'wbtc': 339.31,
+                    'cbbtc': 268.20,
+                    'tbtc': 311.98
+                };
+                return fallbackTVL[baseMarket] || 300.0;
+            }
+
+            // Find closest TVL values before and after timestamp
+            let closestBefore = null;
+            let closestAfter = null;
+
+            for (let i = 0; i < tvlData.length; i++) {
+                if (tvlData[i].timestamp <= timestamp) {
+                    closestBefore = tvlData[i];
+                } else {
+                    closestAfter = tvlData[i];
+                    break;
+                }
+            }
+
+            // Exact match
+            if (closestBefore && closestBefore.timestamp === timestamp) {
+                return closestBefore.tvl_btc;
+            }
+
+            // Interpolate between two points
+            if (closestBefore && closestAfter) {
+                const t = (timestamp - closestBefore.timestamp) / (closestAfter.timestamp - closestBefore.timestamp);
+                return closestBefore.tvl_btc + t * (closestAfter.tvl_btc - closestBefore.tvl_btc);
+            }
+
+            // Use closest available value
+            if (closestBefore) return closestBefore.tvl_btc;
+            if (closestAfter) return closestAfter.tvl_btc;
+
+            // Last resort fallback
+            return 300.0;
+        }
 
         // Load market data
         function loadMarketData(market) {
@@ -625,6 +666,12 @@
             loadMarketData(market);
             console.log('Loaded data:', currentYieldData);
 
+            // Показываем/скрываем чекбокс "Add YB Emission" в зависимости от типа маркета
+            const emissionToggleLabel = document.getElementById('emission-toggle-label');
+            if (emissionToggleLabel) {
+                emissionToggleLabel.style.display = market.startsWith('syb_') ? 'flex' : 'none';
+            }
+
             renderContent();
             initializeDateInputs();
             updateMetrics();
@@ -638,57 +685,95 @@
 
         function renderContent() {
             document.getElementById('content-area').innerHTML = `
-                <div class="metrics-grid" id="fundamental-metrics">
-                    <div class="metric-card">
-                        <div class="metric-label">Total Return (Fundamental)</div>
-                        <div class="metric-value" id="total-return-fund"></div>
+                <div id="fundamental-metrics" style="margin-bottom: 12px;">
+                    <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 8px;">
+                        <h3 style="color: #94a3b8; font-size: 14px; font-weight: 600; margin: 0;">Fundamental (PPS-based)</h3>
+                        <label id="emission-fundamental-label" style="display: flex; align-items: center; gap: 6px; cursor: pointer; margin-left: auto;">
+                            <input type="checkbox" id="emission-fundamental-toggle" onchange="toggleEmissionFundamental()" checked style="cursor: pointer;">
+                            <span style="color: #cbd5e1; font-size: 12px;">+ YB Emission (converted to BTC)</span>
+                        </label>
+                        <div id="emission-metrics-fund" style="display: none; gap: 8px; align-items: center;">
+                            <div style="display: flex; align-items: center; gap: 4px;">
+                                <span style="color: #64748b; font-size: 11px;">Yield:</span>
+                                <span id="emission-boost-fund" style="color: #10b981; font-size: 11px; font-weight: 600;">-</span>
+                            </div>
+                            <div style="display: flex; align-items: center; gap: 4px;">
+                                <span style="color: #64748b; font-size: 11px;">APR:</span>
+                                <span id="emission-apr-fund" style="color: #10b981; font-size: 11px; font-weight: 600;">-</span>
+                            </div>
+                        </div>
                     </div>
-                    <div class="metric-card">
-                        <div class="metric-label">Annualized APR (Fundamental)</div>
-                        <div class="metric-value" id="apr-fund"></div>
-                    </div>
-                    <div class="metric-card">
-                        <div class="metric-label">Start PPS (Fundamental)</div>
-                        <div class="metric-value" id="start-pps-fund"></div>
-                    </div>
-                    <div class="metric-card">
-                        <div class="metric-label">End PPS (Fundamental)</div>
-                        <div class="metric-value" id="end-pps-fund"></div>
-                    </div>
-                    <div class="metric-card">
-                        <div class="metric-label">Yield Delta</div>
-                        <div class="metric-value" id="yield-delta"></div>
-                    </div>
-                    <div class="metric-card">
-                        <div class="metric-label">APR Delta</div>
-                        <div class="metric-value" id="apr-delta"></div>
+                    <div class="metrics-grid">
+                        <div class="metric-card">
+                            <div class="metric-label">Total Return</div>
+                            <div class="metric-value" id="total-return-fund"></div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-label">Annualized APR</div>
+                            <div class="metric-value" id="apr-fund"></div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-label">Start PPS</div>
+                            <div class="metric-value" id="start-pps-fund"></div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-label">End PPS</div>
+                            <div class="metric-value" id="end-pps-fund"></div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-label">Yield Delta</div>
+                            <div class="metric-value" id="yield-delta"></div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-label">APR Delta</div>
+                            <div class="metric-value" id="apr-delta"></div>
+                        </div>
                     </div>
                 </div>
 
-                <div class="metrics-grid" id="withdrawable-metrics" style="display: grid; margin-top: 12px; border-top: 2px solid #334155; padding-top: 12px;">
-                    <div class="metric-card">
-                        <div class="metric-label">Total Return (Withdrawable)</div>
-                        <div class="metric-value" id="total-return"></div>
+                <div id="withdrawable-metrics" style="display: block;">
+                    <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 8px;">
+                        <h3 style="color: #94a3b8; font-size: 14px; font-weight: 600; margin: 0;">Withdrawable (Trading)</h3>
+                        <label id="emission-withdrawable-label" style="display: flex; align-items: center; gap: 6px; cursor: pointer; margin-left: auto;">
+                            <input type="checkbox" id="emission-withdrawable-toggle" onchange="toggleEmissionWithdrawable()" checked style="cursor: pointer;">
+                            <span style="color: #cbd5e1; font-size: 12px;">+ YB Emission (converted to BTC)</span>
+                        </label>
+                        <div id="emission-metrics-withdrawable" style="display: none; gap: 8px; align-items: center;">
+                            <div style="display: flex; align-items: center; gap: 4px;">
+                                <span style="color: #64748b; font-size: 11px;">Yield:</span>
+                                <span id="emission-boost-withdrawable" style="color: #10b981; font-size: 11px; font-weight: 600;">-</span>
+                            </div>
+                            <div style="display: flex; align-items: center; gap: 4px;">
+                                <span style="color: #64748b; font-size: 11px;">APR:</span>
+                                <span id="emission-apr-withdrawable" style="color: #10b981; font-size: 11px; font-weight: 600;">-</span>
+                            </div>
+                        </div>
                     </div>
-                    <div class="metric-card">
-                        <div class="metric-label">Annualized APR (Withdrawable)</div>
-                        <div class="metric-value" id="apr"></div>
-                    </div>
-                    <div class="metric-card">
-                        <div class="metric-label">Start PPS (Withdrawable)</div>
-                        <div class="metric-value" id="start-pps"></div>
-                    </div>
-                    <div class="metric-card">
-                        <div class="metric-label">End PPS (Withdrawable)</div>
-                        <div class="metric-value" id="end-pps"></div>
-                    </div>
-                    <div class="metric-card">
-                        <div class="metric-label">Period</div>
-                        <div class="metric-value" id="period"></div>
-                    </div>
-                    <div class="metric-card">
-                        <div class="metric-label">Data Points</div>
-                        <div class="metric-value" id="data-points"></div>
+                    <div class="metrics-grid">
+                        <div class="metric-card">
+                            <div class="metric-label">Total Return</div>
+                            <div class="metric-value" id="total-return"></div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-label">Annualized APR</div>
+                            <div class="metric-value" id="apr"></div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-label">Start PPS</div>
+                            <div class="metric-value" id="start-pps"></div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-label">End PPS</div>
+                            <div class="metric-value" id="end-pps"></div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-label">Period</div>
+                            <div class="metric-value" id="period"></div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-label">Data Points</div>
+                            <div class="metric-value" id="data-points"></div>
+                        </div>
                     </div>
                 </div>
 
@@ -717,6 +802,18 @@
                     <div class="info-content" id="contract-info"></div>
                 </div>
             `;
+
+            // Скрываем чекбоксы эмиссии для нестейкнутых токенов
+            const isSybMarket = currentMarket.startsWith('syb_');
+            const emissionFundLabel = document.getElementById('emission-fundamental-label');
+            const emissionWithdrawableLabel = document.getElementById('emission-withdrawable-label');
+
+            if (emissionFundLabel) {
+                emissionFundLabel.style.display = isSybMarket ? 'flex' : 'none';
+            }
+            if (emissionWithdrawableLabel) {
+                emissionWithdrawableLabel.style.display = isSybMarket ? 'flex' : 'none';
+            }
         }
 
         function initializeDateInputs() {
@@ -805,11 +902,76 @@
 
         function updateMetrics() {
             // Trading metrics
-            document.getElementById('total-return').textContent = currentYieldData.metrics.total_return_pct.toFixed(4) + '%';
-            document.getElementById('total-return').className = 'metric-value ' + (currentYieldData.metrics.total_return >= 0 ? 'positive' : 'negative');
+            let totalReturnWithdrawable = currentYieldData.metrics.total_return;
+            let aprWithdrawable = currentYieldData.metrics.apr;
 
-            document.getElementById('apr').textContent = currentYieldData.metrics.apr_pct.toFixed(2) + '%';
-            document.getElementById('apr').className = 'metric-value ' + (currentYieldData.metrics.apr >= 0 ? 'positive' : 'negative');
+            // Если emission включен для Withdrawable, добавляем emission к доходности
+            console.log('Withdrawable emission check:', {showEmission, showEmissionWithdrawable, isSyb: currentMarket.startsWith('syb_')});
+            if (showEmission && showEmissionWithdrawable && currentMarket.startsWith('syb_')) {
+                const config = MARKETS[currentContractVersion][currentMarket];
+                const emissionDataSource = config.emissionData;
+                const emissionField = config.emissionField;
+
+                console.log('Withdrawable emission data:', {hasData: !!emissionDataSource, length: emissionDataSource?.length, field: emissionField});
+                if (emissionDataSource && emissionDataSource.length > 0 && emissionField) {
+                    const startTimestamp = Math.floor(new Date(currentYieldData.data[0].datetime).getTime() / 1000);
+                    const endTimestamp = Math.floor(new Date(currentYieldData.data[currentYieldData.data.length - 1].datetime).getTime() / 1000);
+
+                    const emissionSorted = emissionDataSource
+                        .filter(e => e[emissionField] !== null && e[emissionField] !== undefined)
+                        .sort((a, b) => a.timestamp - b.timestamp);
+
+                    function getCumulativeEmissionWithdrawable(targetTimestamp) {
+                        let closestBefore = null;
+                        let closestAfter = null;
+
+                        for (let i = 0; i < emissionSorted.length; i++) {
+                            if (emissionSorted[i].timestamp <= targetTimestamp) {
+                                closestBefore = emissionSorted[i];
+                            } else {
+                                closestAfter = emissionSorted[i];
+                                break;
+                            }
+                        }
+
+                        if (closestBefore && closestBefore.timestamp === targetTimestamp) {
+                            return closestBefore[emissionField];
+                        }
+
+                        if (closestBefore && closestAfter) {
+                            const valBefore = closestBefore[emissionField];
+                            const valAfter = closestAfter[emissionField];
+                            const t = (targetTimestamp - closestBefore.timestamp) / (closestAfter.timestamp - closestBefore.timestamp);
+                            return valBefore + t * (valAfter - valBefore);
+                        }
+
+                        if (closestBefore) return closestBefore[emissionField];
+                        if (closestAfter) return closestAfter[emissionField];
+                        return 0;
+                    }
+
+                    const startEmission = getCumulativeEmissionWithdrawable(startTimestamp);
+                    const endEmission = getCumulativeEmissionWithdrawable(endTimestamp);
+                    const totalEmission = endEmission - startEmission;
+
+                    // Use end TVL (most representative as TVL grew over time)
+                    const baseMarket = config.baseMarket || 'wbtc';
+                    const startTVL = getTVLAt(startTimestamp, baseMarket);
+                    const endTVL = getTVLAt(endTimestamp, baseMarket);
+
+                    const emissionBoost = totalEmission / endTVL;
+                    totalReturnWithdrawable += emissionBoost;
+                    aprWithdrawable = (totalReturnWithdrawable / currentYieldData.metrics.days) * 365;
+
+                    console.log('Withdrawable emission added:', {emissionBoost, totalEmission, endTVL, startTVL, totalReturnWithdrawable, aprWithdrawable});
+                }
+            }
+
+            document.getElementById('total-return').textContent = (totalReturnWithdrawable * 100).toFixed(4) + '%';
+            document.getElementById('total-return').className = 'metric-value ' + (totalReturnWithdrawable >= 0 ? 'positive' : 'negative');
+
+            document.getElementById('apr').textContent = (aprWithdrawable * 100).toFixed(2) + '%';
+            document.getElementById('apr').className = 'metric-value ' + (aprWithdrawable >= 0 ? 'positive' : 'negative');
 
             document.getElementById('period').textContent = currentYieldData.metrics.days.toFixed(2) + ' days';
             document.getElementById('data-points').textContent = currentYieldData.metadata.data_points;
@@ -848,10 +1010,71 @@
                     const endPpsPoint = findClosestPps(endTimestamp);
 
                     if (startPpsPoint && endPpsPoint) {
-                        const startPpsFund = startPpsPoint.pps_unstaked;
-                        const endPpsFund = endPpsPoint.pps_unstaked;
-                        const totalReturnFund = (endPpsFund - startPpsFund) / startPpsFund;
-                        const aprFund = (totalReturnFund / currentYieldData.metrics.days) * 365;
+                        // Для syb токенов используем pps_staked, для обычных - pps_unstaked
+                        const ppsField = currentMarket.startsWith('syb_') ? 'pps_staked' : 'pps_unstaked';
+                        const startPpsFund = startPpsPoint[ppsField];
+                        const endPpsFund = endPpsPoint[ppsField];
+                        let totalReturnFund = (endPpsFund - startPpsFund) / startPpsFund;
+                        let aprFund = (totalReturnFund / currentYieldData.metrics.days) * 365;
+
+                        // Если emission включен для Fundamental, добавляем emission к доходности
+                        let emissionBoostForFund = 0;
+                        console.log('Fundamental emission check:', {showEmission, showEmissionFundamental, isSyb: currentMarket.startsWith('syb_')});
+                        if (showEmission && showEmissionFundamental && currentMarket.startsWith('syb_')) {
+                            const emissionDataSource = config.emissionData;
+                            const emissionField = config.emissionField;
+
+                            console.log('Fundamental emission data:', {hasData: !!emissionDataSource, length: emissionDataSource?.length, field: emissionField});
+                            if (emissionDataSource && emissionDataSource.length > 0 && emissionField) {
+                                const emissionSorted = emissionDataSource
+                                    .filter(e => e[emissionField] !== null && e[emissionField] !== undefined)
+                                    .sort((a, b) => a.timestamp - b.timestamp);
+
+                                function getCumulativeEmissionTemp(targetTimestamp) {
+                                    let closestBefore = null;
+                                    let closestAfter = null;
+
+                                    for (let i = 0; i < emissionSorted.length; i++) {
+                                        if (emissionSorted[i].timestamp <= targetTimestamp) {
+                                            closestBefore = emissionSorted[i];
+                                        } else {
+                                            closestAfter = emissionSorted[i];
+                                            break;
+                                        }
+                                    }
+
+                                    if (closestBefore && closestBefore.timestamp === targetTimestamp) {
+                                        return closestBefore[emissionField];
+                                    }
+
+                                    if (closestBefore && closestAfter) {
+                                        const valBefore = closestBefore[emissionField];
+                                        const valAfter = closestAfter[emissionField];
+                                        const t = (targetTimestamp - closestBefore.timestamp) / (closestAfter.timestamp - closestBefore.timestamp);
+                                        return valBefore + t * (valAfter - valBefore);
+                                    }
+
+                                    if (closestBefore) return closestBefore[emissionField];
+                                    if (closestAfter) return closestAfter[emissionField];
+                                    return 0;
+                                }
+
+                                const startEmission = getCumulativeEmissionTemp(startTimestamp);
+                                const endEmission = getCumulativeEmissionTemp(endTimestamp);
+                                const totalEmission = endEmission - startEmission;
+
+                                // Use end TVL (most representative as TVL grew over time)
+                                const baseMarket = config.baseMarket || 'wbtc';
+                                const startTVL = getTVLAt(startTimestamp, baseMarket);
+                                const endTVL = getTVLAt(endTimestamp, baseMarket);
+
+                                emissionBoostForFund = totalEmission / endTVL;
+                                totalReturnFund += emissionBoostForFund;
+                                aprFund = (totalReturnFund / currentYieldData.metrics.days) * 365;
+
+                                console.log('Fundamental emission added:', {emissionBoostForFund, totalEmission, endTVL, startTVL, totalReturnFund, aprFund});
+                            }
+                        }
 
                         // Deltas (Trading - Fundamental)
                         const yieldDelta = currentYieldData.metrics.total_return - totalReturnFund;
@@ -872,6 +1095,91 @@
                         document.getElementById('start-pps-fund').textContent = startPpsFund.toFixed(8) + ' BTC';
                         document.getElementById('end-pps-fund').textContent = endPpsFund.toFixed(8) + ' BTC';
                     }
+                }
+
+                // Emission metrics (только для syb токенов и если showEmission = true)
+                if (showEmission && currentMarket.startsWith('syb_')) {
+                    const emissionDataSource = config.emissionData;
+                    const emissionField = config.emissionField;
+
+                    if (emissionDataSource && emissionDataSource.length > 0 && emissionField) {
+                        // Получаем start и end timestamps из текущих данных
+                        const startTimestamp = Math.floor(new Date(currentYieldData.data[0].datetime).getTime() / 1000);
+                        const endTimestamp = Math.floor(new Date(currentYieldData.data[currentYieldData.data.length - 1].datetime).getTime() / 1000);
+
+                        // Сортируем эмиссию по timestamp
+                        const emissionSorted = emissionDataSource
+                            .filter(e => e[emissionField] !== null && e[emissionField] !== undefined)
+                            .sort((a, b) => a.timestamp - b.timestamp);
+
+
+                        // Функция для получения кумулятивной эмиссии в конкретный момент времени
+                        function getCumulativeEmissionForMetrics(targetTimestamp) {
+                            let closestBefore = null;
+                            let closestAfter = null;
+
+                            for (let i = 0; i < emissionSorted.length; i++) {
+                                if (emissionSorted[i].timestamp <= targetTimestamp) {
+                                    closestBefore = emissionSorted[i];
+                                } else {
+                                    closestAfter = emissionSorted[i];
+                                    break;
+                                }
+                            }
+
+                            // Точное совпадение
+                            if (closestBefore && closestBefore.timestamp === targetTimestamp) {
+                                return closestBefore[emissionField];
+                            }
+
+                            // Интерполяция
+                            if (closestBefore && closestAfter) {
+                                const valBefore = closestBefore[emissionField];
+                                const valAfter = closestAfter[emissionField];
+                                const t = (targetTimestamp - closestBefore.timestamp) / (closestAfter.timestamp - closestBefore.timestamp);
+                                return valBefore + t * (valAfter - valBefore);
+                            }
+
+                            // Экстраполяция
+                            if (closestBefore) {
+                                return closestBefore[emissionField];
+                            }
+                            if (closestAfter) {
+                                return closestAfter[emissionField];
+                            }
+
+                            return 0;
+                        }
+
+                        const startEmission = getCumulativeEmissionForMetrics(startTimestamp);
+                        const endEmission = getCumulativeEmissionForMetrics(endTimestamp);
+                        const totalEmission = endEmission - startEmission;
+
+                        // Use end TVL (most representative as TVL grew over time)
+                        const baseMarket = config.baseMarket || 'wbtc';
+                        const endTVL = getTVLAt(endTimestamp, baseMarket);
+
+                        // Emission boost = эмиссия / TVL
+                        const emissionBoost = totalEmission / endTVL;
+                        const emissionApr = (emissionBoost / currentYieldData.metrics.days) * 365;
+
+                        // Показываем emission metrics рядом с обоими чекбоксами
+                        document.getElementById('emission-metrics-fund').style.display = 'flex';
+                        document.getElementById('emission-boost-fund').textContent = (emissionBoost * 100).toFixed(4) + '%';
+                        document.getElementById('emission-apr-fund').textContent = (emissionApr * 100).toFixed(2) + '%';
+
+                        document.getElementById('emission-metrics-withdrawable').style.display = 'flex';
+                        document.getElementById('emission-boost-withdrawable').textContent = (emissionBoost * 100).toFixed(4) + '%';
+                        document.getElementById('emission-apr-withdrawable').textContent = (emissionApr * 100).toFixed(2) + '%';
+                    } else {
+                        // Нет данных эмиссии - скрываем блоки
+                        document.getElementById('emission-metrics-fund').style.display = 'none';
+                        document.getElementById('emission-metrics-withdrawable').style.display = 'none';
+                    }
+                } else {
+                    // Не syb токен - скрываем блоки
+                    document.getElementById('emission-metrics-fund').style.display = 'none';
+                    document.getElementById('emission-metrics-withdrawable').style.display = 'none';
                 }
             }
 
@@ -916,7 +1224,46 @@
             createCharts();
         }
 
+        function toggleEmissionFundamental() {
+            showEmissionFundamental = document.getElementById('emission-fundamental-toggle').checked;
+            console.log('Fundamental emission toggled:', showEmissionFundamental);
 
+            // Обновляем метрики и пересоздаём графики
+            updateMetrics();
+            destroyCharts();
+            createCharts();
+        }
+
+        function toggleEmissionWithdrawable() {
+            showEmissionWithdrawable = document.getElementById('emission-withdrawable-toggle').checked;
+            console.log('Withdrawable emission toggled:', showEmissionWithdrawable);
+
+            // Обновляем метрики и пересоздаём графики
+            updateMetrics();
+            destroyCharts();
+            createCharts();
+        }
+
+        function toggleEmission() {
+            showEmission = document.getElementById('emission-toggle').checked;
+            console.log('YB Emission toggled:', showEmission);
+
+            // Скрываем/показываем радиокнопки emission base
+            const fundLabel = document.querySelector('#fundamental-metrics label');
+            const withdrawableLabel = document.querySelector('#withdrawable-metrics label');
+
+            if (fundLabel) {
+                fundLabel.style.display = showEmission ? 'flex' : 'none';
+            }
+            if (withdrawableLabel) {
+                withdrawableLabel.style.display = showEmission ? 'flex' : 'none';
+            }
+
+            // Обновляем метрики и графики
+            updateMetrics();
+            destroyCharts();
+            createCharts();
+        }
 
         function createCharts() {
             console.log('Creating charts for', currentYieldData.data.length, 'data points');
@@ -1074,9 +1421,13 @@
                 if (ppsDataSource && ppsDataSource.data) {
                     console.log('Loading fundamental PPS data:', ppsDataSource.data.length, 'points');
 
+                    // Определяем какое поле PPS использовать (staked для syb, unstaked для yb)
+                    const ppsField = currentMarket.startsWith('syb_') ? 'pps_staked' : 'pps_unstaked';
+                    console.log('Using PPS field:', ppsField, 'for market:', currentMarket);
+
                     // Сортируем PPS данные по timestamp для бинарного поиска
                     const ppsSorted = ppsDataSource.data
-                        .filter(p => p.pps_unstaked !== null)
+                        .filter(p => p[ppsField] !== null)
                         .sort((a, b) => a.timestamp - b.timestamp);
 
                     // Функция линейной интерполяции между двумя точками
@@ -1104,7 +1455,7 @@
 
                         // Если нашли точку точно - возвращаем её
                         if (closestBefore && closestBefore.timestamp === targetTimestamp) {
-                            return closestBefore.pps_unstaked;
+                            return closestBefore[ppsField];
                         }
 
                         // Интерполяция между двумя точками
@@ -1112,20 +1463,20 @@
                             return interpolate(
                                 targetTimestamp,
                                 closestBefore.timestamp,
-                                closestBefore.pps_unstaked,
+                                closestBefore[ppsField],
                                 closestAfter.timestamp,
-                                closestAfter.pps_unstaked
+                                closestAfter[ppsField]
                             );
                         }
 
                         // Если есть только точка до - используем её (если разница < 7 дней)
                         if (closestBefore && (targetTimestamp - closestBefore.timestamp) < 604800) {
-                            return closestBefore.pps_unstaked;
+                            return closestBefore[ppsField];
                         }
 
                         // Если есть только точка после - используем её (если разница < 7 дней)
                         if (closestAfter && (closestAfter.timestamp - targetTimestamp) < 604800) {
-                            return closestAfter.pps_unstaked;
+                            return closestAfter[ppsField];
                         }
 
                         return null;
@@ -1139,6 +1490,8 @@
 
             // Подготовка PPS + Emission данных для syb токенов
             let ppsWithEmissionValues = null;
+            let ppsWithEmissionFundamental = null;
+            let ppsWithEmissionWithdrawable = null;
             const config = MARKETS[currentContractVersion][currentMarket];
 
             // Проверяем что это syb токен и есть emission данные
@@ -1194,55 +1547,103 @@
                         return 0;
                     }
 
-                    // Вычисляем PPS + Emission для каждой точки
-                    // Берем Withdrawable PPS и добавляем к нему доходность от эмиссии
-                    ppsWithEmissionValues = currentYieldData.data.map((d, index) => {
-                        const targetTimestamp = Math.floor(new Date(d.datetime).getTime() / 1000);
-                        const withdrawablePps = ppsValues[index];
-
-                        if (withdrawablePps === null) return null;
-
-                        // Получаем кумулятивную эмиссию
-                        const cumulativeEmission = getCumulativeEmission(targetTimestamp);
-
-                        // Используем реальный TVL для каждого рынка (на 2025-11-21)
-                        // Значения получены из gauge контрактов через balanceOf()
-                        const TVL_MAP = {
-                            'wbtc': 339.31,   // WBTC gauge TVL
-                            'cbbtc': 268.20,  // cbBTC gauge TVL
-                            'tbtc': 311.98    // tBTC gauge TVL
-                        };
-
-                        const baseMarket = config.baseMarket || 'wbtc';
-                        const tvlStaked = TVL_MAP[baseMarket] || 300.0;  // Fallback ~300 BTC
-
-                        // PPS + Emission = Withdrawable PPS + (Cumulative Emission / TVL в стейке)
-                        return withdrawablePps + (cumulativeEmission / tvlStaked);
-                    });
-
-                    const matchedCount = ppsWithEmissionValues.filter(v => v !== null).length;
-                    const TVL_MAP = {'wbtc': 339.31, 'cbbtc': 268.20, 'tbtc': 311.98};
+                    // Get base market for TVL lookup
                     const baseMarket = config.baseMarket || 'wbtc';
-                    const tvlUsed = TVL_MAP[baseMarket] || 300.0;
 
-                    console.log('PPS+Emission values calculated:', matchedCount, '/', currentYieldData.data.length);
-                    console.log(`Using Withdrawable PPS + (Emission / ${tvlUsed.toFixed(2)} BTC TVL for ${baseMarket.toUpperCase()})`);
+                    // Get start emission to calculate relative emission from start point
+                    const startTimestamp = Math.floor(new Date(currentYieldData.data[0].datetime).getTime() / 1000);
+                    const startEmissionTotal = getCumulativeEmission(startTimestamp);
+
+                    // Calculate accumulated emission per token over time (relative to start)
+                    // We need to integrate emission_delta / TVL(t) for each period
+                    const calculateAccumulatedEmissionPerToken = (targetTimestamp) => {
+                        let accumulatedEmission = 0;
+                        let prevEmission = startEmissionTotal; // Start from initial emission
+                        let prevTimestamp = startTimestamp;
+
+                        // Iterate through data points up to target
+                        for (let i = 0; i < currentYieldData.data.length; i++) {
+                            const pointTimestamp = Math.floor(new Date(currentYieldData.data[i].datetime).getTime() / 1000);
+                            if (pointTimestamp > targetTimestamp) break;
+
+                            const currentEmission = getCumulativeEmission(pointTimestamp);
+                            const emissionDelta = currentEmission - prevEmission;
+
+                            if (emissionDelta > 0) {
+                                // Use TVL at the current point (when emission is measured)
+                                // This is the most honest approach that doesn't make assumptions
+                                // about emission rate changes between points
+                                const tvlCurrent = getTVLAt(pointTimestamp, baseMarket);
+
+                                // Avoid division by very small TVL (less than 1 BTC)
+                                const effectiveTVL = Math.max(tvlCurrent, 1.0);
+
+                                accumulatedEmission += emissionDelta / effectiveTVL;
+                            }
+
+                            prevEmission = currentEmission;
+                            prevTimestamp = pointTimestamp;
+                        }
+
+                        return accumulatedEmission;
+                    };
+
+                    // Вычисляем PPS + Emission для Fundamental (если включено)
+                    if (showEmissionFundamental && fundamentalPpsValues) {
+                        ppsWithEmissionFundamental = currentYieldData.data.map((d, index) => {
+                            const targetTimestamp = Math.floor(new Date(d.datetime).getTime() / 1000);
+                            const basePps = fundamentalPpsValues[index];
+                            if (basePps === null) return null;
+
+                            const emissionPerToken = calculateAccumulatedEmissionPerToken(targetTimestamp);
+                            return basePps + emissionPerToken;
+                        });
+                    }
+
+                    // Вычисляем PPS + Emission для Withdrawable (если включено)
+                    if (showEmissionWithdrawable) {
+                        ppsWithEmissionWithdrawable = currentYieldData.data.map((d, index) => {
+                            const targetTimestamp = Math.floor(new Date(d.datetime).getTime() / 1000);
+                            const basePps = ppsValues[index];
+                            if (basePps === null) return null;
+
+                            const emissionPerToken = calculateAccumulatedEmissionPerToken(targetTimestamp);
+                            return basePps + emissionPerToken;
+                        });
+                    }
+
+                    // Для совместимости со старым кодом сохраняем ppsWithEmissionValues
+                    ppsWithEmissionValues = ppsWithEmissionFundamental || ppsWithEmissionWithdrawable;
+
+                    // Логируем результаты
+                    if (ppsWithEmissionFundamental) {
+                        const matchedCount = ppsWithEmissionFundamental.filter(v => v !== null).length;
+                        console.log('Fundamental PPS+Emission values calculated:', matchedCount, '/', currentYieldData.data.length);
+                    }
+                    if (ppsWithEmissionWithdrawable) {
+                        const matchedCount = ppsWithEmissionWithdrawable.filter(v => v !== null).length;
+                        console.log('Withdrawable PPS+Emission values calculated:', matchedCount, '/', currentYieldData.data.length);
+                    }
 
                     // Логируем несколько примеров для отладки
-                    if (ppsWithEmissionValues.length > 0) {
-                        const lastIndex = currentYieldData.data.length - 1;
-                        const lastTimestamp = Math.floor(new Date(currentYieldData.data[lastIndex].datetime).getTime() / 1000);
-                        const lastEmission = getCumulativeEmission(lastTimestamp);
+                    const debugFirstTimestamp = Math.floor(new Date(currentYieldData.data[0].datetime).getTime() / 1000);
+                    const debugLastTimestamp = Math.floor(new Date(currentYieldData.data[currentYieldData.data.length - 1].datetime).getTime() / 1000);
 
-                        const firstNonNull = ppsWithEmissionValues.find(v => v !== null);
-                        const lastNonNull = ppsWithEmissionValues.slice().reverse().find(v => v !== null);
-                        console.log('First PPS+Emission value:', firstNonNull);
-                        console.log('Last PPS+Emission value:', lastNonNull);
-                        console.log('Last Withdrawable PPS:', ppsValues[lastIndex]);
-                        console.log('Cumulative emission at end:', lastEmission.toFixed(10), 'BTC');
-                        console.log('Emission impact per token:', (lastEmission / tvlUsed).toFixed(10), 'BTC');
-                        console.log('Emission boost %:', ((lastEmission / tvlUsed) / ppsValues[lastIndex] * 100).toFixed(4), '%');
-                    }
+                    const firstEmission = getCumulativeEmission(debugFirstTimestamp);
+                    const lastEmission = getCumulativeEmission(debugLastTimestamp);
+                    const firstEmissionPerToken = calculateAccumulatedEmissionPerToken(debugFirstTimestamp);
+                    const lastEmissionPerToken = calculateAccumulatedEmissionPerToken(debugLastTimestamp);
+                    const lastTVL = getTVLAt(debugLastTimestamp, baseMarket);
+
+                    console.log(`Using point-in-time TVL for emission calculation (no assumptions about emission rate) for ${baseMarket.toUpperCase()}`);
+                    console.log('Start emission total:', firstEmission.toFixed(10), 'BTC');
+                    console.log('End emission total:', lastEmission.toFixed(10), 'BTC');
+                    console.log('Delta emission:', (lastEmission - firstEmission).toFixed(10), 'BTC');
+                    console.log('TVL at start:', getTVLAt(debugFirstTimestamp, baseMarket).toFixed(2), 'BTC');
+                    console.log('TVL at end:', lastTVL.toFixed(2), 'BTC');
+                    console.log('First emission per token:', firstEmissionPerToken.toFixed(10), 'BTC (should be ~0)');
+                    console.log('Last emission per token:', lastEmissionPerToken.toFixed(10), 'BTC');
+                    console.log('Emission boost %:', (lastEmissionPerToken / ppsValues[currentYieldData.data.length - 1] * 100).toFixed(4), '%');
                 }
             }
 
@@ -1251,8 +1652,11 @@
             if (fundamentalPpsValues) {
                 allPpsValues.push(...fundamentalPpsValues.filter(v => v !== null));
             }
-            if (ppsWithEmissionValues) {
-                allPpsValues.push(...ppsWithEmissionValues.filter(v => v !== null));
+            if (ppsWithEmissionFundamental) {
+                allPpsValues.push(...ppsWithEmissionFundamental.filter(v => v !== null));
+            }
+            if (ppsWithEmissionWithdrawable) {
+                allPpsValues.push(...ppsWithEmissionWithdrawable.filter(v => v !== null));
             }
             const ppsMin = Math.min(...allPpsValues);
             const ppsMax = Math.max(...allPpsValues);
@@ -1298,20 +1702,40 @@
                 console.log('Added Fundamental line to chart');
             }
 
-            // Добавляем PPS + Emission линию для syb токенов (всегда показываем если есть данные)
-            if (ppsWithEmissionValues) {
-                ppsDatasets.push({
-                    label: 'PPS (BTC) - Withdrawable + Emission',
-                    data: ppsWithEmissionValues,
-                    borderColor: '#8b5cf6',
-                    backgroundColor: 'rgba(139, 92, 246, 0.2)',
-                    borderWidth: 3,
-                    fill: false,
-                    tension: 0.4,
-                    pointRadius: 0,
-                    pointHoverRadius: 5
-                });
-                console.log('Added Withdrawable + Emission line to chart with', ppsWithEmissionValues.length, 'points');
+            // Добавляем PPS + Emission линии для syb токенов
+            if (showEmission && currentMarket.startsWith('syb_')) {
+                // Fundamental + Emission
+                if (showEmissionFundamental && ppsWithEmissionFundamental) {
+                    ppsDatasets.push({
+                        label: 'PPS (BTC) - Fundamental + Emission',
+                        data: ppsWithEmissionFundamental,
+                        borderColor: '#8b5cf6',
+                        backgroundColor: 'rgba(139, 92, 246, 0.2)',
+                        borderWidth: 3,
+                        borderDash: [5, 5],
+                        fill: false,
+                        tension: 0.4,
+                        pointRadius: 0,
+                        pointHoverRadius: 5
+                    });
+                    console.log('Added Fundamental + Emission line to chart with', ppsWithEmissionFundamental.length, 'points');
+                }
+
+                // Withdrawable + Emission
+                if (showEmissionWithdrawable && ppsWithEmissionWithdrawable) {
+                    ppsDatasets.push({
+                        label: 'PPS (BTC) - Withdrawable + Emission',
+                        data: ppsWithEmissionWithdrawable,
+                        borderColor: '#8b5cf6',
+                        backgroundColor: 'rgba(139, 92, 246, 0.2)',
+                        borderWidth: 3,
+                        fill: false,
+                        tension: 0.4,
+                        pointRadius: 0,
+                        pointHoverRadius: 5
+                    });
+                    console.log('Added Withdrawable + Emission line to chart with', ppsWithEmissionWithdrawable.length, 'points');
+                }
             }
 
             console.log('Total datasets in PPS chart:', ppsDatasets.length);
@@ -1530,12 +1954,27 @@
         // Initialize on page load
         window.addEventListener('DOMContentLoaded', () => {
             loadMarketData('cbbtc');
+
+            // Скрываем чекбокс эмиссии для нестекнутых токенов
+            const emissionToggleLabel = document.getElementById('emission-toggle-label');
+            if (emissionToggleLabel) {
+                emissionToggleLabel.style.display = currentMarket.startsWith('syb_') ? 'flex' : 'none';
+            }
+
             renderContent();
             initializeDateInputs();
             updateMetrics();
             createCharts();
         });
     </script>
+
+    <!-- TVL Data Files -->
+    <script src="pps_collector/gauge_tvl_new_wbtc.js"></script>
+    <script src="pps_collector/gauge_tvl_new_cbbtc.js"></script>
+    <script src="pps_collector/gauge_tvl_new_tbtc.js"></script>
+    <script src="pps_collector/gauge_tvl_old_wbtc.js"></script>
+    <script src="pps_collector/gauge_tvl_old_cbbtc.js"></script>
+    <script src="pps_collector/gauge_tvl_old_tbtc.js"></script>
 </body>
 
 </html>
