@@ -1,14 +1,14 @@
-// Last updated: 2025-11-22 04:45:46 UTC
+// Last updated: 2025-11-22 04:59:56 UTC
 const old_yieldData_wbtc = {
   "metadata": {
     "market": "WBTC (OLD)",
     "contract": "0x6095a220C5567360d459462A25b1AD5aEAD45204",
-    "collected": "2025-11-22T04:43:53.843339Z",
-    "points": 7511,
+    "collected": "2025-11-22T04:58:04.616634Z",
+    "points": 7512,
     "synchronized": true,
     "transaction_based": true,
     "zero_loss": true,
-    "incremental_update": false,
+    "incremental_update": true,
     "old_contract": true
   },
   "data": [
@@ -67608,6 +67608,15 @@ const old_yieldData_wbtc = {
       "total_withdrawable_btc": 29.45325417,
       "deposits_btc": 0,
       "withdrawals_btc": 0.01140084,
+      "admin_fee_withdrawals_btc": 0.0,
+      "admin_fees_btc": 0.0
+    },
+    {
+      "block": 23852227,
+      "timestamp": 1763787071,
+      "total_withdrawable_btc": 29.45316357,
+      "deposits_btc": 0.0,
+      "withdrawals_btc": 0.0,
       "admin_fee_withdrawals_btc": 0.0,
       "admin_fees_btc": 0.0
     }
