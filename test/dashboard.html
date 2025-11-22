@@ -1,4 +1,4 @@
-// Last updated: 2025-11-22 02:01:01 UTC
+// Last updated: 2025-11-22 02:18:33 UTC
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -413,6 +413,7 @@
             function recalculateProfitData() {
                 let cumulativeDeposits = 0;
                 let cumulativeWithdrawals = 0;
+                let cumulativeAdminFeeWithdrawals = 0;
 
                 return wbtcData.map((wbtc, i) => {
                 const cbbtc = cbbtcData[i];
@@ -436,28 +437,31 @@
                                    (cbbtc.withdrawals_btc || 0) +
                                    (tbtc.withdrawals_btc || 0);
 
-                // admin_fees_btc и admin_fee_withdrawals_btc - уже накопленные значения, не дельты!
+                // Для OLD контрактов используем admin_fees_btc как admin_fee_withdrawals
+                // т.к. в OLD контрактах все admin fees фактически были "withdrawn"
+                const adminFeeWithdrawals = currentContractVersion === 'old'
+                    ? ((wbtc.admin_fees_btc || 0) + (cbbtc.admin_fees_btc || 0) + (tbtc.admin_fees_btc || 0))
+                    : ((wbtc.admin_fee_withdrawals_btc || 0) + (cbbtc.admin_fee_withdrawals_btc || 0) + (tbtc.admin_fee_withdrawals_btc || 0));
+
                 const adminFees = (wbtc.admin_fees_btc || 0) +
                                  (cbbtc.admin_fees_btc || 0) +
                                  (tbtc.admin_fees_btc || 0);
 
-                const adminFeeWithdrawals = (wbtc.admin_fee_withdrawals_btc || 0) +
-                                           (cbbtc.admin_fee_withdrawals_btc || 0) +
-                                           (tbtc.admin_fee_withdrawals_btc || 0);
-
-                // Накапливаем только deposits и withdrawals (они приходят как дельты)
+                // Накапливаем
                 cumulativeDeposits += deposits;
                 cumulativeWithdrawals += withdrawals;
+                cumulativeAdminFeeWithdrawals += adminFeeWithdrawals;
 
                 // Добавляем admin fee withdrawals к withdrawals если checkbox активен
                 const includeAdminFeeWithdrawals = document.getElementById('toggleAdminFeeWithdrawals')?.checked ?? true;
                 const effectiveWithdrawals = includeAdminFeeWithdrawals
-                    ? cumulativeWithdrawals + adminFeeWithdrawals
+                    ? cumulativeWithdrawals + cumulativeAdminFeeWithdrawals
                     : cumulativeWithdrawals;
 
                 // Вычисляем прибыль
+                // Если включен checkbox, компенсируем уменьшение adminFees добавлением выведенной суммы
                 const effectiveAdminFees = includeAdminFeeWithdrawals
-                    ? adminFees + adminFeeWithdrawals
+                    ? adminFees + cumulativeAdminFeeWithdrawals
                     : adminFees;
                 const netDeposited = cumulativeDeposits - effectiveWithdrawals;
                 const profit = totalWithdrawable - netDeposited + effectiveAdminFees;
@@ -470,7 +474,7 @@
                     deposits: cumulativeDeposits,
                     withdrawals: effectiveWithdrawals,
                     admin_fees: adminFees,
-                    admin_fee_withdrawals: adminFeeWithdrawals
+                    admin_fee_withdrawals: cumulativeAdminFeeWithdrawals
                 };
                 });
             }
@@ -1050,6 +1054,7 @@
                 // Пересчитываем профит для ВСЕХ данных (не только текущего диапазона)
                 let cumulativeDeposits = 0;
                 let cumulativeWithdrawals = 0;
+                let cumulativeAdminFeeWithdrawals = 0;
 
                 fullRecalculatedData = fullProfitData.map((point, i) => {
                     const wbtc = fullWbtcData[i];
@@ -1068,26 +1073,33 @@
                         deposits += wbtc.deposits_btc || 0;
                         withdrawals += wbtc.withdrawals_btc || 0;
                         adminFees += wbtc.admin_fees_btc || 0;
-                        adminFeeWithdrawals += wbtc.admin_fee_withdrawals_btc || 0;
+                        adminFeeWithdrawals += currentContractVersion === 'old' 
+                            ? (wbtc.admin_fees_btc || 0) 
+                            : (wbtc.admin_fee_withdrawals_btc || 0);
                     }
                     if (includeCbbtc) {
                         withdrawable += cbbtc.total_withdrawable_btc || 0;
                         deposits += cbbtc.deposits_btc || 0;
                         withdrawals += cbbtc.withdrawals_btc || 0;
                         adminFees += cbbtc.admin_fees_btc || 0;
-                        adminFeeWithdrawals += cbbtc.admin_fee_withdrawals_btc || 0;
+                        adminFeeWithdrawals += currentContractVersion === 'old' 
+                            ? (cbbtc.admin_fees_btc || 0) 
+                            : (cbbtc.admin_fee_withdrawals_btc || 0);
                     }
                     if (includeTbtc) {
                         withdrawable += tbtc.total_withdrawable_btc || 0;
                         deposits += tbtc.deposits_btc || 0;
                         withdrawals += tbtc.withdrawals_btc || 0;
                         adminFees += tbtc.admin_fees_btc || 0;
-                        adminFeeWithdrawals += tbtc.admin_fee_withdrawals_btc || 0;
+                        adminFeeWithdrawals += currentContractVersion === 'old' 
+                            ? (tbtc.admin_fees_btc || 0) 
+                            : (tbtc.admin_fee_withdrawals_btc || 0);
                     }
 
-                    // Накапливаем депозиты/выводы (они приходят как дельты)
+                    // Накапливаем депозиты/выводы
                     cumulativeDeposits += deposits;
                     cumulativeWithdrawals += withdrawals;
+                    cumulativeAdminFeeWithdrawals += adminFeeWithdrawals;
 
                     // Вычисляем баланс на основе выбранных компонентов
                     let profit = 0;
@@ -1104,7 +1116,7 @@
 
                     if (includeWithdrawals) {
                         const effectiveWithdrawals = includeAdminFeeWithdrawals
-                            ? cumulativeWithdrawals + adminFeeWithdrawals
+                            ? cumulativeWithdrawals + cumulativeAdminFeeWithdrawals
                             : cumulativeWithdrawals;
                         profit += effectiveWithdrawals;
                         if (includeAdminFeeWithdrawals) {
@@ -1114,7 +1126,7 @@
 
                     if (includeAdminFees) {
                         const effectiveAdminFees = includeAdminFeeWithdrawals
-                            ? adminFees + adminFeeWithdrawals
+                            ? adminFees + cumulativeAdminFeeWithdrawals
                             : adminFees;
                         profit += effectiveAdminFees;
                         if (includeAdminFeeWithdrawals) {
@@ -1124,7 +1136,7 @@
 
                     // Если admin fee withdrawals включены, но они еще не были добавлены ни через withdrawals, ни через admin fees
                     if (includeAdminFeeWithdrawals && !adminFeeWithdrawalsAdded) {
-                        profit += adminFeeWithdrawals;
+                        profit += cumulativeAdminFeeWithdrawals;
                     }
 
                     // Добавляем YB эмиссию по рынкам если галочка активна
