@@ -1,4 +1,4 @@
-// Last updated: 2025-11-23 21:56:03 UTC
+// Last updated: 2025-11-23 22:08:51 UTC
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -717,8 +717,12 @@
             }
 
             // Функция расчета Fundamental Revenue
+            // Повторяет логику Trading Revenue, но с корректировкой Withdrawals на Yield Delta
+            // Формула: TVL - (Deposits - Fundamental_Withdrawals) + Admin_Fees
+            // Где Fundamental_Withdrawals = Withdrawals + Yield_Delta
+            // Yield_Delta = Real_TVL - Fundamental_TVL (показывает trading premium)
             function calculateFundamentalRevenue(includeWbtc = true, includeCbbtc = true, includeTbtc = true) {
-                if (!ppsAvailable || profitData.length === 0) return profitData.map(d => d.profit);
+                if (!ppsAvailable || fullProfitData.length === 0) return fullProfitData.map(d => d.profit);
 
                 // Получаем начальные значения (первая точка данных)
                 const firstPoint = fullProfitData[0];
@@ -726,11 +730,13 @@
                 const firstCbbtc = fullCbbtcData[0];
                 const firstTbtc = fullTbtcData[0];
 
-                // Начальный TVL и PPS для каждого рынка
+                // Начальный TVL для каждого рынка (используем только выбранные рынки)
                 const initialTVL_wbtc = includeWbtc ? (firstWbtc.total_withdrawable_btc || 0) : 0;
                 const initialTVL_cbbtc = includeCbbtc ? (firstCbbtc.total_withdrawable_btc || 0) : 0;
                 const initialTVL_tbtc = includeTbtc ? (firstTbtc.total_withdrawable_btc || 0) : 0;
+                const totalInitialTVL = initialTVL_wbtc + initialTVL_cbbtc + initialTVL_tbtc;
 
+                // Начальный PPS для каждого рынка (из первой точки данных)
                 const initialPPS_wbtc = firstPoint.pps_wbtc.pps_unstaked;
                 const initialPPS_cbbtc = firstPoint.pps_cbbtc.pps_unstaked;
                 const initialPPS_tbtc = firstPoint.pps_tbtc.pps_unstaked;
@@ -743,6 +749,30 @@
                     const wbtc = fullWbtcData[i];
                     const cbbtc = fullCbbtcData[i];
                     const tbtc = fullTbtcData[i];
+
+                    // Реальный TVL для выбранных рынков
+                    let realTVL = 0;
+                    if (includeWbtc) realTVL += wbtc.total_withdrawable_btc || 0;
+                    if (includeCbbtc) realTVL += cbbtc.total_withdrawable_btc || 0;
+                    if (includeTbtc) realTVL += tbtc.total_withdrawable_btc || 0;
+
+                    // Рассчитываем Fundamental TVL для каждого рынка (Initial_TVL × Current_PPS / Initial_PPS)
+                    let fundamentalTVL = 0;
+                    if (includeWbtc && initialTVL_wbtc > 0) {
+                        fundamentalTVL += initialTVL_wbtc * (point.pps_wbtc.pps_unstaked / initialPPS_wbtc);
+                    }
+                    if (includeCbbtc && initialTVL_cbbtc > 0) {
+                        fundamentalTVL += initialTVL_cbbtc * (point.pps_cbbtc.pps_unstaked / initialPPS_cbbtc);
+                    }
+                    if (includeTbtc && initialTVL_tbtc > 0) {
+                        fundamentalTVL += initialTVL_tbtc * (point.pps_tbtc.pps_unstaked / initialPPS_tbtc);
+                    }
+
+                    // Yield Delta в процентах = (Real_TVL - Fundamental_TVL) / Fundamental_TVL
+                    // Показывает на сколько процентов trading лучше/хуже роста PPS
+                    const yieldDeltaPercent = fundamentalTVL > 0
+                        ? (realTVL - fundamentalTVL) / fundamentalTVL
+                        : 0;
 
                     // Накапливаем deposits/withdrawals только для выбранных рынков
                     let deposits = 0;
@@ -788,21 +818,16 @@
                         ? adminFees + cumulativeAdminFeeWithdrawals
                         : adminFees;
 
-                    // Рассчитываем Fundamental TVL для каждого рынка (Initial_TVL × Current_PPS / Initial_PPS)
-                    let totalFundamentalTVL = 0;
-                    if (includeWbtc && initialTVL_wbtc > 0) {
-                        totalFundamentalTVL += initialTVL_wbtc * (point.pps_wbtc.pps_unstaked / initialPPS_wbtc);
-                    }
-                    if (includeCbbtc && initialTVL_cbbtc > 0) {
-                        totalFundamentalTVL += initialTVL_cbbtc * (point.pps_cbbtc.pps_unstaked / initialPPS_cbbtc);
-                    }
-                    if (includeTbtc && initialTVL_tbtc > 0) {
-                        totalFundamentalTVL += initialTVL_tbtc * (point.pps_tbtc.pps_unstaked / initialPPS_tbtc);
-                    }
+                    // Fundamental Withdrawals = Withdrawals × (1 + Yield_Delta_Percent)
+                    // Применяем процентное изменение к withdrawals
+                    // Если Yield Delta +5%, то withdrawals увеличиваются на 5% → Fundamental Revenue меньше
+                    // Если Yield Delta -5%, то withdrawals уменьшаются на 5% → Fundamental Revenue больше
+                    const fundamentalWithdrawals = effectiveWithdrawals * (1 + yieldDeltaPercent);
 
-                    // Fundamental Revenue = Fundamental_TVL - Net_Deposited + Admin_Fees
-                    const netDeposited = cumulativeDeposits - effectiveWithdrawals;
-                    const fundamentalRevenue = totalFundamentalTVL - netDeposited + effectiveAdminFees;
+                    // Фундаментальная доходность = TVL - (Deposits - Fundamental_Withdrawals) + Admin_Fees
+                    // = TVL - Deposits + Fundamental_Withdrawals + Admin_Fees
+                    const netDeposited = cumulativeDeposits - fundamentalWithdrawals;
+                    const fundamentalRevenue = realTVL - netDeposited + effectiveAdminFees;
 
                     return fundamentalRevenue;
                 });
@@ -931,12 +956,23 @@
                                         lines.push('─────────────────────');
 
                                         const fundamentalRevenue = ctx.parsed.y;
-                                        const yieldDelta = point.profit - fundamentalRevenue;
+
+                                        // Реальный TVL
+                                        const realTVL = wbtc.total_withdrawable_btc + cbbtc.total_withdrawable_btc + tbtc.total_withdrawable_btc;
+
+                                        // Yield Delta в процентах
+                                        const yieldDeltaPercent = totalFundamentalTVL > 0
+                                            ? ((realTVL - totalFundamentalTVL) / totalFundamentalTVL) * 100
+                                            : 0;
+
+                                        const yieldDeltaBTC = point.profit - fundamentalRevenue;
+
                                         lines.push(`💰 FUNDAMENTAL REV:   ${fundamentalRevenue.toFixed(4)} BTC`);
-                                        lines.push(`📈 Yield Delta:       ${yieldDelta >= 0 ? '+' : ''}${yieldDelta.toFixed(4)} BTC`);
+                                        lines.push(`📈 Yield Delta:       ${yieldDeltaPercent >= 0 ? '+' : ''}${yieldDeltaPercent.toFixed(4)}%`);
+                                        lines.push(`   (${yieldDeltaBTC >= 0 ? '+' : ''}${yieldDeltaBTC.toFixed(4)} BTC)`);
                                         lines.push('');
-                                        lines.push('Formula: Fundamental_TVL - Net_Deposited + Admin_Fees');
-                                        lines.push('Yield Delta = Trading Revenue - Fundamental Revenue');
+                                        lines.push('Formula: TVL - (Deposits - Fundamental_Withdrawals) + Admin_Fees');
+                                        lines.push('Fundamental_Withdrawals = Withdrawals × (1 + Yield_Delta%)');
                                     } else {
                                         // Trading Revenue (оригинальная логика)
                                         lines.push('');
