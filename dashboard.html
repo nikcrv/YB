@@ -1,4 +1,4 @@
-// Last updated: 2025-11-23 22:08:51 UTC
+// Last updated: 2025-11-23 22:21:38 UTC
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -273,7 +273,7 @@
                             <label for="toggleYbEmission">YB Emission</label>
                         </div>
                         <div class="checkbox-group">
-                            <input type="checkbox" id="toggleFundamental" checked>
+                            <input type="checkbox" id="toggleFundamental">
                             <label for="toggleFundamental">Show Fundamental Revenue</label>
                         </div>
                     </div>
@@ -717,11 +717,20 @@
             }
 
             // Функция расчета Fundamental Revenue
-            // Повторяет логику Trading Revenue, но с корректировкой Withdrawals на Yield Delta
-            // Формула: TVL - (Deposits - Fundamental_Withdrawals) + Admin_Fees
-            // Где Fundamental_Withdrawals = Withdrawals + Yield_Delta
-            // Yield_Delta = Real_TVL - Fundamental_TVL (показывает trading premium)
-            function calculateFundamentalRevenue(includeWbtc = true, includeCbbtc = true, includeTbtc = true) {
+            // ПОЛНОСТЬЮ повторяет логику Trading Revenue (учитывая ВСЕ чекбоксы)
+            // НО корректирует ТОЛЬКО Withdrawals на Yield Delta процент
+            // Формула: (включенный TVL) - (включенные Deposits - Fundamental_Withdrawals) + (включенные Admin_Fees) + (включенный YB)
+            // Где Fundamental_Withdrawals = Withdrawals × (1 + Yield_Delta%)
+            function calculateFundamentalRevenue(
+                includeWbtc = true,
+                includeCbbtc = true,
+                includeTbtc = true,
+                includeWithdrawable = true,
+                includeDeposits = true,
+                includeWithdrawals = true,
+                includeAdminFees = true,
+                includeYbEmission = true
+            ) {
                 if (!ppsAvailable || fullProfitData.length === 0) return fullProfitData.map(d => d.profit);
 
                 // Получаем начальные значения (первая точка данных)
@@ -756,23 +765,82 @@
                     if (includeCbbtc) realTVL += cbbtc.total_withdrawable_btc || 0;
                     if (includeTbtc) realTVL += tbtc.total_withdrawable_btc || 0;
 
-                    // Рассчитываем Fundamental TVL для каждого рынка (Initial_TVL × Current_PPS / Initial_PPS)
-                    let fundamentalTVL = 0;
+                    // Вычисляем Yield Delta для каждого рынка как в index.html
+                    // Yield Delta = (Current_PPS / Initial_PPS - 1) - (Fundamental_PPS / Initial_PPS - 1)
+                    // = Trading_Return - Fundamental_Return
+                    let totalYieldDeltaPercent = 0;
+                    let marketCount = 0;
+
                     if (includeWbtc && initialTVL_wbtc > 0) {
-                        fundamentalTVL += initialTVL_wbtc * (point.pps_wbtc.pps_unstaked / initialPPS_wbtc);
-                    }
-                    if (includeCbbtc && initialTVL_cbbtc > 0) {
-                        fundamentalTVL += initialTVL_cbbtc * (point.pps_cbbtc.pps_unstaked / initialPPS_cbbtc);
-                    }
-                    if (includeTbtc && initialTVL_tbtc > 0) {
-                        fundamentalTVL += initialTVL_tbtc * (point.pps_tbtc.pps_unstaked / initialPPS_tbtc);
+                        const currentTVL_wbtc = wbtc.total_withdrawable_btc || 0;
+                        const fundamentalTVL_wbtc = initialTVL_wbtc * (point.pps_wbtc.pps_unstaked / initialPPS_wbtc);
+                        const yieldDelta_wbtc = currentTVL_wbtc > 0 && fundamentalTVL_wbtc > 0
+                            ? (currentTVL_wbtc / fundamentalTVL_wbtc) - 1
+                            : 0;
+
+                        totalYieldDeltaPercent += yieldDelta_wbtc;
+                        marketCount++;
+
+                        if (i === 0 || i === fullProfitData.length - 1 || i % 100 === 0) {
+                            console.log(`[WBTC Point ${i}]`);
+                            console.log(`  Initial TVL: ${initialTVL_wbtc.toFixed(8)} BTC`);
+                            console.log(`  Initial PPS: ${initialPPS_wbtc.toFixed(8)}`);
+                            console.log(`  Current TVL: ${currentTVL_wbtc.toFixed(8)} BTC`);
+                            console.log(`  Current PPS: ${point.pps_wbtc.pps_unstaked.toFixed(8)}`);
+                            console.log(`  Fundamental TVL: ${fundamentalTVL_wbtc.toFixed(8)} BTC`);
+                            console.log(`  Yield Delta: ${(yieldDelta_wbtc * 100).toFixed(4)}%`);
+                        }
                     }
 
-                    // Yield Delta в процентах = (Real_TVL - Fundamental_TVL) / Fundamental_TVL
-                    // Показывает на сколько процентов trading лучше/хуже роста PPS
-                    const yieldDeltaPercent = fundamentalTVL > 0
-                        ? (realTVL - fundamentalTVL) / fundamentalTVL
-                        : 0;
+                    if (includeCbbtc && initialTVL_cbbtc > 0) {
+                        const currentTVL_cbbtc = cbbtc.total_withdrawable_btc || 0;
+                        const fundamentalTVL_cbbtc = initialTVL_cbbtc * (point.pps_cbbtc.pps_unstaked / initialPPS_cbbtc);
+                        const yieldDelta_cbbtc = currentTVL_cbbtc > 0 && fundamentalTVL_cbbtc > 0
+                            ? (currentTVL_cbbtc / fundamentalTVL_cbbtc) - 1
+                            : 0;
+
+                        totalYieldDeltaPercent += yieldDelta_cbbtc;
+                        marketCount++;
+
+                        if (i === 0 || i === fullProfitData.length - 1 || i % 100 === 0) {
+                            console.log(`[cbBTC Point ${i}]`);
+                            console.log(`  Initial TVL: ${initialTVL_cbbtc.toFixed(8)} BTC`);
+                            console.log(`  Initial PPS: ${initialPPS_cbbtc.toFixed(8)}`);
+                            console.log(`  Current TVL: ${currentTVL_cbbtc.toFixed(8)} BTC`);
+                            console.log(`  Current PPS: ${point.pps_cbbtc.pps_unstaked.toFixed(8)}`);
+                            console.log(`  Fundamental TVL: ${fundamentalTVL_cbbtc.toFixed(8)} BTC`);
+                            console.log(`  Yield Delta: ${(yieldDelta_cbbtc * 100).toFixed(4)}%`);
+                        }
+                    }
+
+                    if (includeTbtc && initialTVL_tbtc > 0) {
+                        const currentTVL_tbtc = tbtc.total_withdrawable_btc || 0;
+                        const fundamentalTVL_tbtc = initialTVL_tbtc * (point.pps_tbtc.pps_unstaked / initialPPS_tbtc);
+                        const yieldDelta_tbtc = currentTVL_tbtc > 0 && fundamentalTVL_tbtc > 0
+                            ? (currentTVL_tbtc / fundamentalTVL_tbtc) - 1
+                            : 0;
+
+                        totalYieldDeltaPercent += yieldDelta_tbtc;
+                        marketCount++;
+
+                        if (i === 0 || i === fullProfitData.length - 1 || i % 100 === 0) {
+                            console.log(`[tBTC Point ${i}]`);
+                            console.log(`  Initial TVL: ${initialTVL_tbtc.toFixed(8)} BTC`);
+                            console.log(`  Initial PPS: ${initialPPS_tbtc.toFixed(8)}`);
+                            console.log(`  Current TVL: ${currentTVL_tbtc.toFixed(8)} BTC`);
+                            console.log(`  Current PPS: ${point.pps_tbtc.pps_unstaked.toFixed(8)}`);
+                            console.log(`  Fundamental TVL: ${fundamentalTVL_tbtc.toFixed(8)} BTC`);
+                            console.log(`  Yield Delta: ${(yieldDelta_tbtc * 100).toFixed(4)}%`);
+                        }
+                    }
+
+                    // Среднее Yield Delta по всем выбранным рынкам
+                    const yieldDeltaPercent = marketCount > 0 ? totalYieldDeltaPercent / marketCount : 0;
+
+                    if (i === 0 || i === fullProfitData.length - 1 || i % 100 === 0) {
+                        console.log(`[Point ${i}] Average Yield Delta: ${(yieldDeltaPercent * 100).toFixed(4)}%, Markets: ${marketCount}`);
+                        console.log('---');
+                    }
 
                     // Накапливаем deposits/withdrawals только для выбранных рынков
                     let deposits = 0;
@@ -824,10 +892,34 @@
                     // Если Yield Delta -5%, то withdrawals уменьшаются на 5% → Fundamental Revenue больше
                     const fundamentalWithdrawals = effectiveWithdrawals * (1 + yieldDeltaPercent);
 
-                    // Фундаментальная доходность = TVL - (Deposits - Fundamental_Withdrawals) + Admin_Fees
-                    // = TVL - Deposits + Fundamental_Withdrawals + Admin_Fees
-                    const netDeposited = cumulativeDeposits - fundamentalWithdrawals;
-                    const fundamentalRevenue = realTVL - netDeposited + effectiveAdminFees;
+                    // ПОЛНОСТЬЮ повторяем логику зеленой линии с учетом чекбоксов
+                    let fundamentalRevenue = 0;
+
+                    if (includeWithdrawable) {
+                        fundamentalRevenue += realTVL;
+                    }
+                    if (includeDeposits) {
+                        fundamentalRevenue -= cumulativeDeposits;
+                    }
+                    if (includeWithdrawals) {
+                        // Используем FUNDAMENTAL withdrawals вместо обычных
+                        fundamentalRevenue += fundamentalWithdrawals;
+                    }
+                    if (includeAdminFees) {
+                        fundamentalRevenue += effectiveAdminFees;
+                    }
+                    // Добавляем YB эмиссию если галочка активна
+                    if (includeYbEmission) {
+                        if (includeWbtc && point.yb_emission_wbtc_btc) {
+                            fundamentalRevenue += point.yb_emission_wbtc_btc;
+                        }
+                        if (includeCbbtc && point.yb_emission_cbbtc_btc) {
+                            fundamentalRevenue += point.yb_emission_cbbtc_btc;
+                        }
+                        if (includeTbtc && point.yb_emission_tbtc_btc) {
+                            fundamentalRevenue += point.yb_emission_tbtc_btc;
+                        }
+                    }
 
                     return fundamentalRevenue;
                 });
@@ -870,7 +962,7 @@
                     pointHoverRadius: 5,
                     stepped: false,
                     spanGaps: true,
-                    hidden: false  // По умолчанию показываем
+                    hidden: true  // По умолчанию скрываем
                 }
             ];
 
@@ -1462,7 +1554,16 @@
 
                 // Обновляем Fundamental Revenue линию (dataset index 1)
                 if (ppsAvailable && profitChart.data.datasets.length > 1) {
-                    const fundamentalRevenueData = calculateFundamentalRevenue(includeWbtc, includeCbbtc, includeTbtc);
+                    const fundamentalRevenueData = calculateFundamentalRevenue(
+                        includeWbtc,
+                        includeCbbtc,
+                        includeTbtc,
+                        includeWithdrawable,
+                        includeDeposits,
+                        includeWithdrawals,
+                        includeAdminFees,
+                        includeYbEmission
+                    );
                     const fundamentalRangeData = fundamentalRevenueData.slice(currentRangeStart, currentRangeEnd + 1);
 
                     profitChart.data.datasets[1].data = profitData.map((d, i) => ({
