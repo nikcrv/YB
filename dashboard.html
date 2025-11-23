@@ -1,4 +1,4 @@
-// Last updated: 2025-11-23 23:12:50 UTC
+// Last updated: 2025-11-23 23:25:44 UTC
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -352,6 +352,11 @@
     <script src="pps_data_old_cbbtc.js?v=1"></script>
     <script src="pps_data_old_tbtc.js?v=1"></script>
 
+    <!-- Load vaults yield data for trading returns -->
+    <script src="vaults_yield_data_wbtc.js"></script>
+    <script src="vaults_yield_data_cbbtc.js"></script>
+    <script src="vaults_yield_data_tbtc.js"></script>
+
     <script>
     // Глобальная переменная для текущей версии контракта
     // Загружаем из localStorage или используем 'new' по умолчанию
@@ -381,35 +386,6 @@
         try {
             console.log('Loading synchronized data...');
             console.log('Contract version:', currentContractVersion);
-
-            // Load vaults yield data for trading returns (to avoid naming conflicts)
-            let vaultsYieldData_wbtc = null, vaultsYieldData_cbbtc = null, vaultsYieldData_tbtc = null;
-            try {
-                const [wbtcResp, cbbtcResp, tbtcResp] = await Promise.all([
-                    fetch('vaults_yield_wbtc.js'),
-                    fetch('vaults_yield_cbbtc.js'),
-                    fetch('vaults_yield_tbtc.js')
-                ]);
-
-                // Parse as text and extract the JSON data
-                const wbtcText = await wbtcResp.text();
-                const cbbtcText = await cbbtcResp.text();
-                const tbtcText = await tbtcResp.text();
-
-                // Extract JSON from "const yieldData_xxx = {...}" format
-                vaultsYieldData_wbtc = JSON.parse(wbtcText.replace(/^const\s+yieldData_\w+\s*=\s*/, '').replace(/;?\s*$/, ''));
-                vaultsYieldData_cbbtc = JSON.parse(cbbtcText.replace(/^const\s+yieldData_\w+\s*=\s*/, '').replace(/;?\s*$/, ''));
-                vaultsYieldData_tbtc = JSON.parse(tbtcText.replace(/^const\s+yieldData_\w+\s*=\s*/, '').replace(/;?\s*$/, ''));
-
-                console.log('Vaults yield data loaded successfully');
-            } catch (e) {
-                console.warn('Could not load vaults yield data:', e);
-            }
-
-            // Make vaults data globally accessible for calculateFundamentalRevenue
-            window.vaultsYieldData_wbtc = vaultsYieldData_wbtc;
-            window.vaultsYieldData_cbbtc = vaultsYieldData_cbbtc;
-            window.vaultsYieldData_tbtc = vaultsYieldData_tbtc;
 
             // Выбираем источник данных в зависимости от версии контракта
             let yieldDataSource_wbtc, yieldDataSource_cbbtc, yieldDataSource_tbtc, ybEmissionDataSource;
@@ -798,10 +774,10 @@
                 // ===== РАСЧЕТ YIELD DELTA ТОЧНО КАК В INDEX.HTML =====
                 // Yield Delta = Trading Return - Fundamental Return
 
-                // Trading returns из vaults_yield_*.js (pre-calculated)
-                const tradingReturn_wbtc = window.vaultsYieldData_wbtc?.metrics?.total_return || 0;
-                const tradingReturn_cbbtc = window.vaultsYieldData_cbbtc?.metrics?.total_return || 0;
-                const tradingReturn_tbtc = window.vaultsYieldData_tbtc?.metrics?.total_return || 0;
+                // Trading returns из vaults_yield_data_*.js (pre-calculated)
+                const tradingReturn_wbtc = typeof vaultsYieldData_wbtc !== 'undefined' ? vaultsYieldData_wbtc.metrics.total_return : 0;
+                const tradingReturn_cbbtc = typeof vaultsYieldData_cbbtc !== 'undefined' ? vaultsYieldData_cbbtc.metrics.total_return : 0;
+                const tradingReturn_tbtc = typeof vaultsYieldData_tbtc !== 'undefined' ? vaultsYieldData_tbtc.metrics.total_return : 0;
 
                 // Fundamental returns из pps_data_*.js
                 const fundamentalReturn_wbtc = (endPPS_wbtc - startPPS_wbtc) / startPPS_wbtc;
@@ -817,16 +793,6 @@
                 console.log(`  WBTC:  Trading=${(tradingReturn_wbtc*100).toFixed(4)}% - Fundamental=${(fundamentalReturn_wbtc*100).toFixed(4)}% = ${(yieldDelta_wbtc * 100).toFixed(4)}%`);
                 console.log(`  cbBTC: Trading=${(tradingReturn_cbbtc*100).toFixed(4)}% - Fundamental=${(fundamentalReturn_cbbtc*100).toFixed(4)}% = ${(yieldDelta_cbbtc * 100).toFixed(4)}%`);
                 console.log(`  tBTC:  Trading=${(tradingReturn_tbtc*100).toFixed(4)}% - Fundamental=${(fundamentalReturn_tbtc*100).toFixed(4)}% = ${(yieldDelta_tbtc * 100).toFixed(4)}%`);
-
-                // Средняя Yield Delta по всем выбранным рынкам
-                let marketCount = 0;
-                let totalYieldDelta = 0;
-                if (includeWbtc && startTVL_wbtc > 0) { totalYieldDelta += yieldDelta_wbtc; marketCount++; }
-                if (includeCbbtc && startTVL_cbbtc > 0) { totalYieldDelta += yieldDelta_cbbtc; marketCount++; }
-                if (includeTbtc && startTVL_tbtc > 0) { totalYieldDelta += yieldDelta_tbtc; marketCount++; }
-
-                const avgYieldDelta = marketCount > 0 ? totalYieldDelta / marketCount : 0;
-                console.log(`[Average Yield Delta] ${(avgYieldDelta * 100).toFixed(4)}% across ${marketCount} markets`);
                 console.log('===========================');
 
                 let cumulativeDeposits = 0;
