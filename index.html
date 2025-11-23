@@ -1,4 +1,4 @@
-// Last updated: 2025-11-23 10:28:52 UTC
+// Last updated: 2025-11-23 10:48:21 UTC
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -1270,8 +1270,20 @@
             const hasBtcPrices = currentYieldData.data.some(d => d.btc_price !== null);
 
             if (hasBtcPrices) {
-                const btcPrices = currentYieldData.data.map(d => d.btc_price);
-                const ybPrices = currentYieldData.data.map(d => d.btc_price * d.pps_btc);
+                // Фильтруем данные - оставляем только валидные записи с ценами > 0
+                const validData = currentYieldData.data.filter(d =>
+                    d.btc_price && d.btc_price > 0 &&
+                    d.pps_btc && d.pps_btc > 0 &&
+                    !isNaN(d.btc_price) && !isNaN(d.pps_btc)
+                );
+
+                if (validData.length === 0) {
+                    console.warn('No valid price data found');
+                    return;
+                }
+
+                const btcPrices = validData.map(d => d.btc_price);
+                const ybPrices = validData.map(d => d.btc_price * d.pps_btc);
                 console.log('BTC price range:', Math.min(...btcPrices), '-', Math.max(...btcPrices));
 
                 const btc0 = btcPrices[0];
@@ -1299,7 +1311,7 @@
                 charts.priceComparison = new Chart(priceCompCtx, {
                     type: 'line',
                     data: {
-                        labels: currentYieldData.data.map(d => new Date(d.datetime).toLocaleString()),
+                        labels: validData.map(d => new Date(d.datetime).toLocaleString()),
                         datasets: [
                             {
                                 label: 'BTC Price (USD)',
@@ -1410,7 +1422,11 @@
 
             // PPS Chart
             const ppsCtx = document.getElementById('ppsChart').getContext('2d');
-            const ppsValues = currentYieldData.data.map(d => d.pps_btc);
+            // Фильтруем данные для PPS - убираем null/undefined/NaN
+            const validPpsData = currentYieldData.data.filter(d =>
+                d.pps_btc !== null && d.pps_btc !== undefined && !isNaN(d.pps_btc)
+            );
+            const ppsValues = validPpsData.map(d => d.pps_btc);
 
             // Подготовка PPS фундаментальных данных
             let fundamentalPpsValues = null;
@@ -1437,7 +1453,7 @@
                     }
 
                     // Сопоставляем с данными yield по времени с интерполяцией
-                    fundamentalPpsValues = currentYieldData.data.map(d => {
+                    fundamentalPpsValues = validPpsData.map(d => {
                         const targetTimestamp = Math.floor(new Date(d.datetime).getTime() / 1000);
 
                         // Находим ближайшие точки PPS данных
@@ -1743,7 +1759,7 @@
             charts.pps = new Chart(ppsCtx, {
                 type: 'line',
                 data: {
-                    labels: currentYieldData.data.map(d => new Date(d.datetime).toLocaleString()),
+                    labels: validPpsData.map(d => new Date(d.datetime).toLocaleString()),
                     datasets: ppsDatasets
                 },
                 options: {
