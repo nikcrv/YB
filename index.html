@@ -1,4 +1,4 @@
-// Last updated: 2025-11-23 14:56:04 UTC
+// Last updated: 2025-11-23 16:12:32 UTC
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -866,7 +866,17 @@
             const endPps = filteredData[filteredData.length - 1].pps_btc;
             const totalReturn = (endPps - startPps) / startPps;
             const days = (filteredData[filteredData.length - 1].timestamp - filteredData[0].timestamp) / 86400;
-            const apr = (totalReturn / days) * 365;
+            const apr = Math.pow(1 + totalReturn, 365 / days) - 1;  // Compound APR
+
+            console.log('Calculated base metrics for Withdrawable:', {
+                startPps,
+                endPps,
+                totalReturn,
+                days,
+                apr,
+                startTimestamp: filteredData[0].timestamp,
+                endTimestamp: filteredData[filteredData.length - 1].timestamp
+            });
 
             currentYieldData.metrics.start_pps = startPps;
             currentYieldData.metrics.end_pps = endPps;
@@ -904,6 +914,13 @@
             // Trading metrics
             let totalReturnWithdrawable = currentYieldData.metrics.total_return;
             let aprWithdrawable = currentYieldData.metrics.apr;
+
+            console.log('Base Withdrawable metrics:', {
+                totalReturn: totalReturnWithdrawable,
+                apr: aprWithdrawable,
+                days: currentYieldData.metrics.days,
+                expectedApr: (totalReturnWithdrawable / currentYieldData.metrics.days) * 365
+            });
 
             // Если emission включен для Withdrawable, добавляем emission к доходности
             console.log('Withdrawable emission check:', {showEmission, showEmissionWithdrawable, isSyb: currentMarket.startsWith('syb_')});
@@ -961,7 +978,7 @@
 
                     const emissionBoost = totalEmission / endTVL;
                     totalReturnWithdrawable += emissionBoost;
-                    aprWithdrawable = (totalReturnWithdrawable / currentYieldData.metrics.days) * 365;
+                    aprWithdrawable = Math.pow(1 + totalReturnWithdrawable, 365 / currentYieldData.metrics.days) - 1;  // Compound APR
 
                     console.log('Withdrawable emission added:', {emissionBoost, totalEmission, endTVL, startTVL, totalReturnWithdrawable, aprWithdrawable});
                 }
@@ -1010,12 +1027,32 @@
                     const endPpsPoint = findClosestPps(endTimestamp);
 
                     if (startPpsPoint && endPpsPoint) {
+                        // Вычисляем период для Fundamental из PPS точек
+                        const daysFund = (endPpsPoint.timestamp - startPpsPoint.timestamp) / 86400;
+
+                        console.log('Fundamental period calculation:', {
+                            startTimestamp,
+                            endTimestamp,
+                            startPpsTimestamp: startPpsPoint.timestamp,
+                            endPpsTimestamp: endPpsPoint.timestamp,
+                            daysFund,
+                            daysWithdrawable: currentYieldData.metrics.days
+                        });
+
                         // Для syb токенов используем pps_staked, для обычных - pps_unstaked
                         const ppsField = currentMarket.startsWith('syb_') ? 'pps_staked' : 'pps_unstaked';
                         const startPpsFund = startPpsPoint[ppsField];
                         const endPpsFund = endPpsPoint[ppsField];
                         let totalReturnFund = (endPpsFund - startPpsFund) / startPpsFund;
-                        let aprFund = (totalReturnFund / currentYieldData.metrics.days) * 365;
+                        let aprFund = Math.pow(1 + totalReturnFund, 365 / daysFund) - 1;  // Compound APR
+
+                        console.log('Fundamental APR calculation:', {
+                            startPpsFund,
+                            endPpsFund,
+                            totalReturnFund,
+                            daysFund,
+                            aprFund
+                        });
 
                         // Если emission включен для Fundamental, добавляем emission к доходности
                         let emissionBoostForFund = 0;
@@ -1070,9 +1107,9 @@
 
                                 emissionBoostForFund = totalEmission / endTVL;
                                 totalReturnFund += emissionBoostForFund;
-                                aprFund = (totalReturnFund / currentYieldData.metrics.days) * 365;
+                                aprFund = Math.pow(1 + totalReturnFund, 365 / daysFund) - 1;  // Compound APR
 
-                                console.log('Fundamental emission added:', {emissionBoostForFund, totalEmission, endTVL, startTVL, totalReturnFund, aprFund});
+                                console.log('Fundamental emission added:', {emissionBoostForFund, totalEmission, endTVL, startTVL, totalReturnFund, aprFund, daysFund});
                             }
                         }
 
@@ -1159,18 +1196,49 @@
                         const baseMarket = config.baseMarket || 'wbtc';
                         const endTVL = getTVLAt(endTimestamp, baseMarket);
 
-                        // Emission boost = эмиссия / TVL
+                        // Emission boost = эмиссия / TVL (одинаковый для обоих)
                         const emissionBoost = totalEmission / endTVL;
-                        const emissionApr = (emissionBoost / currentYieldData.metrics.days) * 365;
+
+                        // Вычисляем период для Fundamental из PPS точек
+                        const ppsDataSource = config.ppsData;
+                        let daysFundForEmission = currentYieldData.metrics.days; // fallback
+
+                        if (ppsDataSource && ppsDataSource.data) {
+                            function findClosestPpsForEmission(targetTimestamp) {
+                                let closest = null;
+                                let minDiff = Infinity;
+
+                                for (let i = 0; i < ppsDataSource.data.length; i++) {
+                                    const point = ppsDataSource.data[i];
+                                    const diff = Math.abs(point.timestamp - targetTimestamp);
+                                    if (diff < minDiff) {
+                                        minDiff = diff;
+                                        closest = point;
+                                    }
+                                }
+                                return closest;
+                            }
+
+                            const startPpsPoint = findClosestPpsForEmission(startTimestamp);
+                            const endPpsPoint = findClosestPpsForEmission(endTimestamp);
+
+                            if (startPpsPoint && endPpsPoint) {
+                                daysFundForEmission = (endPpsPoint.timestamp - startPpsPoint.timestamp) / 86400;
+                            }
+                        }
+
+                        // Вычисляем APR отдельно для каждого метода (Compound APR)
+                        const emissionAprWithdrawable = Math.pow(1 + emissionBoost, 365 / currentYieldData.metrics.days) - 1;
+                        const emissionAprFund = Math.pow(1 + emissionBoost, 365 / daysFundForEmission) - 1;
 
                         // Показываем emission metrics рядом с обоими чекбоксами
                         document.getElementById('emission-metrics-fund').style.display = 'flex';
                         document.getElementById('emission-boost-fund').textContent = (emissionBoost * 100).toFixed(4) + '%';
-                        document.getElementById('emission-apr-fund').textContent = (emissionApr * 100).toFixed(2) + '%';
+                        document.getElementById('emission-apr-fund').textContent = (emissionAprFund * 100).toFixed(2) + '%';
 
                         document.getElementById('emission-metrics-withdrawable').style.display = 'flex';
                         document.getElementById('emission-boost-withdrawable').textContent = (emissionBoost * 100).toFixed(4) + '%';
-                        document.getElementById('emission-apr-withdrawable').textContent = (emissionApr * 100).toFixed(2) + '%';
+                        document.getElementById('emission-apr-withdrawable').textContent = (emissionAprWithdrawable * 100).toFixed(2) + '%';
                     } else {
                         // Нет данных эмиссии - скрываем блоки
                         document.getElementById('emission-metrics-fund').style.display = 'none';
