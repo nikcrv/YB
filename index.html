@@ -1,4 +1,4 @@
-// Last updated: 2025-11-23 18:56:21 UTC
+// Last updated: 2025-11-23 19:09:04 UTC
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -301,6 +301,39 @@
                 margin-bottom: 20px;
             }
 
+            .header-top {
+                gap: 15px;
+            }
+
+            .contract-selector {
+                flex-wrap: wrap;
+                gap: 6px;
+            }
+
+            .contract-selector a {
+                padding: 8px 12px !important;
+                font-size: 0.8em !important;
+                margin-left: 0 !important;
+            }
+
+            .market-selector {
+                flex-wrap: wrap;
+                gap: 6px;
+            }
+
+            .date-filters {
+                gap: 10px;
+            }
+
+            .date-input-group label {
+                font-size: 0.8em;
+            }
+
+            .date-input-group input {
+                padding: 6px;
+                font-size: 0.9em;
+            }
+
             .chart-container {
                 padding: 15px;
                 margin-bottom: 20px;
@@ -312,21 +345,35 @@
             }
 
             canvas {
-                max-height: 300px !important;
-                min-height: 250px;
+                max-height: 400px !important;
+                min-height: 320px;
             }
 
             .info {
-                padding: 15px;
+                padding: 12px;
                 margin-top: 20px;
             }
 
             .info-title {
-                font-size: 0.95em;
+                font-size: 0.9em;
+                margin-bottom: 8px;
             }
 
             .info-content {
-                font-size: 0.9em;
+                font-size: 0.75em;
+                line-height: 1.4;
+            }
+
+            .info-content br {
+                display: block;
+                content: "";
+                margin-top: 3px;
+            }
+
+            .info-content code {
+                font-size: 0.85em;
+                padding: 1px 4px;
+                word-break: break-all;
             }
 
             .metric-card {
@@ -347,8 +394,9 @@
             }
 
             .market-btn, .contract-btn {
-                padding: 8px 12px;
-                font-size: 0.85em;
+                padding: 8px 10px;
+                font-size: 0.75em;
+                white-space: nowrap;
             }
 
             .btn-primary, .btn-secondary {
@@ -357,32 +405,91 @@
             }
 
             .checkbox-label {
-                padding: 8px 12px;
-                font-size: 0.9em;
+                padding: 8px 10px;
+                font-size: 0.85em;
+            }
+
+            .checkbox-label span {
+                font-size: 0.95em;
             }
         }
 
         @media (max-width: 480px) {
+            body {
+                padding: 8px;
+            }
+
             h1 {
-                font-size: 1.5em;
+                font-size: 1.4em;
             }
 
             .subtitle {
-                font-size: 0.85em;
+                font-size: 0.8em;
             }
 
-            .chart-container {
+            header {
                 padding: 12px;
             }
 
+            .contract-selector {
+                gap: 4px;
+                padding: 4px;
+            }
+
+            .contract-selector a {
+                padding: 6px 8px !important;
+                font-size: 0.7em !important;
+                white-space: nowrap;
+            }
+
+            .market-selector {
+                gap: 4px;
+                padding: 4px;
+            }
+
+            .date-filters {
+                gap: 8px;
+            }
+
+            .chart-container {
+                padding: 10px;
+            }
+
             .chart-title {
-                font-size: 0.9em;
-                margin-bottom: 10px;
+                font-size: 0.85em;
+                margin-bottom: 8px;
             }
 
             canvas {
-                max-height: 280px !important;
-                min-height: 220px;
+                max-height: 350px !important;
+                min-height: 280px;
+            }
+
+            .info {
+                padding: 10px;
+                margin-top: 15px;
+            }
+
+            .info-title {
+                font-size: 0.8em;
+                margin-bottom: 6px;
+            }
+
+            .info-content {
+                font-size: 0.65em;
+                line-height: 1.3;
+            }
+
+            .info-content br {
+                display: block;
+                content: "";
+                margin-top: 2px;
+            }
+
+            .info-content code {
+                font-size: 0.8em;
+                padding: 1px 3px;
+                word-break: break-all;
             }
 
             .metrics-grid {
@@ -391,21 +498,35 @@
             }
 
             .metric-label {
-                font-size: 0.65em;
+                font-size: 0.6em;
             }
 
             .metric-value {
-                font-size: 1.1em;
+                font-size: 1em;
             }
 
             .market-btn, .contract-btn {
-                padding: 6px 10px;
-                font-size: 0.8em;
+                padding: 5px 7px;
+                font-size: 0.65em;
             }
 
-            .info-content {
+            .btn-primary, .btn-secondary {
+                padding: 6px 12px;
                 font-size: 0.85em;
-                line-height: 1.5;
+            }
+
+            .checkbox-label {
+                padding: 6px 8px;
+                font-size: 0.75em;
+            }
+
+            .checkbox-label span {
+                font-size: 0.9em;
+            }
+
+            .checkbox-label input[type="checkbox"] {
+                width: 16px;
+                height: 16px;
             }
         }
     </style>
@@ -1461,6 +1582,17 @@
 
         function createCharts() {
             console.log('Creating charts for', currentYieldData.data.length, 'data points');
+
+            // Определяем размер экрана для адаптивных настроек
+            const isMobile = window.innerWidth <= 480;
+            const isTablet = window.innerWidth <= 768 && window.innerWidth > 480;
+
+            // Адаптивные размеры шрифтов
+            const legendFontSize = isMobile ? 9 : (isTablet ? 10 : 12);
+            const titleFontSize = isMobile ? 10 : (isTablet ? 11 : 13);
+            const ticksFontSize = isMobile ? 8 : (isTablet ? 9 : 11);
+            const legendPadding = isMobile ? 5 : (isTablet ? 8 : 10);
+
             const hasBtcPrices = currentYieldData.data.some(d => d.btc_price !== null);
 
             if (hasBtcPrices) {
@@ -1542,7 +1674,11 @@
                         },
                         plugins: {
                             legend: {
-                                labels: { color: '#e2e8f0' }
+                                labels: {
+                                    color: '#e2e8f0',
+                                    font: { size: legendFontSize },
+                                    padding: legendPadding
+                                }
                             },
                             tooltip: {
                                 backgroundColor: '#1e293b',
@@ -1574,10 +1710,12 @@
                                 title: {
                                     display: true,
                                     text: 'BTC Price (USD)',
-                                    color: '#3b82f6'
+                                    color: '#3b82f6',
+                                    font: { size: titleFontSize }
                                 },
                                 ticks: {
                                     color: '#94a3b8',
+                                    font: { size: ticksFontSize },
                                     callback: function(value) {
                                         return '$' + value.toFixed(0);
                                     }
@@ -1994,14 +2132,19 @@
                             title: {
                                 display: true,
                                 text: 'PPS (BTC)',
-                                color: '#f59e0b'
+                                color: '#f59e0b',
+                                font: { size: titleFontSize }
                             },
-                            ticks: { color: '#94a3b8' },
+                            ticks: {
+                                color: '#94a3b8',
+                                font: { size: ticksFontSize }
+                            },
                             grid: { color: '#334155' }
                         },
                         x: {
                             ticks: {
                                 color: '#94a3b8',
+                                font: { size: ticksFontSize },
                                 maxRotation: 45,
                                 minRotation: 45
                             },
@@ -2057,7 +2200,11 @@
                         },
                         plugins: {
                             legend: {
-                                labels: { color: '#e2e8f0' }
+                                labels: {
+                                    color: '#e2e8f0',
+                                    font: { size: legendFontSize },
+                                    padding: legendPadding
+                                }
                             },
                             tooltip: {
                                 backgroundColor: '#1e293b',
