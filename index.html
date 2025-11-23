@@ -1,4 +1,4 @@
-// Last updated: 2025-11-23 18:05:03 UTC
+// Last updated: 2025-11-23 18:17:41 UTC
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -286,53 +286,65 @@
         /* Mobile Responsive Styles */
         @media (max-width: 768px) {
             body {
-                padding: 10px;
+                padding: 0;
+            }
+
+            .container {
+                max-width: 100%;
             }
 
             h1 {
-                font-size: 1.8em;
+                font-size: 1.5em;
+                line-height: 1.2;
             }
 
             .subtitle {
-                font-size: 0.95em;
+                font-size: 0.8em;
             }
 
             header {
-                padding: 20px;
-                margin-bottom: 20px;
+                padding: 12px;
+                margin-bottom: 10px;
+                border-radius: 0;
             }
 
             .header-top {
                 flex-direction: column;
                 align-items: stretch;
+                gap: 12px;
+                margin-bottom: 12px;
             }
 
             .contract-selector {
                 flex-direction: column;
-                gap: 8px;
+                gap: 6px;
+                padding: 4px;
             }
 
             .contract-selector a {
                 text-align: center;
                 margin-left: 0 !important;
+                padding: 8px 12px !important;
+                font-size: 0.8em;
             }
 
             .market-selector {
                 display: grid;
                 grid-template-columns: repeat(3, 1fr);
-                gap: 8px;
+                gap: 4px;
+                padding: 4px;
             }
 
             .market-btn,
             .contract-btn {
-                padding: 12px 10px;
-                font-size: 0.85em;
+                padding: 8px 4px;
+                font-size: 0.7em;
                 white-space: nowrap;
             }
 
             .date-filters {
                 flex-direction: column;
-                gap: 10px;
+                gap: 8px;
                 align-items: stretch;
             }
 
@@ -340,112 +352,208 @@
                 width: 100%;
             }
 
+            .date-input-group label {
+                font-size: 0.75em;
+                margin-bottom: 3px;
+            }
+
             .date-input-group input {
                 width: 100%;
+                padding: 6px;
+                font-size: 0.85em;
+            }
+
+            .btn-primary,
+            .btn-secondary {
+                padding: 8px 16px;
+                font-size: 0.85em;
             }
 
             .checkbox-label {
-                padding: 12px;
-                font-size: 0.9em;
+                padding: 8px 10px;
+                font-size: 0.75em;
             }
 
+            .checkbox-label input[type="checkbox"] {
+                width: 14px;
+                height: 14px;
+            }
+
+            /* Графики на всю ширину */
             .chart-container {
-                padding: 15px;
+                padding: 8px 4px 4px 4px;
+                margin-bottom: 10px;
+                border-radius: 0;
+                margin-left: -12px;
+                margin-right: -12px;
+                width: calc(100% + 24px);
             }
 
             .chart-title {
-                font-size: 1.1em;
+                font-size: 0.85em;
+                padding: 6px 8px;
+                margin-bottom: 4px;
             }
 
             canvas {
-                max-height: 400px;
+                max-height: 450px !important;
+                width: 100% !important;
+                padding: 0 !important;
             }
 
+            /* Компактные метрики */
             .metrics-grid {
-                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-                gap: 10px;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 6px;
+                margin-bottom: 10px;
             }
 
             .metric-card {
-                padding: 10px 12px;
+                padding: 6px 8px;
+            }
+
+            .metric-label {
+                font-size: 0.65em;
+                margin-bottom: 2px;
             }
 
             .metric-value {
-                font-size: 1.2em;
+                font-size: 1em;
+            }
+
+            .info {
+                padding: 10px;
+                font-size: 0.8em;
+                margin-top: 10px;
+                border-radius: 0;
             }
         }
 
         @media (max-width: 480px) {
             body {
-                padding: 5px;
+                padding: 0;
             }
 
             h1 {
-                font-size: 1.4em;
-                line-height: 1.3;
+                font-size: 1.2em;
+                line-height: 1.2;
             }
 
             .subtitle {
-                font-size: 0.85em;
+                font-size: 0.75em;
             }
 
             header {
-                padding: 15px;
+                padding: 10px;
+                margin-bottom: 8px;
+            }
+
+            .header-top {
+                gap: 10px;
+                margin-bottom: 10px;
             }
 
             .market-selector {
                 grid-template-columns: repeat(2, 1fr);
+                gap: 3px;
+                padding: 3px;
             }
 
             .market-btn,
             .contract-btn {
-                padding: 10px 8px;
+                padding: 6px 3px;
+                font-size: 0.65em;
+            }
+
+            .contract-selector a {
+                padding: 6px 10px !important;
                 font-size: 0.75em;
+            }
+
+            .date-input-group label {
+                font-size: 0.7em;
+            }
+
+            .date-input-group input {
+                padding: 5px;
+                font-size: 0.8em;
             }
 
             .btn-primary,
             .btn-secondary {
                 width: 100%;
-                padding: 12px;
-            }
-
-            .chart-container {
-                padding: 10px;
-            }
-
-            .chart-title {
-                font-size: 1em;
-            }
-
-            canvas {
-                max-height: 350px;
-            }
-
-            .metrics-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .metric-label {
-                font-size: 0.75em;
-            }
-
-            .metric-value {
-                font-size: 1.1em;
-            }
-
-            .info {
-                padding: 15px;
-                font-size: 0.9em;
+                padding: 8px;
+                font-size: 0.8em;
             }
 
             .checkbox-label {
-                font-size: 0.85em;
-                padding: 10px;
+                font-size: 0.7em;
+                padding: 6px 8px;
             }
 
             .checkbox-label input[type="checkbox"] {
-                width: 16px;
-                height: 16px;
+                width: 12px;
+                height: 12px;
+            }
+
+            /* Графики максимально на всю ширину */
+            .chart-container {
+                padding: 6px 2px 2px 2px;
+                margin-bottom: 8px;
+                border-radius: 0;
+                margin-left: -10px;
+                margin-right: -10px;
+                width: calc(100% + 20px);
+                border-left: none;
+                border-right: none;
+            }
+
+            .chart-title {
+                font-size: 0.8em;
+                padding: 4px 6px;
+                margin-bottom: 2px;
+            }
+
+            canvas {
+                max-height: 500px !important;
+                min-height: 400px !important;
+                width: 100% !important;
+                padding: 0 !important;
+            }
+
+            /* Очень компактные метрики */
+            .metrics-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 4px;
+                margin-bottom: 8px;
+            }
+
+            .metric-card {
+                padding: 5px 6px;
+            }
+
+            .metric-label {
+                font-size: 0.6em;
+                margin-bottom: 2px;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+
+            .metric-value {
+                font-size: 0.9em;
+                white-space: nowrap;
+            }
+
+            .info {
+                padding: 8px;
+                font-size: 0.75em;
+                margin-top: 8px;
+            }
+
+            .info-title {
+                font-size: 0.85em;
+                margin-bottom: 6px;
             }
         }
     </style>
@@ -613,6 +721,49 @@
     </script>
 
     <script>
+        // Mobile detection and responsive chart settings
+        function isMobile() {
+            return window.innerWidth <= 480;
+        }
+
+        function isTablet() {
+            return window.innerWidth <= 768 && window.innerWidth > 480;
+        }
+
+        function getResponsiveChartConfig() {
+            if (isMobile()) {
+                return {
+                    fontSize: 8,
+                    titleFontSize: 9,
+                    padding: 2,
+                    maxRotation: 0,
+                    autoSkip: true,
+                    autoSkipPadding: 10,
+                    maxTicksLimit: 4
+                };
+            } else if (isTablet()) {
+                return {
+                    fontSize: 9,
+                    titleFontSize: 10,
+                    padding: 4,
+                    maxRotation: 0,
+                    autoSkip: true,
+                    autoSkipPadding: 8,
+                    maxTicksLimit: 5
+                };
+            } else {
+                return {
+                    fontSize: 11,
+                    titleFontSize: 12,
+                    padding: 8,
+                    maxRotation: 45,
+                    autoSkip: true,
+                    autoSkipPadding: 5,
+                    maxTicksLimit: 10
+                };
+            }
+        }
+
         // Market configurations for NEW and OLD contracts
         const MARKETS = {
             new: {
@@ -1582,7 +1733,13 @@
                         },
                         plugins: {
                             legend: {
-                                labels: { color: '#e2e8f0' }
+                                labels: {
+                                    color: '#e2e8f0',
+                                    font: {
+                                        size: getResponsiveChartConfig().fontSize + 1
+                                    },
+                                    padding: getResponsiveChartConfig().padding
+                                }
                             },
                             tooltip: {
                                 backgroundColor: '#1e293b',
@@ -1612,13 +1769,23 @@
                                 min: btcAxisMin,
                                 max: btcAxisMax,
                                 title: {
-                                    display: true,
+                                    display: !isMobile(),
                                     text: 'BTC Price (USD)',
-                                    color: '#3b82f6'
+                                    color: '#3b82f6',
+                                    font: {
+                                        size: getResponsiveChartConfig().titleFontSize
+                                    }
                                 },
                                 ticks: {
                                     color: '#94a3b8',
+                                    font: {
+                                        size: getResponsiveChartConfig().fontSize
+                                    },
+                                    maxTicksLimit: getResponsiveChartConfig().maxTicksLimit,
                                     callback: function(value) {
+                                        if (isMobile()) {
+                                            return '$' + (value / 1000).toFixed(0) + 'k';
+                                        }
                                         return '$' + value.toFixed(0);
                                     }
                                 },
@@ -1631,13 +1798,23 @@
                                 min: ybAxisMinPadded,
                                 max: ybAxisMaxPadded,
                                 title: {
-                                    display: true,
+                                    display: !isMobile(),
                                     text: `${MARKETS[currentContractVersion][currentMarket].name} Price (USD)`,
-                                    color: '#f59e0b'
+                                    color: '#f59e0b',
+                                    font: {
+                                        size: getResponsiveChartConfig().titleFontSize
+                                    }
                                 },
                                 ticks: {
                                     color: '#94a3b8',
+                                    font: {
+                                        size: getResponsiveChartConfig().fontSize
+                                    },
+                                    maxTicksLimit: getResponsiveChartConfig().maxTicksLimit,
                                     callback: function(value) {
+                                        if (isMobile()) {
+                                            return '$' + (value / 1000).toFixed(0) + 'k';
+                                        }
                                         return '$' + value.toFixed(0);
                                     }
                                 },
@@ -1646,7 +1823,26 @@
                                 }
                             },
                             x: {
-                                ticks: { color: '#94a3b8' },
+                                ticks: {
+                                    color: '#94a3b8',
+                                    font: {
+                                        size: getResponsiveChartConfig().fontSize
+                                    },
+                                    maxRotation: getResponsiveChartConfig().maxRotation,
+                                    minRotation: 0,
+                                    autoSkip: true,
+                                    autoSkipPadding: getResponsiveChartConfig().autoSkipPadding,
+                                    maxTicksLimit: getResponsiveChartConfig().maxTicksLimit,
+                                    callback: function(value, index) {
+                                        const label = this.getLabelForValue(value);
+                                        if (isMobile()) {
+                                            // Show only date on mobile
+                                            const date = new Date(label);
+                                            return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+                                        }
+                                        return label;
+                                    }
+                                },
                                 grid: { color: '#334155' }
                             }
                         }
@@ -2032,18 +2228,41 @@
                             min: ppsAxisMin,
                             max: ppsAxisMax,
                             title: {
-                                display: true,
+                                display: !isMobile(),
                                 text: 'PPS (BTC)',
-                                color: '#f59e0b'
+                                color: '#f59e0b',
+                                font: {
+                                    size: getResponsiveChartConfig().titleFontSize
+                                }
                             },
-                            ticks: { color: '#94a3b8' },
+                            ticks: {
+                                color: '#94a3b8',
+                                font: {
+                                    size: getResponsiveChartConfig().fontSize
+                                },
+                                maxTicksLimit: getResponsiveChartConfig().maxTicksLimit
+                            },
                             grid: { color: '#334155' }
                         },
                         x: {
                             ticks: {
                                 color: '#94a3b8',
-                                maxRotation: 45,
-                                minRotation: 45
+                                font: {
+                                    size: getResponsiveChartConfig().fontSize
+                                },
+                                maxRotation: getResponsiveChartConfig().maxRotation,
+                                minRotation: 0,
+                                autoSkip: true,
+                                autoSkipPadding: getResponsiveChartConfig().autoSkipPadding,
+                                maxTicksLimit: getResponsiveChartConfig().maxTicksLimit,
+                                callback: function(value, index) {
+                                    const label = this.getLabelForValue(value);
+                                    if (isMobile()) {
+                                        const date = new Date(label);
+                                        return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+                                    }
+                                    return label;
+                                }
                             },
                             grid: { color: '#334155' }
                         }
@@ -2097,7 +2316,13 @@
                         },
                         plugins: {
                             legend: {
-                                labels: { color: '#e2e8f0' }
+                                labels: {
+                                    color: '#e2e8f0',
+                                    font: {
+                                        size: getResponsiveChartConfig().fontSize + 1
+                                    },
+                                    padding: getResponsiveChartConfig().padding
+                                }
                             },
                             tooltip: {
                                 backgroundColor: '#1e293b',
@@ -2124,18 +2349,41 @@
                                 min: gaugeAxisMin,
                                 max: gaugeAxisMax,
                                 title: {
-                                    display: true,
+                                    display: !isMobile(),
                                     text: 'Conversion Rate (yb per syb)',
-                                    color: '#8b5cf6'
+                                    color: '#8b5cf6',
+                                    font: {
+                                        size: getResponsiveChartConfig().titleFontSize
+                                    }
                                 },
-                                ticks: { color: '#94a3b8' },
+                                ticks: {
+                                    color: '#94a3b8',
+                                    font: {
+                                        size: getResponsiveChartConfig().fontSize
+                                    },
+                                    maxTicksLimit: getResponsiveChartConfig().maxTicksLimit
+                                },
                                 grid: { color: '#334155' }
                             },
                             x: {
                                 ticks: {
                                     color: '#94a3b8',
-                                    maxRotation: 45,
-                                    minRotation: 45
+                                    font: {
+                                        size: getResponsiveChartConfig().fontSize
+                                    },
+                                    maxRotation: getResponsiveChartConfig().maxRotation,
+                                    minRotation: 0,
+                                    autoSkip: true,
+                                    autoSkipPadding: getResponsiveChartConfig().autoSkipPadding,
+                                    maxTicksLimit: getResponsiveChartConfig().maxTicksLimit,
+                                    callback: function(value, index) {
+                                        const label = this.getLabelForValue(value);
+                                        if (isMobile()) {
+                                            const date = new Date(label);
+                                            return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+                                        }
+                                        return label;
+                                    }
                                 },
                                 grid: { color: '#334155' }
                             }
@@ -2193,15 +2441,42 @@
                             min: returnAxisMin,
                             max: returnAxisMax,
                             title: {
-                                display: true,
+                                display: !isMobile(),
                                 text: 'Return (%)',
-                                color: '#f59e0b'
+                                color: '#f59e0b',
+                                font: {
+                                    size: getResponsiveChartConfig().titleFontSize
+                                }
                             },
-                            ticks: { color: '#94a3b8' },
+                            ticks: {
+                                color: '#94a3b8',
+                                font: {
+                                    size: getResponsiveChartConfig().fontSize
+                                },
+                                maxTicksLimit: getResponsiveChartConfig().maxTicksLimit
+                            },
                             grid: { color: '#334155' }
                         },
                         x: {
-                            ticks: { color: '#94a3b8' },
+                            ticks: {
+                                color: '#94a3b8',
+                                font: {
+                                    size: getResponsiveChartConfig().fontSize
+                                },
+                                maxRotation: getResponsiveChartConfig().maxRotation,
+                                minRotation: 0,
+                                autoSkip: true,
+                                autoSkipPadding: getResponsiveChartConfig().autoSkipPadding,
+                                maxTicksLimit: getResponsiveChartConfig().maxTicksLimit,
+                                callback: function(value, index) {
+                                    const label = this.getLabelForValue(value);
+                                    if (isMobile()) {
+                                        const date = new Date(label);
+                                        return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+                                    }
+                                    return label;
+                                }
+                            },
                             grid: { color: '#334155' }
                         }
                     }
