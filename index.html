@@ -1,4 +1,4 @@
-// Last updated: 2025-11-23 17:39:34 UTC
+// Last updated: 2025-11-23 17:52:10 UTC
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -286,7 +286,13 @@
         /* Mobile Responsive Styles */
         @media (max-width: 768px) {
             body {
-                padding: 10px;
+                padding: 10px 0;
+            }
+
+            .container {
+                padding: 0;
+                margin: 0;
+                max-width: 100%;
             }
 
             h1 {
@@ -298,8 +304,10 @@
             }
 
             header {
-                padding: 20px;
+                padding: 20px 15px;
                 margin-bottom: 20px;
+                margin-left: 5px;
+                margin-right: 5px;
             }
 
             .header-top {
@@ -350,11 +358,21 @@
             }
 
             .chart-container {
-                padding: 15px;
+                padding: 20px 0;
+                margin: 0 0 20px 0;
+                border-radius: 0;
             }
 
             .chart-title {
                 font-size: 1.1em;
+                padding: 0 10px;
+                margin-left: 0;
+                margin-right: 0;
+            }
+
+            canvas {
+                margin: 0 !important;
+                padding: 0 !important;
             }
 
             canvas {
@@ -364,6 +382,7 @@
             .metrics-grid {
                 grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
                 gap: 10px;
+                padding: 0 5px;
             }
 
             .metric-card {
@@ -373,11 +392,22 @@
             .metric-value {
                 font-size: 1.2em;
             }
+
+            .info {
+                margin-left: 5px;
+                margin-right: 5px;
+            }
         }
 
         @media (max-width: 480px) {
             body {
-                padding: 5px;
+                padding: 0;
+            }
+
+            .container {
+                margin: 0;
+                padding: 0;
+                max-width: 100%;
             }
 
             h1 {
@@ -390,7 +420,9 @@
             }
 
             header {
-                padding: 15px;
+                padding: 15px 10px;
+                margin-left: 0;
+                margin-right: 0;
             }
 
             .market-selector {
@@ -410,19 +442,27 @@
             }
 
             .chart-container {
-                padding: 10px;
+                padding: 15px 0;
+                margin: 0 0 15px 0;
+                border-radius: 0;
             }
 
             .chart-title {
                 font-size: 1em;
+                padding: 0 10px;
+                margin: 0 0 15px 0;
             }
 
             canvas {
                 max-height: 350px;
+                width: 100% !important;
+                margin: 0 !important;
+                padding: 0 !important;
             }
 
             .metrics-grid {
                 grid-template-columns: 1fr;
+                padding: 0 5px;
             }
 
             .metric-label {
@@ -434,8 +474,10 @@
             }
 
             .info {
-                padding: 15px;
+                padding: 15px 10px;
                 font-size: 0.9em;
+                margin-left: 0;
+                margin-right: 0;
             }
 
             .checkbox-label {
@@ -1501,17 +1543,6 @@
 
         function createCharts() {
             console.log('Creating charts for', currentYieldData.data.length, 'data points');
-
-            // Адаптивные размеры шрифтов для мобильных устройств
-            const isMobile = window.innerWidth <= 480;
-            const isTablet = window.innerWidth > 480 && window.innerWidth <= 768;
-
-            const fontSize = {
-                tick: isMobile ? 14 : (isTablet ? 12 : 11),
-                legend: isMobile ? 16 : (isTablet ? 14 : 12),
-                title: isMobile ? 18 : (isTablet ? 16 : 14)
-            };
-
             const hasBtcPrices = currentYieldData.data.some(d => d.btc_price !== null);
 
             if (hasBtcPrices) {
@@ -1593,10 +1624,7 @@
                         },
                         plugins: {
                             legend: {
-                                labels: {
-                                    color: '#e2e8f0',
-                                    font: { size: fontSize.legend }
-                                }
+                                labels: { color: '#e2e8f0' }
                             },
                             tooltip: {
                                 backgroundColor: '#1e293b',
@@ -1628,12 +1656,10 @@
                                 title: {
                                     display: true,
                                     text: 'BTC Price (USD)',
-                                    color: '#3b82f6',
-                                    font: { size: fontSize.title }
+                                    color: '#3b82f6'
                                 },
                                 ticks: {
                                     color: '#94a3b8',
-                                    font: { size: fontSize.tick },
                                     callback: function(value) {
                                         return '$' + value.toFixed(0);
                                     }
@@ -1649,12 +1675,10 @@
                                 title: {
                                     display: true,
                                     text: `${MARKETS[currentContractVersion][currentMarket].name} Price (USD)`,
-                                    color: '#f59e0b',
-                                    font: { size: fontSize.title }
+                                    color: '#f59e0b'
                                 },
                                 ticks: {
                                     color: '#94a3b8',
-                                    font: { size: fontSize.tick },
                                     callback: function(value) {
                                         return '$' + value.toFixed(0);
                                     }
@@ -1664,10 +1688,7 @@
                                 }
                             },
                             x: {
-                                ticks: {
-                                    color: '#94a3b8',
-                                    font: { size: fontSize.tick }
-                                },
+                                ticks: { color: '#94a3b8' },
                                 grid: { color: '#334155' }
                             }
                         }
@@ -2118,10 +2139,7 @@
                         },
                         plugins: {
                             legend: {
-                                labels: {
-                                    color: '#e2e8f0',
-                                    font: { size: fontSize.legend }
-                                }
+                                labels: { color: '#e2e8f0' }
                             },
                             tooltip: {
                                 backgroundColor: '#1e293b',
