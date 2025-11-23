@@ -1,4 +1,4 @@
-// Last updated: 2025-11-23 19:09:04 UTC
+// Last updated: 2025-11-23 19:21:42 UTC
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -335,13 +335,13 @@
             }
 
             .chart-container {
-                padding: 15px;
-                margin-bottom: 20px;
+                padding: 10px;
+                margin-bottom: 15px;
             }
 
             .chart-title {
-                font-size: 1em;
-                margin-bottom: 12px;
+                font-size: 0.95em;
+                margin-bottom: 8px;
             }
 
             canvas {
@@ -452,12 +452,12 @@
             }
 
             .chart-container {
-                padding: 10px;
+                padding: 8px;
             }
 
             .chart-title {
-                font-size: 0.85em;
-                margin-bottom: 8px;
+                font-size: 0.8em;
+                margin-bottom: 6px;
             }
 
             canvas {
@@ -1593,6 +1593,22 @@
             const ticksFontSize = isMobile ? 8 : (isTablet ? 9 : 11);
             const legendPadding = isMobile ? 5 : (isTablet ? 8 : 10);
 
+            // Функция форматирования даты для мобильных устройств
+            function formatDateLabel(dateString) {
+                const date = new Date(dateString);
+                if (isMobile) {
+                    // Для мобильных: "DD.MM HH:MM" (без года и секунд)
+                    const day = String(date.getDate()).padStart(2, '0');
+                    const month = String(date.getMonth() + 1).padStart(2, '0');
+                    const hours = String(date.getHours()).padStart(2, '0');
+                    const minutes = String(date.getMinutes()).padStart(2, '0');
+                    return `${day}.${month} ${hours}:${minutes}`;
+                } else {
+                    // Для десктопа: стандартный формат
+                    return date.toLocaleString();
+                }
+            }
+
             const hasBtcPrices = currentYieldData.data.some(d => d.btc_price !== null);
 
             if (hasBtcPrices) {
@@ -1637,7 +1653,7 @@
                 charts.priceComparison = new Chart(priceCompCtx, {
                     type: 'line',
                     data: {
-                        labels: validData.map(d => new Date(d.datetime).toLocaleString()),
+                        labels: validData.map(d => formatDateLabel(d.datetime)),
                         datasets: [
                             {
                                 label: 'BTC Price (USD)',
@@ -1731,10 +1747,12 @@
                                 title: {
                                     display: true,
                                     text: `${MARKETS[currentContractVersion][currentMarket].name} Price (USD)`,
-                                    color: '#f59e0b'
+                                    color: '#f59e0b',
+                                    font: { size: titleFontSize }
                                 },
                                 ticks: {
                                     color: '#94a3b8',
+                                    font: { size: ticksFontSize },
                                     callback: function(value) {
                                         return '$' + value.toFixed(0);
                                     }
@@ -1744,7 +1762,10 @@
                                 }
                             },
                             x: {
-                                ticks: { color: '#94a3b8' },
+                                ticks: {
+                                    color: '#94a3b8',
+                                    font: { size: ticksFontSize }
+                                },
                                 grid: { color: '#334155' }
                             }
                         }
@@ -2091,7 +2112,7 @@
             charts.pps = new Chart(ppsCtx, {
                 type: 'line',
                 data: {
-                    labels: validPpsData.map(d => new Date(d.datetime).toLocaleString()),
+                    labels: validPpsData.map(d => formatDateLabel(d.datetime)),
                     datasets: ppsDatasets
                 },
                 options: {
@@ -2178,7 +2199,7 @@
                 charts.gauge = new Chart(gaugeCtx, {
                     type: 'line',
                     data: {
-                        labels: validGaugeData.map(d => new Date(d.datetime).toLocaleString()),
+                        labels: validGaugeData.map(d => formatDateLabel(d.datetime)),
                         datasets: [{
                             label: 'syb → yb Conversion Rate',
                             data: gaugeValues,
@@ -2233,9 +2254,13 @@
                                 title: {
                                     display: true,
                                     text: 'Conversion Rate (yb per syb)',
-                                    color: '#8b5cf6'
+                                    color: '#8b5cf6',
+                                    font: { size: titleFontSize }
                                 },
-                                ticks: { color: '#94a3b8' },
+                                ticks: {
+                                    color: '#94a3b8',
+                                    font: { size: ticksFontSize }
+                                },
                                 grid: { color: '#334155' }
                             },
                             x: {
@@ -2271,7 +2296,7 @@
             charts.returns = new Chart(returnsCtx, {
                 type: 'bar',
                 data: {
-                    labels: validReturnData.map(d => new Date(d.datetime).toLocaleString()),
+                    labels: validReturnData.map(d => formatDateLabel(d.datetime)),
                     datasets: [{
                         label: 'Step Return (%)',
                         data: returnValues,
@@ -2285,7 +2310,11 @@
                     maintainAspectRatio: true,
                     plugins: {
                         legend: {
-                            labels: { color: '#e2e8f0' }
+                            labels: {
+                                color: '#e2e8f0',
+                                font: { size: legendFontSize },
+                                padding: legendPadding
+                            }
                         },
                         tooltip: {
                             backgroundColor: '#1e293b',
@@ -2302,13 +2331,20 @@
                             title: {
                                 display: true,
                                 text: 'Return (%)',
-                                color: '#f59e0b'
+                                color: '#f59e0b',
+                                font: { size: titleFontSize }
                             },
-                            ticks: { color: '#94a3b8' },
+                            ticks: {
+                                color: '#94a3b8',
+                                font: { size: ticksFontSize }
+                            },
                             grid: { color: '#334155' }
                         },
                         x: {
-                            ticks: { color: '#94a3b8' },
+                            ticks: {
+                                color: '#94a3b8',
+                                font: { size: ticksFontSize }
+                            },
                             grid: { color: '#334155' }
                         }
                     }
