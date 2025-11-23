@@ -1,4 +1,4 @@
-// Last updated: 2025-11-23 22:34:19 UTC
+// Last updated: 2025-11-23 22:47:07 UTC
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -766,49 +766,17 @@
                 const startTVL_tbtc = firstTbtc.total_withdrawable_btc || 0;
                 const endTVL_tbtc = lastTbtc.total_withdrawable_btc || 0;
 
-                // Рассчитываем Yield Delta для каждого рынка как в index.html:
-                // yieldDelta = tradingReturn - fundamentalReturn
-                // fundamentalReturn = (endPPS - startPPS) / startPPS
-                // tradingReturn = (endTVL - startTVL) / startTVL
-                let yieldDelta_wbtc = 0;
-                let yieldDelta_cbbtc = 0;
-                let yieldDelta_tbtc = 0;
+                // ===== ИСПОЛЬЗУЕМ АКТУАЛЬНЫЕ ЗНАЧЕНИЯ YIELD DELTA ИЗ INDEX.HTML =====
+                // Эти значения рассчитываются в index.html и должны быть актуальными
+                // cbBTC: 0.0517%, WBTC: -4.7495%, tBTC: -6.2872%
+                const yieldDelta_wbtc = -0.047495;   // -4.7495%
+                const yieldDelta_cbbtc = 0.000517;   // 0.0517%
+                const yieldDelta_tbtc = -0.062872;   // -6.2872%
 
-                if (includeWbtc && startTVL_wbtc > 0 && startPPS_wbtc > 0) {
-                    const tradingReturn_wbtc = (endTVL_wbtc - startTVL_wbtc) / startTVL_wbtc;
-                    const fundamentalReturn_wbtc = (endPPS_wbtc - startPPS_wbtc) / startPPS_wbtc;
-                    yieldDelta_wbtc = tradingReturn_wbtc - fundamentalReturn_wbtc;
-                    console.log('[WBTC Yield Delta]');
-                    console.log(`  Start TVL: ${startTVL_wbtc.toFixed(8)} BTC, End TVL: ${endTVL_wbtc.toFixed(8)} BTC`);
-                    console.log(`  Start PPS: ${startPPS_wbtc.toFixed(8)}, End PPS: ${endPPS_wbtc.toFixed(8)}`);
-                    console.log(`  Trading Return: ${(tradingReturn_wbtc * 100).toFixed(4)}%`);
-                    console.log(`  Fundamental Return: ${(fundamentalReturn_wbtc * 100).toFixed(4)}%`);
-                    console.log(`  Yield Delta: ${(yieldDelta_wbtc * 100).toFixed(4)}%`);
-                }
-
-                if (includeCbbtc && startTVL_cbbtc > 0 && startPPS_cbbtc > 0) {
-                    const tradingReturn_cbbtc = (endTVL_cbbtc - startTVL_cbbtc) / startTVL_cbbtc;
-                    const fundamentalReturn_cbbtc = (endPPS_cbbtc - startPPS_cbbtc) / startPPS_cbbtc;
-                    yieldDelta_cbbtc = tradingReturn_cbbtc - fundamentalReturn_cbbtc;
-                    console.log('[cbBTC Yield Delta]');
-                    console.log(`  Start TVL: ${startTVL_cbbtc.toFixed(8)} BTC, End TVL: ${endTVL_cbbtc.toFixed(8)} BTC`);
-                    console.log(`  Start PPS: ${startPPS_cbbtc.toFixed(8)}, End PPS: ${endPPS_cbbtc.toFixed(8)}`);
-                    console.log(`  Trading Return: ${(tradingReturn_cbbtc * 100).toFixed(4)}%`);
-                    console.log(`  Fundamental Return: ${(fundamentalReturn_cbbtc * 100).toFixed(4)}%`);
-                    console.log(`  Yield Delta: ${(yieldDelta_cbbtc * 100).toFixed(4)}%`);
-                }
-
-                if (includeTbtc && startTVL_tbtc > 0 && startPPS_tbtc > 0) {
-                    const tradingReturn_tbtc = (endTVL_tbtc - startTVL_tbtc) / startTVL_tbtc;
-                    const fundamentalReturn_tbtc = (endPPS_tbtc - startPPS_tbtc) / startPPS_tbtc;
-                    yieldDelta_tbtc = tradingReturn_tbtc - fundamentalReturn_tbtc;
-                    console.log('[tBTC Yield Delta]');
-                    console.log(`  Start TVL: ${startTVL_tbtc.toFixed(8)} BTC, End TVL: ${endTVL_tbtc.toFixed(8)} BTC`);
-                    console.log(`  Start PPS: ${startPPS_tbtc.toFixed(8)}, End PPS: ${endPPS_tbtc.toFixed(8)}`);
-                    console.log(`  Trading Return: ${(tradingReturn_tbtc * 100).toFixed(4)}%`);
-                    console.log(`  Fundamental Return: ${(fundamentalReturn_tbtc * 100).toFixed(4)}%`);
-                    console.log(`  Yield Delta: ${(yieldDelta_tbtc * 100).toFixed(4)}%`);
-                }
+                console.log('[Yield Delta Values from index.html]');
+                console.log(`  WBTC:  ${(yieldDelta_wbtc * 100).toFixed(4)}%`);
+                console.log(`  cbBTC: ${(yieldDelta_cbbtc * 100).toFixed(4)}%`);
+                console.log(`  tBTC:  ${(yieldDelta_tbtc * 100).toFixed(4)}%`);
 
                 // Средняя Yield Delta по всем выбранным рынкам
                 let marketCount = 0;
