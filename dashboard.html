@@ -1,4 +1,4 @@
-// Last updated: 2025-11-23 22:47:07 UTC
+// Last updated: 2025-11-23 22:59:53 UTC
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -351,6 +351,21 @@
     <script src="pps_data_old_wbtc.js?v=1"></script>
     <script src="pps_data_old_cbbtc.js?v=1"></script>
     <script src="pps_data_old_tbtc.js?v=1"></script>
+
+    <!-- Load vaults yield data for trading returns -->
+    <script src="vaults_yield_wbtc.js"></script>
+    <script>
+        // Save vaults yield data before it gets overwritten by revenue data
+        const vaultsYieldData_wbtc = typeof yieldData_wbtc !== 'undefined' ? JSON.parse(JSON.stringify(yieldData_wbtc)) : null;
+    </script>
+    <script src="vaults_yield_cbbtc.js"></script>
+    <script>
+        const vaultsYieldData_cbbtc = typeof yieldData_cbbtc !== 'undefined' ? JSON.parse(JSON.stringify(yieldData_cbbtc)) : null;
+    </script>
+    <script src="vaults_yield_tbtc.js"></script>
+    <script>
+        const vaultsYieldData_tbtc = typeof yieldData_tbtc !== 'undefined' ? JSON.parse(JSON.stringify(yieldData_tbtc)) : null;
+    </script>
 
     <script>
     // Глобальная переменная для текущей версии контракта
@@ -766,17 +781,28 @@
                 const startTVL_tbtc = firstTbtc.total_withdrawable_btc || 0;
                 const endTVL_tbtc = lastTbtc.total_withdrawable_btc || 0;
 
-                // ===== ИСПОЛЬЗУЕМ АКТУАЛЬНЫЕ ЗНАЧЕНИЯ YIELD DELTA ИЗ INDEX.HTML =====
-                // Эти значения рассчитываются в index.html и должны быть актуальными
-                // cbBTC: 0.0517%, WBTC: -4.7495%, tBTC: -6.2872%
-                const yieldDelta_wbtc = -0.047495;   // -4.7495%
-                const yieldDelta_cbbtc = 0.000517;   // 0.0517%
-                const yieldDelta_tbtc = -0.062872;   // -6.2872%
+                // ===== РАСЧЕТ YIELD DELTA ТОЧНО КАК В INDEX.HTML =====
+                // Yield Delta = Trading Return - Fundamental Return
 
-                console.log('[Yield Delta Values from index.html]');
-                console.log(`  WBTC:  ${(yieldDelta_wbtc * 100).toFixed(4)}%`);
-                console.log(`  cbBTC: ${(yieldDelta_cbbtc * 100).toFixed(4)}%`);
-                console.log(`  tBTC:  ${(yieldDelta_tbtc * 100).toFixed(4)}%`);
+                // Trading returns из vaults_yield_*.js (pre-calculated)
+                const tradingReturn_wbtc = typeof vaultsYieldData_wbtc !== 'undefined' && vaultsYieldData_wbtc ? vaultsYieldData_wbtc.metrics.total_return : 0;
+                const tradingReturn_cbbtc = typeof vaultsYieldData_cbbtc !== 'undefined' && vaultsYieldData_cbbtc ? vaultsYieldData_cbbtc.metrics.total_return : 0;
+                const tradingReturn_tbtc = typeof vaultsYieldData_tbtc !== 'undefined' && vaultsYieldData_tbtc ? vaultsYieldData_tbtc.metrics.total_return : 0;
+
+                // Fundamental returns из pps_data_*.js
+                const fundamentalReturn_wbtc = (endPPS_wbtc - startPPS_wbtc) / startPPS_wbtc;
+                const fundamentalReturn_cbbtc = (endPPS_cbbtc - startPPS_cbbtc) / startPPS_cbbtc;
+                const fundamentalReturn_tbtc = (endPPS_tbtc - startPPS_tbtc) / startPPS_tbtc;
+
+                // Yield Delta = Trading - Fundamental
+                const yieldDelta_wbtc = tradingReturn_wbtc - fundamentalReturn_wbtc;
+                const yieldDelta_cbbtc = tradingReturn_cbbtc - fundamentalReturn_cbbtc;
+                const yieldDelta_tbtc = tradingReturn_tbtc - fundamentalReturn_tbtc;
+
+                console.log('[Yield Delta Calculation]');
+                console.log(`  WBTC:  Trading=${(tradingReturn_wbtc*100).toFixed(4)}% - Fundamental=${(fundamentalReturn_wbtc*100).toFixed(4)}% = ${(yieldDelta_wbtc * 100).toFixed(4)}%`);
+                console.log(`  cbBTC: Trading=${(tradingReturn_cbbtc*100).toFixed(4)}% - Fundamental=${(fundamentalReturn_cbbtc*100).toFixed(4)}% = ${(yieldDelta_cbbtc * 100).toFixed(4)}%`);
+                console.log(`  tBTC:  Trading=${(tradingReturn_tbtc*100).toFixed(4)}% - Fundamental=${(fundamentalReturn_tbtc*100).toFixed(4)}% = ${(yieldDelta_tbtc * 100).toFixed(4)}%`);
 
                 // Средняя Yield Delta по всем выбранным рынкам
                 let marketCount = 0;
