@@ -1,9 +1,12 @@
-// Last updated: 2025-11-23 20:13:11 UTC
+// Last updated: 2025-11-23 20:26:03 UTC
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
     <title>Yield Basis BTC Vaults - Yield Analytics</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
     <style>
@@ -1584,14 +1587,13 @@
             console.log('Creating charts for', currentYieldData.data.length, 'data points');
 
             // Определяем размер экрана для адаптивных настроек
-            const isMobile = window.innerWidth <= 480;
-            const isTablet = window.innerWidth <= 768 && window.innerWidth > 480;
+            const isMobile = window.innerWidth <= 768;
 
             // Адаптивные размеры шрифтов
-            const legendFontSize = isMobile ? 9 : (isTablet ? 10 : 12);
-            const titleFontSize = isMobile ? 10 : (isTablet ? 11 : 13);
-            const ticksFontSize = isMobile ? 8 : (isTablet ? 9 : 11);
-            const legendPadding = isMobile ? 5 : (isTablet ? 8 : 10);
+            const legendFontSize = isMobile ? 7 : 12;
+            const titleFontSize = isMobile ? 10 : 13;
+            const ticksFontSize = isMobile ? 7 : 11;
+            const legendPadding = isMobile ? 3 : 10;
 
             // Функция форматирования даты для мобильных устройств
             function formatDateLabel(dateString) {
