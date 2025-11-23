@@ -1,4 +1,4 @@
-// Last updated: 2025-11-23 22:21:38 UTC
+// Last updated: 2025-11-23 22:34:19 UTC
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -721,6 +721,7 @@
             // НО корректирует ТОЛЬКО Withdrawals на Yield Delta процент
             // Формула: (включенный TVL) - (включенные Deposits - Fundamental_Withdrawals) + (включенные Admin_Fees) + (включенный YB)
             // Где Fundamental_Withdrawals = Withdrawals × (1 + Yield_Delta%)
+            // Yield_Delta рассчитывается ОДИН РАЗ для последней точки как в index.html
             function calculateFundamentalRevenue(
                 includeWbtc = true,
                 includeCbbtc = true,
@@ -733,22 +734,92 @@
             ) {
                 if (!ppsAvailable || fullProfitData.length === 0) return fullProfitData.map(d => d.profit);
 
-                // Получаем начальные значения (первая точка данных)
+                // ===== РАСЧЕТ YIELD DELTA (ОДИН РАЗ ДЛЯ ПОСЛЕДНЕГО БЛОКА) =====
+                const lastIndex = fullProfitData.length - 1;
+                const lastPoint = fullProfitData[lastIndex];
+                const lastWbtc = fullWbtcData[lastIndex];
+                const lastCbbtc = fullCbbtcData[lastIndex];
+                const lastTbtc = fullTbtcData[lastIndex];
+
                 const firstPoint = fullProfitData[0];
                 const firstWbtc = fullWbtcData[0];
                 const firstCbbtc = fullCbbtcData[0];
                 const firstTbtc = fullTbtcData[0];
 
-                // Начальный TVL для каждого рынка (используем только выбранные рынки)
-                const initialTVL_wbtc = includeWbtc ? (firstWbtc.total_withdrawable_btc || 0) : 0;
-                const initialTVL_cbbtc = includeCbbtc ? (firstCbbtc.total_withdrawable_btc || 0) : 0;
-                const initialTVL_tbtc = includeTbtc ? (firstTbtc.total_withdrawable_btc || 0) : 0;
-                const totalInitialTVL = initialTVL_wbtc + initialTVL_cbbtc + initialTVL_tbtc;
+                // Начальный и конечный PPS для каждого рынка
+                const startPPS_wbtc = firstPoint.pps_wbtc.pps_unstaked;
+                const endPPS_wbtc = lastPoint.pps_wbtc.pps_unstaked;
 
-                // Начальный PPS для каждого рынка (из первой точки данных)
-                const initialPPS_wbtc = firstPoint.pps_wbtc.pps_unstaked;
-                const initialPPS_cbbtc = firstPoint.pps_cbbtc.pps_unstaked;
-                const initialPPS_tbtc = firstPoint.pps_tbtc.pps_unstaked;
+                const startPPS_cbbtc = firstPoint.pps_cbbtc.pps_unstaked;
+                const endPPS_cbbtc = lastPoint.pps_cbbtc.pps_unstaked;
+
+                const startPPS_tbtc = firstPoint.pps_tbtc.pps_unstaked;
+                const endPPS_tbtc = lastPoint.pps_tbtc.pps_unstaked;
+
+                // Начальный и конечный TVL для каждого рынка
+                const startTVL_wbtc = firstWbtc.total_withdrawable_btc || 0;
+                const endTVL_wbtc = lastWbtc.total_withdrawable_btc || 0;
+
+                const startTVL_cbbtc = firstCbbtc.total_withdrawable_btc || 0;
+                const endTVL_cbbtc = lastCbbtc.total_withdrawable_btc || 0;
+
+                const startTVL_tbtc = firstTbtc.total_withdrawable_btc || 0;
+                const endTVL_tbtc = lastTbtc.total_withdrawable_btc || 0;
+
+                // Рассчитываем Yield Delta для каждого рынка как в index.html:
+                // yieldDelta = tradingReturn - fundamentalReturn
+                // fundamentalReturn = (endPPS - startPPS) / startPPS
+                // tradingReturn = (endTVL - startTVL) / startTVL
+                let yieldDelta_wbtc = 0;
+                let yieldDelta_cbbtc = 0;
+                let yieldDelta_tbtc = 0;
+
+                if (includeWbtc && startTVL_wbtc > 0 && startPPS_wbtc > 0) {
+                    const tradingReturn_wbtc = (endTVL_wbtc - startTVL_wbtc) / startTVL_wbtc;
+                    const fundamentalReturn_wbtc = (endPPS_wbtc - startPPS_wbtc) / startPPS_wbtc;
+                    yieldDelta_wbtc = tradingReturn_wbtc - fundamentalReturn_wbtc;
+                    console.log('[WBTC Yield Delta]');
+                    console.log(`  Start TVL: ${startTVL_wbtc.toFixed(8)} BTC, End TVL: ${endTVL_wbtc.toFixed(8)} BTC`);
+                    console.log(`  Start PPS: ${startPPS_wbtc.toFixed(8)}, End PPS: ${endPPS_wbtc.toFixed(8)}`);
+                    console.log(`  Trading Return: ${(tradingReturn_wbtc * 100).toFixed(4)}%`);
+                    console.log(`  Fundamental Return: ${(fundamentalReturn_wbtc * 100).toFixed(4)}%`);
+                    console.log(`  Yield Delta: ${(yieldDelta_wbtc * 100).toFixed(4)}%`);
+                }
+
+                if (includeCbbtc && startTVL_cbbtc > 0 && startPPS_cbbtc > 0) {
+                    const tradingReturn_cbbtc = (endTVL_cbbtc - startTVL_cbbtc) / startTVL_cbbtc;
+                    const fundamentalReturn_cbbtc = (endPPS_cbbtc - startPPS_cbbtc) / startPPS_cbbtc;
+                    yieldDelta_cbbtc = tradingReturn_cbbtc - fundamentalReturn_cbbtc;
+                    console.log('[cbBTC Yield Delta]');
+                    console.log(`  Start TVL: ${startTVL_cbbtc.toFixed(8)} BTC, End TVL: ${endTVL_cbbtc.toFixed(8)} BTC`);
+                    console.log(`  Start PPS: ${startPPS_cbbtc.toFixed(8)}, End PPS: ${endPPS_cbbtc.toFixed(8)}`);
+                    console.log(`  Trading Return: ${(tradingReturn_cbbtc * 100).toFixed(4)}%`);
+                    console.log(`  Fundamental Return: ${(fundamentalReturn_cbbtc * 100).toFixed(4)}%`);
+                    console.log(`  Yield Delta: ${(yieldDelta_cbbtc * 100).toFixed(4)}%`);
+                }
+
+                if (includeTbtc && startTVL_tbtc > 0 && startPPS_tbtc > 0) {
+                    const tradingReturn_tbtc = (endTVL_tbtc - startTVL_tbtc) / startTVL_tbtc;
+                    const fundamentalReturn_tbtc = (endPPS_tbtc - startPPS_tbtc) / startPPS_tbtc;
+                    yieldDelta_tbtc = tradingReturn_tbtc - fundamentalReturn_tbtc;
+                    console.log('[tBTC Yield Delta]');
+                    console.log(`  Start TVL: ${startTVL_tbtc.toFixed(8)} BTC, End TVL: ${endTVL_tbtc.toFixed(8)} BTC`);
+                    console.log(`  Start PPS: ${startPPS_tbtc.toFixed(8)}, End PPS: ${endPPS_tbtc.toFixed(8)}`);
+                    console.log(`  Trading Return: ${(tradingReturn_tbtc * 100).toFixed(4)}%`);
+                    console.log(`  Fundamental Return: ${(fundamentalReturn_tbtc * 100).toFixed(4)}%`);
+                    console.log(`  Yield Delta: ${(yieldDelta_tbtc * 100).toFixed(4)}%`);
+                }
+
+                // Средняя Yield Delta по всем выбранным рынкам
+                let marketCount = 0;
+                let totalYieldDelta = 0;
+                if (includeWbtc && startTVL_wbtc > 0) { totalYieldDelta += yieldDelta_wbtc; marketCount++; }
+                if (includeCbbtc && startTVL_cbbtc > 0) { totalYieldDelta += yieldDelta_cbbtc; marketCount++; }
+                if (includeTbtc && startTVL_tbtc > 0) { totalYieldDelta += yieldDelta_tbtc; marketCount++; }
+
+                const avgYieldDelta = marketCount > 0 ? totalYieldDelta / marketCount : 0;
+                console.log(`[Average Yield Delta] ${(avgYieldDelta * 100).toFixed(4)}% across ${marketCount} markets`);
+                console.log('===========================');
 
                 let cumulativeDeposits = 0;
                 let cumulativeWithdrawals = 0;
@@ -764,83 +835,6 @@
                     if (includeWbtc) realTVL += wbtc.total_withdrawable_btc || 0;
                     if (includeCbbtc) realTVL += cbbtc.total_withdrawable_btc || 0;
                     if (includeTbtc) realTVL += tbtc.total_withdrawable_btc || 0;
-
-                    // Вычисляем Yield Delta для каждого рынка как в index.html
-                    // Yield Delta = (Current_PPS / Initial_PPS - 1) - (Fundamental_PPS / Initial_PPS - 1)
-                    // = Trading_Return - Fundamental_Return
-                    let totalYieldDeltaPercent = 0;
-                    let marketCount = 0;
-
-                    if (includeWbtc && initialTVL_wbtc > 0) {
-                        const currentTVL_wbtc = wbtc.total_withdrawable_btc || 0;
-                        const fundamentalTVL_wbtc = initialTVL_wbtc * (point.pps_wbtc.pps_unstaked / initialPPS_wbtc);
-                        const yieldDelta_wbtc = currentTVL_wbtc > 0 && fundamentalTVL_wbtc > 0
-                            ? (currentTVL_wbtc / fundamentalTVL_wbtc) - 1
-                            : 0;
-
-                        totalYieldDeltaPercent += yieldDelta_wbtc;
-                        marketCount++;
-
-                        if (i === 0 || i === fullProfitData.length - 1 || i % 100 === 0) {
-                            console.log(`[WBTC Point ${i}]`);
-                            console.log(`  Initial TVL: ${initialTVL_wbtc.toFixed(8)} BTC`);
-                            console.log(`  Initial PPS: ${initialPPS_wbtc.toFixed(8)}`);
-                            console.log(`  Current TVL: ${currentTVL_wbtc.toFixed(8)} BTC`);
-                            console.log(`  Current PPS: ${point.pps_wbtc.pps_unstaked.toFixed(8)}`);
-                            console.log(`  Fundamental TVL: ${fundamentalTVL_wbtc.toFixed(8)} BTC`);
-                            console.log(`  Yield Delta: ${(yieldDelta_wbtc * 100).toFixed(4)}%`);
-                        }
-                    }
-
-                    if (includeCbbtc && initialTVL_cbbtc > 0) {
-                        const currentTVL_cbbtc = cbbtc.total_withdrawable_btc || 0;
-                        const fundamentalTVL_cbbtc = initialTVL_cbbtc * (point.pps_cbbtc.pps_unstaked / initialPPS_cbbtc);
-                        const yieldDelta_cbbtc = currentTVL_cbbtc > 0 && fundamentalTVL_cbbtc > 0
-                            ? (currentTVL_cbbtc / fundamentalTVL_cbbtc) - 1
-                            : 0;
-
-                        totalYieldDeltaPercent += yieldDelta_cbbtc;
-                        marketCount++;
-
-                        if (i === 0 || i === fullProfitData.length - 1 || i % 100 === 0) {
-                            console.log(`[cbBTC Point ${i}]`);
-                            console.log(`  Initial TVL: ${initialTVL_cbbtc.toFixed(8)} BTC`);
-                            console.log(`  Initial PPS: ${initialPPS_cbbtc.toFixed(8)}`);
-                            console.log(`  Current TVL: ${currentTVL_cbbtc.toFixed(8)} BTC`);
-                            console.log(`  Current PPS: ${point.pps_cbbtc.pps_unstaked.toFixed(8)}`);
-                            console.log(`  Fundamental TVL: ${fundamentalTVL_cbbtc.toFixed(8)} BTC`);
-                            console.log(`  Yield Delta: ${(yieldDelta_cbbtc * 100).toFixed(4)}%`);
-                        }
-                    }
-
-                    if (includeTbtc && initialTVL_tbtc > 0) {
-                        const currentTVL_tbtc = tbtc.total_withdrawable_btc || 0;
-                        const fundamentalTVL_tbtc = initialTVL_tbtc * (point.pps_tbtc.pps_unstaked / initialPPS_tbtc);
-                        const yieldDelta_tbtc = currentTVL_tbtc > 0 && fundamentalTVL_tbtc > 0
-                            ? (currentTVL_tbtc / fundamentalTVL_tbtc) - 1
-                            : 0;
-
-                        totalYieldDeltaPercent += yieldDelta_tbtc;
-                        marketCount++;
-
-                        if (i === 0 || i === fullProfitData.length - 1 || i % 100 === 0) {
-                            console.log(`[tBTC Point ${i}]`);
-                            console.log(`  Initial TVL: ${initialTVL_tbtc.toFixed(8)} BTC`);
-                            console.log(`  Initial PPS: ${initialPPS_tbtc.toFixed(8)}`);
-                            console.log(`  Current TVL: ${currentTVL_tbtc.toFixed(8)} BTC`);
-                            console.log(`  Current PPS: ${point.pps_tbtc.pps_unstaked.toFixed(8)}`);
-                            console.log(`  Fundamental TVL: ${fundamentalTVL_tbtc.toFixed(8)} BTC`);
-                            console.log(`  Yield Delta: ${(yieldDelta_tbtc * 100).toFixed(4)}%`);
-                        }
-                    }
-
-                    // Среднее Yield Delta по всем выбранным рынкам
-                    const yieldDeltaPercent = marketCount > 0 ? totalYieldDeltaPercent / marketCount : 0;
-
-                    if (i === 0 || i === fullProfitData.length - 1 || i % 100 === 0) {
-                        console.log(`[Point ${i}] Average Yield Delta: ${(yieldDeltaPercent * 100).toFixed(4)}%, Markets: ${marketCount}`);
-                        console.log('---');
-                    }
 
                     // Накапливаем deposits/withdrawals только для выбранных рынков
                     let deposits = 0;
@@ -886,11 +880,11 @@
                         ? adminFees + cumulativeAdminFeeWithdrawals
                         : adminFees;
 
-                    // Fundamental Withdrawals = Withdrawals × (1 + Yield_Delta_Percent)
-                    // Применяем процентное изменение к withdrawals
+                    // Fundamental Withdrawals = Withdrawals × (1 + Avg_Yield_Delta)
+                    // Применяем ОДНУ среднюю дельту (рассчитанную для всего периода) ко всем точкам
                     // Если Yield Delta +5%, то withdrawals увеличиваются на 5% → Fundamental Revenue меньше
                     // Если Yield Delta -5%, то withdrawals уменьшаются на 5% → Fundamental Revenue больше
-                    const fundamentalWithdrawals = effectiveWithdrawals * (1 + yieldDeltaPercent);
+                    const fundamentalWithdrawals = effectiveWithdrawals * (1 + avgYieldDelta);
 
                     // ПОЛНОСТЬЮ повторяем логику зеленой линии с учетом чекбоксов
                     let fundamentalRevenue = 0;
