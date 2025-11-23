@@ -1,4 +1,4 @@
-// Last updated: 2025-11-23 19:21:42 UTC
+// Last updated: 2025-11-23 19:34:45 UTC
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -1724,7 +1724,7 @@
                                 min: btcAxisMin,
                                 max: btcAxisMax,
                                 title: {
-                                    display: true,
+                                    display: !isMobile,
                                     text: 'BTC Price (USD)',
                                     color: '#3b82f6',
                                     font: { size: titleFontSize }
@@ -1745,7 +1745,7 @@
                                 min: ybAxisMinPadded,
                                 max: ybAxisMaxPadded,
                                 title: {
-                                    display: true,
+                                    display: !isMobile,
                                     text: `${MARKETS[currentContractVersion][currentMarket].name} Price (USD)`,
                                     color: '#f59e0b',
                                     font: { size: titleFontSize }
@@ -2151,7 +2151,7 @@
                             min: ppsAxisMin,
                             max: ppsAxisMax,
                             title: {
-                                display: true,
+                                display: !isMobile,
                                 text: 'PPS (BTC)',
                                 color: '#f59e0b',
                                 font: { size: titleFontSize }
@@ -2252,7 +2252,7 @@
                                 min: gaugeAxisMin,
                                 max: gaugeAxisMax,
                                 title: {
-                                    display: true,
+                                    display: !isMobile,
                                     text: 'Conversion Rate (yb per syb)',
                                     color: '#8b5cf6',
                                     font: { size: titleFontSize }
@@ -2329,7 +2329,7 @@
                             min: returnAxisMin,
                             max: returnAxisMax,
                             title: {
-                                display: true,
+                                display: !isMobile,
                                 text: 'Return (%)',
                                 color: '#f59e0b',
                                 font: { size: titleFontSize }
@@ -2366,6 +2366,16 @@
             initializeDateInputs();
             updateMetrics();
             createCharts();
+        });
+
+        // Перерисовка графиков при изменении размера окна
+        let resizeTimer;
+        window.addEventListener('resize', () => {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(() => {
+                destroyCharts();
+                createCharts();
+            }, 250);
         });
     </script>
 
