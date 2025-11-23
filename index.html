@@ -1,4 +1,4 @@
-// Last updated: 2025-11-23 10:48:21 UTC
+// Last updated: 2025-11-23 11:11:16 UTC
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -1606,7 +1606,7 @@
 
                     // Вычисляем PPS + Emission для Fundamental (если включено)
                     if (showEmissionFundamental && fundamentalPpsValues) {
-                        ppsWithEmissionFundamental = currentYieldData.data.map((d, index) => {
+                        ppsWithEmissionFundamental = validPpsData.map((d, index) => {
                             const targetTimestamp = Math.floor(new Date(d.datetime).getTime() / 1000);
                             const basePps = fundamentalPpsValues[index];
                             if (basePps === null) return null;
@@ -1618,7 +1618,7 @@
 
                     // Вычисляем PPS + Emission для Withdrawable (если включено)
                     if (showEmissionWithdrawable) {
-                        ppsWithEmissionWithdrawable = currentYieldData.data.map((d, index) => {
+                        ppsWithEmissionWithdrawable = validPpsData.map((d, index) => {
                             const targetTimestamp = Math.floor(new Date(d.datetime).getTime() / 1000);
                             const basePps = ppsValues[index];
                             if (basePps === null) return null;
@@ -1826,7 +1826,11 @@
                 gaugeChartContainer.style.display = 'block';
 
                 const gaugeCtx = document.getElementById('gaugeConversionChart').getContext('2d');
-                const gaugeValues = currentYieldData.data.map(d => d.pps_yb);
+                // Фильтруем данные для gauge - убираем null/undefined/NaN
+                const validGaugeData = currentYieldData.data.filter(d =>
+                    d.pps_yb !== null && d.pps_yb !== undefined && !isNaN(d.pps_yb)
+                );
+                const gaugeValues = validGaugeData.map(d => d.pps_yb);
                 const gaugeMin = Math.min(...gaugeValues);
                 const gaugeMax = Math.max(...gaugeValues);
                 const gaugeRange = gaugeMax - gaugeMin;
@@ -1837,7 +1841,7 @@
                 charts.gauge = new Chart(gaugeCtx, {
                     type: 'line',
                     data: {
-                        labels: currentYieldData.data.map(d => new Date(d.datetime).toLocaleString()),
+                        labels: validGaugeData.map(d => new Date(d.datetime).toLocaleString()),
                         datasets: [{
                             label: 'syb → yb Conversion Rate',
                             data: gaugeValues,
@@ -1911,7 +1915,11 @@
 
             // Returns Chart
             const returnsCtx = document.getElementById('returnsChart').getContext('2d');
-            const returnValues = currentYieldData.data.map(d => d.ret_step_pct);
+            // Фильтруем данные для return - убираем null/undefined/NaN
+            const validReturnData = currentYieldData.data.filter(d =>
+                d.ret_step_pct !== null && d.ret_step_pct !== undefined && !isNaN(d.ret_step_pct)
+            );
+            const returnValues = validReturnData.map(d => d.ret_step_pct);
             const returnMin = Math.min(...returnValues);
             const returnMax = Math.max(...returnValues);
             const returnRange = returnMax - returnMin;
@@ -1922,7 +1930,7 @@
             charts.returns = new Chart(returnsCtx, {
                 type: 'bar',
                 data: {
-                    labels: currentYieldData.data.map(d => new Date(d.datetime).toLocaleString()),
+                    labels: validReturnData.map(d => new Date(d.datetime).toLocaleString()),
                     datasets: [{
                         label: 'Step Return (%)',
                         data: returnValues,
