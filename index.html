@@ -1,4 +1,4 @@
-// Last updated: 2025-11-23 21:17:06 UTC
+// Last updated: 2025-11-23 21:29:50 UTC
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -530,6 +530,13 @@
             .checkbox-label input[type="checkbox"] {
                 width: 16px;
                 height: 16px;
+            }
+        }
+
+        /* Глобальное переопределение для Chart.js легенды на мобильных */
+        @media (max-width: 768px) {
+            canvas {
+                font-size: 6px !important;
             }
         }
     </style>
