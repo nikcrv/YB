@@ -1,4 +1,4 @@
-// Last updated: 2025-11-23 23:38:38 UTC
+// Last updated: 2025-11-23 23:52:08 UTC
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -272,10 +272,6 @@
                             <input type="checkbox" id="toggleYbEmission" checked>
                             <label for="toggleYbEmission">YB Emission</label>
                         </div>
-                        <div class="checkbox-group">
-                            <input type="checkbox" id="toggleFundamental">
-                            <label for="toggleFundamental">Show Fundamental Revenue</label>
-                        </div>
                     </div>
                     <div style="display: flex; gap: 20px; flex-wrap: wrap;">
                         <div class="checkbox-group">
@@ -341,21 +337,6 @@
     <script src="old_revenue_yield_cbbtc_sync.js?v=6"></script>
     <script src="old_revenue_yield_tbtc_sync.js?v=6"></script>
     <script src="old_yb_emission_data.js?v=6"></script>
-
-    <!-- Load PPS data files (NEW contracts) -->
-    <script src="pps_data_wbtc.js?v=1"></script>
-    <script src="pps_data_cbbtc.js?v=1"></script>
-    <script src="pps_data_tbtc.js?v=1"></script>
-
-    <!-- Load PPS data files (OLD contracts) -->
-    <script src="pps_data_old_wbtc.js?v=1"></script>
-    <script src="pps_data_old_cbbtc.js?v=1"></script>
-    <script src="pps_data_old_tbtc.js?v=1"></script>
-
-    <!-- Load vaults yield data for trading returns -->
-    <script src="vaults_yield_data_wbtc.js"></script>
-    <script src="vaults_yield_data_cbbtc.js"></script>
-    <script src="vaults_yield_data_tbtc.js"></script>
 
     <script>
     // Глобальная переменная для текущей версии контракта
@@ -642,382 +623,21 @@
                 });
             }
 
-            // ====== PPS DATA & FUNDAMENTAL REVENUE CALCULATION ======
-
-            // Выбираем источник PPS данных в зависимости от версии контракта
-            let ppsDataSource_wbtc, ppsDataSource_cbbtc, ppsDataSource_tbtc;
-
-            if (currentContractVersion === 'old') {
-                ppsDataSource_wbtc = typeof ppsData_old_wbtc !== 'undefined' ? ppsData_old_wbtc : null;
-                ppsDataSource_cbbtc = typeof ppsData_old_cbbtc !== 'undefined' ? ppsData_old_cbbtc : null;
-                ppsDataSource_tbtc = typeof ppsData_old_tbtc !== 'undefined' ? ppsData_old_tbtc : null;
-            } else {
-                ppsDataSource_wbtc = typeof ppsData_wbtc !== 'undefined' ? ppsData_wbtc : null;
-                ppsDataSource_cbbtc = typeof ppsData_cbbtc !== 'undefined' ? ppsData_cbbtc : null;
-                ppsDataSource_tbtc = typeof ppsData_tbtc !== 'undefined' ? ppsData_tbtc : null;
-            }
-
-            // Функция линейной интерполяции PPS для конкретного рынка
-            function interpolatePPS(timestamp, ppsDataArray) {
-                if (!ppsDataArray || ppsDataArray.length === 0) return { pps_unstaked: 1.0, pps_staked: 1.0 };
-
-                // Если раньше первой даты - возвращаем первое значение
-                if (timestamp <= ppsDataArray[0].timestamp) {
-                    return {
-                        pps_unstaked: ppsDataArray[0].pps_unstaked,
-                        pps_staked: ppsDataArray[0].pps_staked
-                    };
-                }
-
-                // Если позже последней даты - возвращаем последнее значение
-                if (timestamp >= ppsDataArray[ppsDataArray.length - 1].timestamp) {
-                    const last = ppsDataArray[ppsDataArray.length - 1];
-                    return {
-                        pps_unstaked: last.pps_unstaked,
-                        pps_staked: last.pps_staked
-                    };
-                }
-
-                // Находим ближайшие точки для интерполяции
-                for (let i = 0; i < ppsDataArray.length - 1; i++) {
-                    if (timestamp >= ppsDataArray[i].timestamp && timestamp < ppsDataArray[i + 1].timestamp) {
-                        const lower = ppsDataArray[i];
-                        const upper = ppsDataArray[i + 1];
-
-                        // Линейная интерполяция
-                        const ratio = (timestamp - lower.timestamp) / (upper.timestamp - lower.timestamp);
-                        return {
-                            pps_unstaked: lower.pps_unstaked + ratio * (upper.pps_unstaked - lower.pps_unstaked),
-                            pps_staked: lower.pps_staked + ratio * (upper.pps_staked - lower.pps_staked)
-                        };
-                    }
-                }
-
-                return { pps_unstaked: 1.0, pps_staked: 1.0 };
-            }
-
-            // Добавляем PPS данные к каждой точке profitData с интерполяцией
-            let ppsAvailable = false;
-            if (ppsDataSource_wbtc && ppsDataSource_cbbtc && ppsDataSource_tbtc) {
-                const ppsArrayWbtc = ppsDataSource_wbtc.data;
-                const ppsArrayCbbtc = ppsDataSource_cbbtc.data;
-                const ppsArrayTbtc = ppsDataSource_tbtc.data;
-
-                profitData.forEach(point => {
-                    point.pps_wbtc = interpolatePPS(point.timestamp, ppsArrayWbtc);
-                    point.pps_cbbtc = interpolatePPS(point.timestamp, ppsArrayCbbtc);
-                    point.pps_tbtc = interpolatePPS(point.timestamp, ppsArrayTbtc);
-                });
-
-                ppsAvailable = true;
-                console.log('PPS data interpolated for all markets');
-            } else {
-                // Если PPS данных нет, используем PPS = 1.0
-                profitData.forEach(point => {
-                    point.pps_wbtc = { pps_unstaked: 1.0, pps_staked: 1.0 };
-                    point.pps_cbbtc = { pps_unstaked: 1.0, pps_staked: 1.0 };
-                    point.pps_tbtc = { pps_unstaked: 1.0, pps_staked: 1.0 };
-                });
-                console.log('PPS data not available, using PPS = 1.0');
-            }
-
-            // Функция расчета Fundamental Revenue
-            // ПОЛНОСТЬЮ повторяет логику Trading Revenue (учитывая ВСЕ чекбоксы)
-            // НО корректирует ТОЛЬКО Withdrawals на Yield Delta процент
-            // Формула: (включенный TVL) - (включенные Deposits - Fundamental_Withdrawals) + (включенные Admin_Fees) + (включенный YB)
-            // Где Fundamental_Withdrawals = Withdrawals × (1 + Yield_Delta%)
-            // Yield_Delta рассчитывается ОДИН РАЗ для последней точки как в index.html
-            function calculateFundamentalRevenue(
-                includeWbtc = true,
-                includeCbbtc = true,
-                includeTbtc = true,
-                includeWithdrawable = true,
-                includeDeposits = true,
-                includeWithdrawals = true,
-                includeAdminFees = true,
-                includeYbEmission = true
-            ) {
-                if (!ppsAvailable || fullProfitData.length === 0) return fullProfitData.map(d => d.profit);
-
-                // ===== НАЧАЛЬНЫЕ ЗНАЧЕНИЯ PPS ДЛЯ РАСЧЕТА ИСТОРИЧЕСКИХ YIELD DELTA =====
-                const firstPoint = fullProfitData[0];
-
-                // Начальные PPS для fundamental returns
-                const startPPS_wbtc = firstPoint.pps_wbtc.pps_unstaked;
-                const startPPS_cbbtc = firstPoint.pps_cbbtc.pps_unstaked;
-                const startPPS_tbtc = firstPoint.pps_tbtc.pps_unstaked;
-
-                // Начальные trading PPS из vaults_yield_data
-                const startTradingPPS_wbtc = typeof vaultsYieldData_wbtc !== 'undefined' && vaultsYieldData_wbtc.data.length > 0
-                    ? vaultsYieldData_wbtc.data[0].pps_btc : null;
-                const startTradingPPS_cbbtc = typeof vaultsYieldData_cbbtc !== 'undefined' && vaultsYieldData_cbbtc.data.length > 0
-                    ? vaultsYieldData_cbbtc.data[0].pps_btc : null;
-                const startTradingPPS_tbtc = typeof vaultsYieldData_tbtc !== 'undefined' && vaultsYieldData_tbtc.data.length > 0
-                    ? vaultsYieldData_tbtc.data[0].pps_btc : null;
-
-                // Создаем lookup для быстрого поиска trading PPS по timestamp
-                const tradingPPSLookup_wbtc = new Map();
-                const tradingPPSLookup_cbbtc = new Map();
-                const tradingPPSLookup_tbtc = new Map();
-
-                if (typeof vaultsYieldData_wbtc !== 'undefined' && vaultsYieldData_wbtc.data) {
-                    vaultsYieldData_wbtc.data.forEach(d => tradingPPSLookup_wbtc.set(d.timestamp, d.pps_btc));
-                }
-                if (typeof vaultsYieldData_cbbtc !== 'undefined' && vaultsYieldData_cbbtc.data) {
-                    vaultsYieldData_cbbtc.data.forEach(d => tradingPPSLookup_cbbtc.set(d.timestamp, d.pps_btc));
-                }
-                if (typeof vaultsYieldData_tbtc !== 'undefined' && vaultsYieldData_tbtc.data) {
-                    vaultsYieldData_tbtc.data.forEach(d => tradingPPSLookup_tbtc.set(d.timestamp, d.pps_btc));
-                }
-
-                console.log('[Historical Yield Delta Calculation - будет рассчитываться для каждой точки]');
-
-                let cumulativeDeposits = 0;
-                let cumulativeWithdrawals = 0;
-                let cumulativeAdminFeeWithdrawals = 0;
-
-                // Накопительные withdrawals по рынкам
-                let cumulativeWithdrawals_wbtc = 0;
-                let cumulativeWithdrawals_cbbtc = 0;
-                let cumulativeWithdrawals_tbtc = 0;
-                let cumulativeAdminFeeWithdrawals_wbtc = 0;
-                let cumulativeAdminFeeWithdrawals_cbbtc = 0;
-                let cumulativeAdminFeeWithdrawals_tbtc = 0;
-
-                return fullProfitData.map((point, i) => {
-                    const wbtc = fullWbtcData[i];
-                    const cbbtc = fullCbbtcData[i];
-                    const tbtc = fullTbtcData[i];
-
-                    // ===== РАСЧЕТ YIELD DELTA ДЛЯ ТЕКУЩЕЙ ТОЧКИ =====
-                    // Для каждой точки сравниваем returns от начала до этой точки
-
-                    // Fundamental returns (от начала до точки i)
-                    const currentPPS_wbtc = point.pps_wbtc.pps_unstaked;
-                    const currentPPS_cbbtc = point.pps_cbbtc.pps_unstaked;
-                    const currentPPS_tbtc = point.pps_tbtc.pps_unstaked;
-
-                    const fundamentalReturn_wbtc = startPPS_wbtc > 0 ? (currentPPS_wbtc - startPPS_wbtc) / startPPS_wbtc : 0;
-                    const fundamentalReturn_cbbtc = startPPS_cbbtc > 0 ? (currentPPS_cbbtc - startPPS_cbbtc) / startPPS_cbbtc : 0;
-                    const fundamentalReturn_tbtc = startPPS_tbtc > 0 ? (currentPPS_tbtc - startPPS_tbtc) / startPPS_tbtc : 0;
-
-                    // Trading returns (от начала до точки i) - ищем в vaults_yield_data
-                    const currentTradingPPS_wbtc = tradingPPSLookup_wbtc.get(point.timestamp);
-                    const currentTradingPPS_cbbtc = tradingPPSLookup_cbbtc.get(point.timestamp);
-                    const currentTradingPPS_tbtc = tradingPPSLookup_tbtc.get(point.timestamp);
-
-                    const tradingReturn_wbtc = (startTradingPPS_wbtc && currentTradingPPS_wbtc)
-                        ? (currentTradingPPS_wbtc - startTradingPPS_wbtc) / startTradingPPS_wbtc : 0;
-                    const tradingReturn_cbbtc = (startTradingPPS_cbbtc && currentTradingPPS_cbbtc)
-                        ? (currentTradingPPS_cbbtc - startTradingPPS_cbbtc) / startTradingPPS_cbbtc : 0;
-                    const tradingReturn_tbtc = (startTradingPPS_tbtc && currentTradingPPS_tbtc)
-                        ? (currentTradingPPS_tbtc - startTradingPPS_tbtc) / startTradingPPS_tbtc : 0;
-
-                    // Yield Delta для этой точки
-                    const yieldDelta_wbtc = tradingReturn_wbtc - fundamentalReturn_wbtc;
-                    const yieldDelta_cbbtc = tradingReturn_cbbtc - fundamentalReturn_cbbtc;
-                    const yieldDelta_tbtc = tradingReturn_tbtc - fundamentalReturn_tbtc;
-
-                    // Fundamental TVL - точная формула через соотношение PPS
-                    // Fundamental_TVL = Trading_TVL × (1 + Fundamental_Return) / (1 + Trading_Return)
-                    // Это правильно пересчитывает TVL с trading PPS на fundamental PPS
-                    let fundamentalTVL = 0;
-                    if (includeWbtc) {
-                        const trading_tvl_wbtc = wbtc.total_withdrawable_btc || 0;
-                        const ratio_wbtc = (1 + tradingReturn_wbtc) !== 0
-                            ? (1 + fundamentalReturn_wbtc) / (1 + tradingReturn_wbtc)
-                            : 1;
-                        fundamentalTVL += trading_tvl_wbtc * ratio_wbtc;
-                    }
-                    if (includeCbbtc) {
-                        const trading_tvl_cbbtc = cbbtc.total_withdrawable_btc || 0;
-                        const ratio_cbbtc = (1 + tradingReturn_cbbtc) !== 0
-                            ? (1 + fundamentalReturn_cbbtc) / (1 + tradingReturn_cbbtc)
-                            : 1;
-                        fundamentalTVL += trading_tvl_cbbtc * ratio_cbbtc;
-                    }
-                    if (includeTbtc) {
-                        const trading_tvl_tbtc = tbtc.total_withdrawable_btc || 0;
-                        const ratio_tbtc = (1 + tradingReturn_tbtc) !== 0
-                            ? (1 + fundamentalReturn_tbtc) / (1 + tradingReturn_tbtc)
-                            : 1;
-                        fundamentalTVL += trading_tvl_tbtc * ratio_tbtc;
-                    }
-
-                    // Накапливаем deposits/withdrawals по рынкам
-                    let deposits = 0;
-                    let withdrawals = 0;
-                    let adminFeeWithdrawals = 0;
-                    let adminFees = 0;
-
-                    if (includeWbtc) {
-                        deposits += wbtc.deposits_btc || 0;
-                        const wbtc_withdrawals = wbtc.withdrawals_btc || 0;
-                        const wbtc_adminFeeWithdrawals = currentContractVersion === 'old'
-                            ? (wbtc.admin_fees_btc || 0)
-                            : (wbtc.admin_fee_withdrawals_btc || 0);
-
-                        cumulativeWithdrawals_wbtc += wbtc_withdrawals;
-                        cumulativeAdminFeeWithdrawals_wbtc += wbtc_adminFeeWithdrawals;
-
-                        withdrawals += wbtc_withdrawals;
-                        adminFees += wbtc.admin_fees_btc || 0;
-                        adminFeeWithdrawals += wbtc_adminFeeWithdrawals;
-                    }
-                    if (includeCbbtc) {
-                        deposits += cbbtc.deposits_btc || 0;
-                        const cbbtc_withdrawals = cbbtc.withdrawals_btc || 0;
-                        const cbbtc_adminFeeWithdrawals = currentContractVersion === 'old'
-                            ? (cbbtc.admin_fees_btc || 0)
-                            : (cbbtc.admin_fee_withdrawals_btc || 0);
-
-                        cumulativeWithdrawals_cbbtc += cbbtc_withdrawals;
-                        cumulativeAdminFeeWithdrawals_cbbtc += cbbtc_adminFeeWithdrawals;
-
-                        withdrawals += cbbtc_withdrawals;
-                        adminFees += cbbtc.admin_fees_btc || 0;
-                        adminFeeWithdrawals += cbbtc_adminFeeWithdrawals;
-                    }
-                    if (includeTbtc) {
-                        deposits += tbtc.deposits_btc || 0;
-                        const tbtc_withdrawals = tbtc.withdrawals_btc || 0;
-                        const tbtc_adminFeeWithdrawals = currentContractVersion === 'old'
-                            ? (tbtc.admin_fees_btc || 0)
-                            : (tbtc.admin_fee_withdrawals_btc || 0);
-
-                        cumulativeWithdrawals_tbtc += tbtc_withdrawals;
-                        cumulativeAdminFeeWithdrawals_tbtc += tbtc_adminFeeWithdrawals;
-
-                        withdrawals += tbtc_withdrawals;
-                        adminFees += tbtc.admin_fees_btc || 0;
-                        adminFeeWithdrawals += tbtc_adminFeeWithdrawals;
-                    }
-
-                    cumulativeDeposits += deposits;
-                    cumulativeWithdrawals += withdrawals;
-                    cumulativeAdminFeeWithdrawals += adminFeeWithdrawals;
-
-                    // Применяем admin fee withdrawals если checkbox активен
-                    const includeAdminFeeWithdrawals = document.getElementById('toggleAdminFeeWithdrawals')?.checked ?? true;
-
-                    // Обычные withdrawals (БЕЗ применения yield delta)
-                    const effectiveWithdrawals = includeAdminFeeWithdrawals
-                        ? cumulativeWithdrawals + cumulativeAdminFeeWithdrawals
-                        : cumulativeWithdrawals;
-
-                    // Fundamental Admin Fees - точная формула через соотношение PPS
-                    let fundamentalAdminFees = 0;
-                    if (includeWbtc) {
-                        const trading_fees_wbtc = wbtc.admin_fees_btc || 0;
-                        const fees_to_apply_wbtc = includeAdminFeeWithdrawals
-                            ? trading_fees_wbtc + cumulativeAdminFeeWithdrawals_wbtc
-                            : trading_fees_wbtc;
-
-                        const ratio_wbtc = (1 + tradingReturn_wbtc) !== 0
-                            ? (1 + fundamentalReturn_wbtc) / (1 + tradingReturn_wbtc)
-                            : 1;
-                        fundamentalAdminFees += fees_to_apply_wbtc * ratio_wbtc;
-                    }
-                    if (includeCbbtc) {
-                        const trading_fees_cbbtc = cbbtc.admin_fees_btc || 0;
-                        const fees_to_apply_cbbtc = includeAdminFeeWithdrawals
-                            ? trading_fees_cbbtc + cumulativeAdminFeeWithdrawals_cbbtc
-                            : trading_fees_cbbtc;
-
-                        const ratio_cbbtc = (1 + tradingReturn_cbbtc) !== 0
-                            ? (1 + fundamentalReturn_cbbtc) / (1 + tradingReturn_cbbtc)
-                            : 1;
-                        fundamentalAdminFees += fees_to_apply_cbbtc * ratio_cbbtc;
-                    }
-                    if (includeTbtc) {
-                        const trading_fees_tbtc = tbtc.admin_fees_btc || 0;
-                        const fees_to_apply_tbtc = includeAdminFeeWithdrawals
-                            ? trading_fees_tbtc + cumulativeAdminFeeWithdrawals_tbtc
-                            : trading_fees_tbtc;
-
-                        const ratio_tbtc = (1 + tradingReturn_tbtc) !== 0
-                            ? (1 + fundamentalReturn_tbtc) / (1 + tradingReturn_tbtc)
-                            : 1;
-                        fundamentalAdminFees += fees_to_apply_tbtc * ratio_tbtc;
-                    }
-
-                    // ПОЛНОСТЬЮ повторяем логику зеленой линии с учетом чекбоксов
-                    // НО используем fundamental значения (с применением yield delta)
-                    let fundamentalRevenue = 0;
-
-                    if (includeWithdrawable) {
-                        // Используем FUNDAMENTAL TVL (с yield delta)
-                        fundamentalRevenue += fundamentalTVL;
-                    }
-                    if (includeDeposits) {
-                        // Deposits БЕЗ изменений
-                        fundamentalRevenue -= cumulativeDeposits;
-                    }
-                    if (includeWithdrawals) {
-                        // Используем обычные withdrawals БЕЗ yield delta
-                        fundamentalRevenue += effectiveWithdrawals;
-                    }
-                    if (includeAdminFees) {
-                        // Используем FUNDAMENTAL admin fees (с yield delta)
-                        fundamentalRevenue += fundamentalAdminFees;
-                    }
-                    // Добавляем YB эмиссию с применением yield delta
-                    if (includeYbEmission) {
-                        if (includeWbtc && point.yb_emission_wbtc_btc) {
-                            fundamentalRevenue += point.yb_emission_wbtc_btc * (1 - yieldDelta_wbtc);
-                        }
-                        if (includeCbbtc && point.yb_emission_cbbtc_btc) {
-                            fundamentalRevenue += point.yb_emission_cbbtc_btc * (1 - yieldDelta_cbbtc);
-                        }
-                        if (includeTbtc && point.yb_emission_tbtc_btc) {
-                            fundamentalRevenue += point.yb_emission_tbtc_btc * (1 - yieldDelta_tbtc);
-                        }
-                    }
-
-                    return fundamentalRevenue;
-                });
-            }
-
-            // ====== END PPS DATA & FUNDAMENTAL REVENUE CALCULATION ======
-
-            // Хранилище полных данных (нужно для range slider и calculateFundamentalRevenue)
-            const fullProfitData = [...profitData];
-            const fullWbtcData = [...wbtcData];
-            const fullCbbtcData = [...cbbtcData];
-            const fullTbtcData = [...tbtcData];
-
             // Profit Chart
             let profitChart;  // Объявляем переменную заранее
-            const datasets = [
-                {
-                    label: 'Accumulated Revenue (Trading)',
-                    data: profitData.map(d => ({x: d.timestamp * 1000, y: d.profit})),
-                    borderColor: '#10b981',  // Всегда зеленый
-                    backgroundColor: 'rgba(16, 185, 129, 0.1)',
-                    borderWidth: 2,
-                    fill: true,
-                    tension: 0.4,
-                    pointRadius: 0,
-                    pointHoverRadius: 5,
-                    stepped: false,
-                    spanGaps: true
-                },
-                {
-                    label: 'Fundamental Revenue (PPS-based)',
-                    data: calculateFundamentalRevenue().map((y, i) => ({x: profitData[i].timestamp * 1000, y: y})),
-                    borderColor: '#8b5cf6',  // Фиолетовый
-                    backgroundColor: 'rgba(139, 92, 246, 0.05)',
-                    borderWidth: 2,
-                    borderDash: [5, 5],  // Пунктирная линия
-                    fill: false,
-                    tension: 0.4,
-                    pointRadius: 0,
-                    pointHoverRadius: 5,
-                    stepped: false,
-                    spanGaps: true,
-                    hidden: true  // По умолчанию скрываем
-                }
-            ];
+            const datasets = [{
+                label: 'in BTC',
+                data: profitData.map(d => ({x: d.timestamp * 1000, y: d.profit})),
+                borderColor: '#10b981',  // Всегда зеленый
+                backgroundColor: 'rgba(16, 185, 129, 0.1)',
+                borderWidth: 2,
+                fill: true,
+                tension: 0.4,
+                pointRadius: 0,
+                pointHoverRadius: 5,
+                stepped: false,
+                spanGaps: true
+            }];
 
             profitChart = new Chart(document.getElementById('profitChart'), {
                 type: 'line',
@@ -1058,109 +678,51 @@
                                 },
                                 afterLabel: ctx => {
                                     const point = profitData[ctx.dataIndex];
-                                    const datasetIndex = ctx.datasetIndex;
                                     const netDeposited = point.deposits - point.withdrawals;
                                     const percentOfTVL = (point.profit / finalTVL * 100).toFixed(2);
 
-                                    const lines = [];
+                                    const lines = [
+                                        '',
+                                        '📊 ACCUMULATED REVENUE CALCULATION:',
+                                        '─────────────────────',
+                                        `TVL (available):       +${point.withdrawable.toFixed(4)} BTC`,
+                                        `Net Deposited:        -${netDeposited.toFixed(4)} BTC`,
+                                        `  (Deposits: ${point.deposits.toFixed(2)} BTC)`,
+                                        `  (Withdrawals: ${point.withdrawals.toFixed(2)} BTC)`,
+                                        `Admin Fees:           +${point.admin_fees.toFixed(4)} BTC`
+                                    ];
 
-                                    // Если это Fundamental Revenue (datasetIndex === 1)
-                                    if (datasetIndex === 1 && ppsAvailable) {
-                                        const wbtc = wbtcData[ctx.dataIndex];
-                                        const cbbtc = cbbtcData[ctx.dataIndex];
-                                        const tbtc = tbtcData[ctx.dataIndex];
+                                    // Добавляем YB emission по рынкам если есть
+                                    const totalYbEmission = (point.yb_emission_wbtc_btc || 0) +
+                                                           (point.yb_emission_cbbtc_btc || 0) +
+                                                           (point.yb_emission_tbtc_btc || 0);
 
-                                        // Первая точка для расчета изменения PPS
-                                        const firstPoint = profitData[0];
-                                        const initialPPS_wbtc = firstPoint.pps_wbtc.pps_unstaked;
-                                        const initialPPS_cbbtc = firstPoint.pps_cbbtc.pps_unstaked;
-                                        const initialPPS_tbtc = firstPoint.pps_tbtc.pps_unstaked;
-
-                                        const initialTVL_wbtc = wbtcData[0].total_withdrawable_btc || 0;
-                                        const initialTVL_cbbtc = cbbtcData[0].total_withdrawable_btc || 0;
-                                        const initialTVL_tbtc = tbtcData[0].total_withdrawable_btc || 0;
-
-                                        // Fundamental TVL (PPS-based)
-                                        const fundamentalTVL_wbtc = initialTVL_wbtc * (point.pps_wbtc.pps_unstaked / initialPPS_wbtc);
-                                        const fundamentalTVL_cbbtc = initialTVL_cbbtc * (point.pps_cbbtc.pps_unstaked / initialPPS_cbbtc);
-                                        const fundamentalTVL_tbtc = initialTVL_tbtc * (point.pps_tbtc.pps_unstaked / initialPPS_tbtc);
-                                        const totalFundamentalTVL = fundamentalTVL_wbtc + fundamentalTVL_cbbtc + fundamentalTVL_tbtc;
-
+                                    if (totalYbEmission > 0) {
                                         lines.push('');
-                                        lines.push('📊 FUNDAMENTAL REVENUE (PPS-BASED):');
-                                        lines.push('─────────────────────');
-                                        lines.push(`Fundamental TVL:      +${totalFundamentalTVL.toFixed(4)} BTC`);
-                                        lines.push('  Based on PPS growth:');
-                                        lines.push(`  WBTC:  ${fundamentalTVL_wbtc.toFixed(4)} BTC (PPS: ${point.pps_wbtc.pps_unstaked.toFixed(6)})`);
-                                        lines.push(`  cbBTC: ${fundamentalTVL_cbbtc.toFixed(4)} BTC (PPS: ${point.pps_cbbtc.pps_unstaked.toFixed(6)})`);
-                                        lines.push(`  tBTC:  ${fundamentalTVL_tbtc.toFixed(4)} BTC (PPS: ${point.pps_tbtc.pps_unstaked.toFixed(6)})`);
-                                        lines.push(`Net Deposited:        -${netDeposited.toFixed(4)} BTC`);
-                                        lines.push(`  (Deposits: ${point.deposits.toFixed(2)} BTC)`);
-                                        lines.push(`  (Withdrawals: ${point.withdrawals.toFixed(2)} BTC)`);
-                                        lines.push(`Admin Fees:           +${point.admin_fees.toFixed(4)} BTC`);
-                                        lines.push('─────────────────────');
-
-                                        const fundamentalRevenue = ctx.parsed.y;
-
-                                        // Реальный TVL
-                                        const realTVL = wbtc.total_withdrawable_btc + cbbtc.total_withdrawable_btc + tbtc.total_withdrawable_btc;
-
-                                        // Yield Delta в процентах
-                                        const yieldDeltaPercent = totalFundamentalTVL > 0
-                                            ? ((realTVL - totalFundamentalTVL) / totalFundamentalTVL) * 100
-                                            : 0;
-
-                                        const yieldDeltaBTC = point.profit - fundamentalRevenue;
-
-                                        lines.push(`💰 FUNDAMENTAL REV:   ${fundamentalRevenue.toFixed(4)} BTC`);
-                                        lines.push(`📈 Yield Delta:       ${yieldDeltaPercent >= 0 ? '+' : ''}${yieldDeltaPercent.toFixed(4)}%`);
-                                        lines.push(`   (${yieldDeltaBTC >= 0 ? '+' : ''}${yieldDeltaBTC.toFixed(4)} BTC)`);
-                                        lines.push('');
-                                        lines.push('Formula: TVL - (Deposits - Fundamental_Withdrawals) + Admin_Fees');
-                                        lines.push('Fundamental_Withdrawals = Withdrawals × (1 + Yield_Delta%)');
-                                    } else {
-                                        // Trading Revenue (оригинальная логика)
-                                        lines.push('');
-                                        lines.push('📊 ACCUMULATED REVENUE (TRADING):');
-                                        lines.push('─────────────────────');
-                                        lines.push(`TVL (available):       +${point.withdrawable.toFixed(4)} BTC`);
-                                        lines.push(`Net Deposited:        -${netDeposited.toFixed(4)} BTC`);
-                                        lines.push(`  (Deposits: ${point.deposits.toFixed(2)} BTC)`);
-                                        lines.push(`  (Withdrawals: ${point.withdrawals.toFixed(2)} BTC)`);
-                                        lines.push(`Admin Fees:           +${point.admin_fees.toFixed(4)} BTC`);
-
-                                        // Добавляем YB emission по рынкам если есть
-                                        const totalYbEmission = (point.yb_emission_wbtc_btc || 0) +
-                                                               (point.yb_emission_cbbtc_btc || 0) +
-                                                               (point.yb_emission_tbtc_btc || 0);
-
-                                        if (totalYbEmission > 0) {
-                                            lines.push('');
-                                            lines.push('YB Emission by Market:');
-                                            if (point.yb_emission_wbtc_btc) {
-                                                lines.push(`  WBTC:  +${point.yb_emission_wbtc_btc.toFixed(4)} BTC`);
-                                            }
-                                            if (point.yb_emission_cbbtc_btc) {
-                                                lines.push(`  cbBTC: +${point.yb_emission_cbbtc_btc.toFixed(4)} BTC`);
-                                            }
-                                            if (point.yb_emission_tbtc_btc) {
-                                                lines.push(`  tBTC:  +${point.yb_emission_tbtc_btc.toFixed(4)} BTC`);
-                                            }
-                                            lines.push(`  TOTAL: +${totalYbEmission.toFixed(4)} BTC`);
+                                        lines.push('YB Emission by Market:');
+                                        if (point.yb_emission_wbtc_btc) {
+                                            lines.push(`  WBTC:  +${point.yb_emission_wbtc_btc.toFixed(4)} BTC`);
                                         }
-
-                                        const totalProfit = point.profit + totalYbEmission;
-
-                                        lines.push('─────────────────────');
-                                        lines.push(`💰 BALANCE (w/o YB):  ${point.profit.toFixed(4)} BTC (${percentOfTVL}% of TVL)`);
-
-                                        if (totalYbEmission > 0) {
-                                            lines.push(`💰 BALANCE (w/ YB):   ${totalProfit.toFixed(4)} BTC`);
+                                        if (point.yb_emission_cbbtc_btc) {
+                                            lines.push(`  cbBTC: +${point.yb_emission_cbbtc_btc.toFixed(4)} BTC`);
                                         }
-
-                                        lines.push('');
-                                        lines.push('Formula: TVL - (Deposits - Withdrawals) + Admin Fees + YB');
+                                        if (point.yb_emission_tbtc_btc) {
+                                            lines.push(`  tBTC:  +${point.yb_emission_tbtc_btc.toFixed(4)} BTC`);
+                                        }
+                                        lines.push(`  TOTAL: +${totalYbEmission.toFixed(4)} BTC`);
                                     }
+
+                                    const totalProfit = point.profit + totalYbEmission;
+
+                                    lines.push('─────────────────────');
+                                    lines.push(`💰 BALANCE (w/o YB):  ${point.profit.toFixed(4)} BTC (${percentOfTVL}% of TVL)`);
+
+                                    if (totalYbEmission > 0) {
+                                        lines.push(`💰 BALANCE (w/ YB):   ${totalProfit.toFixed(4)} BTC`);
+                                    }
+
+                                    lines.push('');
+                                    lines.push('Formula: TVL - (Deposits - Withdrawals) + Admin Fees + YB');
 
                                     return lines;
                                 }
@@ -1307,6 +869,12 @@
             });
 
             // ====== RANGE SLIDER LOGIC ======
+
+            // Хранилище полных данных
+            const fullProfitData = [...profitData];
+            const fullWbtcData = [...wbtcData];
+            const fullCbbtcData = [...cbbtcData];
+            const fullTbtcData = [...tbtcData];
 
             let currentRangeStart = 0;
             let currentRangeEnd = fullProfitData.length - 1;
@@ -1605,26 +1173,6 @@
                 document.getElementById('finalProfit').textContent = finalValue.toFixed(8) + ' BTC';
                 document.getElementById('answerBox').className = 'answer';  // Всегда зеленый
 
-                // Обновляем Fundamental Revenue линию (dataset index 1)
-                if (ppsAvailable && profitChart.data.datasets.length > 1) {
-                    const fundamentalRevenueData = calculateFundamentalRevenue(
-                        includeWbtc,
-                        includeCbbtc,
-                        includeTbtc,
-                        includeWithdrawable,
-                        includeDeposits,
-                        includeWithdrawals,
-                        includeAdminFees,
-                        includeYbEmission
-                    );
-                    const fundamentalRangeData = fundamentalRevenueData.slice(currentRangeStart, currentRangeEnd + 1);
-
-                    profitChart.data.datasets[1].data = profitData.map((d, i) => ({
-                        x: d.timestamp * 1000,
-                        y: fundamentalRangeData[i]
-                    }));
-                }
-
                 profitChart.update();
             }
 
@@ -1682,23 +1230,6 @@
                 document.getElementById('toggleYbEmission').checked = false;
             }
 
-            // Обработчик для Fundamental Revenue
-            document.getElementById('toggleFundamental').addEventListener('change', function() {
-                const showFundamental = this.checked;
-                // Показываем/скрываем вторую линию графика (dataset index 1)
-                profitChart.data.datasets[1].hidden = !showFundamental;
-                profitChart.update();
-            });
-
-            // Проверяем доступность PPS данных
-            if (!ppsAvailable) {
-                // Если PPS данных нет, отключаем галочку и скрываем линию
-                document.getElementById('toggleFundamental').disabled = true;
-                document.getElementById('toggleFundamental').checked = false;
-                profitChart.data.datasets[1].hidden = true;
-                profitChart.update();
-            }
-
             // Показываем контент
             document.getElementById('loading').style.display = 'none';
             document.getElementById('content').style.display = 'block';
@@ -1718,7 +1249,6 @@
     </script>
 </body>
 </html>
-
 
 
 
