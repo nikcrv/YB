@@ -1,10 +1,10 @@
-// Last updated: 2025-11-24 06:57:49 UTC
+// Last updated: 2025-11-24 07:10:41 UTC
 const old_yieldData_tbtc = {
   "metadata": {
     "market": "tBTC (OLD)",
     "contract": "0x2B513eBe7070Cff91cf699a0BFe5075020C732FF",
-    "collected": "2025-11-24T06:56:09.203120Z",
-    "points": 7573,
+    "collected": "2025-11-24T07:09:04.921962Z",
+    "points": 7578,
     "synchronized": true,
     "transaction_based": true,
     "zero_loss": true,
@@ -68166,6 +68166,51 @@ const old_yieldData_tbtc = {
       "total_withdrawable_btc": 23.58960429557485,
       "deposits_btc": 0,
       "withdrawals_btc": 0.010508216400198014,
+      "admin_fee_withdrawals_btc": 0.0,
+      "admin_fees_btc": 0.0
+    },
+    {
+      "block": 23867084,
+      "timestamp": 1763967467,
+      "total_withdrawable_btc": 23.58440668906638,
+      "deposits_btc": 0,
+      "withdrawals_btc": 0.005122546432805374,
+      "admin_fee_withdrawals_btc": 0.0,
+      "admin_fees_btc": 0.0
+    },
+    {
+      "block": 23867098,
+      "timestamp": 1763967635,
+      "total_withdrawable_btc": 23.577659450717558,
+      "deposits_btc": 0,
+      "withdrawals_btc": 0.006655527847827899,
+      "admin_fee_withdrawals_btc": 0.0,
+      "admin_fees_btc": 0.0
+    },
+    {
+      "block": 23867107,
+      "timestamp": 1763967743,
+      "total_withdrawable_btc": 23.567017945818495,
+      "deposits_btc": 0,
+      "withdrawals_btc": 0.010507942036972877,
+      "admin_fee_withdrawals_btc": 0.0,
+      "admin_fees_btc": 0.0
+    },
+    {
+      "block": 23867124,
+      "timestamp": 1763967947,
+      "total_withdrawable_btc": 23.561048598495088,
+      "deposits_btc": 0,
+      "withdrawals_btc": 0.005884361521190151,
+      "admin_fee_withdrawals_btc": 0.0,
+      "admin_fees_btc": 0.0
+    },
+    {
+      "block": 23867133,
+      "timestamp": 1763968055,
+      "total_withdrawable_btc": 23.54677298823353,
+      "deposits_btc": 0,
+      "withdrawals_btc": 0.014099120897593272,
       "admin_fee_withdrawals_btc": 0.0,
       "admin_fees_btc": 0.0
     }
