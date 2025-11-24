@@ -1,20 +1,20 @@
-// Last updated: 2025-11-24 14:25:51 UTC
+// Last updated: 2025-11-24 14:39:00 UTC
 const yieldData_tbtc = {
   "metadata": {
     "contract": "0xaC0a340C1644321D0BBc6404946d828c1EBfAC92",
     "start_date": "2025-11-12T20:14:11",
-    "end_date": "2025-11-24T18:24:47",
+    "end_date": "2025-11-24T18:37:59",
     "data_points": 288,
     "step_seconds": 3600
   },
   "metrics": {
-    "total_return": -0.042813384156573035,
-    "total_return_pct": -4.281338415657304,
-    "apr": -0.738002181318235,
-    "apr_pct": -73.8002181318235,
-    "days": 11.924027777777777,
+    "total_return": -0.042815720914096814,
+    "total_return_pct": -4.281572091409681,
+    "apr": -0.737752057377019,
+    "apr_pct": -73.7752057377019,
+    "days": 11.933194444444444,
     "start_pps": 0.9995132006214766,
-    "end_pps": 0.9567206579937034
+    "end_pps": 0.9567183223737118
   },
   "data": [
     {
@@ -2601,12 +2601,12 @@ const yieldData_tbtc = {
       "btc_price": 86269.6656515316
     },
     {
-      "block": 23869290,
-      "timestamp": 1763994287,
-      "datetime": "2025-11-24T18:24:47",
-      "pps_btc": 0.9567206579937034,
-      "ret_step": -1.9602571626853538e-06,
-      "ret_step_pct": -0.00019602571626853535,
+      "block": 23869354,
+      "timestamp": 1763995079,
+      "datetime": "2025-11-24T18:37:59",
+      "pps_btc": 0.9567183223737118,
+      "ret_step": null,
+      "ret_step_pct": null,
       "btc_price": 86269.6656515316
     }
   ]
