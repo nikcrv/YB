@@ -1,4 +1,4 @@
-// Last updated: 2025-11-25 21:08:04 UTC
+// Last updated: 2025-11-25 21:21:05 UTC
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -1295,13 +1295,8 @@
                         profit -= cumulativeDeposits;
                     }
                     if (includeWithdrawals) {
-                        // Если Include Admin Fee Withdrawals активен, вычитаем admin fee withdrawals
-                        // из обычных withdrawals чтобы избежать двойного учёта
-                        // (admin fee withdrawals записываются и в withdrawals_btc и в admin_fees падение)
-                        const effectiveWithdrawals = includeAdminFeeWithdrawals
-                            ? cumulativeWithdrawals - cumulativeAdminFeeWithdrawals
-                            : cumulativeWithdrawals;
-                        profit += effectiveWithdrawals;
+                        // withdrawals_btc уже не включает admin fee withdrawals (исправлено в данных)
+                        profit += cumulativeWithdrawals;
                     }
                     if (includeAdminFees) {
                         // Компенсируем уменьшение adminFees при выводе admin fee
