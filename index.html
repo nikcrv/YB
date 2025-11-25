@@ -1,4 +1,4 @@
-// Last updated: 2025-11-25 18:34:56 UTC
+// Last updated: 2025-11-25 18:51:48 UTC
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -2278,7 +2278,8 @@
             console.log('Creating charts for', currentYieldData.data.length, 'data points');
 
             // Обновляем заголовок графика PPS с названием текущего маркета
-            const marketName = marketData[currentMarket]?.name || currentMarket;
+            const marketConfig = MARKETS[currentContractVersion]?.[currentMarket];
+            const marketName = marketConfig?.name || currentMarket;
             document.getElementById('ppsChartTitle').textContent = `Price Per Share ${marketName} (BTC)`;
 
             // Определяем размер экрана для адаптивных настроек
@@ -2812,7 +2813,9 @@
 
             // Если у текущего маркета нет BTC price, берём из cbBTC или WBTC
             if (!hasBtcPriceData) {
-                const fallbackSource = marketData.cbbtc?.data || marketData.wbtc?.data;
+                const fallbackSource = currentContractVersion === 'old'
+                    ? (oldCbbtcData?.data || oldWbtcData?.data)
+                    : (cbbtcData?.data || wbtcData?.data);
                 if (fallbackSource) {
                     // Интерполируем BTC price по timestamp
                     btcPriceData = validPpsData.map(d => {

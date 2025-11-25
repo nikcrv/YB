@@ -1,4 +1,4 @@
-// Last updated: 2025-11-25 18:34:56 UTC
+// Last updated: 2025-11-25 18:51:48 UTC
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -606,19 +606,20 @@
                 cumulativeWithdrawals += withdrawals;
                 cumulativeAdminFeeWithdrawals += adminFeeWithdrawals;
 
-                // Добавляем admin fee withdrawals к withdrawals если checkbox активен
+                // Include Admin Fee Withdrawals в расчёт
                 const includeAdminFeeWithdrawals = document.getElementById('toggleAdminFeeWithdrawals')?.checked ?? true;
+
+                // Эффективные withdrawals (с учётом admin fee withdrawals если включено)
                 const effectiveWithdrawals = includeAdminFeeWithdrawals
                     ? cumulativeWithdrawals + cumulativeAdminFeeWithdrawals
                     : cumulativeWithdrawals;
 
                 // Вычисляем прибыль
-                // Если включен checkbox, компенсируем уменьшение adminFees добавлением выведенной суммы
-                const effectiveAdminFees = includeAdminFeeWithdrawals
-                    ? adminFees + cumulativeAdminFeeWithdrawals
-                    : adminFees;
+                // profit = TVL - (Deposits - Withdrawals) + AdminFees
+                // Admin Fee Withdrawals уже учтены через effectiveWithdrawals
+                // (больше withdrawals → меньше netDeposited → больше profit)
                 const netDeposited = cumulativeDeposits - effectiveWithdrawals;
-                const profit = totalWithdrawable - netDeposited + effectiveAdminFees;
+                const profit = totalWithdrawable - netDeposited + adminFees;
 
                 return {
                     timestamp: wbtc.timestamp,
@@ -1261,33 +1262,20 @@
                     if (includeDeposits) {
                         profit -= cumulativeDeposits;
                     }
-                    // Обработка admin fee withdrawals (независимо от других галочек)
+                    // Обработка admin fee withdrawals
                     const includeAdminFeeWithdrawals = document.getElementById('toggleAdminFeeWithdrawals')?.checked ?? true;
-                    let adminFeeWithdrawalsAdded = false;
 
                     if (includeWithdrawals) {
+                        // Admin fee withdrawals добавляются к withdrawals если checkbox включён
                         const effectiveWithdrawals = includeAdminFeeWithdrawals
                             ? cumulativeWithdrawals + cumulativeAdminFeeWithdrawals
                             : cumulativeWithdrawals;
                         profit += effectiveWithdrawals;
-                        if (includeAdminFeeWithdrawals) {
-                            adminFeeWithdrawalsAdded = true;
-                        }
                     }
 
                     if (includeAdminFees) {
-                        const effectiveAdminFees = includeAdminFeeWithdrawals
-                            ? adminFees + cumulativeAdminFeeWithdrawals
-                            : adminFees;
-                        profit += effectiveAdminFees;
-                        if (includeAdminFeeWithdrawals) {
-                            adminFeeWithdrawalsAdded = true;
-                        }
-                    }
-
-                    // Если admin fee withdrawals включены, но они еще не были добавлены ни через withdrawals, ни через admin fees
-                    if (includeAdminFeeWithdrawals && !adminFeeWithdrawalsAdded) {
-                        profit += cumulativeAdminFeeWithdrawals;
+                        // Admin fees без удвоения admin fee withdrawals
+                        profit += adminFees;
                     }
 
                     // Добавляем YB эмиссию по рынкам если галочка активна
