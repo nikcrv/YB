@@ -1,4 +1,4 @@
-// Last updated: 2025-11-25 17:09:05 UTC
+// Last updated: 2025-11-25 17:24:06 UTC
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -417,8 +417,11 @@
             cursor: pointer;
             display: flex;
             align-items: center;
+            justify-content: center;
             gap: 4px;
             transition: all 0.2s;
+            height: 22px;
+            box-sizing: border-box;
         }
         .share-button:hover {
             background: rgba(59, 130, 246, 0.3);
@@ -432,6 +435,15 @@
         .share-button.twitter:hover {
             background: rgba(0, 0, 0, 0.5);
             border-color: rgba(255, 255, 255, 0.4);
+        }
+        .share-button.copy {
+            background: rgba(34, 197, 94, 0.2);
+            border-color: rgba(34, 197, 94, 0.4);
+            color: #4ade80;
+        }
+        .share-button.copy:hover {
+            background: rgba(34, 197, 94, 0.3);
+            border-color: rgba(34, 197, 94, 0.6);
         }
         .share-button svg {
             width: 14px;
@@ -502,6 +514,26 @@
             .chart-title {
                 font-size: 0.95em;
                 margin-bottom: 8px;
+            }
+
+            .share-buttons {
+                gap: 6px;
+            }
+
+            .share-button {
+                padding: 3px 6px;
+                height: 20px;
+            }
+
+            .share-button svg {
+                width: 12px;
+                height: 12px;
+            }
+
+            .btc-price-toggle {
+                top: 30px;
+                right: 15px;
+                font-size: 0.65em;
             }
 
             canvas {
@@ -1110,94 +1142,108 @@
 
         function renderContent() {
             document.getElementById('content-area').innerHTML = `
-                <div id="fundamental-metrics" style="margin-bottom: 12px;">
-                    <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 8px;">
-                        <h3 style="color: #94a3b8; font-size: 14px; font-weight: 600; margin: 0;">Fundamental (PPS-based)</h3>
-                        <label id="emission-fundamental-label" style="display: flex; align-items: center; gap: 6px; cursor: pointer; margin-left: auto;">
-                            <input type="checkbox" id="emission-fundamental-toggle" onchange="toggleEmissionFundamental()" checked style="cursor: pointer;">
-                            <span style="color: #cbd5e1; font-size: 12px;">+ YB Emission (converted to BTC)</span>
-                        </label>
-                        <div id="emission-metrics-fund" style="display: none; gap: 8px; align-items: center;">
-                            <div style="display: flex; align-items: center; gap: 4px;">
-                                <span style="color: #64748b; font-size: 11px;">Yield:</span>
-                                <span id="emission-boost-fund" style="color: #10b981; font-size: 11px; font-weight: 600;">-</span>
-                            </div>
-                            <div style="display: flex; align-items: center; gap: 4px;">
-                                <span style="color: #64748b; font-size: 11px;">APR:</span>
-                                <span id="emission-apr-fund" style="color: #10b981; font-size: 11px; font-weight: 600;">-</span>
-                            </div>
-                        </div>
+                <div id="metricsContainer" style="position: relative; background: #1e293b; border-radius: 12px; padding: 20px; margin-bottom: 20px;">
+                    <div class="share-buttons" style="top: 12px;">
+                        <button class="share-button copy" onclick="copyMetricsScreenshot()" title="Copy to clipboard">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
+                        </button>
+                        <button class="share-button telegram" onclick="shareMetricsToTelegram()" title="Share to Telegram">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+                        </button>
+                        <button class="share-button twitter" onclick="shareMetricsToTwitter()" title="Share to X/Twitter">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                        </button>
                     </div>
-                    <div class="metrics-grid">
-                        <div class="metric-card">
-                            <div class="metric-label">Total Return</div>
-                            <div class="metric-value" id="total-return-fund"></div>
-                        </div>
-                        <div class="metric-card">
-                            <div class="metric-label">Annualized APR</div>
-                            <div class="metric-value" id="apr-fund"></div>
-                        </div>
-                        <div class="metric-card">
-                            <div class="metric-label">Start PPS</div>
-                            <div class="metric-value" id="start-pps-fund"></div>
-                        </div>
-                        <div class="metric-card">
-                            <div class="metric-label">End PPS</div>
-                            <div class="metric-value" id="end-pps-fund"></div>
-                        </div>
-                        <div class="metric-card">
-                            <div class="metric-label">Yield Delta</div>
-                            <div class="metric-value" id="yield-delta"></div>
-                        </div>
-                        <div class="metric-card">
-                            <div class="metric-label">APR Delta</div>
-                            <div class="metric-value" id="apr-delta"></div>
-                        </div>
-                    </div>
-                </div>
 
-                <div id="withdrawable-metrics" style="display: block;">
-                    <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 8px;">
-                        <h3 style="color: #94a3b8; font-size: 14px; font-weight: 600; margin: 0;">Withdrawable (Trading)</h3>
-                        <label id="emission-withdrawable-label" style="display: flex; align-items: center; gap: 6px; cursor: pointer; margin-left: auto;">
-                            <input type="checkbox" id="emission-withdrawable-toggle" onchange="toggleEmissionWithdrawable()" checked style="cursor: pointer;">
-                            <span style="color: #cbd5e1; font-size: 12px;">+ YB Emission (converted to BTC)</span>
-                        </label>
-                        <div id="emission-metrics-withdrawable" style="display: none; gap: 8px; align-items: center;">
-                            <div style="display: flex; align-items: center; gap: 4px;">
-                                <span style="color: #64748b; font-size: 11px;">Yield:</span>
-                                <span id="emission-boost-withdrawable" style="color: #10b981; font-size: 11px; font-weight: 600;">-</span>
+                    <div id="fundamental-metrics" style="margin-bottom: 16px;">
+                        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 8px;">
+                            <h3 style="color: #94a3b8; font-size: 14px; font-weight: 600; margin: 0;">Fundamental (PPS-based)</h3>
+                            <label id="emission-fundamental-label" style="display: flex; align-items: center; gap: 6px; cursor: pointer; margin-left: auto;">
+                                <input type="checkbox" id="emission-fundamental-toggle" onchange="toggleEmissionFundamental()" checked style="cursor: pointer;">
+                                <span style="color: #cbd5e1; font-size: 12px;">+ YB Emission</span>
+                            </label>
+                            <div id="emission-metrics-fund" style="display: none; gap: 8px; align-items: center;">
+                                <div style="display: flex; align-items: center; gap: 4px;">
+                                    <span style="color: #64748b; font-size: 11px;">Yield:</span>
+                                    <span id="emission-boost-fund" style="color: #10b981; font-size: 11px; font-weight: 600;">-</span>
+                                </div>
+                                <div style="display: flex; align-items: center; gap: 4px;">
+                                    <span style="color: #64748b; font-size: 11px;">APR:</span>
+                                    <span id="emission-apr-fund" style="color: #10b981; font-size: 11px; font-weight: 600;">-</span>
+                                </div>
                             </div>
-                            <div style="display: flex; align-items: center; gap: 4px;">
-                                <span style="color: #64748b; font-size: 11px;">APR:</span>
-                                <span id="emission-apr-withdrawable" style="color: #10b981; font-size: 11px; font-weight: 600;">-</span>
+                        </div>
+                        <div class="metrics-grid">
+                            <div class="metric-card">
+                                <div class="metric-label">Total Return</div>
+                                <div class="metric-value" id="total-return-fund"></div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-label">Annualized APR</div>
+                                <div class="metric-value" id="apr-fund"></div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-label">Start PPS</div>
+                                <div class="metric-value" id="start-pps-fund"></div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-label">End PPS</div>
+                                <div class="metric-value" id="end-pps-fund"></div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-label">Yield Delta</div>
+                                <div class="metric-value" id="yield-delta"></div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-label">APR Delta</div>
+                                <div class="metric-value" id="apr-delta"></div>
                             </div>
                         </div>
                     </div>
-                    <div class="metrics-grid">
-                        <div class="metric-card">
-                            <div class="metric-label">Total Return</div>
-                            <div class="metric-value" id="total-return"></div>
+
+                    <div id="withdrawable-metrics" style="display: block;">
+                        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 8px;">
+                            <h3 style="color: #94a3b8; font-size: 14px; font-weight: 600; margin: 0;">Withdrawable (Trading)</h3>
+                            <label id="emission-withdrawable-label" style="display: flex; align-items: center; gap: 6px; cursor: pointer; margin-left: auto;">
+                                <input type="checkbox" id="emission-withdrawable-toggle" onchange="toggleEmissionWithdrawable()" checked style="cursor: pointer;">
+                                <span style="color: #cbd5e1; font-size: 12px;">+ YB Emission</span>
+                            </label>
+                            <div id="emission-metrics-withdrawable" style="display: none; gap: 8px; align-items: center;">
+                                <div style="display: flex; align-items: center; gap: 4px;">
+                                    <span style="color: #64748b; font-size: 11px;">Yield:</span>
+                                    <span id="emission-boost-withdrawable" style="color: #10b981; font-size: 11px; font-weight: 600;">-</span>
+                                </div>
+                                <div style="display: flex; align-items: center; gap: 4px;">
+                                    <span style="color: #64748b; font-size: 11px;">APR:</span>
+                                    <span id="emission-apr-withdrawable" style="color: #10b981; font-size: 11px; font-weight: 600;">-</span>
+                                </div>
+                            </div>
                         </div>
-                        <div class="metric-card">
-                            <div class="metric-label">Annualized APR</div>
-                            <div class="metric-value" id="apr"></div>
-                        </div>
-                        <div class="metric-card">
-                            <div class="metric-label">Start PPS</div>
-                            <div class="metric-value" id="start-pps"></div>
-                        </div>
-                        <div class="metric-card">
-                            <div class="metric-label">End PPS</div>
-                            <div class="metric-value" id="end-pps"></div>
-                        </div>
-                        <div class="metric-card">
-                            <div class="metric-label">Period</div>
-                            <div class="metric-value" id="period"></div>
-                        </div>
-                        <div class="metric-card">
-                            <div class="metric-label">Data Points</div>
-                            <div class="metric-value" id="data-points"></div>
+                        <div class="metrics-grid">
+                            <div class="metric-card">
+                                <div class="metric-label">Total Return</div>
+                                <div class="metric-value" id="total-return"></div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-label">Annualized APR</div>
+                                <div class="metric-value" id="apr"></div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-label">Start PPS</div>
+                                <div class="metric-value" id="start-pps"></div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-label">End PPS</div>
+                                <div class="metric-value" id="end-pps"></div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-label">Period</div>
+                                <div class="metric-value" id="period"></div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-label">Data Points</div>
+                                <div class="metric-value" id="data-points"></div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -1205,6 +1251,9 @@
                 <div class="chart-container" id="ppsChartContainer" style="position: relative;">
                     <h2 class="chart-title">Price Per Share (BTC)</h2>
                     <div class="share-buttons">
+                        <button class="share-button copy" onclick="copyScreenshot()" title="Copy to clipboard">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
+                        </button>
                         <button class="share-button telegram" onclick="shareToTelegram()" title="Share to Telegram">
                             <svg viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
                         </button>
@@ -1847,19 +1896,18 @@
 
         async function shareToTelegram() {
             const container = document.getElementById('ppsChartContainer');
-            const shareBtn = container.querySelector('.share-button');
+            const shareBtn = container.querySelector('.share-button.telegram');
+            const shareBtns = container.querySelector('.share-buttons');
             const originalText = shareBtn.innerHTML;
 
             try {
-                // Показываем статус
-                shareBtn.innerHTML = '<svg viewBox="0 0 24 24" fill="currentColor" style="animation: spin 1s linear infinite;"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8z" opacity=".3"/><path d="M20 12h2A10 10 0 0 0 12 2v2a8 8 0 0 1 8 8z"/></svg> ...';
+                shareBtn.innerHTML = '<svg viewBox="0 0 24 24" fill="currentColor" style="animation: spin 1s linear infinite;"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8z" opacity=".3"/><path d="M20 12h2A10 10 0 0 0 12 2v2a8 8 0 0 1 8 8z"/></svg>';
 
-                // Временно скрываем кнопки для скриншота
+                // Скрываем кнопки для скриншота
                 const btcToggle = container.querySelector('.btc-price-toggle');
-                shareBtn.style.display = 'none';
+                if (shareBtns) shareBtns.style.display = 'none';
                 if (btcToggle) btcToggle.style.display = 'none';
 
-                // Создаём скриншот
                 const canvas = await html2canvas(container, {
                     backgroundColor: '#0f172a',
                     scale: 2,
@@ -1867,23 +1915,20 @@
                 });
 
                 // Возвращаем кнопки
-                shareBtn.style.display = 'flex';
+                if (shareBtns) shareBtns.style.display = 'flex';
                 if (btcToggle) btcToggle.style.display = 'flex';
 
-                // Конвертируем в blob
                 const blob = await new Promise(resolve => canvas.toBlob(resolve, 'image/png'));
                 const file = new File([blob], 'yield-basis-chart.png', { type: 'image/png' });
 
-                // Пробуем Web Share API (работает на мобильных и некоторых десктопах)
                 if (navigator.canShare && navigator.canShare({ files: [file] })) {
                     await navigator.share({
                         files: [file],
                         title: 'Yield Basis BTC Vault',
                         text: `${currentMarket.toUpperCase()} (${currentContractVersion.toUpperCase()}) - APR: ${document.getElementById('apr').textContent}`
                     });
-                    shareBtn.innerHTML = originalText;
                 } else {
-                    // Fallback: скачиваем файл и открываем Telegram
+                    // Скачиваем файл и открываем Telegram
                     const url = URL.createObjectURL(blob);
                     const a = document.createElement('a');
                     a.href = url;
@@ -1891,16 +1936,207 @@
                     a.click();
                     URL.revokeObjectURL(url);
 
-                    // Открываем Telegram для шаринга ссылки
                     const shareText = encodeURIComponent(`Yield Basis ${currentMarket.toUpperCase()} (${currentContractVersion.toUpperCase()})\nAPR: ${document.getElementById('apr').textContent}\n\nhttps://nikcrv.github.io/yb-vaults-apr/`);
                     window.open(`https://t.me/share/url?url=${encodeURIComponent('https://nikcrv.github.io/yb-vaults-apr/')}&text=${shareText}`, '_blank');
-
-                    shareBtn.innerHTML = originalText;
                 }
+                shareBtn.innerHTML = originalText;
             } catch (err) {
                 console.error('Share error:', err);
                 shareBtn.innerHTML = originalText;
-                alert('Could not share. Screenshot saved to downloads.');
+            }
+        }
+
+        // Metrics share functions
+        async function copyMetricsScreenshot() {
+            const container = document.getElementById('metricsContainer');
+            const shareBtn = container.querySelector('.share-button.copy');
+            const shareBtns = container.querySelector('.share-buttons');
+            const originalText = shareBtn.innerHTML;
+
+            try {
+                shareBtn.innerHTML = '<svg viewBox="0 0 24 24" fill="currentColor" style="animation: spin 1s linear infinite;"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8z" opacity=".3"/><path d="M20 12h2A10 10 0 0 0 12 2v2a8 8 0 0 1 8 8z"/></svg>';
+                if (shareBtns) shareBtns.style.display = 'none';
+
+                const canvas = await html2canvas(container, { backgroundColor: '#0f172a', scale: 2, logging: false });
+                if (shareBtns) shareBtns.style.display = 'flex';
+
+                const blob = await new Promise(resolve => canvas.toBlob(resolve, 'image/png'));
+                await navigator.clipboard.write([new ClipboardItem({ 'image/png': blob })]);
+
+                shareBtn.innerHTML = '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>';
+                setTimeout(() => { shareBtn.innerHTML = originalText; }, 1500);
+            } catch (err) {
+                console.error('Copy error:', err);
+                shareBtn.innerHTML = originalText;
+            }
+        }
+
+        async function shareMetricsToTelegram() {
+            const container = document.getElementById('metricsContainer');
+            const shareBtn = container.querySelector('.share-button.telegram');
+            const shareBtns = container.querySelector('.share-buttons');
+            const originalText = shareBtn.innerHTML;
+
+            try {
+                shareBtn.innerHTML = '<svg viewBox="0 0 24 24" fill="currentColor" style="animation: spin 1s linear infinite;"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8z" opacity=".3"/><path d="M20 12h2A10 10 0 0 0 12 2v2a8 8 0 0 1 8 8z"/></svg>';
+                if (shareBtns) shareBtns.style.display = 'none';
+
+                const canvas = await html2canvas(container, { backgroundColor: '#0f172a', scale: 2, logging: false });
+                if (shareBtns) shareBtns.style.display = 'flex';
+
+                const blob = await new Promise(resolve => canvas.toBlob(resolve, 'image/png'));
+                const file = new File([blob], 'yield-basis-metrics.png', { type: 'image/png' });
+
+                if (navigator.canShare && navigator.canShare({ files: [file] })) {
+                    await navigator.share({ files: [file], title: 'Yield Basis Metrics' });
+                } else {
+                    const url = URL.createObjectURL(blob);
+                    const a = document.createElement('a');
+                    a.href = url;
+                    a.download = `yield-basis-metrics-${currentMarket}-${new Date().toISOString().slice(0,10)}.png`;
+                    a.click();
+                    URL.revokeObjectURL(url);
+
+                    const shareText = encodeURIComponent(`Yield Basis ${currentMarket.toUpperCase()} (${currentContractVersion.toUpperCase()})\nAPR: ${document.getElementById('apr').textContent}\n\nhttps://nikcrv.github.io/yb-vaults-apr/`);
+                    window.open(`https://t.me/share/url?url=${encodeURIComponent('https://nikcrv.github.io/yb-vaults-apr/')}&text=${shareText}`, '_blank');
+                }
+                shareBtn.innerHTML = originalText;
+            } catch (err) {
+                console.error('Share error:', err);
+                shareBtn.innerHTML = originalText;
+            }
+        }
+
+        async function shareMetricsToTwitter() {
+            const container = document.getElementById('metricsContainer');
+            const shareBtn = container.querySelector('.share-button.twitter');
+            const shareBtns = container.querySelector('.share-buttons');
+            const originalText = shareBtn.innerHTML;
+
+            try {
+                shareBtn.innerHTML = '<svg viewBox="0 0 24 24" fill="currentColor" style="animation: spin 1s linear infinite;"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8z" opacity=".3"/><path d="M20 12h2A10 10 0 0 0 12 2v2a8 8 0 0 1 8 8z"/></svg>';
+                if (shareBtns) shareBtns.style.display = 'none';
+
+                const canvas = await html2canvas(container, { backgroundColor: '#0f172a', scale: 2, logging: false });
+                if (shareBtns) shareBtns.style.display = 'flex';
+
+                const blob = await new Promise(resolve => canvas.toBlob(resolve, 'image/png'));
+                const file = new File([blob], 'yield-basis-metrics.png', { type: 'image/png' });
+
+                if (navigator.canShare && navigator.canShare({ files: [file] })) {
+                    await navigator.share({ files: [file], title: 'Yield Basis Metrics' });
+                } else {
+                    const url = URL.createObjectURL(blob);
+                    const a = document.createElement('a');
+                    a.href = url;
+                    a.download = `yield-basis-metrics-${currentMarket}-${new Date().toISOString().slice(0,10)}.png`;
+                    a.click();
+                    URL.revokeObjectURL(url);
+
+                    const tweetText = encodeURIComponent(`Yield Basis ${currentMarket.toUpperCase()} (${currentContractVersion.toUpperCase()})\nAPR: ${document.getElementById('apr').textContent}\n\nhttps://nikcrv.github.io/yb-vaults-apr/`);
+                    window.open(`https://twitter.com/intent/tweet?text=${tweetText}`, '_blank');
+                }
+                shareBtn.innerHTML = originalText;
+            } catch (err) {
+                console.error('Share error:', err);
+                shareBtn.innerHTML = originalText;
+            }
+        }
+
+        // Chart share functions
+        async function copyScreenshot() {
+            const container = document.getElementById('ppsChartContainer');
+            const shareBtn = container.querySelector('.share-button.copy');
+            const shareBtns = container.querySelector('.share-buttons');
+            const originalText = shareBtn.innerHTML;
+
+            try {
+                shareBtn.innerHTML = '<svg viewBox="0 0 24 24" fill="currentColor" style="animation: spin 1s linear infinite;"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8z" opacity=".3"/><path d="M20 12h2A10 10 0 0 0 12 2v2a8 8 0 0 1 8 8z"/></svg>';
+
+                // Скрываем кнопки для скриншота
+                const btcToggle = container.querySelector('.btc-price-toggle');
+                if (shareBtns) shareBtns.style.display = 'none';
+                if (btcToggle) btcToggle.style.display = 'none';
+
+                const canvas = await html2canvas(container, {
+                    backgroundColor: '#0f172a',
+                    scale: 2,
+                    logging: false
+                });
+
+                // Возвращаем кнопки
+                if (shareBtns) shareBtns.style.display = 'flex';
+                if (btcToggle) btcToggle.style.display = 'flex';
+
+                const blob = await new Promise(resolve => canvas.toBlob(resolve, 'image/png'));
+
+                // Копируем в буфер обмена
+                await navigator.clipboard.write([
+                    new ClipboardItem({ 'image/png': blob })
+                ]);
+
+                // Показываем галочку
+                shareBtn.innerHTML = '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>';
+                setTimeout(() => {
+                    shareBtn.innerHTML = originalText;
+                }, 1500);
+
+            } catch (err) {
+                console.error('Copy error:', err);
+                shareBtn.innerHTML = originalText;
+                alert('Could not copy to clipboard');
+            }
+        }
+
+        async function shareToTwitter() {
+            const container = document.getElementById('ppsChartContainer');
+            const shareBtn = container.querySelector('.share-button.twitter');
+            const shareBtns = container.querySelector('.share-buttons');
+            const originalText = shareBtn.innerHTML;
+
+            try {
+                shareBtn.innerHTML = '<svg viewBox="0 0 24 24" fill="currentColor" style="animation: spin 1s linear infinite;"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8z" opacity=".3"/><path d="M20 12h2A10 10 0 0 0 12 2v2a8 8 0 0 1 8 8z"/></svg>';
+
+                // Скрываем кнопки для скриншота
+                const btcToggle = container.querySelector('.btc-price-toggle');
+                if (shareBtns) shareBtns.style.display = 'none';
+                if (btcToggle) btcToggle.style.display = 'none';
+
+                const canvas = await html2canvas(container, {
+                    backgroundColor: '#0f172a',
+                    scale: 2,
+                    logging: false
+                });
+
+                // Возвращаем кнопки
+                if (shareBtns) shareBtns.style.display = 'flex';
+                if (btcToggle) btcToggle.style.display = 'flex';
+
+                const blob = await new Promise(resolve => canvas.toBlob(resolve, 'image/png'));
+                const file = new File([blob], 'yield-basis-chart.png', { type: 'image/png' });
+
+                if (navigator.canShare && navigator.canShare({ files: [file] })) {
+                    await navigator.share({
+                        files: [file],
+                        title: 'Yield Basis BTC Vault',
+                        text: `${currentMarket.toUpperCase()} (${currentContractVersion.toUpperCase()}) - APR: ${document.getElementById('apr').textContent}`
+                    });
+                } else {
+                    // Скачиваем файл и открываем Twitter
+                    const url = URL.createObjectURL(blob);
+                    const a = document.createElement('a');
+                    a.href = url;
+                    a.download = `yield-basis-${currentMarket}-${new Date().toISOString().slice(0,10)}.png`;
+                    a.click();
+                    URL.revokeObjectURL(url);
+
+                    const tweetText = encodeURIComponent(`Yield Basis ${currentMarket.toUpperCase()} (${currentContractVersion.toUpperCase()})\nAPR: ${document.getElementById('apr').textContent}\n\nhttps://nikcrv.github.io/yb-vaults-apr/`);
+                    window.open(`https://twitter.com/intent/tweet?text=${tweetText}`, '_blank');
+                }
+                shareBtn.innerHTML = originalText;
+            } catch (err) {
+                console.error('Share error:', err);
+                shareBtn.innerHTML = originalText;
             }
         }
 
