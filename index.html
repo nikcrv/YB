@@ -1,4 +1,4 @@
-// Last updated: 2025-11-25 16:42:35 UTC
+// Last updated: 2025-11-25 16:55:37 UTC
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -2305,7 +2305,37 @@
                 }
             }
 
+            // Добавляем BTC Price на отдельной оси Y (справа)
+            const btcPriceData = validPpsData.map(d => d.btc_price);
+            const hasBtcPriceData = btcPriceData.some(p => p !== null && p !== undefined && !isNaN(p));
+
+            if (hasBtcPriceData) {
+                ppsDatasets.push({
+                    label: 'BTC Price (USD)',
+                    data: btcPriceData,
+                    borderColor: 'rgba(148, 163, 184, 0.4)',
+                    backgroundColor: 'transparent',
+                    borderWidth: 1.5,
+                    tension: 0.4,
+                    fill: false,
+                    pointRadius: 0,
+                    pointHoverRadius: 3,
+                    yAxisID: 'yBtcPrice',
+                    order: 10  // Рисуем на заднем плане
+                });
+                console.log('Added BTC Price line to chart');
+            }
+
             console.log('Total datasets in PPS chart:', ppsDatasets.length);
+
+            // Вычисляем диапазон BTC price для оси
+            const validBtcPrices = btcPriceData.filter(p => p !== null && p !== undefined && !isNaN(p));
+            const btcPriceMin = validBtcPrices.length > 0 ? Math.min(...validBtcPrices) : 0;
+            const btcPriceMax = validBtcPrices.length > 0 ? Math.max(...validBtcPrices) : 100000;
+            const btcPriceRange = btcPriceMax - btcPriceMin;
+            const btcPricePadding = 0.15;
+            const btcPriceAxisMin = btcPriceMin - btcPriceRange * btcPricePadding;
+            const btcPriceAxisMax = btcPriceMax + btcPriceRange * btcPricePadding;
 
             charts.pps = new Chart(ppsCtx, {
                 type: 'line',
@@ -2341,7 +2371,12 @@
                                         label += ': ';
                                     }
                                     if (context.parsed.y !== null) {
-                                        label += context.parsed.y.toFixed(10) + ' BTC';
+                                        // BTC Price показываем в USD, остальные в BTC
+                                        if (context.dataset.label === 'BTC Price (USD)') {
+                                            label += '$' + context.parsed.y.toLocaleString(undefined, {minimumFractionDigits: 0, maximumFractionDigits: 0});
+                                        } else {
+                                            label += context.parsed.y.toFixed(10) + ' BTC';
+                                        }
                                     }
                                     return label;
                                 }
@@ -2352,6 +2387,7 @@
                         y: {
                             min: ppsAxisMin,
                             max: ppsAxisMax,
+                            position: 'left',
                             title: {
                                 display: !isMobile,
                                 text: 'PPS (BTC)',
@@ -2363,6 +2399,28 @@
                                 font: { size: ticksFontSize }
                             },
                             grid: { color: '#334155' }
+                        },
+                        yBtcPrice: {
+                            min: btcPriceAxisMin,
+                            max: btcPriceAxisMax,
+                            position: 'right',
+                            display: hasBtcPriceData,
+                            title: {
+                                display: !isMobile && hasBtcPriceData,
+                                text: 'BTC Price (USD)',
+                                color: 'rgba(148, 163, 184, 0.6)',
+                                font: { size: titleFontSize }
+                            },
+                            ticks: {
+                                color: 'rgba(148, 163, 184, 0.6)',
+                                font: { size: ticksFontSize },
+                                callback: function(value) {
+                                    return '$' + value.toLocaleString();
+                                }
+                            },
+                            grid: {
+                                drawOnChartArea: false  // Не рисуем сетку для правой оси
+                            }
                         },
                         x: {
                             ticks: {
