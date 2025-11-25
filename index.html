@@ -1,4 +1,4 @@
-// Last updated: 2025-11-25 18:51:48 UTC
+// Last updated: 2025-11-25 19:05:19 UTC
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -2278,8 +2278,8 @@
             console.log('Creating charts for', currentYieldData.data.length, 'data points');
 
             // Обновляем заголовок графика PPS с названием текущего маркета
-            const marketConfig = MARKETS[currentContractVersion]?.[currentMarket];
-            const marketName = marketConfig?.name || currentMarket;
+            const activeBtn = document.querySelector('.market-btn.active');
+            const marketName = activeBtn ? activeBtn.textContent : currentMarket;
             document.getElementById('ppsChartTitle').textContent = `Price Per Share ${marketName} (BTC)`;
 
             // Определяем размер экрана для адаптивных настроек
@@ -2813,9 +2813,15 @@
 
             // Если у текущего маркета нет BTC price, берём из cbBTC или WBTC
             if (!hasBtcPriceData) {
-                const fallbackSource = currentContractVersion === 'old'
-                    ? (oldCbbtcData?.data || oldWbtcData?.data)
-                    : (cbbtcData?.data || wbtcData?.data);
+                // Выбираем fallback источник в зависимости от версии контракта
+                let fallbackSource = null;
+                if (currentContractVersion === 'old') {
+                    fallbackSource = (typeof yieldData_yb_cbbtc !== 'undefined' ? yieldData_yb_cbbtc.data : null) ||
+                                    (typeof yieldData_yb_wbtc !== 'undefined' ? yieldData_yb_wbtc.data : null);
+                } else {
+                    fallbackSource = (typeof yieldData_cbbtc !== 'undefined' ? yieldData_cbbtc.data : null) ||
+                                    (typeof yieldData_wbtc !== 'undefined' ? yieldData_wbtc.data : null);
+                }
                 if (fallbackSource) {
                     // Интерполируем BTC price по timestamp
                     btcPriceData = validPpsData.map(d => {
