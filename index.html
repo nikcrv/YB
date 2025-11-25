@@ -1,4 +1,4 @@
-// Last updated: 2025-11-25 13:48:54 UTC
+// Last updated: 2025-11-25 13:57:30 UTC
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -993,6 +993,11 @@
             updateMetrics();
             destroyCharts();
             createCharts();
+
+            // Reset range slider
+            document.querySelectorAll('.period-button').forEach(b => b.classList.remove('active'));
+            document.querySelector('.period-button[data-days="all"]').classList.add('active');
+            initRangeSlider();
         }
 
         // Switch market
@@ -1024,6 +1029,11 @@
             updateMetrics();
             destroyCharts();
             createCharts();
+
+            // Reset range slider
+            document.querySelectorAll('.period-button').forEach(b => b.classList.remove('active'));
+            document.querySelector('.period-button[data-days="all"]').classList.add('active');
+            initRangeSlider();
         }
 
         function showError(message) {
@@ -1127,6 +1137,25 @@
                 <div class="chart-container">
                     <h2 class="chart-title">Price Per Share (BTC)</h2>
                     <canvas id="ppsChart"></canvas>
+
+                    <div class="compact-range">
+                        <div class="period-buttons">
+                            <span class="period-label">Period:</span>
+                            <button class="period-button" data-days="7">7d</button>
+                            <button class="period-button" data-days="14">14d</button>
+                            <button class="period-button" data-days="30">30d</button>
+                            <button class="period-button active" data-days="all">All</button>
+                        </div>
+                        <div class="range-slider">
+                            <div class="range-fill" id="rangeFill"></div>
+                            <input type="range" id="rangeStart" min="0" max="100" value="0">
+                            <input type="range" id="rangeEnd" min="0" max="100" value="100">
+                        </div>
+                        <div class="range-labels">
+                            <span id="rangeStartLabel">Start</span>
+                            <span id="rangeEndLabel">End</span>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="chart-container" id="gaugeChart" style="display: none;">
@@ -2507,6 +2536,144 @@
             });
         }
 
+        // ====== RANGE SLIDER LOGIC ======
+        let currentRangeStart = 0;
+        let currentRangeEnd = 0;
+
+        function updateSliderUI() {
+            if (!currentYieldData || !currentYieldData.data || currentYieldData.data.length === 0) return;
+
+            const rangeStart = document.getElementById('rangeStart');
+            const rangeEnd = document.getElementById('rangeEnd');
+            const rangeFill = document.getElementById('rangeFill');
+
+            const startPercent = (parseInt(rangeStart.value) / parseInt(rangeStart.max)) * 100;
+            const endPercent = (parseInt(rangeEnd.value) / parseInt(rangeEnd.max)) * 100;
+
+            rangeFill.style.left = startPercent + '%';
+            rangeFill.style.width = (endPercent - startPercent) + '%';
+
+            // Update labels
+            const startDate = new Date(currentYieldData.data[currentRangeStart].timestamp * 1000).toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+            const endDate = new Date(currentYieldData.data[currentRangeEnd].timestamp * 1000).toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+
+            document.getElementById('rangeStartLabel').textContent = startDate;
+            document.getElementById('rangeEndLabel').textContent = endDate;
+        }
+
+        function filterDataByRange() {
+            if (!originalData || !originalData.data || originalData.data.length === 0) return;
+
+            // Filter data based on current range
+            const filteredData = originalData.data.slice(currentRangeStart, currentRangeEnd + 1);
+
+            if (filteredData.length === 0) return;
+
+            currentYieldData.data = filteredData;
+            currentYieldData.metadata.data_points = filteredData.length;
+            currentYieldData.metadata.start_date = filteredData[0].datetime;
+            currentYieldData.metadata.end_date = filteredData[filteredData.length - 1].datetime;
+
+            const startPps = filteredData[0].pps_btc;
+            const endPps = filteredData[filteredData.length - 1].pps_btc;
+            const totalReturn = (endPps - startPps) / startPps;
+            const days = (filteredData[filteredData.length - 1].timestamp - filteredData[0].timestamp) / 86400;
+            const apr = days > 0 ? Math.pow(1 + totalReturn, 365 / days) - 1 : 0;
+
+            currentYieldData.metrics.start_pps = startPps;
+            currentYieldData.metrics.end_pps = endPps;
+            currentYieldData.metrics.total_return = totalReturn;
+            currentYieldData.metrics.apr = apr;
+            currentYieldData.metrics.days = days;
+
+            // Update date inputs to match
+            document.getElementById('startDate').value = filteredData[0].datetime.replace(' ', 'T').slice(0, 16);
+            document.getElementById('endDate').value = filteredData[filteredData.length - 1].datetime.replace(' ', 'T').slice(0, 16);
+
+            updateMetrics();
+            destroyCharts();
+            createCharts();
+        }
+
+        function initRangeSlider() {
+            if (!originalData || !originalData.data || originalData.data.length === 0) return;
+
+            currentRangeStart = 0;
+            currentRangeEnd = originalData.data.length - 1;
+
+            const rangeStart = document.getElementById('rangeStart');
+            const rangeEnd = document.getElementById('rangeEnd');
+
+            rangeStart.value = 0;
+            rangeEnd.value = 100;
+
+            // Event handlers for sliders
+            rangeStart.addEventListener('input', function() {
+                let startValue = parseInt(this.value);
+                let endValue = parseInt(rangeEnd.value);
+
+                // Don't let start pass end
+                if (startValue >= endValue - 2) {
+                    startValue = endValue - 2;
+                    this.value = startValue;
+                }
+
+                currentRangeStart = Math.floor((startValue / 100) * (originalData.data.length - 1));
+                updateSliderUI();
+            });
+
+            rangeEnd.addEventListener('input', function() {
+                let startValue = parseInt(rangeStart.value);
+                let endValue = parseInt(this.value);
+
+                // Don't let end pass start
+                if (endValue <= startValue + 2) {
+                    endValue = startValue + 2;
+                    this.value = endValue;
+                }
+
+                currentRangeEnd = Math.floor((endValue / 100) * (originalData.data.length - 1));
+                updateSliderUI();
+            });
+
+            // Apply filter on release
+            rangeStart.addEventListener('change', filterDataByRange);
+            rangeEnd.addEventListener('change', filterDataByRange);
+
+            // Period buttons
+            document.querySelectorAll('.period-button').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    document.querySelectorAll('.period-button').forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+
+                    const days = this.dataset.days;
+
+                    if (days === 'all') {
+                        currentRangeStart = 0;
+                        currentRangeEnd = originalData.data.length - 1;
+                    } else {
+                        currentRangeEnd = originalData.data.length - 1;
+                        const endTimestamp = originalData.data[currentRangeEnd].timestamp;
+                        const targetTimestamp = endTimestamp - (parseInt(days) * 86400);
+                        currentRangeStart = originalData.data.findIndex(p => p.timestamp >= targetTimestamp);
+                        if (currentRangeStart === -1) currentRangeStart = 0;
+                    }
+
+                    const startPercent = (currentRangeStart / (originalData.data.length - 1)) * 100;
+                    const endPercent = (currentRangeEnd / (originalData.data.length - 1)) * 100;
+
+                    document.getElementById('rangeStart').value = startPercent;
+                    document.getElementById('rangeEnd').value = endPercent;
+
+                    updateSliderUI();
+                    filterDataByRange();
+                });
+            });
+
+            updateSliderUI();
+        }
+        // ====== END RANGE SLIDER LOGIC ======
+
         // Initialize on page load
         window.addEventListener('DOMContentLoaded', () => {
             loadMarketData('cbbtc');
@@ -2521,6 +2688,7 @@
             initializeDateInputs();
             updateMetrics();
             createCharts();
+            initRangeSlider();
         });
 
         // Перерисовка графиков при изменении размера окна
