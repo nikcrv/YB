@@ -1,4 +1,4 @@
-// Last updated: 2025-11-25 12:04:05 UTC
+// Last updated: 2025-11-25 12:13:30 UTC
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -437,11 +437,13 @@
                                    (cbbtc.withdrawals_btc || 0) +
                                    (tbtc.withdrawals_btc || 0);
 
-                // Для OLD контрактов используем admin_fees_btc как admin_fee_withdrawals
-                // т.к. в OLD контрактах все admin fees фактически были "withdrawn"
-                const adminFeeWithdrawals = currentContractVersion === 'old'
-                    ? ((wbtc.admin_fees_btc || 0) + (cbbtc.admin_fees_btc || 0) + (tbtc.admin_fees_btc || 0))
-                    : ((wbtc.admin_fee_withdrawals_btc || 0) + (cbbtc.admin_fee_withdrawals_btc || 0) + (tbtc.admin_fee_withdrawals_btc || 0));
+                // ИСПРАВЛЕНО: admin_fee_withdrawals_btc - это дельта выводов admin fees
+                // Для OLD контрактов это поле = 0 (нет отдельных выводов)
+                // Для NEW контрактов это поле содержит реальные дельты
+                // НЕ используем admin_fees_btc здесь, т.к. это кумулятивное значение!
+                const adminFeeWithdrawals = (wbtc.admin_fee_withdrawals_btc || 0) +
+                                           (cbbtc.admin_fee_withdrawals_btc || 0) +
+                                           (tbtc.admin_fee_withdrawals_btc || 0);
 
                 const adminFees = (wbtc.admin_fees_btc || 0) +
                                  (cbbtc.admin_fees_btc || 0) +
@@ -1068,32 +1070,28 @@
                     let adminFees = 0;
                     let adminFeeWithdrawals = 0;
 
+                    // ИСПРАВЛЕНО: всегда используем admin_fee_withdrawals_btc (дельта)
+                    // Для OLD контрактов это = 0, для NEW - реальные дельты
                     if (includeWbtc) {
                         withdrawable += wbtc.total_withdrawable_btc || 0;
                         deposits += wbtc.deposits_btc || 0;
                         withdrawals += wbtc.withdrawals_btc || 0;
                         adminFees += wbtc.admin_fees_btc || 0;
-                        adminFeeWithdrawals += currentContractVersion === 'old' 
-                            ? (wbtc.admin_fees_btc || 0) 
-                            : (wbtc.admin_fee_withdrawals_btc || 0);
+                        adminFeeWithdrawals += wbtc.admin_fee_withdrawals_btc || 0;
                     }
                     if (includeCbbtc) {
                         withdrawable += cbbtc.total_withdrawable_btc || 0;
                         deposits += cbbtc.deposits_btc || 0;
                         withdrawals += cbbtc.withdrawals_btc || 0;
                         adminFees += cbbtc.admin_fees_btc || 0;
-                        adminFeeWithdrawals += currentContractVersion === 'old' 
-                            ? (cbbtc.admin_fees_btc || 0) 
-                            : (cbbtc.admin_fee_withdrawals_btc || 0);
+                        adminFeeWithdrawals += cbbtc.admin_fee_withdrawals_btc || 0;
                     }
                     if (includeTbtc) {
                         withdrawable += tbtc.total_withdrawable_btc || 0;
                         deposits += tbtc.deposits_btc || 0;
                         withdrawals += tbtc.withdrawals_btc || 0;
                         adminFees += tbtc.admin_fees_btc || 0;
-                        adminFeeWithdrawals += currentContractVersion === 'old' 
-                            ? (tbtc.admin_fees_btc || 0) 
-                            : (tbtc.admin_fee_withdrawals_btc || 0);
+                        adminFeeWithdrawals += tbtc.admin_fee_withdrawals_btc || 0;
                     }
 
                     // Накапливаем депозиты/выводы
