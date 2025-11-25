@@ -1,10 +1,10 @@
-// Last updated: 2025-11-25 17:51:42 UTC
+// Last updated: 2025-11-25 17:59:10 UTC
 <!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>YieldBasis - Revenue Dashboard</title>
+    <title>YieldBasis - Withdrawable Revenue Dashboard</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns"></script>
     <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
@@ -323,7 +323,7 @@
         <div id="content" style="display:none;">
             <div class="header">
                 <a href="index.html" class="back-button">Back to Vaults</a>
-                <h1>YieldBasis Revenue Dashboard</h1>
+                <h1>YieldBasis Withdrawable Revenue Dashboard</h1>
                 <div style="width: 140px;"></div> <!-- Spacer for centering -->
             </div>
 
@@ -347,7 +347,7 @@
                     <div style="display: flex; gap: 20px; flex-wrap: wrap;">
                         <div class="checkbox-group">
                             <input type="checkbox" id="toggleWithdrawable" checked>
-                            <label for="toggleWithdrawable">TVL</label>
+                            <label for="toggleWithdrawable">TVL (Withdrawable)</label>
                         </div>
                         <div class="checkbox-group">
                             <input type="checkbox" id="toggleDeposits" checked>
@@ -862,7 +862,7 @@
                                 color: '#64748b',
                                 maxTicksLimit: 10,
                                 callback: function(value) {
-                                    return value.toFixed(3) + '%';
+                                    return value.toFixed(1) + '%';
                                 }
                             },
                             grid: { display: false },
@@ -1486,7 +1486,7 @@
                                 await navigator.share({
                                     files: [file],
                                     title: 'YieldBasis Chart',
-                                    text: 'YieldBasis Revenue Dashboard'
+                                    text: 'YieldBasis Withdrawable Revenue Dashboard'
                                 });
                             } catch (err) {
                                 if (err.name !== 'AbortError') {
@@ -1525,17 +1525,17 @@
                                 await navigator.share({
                                     files: [file],
                                     title: 'YieldBasis Chart',
-                                    text: 'YieldBasis Revenue Dashboard'
+                                    text: 'YieldBasis Withdrawable Revenue Dashboard'
                                 });
                             } catch (err) {
                                 if (err.name !== 'AbortError') {
-                                    const text = encodeURIComponent('YieldBasis Revenue Dashboard');
+                                    const text = encodeURIComponent('YieldBasis Withdrawable Revenue Dashboard');
                                     const url = encodeURIComponent(window.location.href);
                                     window.open(`https://twitter.com/intent/tweet?text=${text}&url=${url}`, '_blank');
                                 }
                             }
                         } else {
-                            const text = encodeURIComponent('YieldBasis Revenue Dashboard');
+                            const text = encodeURIComponent('YieldBasis Withdrawable Revenue Dashboard');
                             const url = encodeURIComponent(window.location.href);
                             window.open(`https://twitter.com/intent/tweet?text=${text}&url=${url}`, '_blank');
                         }
