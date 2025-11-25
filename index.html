@@ -1,4 +1,4 @@
-// Last updated: 2025-11-25 13:57:30 UTC
+// Last updated: 2025-11-25 14:10:54 UTC
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -1273,6 +1273,24 @@
             currentYieldData.metrics = JSON.parse(JSON.stringify(originalData.metrics));
 
             initializeDateInputs();
+
+            // Reset range slider
+            if (originalData && originalData.data && originalData.data.length > 0) {
+                currentRangeStart = 0;
+                currentRangeEnd = originalData.data.length - 1;
+                document.getElementById('rangeStart').value = 0;
+                document.getElementById('rangeEnd').value = 100;
+                updateSliderUI();
+
+                // Reset period buttons - activate "All"
+                document.querySelectorAll('.period-button').forEach(btn => {
+                    btn.classList.remove('active');
+                    if (btn.dataset.days === 'all') {
+                        btn.classList.add('active');
+                    }
+                });
+            }
+
             updateMetrics();
             destroyCharts();
             createCharts();
@@ -2541,7 +2559,7 @@
         let currentRangeEnd = 0;
 
         function updateSliderUI() {
-            if (!currentYieldData || !currentYieldData.data || currentYieldData.data.length === 0) return;
+            if (!originalData || !originalData.data || originalData.data.length === 0) return;
 
             const rangeStart = document.getElementById('rangeStart');
             const rangeEnd = document.getElementById('rangeEnd');
@@ -2553,9 +2571,9 @@
             rangeFill.style.left = startPercent + '%';
             rangeFill.style.width = (endPercent - startPercent) + '%';
 
-            // Update labels
-            const startDate = new Date(currentYieldData.data[currentRangeStart].timestamp * 1000).toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
-            const endDate = new Date(currentYieldData.data[currentRangeEnd].timestamp * 1000).toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+            // Update labels - use originalData since currentRangeStart/End are indices in original array
+            const startDate = new Date(originalData.data[currentRangeStart].timestamp * 1000).toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+            const endDate = new Date(originalData.data[currentRangeEnd].timestamp * 1000).toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
 
             document.getElementById('rangeStartLabel').textContent = startDate;
             document.getElementById('rangeEndLabel').textContent = endDate;
