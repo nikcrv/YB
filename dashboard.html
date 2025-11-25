@@ -1,4 +1,4 @@
-// Last updated: 2025-11-25 20:13:43 UTC
+// Last updated: 2025-11-25 20:26:53 UTC
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -1216,6 +1216,11 @@
                 let cumulativeWithdrawals = 0;
                 let cumulativeAdminFeeWithdrawals = 0;
 
+                // Для OLD контрактов: отслеживаем предыдущие значения admin_fees чтобы детектировать выводы
+                let prevAdminFeesWbtc = 0;
+                let prevAdminFeesCbbtc = 0;
+                let prevAdminFeesTbtc = 0;
+
                 fullRecalculatedData = fullProfitData.map((point, i) => {
                     const wbtc = fullWbtcData[i];
                     const cbbtc = fullCbbtcData[i];
@@ -1228,28 +1233,48 @@
                     let adminFees = 0;
                     let adminFeeWithdrawals = 0;
 
-                    // ИСПРАВЛЕНО: всегда используем admin_fee_withdrawals_btc (дельта)
-                    // Для OLD контрактов это = 0, для NEW - реальные дельты
+                    // Для OLD контрактов admin_fee_withdrawals_btc может быть 0
+                    // Нужно детектировать падение admin_fees_btc как вывод
                     if (includeWbtc) {
                         withdrawable += wbtc.total_withdrawable_btc || 0;
                         deposits += wbtc.deposits_btc || 0;
                         withdrawals += wbtc.withdrawals_btc || 0;
-                        adminFees += wbtc.admin_fees_btc || 0;
-                        adminFeeWithdrawals += wbtc.admin_fee_withdrawals_btc || 0;
+                        const currAdminFees = wbtc.admin_fees_btc || 0;
+                        adminFees += currAdminFees;
+                        // Используем admin_fee_withdrawals_btc если есть, иначе детектируем падение
+                        let wbtcWithdrawal = wbtc.admin_fee_withdrawals_btc || 0;
+                        if (wbtcWithdrawal === 0 && i > 0 && prevAdminFeesWbtc > currAdminFees + 0.001) {
+                            // Падение admin_fees = вывод
+                            wbtcWithdrawal = prevAdminFeesWbtc - currAdminFees;
+                        }
+                        adminFeeWithdrawals += wbtcWithdrawal;
+                        prevAdminFeesWbtc = currAdminFees;
                     }
                     if (includeCbbtc) {
                         withdrawable += cbbtc.total_withdrawable_btc || 0;
                         deposits += cbbtc.deposits_btc || 0;
                         withdrawals += cbbtc.withdrawals_btc || 0;
-                        adminFees += cbbtc.admin_fees_btc || 0;
-                        adminFeeWithdrawals += cbbtc.admin_fee_withdrawals_btc || 0;
+                        const currAdminFees = cbbtc.admin_fees_btc || 0;
+                        adminFees += currAdminFees;
+                        let cbbtcWithdrawal = cbbtc.admin_fee_withdrawals_btc || 0;
+                        if (cbbtcWithdrawal === 0 && i > 0 && prevAdminFeesCbbtc > currAdminFees + 0.001) {
+                            cbbtcWithdrawal = prevAdminFeesCbbtc - currAdminFees;
+                        }
+                        adminFeeWithdrawals += cbbtcWithdrawal;
+                        prevAdminFeesCbbtc = currAdminFees;
                     }
                     if (includeTbtc) {
                         withdrawable += tbtc.total_withdrawable_btc || 0;
                         deposits += tbtc.deposits_btc || 0;
                         withdrawals += tbtc.withdrawals_btc || 0;
-                        adminFees += tbtc.admin_fees_btc || 0;
-                        adminFeeWithdrawals += tbtc.admin_fee_withdrawals_btc || 0;
+                        const currAdminFees = tbtc.admin_fees_btc || 0;
+                        adminFees += currAdminFees;
+                        let tbtcWithdrawal = tbtc.admin_fee_withdrawals_btc || 0;
+                        if (tbtcWithdrawal === 0 && i > 0 && prevAdminFeesTbtc > currAdminFees + 0.001) {
+                            tbtcWithdrawal = prevAdminFeesTbtc - currAdminFees;
+                        }
+                        adminFeeWithdrawals += tbtcWithdrawal;
+                        prevAdminFeesTbtc = currAdminFees;
                     }
 
                     // Накапливаем депозиты/выводы
