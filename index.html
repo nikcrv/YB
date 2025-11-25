@@ -1,4 +1,4 @@
-// Last updated: 2025-11-25 13:18:59 UTC
+// Last updated: 2025-11-25 13:32:09 UTC
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -1484,9 +1484,9 @@
                             }
                         }
 
-                        // Вычисляем APR отдельно для каждого метода (Compound APR)
-                        const emissionAprWithdrawable = Math.pow(1 + emissionBoost, 365 / currentYieldData.metrics.days) - 1;
-                        const emissionAprFund = Math.pow(1 + emissionBoost, 365 / daysFundForEmission) - 1;
+                        // Вычисляем APR отдельно для каждого метода (Simple APR - emission не компаундится)
+                        const emissionAprWithdrawable = emissionBoost * (365 / currentYieldData.metrics.days);
+                        const emissionAprFund = emissionBoost * (365 / daysFundForEmission);
 
                         // Показываем emission metrics рядом с обоими чекбоксами
                         document.getElementById('emission-metrics-fund').style.display = 'flex';
