@@ -1,4 +1,4 @@
-// Last updated: 2025-11-25 13:44:50 UTC
+// Last updated: 2025-11-25 13:48:54 UTC
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -284,6 +284,96 @@
         .contract-btn.active {
             background: #8b5cf6;
             color: #ffffff;
+        }
+
+        /* Range Slider Styles */
+        .compact-range {
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 1px solid #334155;
+        }
+        .period-buttons {
+            display: flex;
+            gap: 6px;
+            margin-bottom: 12px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        .period-label {
+            color: #64748b;
+            font-size: 0.85em;
+            margin-right: 8px;
+        }
+        .period-button {
+            background: #0f172a;
+            color: #94a3b8;
+            border: 1px solid #334155;
+            padding: 4px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.8em;
+            transition: all 0.2s;
+        }
+        .period-button:hover {
+            border-color: #f59e0b;
+            color: #e2e8f0;
+        }
+        .period-button.active {
+            background: #f59e0b;
+            border-color: #f59e0b;
+            color: #0f172a;
+            font-weight: 500;
+        }
+        .range-slider {
+            width: 100%;
+            height: 4px;
+            background: #334155;
+            border-radius: 2px;
+            position: relative;
+            margin: 15px 0 8px 0;
+        }
+        .range-slider input[type="range"] {
+            position: absolute;
+            width: 100%;
+            height: 4px;
+            background: transparent;
+            pointer-events: none;
+            -webkit-appearance: none;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        .range-slider input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 14px;
+            height: 14px;
+            background: #f59e0b;
+            border-radius: 50%;
+            cursor: pointer;
+            pointer-events: all;
+            border: 2px solid #0f172a;
+        }
+        .range-slider input[type="range"]::-moz-range-thumb {
+            width: 14px;
+            height: 14px;
+            background: #f59e0b;
+            border-radius: 50%;
+            cursor: pointer;
+            pointer-events: all;
+            border: 2px solid #0f172a;
+        }
+        .range-fill {
+            position: absolute;
+            height: 4px;
+            background: #f59e0b;
+            border-radius: 2px;
+            pointer-events: none;
+        }
+        .range-labels {
+            display: flex;
+            justify-content: space-between;
+            color: #64748b;
+            font-size: 0.75em;
         }
 
         @media (max-width: 768px) {
