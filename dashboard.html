@@ -1,4 +1,4 @@
-// Last updated: 2025-11-25 19:33:01 UTC
+// Last updated: 2025-11-25 19:47:04 UTC
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -280,7 +280,12 @@
                 height: 12px;
             }
             .btc-price-toggle {
-                display: none;
+                top: 25px;
+                right: 10px;
+                padding: 3px 6px;
+            }
+            .btc-price-toggle label {
+                font-size: 0.65em;
             }
             .chart-controls {
                 gap: 8px;
@@ -376,7 +381,7 @@
                     <button class="share-button twitter" onclick="shareChartToTwitter('profitChartContainer')" title="X"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></button>
                 </div>
                 <div class="btc-price-toggle">
-                    <input type="checkbox" id="toggleBtcPrice" onchange="toggleBtcPriceLine()">
+                    <input type="checkbox" id="toggleBtcPrice" checked onchange="toggleBtcPriceLine()">
                     <label for="toggleBtcPrice">BTC $</label>
                 </div>
                 <h2 style="color: #94a3b8; font-size: 1.3em; margin-bottom: 20px;">Accumulated Revenue</h2>
@@ -1386,7 +1391,7 @@
             document.getElementById('content').style.display = 'block';
 
             // ====== BTC PRICE LINE ======
-            let showBtcPrice = false;
+            let showBtcPrice = true; // По умолчанию включён
 
             // Получаем BTC цены из сохранённых данных vaults_yield
             const btcPriceSource = (currentContractVersion === 'old') ? btcPriceSourceOld : btcPriceSourceNew;
@@ -1596,6 +1601,11 @@
                     console.error('Share failed:', err);
                 }
             };
+
+            // Вызываем toggleBtcPriceLine чтобы отобразить график BTC при загрузке (если чекбокс включён)
+            if (document.getElementById('toggleBtcPrice').checked && hasBtcPriceData) {
+                toggleBtcPriceLine();
+            }
 
         } catch (error) {
             document.getElementById('loading').innerHTML = `
