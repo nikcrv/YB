@@ -1,4 +1,4 @@
-// Last updated: 2025-11-25 21:34:14 UTC
+// Last updated: 2025-11-25 21:47:17 UTC
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -295,6 +295,25 @@
         .share-button.twitter:hover {
             background: rgba(148, 163, 184, 0.3);
         }
+        .metrics-share {
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 1px solid rgba(139, 92, 246, 0.2);
+        }
+        .chart-share {
+            margin-top: 15px;
+            padding-top: 10px;
+            border-top: 1px solid rgba(139, 92, 246, 0.15);
+            justify-content: flex-end;
+        }
+        .chart-share .share-button {
+            padding: 5px 10px;
+            font-size: 0.75em;
+        }
+        .chart-share .share-button svg {
+            width: 12px;
+            height: 12px;
+        }
     </style>
 </head>
 <body>
@@ -304,15 +323,15 @@
             <p>Price Per Share (PPS) Growth - YieldBasis Markets</p>
             <a href="index.html" class="back-button">← Back to Vaults</a>
             <div class="share-buttons">
-                <button class="share-button copy" onclick="copyDashboardScreenshot()" title="Copy to clipboard">
+                <button class="share-button copy" onclick="copyChartsScreenshot()" title="Copy charts to clipboard">
                     <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
                     Copy
                 </button>
-                <button class="share-button telegram" onclick="shareDashboardToTelegram()" title="Share to Telegram">
+                <button class="share-button telegram" onclick="shareChartsToTelegram()" title="Share charts to Telegram">
                     <svg viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
                     Telegram
                 </button>
-                <button class="share-button twitter" onclick="shareDashboardToTwitter()" title="Share to X">
+                <button class="share-button twitter" onclick="shareChartsToTwitter()" title="Share charts to X">
                     <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
                     X
                 </button>
@@ -323,7 +342,7 @@
 
         <div id="content" style="display:none;">
             <div class="charts-grid">
-                <div class="chart-container">
+                <div class="chart-container" id="chartNewUnstaked">
                     <h2>NEW Contracts - Unstaked (yb-tokens)</h2>
                     <canvas id="newUnstakedChart"></canvas>
                     <div class="range-control">
@@ -339,9 +358,14 @@
                             <input type="text" id="newUnstakedEndLabel" readonly>
                         </div>
                     </div>
+                    <div class="share-buttons chart-share">
+                        <button class="share-button copy" onclick="copyChartScreenshot('chartNewUnstaked')" title="Copy"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg></button>
+                        <button class="share-button telegram" onclick="shareChartToTelegram('chartNewUnstaked', 'NEW Unstaked')" title="Telegram"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg></button>
+                        <button class="share-button twitter" onclick="shareChartToTwitter('chartNewUnstaked', 'NEW Unstaked')" title="X"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></button>
+                    </div>
                 </div>
 
-                <div class="chart-container">
+                <div class="chart-container" id="chartNewStaked">
                     <h2>NEW Contracts - Staked (sYB-tokens)</h2>
                     <canvas id="newStakedChart"></canvas>
                     <div class="range-control">
@@ -357,9 +381,14 @@
                             <input type="text" id="newStakedEndLabel" readonly>
                         </div>
                     </div>
+                    <div class="share-buttons chart-share">
+                        <button class="share-button copy" onclick="copyChartScreenshot('chartNewStaked')" title="Copy"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg></button>
+                        <button class="share-button telegram" onclick="shareChartToTelegram('chartNewStaked', 'NEW Staked')" title="Telegram"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg></button>
+                        <button class="share-button twitter" onclick="shareChartToTwitter('chartNewStaked', 'NEW Staked')" title="X"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></button>
+                    </div>
                 </div>
 
-                <div class="chart-container">
+                <div class="chart-container" id="chartOldUnstaked">
                     <h2>OLD Contracts - Unstaked (yb-tokens)</h2>
                     <canvas id="oldUnstakedChart"></canvas>
                     <div class="range-control">
@@ -375,9 +404,14 @@
                             <input type="text" id="oldUnstakedEndLabel" readonly>
                         </div>
                     </div>
+                    <div class="share-buttons chart-share">
+                        <button class="share-button copy" onclick="copyChartScreenshot('chartOldUnstaked')" title="Copy"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg></button>
+                        <button class="share-button telegram" onclick="shareChartToTelegram('chartOldUnstaked', 'OLD Unstaked')" title="Telegram"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg></button>
+                        <button class="share-button twitter" onclick="shareChartToTwitter('chartOldUnstaked', 'OLD Unstaked')" title="X"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></button>
+                    </div>
                 </div>
 
-                <div class="chart-container">
+                <div class="chart-container" id="chartOldStaked">
                     <h2>OLD Contracts - Staked (sYB-tokens)</h2>
                     <canvas id="oldStakedChart"></canvas>
                     <div class="range-control">
@@ -393,12 +427,31 @@
                             <input type="text" id="oldStakedEndLabel" readonly>
                         </div>
                     </div>
+                    <div class="share-buttons chart-share">
+                        <button class="share-button copy" onclick="copyChartScreenshot('chartOldStaked')" title="Copy"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg></button>
+                        <button class="share-button telegram" onclick="shareChartToTelegram('chartOldStaked', 'OLD Staked')" title="Telegram"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg></button>
+                        <button class="share-button twitter" onclick="shareChartToTwitter('chartOldStaked', 'OLD Staked')" title="X"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></button>
+                    </div>
                 </div>
             </div>
 
-            <div class="metrics-box">
+            <div class="metrics-box" id="metricsBox">
                 <h2>Current Fundamental Values</h2>
                 <div class="metrics-grid" id="metricsGrid"></div>
+                <div class="share-buttons metrics-share">
+                    <button class="share-button copy" onclick="copyMetricsScreenshot()" title="Copy metrics to clipboard">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
+                        Copy
+                    </button>
+                    <button class="share-button telegram" onclick="shareMetricsToTelegram()" title="Share metrics to Telegram">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+                        Telegram
+                    </button>
+                    <button class="share-button twitter" onclick="shareMetricsToTwitter()" title="Share metrics to X">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                        X
+                    </button>
+                </div>
             </div>
         </div>
     </div>
@@ -749,21 +802,129 @@
             }
         });
 
-        // Share functions
-        async function copyDashboardScreenshot() {
-            const container = document.getElementById('content');
-            const shareBtn = document.querySelector('.share-button.copy');
-            const shareBtns = document.querySelector('.share-buttons');
+        // Share functions - Individual Chart
+        async function copyChartScreenshot(chartId) {
+            const chartContainer = document.getElementById(chartId);
+            const shareBtn = chartContainer.querySelector('.share-button.copy');
+            const allShareBtns = document.querySelectorAll('.share-buttons');
 
             try {
-                if (shareBtns) shareBtns.style.display = 'none';
+                allShareBtns.forEach(btn => btn.style.display = 'none');
 
-                const canvas = await html2canvas(container, {
+                const canvas = await html2canvas(chartContainer, {
                     backgroundColor: '#0f172a',
                     scale: 2
                 });
 
-                if (shareBtns) shareBtns.style.display = 'flex';
+                allShareBtns.forEach(btn => btn.style.display = 'flex');
+
+                canvas.toBlob(async (blob) => {
+                    try {
+                        await navigator.clipboard.write([
+                            new ClipboardItem({ 'image/png': blob })
+                        ]);
+                        shareBtn.classList.add('success');
+                        setTimeout(() => shareBtn.classList.remove('success'), 2000);
+                    } catch (err) {
+                        console.error('Failed to copy:', err);
+                        alert('Failed to copy to clipboard');
+                    }
+                }, 'image/png');
+            } catch (err) {
+                allShareBtns.forEach(btn => btn.style.display = 'flex');
+                console.error('Screenshot failed:', err);
+            }
+        }
+
+        async function shareChartToTelegram(chartId, chartName) {
+            const chartContainer = document.getElementById(chartId);
+            const allShareBtns = document.querySelectorAll('.share-buttons');
+
+            try {
+                allShareBtns.forEach(btn => btn.style.display = 'none');
+
+                const canvas = await html2canvas(chartContainer, {
+                    backgroundColor: '#0f172a',
+                    scale: 2
+                });
+
+                allShareBtns.forEach(btn => btn.style.display = 'flex');
+
+                canvas.toBlob(async (blob) => {
+                    const file = new File([blob], `pps_${chartName.toLowerCase().replace(' ', '_')}.png`, { type: 'image/png' });
+
+                    if (navigator.share && navigator.canShare({ files: [file] })) {
+                        try {
+                            await navigator.share({
+                                files: [file],
+                                title: `YieldBasis PPS - ${chartName}`,
+                                text: `Price Per Share - ${chartName}`
+                            });
+                        } catch (err) {
+                            window.open('https://t.me/share/url?url=' + encodeURIComponent(window.location.href) + '&text=' + encodeURIComponent(`YieldBasis PPS - ${chartName}`), '_blank');
+                        }
+                    } else {
+                        window.open('https://t.me/share/url?url=' + encodeURIComponent(window.location.href) + '&text=' + encodeURIComponent(`YieldBasis PPS - ${chartName}`), '_blank');
+                    }
+                }, 'image/png');
+            } catch (err) {
+                allShareBtns.forEach(btn => btn.style.display = 'flex');
+                window.open('https://t.me/share/url?url=' + encodeURIComponent(window.location.href) + '&text=' + encodeURIComponent(`YieldBasis PPS - ${chartName}`), '_blank');
+            }
+        }
+
+        async function shareChartToTwitter(chartId, chartName) {
+            const chartContainer = document.getElementById(chartId);
+            const allShareBtns = document.querySelectorAll('.share-buttons');
+
+            try {
+                allShareBtns.forEach(btn => btn.style.display = 'none');
+
+                const canvas = await html2canvas(chartContainer, {
+                    backgroundColor: '#0f172a',
+                    scale: 2
+                });
+
+                allShareBtns.forEach(btn => btn.style.display = 'flex');
+
+                canvas.toBlob(async (blob) => {
+                    const file = new File([blob], `pps_${chartName.toLowerCase().replace(' ', '_')}.png`, { type: 'image/png' });
+
+                    if (navigator.share && navigator.canShare({ files: [file] })) {
+                        try {
+                            await navigator.share({
+                                files: [file],
+                                title: `YieldBasis PPS - ${chartName}`,
+                                text: `Price Per Share - ${chartName}`
+                            });
+                        } catch (err) {
+                            window.open('https://twitter.com/intent/tweet?text=' + encodeURIComponent(`YieldBasis PPS - ${chartName}`) + '&url=' + encodeURIComponent(window.location.href), '_blank');
+                        }
+                    } else {
+                        window.open('https://twitter.com/intent/tweet?text=' + encodeURIComponent(`YieldBasis PPS - ${chartName}`) + '&url=' + encodeURIComponent(window.location.href), '_blank');
+                    }
+                }, 'image/png');
+            } catch (err) {
+                allShareBtns.forEach(btn => btn.style.display = 'flex');
+                window.open('https://twitter.com/intent/tweet?text=' + encodeURIComponent(`YieldBasis PPS - ${chartName}`) + '&url=' + encodeURIComponent(window.location.href), '_blank');
+            }
+        }
+
+        // Share functions - All Charts
+        async function copyChartsScreenshot() {
+            const chartsGrid = document.querySelector('.charts-grid');
+            const shareBtn = document.querySelector('.header .share-button.copy');
+            const allShareBtns = document.querySelectorAll('.share-buttons');
+
+            try {
+                allShareBtns.forEach(btn => btn.style.display = 'none');
+
+                const canvas = await html2canvas(chartsGrid, {
+                    backgroundColor: '#0f172a',
+                    scale: 2
+                });
+
+                allShareBtns.forEach(btn => btn.style.display = 'flex');
 
                 canvas.toBlob(async (blob) => {
                     try {
@@ -783,82 +944,195 @@
                     }
                 }, 'image/png');
             } catch (err) {
-                if (shareBtns) shareBtns.style.display = 'flex';
+                allShareBtns.forEach(btn => btn.style.display = 'flex');
                 console.error('Screenshot failed:', err);
             }
         }
 
-        async function shareDashboardToTelegram() {
-            const container = document.getElementById('content');
-            const shareBtns = document.querySelector('.share-buttons');
+        async function shareChartsToTelegram() {
+            const chartsGrid = document.querySelector('.charts-grid');
+            const allShareBtns = document.querySelectorAll('.share-buttons');
 
             try {
-                if (shareBtns) shareBtns.style.display = 'none';
+                allShareBtns.forEach(btn => btn.style.display = 'none');
 
-                const canvas = await html2canvas(container, {
+                const canvas = await html2canvas(chartsGrid, {
                     backgroundColor: '#0f172a',
                     scale: 2
                 });
 
-                if (shareBtns) shareBtns.style.display = 'flex';
+                allShareBtns.forEach(btn => btn.style.display = 'flex');
 
                 canvas.toBlob(async (blob) => {
-                    const file = new File([blob], 'pps_dashboard.png', { type: 'image/png' });
+                    const file = new File([blob], 'pps_charts.png', { type: 'image/png' });
 
                     if (navigator.share && navigator.canShare({ files: [file] })) {
                         try {
                             await navigator.share({
                                 files: [file],
-                                title: 'YieldBasis PPS Dashboard',
-                                text: 'Price Per Share Growth - YieldBasis Markets'
+                                title: 'YieldBasis PPS Charts',
+                                text: 'Price Per Share Growth Charts - YieldBasis Markets'
                             });
                         } catch (err) {
-                            window.open('https://t.me/share/url?url=' + encodeURIComponent(window.location.href) + '&text=' + encodeURIComponent('YieldBasis PPS Dashboard'), '_blank');
+                            window.open('https://t.me/share/url?url=' + encodeURIComponent(window.location.href) + '&text=' + encodeURIComponent('YieldBasis PPS Charts'), '_blank');
                         }
                     } else {
-                        window.open('https://t.me/share/url?url=' + encodeURIComponent(window.location.href) + '&text=' + encodeURIComponent('YieldBasis PPS Dashboard'), '_blank');
+                        window.open('https://t.me/share/url?url=' + encodeURIComponent(window.location.href) + '&text=' + encodeURIComponent('YieldBasis PPS Charts'), '_blank');
                     }
                 }, 'image/png');
             } catch (err) {
-                if (shareBtns) shareBtns.style.display = 'flex';
-                window.open('https://t.me/share/url?url=' + encodeURIComponent(window.location.href) + '&text=' + encodeURIComponent('YieldBasis PPS Dashboard'), '_blank');
+                allShareBtns.forEach(btn => btn.style.display = 'flex');
+                window.open('https://t.me/share/url?url=' + encodeURIComponent(window.location.href) + '&text=' + encodeURIComponent('YieldBasis PPS Charts'), '_blank');
             }
         }
 
-        async function shareDashboardToTwitter() {
-            const container = document.getElementById('content');
-            const shareBtns = document.querySelector('.share-buttons');
+        async function shareChartsToTwitter() {
+            const chartsGrid = document.querySelector('.charts-grid');
+            const allShareBtns = document.querySelectorAll('.share-buttons');
 
             try {
-                if (shareBtns) shareBtns.style.display = 'none';
+                allShareBtns.forEach(btn => btn.style.display = 'none');
 
-                const canvas = await html2canvas(container, {
+                const canvas = await html2canvas(chartsGrid, {
                     backgroundColor: '#0f172a',
                     scale: 2
                 });
 
-                if (shareBtns) shareBtns.style.display = 'flex';
+                allShareBtns.forEach(btn => btn.style.display = 'flex');
 
                 canvas.toBlob(async (blob) => {
-                    const file = new File([blob], 'pps_dashboard.png', { type: 'image/png' });
+                    const file = new File([blob], 'pps_charts.png', { type: 'image/png' });
 
                     if (navigator.share && navigator.canShare({ files: [file] })) {
                         try {
                             await navigator.share({
                                 files: [file],
-                                title: 'YieldBasis PPS Dashboard',
-                                text: 'Price Per Share Growth - YieldBasis Markets'
+                                title: 'YieldBasis PPS Charts',
+                                text: 'Price Per Share Growth Charts - YieldBasis Markets'
                             });
                         } catch (err) {
-                            window.open('https://twitter.com/intent/tweet?text=' + encodeURIComponent('YieldBasis PPS Dashboard - Price Per Share Growth') + '&url=' + encodeURIComponent(window.location.href), '_blank');
+                            window.open('https://twitter.com/intent/tweet?text=' + encodeURIComponent('YieldBasis PPS Charts - Price Per Share Growth') + '&url=' + encodeURIComponent(window.location.href), '_blank');
                         }
                     } else {
-                        window.open('https://twitter.com/intent/tweet?text=' + encodeURIComponent('YieldBasis PPS Dashboard - Price Per Share Growth') + '&url=' + encodeURIComponent(window.location.href), '_blank');
+                        window.open('https://twitter.com/intent/tweet?text=' + encodeURIComponent('YieldBasis PPS Charts - Price Per Share Growth') + '&url=' + encodeURIComponent(window.location.href), '_blank');
                     }
                 }, 'image/png');
             } catch (err) {
-                if (shareBtns) shareBtns.style.display = 'flex';
-                window.open('https://twitter.com/intent/tweet?text=' + encodeURIComponent('YieldBasis PPS Dashboard - Price Per Share Growth') + '&url=' + encodeURIComponent(window.location.href), '_blank');
+                allShareBtns.forEach(btn => btn.style.display = 'flex');
+                window.open('https://twitter.com/intent/tweet?text=' + encodeURIComponent('YieldBasis PPS Charts - Price Per Share Growth') + '&url=' + encodeURIComponent(window.location.href), '_blank');
+            }
+        }
+
+        // Share functions - Metrics (Current Fundamental Values)
+        async function copyMetricsScreenshot() {
+            const metricsBox = document.getElementById('metricsBox');
+            const shareBtn = document.querySelector('.metrics-share .share-button.copy');
+            const allShareBtns = document.querySelectorAll('.share-buttons');
+
+            try {
+                allShareBtns.forEach(btn => btn.style.display = 'none');
+
+                const canvas = await html2canvas(metricsBox, {
+                    backgroundColor: '#0f172a',
+                    scale: 2
+                });
+
+                allShareBtns.forEach(btn => btn.style.display = 'flex');
+
+                canvas.toBlob(async (blob) => {
+                    try {
+                        await navigator.clipboard.write([
+                            new ClipboardItem({ 'image/png': blob })
+                        ]);
+                        shareBtn.classList.add('success');
+                        const originalHTML = shareBtn.innerHTML;
+                        shareBtn.innerHTML = '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Copied!';
+                        setTimeout(() => {
+                            shareBtn.classList.remove('success');
+                            shareBtn.innerHTML = originalHTML;
+                        }, 2000);
+                    } catch (err) {
+                        console.error('Failed to copy:', err);
+                        alert('Failed to copy to clipboard');
+                    }
+                }, 'image/png');
+            } catch (err) {
+                allShareBtns.forEach(btn => btn.style.display = 'flex');
+                console.error('Screenshot failed:', err);
+            }
+        }
+
+        async function shareMetricsToTelegram() {
+            const metricsBox = document.getElementById('metricsBox');
+            const allShareBtns = document.querySelectorAll('.share-buttons');
+
+            try {
+                allShareBtns.forEach(btn => btn.style.display = 'none');
+
+                const canvas = await html2canvas(metricsBox, {
+                    backgroundColor: '#0f172a',
+                    scale: 2
+                });
+
+                allShareBtns.forEach(btn => btn.style.display = 'flex');
+
+                canvas.toBlob(async (blob) => {
+                    const file = new File([blob], 'pps_metrics.png', { type: 'image/png' });
+
+                    if (navigator.share && navigator.canShare({ files: [file] })) {
+                        try {
+                            await navigator.share({
+                                files: [file],
+                                title: 'YieldBasis Current PPS Values',
+                                text: 'Current Fundamental Values - YieldBasis Markets'
+                            });
+                        } catch (err) {
+                            window.open('https://t.me/share/url?url=' + encodeURIComponent(window.location.href) + '&text=' + encodeURIComponent('YieldBasis Current PPS Values'), '_blank');
+                        }
+                    } else {
+                        window.open('https://t.me/share/url?url=' + encodeURIComponent(window.location.href) + '&text=' + encodeURIComponent('YieldBasis Current PPS Values'), '_blank');
+                    }
+                }, 'image/png');
+            } catch (err) {
+                allShareBtns.forEach(btn => btn.style.display = 'flex');
+                window.open('https://t.me/share/url?url=' + encodeURIComponent(window.location.href) + '&text=' + encodeURIComponent('YieldBasis Current PPS Values'), '_blank');
+            }
+        }
+
+        async function shareMetricsToTwitter() {
+            const metricsBox = document.getElementById('metricsBox');
+            const allShareBtns = document.querySelectorAll('.share-buttons');
+
+            try {
+                allShareBtns.forEach(btn => btn.style.display = 'none');
+
+                const canvas = await html2canvas(metricsBox, {
+                    backgroundColor: '#0f172a',
+                    scale: 2
+                });
+
+                allShareBtns.forEach(btn => btn.style.display = 'flex');
+
+                canvas.toBlob(async (blob) => {
+                    const file = new File([blob], 'pps_metrics.png', { type: 'image/png' });
+
+                    if (navigator.share && navigator.canShare({ files: [file] })) {
+                        try {
+                            await navigator.share({
+                                files: [file],
+                                title: 'YieldBasis Current PPS Values',
+                                text: 'Current Fundamental Values - YieldBasis Markets'
+                            });
+                        } catch (err) {
+                            window.open('https://twitter.com/intent/tweet?text=' + encodeURIComponent('YieldBasis Current PPS Values - Fundamental Values') + '&url=' + encodeURIComponent(window.location.href), '_blank');
+                        }
+                    } else {
+                        window.open('https://twitter.com/intent/tweet?text=' + encodeURIComponent('YieldBasis Current PPS Values - Fundamental Values') + '&url=' + encodeURIComponent(window.location.href), '_blank');
+                    }
+                }, 'image/png');
+            } catch (err) {
+                allShareBtns.forEach(btn => btn.style.display = 'flex');
+                window.open('https://twitter.com/intent/tweet?text=' + encodeURIComponent('YieldBasis Current PPS Values - Fundamental Values') + '&url=' + encodeURIComponent(window.location.href), '_blank');
             }
         }
     </script>
