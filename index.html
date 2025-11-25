@@ -1,4 +1,4 @@
-// Last updated: 2025-11-25 13:32:09 UTC
+// Last updated: 2025-11-25 13:44:50 UTC
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -1167,6 +1167,73 @@
             charts = {};
         }
 
+        // Глобальная функция для корректного расчёта emission per token
+        // Интегрирует emission_delta / TVL(t) для каждого периода
+        function calculateEmissionPerToken(startTimestamp, endTimestamp, emissionDataSource, emissionField, baseMarket) {
+            if (!emissionDataSource || !currentYieldData.data) return 0;
+
+            const emissionSorted = emissionDataSource
+                .filter(e => e[emissionField] !== null && e[emissionField] !== undefined)
+                .sort((a, b) => a.timestamp - b.timestamp);
+
+            if (emissionSorted.length === 0) return 0;
+
+            // Функция для интерполяции emission
+            function getCumulativeEmission(targetTimestamp) {
+                let closestBefore = null;
+                let closestAfter = null;
+
+                for (let i = 0; i < emissionSorted.length; i++) {
+                    if (emissionSorted[i].timestamp <= targetTimestamp) {
+                        closestBefore = emissionSorted[i];
+                    } else {
+                        closestAfter = emissionSorted[i];
+                        break;
+                    }
+                }
+
+                if (closestBefore && closestBefore.timestamp === targetTimestamp) {
+                    return closestBefore[emissionField];
+                }
+
+                if (closestBefore && closestAfter) {
+                    const valBefore = closestBefore[emissionField];
+                    const valAfter = closestAfter[emissionField];
+                    const t = (targetTimestamp - closestBefore.timestamp) / (closestAfter.timestamp - closestBefore.timestamp);
+                    return valBefore + t * (valAfter - valBefore);
+                }
+
+                if (closestBefore) return closestBefore[emissionField];
+                if (closestAfter) return closestAfter[emissionField];
+                return 0;
+            }
+
+            // Интегрируем emission_delta / TVL(t) для каждой точки данных
+            let accumulatedEmission = 0;
+            const startEmissionTotal = getCumulativeEmission(startTimestamp);
+            let prevEmission = startEmissionTotal;
+
+            for (let i = 0; i < currentYieldData.data.length; i++) {
+                const pointTimestamp = Math.floor(new Date(currentYieldData.data[i].datetime).getTime() / 1000);
+                if (pointTimestamp <= startTimestamp) continue;
+                if (pointTimestamp > endTimestamp) break;
+
+                const currentEmission = getCumulativeEmission(pointTimestamp);
+                const emissionDelta = currentEmission - prevEmission;
+
+                if (emissionDelta > 0) {
+                    const tvlCurrent = getTVLAt(pointTimestamp, baseMarket);
+                    // Защита от деления на маленький TVL
+                    const effectiveTVL = Math.max(tvlCurrent, 1.0);
+                    accumulatedEmission += emissionDelta / effectiveTVL;
+                }
+
+                prevEmission = currentEmission;
+            }
+
+            return accumulatedEmission;
+        }
+
         function updateMetrics() {
             // Trading metrics
             let totalReturnWithdrawable = currentYieldData.metrics.total_return;
@@ -1224,20 +1291,16 @@
                         return 0;
                     }
 
-                    const startEmission = getCumulativeEmissionWithdrawable(startTimestamp);
-                    const endEmission = getCumulativeEmissionWithdrawable(endTimestamp);
-                    const totalEmission = endEmission - startEmission;
-
-                    // Use end TVL (most representative as TVL grew over time)
+                    // Используем корректную формулу: интегрирование emission_delta / TVL(t)
                     const baseMarket = config.baseMarket || 'wbtc';
-                    const startTVL = getTVLAt(startTimestamp, baseMarket);
-                    const endTVL = getTVLAt(endTimestamp, baseMarket);
+                    const emissionBoost = calculateEmissionPerToken(startTimestamp, endTimestamp, emissionDataSource, emissionField, baseMarket);
 
-                    const emissionBoost = totalEmission / endTVL;
                     totalReturnWithdrawable += emissionBoost;
                     aprWithdrawable = Math.pow(1 + totalReturnWithdrawable, 365 / currentYieldData.metrics.days) - 1;  // Compound APR
 
-                    console.log('Withdrawable emission added:', {emissionBoost, totalEmission, endTVL, startTVL, totalReturnWithdrawable, aprWithdrawable});
+                    const startTVL = getTVLAt(startTimestamp, baseMarket);
+                    const endTVL = getTVLAt(endTimestamp, baseMarket);
+                    console.log('Withdrawable emission added:', {emissionBoost, startTVL, endTVL, totalReturnWithdrawable, aprWithdrawable});
                 }
             }
 
@@ -1353,20 +1416,16 @@
                                     return 0;
                                 }
 
-                                const startEmission = getCumulativeEmissionTemp(startTimestamp);
-                                const endEmission = getCumulativeEmissionTemp(endTimestamp);
-                                const totalEmission = endEmission - startEmission;
-
-                                // Use end TVL (most representative as TVL grew over time)
+                                // Используем корректную формулу: интегрирование emission_delta / TVL(t)
                                 const baseMarket = config.baseMarket || 'wbtc';
-                                const startTVL = getTVLAt(startTimestamp, baseMarket);
-                                const endTVL = getTVLAt(endTimestamp, baseMarket);
+                                emissionBoostForFund = calculateEmissionPerToken(startTimestamp, endTimestamp, emissionDataSource, emissionField, baseMarket);
 
-                                emissionBoostForFund = totalEmission / endTVL;
                                 totalReturnFund += emissionBoostForFund;
                                 aprFund = Math.pow(1 + totalReturnFund, 365 / daysFund) - 1;  // Compound APR
 
-                                console.log('Fundamental emission added:', {emissionBoostForFund, totalEmission, endTVL, startTVL, totalReturnFund, aprFund, daysFund});
+                                const startTVL = getTVLAt(startTimestamp, baseMarket);
+                                const endTVL = getTVLAt(endTimestamp, baseMarket);
+                                console.log('Fundamental emission added:', {emissionBoostForFund, startTVL, endTVL, totalReturnFund, aprFund, daysFund});
                             }
                         }
 
@@ -1445,16 +1504,9 @@
                             return 0;
                         }
 
-                        const startEmission = getCumulativeEmissionForMetrics(startTimestamp);
-                        const endEmission = getCumulativeEmissionForMetrics(endTimestamp);
-                        const totalEmission = endEmission - startEmission;
-
-                        // Use end TVL (most representative as TVL grew over time)
+                        // Используем корректную формулу: интегрирование emission_delta / TVL(t)
                         const baseMarket = config.baseMarket || 'wbtc';
-                        const endTVL = getTVLAt(endTimestamp, baseMarket);
-
-                        // Emission boost = эмиссия / TVL (одинаковый для обоих)
-                        const emissionBoost = totalEmission / endTVL;
+                        const emissionBoost = calculateEmissionPerToken(startTimestamp, endTimestamp, emissionDataSource, emissionField, baseMarket);
 
                         // Вычисляем период для Fundamental из PPS точек
                         const ppsDataSource = config.ppsData;
