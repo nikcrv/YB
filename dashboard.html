@@ -1,4 +1,4 @@
-// Last updated: 2025-11-25 18:19:03 UTC
+// Last updated: 2025-11-25 18:34:56 UTC
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -477,16 +477,18 @@
     <script src="revenue_yield_cbbtc_sync.js?v=6"></script>
     <script src="revenue_yield_tbtc_sync.js?v=6"></script>
     <script src="yb_emission_data.js?v=6"></script>
-    <!-- Load vaults yield data for BTC price -->
-    <script src="vaults_yield_wbtc.js?v=6"></script>
 
     <!-- Load OLD contract data files -->
     <script src="old_revenue_yield_wbtc_sync.js?v=6"></script>
     <script src="old_revenue_yield_cbbtc_sync.js?v=6"></script>
     <script src="old_revenue_yield_tbtc_sync.js?v=6"></script>
     <script src="old_yb_emission_data.js?v=6"></script>
-    <!-- Load OLD vaults yield data for BTC price -->
-    <script src="old_vaults_yield_wbtc.js?v=6"></script>
+
+    <!-- Load BTC price data (uses unique variable names) -->
+    <script src="vaults_yield_syb_cbbtc.js?v=6"></script>
+    <script>var btcPriceSourceNew = (typeof yieldData_syb_cbbtc !== 'undefined') ? yieldData_syb_cbbtc.data : null;</script>
+    <script src="old_vaults_yield_syb_cbbtc.js?v=6"></script>
+    <script>var btcPriceSourceOld = (typeof yieldData_old_syb_cbbtc !== 'undefined') ? yieldData_old_syb_cbbtc.data : null;</script>
 
     <script>
     // Глобальная переменная для текущей версии контракта
@@ -1386,17 +1388,8 @@
             // ====== BTC PRICE LINE ======
             let showBtcPrice = false;
 
-            // Получаем BTC цены из vaults_yield данных
-            let btcPriceSource = null;
-            if (currentContractVersion === 'old') {
-                if (typeof yieldData_yb_wbtc !== 'undefined') {
-                    btcPriceSource = yieldData_yb_wbtc.data;
-                }
-            } else {
-                if (typeof yieldData_wbtc !== 'undefined') {
-                    btcPriceSource = yieldData_wbtc.data;
-                }
-            }
+            // Получаем BTC цены из сохранённых данных vaults_yield
+            const btcPriceSource = (currentContractVersion === 'old') ? btcPriceSourceOld : btcPriceSourceNew;
 
             const hasBtcPriceData = btcPriceSource && btcPriceSource.length > 0 && btcPriceSource.some(d => d.btc_price);
             console.log('BTC price data available:', hasBtcPriceData, 'source points:', btcPriceSource?.length || 0);

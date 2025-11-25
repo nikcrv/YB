@@ -1,4 +1,4 @@
-// Last updated: 2025-11-25 18:19:03 UTC
+// Last updated: 2025-11-25 18:34:56 UTC
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -1250,7 +1250,7 @@
                 </div>
 
                 <div class="chart-container" id="ppsChartContainer" style="position: relative;">
-                    <h2 class="chart-title">Price Per Share (BTC)</h2>
+                    <h2 class="chart-title" id="ppsChartTitle">Price Per Share (BTC)</h2>
                     <div class="share-buttons">
                         <button class="share-button copy" onclick="copyScreenshot()" title="Copy to clipboard">
                             <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
@@ -2277,6 +2277,10 @@
         function createCharts() {
             console.log('Creating charts for', currentYieldData.data.length, 'data points');
 
+            // Обновляем заголовок графика PPS с названием текущего маркета
+            const marketName = marketData[currentMarket]?.name || currentMarket;
+            document.getElementById('ppsChartTitle').textContent = `Price Per Share ${marketName} (BTC)`;
+
             // Определяем размер экрана для адаптивных настроек
             const isMobile = window.innerWidth <= 768;
 
@@ -2803,8 +2807,37 @@
             }
 
             // Добавляем BTC Price на отдельной оси Y (справа)
-            const btcPriceData = validPpsData.map(d => d.btc_price);
-            const hasBtcPriceData = btcPriceData.some(p => p !== null && p !== undefined && !isNaN(p));
+            let btcPriceData = validPpsData.map(d => d.btc_price);
+            let hasBtcPriceData = btcPriceData.some(p => p !== null && p !== undefined && !isNaN(p));
+
+            // Если у текущего маркета нет BTC price, берём из cbBTC или WBTC
+            if (!hasBtcPriceData) {
+                const fallbackSource = marketData.cbbtc?.data || marketData.wbtc?.data;
+                if (fallbackSource) {
+                    // Интерполируем BTC price по timestamp
+                    btcPriceData = validPpsData.map(d => {
+                        const ts = new Date(d.datetime).getTime() / 1000;
+                        for (let i = 0; i < fallbackSource.length - 1; i++) {
+                            const t1 = fallbackSource[i].timestamp;
+                            const t2 = fallbackSource[i + 1].timestamp;
+                            if (ts >= t1 && ts <= t2) {
+                                const p1 = fallbackSource[i].btc_price;
+                                const p2 = fallbackSource[i + 1].btc_price;
+                                if (!p1 || !p2) return p1 || p2;
+                                const ratio = (ts - t1) / (t2 - t1);
+                                return p1 + ratio * (p2 - p1);
+                            }
+                        }
+                        // За пределами - ближайшее значение
+                        if (ts < fallbackSource[0]?.timestamp) return fallbackSource[0]?.btc_price;
+                        return fallbackSource[fallbackSource.length - 1]?.btc_price;
+                    });
+                    hasBtcPriceData = btcPriceData.some(p => p !== null && p !== undefined && !isNaN(p));
+                    if (hasBtcPriceData) {
+                        console.log('Using fallback BTC price from cbBTC/WBTC');
+                    }
+                }
+            }
 
             if (hasBtcPriceData && showBtcPrice) {
                 ppsDatasets.push({
