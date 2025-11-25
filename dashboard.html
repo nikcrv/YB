@@ -1,4 +1,4 @@
-// Last updated: 2025-11-25 20:26:53 UTC
+// Last updated: 2025-11-25 20:42:04 UTC
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -489,11 +489,13 @@
     <script src="old_revenue_yield_tbtc_sync.js?v=6"></script>
     <script src="old_yb_emission_data.js?v=6"></script>
 
-    <!-- Load BTC price data (uses unique variable names) -->
+    <!-- Load BTC price data -->
+    <!-- Main source: old_vaults_yield_wbtc covers Sep 24 - Nov 20 -->
+    <script src="old_vaults_yield_wbtc.js?v=6"></script>
+    <script>var btcPriceSourceEarly = (typeof yieldData_yb_wbtc !== 'undefined') ? yieldData_yb_wbtc.data : null;</script>
+    <!-- Additional source for latest data: vaults_yield_syb_cbbtc covers Nov 12 - Nov 26 -->
     <script src="vaults_yield_syb_cbbtc.js?v=6"></script>
     <script>var btcPriceSourceNew = (typeof yieldData_syb_cbbtc !== 'undefined') ? yieldData_syb_cbbtc.data : null;</script>
-    <script src="old_vaults_yield_syb_cbbtc.js?v=6"></script>
-    <script>var btcPriceSourceOld = (typeof yieldData_old_syb_cbbtc !== 'undefined') ? yieldData_old_syb_cbbtc.data : null;</script>
 
     <script>
     // Глобальная переменная для текущей версии контракта
@@ -1293,7 +1295,13 @@
                         profit -= cumulativeDeposits;
                     }
                     if (includeWithdrawals) {
-                        profit += cumulativeWithdrawals;
+                        // Если Include Admin Fee Withdrawals активен, вычитаем admin fee withdrawals
+                        // из обычных withdrawals чтобы избежать двойного учёта
+                        // (admin fee withdrawals записываются и в withdrawals_btc и в admin_fees падение)
+                        const effectiveWithdrawals = includeAdminFeeWithdrawals
+                            ? cumulativeWithdrawals - cumulativeAdminFeeWithdrawals
+                            : cumulativeWithdrawals;
+                        profit += effectiveWithdrawals;
                     }
                     if (includeAdminFees) {
                         // Компенсируем уменьшение adminFees при выводе admin fee
@@ -1401,10 +1409,21 @@
             // ====== BTC PRICE LINE ======
             let showBtcPrice = true; // По умолчанию включён
 
-            // Получаем BTC цены из сохранённых данных vaults_yield
-            const btcPriceSource = (currentContractVersion === 'old') ? btcPriceSourceOld : btcPriceSourceNew;
+            // Объединяем источники BTC цен для покрытия всего периода
+            // btcPriceSourceEarly (old_vaults_yield_wbtc) - основной источник с Sep 24 по Nov 20
+            // btcPriceSourceNew (vaults_yield_syb_cbbtc) - дополняет последние дни
+            let btcPriceSource = [];
+            if (btcPriceSourceEarly && btcPriceSourceEarly.length > 0) {
+                btcPriceSource = btcPriceSource.concat(btcPriceSourceEarly.filter(d => d.btc_price));
+            }
+            if (btcPriceSourceNew && btcPriceSourceNew.length > 0) {
+                btcPriceSource = btcPriceSource.concat(btcPriceSourceNew.filter(d => d.btc_price));
+            }
+            // Сортируем по timestamp и убираем дубликаты
+            btcPriceSource.sort((a, b) => a.timestamp - b.timestamp);
+            btcPriceSource = btcPriceSource.filter((d, i, arr) => i === 0 || d.timestamp !== arr[i-1].timestamp);
 
-            const hasBtcPriceData = btcPriceSource && btcPriceSource.length > 0 && btcPriceSource.some(d => d.btc_price);
+            const hasBtcPriceData = btcPriceSource && btcPriceSource.length > 0;
             console.log('BTC price data available:', hasBtcPriceData, 'source points:', btcPriceSource?.length || 0);
 
             // Функция интерполяции BTC цены по timestamp
