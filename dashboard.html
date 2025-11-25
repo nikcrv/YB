@@ -1,4 +1,4 @@
-// Last updated: 2025-11-25 19:47:04 UTC
+// Last updated: 2025-11-25 20:00:17 UTC
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -611,18 +611,18 @@
                 cumulativeWithdrawals += withdrawals;
                 cumulativeAdminFeeWithdrawals += adminFeeWithdrawals;
 
-                // Добавляем admin fee withdrawals к withdrawals если checkbox активен
-                const includeAdminFeeWithdrawals = document.getElementById('toggleAdminFeeWithdrawals')?.checked ?? true;
-                const effectiveWithdrawals = includeAdminFeeWithdrawals
-                    ? cumulativeWithdrawals + cumulativeAdminFeeWithdrawals
-                    : cumulativeWithdrawals;
-
                 // Вычисляем прибыль
-                // Если включен checkbox, компенсируем уменьшение adminFees добавлением выведенной суммы
+                // Формула: profit = TVL - deposits + withdrawals + adminFees
+                // Когда adminFees выводятся, adminFees уменьшается (становится отрицательным после вывода)
+                // Чтобы компенсировать это, добавляем cumulativeAdminFeeWithdrawals к adminFees
+                const includeAdminFeeWithdrawals = document.getElementById('toggleAdminFeeWithdrawals')?.checked ?? true;
+
+                // effectiveAdminFees - компенсируем уменьшение adminFees при выводе
                 const effectiveAdminFees = includeAdminFeeWithdrawals
                     ? adminFees + cumulativeAdminFeeWithdrawals
                     : adminFees;
-                const netDeposited = cumulativeDeposits - effectiveWithdrawals;
+
+                const netDeposited = cumulativeDeposits - cumulativeWithdrawals;
                 const profit = totalWithdrawable - netDeposited + effectiveAdminFees;
 
                 return {
@@ -631,7 +631,7 @@
                     profit: profit,
                     withdrawable: totalWithdrawable,
                     deposits: cumulativeDeposits,
-                    withdrawals: effectiveWithdrawals,
+                    withdrawals: cumulativeWithdrawals,
                     admin_fees: adminFees,
                     admin_fee_withdrawals: cumulativeAdminFeeWithdrawals
                 };
@@ -1259,6 +1259,7 @@
 
                     // Вычисляем баланс на основе выбранных компонентов
                     let profit = 0;
+                    const includeAdminFeeWithdrawals = document.getElementById('toggleAdminFeeWithdrawals')?.checked ?? true;
 
                     if (includeWithdrawable) {
                         profit += withdrawable;
@@ -1266,33 +1267,15 @@
                     if (includeDeposits) {
                         profit -= cumulativeDeposits;
                     }
-                    // Обработка admin fee withdrawals (независимо от других галочек)
-                    const includeAdminFeeWithdrawals = document.getElementById('toggleAdminFeeWithdrawals')?.checked ?? true;
-                    let adminFeeWithdrawalsAdded = false;
-
                     if (includeWithdrawals) {
-                        const effectiveWithdrawals = includeAdminFeeWithdrawals
-                            ? cumulativeWithdrawals + cumulativeAdminFeeWithdrawals
-                            : cumulativeWithdrawals;
-                        profit += effectiveWithdrawals;
-                        if (includeAdminFeeWithdrawals) {
-                            adminFeeWithdrawalsAdded = true;
-                        }
+                        profit += cumulativeWithdrawals;
                     }
-
                     if (includeAdminFees) {
+                        // Компенсируем уменьшение adminFees при выводе admin fee
                         const effectiveAdminFees = includeAdminFeeWithdrawals
                             ? adminFees + cumulativeAdminFeeWithdrawals
                             : adminFees;
                         profit += effectiveAdminFees;
-                        if (includeAdminFeeWithdrawals) {
-                            adminFeeWithdrawalsAdded = true;
-                        }
-                    }
-
-                    // Если admin fee withdrawals включены, но они еще не были добавлены ни через withdrawals, ни через admin fees
-                    if (includeAdminFeeWithdrawals && !adminFeeWithdrawalsAdded) {
-                        profit += cumulativeAdminFeeWithdrawals;
                     }
 
                     // Добавляем YB эмиссию по рынкам если галочка активна
