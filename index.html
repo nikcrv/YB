@@ -1,4 +1,4 @@
-// Last updated: 2025-11-25 16:55:37 UTC
+// Last updated: 2025-11-25 17:09:05 UTC
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,6 +9,7 @@
     <meta http-equiv="Expires" content="0">
     <title>Yield Basis BTC Vaults - Yield Analytics</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
     <style>
         * {
             margin: 0;
@@ -374,6 +375,72 @@
             justify-content: space-between;
             color: #64748b;
             font-size: 0.75em;
+        }
+
+        .btc-price-toggle {
+            position: absolute;
+            top: 35px;
+            right: 25px;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 0.75em;
+            color: rgba(148, 163, 184, 0.6);
+            cursor: pointer;
+            z-index: 10;
+        }
+        .btc-price-toggle input {
+            width: 12px;
+            height: 12px;
+            cursor: pointer;
+        }
+        .btc-price-toggle span {
+            user-select: none;
+        }
+
+        .share-buttons {
+            position: absolute;
+            top: 8px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 8px;
+            z-index: 10;
+        }
+        .share-button {
+            background: rgba(59, 130, 246, 0.2);
+            border: 1px solid rgba(59, 130, 246, 0.4);
+            color: #60a5fa;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.7em;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            transition: all 0.2s;
+        }
+        .share-button:hover {
+            background: rgba(59, 130, 246, 0.3);
+            border-color: rgba(59, 130, 246, 0.6);
+        }
+        .share-button.twitter {
+            background: rgba(0, 0, 0, 0.3);
+            border-color: rgba(255, 255, 255, 0.2);
+            color: #fff;
+        }
+        .share-button.twitter:hover {
+            background: rgba(0, 0, 0, 0.5);
+            border-color: rgba(255, 255, 255, 0.4);
+        }
+        .share-button svg {
+            width: 14px;
+            height: 14px;
+        }
+
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
         }
 
         @media (max-width: 768px) {
@@ -902,6 +969,7 @@
         let showEmission = true; // Enable/disable YB Emission functionality
         let showEmissionFundamental = true; // Show emission for Fundamental
         let showEmissionWithdrawable = true; // Show emission for Withdrawable
+        let showBtcPrice = true; // Show BTC price overlay on PPS chart
 
         // TVL interpolation function
         function getTVLAt(timestamp, market) {
@@ -1134,8 +1202,20 @@
                     </div>
                 </div>
 
-                <div class="chart-container">
+                <div class="chart-container" id="ppsChartContainer" style="position: relative;">
                     <h2 class="chart-title">Price Per Share (BTC)</h2>
+                    <div class="share-buttons">
+                        <button class="share-button telegram" onclick="shareToTelegram()" title="Share to Telegram">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+                        </button>
+                        <button class="share-button twitter" onclick="shareToTwitter()" title="Share to X/Twitter">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                        </button>
+                    </div>
+                    <label class="btc-price-toggle">
+                        <input type="checkbox" id="btc-price-toggle" onchange="toggleBtcPrice()" checked>
+                        <span>BTC $</span>
+                    </label>
                     <canvas id="ppsChart"></canvas>
 
                     <div class="compact-range">
@@ -1758,6 +1838,72 @@
             createCharts();
         }
 
+        function toggleBtcPrice() {
+            showBtcPrice = document.getElementById('btc-price-toggle').checked;
+            console.log('BTC Price toggled:', showBtcPrice);
+            destroyCharts();
+            createCharts();
+        }
+
+        async function shareToTelegram() {
+            const container = document.getElementById('ppsChartContainer');
+            const shareBtn = container.querySelector('.share-button');
+            const originalText = shareBtn.innerHTML;
+
+            try {
+                // Показываем статус
+                shareBtn.innerHTML = '<svg viewBox="0 0 24 24" fill="currentColor" style="animation: spin 1s linear infinite;"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8z" opacity=".3"/><path d="M20 12h2A10 10 0 0 0 12 2v2a8 8 0 0 1 8 8z"/></svg> ...';
+
+                // Временно скрываем кнопки для скриншота
+                const btcToggle = container.querySelector('.btc-price-toggle');
+                shareBtn.style.display = 'none';
+                if (btcToggle) btcToggle.style.display = 'none';
+
+                // Создаём скриншот
+                const canvas = await html2canvas(container, {
+                    backgroundColor: '#0f172a',
+                    scale: 2,
+                    logging: false
+                });
+
+                // Возвращаем кнопки
+                shareBtn.style.display = 'flex';
+                if (btcToggle) btcToggle.style.display = 'flex';
+
+                // Конвертируем в blob
+                const blob = await new Promise(resolve => canvas.toBlob(resolve, 'image/png'));
+                const file = new File([blob], 'yield-basis-chart.png', { type: 'image/png' });
+
+                // Пробуем Web Share API (работает на мобильных и некоторых десктопах)
+                if (navigator.canShare && navigator.canShare({ files: [file] })) {
+                    await navigator.share({
+                        files: [file],
+                        title: 'Yield Basis BTC Vault',
+                        text: `${currentMarket.toUpperCase()} (${currentContractVersion.toUpperCase()}) - APR: ${document.getElementById('apr').textContent}`
+                    });
+                    shareBtn.innerHTML = originalText;
+                } else {
+                    // Fallback: скачиваем файл и открываем Telegram
+                    const url = URL.createObjectURL(blob);
+                    const a = document.createElement('a');
+                    a.href = url;
+                    a.download = `yield-basis-${currentMarket}-${new Date().toISOString().slice(0,10)}.png`;
+                    a.click();
+                    URL.revokeObjectURL(url);
+
+                    // Открываем Telegram для шаринга ссылки
+                    const shareText = encodeURIComponent(`Yield Basis ${currentMarket.toUpperCase()} (${currentContractVersion.toUpperCase()})\nAPR: ${document.getElementById('apr').textContent}\n\nhttps://nikcrv.github.io/yb-vaults-apr/`);
+                    window.open(`https://t.me/share/url?url=${encodeURIComponent('https://nikcrv.github.io/yb-vaults-apr/')}&text=${shareText}`, '_blank');
+
+                    shareBtn.innerHTML = originalText;
+                }
+            } catch (err) {
+                console.error('Share error:', err);
+                shareBtn.innerHTML = originalText;
+                alert('Could not share. Screenshot saved to downloads.');
+            }
+        }
+
         function toggleEmission() {
             showEmission = document.getElementById('emission-toggle').checked;
             console.log('YB Emission toggled:', showEmission);
@@ -2309,7 +2455,7 @@
             const btcPriceData = validPpsData.map(d => d.btc_price);
             const hasBtcPriceData = btcPriceData.some(p => p !== null && p !== undefined && !isNaN(p));
 
-            if (hasBtcPriceData) {
+            if (hasBtcPriceData && showBtcPrice) {
                 ppsDatasets.push({
                     label: 'BTC Price (USD)',
                     data: btcPriceData,
@@ -2404,22 +2550,19 @@
                             min: btcPriceAxisMin,
                             max: btcPriceAxisMax,
                             position: 'right',
-                            display: hasBtcPriceData,
+                            display: hasBtcPriceData && showBtcPrice,
                             title: {
-                                display: !isMobile && hasBtcPriceData,
-                                text: 'BTC Price (USD)',
-                                color: 'rgba(148, 163, 184, 0.6)',
-                                font: { size: titleFontSize }
+                                display: false
                             },
                             ticks: {
-                                color: 'rgba(148, 163, 184, 0.6)',
+                                color: 'rgba(148, 163, 184, 0.5)',
                                 font: { size: ticksFontSize },
                                 callback: function(value) {
-                                    return '$' + value.toLocaleString();
+                                    return '$' + (value / 1000).toFixed(0) + 'k';
                                 }
                             },
                             grid: {
-                                drawOnChartArea: false  // Не рисуем сетку для правой оси
+                                drawOnChartArea: false
                             }
                         },
                         x: {
