@@ -1,4 +1,4 @@
-// Last updated: 2025-11-27 20:30:22 UTC
+// Last updated: 2025-11-27 20:43:21 UTC
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -315,8 +315,8 @@
                     <div class="stat-value" id="dailyRevenue">-</div>
                 </div>
                 <div class="stat-card">
-                    <div class="stat-label">Last Update</div>
-                    <div class="stat-value" id="lastUpdate" style="font-size: 0.9em;">-</div>
+                    <div class="stat-label">Avg Lock Duration</div>
+                    <div class="stat-value" id="avgLockDuration">-</div>
                 </div>
             </div>
 
@@ -380,6 +380,23 @@
                 </div>
             </div>
 
+            <!-- Lock Ratio Chart -->
+            <div class="chart-container">
+                <div class="chart-title">veYB/YB Lock Ratio Over Time</div>
+                <div class="chart-wrapper">
+                    <canvas id="lockRatioChart"></canvas>
+                </div>
+                <div class="compact-range">
+                    <div class="period-buttons" id="lockRatioPeriodButtons">
+                        <span class="period-label">Period:</span>
+                        <button class="period-button" data-days="7">7d</button>
+                        <button class="period-button" data-days="14">14d</button>
+                        <button class="period-button" data-days="30">30d</button>
+                        <button class="period-button active" data-days="all">All</button>
+                    </div>
+                </div>
+            </div>
+
             <!-- Contract info -->
             <div class="contract-info">
                 <div class="contract-info-row">
@@ -406,9 +423,11 @@
         let supplyChart = null;
         let aprChart = null;
         let priceChart = null;
+        let lockRatioChart = null;
         let allData = [];
         let aprData = [];
         let priceData = [];
+        let lockRatioData = [];
 
         // Genesis timestamp for new contracts (Nov 12, 2025)
         const CONTRACTS_GENESIS_TIMESTAMP = 1762963200;
@@ -906,6 +925,117 @@
             });
         }
 
+        function extractLockRatioData() {
+            // Extract lock ratio data from veYBSupplyData
+            const result = [];
+            for (const point of allData) {
+                if (point.lock_ratio && point.lock_ratio > 0) {
+                    result.push({
+                        timestamp: point.timestamp,
+                        datetime: point.datetime,
+                        lock_ratio: point.lock_ratio,
+                        supply_yb: point.supply_yb,
+                        yb_locked: point.yb_locked
+                    });
+                }
+            }
+            return result;
+        }
+
+        function updateLockRatioChart(period = 'all') {
+            const filteredData = filterDataByPeriod(lockRatioData, period);
+
+            const labels = filteredData.map(d => new Date(d.timestamp * 1000));
+            const values = filteredData.map(d => d.lock_ratio * 100);
+
+            if (lockRatioChart) {
+                lockRatioChart.data.labels = labels;
+                lockRatioChart.data.datasets[0].data = values;
+                lockRatioChart.update('none');
+            }
+        }
+
+        function createLockRatioChart(data) {
+            const ctx = document.getElementById('lockRatioChart').getContext('2d');
+
+            const labels = data.map(d => new Date(d.timestamp * 1000));
+            const values = data.map(d => d.lock_ratio * 100);
+
+            lockRatioChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'veYB/YB Ratio',
+                        data: values,
+                        borderColor: '#8b5cf6',
+                        backgroundColor: 'rgba(139, 92, 246, 0.1)',
+                        fill: true,
+                        tension: 0.4,
+                        pointRadius: data.length < 50 ? 4 : 0,
+                        pointHoverRadius: 6,
+                        borderWidth: 2
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    interaction: {
+                        intersect: false,
+                        mode: 'index'
+                    },
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: {
+                            backgroundColor: '#1e293b',
+                            titleColor: '#e2e8f0',
+                            bodyColor: '#94a3b8',
+                            borderColor: '#334155',
+                            borderWidth: 1,
+                            callbacks: {
+                                title: (items) => {
+                                    const date = new Date(items[0].parsed.x);
+                                    return date.toLocaleString();
+                                },
+                                label: (item) => {
+                                    const point = lockRatioData.find(d => d.timestamp === Math.floor(item.parsed.x / 1000));
+                                    let lines = [`Ratio: ${item.raw.toFixed(2)}%`];
+                                    if (point) {
+                                        lines.push(`veYB: ${formatNumber(point.supply_yb)}`);
+                                        lines.push(`YB Locked: ${formatNumber(point.yb_locked)}`);
+                                        // Estimate avg lock duration (assuming max lock = 4 years)
+                                        const avgLockYears = point.lock_ratio * 4;
+                                        lines.push(`Avg Lock: ~${avgLockYears.toFixed(1)} years`);
+                                    }
+                                    return lines;
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        x: {
+                            type: 'time',
+                            time: {
+                                displayFormats: {
+                                    hour: 'MMM d, HH:mm',
+                                    day: 'MMM d'
+                                }
+                            },
+                            grid: { color: '#334155' },
+                            ticks: { color: '#64748b' }
+                        },
+                        y: {
+                            grid: { color: '#334155' },
+                            ticks: {
+                                color: '#64748b',
+                                callback: (value) => value.toFixed(0) + '%'
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
         function init() {
             // Check if data exists
             if (typeof veYBSupplyData === 'undefined' || veYBSupplyData.length === 0) {
@@ -914,6 +1044,10 @@
             }
 
             allData = veYBSupplyData;
+
+            // Extract lock ratio data
+            lockRatioData = extractLockRatioData();
+            console.log('Lock ratio data extracted:', lockRatioData.length, 'points');
 
             // Calculate APR data (both with historical and current price)
             aprData = calculateAprData(true);
@@ -929,10 +1063,6 @@
             const first = allData[0];
 
             document.getElementById('totalLocked').textContent = formatNumber(latest.supply_yb) + ' veYB';
-
-            // Format last update date nicely
-            const updateDate = new Date(latest.datetime);
-            document.getElementById('lastUpdate').textContent = updateDate.toLocaleString();
 
             // APR metrics
             if (aprData.length > 0) {
@@ -971,6 +1101,21 @@
                 document.getElementById('dailyRevenue').textContent = avgDaily.toFixed(6) + ' BTC';
             }
 
+            // Average Lock Duration (from lock ratio)
+            if (lockRatioData.length > 0) {
+                const latestLockRatio = lockRatioData[lockRatioData.length - 1];
+                // Assuming max lock = 4 years, ratio shows average lock duration
+                const avgLockYears = latestLockRatio.lock_ratio * 4;
+                if (avgLockYears >= 1) {
+                    document.getElementById('avgLockDuration').textContent = `~${avgLockYears.toFixed(1)} years`;
+                } else {
+                    const avgLockMonths = avgLockYears * 12;
+                    document.getElementById('avgLockDuration').textContent = `~${avgLockMonths.toFixed(0)} months`;
+                }
+            } else {
+                document.getElementById('avgLockDuration').textContent = 'N/A';
+            }
+
             // 24h change
             const data24h = findDataAtHoursAgo(allData, 24);
             if (data24h) {
@@ -995,6 +1140,9 @@
             if (priceData.length > 0) {
                 createPriceChart(priceData);
             }
+            if (lockRatioData.length > 0) {
+                createLockRatioChart(lockRatioData);
+            }
 
             // Period buttons for supply chart
             document.querySelectorAll('#supplyPeriodButtons .period-button').forEach(btn => {
@@ -1015,6 +1163,17 @@
                     const days = btn.dataset.days;
                     const period = days === 'all' ? 'all' : days + 'd';
                     updatePriceChart(period);
+                });
+            });
+
+            // Period buttons for lock ratio chart
+            document.querySelectorAll('#lockRatioPeriodButtons .period-button').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    document.querySelectorAll('#lockRatioPeriodButtons .period-button').forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    const days = btn.dataset.days;
+                    const period = days === 'all' ? 'all' : days + 'd';
+                    updateLockRatioChart(period);
                 });
             });
 
