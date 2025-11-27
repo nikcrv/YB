@@ -1,4 +1,4 @@
-// Last updated: 2025-11-27 19:27:41 UTC
+// Last updated: 2025-11-27 19:40:42 UTC
 const veYBSupplyData = [
   {
     "block": 23370927,
@@ -10444,6 +10444,12 @@ const veYBSupplyData = [
     "block": 23892115,
     "timestamp": 1764271571,
     "datetime": "2025-11-27T19:26:11",
+    "supply_yb": 21172930.417481795
+  },
+  {
+    "block": 23892181,
+    "timestamp": 1764272363,
+    "datetime": "2025-11-27T19:39:23",
     "supply_yb": 21172930.417481795
   }
 ];

@@ -1,4 +1,4 @@
-// Last updated: 2025-11-27 19:27:41 UTC
+// Last updated: 2025-11-27 19:40:42 UTC
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -234,9 +234,26 @@
                     <button class="period-button" data-period="1d" data-chart="apr">1D</button>
                     <button class="period-button" data-period="7d" data-chart="apr">7D</button>
                     <button class="period-button active" data-period="all" data-chart="apr">All</button>
+                    <label class="checkbox-label" style="margin-left: 20px; display: inline-flex; align-items: center; cursor: pointer;">
+                        <input type="checkbox" id="useHistoricalPrice" checked style="margin-right: 6px; cursor: pointer;">
+                        <span style="font-size: 0.85em; color: #94a3b8;">Historical YB/BTC price</span>
+                    </label>
                 </div>
                 <div class="chart-wrapper">
                     <canvas id="aprChart"></canvas>
+                </div>
+            </div>
+
+            <!-- YB/BTC Price Chart -->
+            <div class="chart-container">
+                <div class="chart-title">YB/BTC Price Over Time</div>
+                <div class="period-buttons" id="pricePeriodButtons">
+                    <button class="period-button" data-period="1d" data-chart="price">1D</button>
+                    <button class="period-button" data-period="7d" data-chart="price">7D</button>
+                    <button class="period-button active" data-period="all" data-chart="price">All</button>
+                </div>
+                <div class="chart-wrapper">
+                    <canvas id="priceChart"></canvas>
                 </div>
             </div>
 
@@ -283,8 +300,10 @@
     <script>
         let supplyChart = null;
         let aprChart = null;
+        let priceChart = null;
         let allData = [];
         let aprData = [];
+        let priceData = [];
 
         // Genesis timestamp for new contracts (Nov 12, 2025)
         const CONTRACTS_GENESIS_TIMESTAMP = 1762963200;
@@ -361,7 +380,21 @@
             return totalFees;
         }
 
-        function calculateAprData() {
+        function getLatestYbBtcPrice() {
+            // Get the latest YB/BTC price from emission data
+            if (typeof ybEmissionData === 'undefined' || !ybEmissionData.length) return null;
+
+            const sorted = [...ybEmissionData].sort((a, b) => b.timestamp - a.timestamp);
+            for (const point of sorted) {
+                if (point.yb_btc_price) return point.yb_btc_price;
+                if (point.cumulative_total && point.cumulative_total_btc && point.cumulative_total > 0) {
+                    return point.cumulative_total_btc / point.cumulative_total;
+                }
+            }
+            return null;
+        }
+
+        function calculateAprData(useHistoricalPrice = true) {
             // Calculate APR for each veYB supply point
             // APR = ((Admin Fees Total) / Days * 365) / (veYB Supply * YB/BTC Price)
 
@@ -370,6 +403,9 @@
             // Sort allData by timestamp first
             const sortedData = [...allData].sort((a, b) => a.timestamp - b.timestamp);
 
+            // Get latest price for non-historical mode
+            const latestPrice = useHistoricalPrice ? null : getLatestYbBtcPrice();
+
             for (const point of sortedData) {
                 const timestamp = point.timestamp;
                 const supplyYb = point.supply_yb;
@@ -377,7 +413,7 @@
                 // Skip points before contracts genesis or with zero supply
                 if (timestamp < CONTRACTS_GENESIS_TIMESTAMP || supplyYb <= 0) continue;
 
-                const ybBtcPrice = getYbBtcPrice(timestamp);
+                const ybBtcPrice = useHistoricalPrice ? getYbBtcPrice(timestamp) : latestPrice;
                 const adminFees = getAdminFeesAtTimestamp(timestamp);
                 const daysSinceGenesis = (timestamp - CONTRACTS_GENESIS_TIMESTAMP) / 86400;
 
@@ -621,6 +657,129 @@
             });
         }
 
+        function extractPriceData() {
+            // Extract YB/BTC price data from ybEmissionData
+            if (typeof ybEmissionData === 'undefined' || !ybEmissionData.length) return [];
+
+            const result = [];
+            const sortedData = [...ybEmissionData].sort((a, b) => a.timestamp - b.timestamp);
+
+            for (const point of sortedData) {
+                let price = null;
+
+                // Use stored yb_btc_price if available
+                if (point.yb_btc_price) {
+                    price = point.yb_btc_price;
+                } else if (point.cumulative_total && point.cumulative_total_btc && point.cumulative_total > 0) {
+                    // Fallback: calculate from cumulative values
+                    price = point.cumulative_total_btc / point.cumulative_total;
+                }
+
+                if (price && price > 0) {
+                    result.push({
+                        timestamp: point.timestamp,
+                        datetime: point.datetime,
+                        price: price,
+                        yb_usd: point.yb_usd_price || null,
+                        btc_usd: point.btc_usd_price || null
+                    });
+                }
+            }
+
+            return result;
+        }
+
+        function updatePriceChart(period = 'all') {
+            const filteredData = filterDataByPeriod(priceData, period);
+
+            const labels = filteredData.map(d => new Date(d.timestamp * 1000));
+            const values = filteredData.map(d => d.price);
+
+            if (priceChart) {
+                priceChart.data.labels = labels;
+                priceChart.data.datasets[0].data = values;
+                priceChart.update('none');
+            }
+        }
+
+        function createPriceChart(data) {
+            const ctx = document.getElementById('priceChart').getContext('2d');
+
+            const labels = data.map(d => new Date(d.timestamp * 1000));
+            const values = data.map(d => d.price);
+
+            priceChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'YB/BTC Price',
+                        data: values,
+                        borderColor: '#f59e0b',
+                        backgroundColor: 'rgba(245, 158, 11, 0.1)',
+                        fill: true,
+                        tension: 0.4,
+                        pointRadius: data.length < 50 ? 4 : 0,
+                        pointHoverRadius: 6,
+                        borderWidth: 2
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    interaction: {
+                        intersect: false,
+                        mode: 'index'
+                    },
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: {
+                            backgroundColor: '#1e293b',
+                            titleColor: '#e2e8f0',
+                            bodyColor: '#94a3b8',
+                            borderColor: '#334155',
+                            borderWidth: 1,
+                            callbacks: {
+                                title: (items) => {
+                                    const date = new Date(items[0].parsed.x);
+                                    return date.toLocaleString();
+                                },
+                                label: (item) => {
+                                    const point = priceData.find(d => d.timestamp === Math.floor(item.parsed.x / 1000));
+                                    let lines = [`1 YB = ${item.raw.toFixed(8)} BTC`];
+                                    if (point) {
+                                        if (point.yb_usd) lines.push(`YB: $${point.yb_usd.toFixed(4)}`);
+                                        if (point.btc_usd) lines.push(`BTC: $${point.btc_usd.toLocaleString()}`);
+                                    }
+                                    return lines;
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        x: {
+                            type: 'time',
+                            time: {
+                                displayFormats: {
+                                    hour: 'MMM d, HH:mm',
+                                    day: 'MMM d'
+                                }
+                            },
+                            grid: { color: '#334155' },
+                            ticks: { color: '#64748b' }
+                        },
+                        y: {
+                            grid: { color: '#334155' },
+                            ticks: {
+                                color: '#64748b',
+                                callback: (value) => value.toFixed(8)
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
         function init() {
             // Check if data exists
             if (typeof veYBSupplyData === 'undefined' || veYBSupplyData.length === 0) {
@@ -633,6 +792,10 @@
             // Calculate APR data
             aprData = calculateAprData();
             console.log('APR data calculated:', aprData.length, 'points');
+
+            // Extract price data
+            priceData = extractPriceData();
+            console.log('Price data extracted:', priceData.length, 'points');
 
             // Update metrics
             const latest = allData[allData.length - 1];
@@ -671,6 +834,9 @@
             if (aprData.length > 0) {
                 createAprChart(aprData);
             }
+            if (priceData.length > 0) {
+                createPriceChart(priceData);
+            }
 
             // Period buttons for supply chart
             document.querySelectorAll('#supplyPeriodButtons .period-button').forEach(btn => {
@@ -687,6 +853,27 @@
                     document.querySelectorAll('#aprPeriodButtons .period-button').forEach(b => b.classList.remove('active'));
                     btn.classList.add('active');
                     updateAprChart(btn.dataset.period);
+                });
+            });
+
+            // Checkbox for historical price toggle
+            document.getElementById('useHistoricalPrice').addEventListener('change', (e) => {
+                const useHistorical = e.target.checked;
+                aprData = calculateAprData(useHistorical);
+                console.log('APR recalculated with historical=' + useHistorical + ':', aprData.length, 'points');
+
+                // Get current period
+                const activeBtn = document.querySelector('#aprPeriodButtons .period-button.active');
+                const period = activeBtn ? activeBtn.dataset.period : 'all';
+                updateAprChart(period);
+            });
+
+            // Period buttons for price chart
+            document.querySelectorAll('#pricePeriodButtons .period-button').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    document.querySelectorAll('#pricePeriodButtons .period-button').forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    updatePriceChart(btn.dataset.period);
                 });
             });
 
