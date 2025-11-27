@@ -1,4 +1,4 @@
-// Last updated: 2025-11-27 21:09:28 UTC
+// Last updated: 2025-11-27 21:22:27 UTC
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -288,7 +288,7 @@
     <div class="container">
         <div class="header">
             <a href="index.html" class="back-button">Back</a>
-            <h1>veYB - YB Revenue</h1>
+            <h1>veYB - YB Revenue Dashboard</h1>
             <div style="width: 100px;"></div>
         </div>
 
@@ -451,6 +451,32 @@
                 </div>
             </div>
 
+            <!-- Cumulative Admin Fees Chart -->
+            <div class="chart-container">
+                <div class="chart-title">Cumulative Admin Fees (BTC)</div>
+                <div class="chart-wrapper">
+                    <canvas id="adminFeesChart"></canvas>
+                </div>
+                <div class="compact-range">
+                    <div class="period-buttons" id="adminFeesPeriodButtons">
+                        <span class="period-label">Period:</span>
+                        <button class="period-button" data-days="7">7d</button>
+                        <button class="period-button" data-days="14">14d</button>
+                        <button class="period-button" data-days="30">30d</button>
+                        <button class="period-button active" data-days="all">All</button>
+                    </div>
+                    <div class="range-slider">
+                        <div class="range-fill" id="adminFeesRangeFill"></div>
+                        <input type="range" id="adminFeesRangeStart" min="0" max="100" value="0">
+                        <input type="range" id="adminFeesRangeEnd" min="0" max="100" value="100">
+                    </div>
+                    <div class="range-labels">
+                        <span id="adminFeesStartLabel">Start</span>
+                        <span id="adminFeesEndLabel">End</span>
+                    </div>
+                </div>
+            </div>
+
             <!-- Contract info -->
             <div class="contract-info">
                 <div class="contract-info-row">
@@ -478,10 +504,12 @@
         let aprChart = null;
         let priceChart = null;
         let lockRatioChart = null;
+        let adminFeesChart = null;
         let allData = [];
         let aprData = [];
         let priceData = [];
         let lockRatioData = [];
+        let adminFeesData = [];
 
         // Genesis timestamp for new contracts (Nov 12, 2025)
         const CONTRACTS_GENESIS_TIMESTAMP = 1762963200;
@@ -1116,6 +1144,135 @@
             });
         }
 
+        function extractAdminFeesData() {
+            // Build cumulative admin fees timeline from withdrawal events
+            const result = [];
+
+            if (typeof adminFeeWithdrawalsData === 'undefined' || !adminFeeWithdrawalsData.length) {
+                return result;
+            }
+
+            // Get current fees in contracts from revenue_yield data
+            let currentInContracts = 0;
+            const sources = [
+                typeof yieldData_wbtc !== 'undefined' ? yieldData_wbtc.data : null,
+                typeof yieldData_cbbtc !== 'undefined' ? yieldData_cbbtc.data : null,
+                typeof yieldData_tbtc !== 'undefined' ? yieldData_tbtc.data : null
+            ].filter(Boolean);
+
+            // Get latest admin_fees_btc from each source
+            for (const data of sources) {
+                if (data.length > 0) {
+                    const latest = data[data.length - 1];
+                    currentInContracts += (latest.admin_fees_btc || 0);
+                }
+            }
+
+            // Add withdrawal events
+            for (const event of adminFeeWithdrawalsData) {
+                result.push({
+                    timestamp: event.timestamp,
+                    datetime: event.datetime,
+                    cumulative_withdrawn: event.cumulative_total,
+                    market: event.market
+                });
+            }
+
+            // Add current total (withdrawn + in contracts)
+            if (result.length > 0) {
+                const lastWithdrawn = result[result.length - 1].cumulative_withdrawn;
+                // Add a current point
+                const now = Math.floor(Date.now() / 1000);
+                result.push({
+                    timestamp: now,
+                    datetime: new Date().toISOString().slice(0, 19),
+                    cumulative_withdrawn: lastWithdrawn,
+                    in_contracts: currentInContracts,
+                    total: lastWithdrawn + currentInContracts
+                });
+            }
+
+            // Calculate total for each point
+            for (let i = 0; i < result.length - 1; i++) {
+                result[i].total = result[i].cumulative_withdrawn;
+            }
+
+            return result;
+        }
+
+        function createAdminFeesChart(data) {
+            const ctx = document.getElementById('adminFeesChart').getContext('2d');
+
+            const labels = data.map(d => new Date(d.timestamp * 1000));
+            const values = data.map(d => d.total || d.cumulative_withdrawn);
+
+            adminFeesChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'Cumulative Admin Fees',
+                        data: values,
+                        borderColor: '#f59e0b',
+                        backgroundColor: 'rgba(245, 158, 11, 0.1)',
+                        fill: true,
+                        tension: 0.4,
+                        pointRadius: data.length < 50 ? 4 : 0,
+                        pointHoverRadius: 6,
+                        borderWidth: 2,
+                        stepped: 'before'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    interaction: {
+                        intersect: false,
+                        mode: 'index'
+                    },
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: {
+                            backgroundColor: '#1e293b',
+                            titleColor: '#e2e8f0',
+                            bodyColor: '#94a3b8',
+                            borderColor: '#334155',
+                            borderWidth: 1,
+                            callbacks: {
+                                title: (items) => {
+                                    const date = new Date(items[0].parsed.x);
+                                    return date.toLocaleString();
+                                },
+                                label: (item) => {
+                                    return `Total: ${item.raw.toFixed(4)} BTC`;
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        x: {
+                            type: 'time',
+                            time: {
+                                displayFormats: {
+                                    hour: 'MMM d, HH:mm',
+                                    day: 'MMM d'
+                                }
+                            },
+                            grid: { color: '#334155' },
+                            ticks: { color: '#64748b' }
+                        },
+                        y: {
+                            grid: { color: '#334155' },
+                            ticks: {
+                                color: '#64748b',
+                                callback: (value) => value.toFixed(2) + ' BTC'
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
         function init() {
             // Check if data exists
             if (typeof veYBSupplyData === 'undefined' || veYBSupplyData.length === 0) {
@@ -1137,6 +1294,10 @@
             // Extract price data
             priceData = extractPriceData();
             console.log('Price data extracted:', priceData.length, 'points');
+
+            // Extract admin fees data
+            adminFeesData = extractAdminFeesData();
+            console.log('Admin fees data extracted:', adminFeesData.length, 'points');
 
             // Update metrics
             const latest = allData[allData.length - 1];
@@ -1232,6 +1393,9 @@
             }
             if (lockRatioData.length > 0) {
                 createLockRatioChart(lockRatioData);
+            }
+            if (adminFeesData.length > 0) {
+                createAdminFeesChart(adminFeesData);
             }
 
             // ====== APR RANGE SLIDER LOGIC ======
@@ -1585,6 +1749,89 @@
 
             if (lockRatioData.length > 0) updateLockRatioSliderUI();
             // ====== END LOCK RATIO RANGE SLIDER LOGIC ======
+
+            // ====== ADMIN FEES RANGE SLIDER LOGIC ======
+            let adminFeesRangeStart = 0;
+            let adminFeesRangeEnd = adminFeesData.length - 1;
+
+            function updateAdminFeesSliderUI() {
+                const rangeStart = document.getElementById('adminFeesRangeStart');
+                const rangeEnd = document.getElementById('adminFeesRangeEnd');
+                const rangeFill = document.getElementById('adminFeesRangeFill');
+
+                const startPercent = (parseInt(rangeStart.value) / parseInt(rangeStart.max)) * 100;
+                const endPercent = (parseInt(rangeEnd.value) / parseInt(rangeEnd.max)) * 100;
+
+                rangeFill.style.left = startPercent + '%';
+                rangeFill.style.width = (endPercent - startPercent) + '%';
+
+                if (adminFeesData.length > 0 && adminFeesRangeStart < adminFeesData.length && adminFeesRangeEnd < adminFeesData.length) {
+                    const startDate = new Date(adminFeesData[adminFeesRangeStart].timestamp * 1000).toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+                    const endDate = new Date(adminFeesData[adminFeesRangeEnd].timestamp * 1000).toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+                    document.getElementById('adminFeesStartLabel').textContent = startDate;
+                    document.getElementById('adminFeesEndLabel').textContent = endDate;
+                }
+            }
+
+            function filterAdminFeesByRange() {
+                if (adminFeesData.length === 0) return;
+
+                const filtered = adminFeesData.slice(adminFeesRangeStart, adminFeesRangeEnd + 1);
+                const labels = filtered.map(d => new Date(d.timestamp * 1000));
+                const values = filtered.map(d => d.total || d.cumulative_withdrawn);
+
+                if (adminFeesChart) {
+                    adminFeesChart.data.labels = labels;
+                    adminFeesChart.data.datasets[0].data = values;
+                    adminFeesChart.update('none');
+                }
+            }
+
+            document.getElementById('adminFeesRangeStart').addEventListener('input', function() {
+                let startValue = parseInt(this.value);
+                let endValue = parseInt(document.getElementById('adminFeesRangeEnd').value);
+                if (startValue >= endValue - 2) { startValue = endValue - 2; this.value = startValue; }
+                adminFeesRangeStart = Math.floor((startValue / 100) * (adminFeesData.length - 1));
+                updateAdminFeesSliderUI();
+            });
+
+            document.getElementById('adminFeesRangeEnd').addEventListener('input', function() {
+                let startValue = parseInt(document.getElementById('adminFeesRangeStart').value);
+                let endValue = parseInt(this.value);
+                if (endValue <= startValue + 2) { endValue = startValue + 2; this.value = endValue; }
+                adminFeesRangeEnd = Math.floor((endValue / 100) * (adminFeesData.length - 1));
+                updateAdminFeesSliderUI();
+            });
+
+            document.getElementById('adminFeesRangeStart').addEventListener('change', filterAdminFeesByRange);
+            document.getElementById('adminFeesRangeEnd').addEventListener('change', filterAdminFeesByRange);
+
+            document.querySelectorAll('#adminFeesPeriodButtons .period-button').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    document.querySelectorAll('#adminFeesPeriodButtons .period-button').forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    const days = btn.dataset.days;
+                    if (days === 'all') {
+                        adminFeesRangeStart = 0;
+                        adminFeesRangeEnd = adminFeesData.length - 1;
+                    } else {
+                        adminFeesRangeEnd = adminFeesData.length - 1;
+                        const endTimestamp = adminFeesData[adminFeesRangeEnd].timestamp;
+                        const targetTimestamp = endTimestamp - (parseInt(days) * 86400);
+                        adminFeesRangeStart = adminFeesData.findIndex(p => p.timestamp >= targetTimestamp);
+                        if (adminFeesRangeStart === -1) adminFeesRangeStart = 0;
+                    }
+                    const startPercent = (adminFeesRangeStart / (adminFeesData.length - 1)) * 100;
+                    const endPercent = (adminFeesRangeEnd / (adminFeesData.length - 1)) * 100;
+                    document.getElementById('adminFeesRangeStart').value = startPercent;
+                    document.getElementById('adminFeesRangeEnd').value = endPercent;
+                    updateAdminFeesSliderUI();
+                    filterAdminFeesByRange();
+                });
+            });
+
+            if (adminFeesData.length > 0) updateAdminFeesSliderUI();
+            // ====== END ADMIN FEES RANGE SLIDER LOGIC ======
 
             // Show content
             document.getElementById('loading').style.display = 'none';
