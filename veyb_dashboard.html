@@ -1,4 +1,4 @@
-// Last updated: 2025-11-27 22:14:15 UTC
+// Last updated: 2025-11-27 22:27:15 UTC
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -723,21 +723,24 @@
         function createSupplyChart(data) {
             const ctx = document.getElementById('supplyChart').getContext('2d');
 
-            const labels = data.map(d => new Date(d.timestamp * 1000));
-            const values = data.map(d => d.supply_yb);
+            // Use {x, y} format for proper time scale positioning
+            // Use datetime string if available (more accurate than calculated timestamp)
+            const chartData = data.map(d => ({
+                x: d.datetime ? new Date(d.datetime) : new Date(d.timestamp * 1000),
+                y: d.supply_yb
+            }));
 
             supplyChart = new Chart(ctx, {
                 type: 'line',
                 data: {
-                    labels: labels,
                     datasets: [{
                         label: 'Total Locked veYB',
-                        data: values,
+                        data: chartData,
                         borderColor: '#667eea',
                         backgroundColor: 'rgba(102, 126, 234, 0.1)',
                         fill: true,
-                        tension: 0.4,
-                        pointRadius: data.length < 50 ? 4 : 0,
+                        tension: 0,
+                        pointRadius: chartData.length < 50 ? 4 : 0,
                         pointHoverRadius: 6,
                         borderWidth: 2
                     }]
@@ -762,7 +765,7 @@
                                     const date = new Date(items[0].parsed.x);
                                     return date.toLocaleString();
                                 },
-                                label: (item) => `Locked: ${formatNumber(item.raw)} veYB`
+                                label: (item) => `Locked: ${formatNumber(item.parsed.y)} veYB`
                             }
                         }
                     },
@@ -1066,21 +1069,23 @@
         function createLockRatioChart(data) {
             const ctx = document.getElementById('lockRatioChart').getContext('2d');
 
-            const labels = data.map(d => new Date(d.timestamp * 1000));
-            const values = data.map(d => d.lock_ratio * 100);
+            // Use {x, y} format for proper time scale positioning
+            const chartData = data.map(d => ({
+                x: new Date(d.timestamp * 1000),
+                y: d.lock_ratio * 100
+            }));
 
             lockRatioChart = new Chart(ctx, {
                 type: 'line',
                 data: {
-                    labels: labels,
                     datasets: [{
                         label: 'veYB/YB Ratio',
-                        data: values,
+                        data: chartData,
                         borderColor: '#8b5cf6',
                         backgroundColor: 'rgba(139, 92, 246, 0.1)',
                         fill: true,
                         tension: 0.4,
-                        pointRadius: data.length < 50 ? 4 : 0,
+                        pointRadius: chartData.length < 50 ? 4 : 0,
                         pointHoverRadius: 6,
                         borderWidth: 2
                     }]
@@ -1107,9 +1112,9 @@
                                 },
                                 label: (item) => {
                                     const point = lockRatioData.find(d => d.timestamp === Math.floor(item.parsed.x / 1000));
-                                    let lines = [`Ratio: ${item.raw.toFixed(2)}%`];
+                                    let lines = [`Ratio: ${item.parsed.y.toFixed(2)}%`];
                                     if (point) {
-                                        lines.push(`veYB: ${formatNumber(point.supply_yb)}`);
+                                        lines.push(`veYB: ${formatNumber(point.total_votes || point.supply_yb)}`);
                                         lines.push(`YB Locked: ${formatNumber(point.yb_locked)}`);
                                         // Estimate avg lock duration (assuming max lock = 4 years)
                                         const avgLockYears = point.lock_ratio * 4;
