@@ -1,4 +1,4 @@
-// Last updated: 2025-11-27 19:01:48 UTC
+// Last updated: 2025-11-27 19:14:49 UTC
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -8,6 +8,10 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns"></script>
     <script src="veyb_supply_data.js"></script>
+    <script src="yb_emission_data.js"></script>
+    <script src="revenue_yield_wbtc_sync.js"></script>
+    <script src="revenue_yield_cbbtc_sync.js"></script>
+    <script src="revenue_yield_tbtc_sync.js"></script>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
@@ -196,6 +200,14 @@
 
             <!-- Stats grid -->
             <div class="stats-grid">
+                <div class="stat-card" style="border-color: #10b981;">
+                    <div class="stat-label">Current APR</div>
+                    <div class="stat-value positive" id="currentApr">-</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">Total Admin Fees</div>
+                    <div class="stat-value" id="totalAdminFees">-</div>
+                </div>
                 <div class="stat-card">
                     <div class="stat-label">Change 24h</div>
                     <div class="stat-value" id="change24h">-</div>
@@ -205,23 +217,36 @@
                     <div class="stat-value" id="change7d">-</div>
                 </div>
                 <div class="stat-card">
-                    <div class="stat-label">Data Points</div>
-                    <div class="stat-value" id="dataPoints">-</div>
+                    <div class="stat-label">Days Active</div>
+                    <div class="stat-value" id="daysActive">-</div>
                 </div>
                 <div class="stat-card">
-                    <div class="stat-label">Genesis Supply</div>
-                    <div class="stat-value" id="genesisSupply">-</div>
+                    <div class="stat-label">veYB Value (BTC)</div>
+                    <div class="stat-value" id="veyBtcValue">-</div>
                 </div>
             </div>
 
-            <!-- Chart -->
+            <!-- APR Chart -->
+            <div class="chart-container">
+                <div class="chart-title">veYB APR Over Time</div>
+                <div class="period-buttons" id="aprPeriodButtons">
+                    <button class="period-button" data-period="1d" data-chart="apr">1D</button>
+                    <button class="period-button" data-period="7d" data-chart="apr">7D</button>
+                    <button class="period-button active" data-period="all" data-chart="apr">All</button>
+                </div>
+                <div class="chart-wrapper">
+                    <canvas id="aprChart"></canvas>
+                </div>
+            </div>
+
+            <!-- Supply Chart -->
             <div class="chart-container">
                 <div class="chart-title">Total Locked YB Over Time</div>
-                <div class="period-buttons">
-                    <button class="period-button" data-period="1d">1D</button>
-                    <button class="period-button" data-period="7d">7D</button>
-                    <button class="period-button" data-period="30d">30D</button>
-                    <button class="period-button active" data-period="all">All</button>
+                <div class="period-buttons" id="supplyPeriodButtons">
+                    <button class="period-button" data-period="1d" data-chart="supply">1D</button>
+                    <button class="period-button" data-period="7d" data-chart="supply">7D</button>
+                    <button class="period-button" data-period="30d" data-chart="supply">30D</button>
+                    <button class="period-button active" data-period="all" data-chart="supply">All</button>
                 </div>
                 <div class="chart-wrapper">
                     <canvas id="supplyChart"></canvas>
@@ -255,14 +280,108 @@
     </div>
 
     <script>
-        let chart = null;
+        let supplyChart = null;
+        let aprChart = null;
         let allData = [];
+        let aprData = [];
+
+        // Genesis timestamp for new contracts (Nov 12, 2025)
+        const CONTRACTS_GENESIS_TIMESTAMP = 1762963200;
 
         function formatNumber(num, decimals = 2) {
             if (num >= 1e9) return (num / 1e9).toFixed(decimals) + 'B';
             if (num >= 1e6) return (num / 1e6).toFixed(decimals) + 'M';
             if (num >= 1e3) return (num / 1e3).toFixed(decimals) + 'K';
             return num.toFixed(decimals);
+        }
+
+        function getYbBtcPrice(timestamp) {
+            // Get YB/BTC price from emission data at given timestamp
+            if (typeof ybEmissionData === 'undefined' || !ybEmissionData.length) return null;
+
+            // Find closest point
+            let closest = ybEmissionData[0];
+            for (const point of ybEmissionData) {
+                if (Math.abs(point.timestamp - timestamp) < Math.abs(closest.timestamp - timestamp)) {
+                    closest = point;
+                }
+            }
+
+            // Use stored yb_btc_price if available, otherwise calculate from cumulative
+            if (closest.yb_btc_price) return closest.yb_btc_price;
+            if (closest.cumulative_total && closest.cumulative_total_btc && closest.cumulative_total > 0) {
+                return closest.cumulative_total_btc / closest.cumulative_total;
+            }
+            return null;
+        }
+
+        function getAdminFeesAtTimestamp(timestamp) {
+            // Sum admin_fees_btc + admin_fee_withdrawals_btc from all 3 markets at timestamp
+            let totalFees = 0;
+
+            const sources = [
+                typeof yieldData_wbtc !== 'undefined' ? yieldData_wbtc.data : null,
+                typeof yieldData_cbbtc !== 'undefined' ? yieldData_cbbtc.data : null,
+                typeof yieldData_tbtc !== 'undefined' ? yieldData_tbtc.data : null
+            ].filter(Boolean);
+
+            for (const data of sources) {
+                // Find closest point <= timestamp
+                let closest = null;
+                for (const point of data) {
+                    if (point.timestamp <= timestamp) {
+                        closest = point;
+                    } else {
+                        break;
+                    }
+                }
+                if (closest) {
+                    totalFees += (closest.admin_fees_btc || 0) + (closest.admin_fee_withdrawals_btc || 0);
+                }
+            }
+
+            return totalFees;
+        }
+
+        function calculateAprData() {
+            // Calculate APR for each veYB supply point
+            // APR = ((Admin Fees Total) / Days * 365) / (veYB Supply * YB/BTC Price)
+
+            const result = [];
+
+            for (const point of allData) {
+                const timestamp = point.timestamp;
+                const supplyYb = point.supply_yb;
+
+                // Skip points before contracts genesis or with zero supply
+                if (timestamp < CONTRACTS_GENESIS_TIMESTAMP || supplyYb <= 0) continue;
+
+                const ybBtcPrice = getYbBtcPrice(timestamp);
+                const adminFees = getAdminFeesAtTimestamp(timestamp);
+                const daysSinceGenesis = (timestamp - CONTRACTS_GENESIS_TIMESTAMP) / 86400;
+
+                if (!ybBtcPrice || daysSinceGenesis <= 0) continue;
+
+                // veYB value in BTC
+                const veyBtcValue = supplyYb * ybBtcPrice;
+
+                // APR calculation
+                const dailyRevenue = adminFees / daysSinceGenesis;
+                const annualRevenue = dailyRevenue * 365;
+                const apr = veyBtcValue > 0 ? (annualRevenue / veyBtcValue) * 100 : 0;
+
+                result.push({
+                    timestamp,
+                    datetime: point.datetime,
+                    apr,
+                    adminFees,
+                    veyBtcValue,
+                    ybBtcPrice,
+                    daysSinceGenesis
+                });
+            }
+
+            return result;
         }
 
         function formatChange(current, previous) {
