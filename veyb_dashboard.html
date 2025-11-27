@@ -1,4 +1,4 @@
-// Last updated: 2025-11-27 19:57:29 UTC
+// Last updated: 2025-11-27 20:17:14 UTC
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -49,29 +49,47 @@
         }
         .loading { text-align: center; font-size: 1.5em; color: #667eea; padding: 50px; }
 
-        /* Main metric card */
+        /* Main metrics row */
+        .main-metrics-row {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        @media (max-width: 900px) {
+            .main-metrics-row {
+                grid-template-columns: 1fr;
+            }
+        }
         .main-card {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             border-radius: 16px;
-            padding: 30px;
+            padding: 25px;
             text-align: center;
-            margin-bottom: 30px;
-            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.3);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+        }
+        .main-card.apr-card {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            box-shadow: 0 10px 30px rgba(16, 185, 129, 0.3);
+        }
+        .main-card.fees-card {
+            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+            box-shadow: 0 10px 30px rgba(245, 158, 11, 0.3);
         }
         .main-card-label {
-            font-size: 1.1em;
-            color: rgba(255,255,255,0.8);
-            margin-bottom: 10px;
+            font-size: 0.95em;
+            color: rgba(255,255,255,0.85);
+            margin-bottom: 8px;
         }
         .main-card-value {
-            font-size: 3em;
+            font-size: 2.2em;
             font-weight: 700;
             color: white;
         }
         .main-card-sub {
-            font-size: 1em;
+            font-size: 0.85em;
             color: rgba(255,255,255,0.7);
-            margin-top: 10px;
+            margin-top: 8px;
         }
 
         /* Stats grid */
@@ -120,19 +138,24 @@
         /* Period buttons */
         .period-buttons {
             display: flex;
-            gap: 8px;
-            margin-bottom: 15px;
-            justify-content: center;
+            gap: 6px;
+            margin-bottom: 12px;
             flex-wrap: wrap;
+            align-items: center;
+        }
+        .period-label {
+            color: #64748b;
+            font-size: 0.85em;
+            margin-right: 8px;
         }
         .period-button {
             background: #0f172a;
             color: #94a3b8;
             border: 1px solid #334155;
-            padding: 6px 14px;
-            border-radius: 6px;
+            padding: 4px 10px;
+            border-radius: 4px;
             cursor: pointer;
-            font-size: 0.85em;
+            font-size: 0.8em;
             transition: all 0.2s;
         }
         .period-button:hover {
@@ -250,54 +273,67 @@
         <div id="loading" class="loading">Loading data...</div>
         <div id="content" style="display: none;">
 
-            <!-- Main metric -->
-            <div class="main-card">
-                <div class="main-card-label">Total Locked YB</div>
-                <div class="main-card-value" id="totalLocked">-</div>
-                <div class="main-card-sub" id="lastUpdate">-</div>
+            <!-- Main metrics row -->
+            <div class="main-metrics-row">
+                <div class="main-card">
+                    <div class="main-card-label">Total Locked</div>
+                    <div class="main-card-value" id="totalLocked">-</div>
+                    <div class="main-card-sub" id="totalLockedBtc">-</div>
+                </div>
+                <div class="main-card apr-card">
+                    <div class="main-card-label">Current APR</div>
+                    <div class="main-card-value" id="currentApr">-</div>
+                    <div class="main-card-sub">annualized yield</div>
+                </div>
+                <div class="main-card fees-card">
+                    <div class="main-card-label">Total Admin Fees</div>
+                    <div class="main-card-value" id="totalAdminFees">-</div>
+                    <div class="main-card-sub" id="feesBreakdown">-</div>
+                </div>
             </div>
 
-            <!-- Stats grid -->
+            <!-- Secondary stats grid -->
             <div class="stats-grid">
-                <div class="stat-card" style="border-color: #10b981;">
-                    <div class="stat-label">Current APR</div>
-                    <div class="stat-value positive" id="currentApr">-</div>
-                </div>
                 <div class="stat-card">
-                    <div class="stat-label">Total Admin Fees</div>
-                    <div class="stat-value" id="totalAdminFees">-</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-label">Change 24h</div>
+                    <div class="stat-label">YB Locked Change (24h)</div>
                     <div class="stat-value" id="change24h">-</div>
                 </div>
                 <div class="stat-card">
-                    <div class="stat-label">Change 7d</div>
+                    <div class="stat-label">YB Locked Change (7d)</div>
                     <div class="stat-value" id="change7d">-</div>
                 </div>
                 <div class="stat-card">
-                    <div class="stat-label">Days Active</div>
+                    <div class="stat-label">Days Since Launch</div>
                     <div class="stat-value" id="daysActive">-</div>
                 </div>
                 <div class="stat-card">
-                    <div class="stat-label">veYB Value (BTC)</div>
-                    <div class="stat-value" id="veyBtcValue">-</div>
+                    <div class="stat-label">Current YB/BTC Price</div>
+                    <div class="stat-value" id="currentYbPrice">-</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">Daily Revenue (avg)</div>
+                    <div class="stat-value" id="dailyRevenue">-</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">Last Update</div>
+                    <div class="stat-value" id="lastUpdate" style="font-size: 0.9em;">-</div>
                 </div>
             </div>
 
             <!-- APR Chart -->
             <div class="chart-container">
                 <div class="chart-title">veYB APR Over Time</div>
-                <div class="period-buttons" id="aprPeriodButtons">
-                    <button class="period-button" data-period="1d" data-chart="apr">1D</button>
-                    <button class="period-button" data-period="7d" data-chart="apr">7D</button>
-                    <button class="period-button active" data-period="all" data-chart="apr">All</button>
-                </div>
                 <div class="chart-wrapper">
                     <canvas id="aprChart"></canvas>
                 </div>
 
                 <div class="compact-range">
+                    <div class="period-buttons" id="aprPeriodButtons">
+                        <span class="period-label">Period:</span>
+                        <button class="period-button" data-days="1">1d</button>
+                        <button class="period-button" data-days="7">7d</button>
+                        <button class="period-button active" data-days="all">All</button>
+                    </div>
                     <div class="range-slider">
                         <div class="range-fill" id="aprRangeFill"></div>
                         <input type="range" id="aprRangeStart" min="0" max="100" value="0">
@@ -313,27 +349,33 @@
             <!-- YB/BTC Price Chart -->
             <div class="chart-container">
                 <div class="chart-title">YB/BTC Price Over Time</div>
-                <div class="period-buttons" id="pricePeriodButtons">
-                    <button class="period-button" data-period="1d" data-chart="price">1D</button>
-                    <button class="period-button" data-period="7d" data-chart="price">7D</button>
-                    <button class="period-button active" data-period="all" data-chart="price">All</button>
-                </div>
                 <div class="chart-wrapper">
                     <canvas id="priceChart"></canvas>
+                </div>
+                <div class="compact-range">
+                    <div class="period-buttons" id="pricePeriodButtons">
+                        <span class="period-label">Period:</span>
+                        <button class="period-button" data-days="1">1d</button>
+                        <button class="period-button" data-days="7">7d</button>
+                        <button class="period-button active" data-days="all">All</button>
+                    </div>
                 </div>
             </div>
 
             <!-- Supply Chart -->
             <div class="chart-container">
                 <div class="chart-title">Total Locked YB Over Time</div>
-                <div class="period-buttons" id="supplyPeriodButtons">
-                    <button class="period-button" data-period="1d" data-chart="supply">1D</button>
-                    <button class="period-button" data-period="7d" data-chart="supply">7D</button>
-                    <button class="period-button" data-period="30d" data-chart="supply">30D</button>
-                    <button class="period-button active" data-period="all" data-chart="supply">All</button>
-                </div>
                 <div class="chart-wrapper">
                     <canvas id="supplyChart"></canvas>
+                </div>
+                <div class="compact-range">
+                    <div class="period-buttons" id="supplyPeriodButtons">
+                        <span class="period-label">Period:</span>
+                        <button class="period-button" data-days="1">1d</button>
+                        <button class="period-button" data-days="7">7d</button>
+                        <button class="period-button" data-days="30">30d</button>
+                        <button class="period-button active" data-days="all">All</button>
+                    </div>
                 </div>
             </div>
 
@@ -350,10 +392,6 @@
                 <div class="contract-info-row">
                     <span class="contract-info-label">Token</span>
                     <span class="contract-info-value">veYB (Vote-Escrowed YB)</span>
-                </div>
-                <div class="contract-info-row">
-                    <span class="contract-info-label">Network</span>
-                    <span class="contract-info-value">Ethereum Mainnet</span>
                 </div>
             </div>
         </div>
@@ -891,7 +929,10 @@
             const first = allData[0];
 
             document.getElementById('totalLocked').textContent = formatNumber(latest.supply_yb) + ' YB';
-            document.getElementById('lastUpdate').textContent = `Last update: ${latest.datetime}`;
+
+            // Format last update date nicely
+            const updateDate = new Date(latest.datetime);
+            document.getElementById('lastUpdate').textContent = updateDate.toLocaleString();
 
             // APR metrics
             if (aprData.length > 0) {
@@ -899,7 +940,25 @@
                 document.getElementById('currentApr').textContent = latestApr.apr.toFixed(2) + '%';
                 document.getElementById('totalAdminFees').textContent = latestApr.adminFees.toFixed(4) + ' BTC';
                 document.getElementById('daysActive').textContent = latestApr.daysSinceGenesis.toFixed(1);
-                document.getElementById('veyBtcValue').textContent = latestApr.veyBtcValue.toFixed(2) + ' BTC';
+
+                // Total Locked in BTC
+                document.getElementById('totalLockedBtc').textContent = `≈ ${latestApr.veyBtcValue.toFixed(2)} BTC`;
+
+                // Fees breakdown: in contracts + withdrawn
+                const currentFees = getAdminFeesAtTimestamp(latest.timestamp);
+                const lastWithdrawal = typeof adminFeeWithdrawalsData !== 'undefined' && adminFeeWithdrawalsData.length > 0
+                    ? adminFeeWithdrawalsData[adminFeeWithdrawalsData.length - 1].cumulative_total
+                    : 0;
+                const inContracts = currentFees - lastWithdrawal;
+                document.getElementById('feesBreakdown').textContent =
+                    `${inContracts.toFixed(4)} in contracts + ${lastWithdrawal.toFixed(4)} withdrawn`;
+
+                // Current YB/BTC Price
+                document.getElementById('currentYbPrice').textContent = latestApr.ybBtcPrice.toFixed(8);
+
+                // Daily Revenue (average)
+                const avgDaily = latestApr.adminFees / latestApr.daysSinceGenesis;
+                document.getElementById('dailyRevenue').textContent = avgDaily.toFixed(6) + ' BTC';
             }
 
             // 24h change
@@ -932,7 +991,9 @@
                 btn.addEventListener('click', () => {
                     document.querySelectorAll('#supplyPeriodButtons .period-button').forEach(b => b.classList.remove('active'));
                     btn.classList.add('active');
-                    updateSupplyChart(btn.dataset.period);
+                    const days = btn.dataset.days;
+                    const period = days === 'all' ? 'all' : days + 'd';
+                    updateSupplyChart(period);
                 });
             });
 
@@ -941,7 +1002,9 @@
                 btn.addEventListener('click', () => {
                     document.querySelectorAll('#pricePeriodButtons .period-button').forEach(b => b.classList.remove('active'));
                     btn.classList.add('active');
-                    updatePriceChart(btn.dataset.period);
+                    const days = btn.dataset.days;
+                    const period = days === 'all' ? 'all' : days + 'd';
+                    updatePriceChart(period);
                 });
             });
 
@@ -1020,15 +1083,14 @@
                 btn.addEventListener('click', () => {
                     document.querySelectorAll('#aprPeriodButtons .period-button').forEach(b => b.classList.remove('active'));
                     btn.classList.add('active');
-                    const period = btn.dataset.period;
-                    if (period === 'all') {
+                    const days = btn.dataset.days;
+                    if (days === 'all') {
                         aprRangeStart = 0;
                         aprRangeEnd = aprDataLatest.length - 1;
                     } else {
                         aprRangeEnd = aprDataLatest.length - 1;
                         const endTimestamp = aprDataLatest[aprRangeEnd].timestamp;
-                        const days = period === '1d' ? 1 : 7;
-                        const targetTimestamp = endTimestamp - (days * 86400);
+                        const targetTimestamp = endTimestamp - (parseInt(days) * 86400);
                         aprRangeStart = aprDataLatest.findIndex(p => p.timestamp >= targetTimestamp);
                         if (aprRangeStart === -1) aprRangeStart = 0;
                     }
