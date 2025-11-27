@@ -1,4 +1,4 @@
-// Last updated: 2025-11-27 22:01:14 UTC
+// Last updated: 2025-11-27 22:14:15 UTC
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -309,7 +309,7 @@
                 <div class="main-card apr-card">
                     <div class="main-card-label">Current APR</div>
                     <div class="main-card-value" id="currentApr">-</div>
-                    <div class="main-card-sub">annualized yield</div>
+                    <div class="main-card-sub" style="font-size: 0.8em;">annualized yield</div>
                 </div>
                 <div class="main-card fees-card">
                     <div class="main-card-label">Total Revenue</div>
@@ -329,7 +329,7 @@
                     <div class="stat-value" id="change7d">-</div>
                 </div>
                 <div class="stat-card">
-                    <div class="stat-label">Daily Revenue (avg)</div>
+                    <div class="stat-label">Daily Revenue (14d avg)</div>
                     <div class="stat-value positive" id="dailyRevenue">-</div>
                 </div>
                 <div class="stat-card">
@@ -1373,8 +1373,26 @@
                 }
                 document.getElementById('ybPrice').textContent = ybPriceText;
 
-                // Daily Revenue (average)
-                const avgDaily = latestApr.adminFees / latestApr.daysSinceGenesis;
+                // Daily Revenue (average over last 14 days)
+                let avgDaily = latestApr.adminFees / latestApr.daysSinceGenesis; // fallback
+                if (aprData.length > 1) {
+                    const now = latestApr.timestamp;
+                    const days14ago = now - (14 * 24 * 60 * 60);
+                    // Find data point closest to 14 days ago
+                    let data14d = aprData[0];
+                    for (const point of aprData) {
+                        if (point.timestamp <= days14ago) {
+                            data14d = point;
+                        } else {
+                            break;
+                        }
+                    }
+                    const feesIn14d = latestApr.adminFees - data14d.adminFees;
+                    const actualDays = (latestApr.timestamp - data14d.timestamp) / (24 * 60 * 60);
+                    if (actualDays > 0) {
+                        avgDaily = feesIn14d / actualDays;
+                    }
+                }
                 let dailyRevenueText = avgDaily.toFixed(6) + ' BTC';
                 if (btcUsdPrice) {
                     const dailyUsd = avgDaily * btcUsdPrice;
