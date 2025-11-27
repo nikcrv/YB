@@ -1,0 +1,447 @@
+// Last updated: 2025-11-27 18:48:57 UTC
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>veYB - Total Locked Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns"></script>
+    <script src="veyb_supply_data.js"></script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #0f172a;
+            color: #e2e8f0;
+            padding: 20px 15px;
+        }
+        .container { max-width: 1400px; margin: 0 auto; }
+        .header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; }
+        h1 { font-size: 2em; color: #94a3b8; font-weight: 400; flex-grow: 1; text-align: center; margin: 0; }
+        .back-button {
+            background: #334155;
+            border: 1px solid #475569;
+            color: #e2e8f0;
+            padding: 10px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 0.9em;
+            font-weight: 500;
+            transition: all 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .back-button:hover {
+            background: #475569;
+            border-color: #667eea;
+            transform: translateX(-2px);
+        }
+        .back-button::before {
+            content: '\2190';
+            font-size: 1.2em;
+        }
+        .loading { text-align: center; font-size: 1.5em; color: #667eea; padding: 50px; }
+
+        /* Main metric card */
+        .main-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 16px;
+            padding: 30px;
+            text-align: center;
+            margin-bottom: 30px;
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.3);
+        }
+        .main-card-label {
+            font-size: 1.1em;
+            color: rgba(255,255,255,0.8);
+            margin-bottom: 10px;
+        }
+        .main-card-value {
+            font-size: 3em;
+            font-weight: 700;
+            color: white;
+        }
+        .main-card-sub {
+            font-size: 1em;
+            color: rgba(255,255,255,0.7);
+            margin-top: 10px;
+        }
+
+        /* Stats grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+        .stat-card {
+            background: #1e293b;
+            border: 2px solid #334155;
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+        }
+        .stat-label {
+            font-size: 0.85em;
+            color: #64748b;
+            margin-bottom: 8px;
+        }
+        .stat-value {
+            font-size: 1.5em;
+            font-weight: 600;
+            color: #e2e8f0;
+        }
+        .stat-value.positive { color: #10b981; }
+        .stat-value.negative { color: #ef4444; }
+
+        /* Chart container */
+        .chart-container {
+            background: #1e293b;
+            border: 2px solid #334155;
+            border-radius: 16px;
+            padding: 20px;
+            margin-bottom: 30px;
+        }
+        .chart-title {
+            font-size: 1.2em;
+            color: #94a3b8;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        .chart-wrapper { position: relative; height: 400px; }
+
+        /* Period buttons */
+        .period-buttons {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .period-button {
+            background: #0f172a;
+            color: #94a3b8;
+            border: 1px solid #334155;
+            padding: 6px 14px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.85em;
+            transition: all 0.2s;
+        }
+        .period-button:hover {
+            border-color: #667eea;
+            color: #e2e8f0;
+        }
+        .period-button.active {
+            background: #667eea;
+            border-color: #667eea;
+            color: white;
+            font-weight: 500;
+        }
+
+        /* Contract info */
+        .contract-info {
+            background: #1e293b;
+            border: 1px solid #334155;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+        .contract-info-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid #334155;
+        }
+        .contract-info-row:last-child { border-bottom: none; }
+        .contract-info-label { color: #64748b; }
+        .contract-info-value {
+            color: #e2e8f0;
+            font-family: monospace;
+            font-size: 0.9em;
+        }
+        .contract-info-value a {
+            color: #667eea;
+            text-decoration: none;
+        }
+        .contract-info-value a:hover { text-decoration: underline; }
+
+        .footer {
+            text-align: center;
+            color: #64748b;
+            padding: 20px;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <a href="index.html" class="back-button">Back</a>
+            <h1>veYB - Total Locked</h1>
+            <div style="width: 100px;"></div>
+        </div>
+
+        <div id="loading" class="loading">Loading data...</div>
+        <div id="content" style="display: none;">
+
+            <!-- Main metric -->
+            <div class="main-card">
+                <div class="main-card-label">Total Locked YB</div>
+                <div class="main-card-value" id="totalLocked">-</div>
+                <div class="main-card-sub" id="lastUpdate">-</div>
+            </div>
+
+            <!-- Stats grid -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-label">Change 24h</div>
+                    <div class="stat-value" id="change24h">-</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">Change 7d</div>
+                    <div class="stat-value" id="change7d">-</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">Data Points</div>
+                    <div class="stat-value" id="dataPoints">-</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">Genesis Supply</div>
+                    <div class="stat-value" id="genesisSupply">-</div>
+                </div>
+            </div>
+
+            <!-- Chart -->
+            <div class="chart-container">
+                <div class="chart-title">Total Locked YB Over Time</div>
+                <div class="period-buttons">
+                    <button class="period-button" data-period="1d">1D</button>
+                    <button class="period-button" data-period="7d">7D</button>
+                    <button class="period-button" data-period="30d">30D</button>
+                    <button class="period-button active" data-period="all">All</button>
+                </div>
+                <div class="chart-wrapper">
+                    <canvas id="supplyChart"></canvas>
+                </div>
+            </div>
+
+            <!-- Contract info -->
+            <div class="contract-info">
+                <div class="contract-info-row">
+                    <span class="contract-info-label">Contract</span>
+                    <span class="contract-info-value">
+                        <a href="https://etherscan.io/address/0x8235c179e9e84688fbd8b12295efc26834dac211" target="_blank">
+                            0x8235c179e9e84688fbd8b12295efc26834dac211
+                        </a>
+                    </span>
+                </div>
+                <div class="contract-info-row">
+                    <span class="contract-info-label">Token</span>
+                    <span class="contract-info-value">veYB (Vote-Escrowed YB)</span>
+                </div>
+                <div class="contract-info-row">
+                    <span class="contract-info-label">Network</span>
+                    <span class="contract-info-value">Ethereum Mainnet</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <div>Data updates every 10 minutes</div>
+        </div>
+    </div>
+
+    <script>
+        let chart = null;
+        let allData = [];
+
+        function formatNumber(num, decimals = 2) {
+            if (num >= 1e9) return (num / 1e9).toFixed(decimals) + 'B';
+            if (num >= 1e6) return (num / 1e6).toFixed(decimals) + 'M';
+            if (num >= 1e3) return (num / 1e3).toFixed(decimals) + 'K';
+            return num.toFixed(decimals);
+        }
+
+        function formatChange(current, previous) {
+            if (!previous || previous === 0) return { text: 'N/A', class: '' };
+            const change = current - previous;
+            const pct = (change / previous) * 100;
+            const sign = change >= 0 ? '+' : '';
+            return {
+                text: `${sign}${formatNumber(change)} (${sign}${pct.toFixed(2)}%)`,
+                class: change >= 0 ? 'positive' : 'negative'
+            };
+        }
+
+        function findDataAtHoursAgo(data, hours) {
+            if (data.length === 0) return null;
+            const targetTime = data[data.length - 1].timestamp - (hours * 3600);
+            let closest = data[0];
+            for (const point of data) {
+                if (Math.abs(point.timestamp - targetTime) < Math.abs(closest.timestamp - targetTime)) {
+                    closest = point;
+                }
+            }
+            // Only return if within 2 hours of target
+            if (Math.abs(closest.timestamp - targetTime) > 7200) return null;
+            return closest;
+        }
+
+        function filterDataByPeriod(data, period) {
+            if (period === 'all' || data.length === 0) return data;
+
+            const now = data[data.length - 1].timestamp;
+            let cutoff;
+
+            switch (period) {
+                case '1d': cutoff = now - 86400; break;
+                case '7d': cutoff = now - 7 * 86400; break;
+                case '30d': cutoff = now - 30 * 86400; break;
+                default: return data;
+            }
+
+            return data.filter(d => d.timestamp >= cutoff);
+        }
+
+        function updateChart(period = 'all') {
+            const filteredData = filterDataByPeriod(allData, period);
+
+            const labels = filteredData.map(d => new Date(d.timestamp * 1000));
+            const values = filteredData.map(d => d.supply_yb);
+
+            if (chart) {
+                chart.data.labels = labels;
+                chart.data.datasets[0].data = values;
+                chart.update('none');
+            }
+        }
+
+        function createChart(data) {
+            const ctx = document.getElementById('supplyChart').getContext('2d');
+
+            const labels = data.map(d => new Date(d.timestamp * 1000));
+            const values = data.map(d => d.supply_yb);
+
+            chart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'Total Locked YB',
+                        data: values,
+                        borderColor: '#667eea',
+                        backgroundColor: 'rgba(102, 126, 234, 0.1)',
+                        fill: true,
+                        tension: 0.4,
+                        pointRadius: data.length < 50 ? 4 : 0,
+                        pointHoverRadius: 6,
+                        borderWidth: 2
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    interaction: {
+                        intersect: false,
+                        mode: 'index'
+                    },
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: {
+                            backgroundColor: '#1e293b',
+                            titleColor: '#e2e8f0',
+                            bodyColor: '#94a3b8',
+                            borderColor: '#334155',
+                            borderWidth: 1,
+                            callbacks: {
+                                title: (items) => {
+                                    const date = new Date(items[0].parsed.x);
+                                    return date.toLocaleString();
+                                },
+                                label: (item) => `Locked: ${formatNumber(item.raw)} YB`
+                            }
+                        }
+                    },
+                    scales: {
+                        x: {
+                            type: 'time',
+                            time: {
+                                displayFormats: {
+                                    hour: 'MMM d, HH:mm',
+                                    day: 'MMM d'
+                                }
+                            },
+                            grid: { color: '#334155' },
+                            ticks: { color: '#64748b' }
+                        },
+                        y: {
+                            grid: { color: '#334155' },
+                            ticks: {
+                                color: '#64748b',
+                                callback: (value) => formatNumber(value)
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        function init() {
+            // Check if data exists
+            if (typeof veYBSupplyData === 'undefined' || veYBSupplyData.length === 0) {
+                document.getElementById('loading').textContent = 'No data available';
+                return;
+            }
+
+            allData = veYBSupplyData;
+
+            // Update metrics
+            const latest = allData[allData.length - 1];
+            const first = allData[0];
+
+            document.getElementById('totalLocked').textContent = formatNumber(latest.supply_yb) + ' YB';
+            document.getElementById('lastUpdate').textContent = `Last update: ${latest.datetime}`;
+            document.getElementById('dataPoints').textContent = allData.length;
+            document.getElementById('genesisSupply').textContent = formatNumber(first.supply_yb) + ' YB';
+
+            // 24h change
+            const data24h = findDataAtHoursAgo(allData, 24);
+            if (data24h) {
+                const change = formatChange(latest.supply_yb, data24h.supply_yb);
+                document.getElementById('change24h').textContent = change.text;
+                document.getElementById('change24h').className = 'stat-value ' + change.class;
+            }
+
+            // 7d change
+            const data7d = findDataAtHoursAgo(allData, 168);
+            if (data7d) {
+                const change = formatChange(latest.supply_yb, data7d.supply_yb);
+                document.getElementById('change7d').textContent = change.text;
+                document.getElementById('change7d').className = 'stat-value ' + change.class;
+            }
+
+            // Create chart
+            createChart(allData);
+
+            // Period buttons
+            document.querySelectorAll('.period-button').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    document.querySelectorAll('.period-button').forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    updateChart(btn.dataset.period);
+                });
+            });
+
+            // Show content
+            document.getElementById('loading').style.display = 'none';
+            document.getElementById('content').style.display = 'block';
+        }
+
+        // Initialize when DOM is ready
+        document.addEventListener('DOMContentLoaded', init);
+    </script>
+</body>
+</html>
