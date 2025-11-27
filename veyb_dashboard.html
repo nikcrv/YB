@@ -1,4 +1,4 @@
-// Last updated: 2025-11-27 20:43:21 UTC
+// Last updated: 2025-11-27 20:56:18 UTC
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -303,16 +303,16 @@
                     <div class="stat-value" id="change7d">-</div>
                 </div>
                 <div class="stat-card">
+                    <div class="stat-label">Daily Revenue (avg)</div>
+                    <div class="stat-value positive" id="dailyRevenue">-</div>
+                </div>
+                <div class="stat-card">
                     <div class="stat-label">Days Since Launch</div>
                     <div class="stat-value" id="daysActive">-</div>
                 </div>
                 <div class="stat-card">
                     <div class="stat-label">Current YB/BTC Price</div>
                     <div class="stat-value" id="currentYbPrice">-</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-label">Daily Revenue (avg)</div>
-                    <div class="stat-value" id="dailyRevenue">-</div>
                 </div>
                 <div class="stat-card">
                     <div class="stat-label">Avg Lock Duration</div>
@@ -356,9 +356,19 @@
                 <div class="compact-range">
                     <div class="period-buttons" id="pricePeriodButtons">
                         <span class="period-label">Period:</span>
-                        <button class="period-button" data-days="1">1d</button>
                         <button class="period-button" data-days="7">7d</button>
+                        <button class="period-button" data-days="14">14d</button>
+                        <button class="period-button" data-days="30">30d</button>
                         <button class="period-button active" data-days="all">All</button>
+                    </div>
+                    <div class="range-slider">
+                        <div class="range-fill" id="priceRangeFill"></div>
+                        <input type="range" id="priceRangeStart" min="0" max="100" value="0">
+                        <input type="range" id="priceRangeEnd" min="0" max="100" value="100">
+                    </div>
+                    <div class="range-labels">
+                        <span id="priceStartLabel">Start</span>
+                        <span id="priceEndLabel">End</span>
                     </div>
                 </div>
             </div>
@@ -372,10 +382,19 @@
                 <div class="compact-range">
                     <div class="period-buttons" id="supplyPeriodButtons">
                         <span class="period-label">Period:</span>
-                        <button class="period-button" data-days="1">1d</button>
                         <button class="period-button" data-days="7">7d</button>
+                        <button class="period-button" data-days="14">14d</button>
                         <button class="period-button" data-days="30">30d</button>
                         <button class="period-button active" data-days="all">All</button>
+                    </div>
+                    <div class="range-slider">
+                        <div class="range-fill" id="supplyRangeFill"></div>
+                        <input type="range" id="supplyRangeStart" min="0" max="100" value="0">
+                        <input type="range" id="supplyRangeEnd" min="0" max="100" value="100">
+                    </div>
+                    <div class="range-labels">
+                        <span id="supplyStartLabel">Start</span>
+                        <span id="supplyEndLabel">End</span>
                     </div>
                 </div>
             </div>
@@ -393,6 +412,15 @@
                         <button class="period-button" data-days="14">14d</button>
                         <button class="period-button" data-days="30">30d</button>
                         <button class="period-button active" data-days="all">All</button>
+                    </div>
+                    <div class="range-slider">
+                        <div class="range-fill" id="lockRatioRangeFill"></div>
+                        <input type="range" id="lockRatioRangeStart" min="0" max="100" value="0">
+                        <input type="range" id="lockRatioRangeEnd" min="0" max="100" value="100">
+                    </div>
+                    <div class="range-labels">
+                        <span id="lockRatioStartLabel">Start</span>
+                        <span id="lockRatioEndLabel">End</span>
                     </div>
                 </div>
             </div>
@@ -1071,9 +1099,6 @@
                 document.getElementById('totalAdminFees').textContent = latestApr.adminFees.toFixed(4) + ' BTC';
                 document.getElementById('daysActive').textContent = latestApr.daysSinceGenesis.toFixed(1);
 
-                // Total Locked in BTC
-                document.getElementById('totalLockedBtc').textContent = `≈ ${latestApr.veyBtcValue.toFixed(2)} BTC`;
-
                 // Get latest BTC/USD price from priceData
                 let btcUsdPrice = null;
                 if (priceData.length > 0) {
@@ -1084,6 +1109,14 @@
                         }
                     }
                 }
+
+                // Total Locked in BTC + USD
+                let totalLockedText = `≈ ${latestApr.veyBtcValue.toFixed(2)} BTC`;
+                if (btcUsdPrice) {
+                    const lockedUsd = latestApr.veyBtcValue * btcUsdPrice;
+                    totalLockedText += `    ≈ $${lockedUsd.toLocaleString(undefined, {maximumFractionDigits: 0})}`;
+                }
+                document.getElementById('totalLockedBtc').textContent = totalLockedText;
 
                 // Show USD value for Admin Fees
                 if (btcUsdPrice) {
@@ -1098,7 +1131,12 @@
 
                 // Daily Revenue (average)
                 const avgDaily = latestApr.adminFees / latestApr.daysSinceGenesis;
-                document.getElementById('dailyRevenue').textContent = avgDaily.toFixed(6) + ' BTC';
+                let dailyRevenueText = avgDaily.toFixed(6) + ' BTC';
+                if (btcUsdPrice) {
+                    const dailyUsd = avgDaily * btcUsdPrice;
+                    dailyRevenueText += ` ($${dailyUsd.toLocaleString(undefined, {maximumFractionDigits: 0})})`;
+                }
+                document.getElementById('dailyRevenue').textContent = dailyRevenueText;
             }
 
             // Average Lock Duration (from lock ratio)
@@ -1143,39 +1181,6 @@
             if (lockRatioData.length > 0) {
                 createLockRatioChart(lockRatioData);
             }
-
-            // Period buttons for supply chart
-            document.querySelectorAll('#supplyPeriodButtons .period-button').forEach(btn => {
-                btn.addEventListener('click', () => {
-                    document.querySelectorAll('#supplyPeriodButtons .period-button').forEach(b => b.classList.remove('active'));
-                    btn.classList.add('active');
-                    const days = btn.dataset.days;
-                    const period = days === 'all' ? 'all' : days + 'd';
-                    updateSupplyChart(period);
-                });
-            });
-
-            // Period buttons for price chart
-            document.querySelectorAll('#pricePeriodButtons .period-button').forEach(btn => {
-                btn.addEventListener('click', () => {
-                    document.querySelectorAll('#pricePeriodButtons .period-button').forEach(b => b.classList.remove('active'));
-                    btn.classList.add('active');
-                    const days = btn.dataset.days;
-                    const period = days === 'all' ? 'all' : days + 'd';
-                    updatePriceChart(period);
-                });
-            });
-
-            // Period buttons for lock ratio chart
-            document.querySelectorAll('#lockRatioPeriodButtons .period-button').forEach(btn => {
-                btn.addEventListener('click', () => {
-                    document.querySelectorAll('#lockRatioPeriodButtons .period-button').forEach(b => b.classList.remove('active'));
-                    btn.classList.add('active');
-                    const days = btn.dataset.days;
-                    const period = days === 'all' ? 'all' : days + 'd';
-                    updateLockRatioChart(period);
-                });
-            });
 
             // ====== APR RANGE SLIDER LOGIC ======
             let aprRangeStart = 0;
@@ -1277,6 +1282,255 @@
 
             updateAprSliderUI();
             // ====== END APR RANGE SLIDER LOGIC ======
+
+            // ====== PRICE RANGE SLIDER LOGIC ======
+            let priceRangeStart = 0;
+            let priceRangeEnd = priceData.length - 1;
+
+            function updatePriceSliderUI() {
+                const rangeStart = document.getElementById('priceRangeStart');
+                const rangeEnd = document.getElementById('priceRangeEnd');
+                const rangeFill = document.getElementById('priceRangeFill');
+
+                const startPercent = (parseInt(rangeStart.value) / parseInt(rangeStart.max)) * 100;
+                const endPercent = (parseInt(rangeEnd.value) / parseInt(rangeEnd.max)) * 100;
+
+                rangeFill.style.left = startPercent + '%';
+                rangeFill.style.width = (endPercent - startPercent) + '%';
+
+                if (priceData.length > 0 && priceRangeStart < priceData.length && priceRangeEnd < priceData.length) {
+                    const startDate = new Date(priceData[priceRangeStart].timestamp * 1000).toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+                    const endDate = new Date(priceData[priceRangeEnd].timestamp * 1000).toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+                    document.getElementById('priceStartLabel').textContent = startDate;
+                    document.getElementById('priceEndLabel').textContent = endDate;
+                }
+            }
+
+            function filterPriceByRange() {
+                if (priceData.length === 0) return;
+
+                const filtered = priceData.slice(priceRangeStart, priceRangeEnd + 1);
+                const labels = filtered.map(d => new Date(d.timestamp * 1000));
+                const values = filtered.map(d => d.price);
+
+                if (priceChart) {
+                    priceChart.data.labels = labels;
+                    priceChart.data.datasets[0].data = values;
+                    priceChart.update('none');
+                }
+            }
+
+            document.getElementById('priceRangeStart').addEventListener('input', function() {
+                let startValue = parseInt(this.value);
+                let endValue = parseInt(document.getElementById('priceRangeEnd').value);
+                if (startValue >= endValue - 2) { startValue = endValue - 2; this.value = startValue; }
+                priceRangeStart = Math.floor((startValue / 100) * (priceData.length - 1));
+                updatePriceSliderUI();
+            });
+
+            document.getElementById('priceRangeEnd').addEventListener('input', function() {
+                let startValue = parseInt(document.getElementById('priceRangeStart').value);
+                let endValue = parseInt(this.value);
+                if (endValue <= startValue + 2) { endValue = startValue + 2; this.value = endValue; }
+                priceRangeEnd = Math.floor((endValue / 100) * (priceData.length - 1));
+                updatePriceSliderUI();
+            });
+
+            document.getElementById('priceRangeStart').addEventListener('change', filterPriceByRange);
+            document.getElementById('priceRangeEnd').addEventListener('change', filterPriceByRange);
+
+            document.querySelectorAll('#pricePeriodButtons .period-button').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    document.querySelectorAll('#pricePeriodButtons .period-button').forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    const days = btn.dataset.days;
+                    if (days === 'all') {
+                        priceRangeStart = 0;
+                        priceRangeEnd = priceData.length - 1;
+                    } else {
+                        priceRangeEnd = priceData.length - 1;
+                        const endTimestamp = priceData[priceRangeEnd].timestamp;
+                        const targetTimestamp = endTimestamp - (parseInt(days) * 86400);
+                        priceRangeStart = priceData.findIndex(p => p.timestamp >= targetTimestamp);
+                        if (priceRangeStart === -1) priceRangeStart = 0;
+                    }
+                    const startPercent = (priceRangeStart / (priceData.length - 1)) * 100;
+                    const endPercent = (priceRangeEnd / (priceData.length - 1)) * 100;
+                    document.getElementById('priceRangeStart').value = startPercent;
+                    document.getElementById('priceRangeEnd').value = endPercent;
+                    updatePriceSliderUI();
+                    filterPriceByRange();
+                });
+            });
+
+            if (priceData.length > 0) updatePriceSliderUI();
+            // ====== END PRICE RANGE SLIDER LOGIC ======
+
+            // ====== SUPPLY RANGE SLIDER LOGIC ======
+            let supplyRangeStart = 0;
+            let supplyRangeEnd = allData.length - 1;
+
+            function updateSupplySliderUI() {
+                const rangeStart = document.getElementById('supplyRangeStart');
+                const rangeEnd = document.getElementById('supplyRangeEnd');
+                const rangeFill = document.getElementById('supplyRangeFill');
+
+                const startPercent = (parseInt(rangeStart.value) / parseInt(rangeStart.max)) * 100;
+                const endPercent = (parseInt(rangeEnd.value) / parseInt(rangeEnd.max)) * 100;
+
+                rangeFill.style.left = startPercent + '%';
+                rangeFill.style.width = (endPercent - startPercent) + '%';
+
+                if (allData.length > 0 && supplyRangeStart < allData.length && supplyRangeEnd < allData.length) {
+                    const startDate = new Date(allData[supplyRangeStart].timestamp * 1000).toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+                    const endDate = new Date(allData[supplyRangeEnd].timestamp * 1000).toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+                    document.getElementById('supplyStartLabel').textContent = startDate;
+                    document.getElementById('supplyEndLabel').textContent = endDate;
+                }
+            }
+
+            function filterSupplyByRange() {
+                if (allData.length === 0) return;
+
+                const filtered = allData.slice(supplyRangeStart, supplyRangeEnd + 1);
+                const labels = filtered.map(d => new Date(d.timestamp * 1000));
+                const values = filtered.map(d => d.supply_yb);
+
+                if (supplyChart) {
+                    supplyChart.data.labels = labels;
+                    supplyChart.data.datasets[0].data = values;
+                    supplyChart.update('none');
+                }
+            }
+
+            document.getElementById('supplyRangeStart').addEventListener('input', function() {
+                let startValue = parseInt(this.value);
+                let endValue = parseInt(document.getElementById('supplyRangeEnd').value);
+                if (startValue >= endValue - 2) { startValue = endValue - 2; this.value = startValue; }
+                supplyRangeStart = Math.floor((startValue / 100) * (allData.length - 1));
+                updateSupplySliderUI();
+            });
+
+            document.getElementById('supplyRangeEnd').addEventListener('input', function() {
+                let startValue = parseInt(document.getElementById('supplyRangeStart').value);
+                let endValue = parseInt(this.value);
+                if (endValue <= startValue + 2) { endValue = startValue + 2; this.value = endValue; }
+                supplyRangeEnd = Math.floor((endValue / 100) * (allData.length - 1));
+                updateSupplySliderUI();
+            });
+
+            document.getElementById('supplyRangeStart').addEventListener('change', filterSupplyByRange);
+            document.getElementById('supplyRangeEnd').addEventListener('change', filterSupplyByRange);
+
+            document.querySelectorAll('#supplyPeriodButtons .period-button').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    document.querySelectorAll('#supplyPeriodButtons .period-button').forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    const days = btn.dataset.days;
+                    if (days === 'all') {
+                        supplyRangeStart = 0;
+                        supplyRangeEnd = allData.length - 1;
+                    } else {
+                        supplyRangeEnd = allData.length - 1;
+                        const endTimestamp = allData[supplyRangeEnd].timestamp;
+                        const targetTimestamp = endTimestamp - (parseInt(days) * 86400);
+                        supplyRangeStart = allData.findIndex(p => p.timestamp >= targetTimestamp);
+                        if (supplyRangeStart === -1) supplyRangeStart = 0;
+                    }
+                    const startPercent = (supplyRangeStart / (allData.length - 1)) * 100;
+                    const endPercent = (supplyRangeEnd / (allData.length - 1)) * 100;
+                    document.getElementById('supplyRangeStart').value = startPercent;
+                    document.getElementById('supplyRangeEnd').value = endPercent;
+                    updateSupplySliderUI();
+                    filterSupplyByRange();
+                });
+            });
+
+            updateSupplySliderUI();
+            // ====== END SUPPLY RANGE SLIDER LOGIC ======
+
+            // ====== LOCK RATIO RANGE SLIDER LOGIC ======
+            let lockRatioRangeStart = 0;
+            let lockRatioRangeEnd = lockRatioData.length - 1;
+
+            function updateLockRatioSliderUI() {
+                const rangeStart = document.getElementById('lockRatioRangeStart');
+                const rangeEnd = document.getElementById('lockRatioRangeEnd');
+                const rangeFill = document.getElementById('lockRatioRangeFill');
+
+                const startPercent = (parseInt(rangeStart.value) / parseInt(rangeStart.max)) * 100;
+                const endPercent = (parseInt(rangeEnd.value) / parseInt(rangeEnd.max)) * 100;
+
+                rangeFill.style.left = startPercent + '%';
+                rangeFill.style.width = (endPercent - startPercent) + '%';
+
+                if (lockRatioData.length > 0 && lockRatioRangeStart < lockRatioData.length && lockRatioRangeEnd < lockRatioData.length) {
+                    const startDate = new Date(lockRatioData[lockRatioRangeStart].timestamp * 1000).toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+                    const endDate = new Date(lockRatioData[lockRatioRangeEnd].timestamp * 1000).toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+                    document.getElementById('lockRatioStartLabel').textContent = startDate;
+                    document.getElementById('lockRatioEndLabel').textContent = endDate;
+                }
+            }
+
+            function filterLockRatioByRange() {
+                if (lockRatioData.length === 0) return;
+
+                const filtered = lockRatioData.slice(lockRatioRangeStart, lockRatioRangeEnd + 1);
+                const labels = filtered.map(d => new Date(d.timestamp * 1000));
+                const values = filtered.map(d => d.lock_ratio * 100);
+
+                if (lockRatioChart) {
+                    lockRatioChart.data.labels = labels;
+                    lockRatioChart.data.datasets[0].data = values;
+                    lockRatioChart.update('none');
+                }
+            }
+
+            document.getElementById('lockRatioRangeStart').addEventListener('input', function() {
+                let startValue = parseInt(this.value);
+                let endValue = parseInt(document.getElementById('lockRatioRangeEnd').value);
+                if (startValue >= endValue - 2) { startValue = endValue - 2; this.value = startValue; }
+                lockRatioRangeStart = Math.floor((startValue / 100) * (lockRatioData.length - 1));
+                updateLockRatioSliderUI();
+            });
+
+            document.getElementById('lockRatioRangeEnd').addEventListener('input', function() {
+                let startValue = parseInt(document.getElementById('lockRatioRangeStart').value);
+                let endValue = parseInt(this.value);
+                if (endValue <= startValue + 2) { endValue = startValue + 2; this.value = endValue; }
+                lockRatioRangeEnd = Math.floor((endValue / 100) * (lockRatioData.length - 1));
+                updateLockRatioSliderUI();
+            });
+
+            document.getElementById('lockRatioRangeStart').addEventListener('change', filterLockRatioByRange);
+            document.getElementById('lockRatioRangeEnd').addEventListener('change', filterLockRatioByRange);
+
+            document.querySelectorAll('#lockRatioPeriodButtons .period-button').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    document.querySelectorAll('#lockRatioPeriodButtons .period-button').forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    const days = btn.dataset.days;
+                    if (days === 'all') {
+                        lockRatioRangeStart = 0;
+                        lockRatioRangeEnd = lockRatioData.length - 1;
+                    } else {
+                        lockRatioRangeEnd = lockRatioData.length - 1;
+                        const endTimestamp = lockRatioData[lockRatioRangeEnd].timestamp;
+                        const targetTimestamp = endTimestamp - (parseInt(days) * 86400);
+                        lockRatioRangeStart = lockRatioData.findIndex(p => p.timestamp >= targetTimestamp);
+                        if (lockRatioRangeStart === -1) lockRatioRangeStart = 0;
+                    }
+                    const startPercent = (lockRatioRangeStart / (lockRatioData.length - 1)) * 100;
+                    const endPercent = (lockRatioRangeEnd / (lockRatioData.length - 1)) * 100;
+                    document.getElementById('lockRatioRangeStart').value = startPercent;
+                    document.getElementById('lockRatioRangeEnd').value = endPercent;
+                    updateLockRatioSliderUI();
+                    filterLockRatioByRange();
+                });
+            });
+
+            if (lockRatioData.length > 0) updateLockRatioSliderUI();
+            // ====== END LOCK RATIO RANGE SLIDER LOGIC ======
 
             // Show content
             document.getElementById('loading').style.display = 'none';
