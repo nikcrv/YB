@@ -1,10503 +1,13937 @@
-// Last updated: 2025-11-27 21:22:27 UTC
+// Last updated: 2025-11-27 21:35:11 UTC
 const veYBSupplyData = [
   {
     "block": 23370927,
     "timestamp": 1757968883,
     "datetime": "2025-09-15T20:41:23",
-    "supply_yb": 0.0
+    "supply_yb": 0.0,
+    "yb_locked": 0.0,
+    "lock_ratio": 0
   },
   {
     "block": 23371227,
     "timestamp": 1757972483,
     "datetime": "2025-09-15T21:41:23",
-    "supply_yb": 0.0
+    "supply_yb": 0.0,
+    "yb_locked": 0.0,
+    "lock_ratio": 0
   },
   {
     "block": 23371527,
     "timestamp": 1757976083,
     "datetime": "2025-09-15T22:41:23",
-    "supply_yb": 9647.745433789762
+    "supply_yb": 9647.745433789762,
+    "yb_locked": 9647.745433789762,
+    "lock_ratio": 1.0
   },
   {
     "block": 23371827,
     "timestamp": 1757979683,
     "datetime": "2025-09-15T23:41:23",
-    "supply_yb": 9647.745433789762
+    "supply_yb": 9647.745433789762,
+    "yb_locked": 9647.745433789762,
+    "lock_ratio": 1.0
   },
   {
     "block": 23372127,
     "timestamp": 1757983283,
     "datetime": "2025-09-16T00:41:23",
-    "supply_yb": 9647.745433789762
+    "supply_yb": 9647.745433789762,
+    "yb_locked": 9647.745433789762,
+    "lock_ratio": 1.0
   },
   {
     "block": 23372427,
     "timestamp": 1757986883,
     "datetime": "2025-09-16T01:41:23",
-    "supply_yb": 9647.745433789762
+    "supply_yb": 9647.745433789762,
+    "yb_locked": 9647.745433789762,
+    "lock_ratio": 1.0
   },
   {
     "block": 23372727,
     "timestamp": 1757990483,
     "datetime": "2025-09-16T02:41:23",
-    "supply_yb": 9647.745433789762
+    "supply_yb": 9647.745433789762,
+    "yb_locked": 9647.745433789762,
+    "lock_ratio": 1.0
   },
   {
     "block": 23373027,
     "timestamp": 1757994083,
     "datetime": "2025-09-16T03:41:23",
-    "supply_yb": 9647.745433789762
+    "supply_yb": 9647.745433789762,
+    "yb_locked": 9647.745433789762,
+    "lock_ratio": 1.0
   },
   {
     "block": 23373327,
     "timestamp": 1757997683,
     "datetime": "2025-09-16T04:41:23",
-    "supply_yb": 9647.745433789762
+    "supply_yb": 9647.745433789762,
+    "yb_locked": 9647.745433789762,
+    "lock_ratio": 1.0
   },
   {
     "block": 23373627,
     "timestamp": 1758001283,
     "datetime": "2025-09-16T05:41:23",
-    "supply_yb": 9647.745433789762
+    "supply_yb": 9647.745433789762,
+    "yb_locked": 9647.745433789762,
+    "lock_ratio": 1.0
   },
   {
     "block": 23373927,
     "timestamp": 1758004883,
     "datetime": "2025-09-16T06:41:23",
-    "supply_yb": 9647.745433789762
+    "supply_yb": 9647.745433789762,
+    "yb_locked": 9647.745433789762,
+    "lock_ratio": 1.0
   },
   {
     "block": 23374227,
     "timestamp": 1758008483,
     "datetime": "2025-09-16T07:41:23",
-    "supply_yb": 9647.745433789762
+    "supply_yb": 9647.745433789762,
+    "yb_locked": 9647.745433789762,
+    "lock_ratio": 1.0
   },
   {
     "block": 23374527,
     "timestamp": 1758012083,
     "datetime": "2025-09-16T08:41:23",
-    "supply_yb": 9647.745433789762
+    "supply_yb": 9647.745433789762,
+    "yb_locked": 9647.745433789762,
+    "lock_ratio": 1.0
   },
   {
     "block": 23374827,
     "timestamp": 1758015683,
     "datetime": "2025-09-16T09:41:23",
-    "supply_yb": 9647.745433789762
+    "supply_yb": 9647.745433789762,
+    "yb_locked": 9647.745433789762,
+    "lock_ratio": 1.0
   },
   {
     "block": 23375127,
     "timestamp": 1758019283,
     "datetime": "2025-09-16T10:41:23",
-    "supply_yb": 12647.745433789707
+    "supply_yb": 12647.745433789707,
+    "yb_locked": 12647.745433789707,
+    "lock_ratio": 1.0
   },
   {
     "block": 23375427,
     "timestamp": 1758022883,
     "datetime": "2025-09-16T11:41:23",
-    "supply_yb": 100799.1224315067
+    "supply_yb": 100799.1224315067,
+    "yb_locked": 100799.1224315067,
+    "lock_ratio": 1.0
   },
   {
     "block": 23375727,
     "timestamp": 1758026483,
     "datetime": "2025-09-16T12:41:23",
-    "supply_yb": 125350.94415905612
+    "supply_yb": 125350.94415905612,
+    "yb_locked": 125350.94415905612,
+    "lock_ratio": 1.0
   },
   {
     "block": 23376027,
     "timestamp": 1758030083,
     "datetime": "2025-09-16T13:41:23",
-    "supply_yb": 125350.94415905612
+    "supply_yb": 125350.94415905612,
+    "yb_locked": 125350.94415905612,
+    "lock_ratio": 1.0
   },
   {
     "block": 23376327,
     "timestamp": 1758033683,
     "datetime": "2025-09-16T14:41:23",
-    "supply_yb": 125350.94415905612
+    "supply_yb": 125350.94415905612,
+    "yb_locked": 125350.94415905612,
+    "lock_ratio": 1.0
   },
   {
     "block": 23376627,
     "timestamp": 1758037283,
     "datetime": "2025-09-16T15:41:23",
-    "supply_yb": 125350.94415905612
+    "supply_yb": 125350.94415905612,
+    "yb_locked": 125350.94415905612,
+    "lock_ratio": 1.0
   },
   {
     "block": 23376927,
     "timestamp": 1758040883,
     "datetime": "2025-09-16T16:41:23",
-    "supply_yb": 125350.94415905612
+    "supply_yb": 125350.94415905612,
+    "yb_locked": 125350.94415905612,
+    "lock_ratio": 1.0
   },
   {
     "block": 23377227,
     "timestamp": 1758044483,
     "datetime": "2025-09-16T17:41:23",
-    "supply_yb": 125350.94415905612
+    "supply_yb": 125350.94415905612,
+    "yb_locked": 125350.94415905612,
+    "lock_ratio": 1.0
   },
   {
     "block": 23377527,
     "timestamp": 1758048083,
     "datetime": "2025-09-16T18:41:23",
-    "supply_yb": 125350.94415905612
+    "supply_yb": 125350.94415905612,
+    "yb_locked": 125350.94415905612,
+    "lock_ratio": 1.0
   },
   {
     "block": 23377827,
     "timestamp": 1758051683,
     "datetime": "2025-09-16T19:41:23",
-    "supply_yb": 125350.94415905612
+    "supply_yb": 125350.94415905612,
+    "yb_locked": 125350.94415905612,
+    "lock_ratio": 1.0
   },
   {
     "block": 23378127,
     "timestamp": 1758055283,
     "datetime": "2025-09-16T20:41:23",
-    "supply_yb": 125350.94415905612
+    "supply_yb": 125350.94415905612,
+    "yb_locked": 125350.94415905612,
+    "lock_ratio": 1.0
   },
   {
     "block": 23378427,
     "timestamp": 1758058883,
     "datetime": "2025-09-16T21:41:23",
-    "supply_yb": 125350.94415905612
+    "supply_yb": 125350.94415905612,
+    "yb_locked": 125350.94415905612,
+    "lock_ratio": 1.0
   },
   {
     "block": 23378727,
     "timestamp": 1758062483,
     "datetime": "2025-09-16T22:41:23",
-    "supply_yb": 125350.94415905612
+    "supply_yb": 125350.94415905612,
+    "yb_locked": 125350.94415905612,
+    "lock_ratio": 1.0
   },
   {
     "block": 23379027,
     "timestamp": 1758066083,
     "datetime": "2025-09-16T23:41:23",
-    "supply_yb": 125350.94415905612
+    "supply_yb": 125350.94415905612,
+    "yb_locked": 125350.94415905612,
+    "lock_ratio": 1.0
   },
   {
     "block": 23379327,
     "timestamp": 1758069683,
     "datetime": "2025-09-17T00:41:23",
-    "supply_yb": 125350.94415905612
+    "supply_yb": 125350.94415905612,
+    "yb_locked": 125350.94415905612,
+    "lock_ratio": 1.0
   },
   {
     "block": 23379627,
     "timestamp": 1758073283,
     "datetime": "2025-09-17T01:41:23",
-    "supply_yb": 125350.94415905612
+    "supply_yb": 125350.94415905612,
+    "yb_locked": 125350.94415905612,
+    "lock_ratio": 1.0
   },
   {
     "block": 23379927,
     "timestamp": 1758076883,
     "datetime": "2025-09-17T02:41:23",
-    "supply_yb": 125350.94415905612
+    "supply_yb": 125350.94415905612,
+    "yb_locked": 125350.94415905612,
+    "lock_ratio": 1.0
   },
   {
     "block": 23380227,
     "timestamp": 1758080483,
     "datetime": "2025-09-17T03:41:23",
-    "supply_yb": 125350.94415905612
+    "supply_yb": 125350.94415905612,
+    "yb_locked": 125350.94415905612,
+    "lock_ratio": 1.0
   },
   {
     "block": 23380527,
     "timestamp": 1758084083,
     "datetime": "2025-09-17T04:41:23",
-    "supply_yb": 125350.94415905612
+    "supply_yb": 125350.94415905612,
+    "yb_locked": 125350.94415905612,
+    "lock_ratio": 1.0
   },
   {
     "block": 23380827,
     "timestamp": 1758087683,
     "datetime": "2025-09-17T05:41:23",
-    "supply_yb": 125350.94415905612
+    "supply_yb": 125350.94415905612,
+    "yb_locked": 125350.94415905612,
+    "lock_ratio": 1.0
   },
   {
     "block": 23381127,
     "timestamp": 1758091283,
     "datetime": "2025-09-17T06:41:23",
-    "supply_yb": 125350.94415905612
+    "supply_yb": 125350.94415905612,
+    "yb_locked": 125350.94415905612,
+    "lock_ratio": 1.0
   },
   {
     "block": 23381427,
     "timestamp": 1758094883,
     "datetime": "2025-09-17T07:41:23",
-    "supply_yb": 125350.94415905612
+    "supply_yb": 125350.94415905612,
+    "yb_locked": 125350.94415905612,
+    "lock_ratio": 1.0
   },
   {
     "block": 23381727,
     "timestamp": 1758098483,
     "datetime": "2025-09-17T08:41:23",
-    "supply_yb": 125350.94415905612
+    "supply_yb": 125350.94415905612,
+    "yb_locked": 125350.94415905612,
+    "lock_ratio": 1.0
   },
   {
     "block": 23382027,
     "timestamp": 1758102083,
     "datetime": "2025-09-17T09:41:23",
-    "supply_yb": 125350.94415905612
+    "supply_yb": 125350.94415905612,
+    "yb_locked": 125350.94415905612,
+    "lock_ratio": 1.0
   },
   {
     "block": 23382327,
     "timestamp": 1758105683,
     "datetime": "2025-09-17T10:41:23",
-    "supply_yb": 125350.94415905612
+    "supply_yb": 125350.94415905612,
+    "yb_locked": 125350.94415905612,
+    "lock_ratio": 1.0
   },
   {
     "block": 23382627,
     "timestamp": 1758109283,
     "datetime": "2025-09-17T11:41:23",
-    "supply_yb": 125350.94415905612
+    "supply_yb": 125350.94415905612,
+    "yb_locked": 125350.94415905612,
+    "lock_ratio": 1.0
   },
   {
     "block": 23382927,
     "timestamp": 1758112883,
     "datetime": "2025-09-17T12:41:23",
-    "supply_yb": 125350.94415905612
+    "supply_yb": 125350.94415905612,
+    "yb_locked": 125350.94415905612,
+    "lock_ratio": 1.0
   },
   {
     "block": 23383227,
     "timestamp": 1758116483,
     "datetime": "2025-09-17T13:41:23",
-    "supply_yb": 125350.94415905612
+    "supply_yb": 125350.94415905612,
+    "yb_locked": 125350.94415905612,
+    "lock_ratio": 1.0
   },
   {
     "block": 23383527,
     "timestamp": 1758120083,
     "datetime": "2025-09-17T14:41:23",
-    "supply_yb": 125350.94415905612
+    "supply_yb": 125350.94415905612,
+    "yb_locked": 125350.94415905612,
+    "lock_ratio": 1.0
   },
   {
     "block": 23383827,
     "timestamp": 1758123683,
     "datetime": "2025-09-17T15:41:23",
-    "supply_yb": 125350.94415905612
+    "supply_yb": 125350.94415905612,
+    "yb_locked": 125350.94415905612,
+    "lock_ratio": 1.0
   },
   {
     "block": 23384127,
     "timestamp": 1758127283,
     "datetime": "2025-09-17T16:41:23",
-    "supply_yb": 125350.94415905612
+    "supply_yb": 125350.94415905612,
+    "yb_locked": 125350.94415905612,
+    "lock_ratio": 1.0
   },
   {
     "block": 23384427,
     "timestamp": 1758130883,
     "datetime": "2025-09-17T17:41:23",
-    "supply_yb": 125350.94415905612
+    "supply_yb": 125350.94415905612,
+    "yb_locked": 125350.94415905612,
+    "lock_ratio": 1.0
   },
   {
     "block": 23384727,
     "timestamp": 1758134483,
     "datetime": "2025-09-17T18:41:23",
-    "supply_yb": 125350.94415905612
+    "supply_yb": 125350.94415905612,
+    "yb_locked": 125350.94415905612,
+    "lock_ratio": 1.0
   },
   {
     "block": 23385027,
     "timestamp": 1758138083,
     "datetime": "2025-09-17T19:41:23",
-    "supply_yb": 125350.94415905612
+    "supply_yb": 125350.94415905612,
+    "yb_locked": 125350.94415905612,
+    "lock_ratio": 1.0
   },
   {
     "block": 23385327,
     "timestamp": 1758141683,
     "datetime": "2025-09-17T20:41:23",
-    "supply_yb": 125350.94415905612
+    "supply_yb": 125350.94415905612,
+    "yb_locked": 125350.94415905612,
+    "lock_ratio": 1.0
   },
   {
     "block": 23385627,
     "timestamp": 1758145283,
     "datetime": "2025-09-17T21:41:23",
-    "supply_yb": 125350.94415905612
+    "supply_yb": 125350.94415905612,
+    "yb_locked": 125350.94415905612,
+    "lock_ratio": 1.0
   },
   {
     "block": 23385927,
     "timestamp": 1758148883,
     "datetime": "2025-09-17T22:41:23",
-    "supply_yb": 125350.94415905612
+    "supply_yb": 125350.94415905612,
+    "yb_locked": 125350.94415905612,
+    "lock_ratio": 1.0
   },
   {
     "block": 23386227,
     "timestamp": 1758152483,
     "datetime": "2025-09-17T23:41:23",
-    "supply_yb": 125350.94415905612
+    "supply_yb": 125350.94415905612,
+    "yb_locked": 125350.94415905612,
+    "lock_ratio": 1.0
   },
   {
     "block": 23386527,
     "timestamp": 1758156083,
     "datetime": "2025-09-18T00:41:23",
-    "supply_yb": 125350.94415905612
+    "supply_yb": 125350.94415905612,
+    "yb_locked": 125350.94415905612,
+    "lock_ratio": 1.0
   },
   {
     "block": 23386827,
     "timestamp": 1758159683,
     "datetime": "2025-09-18T01:41:23",
-    "supply_yb": 125350.94415905612
+    "supply_yb": 125350.94415905612,
+    "yb_locked": 125350.94415905612,
+    "lock_ratio": 1.0
   },
   {
     "block": 23387127,
     "timestamp": 1758163283,
     "datetime": "2025-09-18T02:41:23",
-    "supply_yb": 125350.94415905612
+    "supply_yb": 125350.94415905612,
+    "yb_locked": 125350.94415905612,
+    "lock_ratio": 1.0
   },
   {
     "block": 23387427,
     "timestamp": 1758166883,
     "datetime": "2025-09-18T03:41:23",
-    "supply_yb": 125350.94415905612
+    "supply_yb": 125350.94415905612,
+    "yb_locked": 125350.94415905612,
+    "lock_ratio": 1.0
   },
   {
     "block": 23387727,
     "timestamp": 1758170483,
     "datetime": "2025-09-18T04:41:23",
-    "supply_yb": 125350.94415905612
+    "supply_yb": 125350.94415905612,
+    "yb_locked": 125350.94415905612,
+    "lock_ratio": 1.0
   },
   {
     "block": 23388027,
     "timestamp": 1758174083,
     "datetime": "2025-09-18T05:41:23",
-    "supply_yb": 125350.94415905612
+    "supply_yb": 125350.94415905612,
+    "yb_locked": 125350.94415905612,
+    "lock_ratio": 1.0
   },
   {
     "block": 23388327,
     "timestamp": 1758177683,
     "datetime": "2025-09-18T06:41:23",
-    "supply_yb": 125350.94415905612
+    "supply_yb": 125350.94415905612,
+    "yb_locked": 125350.94415905612,
+    "lock_ratio": 1.0
   },
   {
     "block": 23388627,
     "timestamp": 1758181283,
     "datetime": "2025-09-18T07:41:23",
-    "supply_yb": 125350.94415905612
+    "supply_yb": 125350.94415905612,
+    "yb_locked": 125350.94415905612,
+    "lock_ratio": 1.0
   },
   {
     "block": 23388927,
     "timestamp": 1758184883,
     "datetime": "2025-09-18T08:41:23",
-    "supply_yb": 125350.94415905612
+    "supply_yb": 125350.94415905612,
+    "yb_locked": 125350.94415905612,
+    "lock_ratio": 1.0
   },
   {
     "block": 23389227,
     "timestamp": 1758188483,
     "datetime": "2025-09-18T09:41:23",
-    "supply_yb": 125350.94415905612
+    "supply_yb": 125350.94415905612,
+    "yb_locked": 125350.94415905612,
+    "lock_ratio": 1.0
   },
   {
     "block": 23389527,
     "timestamp": 1758192083,
     "datetime": "2025-09-18T10:41:23",
-    "supply_yb": 125350.94415905612
+    "supply_yb": 125350.94415905612,
+    "yb_locked": 125350.94415905612,
+    "lock_ratio": 1.0
   },
   {
     "block": 23389827,
     "timestamp": 1758195683,
     "datetime": "2025-09-18T11:41:23",
-    "supply_yb": 125350.94415905612
+    "supply_yb": 125350.94415905612,
+    "yb_locked": 125350.94415905612,
+    "lock_ratio": 1.0
   },
   {
     "block": 23390127,
     "timestamp": 1758199283,
     "datetime": "2025-09-18T12:41:23",
-    "supply_yb": 125350.94415905612
+    "supply_yb": 125350.94415905612,
+    "yb_locked": 125350.94415905612,
+    "lock_ratio": 1.0
   },
   {
     "block": 23390427,
     "timestamp": 1758202883,
     "datetime": "2025-09-18T13:41:23",
-    "supply_yb": 125350.94415905612
+    "supply_yb": 125350.94415905612,
+    "yb_locked": 125350.94415905612,
+    "lock_ratio": 1.0
   },
   {
     "block": 23390727,
     "timestamp": 1758206483,
     "datetime": "2025-09-18T14:41:23",
-    "supply_yb": 125350.94415905612
+    "supply_yb": 125350.94415905612,
+    "yb_locked": 125350.94415905612,
+    "lock_ratio": 1.0
   },
   {
     "block": 23391027,
     "timestamp": 1758210083,
     "datetime": "2025-09-18T15:41:23",
-    "supply_yb": 125350.94415905612
+    "supply_yb": 125350.94415905612,
+    "yb_locked": 125350.94415905612,
+    "lock_ratio": 1.0
   },
   {
     "block": 23391327,
     "timestamp": 1758213683,
     "datetime": "2025-09-18T16:41:23",
-    "supply_yb": 125350.94415905612
+    "supply_yb": 125350.94415905612,
+    "yb_locked": 125350.94415905612,
+    "lock_ratio": 1.0
   },
   {
     "block": 23391627,
     "timestamp": 1758217283,
     "datetime": "2025-09-18T17:41:23",
-    "supply_yb": 125350.94415905612
+    "supply_yb": 125350.94415905612,
+    "yb_locked": 125350.94415905612,
+    "lock_ratio": 1.0
   },
   {
     "block": 23391927,
     "timestamp": 1758220883,
     "datetime": "2025-09-18T18:41:23",
-    "supply_yb": 125350.94415905612
+    "supply_yb": 125350.94415905612,
+    "yb_locked": 125350.94415905612,
+    "lock_ratio": 1.0
   },
   {
     "block": 23392227,
     "timestamp": 1758224483,
     "datetime": "2025-09-18T19:41:23",
-    "supply_yb": 125350.94415905612
+    "supply_yb": 125350.94415905612,
+    "yb_locked": 125350.94415905612,
+    "lock_ratio": 1.0
   },
   {
     "block": 23392527,
     "timestamp": 1758228083,
     "datetime": "2025-09-18T20:41:23",
-    "supply_yb": 125350.94415905612
+    "supply_yb": 125350.94415905612,
+    "yb_locked": 125350.94415905612,
+    "lock_ratio": 1.0
   },
   {
     "block": 23392827,
     "timestamp": 1758231683,
     "datetime": "2025-09-18T21:41:23",
-    "supply_yb": 125350.94415905612
+    "supply_yb": 125350.94415905612,
+    "yb_locked": 125350.94415905612,
+    "lock_ratio": 1.0
   },
   {
     "block": 23393127,
     "timestamp": 1758235283,
     "datetime": "2025-09-18T22:41:23",
-    "supply_yb": 125350.94415905612
+    "supply_yb": 125350.94415905612,
+    "yb_locked": 125350.94415905612,
+    "lock_ratio": 1.0
   },
   {
     "block": 23393427,
     "timestamp": 1758238883,
     "datetime": "2025-09-18T23:41:23",
-    "supply_yb": 125350.94415905612
+    "supply_yb": 125350.94415905612,
+    "yb_locked": 125350.94415905612,
+    "lock_ratio": 1.0
   },
   {
     "block": 23393727,
     "timestamp": 1758242483,
     "datetime": "2025-09-19T00:41:23",
-    "supply_yb": 125350.94415905612
+    "supply_yb": 125350.94415905612,
+    "yb_locked": 125350.94415905612,
+    "lock_ratio": 1.0
   },
   {
     "block": 23394027,
     "timestamp": 1758246083,
     "datetime": "2025-09-19T01:41:23",
-    "supply_yb": 125350.94415905612
+    "supply_yb": 125350.94415905612,
+    "yb_locked": 125350.94415905612,
+    "lock_ratio": 1.0
   },
   {
     "block": 23394327,
     "timestamp": 1758249683,
     "datetime": "2025-09-19T02:41:23",
-    "supply_yb": 125350.94415905612
+    "supply_yb": 125350.94415905612,
+    "yb_locked": 125350.94415905612,
+    "lock_ratio": 1.0
   },
   {
     "block": 23394627,
     "timestamp": 1758253283,
     "datetime": "2025-09-19T03:41:23",
-    "supply_yb": 125350.94415905612
+    "supply_yb": 125350.94415905612,
+    "yb_locked": 125350.94415905612,
+    "lock_ratio": 1.0
   },
   {
     "block": 23394927,
     "timestamp": 1758256883,
     "datetime": "2025-09-19T04:41:23",
-    "supply_yb": 125350.94415905612
+    "supply_yb": 125350.94415905612,
+    "yb_locked": 125350.94415905612,
+    "lock_ratio": 1.0
   },
   {
     "block": 23395227,
     "timestamp": 1758260483,
     "datetime": "2025-09-19T05:41:23",
-    "supply_yb": 125350.94415905612
+    "supply_yb": 125350.94415905612,
+    "yb_locked": 125350.94415905612,
+    "lock_ratio": 1.0
   },
   {
     "block": 23395527,
     "timestamp": 1758264083,
     "datetime": "2025-09-19T06:41:23",
-    "supply_yb": 125350.94415905612
+    "supply_yb": 125350.94415905612,
+    "yb_locked": 125350.94415905612,
+    "lock_ratio": 1.0
   },
   {
     "block": 23395827,
     "timestamp": 1758267683,
     "datetime": "2025-09-19T07:41:23",
-    "supply_yb": 125350.94415905612
+    "supply_yb": 125350.94415905612,
+    "yb_locked": 125350.94415905612,
+    "lock_ratio": 1.0
   },
   {
     "block": 23396127,
     "timestamp": 1758271283,
     "datetime": "2025-09-19T08:41:23",
-    "supply_yb": 125350.94415905612
+    "supply_yb": 125350.94415905612,
+    "yb_locked": 125350.94415905612,
+    "lock_ratio": 1.0
   },
   {
     "block": 23396427,
     "timestamp": 1758274883,
     "datetime": "2025-09-19T09:41:23",
-    "supply_yb": 125350.94415905612
+    "supply_yb": 125350.94415905612,
+    "yb_locked": 125350.94415905612,
+    "lock_ratio": 1.0
   },
   {
     "block": 23396727,
     "timestamp": 1758278483,
     "datetime": "2025-09-19T10:41:23",
-    "supply_yb": 125350.94415905612
+    "supply_yb": 125350.94415905612,
+    "yb_locked": 125350.94415905612,
+    "lock_ratio": 1.0
   },
   {
     "block": 23397027,
     "timestamp": 1758282083,
     "datetime": "2025-09-19T11:41:23",
-    "supply_yb": 125350.94415905612
+    "supply_yb": 125350.94415905612,
+    "yb_locked": 125350.94415905612,
+    "lock_ratio": 1.0
   },
   {
     "block": 23397327,
     "timestamp": 1758285683,
     "datetime": "2025-09-19T12:41:23",
-    "supply_yb": 125350.94415905612
+    "supply_yb": 125350.94415905612,
+    "yb_locked": 125350.94415905612,
+    "lock_ratio": 1.0
   },
   {
     "block": 23397627,
     "timestamp": 1758289283,
     "datetime": "2025-09-19T13:41:23",
-    "supply_yb": 125350.94415905612
+    "supply_yb": 125350.94415905612,
+    "yb_locked": 125350.94415905612,
+    "lock_ratio": 1.0
   },
   {
     "block": 23397927,
     "timestamp": 1758292883,
     "datetime": "2025-09-19T14:41:23",
-    "supply_yb": 125350.94415905612
+    "supply_yb": 125350.94415905612,
+    "yb_locked": 125350.94415905612,
+    "lock_ratio": 1.0
   },
   {
     "block": 23398227,
     "timestamp": 1758296483,
     "datetime": "2025-09-19T15:41:23",
-    "supply_yb": 125350.94415905612
+    "supply_yb": 125350.94415905612,
+    "yb_locked": 125350.94415905612,
+    "lock_ratio": 1.0
   },
   {
     "block": 23398527,
     "timestamp": 1758300083,
     "datetime": "2025-09-19T16:41:23",
-    "supply_yb": 125350.94415905612
+    "supply_yb": 125350.94415905612,
+    "yb_locked": 125350.94415905612,
+    "lock_ratio": 1.0
   },
   {
     "block": 23398827,
     "timestamp": 1758303683,
     "datetime": "2025-09-19T17:41:23",
-    "supply_yb": 125350.94415905612
+    "supply_yb": 125350.94415905612,
+    "yb_locked": 125350.94415905612,
+    "lock_ratio": 1.0
   },
   {
     "block": 23399127,
     "timestamp": 1758307283,
     "datetime": "2025-09-19T18:41:23",
-    "supply_yb": 125350.94415905612
+    "supply_yb": 125350.94415905612,
+    "yb_locked": 125350.94415905612,
+    "lock_ratio": 1.0
   },
   {
     "block": 23399427,
     "timestamp": 1758310883,
     "datetime": "2025-09-19T19:41:23",
-    "supply_yb": 125350.94415905612
+    "supply_yb": 125350.94415905612,
+    "yb_locked": 125350.94415905612,
+    "lock_ratio": 1.0
   },
   {
     "block": 23399727,
     "timestamp": 1758314483,
     "datetime": "2025-09-19T20:41:23",
-    "supply_yb": 125350.94415905612
+    "supply_yb": 125350.94415905612,
+    "yb_locked": 125350.94415905612,
+    "lock_ratio": 1.0
   },
   {
     "block": 23400027,
     "timestamp": 1758318083,
     "datetime": "2025-09-19T21:41:23",
-    "supply_yb": 125350.94415905612
+    "supply_yb": 125350.94415905612,
+    "yb_locked": 125350.94415905612,
+    "lock_ratio": 1.0
   },
   {
     "block": 23400327,
     "timestamp": 1758321683,
     "datetime": "2025-09-19T22:41:23",
-    "supply_yb": 125350.94415905612
+    "supply_yb": 125350.94415905612,
+    "yb_locked": 125350.94415905612,
+    "lock_ratio": 1.0
   },
   {
     "block": 23400627,
     "timestamp": 1758325283,
     "datetime": "2025-09-19T23:41:23",
-    "supply_yb": 125350.94415905612
+    "supply_yb": 125350.94415905612,
+    "yb_locked": 125350.94415905612,
+    "lock_ratio": 1.0
   },
   {
     "block": 23400927,
     "timestamp": 1758330827,
     "datetime": "2025-09-20T01:13:47",
-    "supply_yb": 125350.94415905612
+    "supply_yb": 125350.94415905612,
+    "yb_locked": 125350.94415905612,
+    "lock_ratio": 1.0
   },
   {
     "block": 23401227,
     "timestamp": 1758332483,
     "datetime": "2025-09-20T01:41:23",
-    "supply_yb": 125350.94415905612
+    "supply_yb": 125350.94415905612,
+    "yb_locked": 125350.94415905612,
+    "lock_ratio": 1.0
   },
   {
     "block": 23401527,
     "timestamp": 1758336083,
     "datetime": "2025-09-20T02:41:23",
-    "supply_yb": 125350.94415905612
+    "supply_yb": 125350.94415905612,
+    "yb_locked": 125350.94415905612,
+    "lock_ratio": 1.0
   },
   {
     "block": 23401827,
     "timestamp": 1758339683,
     "datetime": "2025-09-20T03:41:23",
-    "supply_yb": 125350.94415905612
+    "supply_yb": 125350.94415905612,
+    "yb_locked": 125350.94415905612,
+    "lock_ratio": 1.0
   },
   {
     "block": 23402127,
     "timestamp": 1758343283,
     "datetime": "2025-09-20T04:41:23",
-    "supply_yb": 125350.94415905612
+    "supply_yb": 125350.94415905612,
+    "yb_locked": 125350.94415905612,
+    "lock_ratio": 1.0
   },
   {
     "block": 23402427,
     "timestamp": 1758346883,
     "datetime": "2025-09-20T05:41:23",
-    "supply_yb": 125350.94415905612
+    "supply_yb": 125350.94415905612,
+    "yb_locked": 125350.94415905612,
+    "lock_ratio": 1.0
   },
   {
     "block": 23402727,
     "timestamp": 1758350483,
     "datetime": "2025-09-20T06:41:23",
-    "supply_yb": 125350.94415905612
+    "supply_yb": 125350.94415905612,
+    "yb_locked": 125350.94415905612,
+    "lock_ratio": 1.0
   },
   {
     "block": 23403027,
     "timestamp": 1758354083,
     "datetime": "2025-09-20T07:41:23",
-    "supply_yb": 125350.94415905612
+    "supply_yb": 125350.94415905612,
+    "yb_locked": 125350.94415905612,
+    "lock_ratio": 1.0
   },
   {
     "block": 23403327,
     "timestamp": 1758357683,
     "datetime": "2025-09-20T08:41:23",
-    "supply_yb": 125350.94415905612
+    "supply_yb": 125350.94415905612,
+    "yb_locked": 125350.94415905612,
+    "lock_ratio": 1.0
   },
   {
     "block": 23403627,
     "timestamp": 1758361283,
     "datetime": "2025-09-20T09:41:23",
-    "supply_yb": 125350.94415905612
+    "supply_yb": 125350.94415905612,
+    "yb_locked": 125350.94415905612,
+    "lock_ratio": 1.0
   },
   {
     "block": 23403927,
     "timestamp": 1758364883,
     "datetime": "2025-09-20T10:41:23",
-    "supply_yb": 125350.94415905612
+    "supply_yb": 125350.94415905612,
+    "yb_locked": 125350.94415905612,
+    "lock_ratio": 1.0
   },
   {
     "block": 23404227,
     "timestamp": 1758368483,
     "datetime": "2025-09-20T11:41:23",
-    "supply_yb": 125350.94415905612
+    "supply_yb": 125350.94415905612,
+    "yb_locked": 125350.94415905612,
+    "lock_ratio": 1.0
   },
   {
     "block": 23404527,
     "timestamp": 1758372083,
     "datetime": "2025-09-20T12:41:23",
-    "supply_yb": 125350.94415905612
+    "supply_yb": 125350.94415905612,
+    "yb_locked": 125350.94415905612,
+    "lock_ratio": 1.0
   },
   {
     "block": 23404827,
     "timestamp": 1758375683,
     "datetime": "2025-09-20T13:41:23",
-    "supply_yb": 139858.9441590561
+    "supply_yb": 139858.9441590561,
+    "yb_locked": 139858.9441590561,
+    "lock_ratio": 1.0
   },
   {
     "block": 23405127,
     "timestamp": 1758379283,
     "datetime": "2025-09-20T14:41:23",
-    "supply_yb": 139858.9441590561
+    "supply_yb": 139858.9441590561,
+    "yb_locked": 139858.9441590561,
+    "lock_ratio": 1.0
   },
   {
     "block": 23405427,
     "timestamp": 1758382883,
     "datetime": "2025-09-20T15:41:23",
-    "supply_yb": 139858.9441590561
+    "supply_yb": 139858.9441590561,
+    "yb_locked": 139858.9441590561,
+    "lock_ratio": 1.0
   },
   {
     "block": 23405727,
     "timestamp": 1758386483,
     "datetime": "2025-09-20T16:41:23",
-    "supply_yb": 139858.9441590561
+    "supply_yb": 139858.9441590561,
+    "yb_locked": 139858.9441590561,
+    "lock_ratio": 1.0
   },
   {
     "block": 23406027,
     "timestamp": 1758390083,
     "datetime": "2025-09-20T17:41:23",
-    "supply_yb": 139858.9441590561
+    "supply_yb": 139858.9441590561,
+    "yb_locked": 139858.9441590561,
+    "lock_ratio": 1.0
   },
   {
     "block": 23406327,
     "timestamp": 1758393683,
     "datetime": "2025-09-20T18:41:23",
-    "supply_yb": 139858.9441590561
+    "supply_yb": 139858.9441590561,
+    "yb_locked": 139858.9441590561,
+    "lock_ratio": 1.0
   },
   {
     "block": 23406627,
     "timestamp": 1758397283,
     "datetime": "2025-09-20T19:41:23",
-    "supply_yb": 139858.9441590561
+    "supply_yb": 139858.9441590561,
+    "yb_locked": 139858.9441590561,
+    "lock_ratio": 1.0
   },
   {
     "block": 23406927,
     "timestamp": 1758400883,
     "datetime": "2025-09-20T20:41:23",
-    "supply_yb": 139858.9441590561
+    "supply_yb": 139858.9441590561,
+    "yb_locked": 139858.9441590561,
+    "lock_ratio": 1.0
   },
   {
     "block": 23407227,
     "timestamp": 1758404483,
     "datetime": "2025-09-20T21:41:23",
-    "supply_yb": 139858.9441590561
+    "supply_yb": 139858.9441590561,
+    "yb_locked": 139858.9441590561,
+    "lock_ratio": 1.0
   },
   {
     "block": 23407527,
     "timestamp": 1758408083,
     "datetime": "2025-09-20T22:41:23",
-    "supply_yb": 139858.9441590561
+    "supply_yb": 139858.9441590561,
+    "yb_locked": 139858.9441590561,
+    "lock_ratio": 1.0
   },
   {
     "block": 23407827,
     "timestamp": 1758411683,
     "datetime": "2025-09-20T23:41:23",
-    "supply_yb": 139858.9441590561
+    "supply_yb": 139858.9441590561,
+    "yb_locked": 139858.9441590561,
+    "lock_ratio": 1.0
   },
   {
     "block": 23408127,
     "timestamp": 1758415283,
     "datetime": "2025-09-21T00:41:23",
-    "supply_yb": 139858.9441590561
+    "supply_yb": 139858.9441590561,
+    "yb_locked": 139858.9441590561,
+    "lock_ratio": 1.0
   },
   {
     "block": 23408427,
     "timestamp": 1758418883,
     "datetime": "2025-09-21T01:41:23",
-    "supply_yb": 139858.9441590561
+    "supply_yb": 139858.9441590561,
+    "yb_locked": 139858.9441590561,
+    "lock_ratio": 1.0
   },
   {
     "block": 23408727,
     "timestamp": 1758422483,
     "datetime": "2025-09-21T02:41:23",
-    "supply_yb": 139858.9441590561
+    "supply_yb": 139858.9441590561,
+    "yb_locked": 139858.9441590561,
+    "lock_ratio": 1.0
   },
   {
     "block": 23409027,
     "timestamp": 1758426083,
     "datetime": "2025-09-21T03:41:23",
-    "supply_yb": 139858.9441590561
+    "supply_yb": 139858.9441590561,
+    "yb_locked": 139858.9441590561,
+    "lock_ratio": 1.0
   },
   {
     "block": 23409327,
     "timestamp": 1758429683,
     "datetime": "2025-09-21T04:41:23",
-    "supply_yb": 139858.9441590561
+    "supply_yb": 139858.9441590561,
+    "yb_locked": 139858.9441590561,
+    "lock_ratio": 1.0
   },
   {
     "block": 23409627,
     "timestamp": 1758433283,
     "datetime": "2025-09-21T05:41:23",
-    "supply_yb": 139858.9441590561
+    "supply_yb": 139858.9441590561,
+    "yb_locked": 139858.9441590561,
+    "lock_ratio": 1.0
   },
   {
     "block": 23409927,
     "timestamp": 1758436883,
     "datetime": "2025-09-21T06:41:23",
-    "supply_yb": 139858.9441590561
+    "supply_yb": 139858.9441590561,
+    "yb_locked": 139858.9441590561,
+    "lock_ratio": 1.0
   },
   {
     "block": 23410227,
     "timestamp": 1758440483,
     "datetime": "2025-09-21T07:41:23",
-    "supply_yb": 139858.9441590561
+    "supply_yb": 139858.9441590561,
+    "yb_locked": 139858.9441590561,
+    "lock_ratio": 1.0
   },
   {
     "block": 23410527,
     "timestamp": 1758444083,
     "datetime": "2025-09-21T08:41:23",
-    "supply_yb": 139858.9441590561
+    "supply_yb": 139858.9441590561,
+    "yb_locked": 139858.9441590561,
+    "lock_ratio": 1.0
   },
   {
     "block": 23410827,
     "timestamp": 1758447683,
     "datetime": "2025-09-21T09:41:23",
-    "supply_yb": 139858.9441590561
+    "supply_yb": 139858.9441590561,
+    "yb_locked": 139858.9441590561,
+    "lock_ratio": 1.0
   },
   {
     "block": 23411127,
     "timestamp": 1758451283,
     "datetime": "2025-09-21T10:41:23",
-    "supply_yb": 139858.9441590561
+    "supply_yb": 139858.9441590561,
+    "yb_locked": 139858.9441590561,
+    "lock_ratio": 1.0
   },
   {
     "block": 23411427,
     "timestamp": 1758454883,
     "datetime": "2025-09-21T11:41:23",
-    "supply_yb": 139858.9441590561
+    "supply_yb": 139858.9441590561,
+    "yb_locked": 139858.9441590561,
+    "lock_ratio": 1.0
   },
   {
     "block": 23411727,
     "timestamp": 1758458483,
     "datetime": "2025-09-21T12:41:23",
-    "supply_yb": 139858.9441590561
+    "supply_yb": 139858.9441590561,
+    "yb_locked": 139858.9441590561,
+    "lock_ratio": 1.0
   },
   {
     "block": 23412027,
     "timestamp": 1758462083,
     "datetime": "2025-09-21T13:41:23",
-    "supply_yb": 139858.9441590561
+    "supply_yb": 139858.9441590561,
+    "yb_locked": 139858.9441590561,
+    "lock_ratio": 1.0
   },
   {
     "block": 23412327,
     "timestamp": 1758465683,
     "datetime": "2025-09-21T14:41:23",
-    "supply_yb": 139858.9441590561
+    "supply_yb": 139858.9441590561,
+    "yb_locked": 139858.9441590561,
+    "lock_ratio": 1.0
   },
   {
     "block": 23412627,
     "timestamp": 1758469283,
     "datetime": "2025-09-21T15:41:23",
-    "supply_yb": 139858.9441590561
+    "supply_yb": 139858.9441590561,
+    "yb_locked": 139858.9441590561,
+    "lock_ratio": 1.0
   },
   {
     "block": 23412927,
     "timestamp": 1758472883,
     "datetime": "2025-09-21T16:41:23",
-    "supply_yb": 139858.9441590561
+    "supply_yb": 139858.9441590561,
+    "yb_locked": 139858.9441590561,
+    "lock_ratio": 1.0
   },
   {
     "block": 23413227,
     "timestamp": 1758476483,
     "datetime": "2025-09-21T17:41:23",
-    "supply_yb": 139858.9441590561
+    "supply_yb": 139858.9441590561,
+    "yb_locked": 139858.9441590561,
+    "lock_ratio": 1.0
   },
   {
     "block": 23413527,
     "timestamp": 1758480083,
     "datetime": "2025-09-21T18:41:23",
-    "supply_yb": 139858.9441590561
+    "supply_yb": 139858.9441590561,
+    "yb_locked": 139858.9441590561,
+    "lock_ratio": 1.0
   },
   {
     "block": 23413827,
     "timestamp": 1758483683,
     "datetime": "2025-09-21T19:41:23",
-    "supply_yb": 1483969.9125761034
+    "supply_yb": 1483969.9125761034,
+    "yb_locked": 1483969.9125761034,
+    "lock_ratio": 1.0
   },
   {
     "block": 23414127,
     "timestamp": 1758487283,
     "datetime": "2025-09-21T20:41:23",
-    "supply_yb": 1483969.9125761034
+    "supply_yb": 1483969.9125761034,
+    "yb_locked": 1483969.9125761034,
+    "lock_ratio": 1.0
   },
   {
     "block": 23414427,
     "timestamp": 1758490883,
     "datetime": "2025-09-21T21:41:23",
-    "supply_yb": 1483969.9125761034
+    "supply_yb": 1483969.9125761034,
+    "yb_locked": 1483969.9125761034,
+    "lock_ratio": 1.0
   },
   {
     "block": 23414727,
     "timestamp": 1758494483,
     "datetime": "2025-09-21T22:41:23",
-    "supply_yb": 1483969.9125761034
+    "supply_yb": 1483969.9125761034,
+    "yb_locked": 1483969.9125761034,
+    "lock_ratio": 1.0
   },
   {
     "block": 23415027,
     "timestamp": 1758498083,
     "datetime": "2025-09-21T23:41:23",
-    "supply_yb": 1483969.9125761034
+    "supply_yb": 1483969.9125761034,
+    "yb_locked": 1483969.9125761034,
+    "lock_ratio": 1.0
   },
   {
     "block": 23415327,
     "timestamp": 1758501683,
     "datetime": "2025-09-22T00:41:23",
-    "supply_yb": 1483969.9125761034
+    "supply_yb": 1483969.9125761034,
+    "yb_locked": 1483969.9125761034,
+    "lock_ratio": 1.0
   },
   {
     "block": 23415627,
     "timestamp": 1758505283,
     "datetime": "2025-09-22T01:41:23",
-    "supply_yb": 1483969.9125761034
+    "supply_yb": 1483969.9125761034,
+    "yb_locked": 1483969.9125761034,
+    "lock_ratio": 1.0
   },
   {
     "block": 23415927,
     "timestamp": 1758508883,
     "datetime": "2025-09-22T02:41:23",
-    "supply_yb": 1483969.9125761034
+    "supply_yb": 1483969.9125761034,
+    "yb_locked": 1483969.9125761034,
+    "lock_ratio": 1.0
   },
   {
     "block": 23416227,
     "timestamp": 1758512483,
     "datetime": "2025-09-22T03:41:23",
-    "supply_yb": 1483969.9125761034
+    "supply_yb": 1483969.9125761034,
+    "yb_locked": 1483969.9125761034,
+    "lock_ratio": 1.0
   },
   {
     "block": 23416527,
     "timestamp": 1758516083,
     "datetime": "2025-09-22T04:41:23",
-    "supply_yb": 1483969.9125761034
+    "supply_yb": 1483969.9125761034,
+    "yb_locked": 1483969.9125761034,
+    "lock_ratio": 1.0
   },
   {
     "block": 23416827,
     "timestamp": 1758519683,
     "datetime": "2025-09-22T05:41:23",
-    "supply_yb": 1483969.9125761034
+    "supply_yb": 1483969.9125761034,
+    "yb_locked": 1483969.9125761034,
+    "lock_ratio": 1.0
   },
   {
     "block": 23417127,
     "timestamp": 1758523283,
     "datetime": "2025-09-22T06:41:23",
-    "supply_yb": 1483969.9125761034
+    "supply_yb": 1483969.9125761034,
+    "yb_locked": 1483969.9125761034,
+    "lock_ratio": 1.0
   },
   {
     "block": 23417427,
     "timestamp": 1758526883,
     "datetime": "2025-09-22T07:41:23",
-    "supply_yb": 1483969.9125761034
+    "supply_yb": 1483969.9125761034,
+    "yb_locked": 1483969.9125761034,
+    "lock_ratio": 1.0
   },
   {
     "block": 23417727,
     "timestamp": 1758530483,
     "datetime": "2025-09-22T08:41:23",
-    "supply_yb": 1483969.9125761034
+    "supply_yb": 1483969.9125761034,
+    "yb_locked": 1483969.9125761034,
+    "lock_ratio": 1.0
   },
   {
     "block": 23418027,
     "timestamp": 1758534083,
     "datetime": "2025-09-22T09:41:23",
-    "supply_yb": 1483969.9125761034
+    "supply_yb": 1483969.9125761034,
+    "yb_locked": 1483969.9125761034,
+    "lock_ratio": 1.0
   },
   {
     "block": 23418327,
     "timestamp": 1758537683,
     "datetime": "2025-09-22T10:41:23",
-    "supply_yb": 1483969.9125761034
+    "supply_yb": 1483969.9125761034,
+    "yb_locked": 1483969.9125761034,
+    "lock_ratio": 1.0
   },
   {
     "block": 23418627,
     "timestamp": 1758541283,
     "datetime": "2025-09-22T11:41:23",
-    "supply_yb": 1483969.9125761034
+    "supply_yb": 1483969.9125761034,
+    "yb_locked": 1483969.9125761034,
+    "lock_ratio": 1.0
   },
   {
     "block": 23418927,
     "timestamp": 1758544883,
     "datetime": "2025-09-22T12:41:23",
-    "supply_yb": 1483969.9125761034
+    "supply_yb": 1483969.9125761034,
+    "yb_locked": 1483969.9125761034,
+    "lock_ratio": 1.0
   },
   {
     "block": 23419227,
     "timestamp": 1758548483,
     "datetime": "2025-09-22T13:41:23",
-    "supply_yb": 1483969.9125761034
+    "supply_yb": 1483969.9125761034,
+    "yb_locked": 1483969.9125761034,
+    "lock_ratio": 1.0
   },
   {
     "block": 23419527,
     "timestamp": 1758552083,
     "datetime": "2025-09-22T14:41:23",
-    "supply_yb": 1483969.9125761034
+    "supply_yb": 1483969.9125761034,
+    "yb_locked": 1483969.9125761034,
+    "lock_ratio": 1.0
   },
   {
     "block": 23419827,
     "timestamp": 1758555683,
     "datetime": "2025-09-22T15:41:23",
-    "supply_yb": 1483969.9125761034
+    "supply_yb": 1483969.9125761034,
+    "yb_locked": 1483969.9125761034,
+    "lock_ratio": 1.0
   },
   {
     "block": 23420127,
     "timestamp": 1758559283,
     "datetime": "2025-09-22T16:41:23",
-    "supply_yb": 1483969.9125761034
+    "supply_yb": 1483969.9125761034,
+    "yb_locked": 1483969.9125761034,
+    "lock_ratio": 1.0
   },
   {
     "block": 23420427,
     "timestamp": 1758562883,
     "datetime": "2025-09-22T17:41:23",
-    "supply_yb": 1483969.9125761034
+    "supply_yb": 1483969.9125761034,
+    "yb_locked": 1483969.9125761034,
+    "lock_ratio": 1.0
   },
   {
     "block": 23420727,
     "timestamp": 1758566483,
     "datetime": "2025-09-22T18:41:23",
-    "supply_yb": 1483969.9125761034
+    "supply_yb": 1483969.9125761034,
+    "yb_locked": 1483969.9125761034,
+    "lock_ratio": 1.0
   },
   {
     "block": 23421027,
     "timestamp": 1758570083,
     "datetime": "2025-09-22T19:41:23",
-    "supply_yb": 1483969.9125761034
+    "supply_yb": 1483969.9125761034,
+    "yb_locked": 1483969.9125761034,
+    "lock_ratio": 1.0
   },
   {
     "block": 23421327,
     "timestamp": 1758573683,
     "datetime": "2025-09-22T20:41:23",
-    "supply_yb": 1483969.9125761034
+    "supply_yb": 1483969.9125761034,
+    "yb_locked": 1483969.9125761034,
+    "lock_ratio": 1.0
   },
   {
     "block": 23421627,
     "timestamp": 1758577283,
     "datetime": "2025-09-22T21:41:23",
-    "supply_yb": 1483969.9125761034
+    "supply_yb": 1483969.9125761034,
+    "yb_locked": 1483969.9125761034,
+    "lock_ratio": 1.0
   },
   {
     "block": 23421927,
     "timestamp": 1758580883,
     "datetime": "2025-09-22T22:41:23",
-    "supply_yb": 1483969.9125761034
+    "supply_yb": 1483969.9125761034,
+    "yb_locked": 1483969.9125761034,
+    "lock_ratio": 1.0
   },
   {
     "block": 23422227,
     "timestamp": 1758584483,
     "datetime": "2025-09-22T23:41:23",
-    "supply_yb": 1483969.9125761034
+    "supply_yb": 1483969.9125761034,
+    "yb_locked": 1483969.9125761034,
+    "lock_ratio": 1.0
   },
   {
     "block": 23422527,
     "timestamp": 1758588083,
     "datetime": "2025-09-23T00:41:23",
-    "supply_yb": 1483969.9125761034
+    "supply_yb": 1483969.9125761034,
+    "yb_locked": 1483969.9125761034,
+    "lock_ratio": 1.0
   },
   {
     "block": 23422827,
     "timestamp": 1758591683,
     "datetime": "2025-09-23T01:41:23",
-    "supply_yb": 1483969.9125761034
+    "supply_yb": 1483969.9125761034,
+    "yb_locked": 1483969.9125761034,
+    "lock_ratio": 1.0
   },
   {
     "block": 23423127,
     "timestamp": 1758595283,
     "datetime": "2025-09-23T02:41:23",
-    "supply_yb": 1483969.9125761034
+    "supply_yb": 1483969.9125761034,
+    "yb_locked": 1483969.9125761034,
+    "lock_ratio": 1.0
   },
   {
     "block": 23423427,
     "timestamp": 1758598883,
     "datetime": "2025-09-23T03:41:23",
-    "supply_yb": 1483969.9125761034
+    "supply_yb": 1483969.9125761034,
+    "yb_locked": 1483969.9125761034,
+    "lock_ratio": 1.0
   },
   {
     "block": 23423727,
     "timestamp": 1758602483,
     "datetime": "2025-09-23T04:41:23",
-    "supply_yb": 1483969.9125761034
+    "supply_yb": 1483969.9125761034,
+    "yb_locked": 1483969.9125761034,
+    "lock_ratio": 1.0
   },
   {
     "block": 23424027,
     "timestamp": 1758606083,
     "datetime": "2025-09-23T05:41:23",
-    "supply_yb": 1483969.9125761034
+    "supply_yb": 1483969.9125761034,
+    "yb_locked": 1483969.9125761034,
+    "lock_ratio": 1.0
   },
   {
     "block": 23424327,
     "timestamp": 1758609683,
     "datetime": "2025-09-23T06:41:23",
-    "supply_yb": 1483969.9125761034
+    "supply_yb": 1483969.9125761034,
+    "yb_locked": 1483969.9125761034,
+    "lock_ratio": 1.0
   },
   {
     "block": 23424627,
     "timestamp": 1758613283,
     "datetime": "2025-09-23T07:41:23",
-    "supply_yb": 1483969.9125761034
+    "supply_yb": 1483969.9125761034,
+    "yb_locked": 1483969.9125761034,
+    "lock_ratio": 1.0
   },
   {
     "block": 23424927,
     "timestamp": 1758616883,
     "datetime": "2025-09-23T08:41:23",
-    "supply_yb": 1483969.9125761034
+    "supply_yb": 1483969.9125761034,
+    "yb_locked": 1483969.9125761034,
+    "lock_ratio": 1.0
   },
   {
     "block": 23425227,
     "timestamp": 1758620483,
     "datetime": "2025-09-23T09:41:23",
-    "supply_yb": 1483969.9125761034
+    "supply_yb": 1483969.9125761034,
+    "yb_locked": 1483969.9125761034,
+    "lock_ratio": 1.0
   },
   {
     "block": 23425527,
     "timestamp": 1758624083,
     "datetime": "2025-09-23T10:41:23",
-    "supply_yb": 1483969.9125761034
+    "supply_yb": 1483969.9125761034,
+    "yb_locked": 1483969.9125761034,
+    "lock_ratio": 1.0
   },
   {
     "block": 23425827,
     "timestamp": 1758627683,
     "datetime": "2025-09-23T11:41:23",
-    "supply_yb": 1483969.9125761034
+    "supply_yb": 1483969.9125761034,
+    "yb_locked": 1483969.9125761034,
+    "lock_ratio": 1.0
   },
   {
     "block": 23426127,
     "timestamp": 1758631283,
     "datetime": "2025-09-23T12:41:23",
-    "supply_yb": 1483969.9125761034
+    "supply_yb": 1483969.9125761034,
+    "yb_locked": 1483969.9125761034,
+    "lock_ratio": 1.0
   },
   {
     "block": 23426427,
     "timestamp": 1758634883,
     "datetime": "2025-09-23T13:41:23",
-    "supply_yb": 1483969.9125761034
+    "supply_yb": 1483969.9125761034,
+    "yb_locked": 1483969.9125761034,
+    "lock_ratio": 1.0
   },
   {
     "block": 23426727,
     "timestamp": 1758638483,
     "datetime": "2025-09-23T14:41:23",
-    "supply_yb": 1483969.9125761034
+    "supply_yb": 1483969.9125761034,
+    "yb_locked": 1483969.9125761034,
+    "lock_ratio": 1.0
   },
   {
     "block": 23427027,
     "timestamp": 1758642083,
     "datetime": "2025-09-23T15:41:23",
-    "supply_yb": 1483969.9125761034
+    "supply_yb": 1483969.9125761034,
+    "yb_locked": 1483969.9125761034,
+    "lock_ratio": 1.0
   },
   {
     "block": 23427327,
     "timestamp": 1758645683,
     "datetime": "2025-09-23T16:41:23",
-    "supply_yb": 1483969.9125761034
+    "supply_yb": 1483969.9125761034,
+    "yb_locked": 1483969.9125761034,
+    "lock_ratio": 1.0
   },
   {
     "block": 23427627,
     "timestamp": 1758649283,
     "datetime": "2025-09-23T17:41:23",
-    "supply_yb": 1483969.9125761034
+    "supply_yb": 1483969.9125761034,
+    "yb_locked": 1483969.9125761034,
+    "lock_ratio": 1.0
   },
   {
     "block": 23427927,
     "timestamp": 1758652883,
     "datetime": "2025-09-23T18:41:23",
-    "supply_yb": 1483969.9125761034
+    "supply_yb": 1483969.9125761034,
+    "yb_locked": 1483969.9125761034,
+    "lock_ratio": 1.0
   },
   {
     "block": 23428227,
     "timestamp": 1758656483,
     "datetime": "2025-09-23T19:41:23",
-    "supply_yb": 1483969.9125761034
+    "supply_yb": 1483969.9125761034,
+    "yb_locked": 1483969.9125761034,
+    "lock_ratio": 1.0
   },
   {
     "block": 23428527,
     "timestamp": 1758660083,
     "datetime": "2025-09-23T20:41:23",
-    "supply_yb": 1483969.9125761034
+    "supply_yb": 1483969.9125761034,
+    "yb_locked": 1483969.9125761034,
+    "lock_ratio": 1.0
   },
   {
     "block": 23428827,
     "timestamp": 1758663683,
     "datetime": "2025-09-23T21:41:23",
-    "supply_yb": 1483969.9125761034
+    "supply_yb": 1483969.9125761034,
+    "yb_locked": 1483969.9125761034,
+    "lock_ratio": 1.0
   },
   {
     "block": 23429127,
     "timestamp": 1758667283,
     "datetime": "2025-09-23T22:41:23",
-    "supply_yb": 1483969.9125761034
+    "supply_yb": 1483969.9125761034,
+    "yb_locked": 1483969.9125761034,
+    "lock_ratio": 1.0
   },
   {
     "block": 23429427,
     "timestamp": 1758670883,
     "datetime": "2025-09-23T23:41:23",
-    "supply_yb": 1483969.9125761034
+    "supply_yb": 1483969.9125761034,
+    "yb_locked": 1483969.9125761034,
+    "lock_ratio": 1.0
   },
   {
     "block": 23429727,
     "timestamp": 1758674483,
     "datetime": "2025-09-24T00:41:23",
-    "supply_yb": 1483969.9125761034
+    "supply_yb": 1483969.9125761034,
+    "yb_locked": 1483969.9125761034,
+    "lock_ratio": 1.0
   },
   {
     "block": 23430027,
     "timestamp": 1758678083,
     "datetime": "2025-09-24T01:41:23",
-    "supply_yb": 1483969.9125761034
+    "supply_yb": 1483969.9125761034,
+    "yb_locked": 1483969.9125761034,
+    "lock_ratio": 1.0
   },
   {
     "block": 23430327,
     "timestamp": 1758681683,
     "datetime": "2025-09-24T02:41:23",
-    "supply_yb": 1483969.9125761034
+    "supply_yb": 1483969.9125761034,
+    "yb_locked": 1483969.9125761034,
+    "lock_ratio": 1.0
   },
   {
     "block": 23430627,
     "timestamp": 1758685283,
     "datetime": "2025-09-24T03:41:23",
-    "supply_yb": 1483969.9125761034
+    "supply_yb": 1483969.9125761034,
+    "yb_locked": 1483969.9125761034,
+    "lock_ratio": 1.0
   },
   {
     "block": 23430927,
     "timestamp": 1758693143,
     "datetime": "2025-09-24T05:52:23",
-    "supply_yb": 1483969.9125761034
+    "supply_yb": 1483969.9125761034,
+    "yb_locked": 1483969.9125761034,
+    "lock_ratio": 1.0
   },
   {
     "block": 23431227,
     "timestamp": 1758692483,
     "datetime": "2025-09-24T05:41:23",
-    "supply_yb": 1483969.9125761034
+    "supply_yb": 1483969.9125761034,
+    "yb_locked": 1483969.9125761034,
+    "lock_ratio": 1.0
   },
   {
     "block": 23431527,
     "timestamp": 1758696083,
     "datetime": "2025-09-24T06:41:23",
-    "supply_yb": 1483969.9125761034
+    "supply_yb": 1483969.9125761034,
+    "yb_locked": 1483969.9125761034,
+    "lock_ratio": 1.0
   },
   {
     "block": 23431827,
     "timestamp": 1758699683,
     "datetime": "2025-09-24T07:41:23",
-    "supply_yb": 1483969.9125761034
+    "supply_yb": 1483969.9125761034,
+    "yb_locked": 1483969.9125761034,
+    "lock_ratio": 1.0
   },
   {
     "block": 23432127,
     "timestamp": 1758703283,
     "datetime": "2025-09-24T08:41:23",
-    "supply_yb": 1483969.9125761034
+    "supply_yb": 1483969.9125761034,
+    "yb_locked": 1483969.9125761034,
+    "lock_ratio": 1.0
   },
   {
     "block": 23432427,
     "timestamp": 1758706883,
     "datetime": "2025-09-24T09:41:23",
-    "supply_yb": 1483969.9125761034
+    "supply_yb": 1483969.9125761034,
+    "yb_locked": 1483969.9125761034,
+    "lock_ratio": 1.0
   },
   {
     "block": 23432727,
     "timestamp": 1758710483,
     "datetime": "2025-09-24T10:41:23",
-    "supply_yb": 1674179.1972031961
+    "supply_yb": 1674179.1972031961,
+    "yb_locked": 1674179.1972031961,
+    "lock_ratio": 1.0
   },
   {
     "block": 23433027,
     "timestamp": 1758714083,
     "datetime": "2025-09-24T11:41:23",
-    "supply_yb": 1674179.1972031961
+    "supply_yb": 1674179.1972031961,
+    "yb_locked": 1674179.1972031961,
+    "lock_ratio": 1.0
   },
   {
     "block": 23433327,
     "timestamp": 1758717683,
     "datetime": "2025-09-24T12:41:23",
-    "supply_yb": 1674179.1972031961
+    "supply_yb": 1674179.1972031961,
+    "yb_locked": 1674179.1972031961,
+    "lock_ratio": 1.0
   },
   {
     "block": 23433627,
     "timestamp": 1758721283,
     "datetime": "2025-09-24T13:41:23",
-    "supply_yb": 1678954.2542808217
+    "supply_yb": 1678954.2542808217,
+    "yb_locked": 1678954.2542808217,
+    "lock_ratio": 1.0
   },
   {
     "block": 23433927,
     "timestamp": 1758724883,
     "datetime": "2025-09-24T14:41:23",
-    "supply_yb": 1681954.2542808217
+    "supply_yb": 1681954.2542808217,
+    "yb_locked": 1681954.2542808217,
+    "lock_ratio": 1.0
   },
   {
     "block": 23434227,
     "timestamp": 1758728483,
     "datetime": "2025-09-24T15:41:23",
-    "supply_yb": 1690954.2542808214
+    "supply_yb": 1690954.2542808214,
+    "yb_locked": 1690954.2542808214,
+    "lock_ratio": 1.0
   },
   {
     "block": 23434527,
     "timestamp": 1758732083,
     "datetime": "2025-09-24T16:41:23",
-    "supply_yb": 1693383.753900304
+    "supply_yb": 1693383.753900304,
+    "yb_locked": 1693383.753900304,
+    "lock_ratio": 1.0
   },
   {
     "block": 23434827,
     "timestamp": 1758735683,
     "datetime": "2025-09-24T17:41:23",
-    "supply_yb": 1693383.753900304
+    "supply_yb": 1693383.753900304,
+    "yb_locked": 1693383.753900304,
+    "lock_ratio": 1.0
   },
   {
     "block": 23435127,
     "timestamp": 1758739283,
     "datetime": "2025-09-24T18:41:23",
-    "supply_yb": 1724075.9390220696
+    "supply_yb": 1724075.9390220696,
+    "yb_locked": 1724075.9390220696,
+    "lock_ratio": 1.0
   },
   {
     "block": 23435427,
     "timestamp": 1758742883,
     "datetime": "2025-09-24T19:41:23",
-    "supply_yb": 1724075.9390220696
+    "supply_yb": 1724075.9390220696,
+    "yb_locked": 1724075.9390220696,
+    "lock_ratio": 1.0
   },
   {
     "block": 23435727,
     "timestamp": 1758746483,
     "datetime": "2025-09-24T20:41:23",
-    "supply_yb": 1724075.9390220696
+    "supply_yb": 1724075.9390220696,
+    "yb_locked": 1724075.9390220696,
+    "lock_ratio": 1.0
   },
   {
     "block": 23436027,
     "timestamp": 1758750083,
     "datetime": "2025-09-24T21:41:23",
-    "supply_yb": 1724075.9390220696
+    "supply_yb": 1724075.9390220696,
+    "yb_locked": 1724075.9390220696,
+    "lock_ratio": 1.0
   },
   {
     "block": 23436327,
     "timestamp": 1758753683,
     "datetime": "2025-09-24T22:41:23",
-    "supply_yb": 1724075.9390220696
+    "supply_yb": 1724075.9390220696,
+    "yb_locked": 1724075.9390220696,
+    "lock_ratio": 1.0
   },
   {
     "block": 23436627,
     "timestamp": 1758757283,
     "datetime": "2025-09-24T23:41:23",
-    "supply_yb": 1724075.9390220696
+    "supply_yb": 1724075.9390220696,
+    "yb_locked": 1724075.9390220696,
+    "lock_ratio": 1.0
   },
   {
     "block": 23436927,
     "timestamp": 1758760883,
     "datetime": "2025-09-25T00:41:23",
-    "supply_yb": 1724075.9390220696
+    "supply_yb": 1724075.9390220696,
+    "yb_locked": 1724075.9390220696,
+    "lock_ratio": 1.0
   },
   {
     "block": 23437227,
     "timestamp": 1758764483,
     "datetime": "2025-09-25T01:41:23",
-    "supply_yb": 1724075.9390220696
+    "supply_yb": 1724075.9390220696,
+    "yb_locked": 1724075.9390220696,
+    "lock_ratio": 1.0
   },
   {
     "block": 23437527,
     "timestamp": 1758768083,
     "datetime": "2025-09-25T02:41:23",
-    "supply_yb": 1724075.9390220696
+    "supply_yb": 1724075.9390220696,
+    "yb_locked": 1724075.9390220696,
+    "lock_ratio": 1.0
   },
   {
     "block": 23437827,
     "timestamp": 1758771683,
     "datetime": "2025-09-25T03:41:23",
-    "supply_yb": 2231761.4413051745
+    "supply_yb": 2231761.4413051745,
+    "yb_locked": 2231761.4413051745,
+    "lock_ratio": 1.0
   },
   {
     "block": 23438127,
     "timestamp": 1758775283,
     "datetime": "2025-09-25T04:41:23",
-    "supply_yb": 2231761.4413051745
+    "supply_yb": 2231761.4413051745,
+    "yb_locked": 2231761.4413051745,
+    "lock_ratio": 1.0
   },
   {
     "block": 23438427,
     "timestamp": 1758778883,
     "datetime": "2025-09-25T05:41:23",
-    "supply_yb": 2231761.4413051745
+    "supply_yb": 2231761.4413051745,
+    "yb_locked": 2231761.4413051745,
+    "lock_ratio": 1.0
   },
   {
     "block": 23438727,
     "timestamp": 1758782483,
     "datetime": "2025-09-25T06:41:23",
-    "supply_yb": 2231761.4413051745
+    "supply_yb": 2231761.4413051745,
+    "yb_locked": 2231761.4413051745,
+    "lock_ratio": 1.0
   },
   {
     "block": 23439027,
     "timestamp": 1758786083,
     "datetime": "2025-09-25T07:41:23",
-    "supply_yb": 2231761.4413051745
+    "supply_yb": 2231761.4413051745,
+    "yb_locked": 2231761.4413051745,
+    "lock_ratio": 1.0
   },
   {
     "block": 23439327,
     "timestamp": 1758789683,
     "datetime": "2025-09-25T08:41:23",
-    "supply_yb": 2231761.4413051745
+    "supply_yb": 2231761.4413051745,
+    "yb_locked": 2231761.4413051745,
+    "lock_ratio": 1.0
   },
   {
     "block": 23439627,
     "timestamp": 1758793283,
     "datetime": "2025-09-25T09:41:23",
-    "supply_yb": 2231761.4413051745
+    "supply_yb": 2231761.4413051745,
+    "yb_locked": 2231761.4413051745,
+    "lock_ratio": 1.0
   },
   {
     "block": 23439927,
     "timestamp": 1758796883,
     "datetime": "2025-09-25T10:41:23",
-    "supply_yb": 2231761.4413051745
+    "supply_yb": 2231761.4413051745,
+    "yb_locked": 2231761.4413051745,
+    "lock_ratio": 1.0
   },
   {
     "block": 23440227,
     "timestamp": 1758800483,
     "datetime": "2025-09-25T11:41:23",
-    "supply_yb": 2231761.4413051745
+    "supply_yb": 2231761.4413051745,
+    "yb_locked": 2231761.4413051745,
+    "lock_ratio": 1.0
   },
   {
     "block": 23440527,
     "timestamp": 1758804083,
     "datetime": "2025-09-25T12:41:23",
-    "supply_yb": 2231761.4413051745
+    "supply_yb": 2231761.4413051745,
+    "yb_locked": 2231761.4413051745,
+    "lock_ratio": 1.0
   },
   {
     "block": 23440827,
     "timestamp": 1758807683,
     "datetime": "2025-09-25T13:41:23",
-    "supply_yb": 2231761.4413051745
+    "supply_yb": 2231761.4413051745,
+    "yb_locked": 2231761.4413051745,
+    "lock_ratio": 1.0
   },
   {
     "block": 23441127,
     "timestamp": 1758811283,
     "datetime": "2025-09-25T14:41:23",
-    "supply_yb": 2231761.4413051745
+    "supply_yb": 2231761.4413051745,
+    "yb_locked": 2231761.4413051745,
+    "lock_ratio": 1.0
   },
   {
     "block": 23441427,
     "timestamp": 1758814883,
     "datetime": "2025-09-25T15:41:23",
-    "supply_yb": 2231761.4413051745
+    "supply_yb": 2231761.4413051745,
+    "yb_locked": 2231761.4413051745,
+    "lock_ratio": 1.0
   },
   {
     "block": 23441727,
     "timestamp": 1758818483,
     "datetime": "2025-09-25T16:41:23",
-    "supply_yb": 2231761.4413051745
+    "supply_yb": 2231761.4413051745,
+    "yb_locked": 2231761.4413051745,
+    "lock_ratio": 1.0
   },
   {
     "block": 23442027,
     "timestamp": 1758822083,
     "datetime": "2025-09-25T17:41:23",
-    "supply_yb": 2231761.4413051745
+    "supply_yb": 2231761.4413051745,
+    "yb_locked": 2231761.4413051745,
+    "lock_ratio": 1.0
   },
   {
     "block": 23442327,
     "timestamp": 1758825683,
     "datetime": "2025-09-25T18:41:23",
-    "supply_yb": 2231761.4413051745
+    "supply_yb": 2231761.4413051745,
+    "yb_locked": 2231761.4413051745,
+    "lock_ratio": 1.0
   },
   {
     "block": 23442627,
     "timestamp": 1758829283,
     "datetime": "2025-09-25T19:41:23",
-    "supply_yb": 2231761.4413051745
+    "supply_yb": 2231761.4413051745,
+    "yb_locked": 2231761.4413051745,
+    "lock_ratio": 1.0
   },
   {
     "block": 23442927,
     "timestamp": 1758832883,
     "datetime": "2025-09-25T20:41:23",
-    "supply_yb": 2231761.4413051745
+    "supply_yb": 2231761.4413051745,
+    "yb_locked": 2231761.4413051745,
+    "lock_ratio": 1.0
   },
   {
     "block": 23443227,
     "timestamp": 1758836483,
     "datetime": "2025-09-25T21:41:23",
-    "supply_yb": 2231761.4413051745
+    "supply_yb": 2231761.4413051745,
+    "yb_locked": 2231761.4413051745,
+    "lock_ratio": 1.0
   },
   {
     "block": 23443527,
     "timestamp": 1758840083,
     "datetime": "2025-09-25T22:41:23",
-    "supply_yb": 2231761.4413051745
+    "supply_yb": 2231761.4413051745,
+    "yb_locked": 2231761.4413051745,
+    "lock_ratio": 1.0
   },
   {
     "block": 23443827,
     "timestamp": 1758843683,
     "datetime": "2025-09-25T23:41:23",
-    "supply_yb": 2231761.4413051745
+    "supply_yb": 2231761.4413051745,
+    "yb_locked": 2231761.4413051745,
+    "lock_ratio": 1.0
   },
   {
     "block": 23444127,
     "timestamp": 1758847283,
     "datetime": "2025-09-26T00:41:23",
-    "supply_yb": 2231761.4413051745
+    "supply_yb": 2231761.4413051745,
+    "yb_locked": 2231761.4413051745,
+    "lock_ratio": 1.0
   },
   {
     "block": 23444427,
     "timestamp": 1758850883,
     "datetime": "2025-09-26T01:41:23",
-    "supply_yb": 2231761.4413051745
+    "supply_yb": 2231761.4413051745,
+    "yb_locked": 2231761.4413051745,
+    "lock_ratio": 1.0
   },
   {
     "block": 23444727,
     "timestamp": 1758854483,
     "datetime": "2025-09-26T02:41:23",
-    "supply_yb": 2231761.4413051745
+    "supply_yb": 2231761.4413051745,
+    "yb_locked": 2231761.4413051745,
+    "lock_ratio": 1.0
   },
   {
     "block": 23445027,
     "timestamp": 1758858083,
     "datetime": "2025-09-26T03:41:23",
-    "supply_yb": 2231761.4413051745
+    "supply_yb": 2231761.4413051745,
+    "yb_locked": 2231761.4413051745,
+    "lock_ratio": 1.0
   },
   {
     "block": 23445327,
     "timestamp": 1758861683,
     "datetime": "2025-09-26T04:41:23",
-    "supply_yb": 2231761.4413051745
+    "supply_yb": 2231761.4413051745,
+    "yb_locked": 2231761.4413051745,
+    "lock_ratio": 1.0
   },
   {
     "block": 23445627,
     "timestamp": 1758865283,
     "datetime": "2025-09-26T05:41:23",
-    "supply_yb": 2231761.4413051745
+    "supply_yb": 2231761.4413051745,
+    "yb_locked": 2231761.4413051745,
+    "lock_ratio": 1.0
   },
   {
     "block": 23445927,
     "timestamp": 1758868883,
     "datetime": "2025-09-26T06:41:23",
-    "supply_yb": 2231761.4413051745
+    "supply_yb": 2231761.4413051745,
+    "yb_locked": 2231761.4413051745,
+    "lock_ratio": 1.0
   },
   {
     "block": 23446227,
     "timestamp": 1758872483,
     "datetime": "2025-09-26T07:41:23",
-    "supply_yb": 2232728.184075342
+    "supply_yb": 2232728.184075342,
+    "yb_locked": 2232728.184075342,
+    "lock_ratio": 1.0
   },
   {
     "block": 23446527,
     "timestamp": 1758876083,
     "datetime": "2025-09-26T08:41:23",
-    "supply_yb": 2232728.184075342
+    "supply_yb": 2232728.184075342,
+    "yb_locked": 2232728.184075342,
+    "lock_ratio": 1.0
   },
   {
     "block": 23446827,
     "timestamp": 1758879683,
     "datetime": "2025-09-26T09:41:23",
-    "supply_yb": 2232728.184075342
+    "supply_yb": 2232728.184075342,
+    "yb_locked": 2232728.184075342,
+    "lock_ratio": 1.0
   },
   {
     "block": 23447127,
     "timestamp": 1758883283,
     "datetime": "2025-09-26T10:41:23",
-    "supply_yb": 2232728.184075342
+    "supply_yb": 2232728.184075342,
+    "yb_locked": 2232728.184075342,
+    "lock_ratio": 1.0
   },
   {
     "block": 23447427,
     "timestamp": 1758886883,
     "datetime": "2025-09-26T11:41:23",
-    "supply_yb": 2232728.184075342
+    "supply_yb": 2232728.184075342,
+    "yb_locked": 2232728.184075342,
+    "lock_ratio": 1.0
   },
   {
     "block": 23447727,
     "timestamp": 1758890483,
     "datetime": "2025-09-26T12:41:23",
-    "supply_yb": 2232728.184075342
+    "supply_yb": 2232728.184075342,
+    "yb_locked": 2232728.184075342,
+    "lock_ratio": 1.0
   },
   {
     "block": 23448027,
     "timestamp": 1758894083,
     "datetime": "2025-09-26T13:41:23",
-    "supply_yb": 2232728.184075342
+    "supply_yb": 2232728.184075342,
+    "yb_locked": 2232728.184075342,
+    "lock_ratio": 1.0
   },
   {
     "block": 23448327,
     "timestamp": 1758897683,
     "datetime": "2025-09-26T14:41:23",
-    "supply_yb": 2232728.184075342
+    "supply_yb": 2232728.184075342,
+    "yb_locked": 2232728.184075342,
+    "lock_ratio": 1.0
   },
   {
     "block": 23448627,
     "timestamp": 1758901283,
     "datetime": "2025-09-26T15:41:23",
-    "supply_yb": 2232728.184075342
+    "supply_yb": 2232728.184075342,
+    "yb_locked": 2232728.184075342,
+    "lock_ratio": 1.0
   },
   {
     "block": 23448927,
     "timestamp": 1758904883,
     "datetime": "2025-09-26T16:41:23",
-    "supply_yb": 2232728.184075342
+    "supply_yb": 2232728.184075342,
+    "yb_locked": 2232728.184075342,
+    "lock_ratio": 1.0
   },
   {
     "block": 23449227,
     "timestamp": 1758908483,
     "datetime": "2025-09-26T17:41:23",
-    "supply_yb": 2232728.184075342
+    "supply_yb": 2232728.184075342,
+    "yb_locked": 2232728.184075342,
+    "lock_ratio": 1.0
   },
   {
     "block": 23449527,
     "timestamp": 1758912083,
     "datetime": "2025-09-26T18:41:23",
-    "supply_yb": 2232728.184075342
+    "supply_yb": 2232728.184075342,
+    "yb_locked": 2232728.184075342,
+    "lock_ratio": 1.0
   },
   {
     "block": 23449827,
     "timestamp": 1758915683,
     "datetime": "2025-09-26T19:41:23",
-    "supply_yb": 2232728.184075342
+    "supply_yb": 2232728.184075342,
+    "yb_locked": 2232728.184075342,
+    "lock_ratio": 1.0
   },
   {
     "block": 23450127,
     "timestamp": 1758919283,
     "datetime": "2025-09-26T20:41:23",
-    "supply_yb": 2232728.184075342
+    "supply_yb": 2232728.184075342,
+    "yb_locked": 2232728.184075342,
+    "lock_ratio": 1.0
   },
   {
     "block": 23450427,
     "timestamp": 1758922883,
     "datetime": "2025-09-26T21:41:23",
-    "supply_yb": 2232728.184075342
+    "supply_yb": 2232728.184075342,
+    "yb_locked": 2232728.184075342,
+    "lock_ratio": 1.0
   },
   {
     "block": 23450727,
     "timestamp": 1758926483,
     "datetime": "2025-09-26T22:41:23",
-    "supply_yb": 2232728.184075342
+    "supply_yb": 2232728.184075342,
+    "yb_locked": 2232728.184075342,
+    "lock_ratio": 1.0
   },
   {
     "block": 23451027,
     "timestamp": 1758930083,
     "datetime": "2025-09-26T23:41:23",
-    "supply_yb": 2232728.184075342
+    "supply_yb": 2232728.184075342,
+    "yb_locked": 2232728.184075342,
+    "lock_ratio": 1.0
   },
   {
     "block": 23451327,
     "timestamp": 1758933683,
     "datetime": "2025-09-27T00:41:23",
-    "supply_yb": 2232728.184075342
+    "supply_yb": 2232728.184075342,
+    "yb_locked": 2232728.184075342,
+    "lock_ratio": 1.0
   },
   {
     "block": 23451627,
     "timestamp": 1758937283,
     "datetime": "2025-09-27T01:41:23",
-    "supply_yb": 2232728.184075342
+    "supply_yb": 2232728.184075342,
+    "yb_locked": 2232728.184075342,
+    "lock_ratio": 1.0
   },
   {
     "block": 23451927,
     "timestamp": 1758940883,
     "datetime": "2025-09-27T02:41:23",
-    "supply_yb": 2232728.184075342
+    "supply_yb": 2232728.184075342,
+    "yb_locked": 2232728.184075342,
+    "lock_ratio": 1.0
   },
   {
     "block": 23452227,
     "timestamp": 1758944483,
     "datetime": "2025-09-27T03:41:23",
-    "supply_yb": 2232728.184075342
+    "supply_yb": 2232728.184075342,
+    "yb_locked": 2232728.184075342,
+    "lock_ratio": 1.0
   },
   {
     "block": 23452527,
     "timestamp": 1758948083,
     "datetime": "2025-09-27T04:41:23",
-    "supply_yb": 2232728.184075342
+    "supply_yb": 2232728.184075342,
+    "yb_locked": 2232728.184075342,
+    "lock_ratio": 1.0
   },
   {
     "block": 23452827,
     "timestamp": 1758951683,
     "datetime": "2025-09-27T05:41:23",
-    "supply_yb": 2232728.184075342
+    "supply_yb": 2232728.184075342,
+    "yb_locked": 2232728.184075342,
+    "lock_ratio": 1.0
   },
   {
     "block": 23453127,
     "timestamp": 1758955283,
     "datetime": "2025-09-27T06:41:23",
-    "supply_yb": 2232728.184075342
+    "supply_yb": 2232728.184075342,
+    "yb_locked": 2232728.184075342,
+    "lock_ratio": 1.0
   },
   {
     "block": 23453427,
     "timestamp": 1758958883,
     "datetime": "2025-09-27T07:41:23",
-    "supply_yb": 2232728.184075342
+    "supply_yb": 2232728.184075342,
+    "yb_locked": 2232728.184075342,
+    "lock_ratio": 1.0
   },
   {
     "block": 23453727,
     "timestamp": 1758962483,
     "datetime": "2025-09-27T08:41:23",
-    "supply_yb": 2232728.184075342
+    "supply_yb": 2232728.184075342,
+    "yb_locked": 2232728.184075342,
+    "lock_ratio": 1.0
   },
   {
     "block": 23454027,
     "timestamp": 1758966083,
     "datetime": "2025-09-27T09:41:23",
-    "supply_yb": 2232728.184075342
+    "supply_yb": 2232728.184075342,
+    "yb_locked": 2232728.184075342,
+    "lock_ratio": 1.0
   },
   {
     "block": 23454327,
     "timestamp": 1758969683,
     "datetime": "2025-09-27T10:41:23",
-    "supply_yb": 2232728.184075342
+    "supply_yb": 2232728.184075342,
+    "yb_locked": 2232728.184075342,
+    "lock_ratio": 1.0
   },
   {
     "block": 23454627,
     "timestamp": 1758973283,
     "datetime": "2025-09-27T11:41:23",
-    "supply_yb": 2232728.184075342
+    "supply_yb": 2232728.184075342,
+    "yb_locked": 2232728.184075342,
+    "lock_ratio": 1.0
   },
   {
     "block": 23454927,
     "timestamp": 1758976883,
     "datetime": "2025-09-27T12:41:23",
-    "supply_yb": 2232728.184075342
+    "supply_yb": 2232728.184075342,
+    "yb_locked": 2232728.184075342,
+    "lock_ratio": 1.0
   },
   {
     "block": 23455227,
     "timestamp": 1758980483,
     "datetime": "2025-09-27T13:41:23",
-    "supply_yb": 2232728.184075342
+    "supply_yb": 2232728.184075342,
+    "yb_locked": 2232728.184075342,
+    "lock_ratio": 1.0
   },
   {
     "block": 23455527,
     "timestamp": 1758984083,
     "datetime": "2025-09-27T14:41:23",
-    "supply_yb": 2232728.184075342
+    "supply_yb": 2232728.184075342,
+    "yb_locked": 2232728.184075342,
+    "lock_ratio": 1.0
   },
   {
     "block": 23455827,
     "timestamp": 1758987683,
     "datetime": "2025-09-27T15:41:23",
-    "supply_yb": 2232728.184075342
+    "supply_yb": 2232728.184075342,
+    "yb_locked": 2232728.184075342,
+    "lock_ratio": 1.0
   },
   {
     "block": 23456127,
     "timestamp": 1758991283,
     "datetime": "2025-09-27T16:41:23",
-    "supply_yb": 2232728.184075342
+    "supply_yb": 2232728.184075342,
+    "yb_locked": 2232728.184075342,
+    "lock_ratio": 1.0
   },
   {
     "block": 23456427,
     "timestamp": 1758994883,
     "datetime": "2025-09-27T17:41:23",
-    "supply_yb": 2232728.184075342
+    "supply_yb": 2232728.184075342,
+    "yb_locked": 2232728.184075342,
+    "lock_ratio": 1.0
   },
   {
     "block": 23456727,
     "timestamp": 1758998483,
     "datetime": "2025-09-27T18:41:23",
-    "supply_yb": 2232728.184075342
+    "supply_yb": 2232728.184075342,
+    "yb_locked": 2232728.184075342,
+    "lock_ratio": 1.0
   },
   {
     "block": 23457027,
     "timestamp": 1759002083,
     "datetime": "2025-09-27T19:41:23",
-    "supply_yb": 2232728.184075342
+    "supply_yb": 2232728.184075342,
+    "yb_locked": 2232728.184075342,
+    "lock_ratio": 1.0
   },
   {
     "block": 23457327,
     "timestamp": 1759005683,
     "datetime": "2025-09-27T20:41:23",
-    "supply_yb": 2232728.184075342
+    "supply_yb": 2232728.184075342,
+    "yb_locked": 2232728.184075342,
+    "lock_ratio": 1.0
   },
   {
     "block": 23457627,
     "timestamp": 1759009283,
     "datetime": "2025-09-27T21:41:23",
-    "supply_yb": 2232728.184075342
+    "supply_yb": 2232728.184075342,
+    "yb_locked": 2232728.184075342,
+    "lock_ratio": 1.0
   },
   {
     "block": 23457927,
     "timestamp": 1759012883,
     "datetime": "2025-09-27T22:41:23",
-    "supply_yb": 2232728.184075342
+    "supply_yb": 2232728.184075342,
+    "yb_locked": 2232728.184075342,
+    "lock_ratio": 1.0
   },
   {
     "block": 23458227,
     "timestamp": 1759016483,
     "datetime": "2025-09-27T23:41:23",
-    "supply_yb": 2232728.184075342
+    "supply_yb": 2232728.184075342,
+    "yb_locked": 2232728.184075342,
+    "lock_ratio": 1.0
   },
   {
     "block": 23458527,
     "timestamp": 1759020083,
     "datetime": "2025-09-28T00:41:23",
-    "supply_yb": 2232728.184075342
+    "supply_yb": 2232728.184075342,
+    "yb_locked": 2232728.184075342,
+    "lock_ratio": 1.0
   },
   {
     "block": 23458827,
     "timestamp": 1759023683,
     "datetime": "2025-09-28T01:41:23",
-    "supply_yb": 2232728.184075342
+    "supply_yb": 2232728.184075342,
+    "yb_locked": 2232728.184075342,
+    "lock_ratio": 1.0
   },
   {
     "block": 23459127,
     "timestamp": 1759027283,
     "datetime": "2025-09-28T02:41:23",
-    "supply_yb": 2232728.184075342
+    "supply_yb": 2232728.184075342,
+    "yb_locked": 2232728.184075342,
+    "lock_ratio": 1.0
   },
   {
     "block": 23459427,
     "timestamp": 1759030883,
     "datetime": "2025-09-28T03:41:23",
-    "supply_yb": 2232728.184075342
+    "supply_yb": 2232728.184075342,
+    "yb_locked": 2232728.184075342,
+    "lock_ratio": 1.0
   },
   {
     "block": 23459727,
     "timestamp": 1759034483,
     "datetime": "2025-09-28T04:41:23",
-    "supply_yb": 2232728.184075342
+    "supply_yb": 2232728.184075342,
+    "yb_locked": 2232728.184075342,
+    "lock_ratio": 1.0
   },
   {
     "block": 23460027,
     "timestamp": 1759038083,
     "datetime": "2025-09-28T05:41:23",
-    "supply_yb": 2232728.184075342
+    "supply_yb": 2232728.184075342,
+    "yb_locked": 2232728.184075342,
+    "lock_ratio": 1.0
   },
   {
     "block": 23460327,
     "timestamp": 1759041683,
     "datetime": "2025-09-28T06:41:23",
-    "supply_yb": 2232728.184075342
+    "supply_yb": 2232728.184075342,
+    "yb_locked": 2232728.184075342,
+    "lock_ratio": 1.0
   },
   {
     "block": 23460627,
     "timestamp": 1759045283,
     "datetime": "2025-09-28T07:41:23",
-    "supply_yb": 2232728.184075342
+    "supply_yb": 2232728.184075342,
+    "yb_locked": 2232728.184075342,
+    "lock_ratio": 1.0
   },
   {
     "block": 23460927,
     "timestamp": 1759055639,
     "datetime": "2025-09-28T10:33:59",
-    "supply_yb": 2232728.184075342
+    "supply_yb": 2232728.184075342,
+    "yb_locked": 2232728.184075342,
+    "lock_ratio": 1.0
   },
   {
     "block": 23461227,
     "timestamp": 1759052483,
     "datetime": "2025-09-28T09:41:23",
-    "supply_yb": 2232728.184075342
+    "supply_yb": 2232728.184075342,
+    "yb_locked": 2232728.184075342,
+    "lock_ratio": 1.0
   },
   {
     "block": 23461527,
     "timestamp": 1759056083,
     "datetime": "2025-09-28T10:41:23",
-    "supply_yb": 2232728.184075342
+    "supply_yb": 2232728.184075342,
+    "yb_locked": 2232728.184075342,
+    "lock_ratio": 1.0
   },
   {
     "block": 23461827,
     "timestamp": 1759059683,
     "datetime": "2025-09-28T11:41:23",
-    "supply_yb": 2232728.184075342
+    "supply_yb": 2232728.184075342,
+    "yb_locked": 2232728.184075342,
+    "lock_ratio": 1.0
   },
   {
     "block": 23462127,
     "timestamp": 1759063283,
     "datetime": "2025-09-28T12:41:23",
-    "supply_yb": 2232728.184075342
+    "supply_yb": 2232728.184075342,
+    "yb_locked": 2232728.184075342,
+    "lock_ratio": 1.0
   },
   {
     "block": 23462427,
     "timestamp": 1759066883,
     "datetime": "2025-09-28T13:41:23",
-    "supply_yb": 2232728.184075342
+    "supply_yb": 2232728.184075342,
+    "yb_locked": 2232728.184075342,
+    "lock_ratio": 1.0
   },
   {
     "block": 23462727,
     "timestamp": 1759070483,
     "datetime": "2025-09-28T14:41:23",
-    "supply_yb": 2232728.184075342
+    "supply_yb": 2232728.184075342,
+    "yb_locked": 2232728.184075342,
+    "lock_ratio": 1.0
   },
   {
     "block": 23463027,
     "timestamp": 1759074083,
     "datetime": "2025-09-28T15:41:23",
-    "supply_yb": 2232728.184075342
+    "supply_yb": 2232728.184075342,
+    "yb_locked": 2232728.184075342,
+    "lock_ratio": 1.0
   },
   {
     "block": 23463327,
     "timestamp": 1759077683,
     "datetime": "2025-09-28T16:41:23",
-    "supply_yb": 2232728.184075342
+    "supply_yb": 2232728.184075342,
+    "yb_locked": 2232728.184075342,
+    "lock_ratio": 1.0
   },
   {
     "block": 23463627,
     "timestamp": 1759081283,
     "datetime": "2025-09-28T17:41:23",
-    "supply_yb": 2232728.184075342
+    "supply_yb": 2232728.184075342,
+    "yb_locked": 2232728.184075342,
+    "lock_ratio": 1.0
   },
   {
     "block": 23463927,
     "timestamp": 1759084883,
     "datetime": "2025-09-28T18:41:23",
-    "supply_yb": 2232728.184075342
+    "supply_yb": 2232728.184075342,
+    "yb_locked": 2232728.184075342,
+    "lock_ratio": 1.0
   },
   {
     "block": 23464227,
     "timestamp": 1759088483,
     "datetime": "2025-09-28T19:41:23",
-    "supply_yb": 2232728.184075342
+    "supply_yb": 2232728.184075342,
+    "yb_locked": 2232728.184075342,
+    "lock_ratio": 1.0
   },
   {
     "block": 23464527,
     "timestamp": 1759092083,
     "datetime": "2025-09-28T20:41:23",
-    "supply_yb": 2232728.184075342
+    "supply_yb": 2232728.184075342,
+    "yb_locked": 2232728.184075342,
+    "lock_ratio": 1.0
   },
   {
     "block": 23464827,
     "timestamp": 1759095683,
     "datetime": "2025-09-28T21:41:23",
-    "supply_yb": 2232728.184075342
+    "supply_yb": 2232728.184075342,
+    "yb_locked": 2232728.184075342,
+    "lock_ratio": 1.0
   },
   {
     "block": 23465127,
     "timestamp": 1759099283,
     "datetime": "2025-09-28T22:41:23",
-    "supply_yb": 2232728.184075342
+    "supply_yb": 2232728.184075342,
+    "yb_locked": 2232728.184075342,
+    "lock_ratio": 1.0
   },
   {
     "block": 23465427,
     "timestamp": 1759102883,
     "datetime": "2025-09-28T23:41:23",
-    "supply_yb": 2232728.184075342
+    "supply_yb": 2232728.184075342,
+    "yb_locked": 2232728.184075342,
+    "lock_ratio": 1.0
   },
   {
     "block": 23465727,
     "timestamp": 1759106483,
     "datetime": "2025-09-29T00:41:23",
-    "supply_yb": 2232728.184075342
+    "supply_yb": 2232728.184075342,
+    "yb_locked": 2232728.184075342,
+    "lock_ratio": 1.0
   },
   {
     "block": 23466027,
     "timestamp": 1759110083,
     "datetime": "2025-09-29T01:41:23",
-    "supply_yb": 2232728.184075342
+    "supply_yb": 2232728.184075342,
+    "yb_locked": 2232728.184075342,
+    "lock_ratio": 1.0
   },
   {
     "block": 23466327,
     "timestamp": 1759113683,
     "datetime": "2025-09-29T02:41:23",
-    "supply_yb": 2232728.184075342
+    "supply_yb": 2232728.184075342,
+    "yb_locked": 2232728.184075342,
+    "lock_ratio": 1.0
   },
   {
     "block": 23466627,
     "timestamp": 1759117283,
     "datetime": "2025-09-29T03:41:23",
-    "supply_yb": 2232728.184075342
+    "supply_yb": 2232728.184075342,
+    "yb_locked": 2232728.184075342,
+    "lock_ratio": 1.0
   },
   {
     "block": 23466927,
     "timestamp": 1759120883,
     "datetime": "2025-09-29T04:41:23",
-    "supply_yb": 2232728.184075342
+    "supply_yb": 2232728.184075342,
+    "yb_locked": 2232728.184075342,
+    "lock_ratio": 1.0
   },
   {
     "block": 23467227,
     "timestamp": 1759124483,
     "datetime": "2025-09-29T05:41:23",
-    "supply_yb": 2232728.184075342
+    "supply_yb": 2232728.184075342,
+    "yb_locked": 2232728.184075342,
+    "lock_ratio": 1.0
   },
   {
     "block": 23467527,
     "timestamp": 1759128083,
     "datetime": "2025-09-29T06:41:23",
-    "supply_yb": 2232728.184075342
+    "supply_yb": 2232728.184075342,
+    "yb_locked": 2232728.184075342,
+    "lock_ratio": 1.0
   },
   {
     "block": 23467827,
     "timestamp": 1759131683,
     "datetime": "2025-09-29T07:41:23",
-    "supply_yb": 2232728.184075342
+    "supply_yb": 2232728.184075342,
+    "yb_locked": 2232728.184075342,
+    "lock_ratio": 1.0
   },
   {
     "block": 23468127,
     "timestamp": 1759135283,
     "datetime": "2025-09-29T08:41:23",
-    "supply_yb": 2232728.184075342
+    "supply_yb": 2232728.184075342,
+    "yb_locked": 2232728.184075342,
+    "lock_ratio": 1.0
   },
   {
     "block": 23468427,
     "timestamp": 1759138883,
     "datetime": "2025-09-29T09:41:23",
-    "supply_yb": 2232728.184075342
+    "supply_yb": 2232728.184075342,
+    "yb_locked": 2232728.184075342,
+    "lock_ratio": 1.0
   },
   {
     "block": 23468727,
     "timestamp": 1759142483,
     "datetime": "2025-09-29T10:41:23",
-    "supply_yb": 2260316.6095890403
+    "supply_yb": 2260316.6095890403,
+    "yb_locked": 2260316.6095890403,
+    "lock_ratio": 1.0
   },
   {
     "block": 23469027,
     "timestamp": 1759146083,
     "datetime": "2025-09-29T11:41:23",
-    "supply_yb": 2260316.6095890403
+    "supply_yb": 2260316.6095890403,
+    "yb_locked": 2260316.6095890403,
+    "lock_ratio": 1.0
   },
   {
     "block": 23469327,
     "timestamp": 1759149683,
     "datetime": "2025-09-29T12:41:23",
-    "supply_yb": 2260316.6095890403
+    "supply_yb": 2260316.6095890403,
+    "yb_locked": 2260316.6095890403,
+    "lock_ratio": 1.0
   },
   {
     "block": 23469627,
     "timestamp": 1759153283,
     "datetime": "2025-09-29T13:41:23",
-    "supply_yb": 2260316.6095890403
+    "supply_yb": 2260316.6095890403,
+    "yb_locked": 2260316.6095890403,
+    "lock_ratio": 1.0
   },
   {
     "block": 23469927,
     "timestamp": 1759156883,
     "datetime": "2025-09-29T14:41:23",
-    "supply_yb": 2260316.6095890403
+    "supply_yb": 2260316.6095890403,
+    "yb_locked": 2260316.6095890403,
+    "lock_ratio": 1.0
   },
   {
     "block": 23470227,
     "timestamp": 1759160483,
     "datetime": "2025-09-29T15:41:23",
-    "supply_yb": 2260316.6095890403
+    "supply_yb": 2260316.6095890403,
+    "yb_locked": 2260316.6095890403,
+    "lock_ratio": 1.0
   },
   {
     "block": 23470527,
     "timestamp": 1759164083,
     "datetime": "2025-09-29T16:41:23",
-    "supply_yb": 2260316.6095890403
+    "supply_yb": 2260316.6095890403,
+    "yb_locked": 2260316.6095890403,
+    "lock_ratio": 1.0
   },
   {
     "block": 23470827,
     "timestamp": 1759167683,
     "datetime": "2025-09-29T17:41:23",
-    "supply_yb": 2260316.6095890403
+    "supply_yb": 2260316.6095890403,
+    "yb_locked": 2260316.6095890403,
+    "lock_ratio": 1.0
   },
   {
     "block": 23471127,
     "timestamp": 1759171283,
     "datetime": "2025-09-29T18:41:23",
-    "supply_yb": 2260316.6095890403
+    "supply_yb": 2260316.6095890403,
+    "yb_locked": 2260316.6095890403,
+    "lock_ratio": 1.0
   },
   {
     "block": 23471427,
     "timestamp": 1759174883,
     "datetime": "2025-09-29T19:41:23",
-    "supply_yb": 2260316.6095890403
+    "supply_yb": 2260316.6095890403,
+    "yb_locked": 2260316.6095890403,
+    "lock_ratio": 1.0
   },
   {
     "block": 23471727,
     "timestamp": 1759178483,
     "datetime": "2025-09-29T20:41:23",
-    "supply_yb": 2260316.6095890403
+    "supply_yb": 2260316.6095890403,
+    "yb_locked": 2260316.6095890403,
+    "lock_ratio": 1.0
   },
   {
     "block": 23472027,
     "timestamp": 1759182083,
     "datetime": "2025-09-29T21:41:23",
-    "supply_yb": 2260316.6095890403
+    "supply_yb": 2260316.6095890403,
+    "yb_locked": 2260316.6095890403,
+    "lock_ratio": 1.0
   },
   {
     "block": 23472327,
     "timestamp": 1759185683,
     "datetime": "2025-09-29T22:41:23",
-    "supply_yb": 2260316.6095890403
+    "supply_yb": 2260316.6095890403,
+    "yb_locked": 2260316.6095890403,
+    "lock_ratio": 1.0
   },
   {
     "block": 23472627,
     "timestamp": 1759189283,
     "datetime": "2025-09-29T23:41:23",
-    "supply_yb": 2260316.6095890403
+    "supply_yb": 2260316.6095890403,
+    "yb_locked": 2260316.6095890403,
+    "lock_ratio": 1.0
   },
   {
     "block": 23472927,
     "timestamp": 1759192883,
     "datetime": "2025-09-30T00:41:23",
-    "supply_yb": 2260316.6095890403
+    "supply_yb": 2260316.6095890403,
+    "yb_locked": 2260316.6095890403,
+    "lock_ratio": 1.0
   },
   {
     "block": 23473227,
     "timestamp": 1759196483,
     "datetime": "2025-09-30T01:41:23",
-    "supply_yb": 2260316.6095890403
+    "supply_yb": 2260316.6095890403,
+    "yb_locked": 2260316.6095890403,
+    "lock_ratio": 1.0
   },
   {
     "block": 23473527,
     "timestamp": 1759200083,
     "datetime": "2025-09-30T02:41:23",
-    "supply_yb": 2260316.6095890403
+    "supply_yb": 2260316.6095890403,
+    "yb_locked": 2260316.6095890403,
+    "lock_ratio": 1.0
   },
   {
     "block": 23473827,
     "timestamp": 1759203683,
     "datetime": "2025-09-30T03:41:23",
-    "supply_yb": 2260316.6095890403
+    "supply_yb": 2260316.6095890403,
+    "yb_locked": 2260316.6095890403,
+    "lock_ratio": 1.0
   },
   {
     "block": 23474127,
     "timestamp": 1759207283,
     "datetime": "2025-09-30T04:41:23",
-    "supply_yb": 2260316.6095890403
+    "supply_yb": 2260316.6095890403,
+    "yb_locked": 2260316.6095890403,
+    "lock_ratio": 1.0
   },
   {
     "block": 23474427,
     "timestamp": 1759210883,
     "datetime": "2025-09-30T05:41:23",
-    "supply_yb": 2260316.6095890403
+    "supply_yb": 2260316.6095890403,
+    "yb_locked": 2260316.6095890403,
+    "lock_ratio": 1.0
   },
   {
     "block": 23474727,
     "timestamp": 1759214483,
     "datetime": "2025-09-30T06:41:23",
-    "supply_yb": 2260316.6095890403
+    "supply_yb": 2260316.6095890403,
+    "yb_locked": 2260316.6095890403,
+    "lock_ratio": 1.0
   },
   {
     "block": 23475027,
     "timestamp": 1759218083,
     "datetime": "2025-09-30T07:41:23",
-    "supply_yb": 2260316.6095890403
+    "supply_yb": 2260316.6095890403,
+    "yb_locked": 2260316.6095890403,
+    "lock_ratio": 1.0
   },
   {
     "block": 23475327,
     "timestamp": 1759221683,
     "datetime": "2025-09-30T08:41:23",
-    "supply_yb": 2260316.6095890403
+    "supply_yb": 2260316.6095890403,
+    "yb_locked": 2260316.6095890403,
+    "lock_ratio": 1.0
   },
   {
     "block": 23475627,
     "timestamp": 1759225283,
     "datetime": "2025-09-30T09:41:23",
-    "supply_yb": 2260316.6095890403
+    "supply_yb": 2260316.6095890403,
+    "yb_locked": 2260316.6095890403,
+    "lock_ratio": 1.0
   },
   {
     "block": 23475927,
     "timestamp": 1759228883,
     "datetime": "2025-09-30T10:41:23",
-    "supply_yb": 2260316.6095890403
+    "supply_yb": 2260316.6095890403,
+    "yb_locked": 2260316.6095890403,
+    "lock_ratio": 1.0
   },
   {
     "block": 23476227,
     "timestamp": 1759232483,
     "datetime": "2025-09-30T11:41:23",
-    "supply_yb": 2260316.6095890403
+    "supply_yb": 2260316.6095890403,
+    "yb_locked": 2260316.6095890403,
+    "lock_ratio": 1.0
   },
   {
     "block": 23476527,
     "timestamp": 1759236083,
     "datetime": "2025-09-30T12:41:23",
-    "supply_yb": 2260316.6095890403
+    "supply_yb": 2260316.6095890403,
+    "yb_locked": 2260316.6095890403,
+    "lock_ratio": 1.0
   },
   {
     "block": 23476827,
     "timestamp": 1759239683,
     "datetime": "2025-09-30T13:41:23",
-    "supply_yb": 2260316.6095890403
+    "supply_yb": 2260316.6095890403,
+    "yb_locked": 2260316.6095890403,
+    "lock_ratio": 1.0
   },
   {
     "block": 23477127,
     "timestamp": 1759243283,
     "datetime": "2025-09-30T14:41:23",
-    "supply_yb": 2260316.6095890403
+    "supply_yb": 2260316.6095890403,
+    "yb_locked": 2260316.6095890403,
+    "lock_ratio": 1.0
   },
   {
     "block": 23477427,
     "timestamp": 1759246883,
     "datetime": "2025-09-30T15:41:23",
-    "supply_yb": 2260316.6095890403
+    "supply_yb": 2260316.6095890403,
+    "yb_locked": 2260316.6095890403,
+    "lock_ratio": 1.0
   },
   {
     "block": 23477727,
     "timestamp": 1759250483,
     "datetime": "2025-09-30T16:41:23",
-    "supply_yb": 2260316.6095890403
+    "supply_yb": 2260316.6095890403,
+    "yb_locked": 2260316.6095890403,
+    "lock_ratio": 1.0
   },
   {
     "block": 23478027,
     "timestamp": 1759254083,
     "datetime": "2025-09-30T17:41:23",
-    "supply_yb": 2260316.6095890403
+    "supply_yb": 2260316.6095890403,
+    "yb_locked": 2260316.6095890403,
+    "lock_ratio": 1.0
   },
   {
     "block": 23478327,
     "timestamp": 1759257683,
     "datetime": "2025-09-30T18:41:23",
-    "supply_yb": 2260316.6095890403
+    "supply_yb": 2260316.6095890403,
+    "yb_locked": 2260316.6095890403,
+    "lock_ratio": 1.0
   },
   {
     "block": 23478627,
     "timestamp": 1759261283,
     "datetime": "2025-09-30T19:41:23",
-    "supply_yb": 2260316.6095890403
+    "supply_yb": 2260316.6095890403,
+    "yb_locked": 2260316.6095890403,
+    "lock_ratio": 1.0
   },
   {
     "block": 23478927,
     "timestamp": 1759264883,
     "datetime": "2025-09-30T20:41:23",
-    "supply_yb": 2260316.6095890403
+    "supply_yb": 2260316.6095890403,
+    "yb_locked": 2260316.6095890403,
+    "lock_ratio": 1.0
   },
   {
     "block": 23479227,
     "timestamp": 1759268483,
     "datetime": "2025-09-30T21:41:23",
-    "supply_yb": 2260316.6095890403
+    "supply_yb": 2260316.6095890403,
+    "yb_locked": 2260316.6095890403,
+    "lock_ratio": 1.0
   },
   {
     "block": 23479527,
     "timestamp": 1759272083,
     "datetime": "2025-09-30T22:41:23",
-    "supply_yb": 2260316.6095890403
+    "supply_yb": 2260316.6095890403,
+    "yb_locked": 2260316.6095890403,
+    "lock_ratio": 1.0
   },
   {
     "block": 23479827,
     "timestamp": 1759275683,
     "datetime": "2025-09-30T23:41:23",
-    "supply_yb": 2260316.6095890403
+    "supply_yb": 2260316.6095890403,
+    "yb_locked": 2260316.6095890403,
+    "lock_ratio": 1.0
   },
   {
     "block": 23480127,
     "timestamp": 1759279283,
     "datetime": "2025-10-01T00:41:23",
-    "supply_yb": 2260316.6095890403
+    "supply_yb": 2260316.6095890403,
+    "yb_locked": 2260316.6095890403,
+    "lock_ratio": 1.0
   },
   {
     "block": 23480427,
     "timestamp": 1759282883,
     "datetime": "2025-10-01T01:41:23",
-    "supply_yb": 2262002.302130897
+    "supply_yb": 2262002.302130897,
+    "yb_locked": 2262002.302130897,
+    "lock_ratio": 1.0
   },
   {
     "block": 23480727,
     "timestamp": 1759286483,
     "datetime": "2025-10-01T02:41:23",
-    "supply_yb": 2262002.302130897
+    "supply_yb": 2262002.302130897,
+    "yb_locked": 2262002.302130897,
+    "lock_ratio": 1.0
   },
   {
     "block": 23481027,
     "timestamp": 1759290083,
     "datetime": "2025-10-01T03:41:23",
-    "supply_yb": 2262002.302130897
+    "supply_yb": 2262002.302130897,
+    "yb_locked": 2262002.302130897,
+    "lock_ratio": 1.0
   },
   {
     "block": 23481327,
     "timestamp": 1759293683,
     "datetime": "2025-10-01T04:41:23",
-    "supply_yb": 2262002.302130897
+    "supply_yb": 2262002.302130897,
+    "yb_locked": 2262002.302130897,
+    "lock_ratio": 1.0
   },
   {
     "block": 23481627,
     "timestamp": 1759297283,
     "datetime": "2025-10-01T05:41:23",
-    "supply_yb": 2262002.302130897
+    "supply_yb": 2262002.302130897,
+    "yb_locked": 2262002.302130897,
+    "lock_ratio": 1.0
   },
   {
     "block": 23481927,
     "timestamp": 1759300883,
     "datetime": "2025-10-01T06:41:23",
-    "supply_yb": 2262002.302130897
+    "supply_yb": 2262002.302130897,
+    "yb_locked": 2262002.302130897,
+    "lock_ratio": 1.0
   },
   {
     "block": 23482227,
     "timestamp": 1759304483,
     "datetime": "2025-10-01T07:41:23",
-    "supply_yb": 2262002.302130897
+    "supply_yb": 2262002.302130897,
+    "yb_locked": 2262002.302130897,
+    "lock_ratio": 1.0
   },
   {
     "block": 23482527,
     "timestamp": 1759308083,
     "datetime": "2025-10-01T08:41:23",
-    "supply_yb": 2262002.302130897
+    "supply_yb": 2262002.302130897,
+    "yb_locked": 2262002.302130897,
+    "lock_ratio": 1.0
   },
   {
     "block": 23482827,
     "timestamp": 1759311683,
     "datetime": "2025-10-01T09:41:23",
-    "supply_yb": 2262002.302130897
+    "supply_yb": 2262002.302130897,
+    "yb_locked": 2262002.302130897,
+    "lock_ratio": 1.0
   },
   {
     "block": 23483127,
     "timestamp": 1759315283,
     "datetime": "2025-10-01T10:41:23",
-    "supply_yb": 2262002.302130897
+    "supply_yb": 2262002.302130897,
+    "yb_locked": 2262002.302130897,
+    "lock_ratio": 1.0
   },
   {
     "block": 23483427,
     "timestamp": 1759318883,
     "datetime": "2025-10-01T11:41:23",
-    "supply_yb": 2262002.302130897
+    "supply_yb": 2262002.302130897,
+    "yb_locked": 2262002.302130897,
+    "lock_ratio": 1.0
   },
   {
     "block": 23483727,
     "timestamp": 1759322483,
     "datetime": "2025-10-01T12:41:23",
-    "supply_yb": 2262002.302130897
+    "supply_yb": 2262002.302130897,
+    "yb_locked": 2262002.302130897,
+    "lock_ratio": 1.0
   },
   {
     "block": 23484027,
     "timestamp": 1759326083,
     "datetime": "2025-10-01T13:41:23",
-    "supply_yb": 2262002.302130897
+    "supply_yb": 2262002.302130897,
+    "yb_locked": 2262002.302130897,
+    "lock_ratio": 1.0
   },
   {
     "block": 23484327,
     "timestamp": 1759329683,
     "datetime": "2025-10-01T14:41:23",
-    "supply_yb": 2262002.302130897
+    "supply_yb": 2262002.302130897,
+    "yb_locked": 2262002.302130897,
+    "lock_ratio": 1.0
   },
   {
     "block": 23484627,
     "timestamp": 1759333283,
     "datetime": "2025-10-01T15:41:23",
-    "supply_yb": 2262002.302130897
+    "supply_yb": 2262002.302130897,
+    "yb_locked": 2262002.302130897,
+    "lock_ratio": 1.0
   },
   {
     "block": 23484927,
     "timestamp": 1759336883,
     "datetime": "2025-10-01T16:41:23",
-    "supply_yb": 2262002.302130897
+    "supply_yb": 2262002.302130897,
+    "yb_locked": 2262002.302130897,
+    "lock_ratio": 1.0
   },
   {
     "block": 23485227,
     "timestamp": 1759340483,
     "datetime": "2025-10-01T17:41:23",
-    "supply_yb": 4654746.879756468
+    "supply_yb": 4654746.879756468,
+    "yb_locked": 4654746.879756468,
+    "lock_ratio": 1.0
   },
   {
     "block": 23485527,
     "timestamp": 1759344083,
     "datetime": "2025-10-01T18:41:23",
-    "supply_yb": 4654746.879756468
+    "supply_yb": 4654746.879756468,
+    "yb_locked": 4654746.879756468,
+    "lock_ratio": 1.0
   },
   {
     "block": 23485827,
     "timestamp": 1759347683,
     "datetime": "2025-10-01T19:41:23",
-    "supply_yb": 4654746.879756468
+    "supply_yb": 4654746.879756468,
+    "yb_locked": 4654746.879756468,
+    "lock_ratio": 1.0
   },
   {
     "block": 23486127,
     "timestamp": 1759351283,
     "datetime": "2025-10-01T20:41:23",
-    "supply_yb": 4654746.879756468
+    "supply_yb": 4654746.879756468,
+    "yb_locked": 4654746.879756468,
+    "lock_ratio": 1.0
   },
   {
     "block": 23486427,
     "timestamp": 1759354883,
     "datetime": "2025-10-01T21:41:23",
-    "supply_yb": 4654746.879756468
+    "supply_yb": 4654746.879756468,
+    "yb_locked": 4654746.879756468,
+    "lock_ratio": 1.0
   },
   {
     "block": 23486727,
     "timestamp": 1759358483,
     "datetime": "2025-10-01T22:41:23",
-    "supply_yb": 4654746.879756468
+    "supply_yb": 4654746.879756468,
+    "yb_locked": 4654746.879756468,
+    "lock_ratio": 1.0
   },
   {
     "block": 23487027,
     "timestamp": 1759362083,
     "datetime": "2025-10-01T23:41:23",
-    "supply_yb": 4654746.879756468
+    "supply_yb": 4654746.879756468,
+    "yb_locked": 4654746.879756468,
+    "lock_ratio": 1.0
   },
   {
     "block": 23487327,
     "timestamp": 1759365683,
     "datetime": "2025-10-02T00:41:23",
-    "supply_yb": 4654746.879756468
+    "supply_yb": 4654746.879756468,
+    "yb_locked": 4654746.879756468,
+    "lock_ratio": 1.0
   },
   {
     "block": 23487627,
     "timestamp": 1759369283,
     "datetime": "2025-10-02T01:41:23",
-    "supply_yb": 4654746.879756468
+    "supply_yb": 4654746.879756468,
+    "yb_locked": 4654746.879756468,
+    "lock_ratio": 1.0
   },
   {
     "block": 23487927,
     "timestamp": 1759372883,
     "datetime": "2025-10-02T02:41:23",
-    "supply_yb": 4654746.879756468
+    "supply_yb": 4654746.879756468,
+    "yb_locked": 4654746.879756468,
+    "lock_ratio": 1.0
   },
   {
     "block": 23488227,
     "timestamp": 1759376483,
     "datetime": "2025-10-02T03:41:23",
-    "supply_yb": 4654746.879756468
+    "supply_yb": 4654746.879756468,
+    "yb_locked": 4654746.879756468,
+    "lock_ratio": 1.0
   },
   {
     "block": 23488527,
     "timestamp": 1759380083,
     "datetime": "2025-10-02T04:41:23",
-    "supply_yb": 4654746.879756468
+    "supply_yb": 4654746.879756468,
+    "yb_locked": 4654746.879756468,
+    "lock_ratio": 1.0
   },
   {
     "block": 23488827,
     "timestamp": 1759383683,
     "datetime": "2025-10-02T05:41:23",
-    "supply_yb": 4654746.879756468
+    "supply_yb": 4654746.879756468,
+    "yb_locked": 4654746.879756468,
+    "lock_ratio": 1.0
   },
   {
     "block": 23489127,
     "timestamp": 1759387283,
     "datetime": "2025-10-02T06:41:23",
-    "supply_yb": 4654746.879756468
+    "supply_yb": 4654746.879756468,
+    "yb_locked": 4654746.879756468,
+    "lock_ratio": 1.0
   },
   {
     "block": 23489427,
     "timestamp": 1759390883,
     "datetime": "2025-10-02T07:41:23",
-    "supply_yb": 4654746.879756468
+    "supply_yb": 4654746.879756468,
+    "yb_locked": 4654746.879756468,
+    "lock_ratio": 1.0
   },
   {
     "block": 23489727,
     "timestamp": 1759394483,
     "datetime": "2025-10-02T08:41:23",
-    "supply_yb": 4654746.879756468
+    "supply_yb": 4654746.879756468,
+    "yb_locked": 4654746.879756468,
+    "lock_ratio": 1.0
   },
   {
     "block": 23490027,
     "timestamp": 1759398083,
     "datetime": "2025-10-02T09:41:23",
-    "supply_yb": 4654746.879756468
+    "supply_yb": 4654746.879756468,
+    "yb_locked": 4654746.879756468,
+    "lock_ratio": 1.0
   },
   {
     "block": 23490327,
     "timestamp": 1759401683,
     "datetime": "2025-10-02T10:41:23",
-    "supply_yb": 4654746.879756468
+    "supply_yb": 4654746.879756468,
+    "yb_locked": 4654746.879756468,
+    "lock_ratio": 1.0
   },
   {
     "block": 23490627,
     "timestamp": 1759405283,
     "datetime": "2025-10-02T11:41:23",
-    "supply_yb": 4654746.879756468
+    "supply_yb": 4654746.879756468,
+    "yb_locked": 4654746.879756468,
+    "lock_ratio": 1.0
   },
   {
     "block": 23490927,
     "timestamp": 1759418099,
     "datetime": "2025-10-02T15:14:59",
-    "supply_yb": 4654746.879756468
+    "supply_yb": 4654746.879756468,
+    "yb_locked": 4654746.879756468,
+    "lock_ratio": 1.0
   },
   {
     "block": 23491227,
     "timestamp": 1759412483,
     "datetime": "2025-10-02T13:41:23",
-    "supply_yb": 4654746.879756468
+    "supply_yb": 4654746.879756468,
+    "yb_locked": 4654746.879756468,
+    "lock_ratio": 1.0
   },
   {
     "block": 23491527,
     "timestamp": 1759416083,
     "datetime": "2025-10-02T14:41:23",
-    "supply_yb": 4654746.879756468
+    "supply_yb": 4654746.879756468,
+    "yb_locked": 4654746.879756468,
+    "lock_ratio": 1.0
   },
   {
     "block": 23491827,
     "timestamp": 1759419683,
     "datetime": "2025-10-02T15:41:23",
-    "supply_yb": 4654746.879756468
+    "supply_yb": 4654746.879756468,
+    "yb_locked": 4654746.879756468,
+    "lock_ratio": 1.0
   },
   {
     "block": 23492127,
     "timestamp": 1759423283,
     "datetime": "2025-10-02T16:41:23",
-    "supply_yb": 4654746.879756468
+    "supply_yb": 4654746.879756468,
+    "yb_locked": 4654746.879756468,
+    "lock_ratio": 1.0
   },
   {
     "block": 23492427,
     "timestamp": 1759426883,
     "datetime": "2025-10-02T17:41:23",
-    "supply_yb": 4654746.879756468
+    "supply_yb": 4654746.879756468,
+    "yb_locked": 4654746.879756468,
+    "lock_ratio": 1.0
   },
   {
     "block": 23492727,
     "timestamp": 1759430483,
     "datetime": "2025-10-02T18:41:23",
-    "supply_yb": 4654746.879756468
+    "supply_yb": 4654746.879756468,
+    "yb_locked": 4654746.879756468,
+    "lock_ratio": 1.0
   },
   {
     "block": 23493027,
     "timestamp": 1759434083,
     "datetime": "2025-10-02T19:41:23",
-    "supply_yb": 4654746.879756468
+    "supply_yb": 4654746.879756468,
+    "yb_locked": 4654746.879756468,
+    "lock_ratio": 1.0
   },
   {
     "block": 23493327,
     "timestamp": 1759437683,
     "datetime": "2025-10-02T20:41:23",
-    "supply_yb": 4654746.879756468
+    "supply_yb": 4654746.879756468,
+    "yb_locked": 4654746.879756468,
+    "lock_ratio": 1.0
   },
   {
     "block": 23493627,
     "timestamp": 1759441283,
     "datetime": "2025-10-02T21:41:23",
-    "supply_yb": 4654746.879756468
+    "supply_yb": 4654746.879756468,
+    "yb_locked": 4654746.879756468,
+    "lock_ratio": 1.0
   },
   {
     "block": 23493927,
     "timestamp": 1759444883,
     "datetime": "2025-10-02T22:41:23",
-    "supply_yb": 4654746.879756468
+    "supply_yb": 4654746.879756468,
+    "yb_locked": 4654746.879756468,
+    "lock_ratio": 1.0
   },
   {
     "block": 23494227,
     "timestamp": 1759448483,
     "datetime": "2025-10-02T23:41:23",
-    "supply_yb": 4654746.879756468
+    "supply_yb": 4654746.879756468,
+    "yb_locked": 4654746.879756468,
+    "lock_ratio": 1.0
   },
   {
     "block": 23494527,
     "timestamp": 1759452083,
     "datetime": "2025-10-03T00:41:23",
-    "supply_yb": 4654746.879756468
+    "supply_yb": 4654746.879756468,
+    "yb_locked": 4654746.879756468,
+    "lock_ratio": 1.0
   },
   {
     "block": 23494827,
     "timestamp": 1759455683,
     "datetime": "2025-10-03T01:41:23",
-    "supply_yb": 4654746.879756468
+    "supply_yb": 4654746.879756468,
+    "yb_locked": 4654746.879756468,
+    "lock_ratio": 1.0
   },
   {
     "block": 23495127,
     "timestamp": 1759459283,
     "datetime": "2025-10-03T02:41:23",
-    "supply_yb": 4654746.879756468
+    "supply_yb": 4654746.879756468,
+    "yb_locked": 4654746.879756468,
+    "lock_ratio": 1.0
   },
   {
     "block": 23495427,
     "timestamp": 1759462883,
     "datetime": "2025-10-03T03:41:23",
-    "supply_yb": 4654746.879756468
+    "supply_yb": 4654746.879756468,
+    "yb_locked": 4654746.879756468,
+    "lock_ratio": 1.0
   },
   {
     "block": 23495727,
     "timestamp": 1759466483,
     "datetime": "2025-10-03T04:41:23",
-    "supply_yb": 4654746.879756468
+    "supply_yb": 4654746.879756468,
+    "yb_locked": 4654746.879756468,
+    "lock_ratio": 1.0
   },
   {
     "block": 23496027,
     "timestamp": 1759470083,
     "datetime": "2025-10-03T05:41:23",
-    "supply_yb": 4654746.879756468
+    "supply_yb": 4654746.879756468,
+    "yb_locked": 4654746.879756468,
+    "lock_ratio": 1.0
   },
   {
     "block": 23496327,
     "timestamp": 1759473683,
     "datetime": "2025-10-03T06:41:23",
-    "supply_yb": 4654746.879756468
+    "supply_yb": 4654746.879756468,
+    "yb_locked": 4654746.879756468,
+    "lock_ratio": 1.0
   },
   {
     "block": 23496627,
     "timestamp": 1759477283,
     "datetime": "2025-10-03T07:41:23",
-    "supply_yb": 4654746.879756468
+    "supply_yb": 4654746.879756468,
+    "yb_locked": 4654746.879756468,
+    "lock_ratio": 1.0
   },
   {
     "block": 23496927,
     "timestamp": 1759480883,
     "datetime": "2025-10-03T08:41:23",
-    "supply_yb": 4654746.879756468
+    "supply_yb": 4654746.879756468,
+    "yb_locked": 4654746.879756468,
+    "lock_ratio": 1.0
   },
   {
     "block": 23497227,
     "timestamp": 1759484483,
     "datetime": "2025-10-03T09:41:23",
-    "supply_yb": 4654746.879756468
+    "supply_yb": 4654746.879756468,
+    "yb_locked": 4654746.879756468,
+    "lock_ratio": 1.0
   },
   {
     "block": 23497527,
     "timestamp": 1759488083,
     "datetime": "2025-10-03T10:41:23",
-    "supply_yb": 4654746.879756468
+    "supply_yb": 4654746.879756468,
+    "yb_locked": 4654746.879756468,
+    "lock_ratio": 1.0
   },
   {
     "block": 23497827,
     "timestamp": 1759491683,
     "datetime": "2025-10-03T11:41:23",
-    "supply_yb": 4654746.879756468
+    "supply_yb": 4654746.879756468,
+    "yb_locked": 4654746.879756468,
+    "lock_ratio": 1.0
   },
   {
     "block": 23498127,
     "timestamp": 1759495283,
     "datetime": "2025-10-03T12:41:23",
-    "supply_yb": 4654746.879756468
+    "supply_yb": 4654746.879756468,
+    "yb_locked": 4654746.879756468,
+    "lock_ratio": 1.0
   },
   {
     "block": 23498427,
     "timestamp": 1759498883,
     "datetime": "2025-10-03T13:41:23",
-    "supply_yb": 4654746.879756468
+    "supply_yb": 4654746.879756468,
+    "yb_locked": 4654746.879756468,
+    "lock_ratio": 1.0
   },
   {
     "block": 23498727,
     "timestamp": 1759502483,
     "datetime": "2025-10-03T14:41:23",
-    "supply_yb": 4654746.879756468
+    "supply_yb": 4654746.879756468,
+    "yb_locked": 4654746.879756468,
+    "lock_ratio": 1.0
   },
   {
     "block": 23499027,
     "timestamp": 1759506083,
     "datetime": "2025-10-03T15:41:23",
-    "supply_yb": 4654746.879756468
+    "supply_yb": 4654746.879756468,
+    "yb_locked": 4654746.879756468,
+    "lock_ratio": 1.0
   },
   {
     "block": 23499327,
     "timestamp": 1759509683,
     "datetime": "2025-10-03T16:41:23",
-    "supply_yb": 4654746.879756468
+    "supply_yb": 4654746.879756468,
+    "yb_locked": 4654746.879756468,
+    "lock_ratio": 1.0
   },
   {
     "block": 23499627,
     "timestamp": 1759513283,
     "datetime": "2025-10-03T17:41:23",
-    "supply_yb": 4654746.879756468
+    "supply_yb": 4654746.879756468,
+    "yb_locked": 4654746.879756468,
+    "lock_ratio": 1.0
   },
   {
     "block": 23499927,
     "timestamp": 1759516883,
     "datetime": "2025-10-03T18:41:23",
-    "supply_yb": 4654746.879756468
+    "supply_yb": 4654746.879756468,
+    "yb_locked": 4654746.879756468,
+    "lock_ratio": 1.0
   },
   {
     "block": 23500227,
     "timestamp": 1759520483,
     "datetime": "2025-10-03T19:41:23",
-    "supply_yb": 4654746.879756468
+    "supply_yb": 4654746.879756468,
+    "yb_locked": 4654746.879756468,
+    "lock_ratio": 1.0
   },
   {
     "block": 23500527,
     "timestamp": 1759524083,
     "datetime": "2025-10-03T20:41:23",
-    "supply_yb": 4654746.879756468
+    "supply_yb": 4654746.879756468,
+    "yb_locked": 4654746.879756468,
+    "lock_ratio": 1.0
   },
   {
     "block": 23500827,
     "timestamp": 1759527683,
     "datetime": "2025-10-03T21:41:23",
-    "supply_yb": 4654746.879756468
+    "supply_yb": 4654746.879756468,
+    "yb_locked": 4654746.879756468,
+    "lock_ratio": 1.0
   },
   {
     "block": 23501127,
     "timestamp": 1759531283,
     "datetime": "2025-10-03T22:41:23",
-    "supply_yb": 4654746.879756468
+    "supply_yb": 4654746.879756468,
+    "yb_locked": 4654746.879756468,
+    "lock_ratio": 1.0
   },
   {
     "block": 23501427,
     "timestamp": 1759534883,
     "datetime": "2025-10-03T23:41:23",
-    "supply_yb": 4654746.879756468
+    "supply_yb": 4654746.879756468,
+    "yb_locked": 4654746.879756468,
+    "lock_ratio": 1.0
   },
   {
     "block": 23501727,
     "timestamp": 1759538483,
     "datetime": "2025-10-04T00:41:23",
-    "supply_yb": 4654746.879756468
+    "supply_yb": 4654746.879756468,
+    "yb_locked": 4654746.879756468,
+    "lock_ratio": 1.0
   },
   {
     "block": 23502027,
     "timestamp": 1759542083,
     "datetime": "2025-10-04T01:41:23",
-    "supply_yb": 4654746.879756468
+    "supply_yb": 4654746.879756468,
+    "yb_locked": 4654746.879756468,
+    "lock_ratio": 1.0
   },
   {
     "block": 23502327,
     "timestamp": 1759545683,
     "datetime": "2025-10-04T02:41:23",
-    "supply_yb": 4654746.879756468
+    "supply_yb": 4654746.879756468,
+    "yb_locked": 4654746.879756468,
+    "lock_ratio": 1.0
   },
   {
     "block": 23502627,
     "timestamp": 1759549283,
     "datetime": "2025-10-04T03:41:23",
-    "supply_yb": 4654746.879756468
+    "supply_yb": 4654746.879756468,
+    "yb_locked": 4654746.879756468,
+    "lock_ratio": 1.0
   },
   {
     "block": 23502927,
     "timestamp": 1759552883,
     "datetime": "2025-10-04T04:41:23",
-    "supply_yb": 4654746.879756468
+    "supply_yb": 4654746.879756468,
+    "yb_locked": 4654746.879756468,
+    "lock_ratio": 1.0
   },
   {
     "block": 23503227,
     "timestamp": 1759556483,
     "datetime": "2025-10-04T05:41:23",
-    "supply_yb": 4654746.879756468
+    "supply_yb": 4654746.879756468,
+    "yb_locked": 4654746.879756468,
+    "lock_ratio": 1.0
   },
   {
     "block": 23503527,
     "timestamp": 1759560083,
     "datetime": "2025-10-04T06:41:23",
-    "supply_yb": 4654746.879756468
+    "supply_yb": 4654746.879756468,
+    "yb_locked": 4654746.879756468,
+    "lock_ratio": 1.0
   },
   {
     "block": 23503827,
     "timestamp": 1759563683,
     "datetime": "2025-10-04T07:41:23",
-    "supply_yb": 4654746.879756468
+    "supply_yb": 4654746.879756468,
+    "yb_locked": 4654746.879756468,
+    "lock_ratio": 1.0
   },
   {
     "block": 23504127,
     "timestamp": 1759567283,
     "datetime": "2025-10-04T08:41:23",
-    "supply_yb": 4654746.879756468
+    "supply_yb": 4654746.879756468,
+    "yb_locked": 4654746.879756468,
+    "lock_ratio": 1.0
   },
   {
     "block": 23504427,
     "timestamp": 1759570883,
     "datetime": "2025-10-04T09:41:23",
-    "supply_yb": 4654746.879756468
+    "supply_yb": 4654746.879756468,
+    "yb_locked": 4654746.879756468,
+    "lock_ratio": 1.0
   },
   {
     "block": 23504727,
     "timestamp": 1759574483,
     "datetime": "2025-10-04T10:41:23",
-    "supply_yb": 4654746.879756468
+    "supply_yb": 4654746.879756468,
+    "yb_locked": 4654746.879756468,
+    "lock_ratio": 1.0
   },
   {
     "block": 23505027,
     "timestamp": 1759578083,
     "datetime": "2025-10-04T11:41:23",
-    "supply_yb": 4654746.879756468
+    "supply_yb": 4654746.879756468,
+    "yb_locked": 4654746.879756468,
+    "lock_ratio": 1.0
   },
   {
     "block": 23505327,
     "timestamp": 1759581683,
     "datetime": "2025-10-04T12:41:23",
-    "supply_yb": 4654746.879756468
+    "supply_yb": 4654746.879756468,
+    "yb_locked": 4654746.879756468,
+    "lock_ratio": 1.0
   },
   {
     "block": 23505627,
     "timestamp": 1759585283,
     "datetime": "2025-10-04T13:41:23",
-    "supply_yb": 4654746.879756468
+    "supply_yb": 4654746.879756468,
+    "yb_locked": 4654746.879756468,
+    "lock_ratio": 1.0
   },
   {
     "block": 23505927,
     "timestamp": 1759588883,
     "datetime": "2025-10-04T14:41:23",
-    "supply_yb": 4654746.879756468
+    "supply_yb": 4654746.879756468,
+    "yb_locked": 4654746.879756468,
+    "lock_ratio": 1.0
   },
   {
     "block": 23506227,
     "timestamp": 1759592483,
     "datetime": "2025-10-04T15:41:23",
-    "supply_yb": 4654746.879756468
+    "supply_yb": 4654746.879756468,
+    "yb_locked": 4654746.879756468,
+    "lock_ratio": 1.0
   },
   {
     "block": 23506527,
     "timestamp": 1759596083,
     "datetime": "2025-10-04T16:41:23",
-    "supply_yb": 4654746.879756468
+    "supply_yb": 4654746.879756468,
+    "yb_locked": 4654746.879756468,
+    "lock_ratio": 1.0
   },
   {
     "block": 23506827,
     "timestamp": 1759599683,
     "datetime": "2025-10-04T17:41:23",
-    "supply_yb": 4853111.605783865
+    "supply_yb": 4853111.605783865,
+    "yb_locked": 4853111.605783865,
+    "lock_ratio": 1.0
   },
   {
     "block": 23507127,
     "timestamp": 1759603283,
     "datetime": "2025-10-04T18:41:23",
-    "supply_yb": 4853111.605783865
+    "supply_yb": 4853111.605783865,
+    "yb_locked": 4853111.605783865,
+    "lock_ratio": 1.0
   },
   {
     "block": 23507427,
     "timestamp": 1759606883,
     "datetime": "2025-10-04T19:41:23",
-    "supply_yb": 4853111.605783865
+    "supply_yb": 4853111.605783865,
+    "yb_locked": 4853111.605783865,
+    "lock_ratio": 1.0
   },
   {
     "block": 23507727,
     "timestamp": 1759610483,
     "datetime": "2025-10-04T20:41:23",
-    "supply_yb": 4853111.605783865
+    "supply_yb": 4853111.605783865,
+    "yb_locked": 4853111.605783865,
+    "lock_ratio": 1.0
   },
   {
     "block": 23508027,
     "timestamp": 1759614083,
     "datetime": "2025-10-04T21:41:23",
-    "supply_yb": 4853111.605783865
+    "supply_yb": 4853111.605783865,
+    "yb_locked": 4853111.605783865,
+    "lock_ratio": 1.0
   },
   {
     "block": 23508327,
     "timestamp": 1759617683,
     "datetime": "2025-10-04T22:41:23",
-    "supply_yb": 4853111.605783865
+    "supply_yb": 4853111.605783865,
+    "yb_locked": 4853111.605783865,
+    "lock_ratio": 1.0
   },
   {
     "block": 23508627,
     "timestamp": 1759621283,
     "datetime": "2025-10-04T23:41:23",
-    "supply_yb": 4853111.605783865
+    "supply_yb": 4853111.605783865,
+    "yb_locked": 4853111.605783865,
+    "lock_ratio": 1.0
   },
   {
     "block": 23508927,
     "timestamp": 1759624883,
     "datetime": "2025-10-05T00:41:23",
-    "supply_yb": 4853111.605783865
+    "supply_yb": 4853111.605783865,
+    "yb_locked": 4853111.605783865,
+    "lock_ratio": 1.0
   },
   {
     "block": 23509227,
     "timestamp": 1759628483,
     "datetime": "2025-10-05T01:41:23",
-    "supply_yb": 4853111.605783865
+    "supply_yb": 4853111.605783865,
+    "yb_locked": 4853111.605783865,
+    "lock_ratio": 1.0
   },
   {
     "block": 23509527,
     "timestamp": 1759632083,
     "datetime": "2025-10-05T02:41:23",
-    "supply_yb": 4853111.605783865
+    "supply_yb": 4853111.605783865,
+    "yb_locked": 4853111.605783865,
+    "lock_ratio": 1.0
   },
   {
     "block": 23509827,
     "timestamp": 1759635683,
     "datetime": "2025-10-05T03:41:23",
-    "supply_yb": 4853111.605783865
+    "supply_yb": 4853111.605783865,
+    "yb_locked": 4853111.605783865,
+    "lock_ratio": 1.0
   },
   {
     "block": 23510127,
     "timestamp": 1759639283,
     "datetime": "2025-10-05T04:41:23",
-    "supply_yb": 4853111.605783865
+    "supply_yb": 4853111.605783865,
+    "yb_locked": 4853111.605783865,
+    "lock_ratio": 1.0
   },
   {
     "block": 23510427,
     "timestamp": 1759642883,
     "datetime": "2025-10-05T05:41:23",
-    "supply_yb": 4853111.605783865
+    "supply_yb": 4853111.605783865,
+    "yb_locked": 4853111.605783865,
+    "lock_ratio": 1.0
   },
   {
     "block": 23510727,
     "timestamp": 1759646483,
     "datetime": "2025-10-05T06:41:23",
-    "supply_yb": 4853111.605783865
+    "supply_yb": 4853111.605783865,
+    "yb_locked": 4853111.605783865,
+    "lock_ratio": 1.0
   },
   {
     "block": 23511027,
     "timestamp": 1759650083,
     "datetime": "2025-10-05T07:41:23",
-    "supply_yb": 4853111.605783865
+    "supply_yb": 4853111.605783865,
+    "yb_locked": 4853111.605783865,
+    "lock_ratio": 1.0
   },
   {
     "block": 23511327,
     "timestamp": 1759653683,
     "datetime": "2025-10-05T08:41:23",
-    "supply_yb": 4853111.605783865
+    "supply_yb": 4853111.605783865,
+    "yb_locked": 4853111.605783865,
+    "lock_ratio": 1.0
   },
   {
     "block": 23511627,
     "timestamp": 1759657283,
     "datetime": "2025-10-05T09:41:23",
-    "supply_yb": 4853111.605783865
+    "supply_yb": 4853111.605783865,
+    "yb_locked": 4853111.605783865,
+    "lock_ratio": 1.0
   },
   {
     "block": 23511927,
     "timestamp": 1759660883,
     "datetime": "2025-10-05T10:41:23",
-    "supply_yb": 4853111.605783865
+    "supply_yb": 4853111.605783865,
+    "yb_locked": 4853111.605783865,
+    "lock_ratio": 1.0
   },
   {
     "block": 23512227,
     "timestamp": 1759664483,
     "datetime": "2025-10-05T11:41:23",
-    "supply_yb": 4853111.605783865
+    "supply_yb": 4853111.605783865,
+    "yb_locked": 4853111.605783865,
+    "lock_ratio": 1.0
   },
   {
     "block": 23512527,
     "timestamp": 1759668083,
     "datetime": "2025-10-05T12:41:23",
-    "supply_yb": 4853111.605783865
+    "supply_yb": 4853111.605783865,
+    "yb_locked": 4853111.605783865,
+    "lock_ratio": 1.0
   },
   {
     "block": 23512827,
     "timestamp": 1759671683,
     "datetime": "2025-10-05T13:41:23",
-    "supply_yb": 4853111.605783865
+    "supply_yb": 4853111.605783865,
+    "yb_locked": 4853111.605783865,
+    "lock_ratio": 1.0
   },
   {
     "block": 23513127,
     "timestamp": 1759675283,
     "datetime": "2025-10-05T14:41:23",
-    "supply_yb": 4880280.412861491
+    "supply_yb": 4880280.412861491,
+    "yb_locked": 4880280.412861491,
+    "lock_ratio": 1.0
   },
   {
     "block": 23513427,
     "timestamp": 1759678883,
     "datetime": "2025-10-05T15:41:23",
-    "supply_yb": 4880280.412861491
+    "supply_yb": 4880280.412861491,
+    "yb_locked": 4880280.412861491,
+    "lock_ratio": 1.0
   },
   {
     "block": 23513727,
     "timestamp": 1759682483,
     "datetime": "2025-10-05T16:41:23",
-    "supply_yb": 4880280.412861491
+    "supply_yb": 4880280.412861491,
+    "yb_locked": 4880280.412861491,
+    "lock_ratio": 1.0
   },
   {
     "block": 23514027,
     "timestamp": 1759686083,
     "datetime": "2025-10-05T17:41:23",
-    "supply_yb": 4880280.412861491
+    "supply_yb": 4880280.412861491,
+    "yb_locked": 4880280.412861491,
+    "lock_ratio": 1.0
   },
   {
     "block": 23514327,
     "timestamp": 1759689683,
     "datetime": "2025-10-05T18:41:23",
-    "supply_yb": 4880280.412861491
+    "supply_yb": 4880280.412861491,
+    "yb_locked": 4880280.412861491,
+    "lock_ratio": 1.0
   },
   {
     "block": 23514627,
     "timestamp": 1759693283,
     "datetime": "2025-10-05T19:41:23",
-    "supply_yb": 4880280.412861491
+    "supply_yb": 4880280.412861491,
+    "yb_locked": 4880280.412861491,
+    "lock_ratio": 1.0
   },
   {
     "block": 23514927,
     "timestamp": 1759696883,
     "datetime": "2025-10-05T20:41:23",
-    "supply_yb": 4880280.412861491
+    "supply_yb": 4880280.412861491,
+    "yb_locked": 4880280.412861491,
+    "lock_ratio": 1.0
   },
   {
     "block": 23515227,
     "timestamp": 1759700483,
     "datetime": "2025-10-05T21:41:23",
-    "supply_yb": 4880280.412861491
+    "supply_yb": 4880280.412861491,
+    "yb_locked": 4880280.412861491,
+    "lock_ratio": 1.0
   },
   {
     "block": 23515527,
     "timestamp": 1759704083,
     "datetime": "2025-10-05T22:41:23",
-    "supply_yb": 4880280.412861491
+    "supply_yb": 4880280.412861491,
+    "yb_locked": 4880280.412861491,
+    "lock_ratio": 1.0
   },
   {
     "block": 23515827,
     "timestamp": 1759707683,
     "datetime": "2025-10-05T23:41:23",
-    "supply_yb": 4880280.412861491
+    "supply_yb": 4880280.412861491,
+    "yb_locked": 4880280.412861491,
+    "lock_ratio": 1.0
   },
   {
     "block": 23516127,
     "timestamp": 1759711283,
     "datetime": "2025-10-06T00:41:23",
-    "supply_yb": 4880280.412861491
+    "supply_yb": 4880280.412861491,
+    "yb_locked": 4880280.412861491,
+    "lock_ratio": 1.0
   },
   {
     "block": 23516427,
     "timestamp": 1759714883,
     "datetime": "2025-10-06T01:41:23",
-    "supply_yb": 4880280.412861491
+    "supply_yb": 4880280.412861491,
+    "yb_locked": 4880280.412861491,
+    "lock_ratio": 1.0
   },
   {
     "block": 23516727,
     "timestamp": 1759718483,
     "datetime": "2025-10-06T02:41:23",
-    "supply_yb": 4880280.412861491
+    "supply_yb": 4880280.412861491,
+    "yb_locked": 4880280.412861491,
+    "lock_ratio": 1.0
   },
   {
     "block": 23517027,
     "timestamp": 1759722083,
     "datetime": "2025-10-06T03:41:23",
-    "supply_yb": 4880280.412861491
+    "supply_yb": 4880280.412861491,
+    "yb_locked": 4880280.412861491,
+    "lock_ratio": 1.0
   },
   {
     "block": 23517327,
     "timestamp": 1759725683,
     "datetime": "2025-10-06T04:41:23",
-    "supply_yb": 4880280.412861491
+    "supply_yb": 4880280.412861491,
+    "yb_locked": 4880280.412861491,
+    "lock_ratio": 1.0
   },
   {
     "block": 23517627,
     "timestamp": 1759729283,
     "datetime": "2025-10-06T05:41:23",
-    "supply_yb": 4880280.412861491
+    "supply_yb": 4880280.412861491,
+    "yb_locked": 4880280.412861491,
+    "lock_ratio": 1.0
   },
   {
     "block": 23517927,
     "timestamp": 1759732883,
     "datetime": "2025-10-06T06:41:23",
-    "supply_yb": 4880280.412861491
+    "supply_yb": 4880280.412861491,
+    "yb_locked": 4880280.412861491,
+    "lock_ratio": 1.0
   },
   {
     "block": 23518227,
     "timestamp": 1759736483,
     "datetime": "2025-10-06T07:41:23",
-    "supply_yb": 4880280.412861491
+    "supply_yb": 4880280.412861491,
+    "yb_locked": 4880280.412861491,
+    "lock_ratio": 1.0
   },
   {
     "block": 23518527,
     "timestamp": 1759740083,
     "datetime": "2025-10-06T08:41:23",
-    "supply_yb": 4880280.412861491
+    "supply_yb": 4880280.412861491,
+    "yb_locked": 4880280.412861491,
+    "lock_ratio": 1.0
   },
   {
     "block": 23518827,
     "timestamp": 1759743683,
     "datetime": "2025-10-06T09:41:23",
-    "supply_yb": 4880280.412861491
+    "supply_yb": 4880280.412861491,
+    "yb_locked": 4880280.412861491,
+    "lock_ratio": 1.0
   },
   {
     "block": 23519127,
     "timestamp": 1759747283,
     "datetime": "2025-10-06T10:41:23",
-    "supply_yb": 4880280.412861491
+    "supply_yb": 4880280.412861491,
+    "yb_locked": 4880280.412861491,
+    "lock_ratio": 1.0
   },
   {
     "block": 23519427,
     "timestamp": 1759750883,
     "datetime": "2025-10-06T11:41:23",
-    "supply_yb": 4880280.412861491
+    "supply_yb": 4880280.412861491,
+    "yb_locked": 4880280.412861491,
+    "lock_ratio": 1.0
   },
   {
     "block": 23519727,
     "timestamp": 1759754483,
     "datetime": "2025-10-06T12:41:23",
-    "supply_yb": 4880280.412861491
+    "supply_yb": 4880280.412861491,
+    "yb_locked": 4880280.412861491,
+    "lock_ratio": 1.0
   },
   {
     "block": 23520027,
     "timestamp": 1759758083,
     "datetime": "2025-10-06T13:41:23",
-    "supply_yb": 4880280.412861491
+    "supply_yb": 4880280.412861491,
+    "yb_locked": 4880280.412861491,
+    "lock_ratio": 1.0
   },
   {
     "block": 23520327,
     "timestamp": 1759761683,
     "datetime": "2025-10-06T14:41:23",
-    "supply_yb": 4880280.412861491
+    "supply_yb": 4880280.412861491,
+    "yb_locked": 4880280.412861491,
+    "lock_ratio": 1.0
   },
   {
     "block": 23520627,
     "timestamp": 1759765283,
     "datetime": "2025-10-06T15:41:23",
-    "supply_yb": 4880280.412861491
+    "supply_yb": 4880280.412861491,
+    "yb_locked": 4880280.412861491,
+    "lock_ratio": 1.0
   },
   {
     "block": 23520927,
     "timestamp": 1759780283,
     "datetime": "2025-10-06T19:51:23",
-    "supply_yb": 4880280.412861491
+    "supply_yb": 4880280.412861491,
+    "yb_locked": 4880280.412861491,
+    "lock_ratio": 1.0
   },
   {
     "block": 23521227,
     "timestamp": 1759772483,
     "datetime": "2025-10-06T17:41:23",
-    "supply_yb": 4880280.412861491
+    "supply_yb": 4880280.412861491,
+    "yb_locked": 4880280.412861491,
+    "lock_ratio": 1.0
   },
   {
     "block": 23521527,
     "timestamp": 1759776083,
     "datetime": "2025-10-06T18:41:23",
-    "supply_yb": 4880280.412861491
+    "supply_yb": 4880280.412861491,
+    "yb_locked": 4880280.412861491,
+    "lock_ratio": 1.0
   },
   {
     "block": 23521827,
     "timestamp": 1759779683,
     "datetime": "2025-10-06T19:41:23",
-    "supply_yb": 4880280.412861491
+    "supply_yb": 4880280.412861491,
+    "yb_locked": 4880280.412861491,
+    "lock_ratio": 1.0
   },
   {
     "block": 23522127,
     "timestamp": 1759783283,
     "datetime": "2025-10-06T20:41:23",
-    "supply_yb": 4880280.412861491
+    "supply_yb": 4880280.412861491,
+    "yb_locked": 4880280.412861491,
+    "lock_ratio": 1.0
   },
   {
     "block": 23522427,
     "timestamp": 1759786883,
     "datetime": "2025-10-06T21:41:23",
-    "supply_yb": 4880280.412861491
+    "supply_yb": 4880280.412861491,
+    "yb_locked": 4880280.412861491,
+    "lock_ratio": 1.0
   },
   {
     "block": 23522727,
     "timestamp": 1759790483,
     "datetime": "2025-10-06T22:41:23",
-    "supply_yb": 4880280.412861491
+    "supply_yb": 4880280.412861491,
+    "yb_locked": 4880280.412861491,
+    "lock_ratio": 1.0
   },
   {
     "block": 23523027,
     "timestamp": 1759794083,
     "datetime": "2025-10-06T23:41:23",
-    "supply_yb": 4880280.412861491
+    "supply_yb": 4880280.412861491,
+    "yb_locked": 4880280.412861491,
+    "lock_ratio": 1.0
   },
   {
     "block": 23523327,
     "timestamp": 1759797683,
     "datetime": "2025-10-07T00:41:23",
-    "supply_yb": 4880280.412861491
+    "supply_yb": 4880280.412861491,
+    "yb_locked": 4880280.412861491,
+    "lock_ratio": 1.0
   },
   {
     "block": 23523627,
     "timestamp": 1759801283,
     "datetime": "2025-10-07T01:41:23",
-    "supply_yb": 4880280.412861491
+    "supply_yb": 4880280.412861491,
+    "yb_locked": 4880280.412861491,
+    "lock_ratio": 1.0
   },
   {
     "block": 23523927,
     "timestamp": 1759804883,
     "datetime": "2025-10-07T02:41:23",
-    "supply_yb": 4880280.412861491
+    "supply_yb": 4880280.412861491,
+    "yb_locked": 4880280.412861491,
+    "lock_ratio": 1.0
   },
   {
     "block": 23524227,
     "timestamp": 1759808483,
     "datetime": "2025-10-07T03:41:23",
-    "supply_yb": 4880280.412861491
+    "supply_yb": 4880280.412861491,
+    "yb_locked": 4880280.412861491,
+    "lock_ratio": 1.0
   },
   {
     "block": 23524527,
     "timestamp": 1759812083,
     "datetime": "2025-10-07T04:41:23",
-    "supply_yb": 4880280.412861491
+    "supply_yb": 4880280.412861491,
+    "yb_locked": 4880280.412861491,
+    "lock_ratio": 1.0
   },
   {
     "block": 23524827,
     "timestamp": 1759815683,
     "datetime": "2025-10-07T05:41:23",
-    "supply_yb": 4880280.412861491
+    "supply_yb": 4880280.412861491,
+    "yb_locked": 4880280.412861491,
+    "lock_ratio": 1.0
   },
   {
     "block": 23525127,
     "timestamp": 1759819283,
     "datetime": "2025-10-07T06:41:23",
-    "supply_yb": 4880280.412861491
+    "supply_yb": 4880280.412861491,
+    "yb_locked": 4880280.412861491,
+    "lock_ratio": 1.0
   },
   {
     "block": 23525427,
     "timestamp": 1759822883,
     "datetime": "2025-10-07T07:41:23",
-    "supply_yb": 4880280.412861491
+    "supply_yb": 4880280.412861491,
+    "yb_locked": 4880280.412861491,
+    "lock_ratio": 1.0
   },
   {
     "block": 23525727,
     "timestamp": 1759826483,
     "datetime": "2025-10-07T08:41:23",
-    "supply_yb": 4880280.412861491
+    "supply_yb": 4880280.412861491,
+    "yb_locked": 4880280.412861491,
+    "lock_ratio": 1.0
   },
   {
     "block": 23526027,
     "timestamp": 1759830083,
     "datetime": "2025-10-07T09:41:23",
-    "supply_yb": 4880280.412861491
+    "supply_yb": 4880280.412861491,
+    "yb_locked": 4880280.412861491,
+    "lock_ratio": 1.0
   },
   {
     "block": 23526327,
     "timestamp": 1759833683,
     "datetime": "2025-10-07T10:41:23",
-    "supply_yb": 4880280.412861491
+    "supply_yb": 4880280.412861491,
+    "yb_locked": 4880280.412861491,
+    "lock_ratio": 1.0
   },
   {
     "block": 23526627,
     "timestamp": 1759837283,
     "datetime": "2025-10-07T11:41:23",
-    "supply_yb": 4880280.412861491
+    "supply_yb": 4880280.412861491,
+    "yb_locked": 4880280.412861491,
+    "lock_ratio": 1.0
   },
   {
     "block": 23526927,
     "timestamp": 1759840883,
     "datetime": "2025-10-07T12:41:23",
-    "supply_yb": 4880280.412861491
+    "supply_yb": 4880280.412861491,
+    "yb_locked": 4880280.412861491,
+    "lock_ratio": 1.0
   },
   {
     "block": 23527227,
     "timestamp": 1759844483,
     "datetime": "2025-10-07T13:41:23",
-    "supply_yb": 4880280.412861491
+    "supply_yb": 4880280.412861491,
+    "yb_locked": 4880280.412861491,
+    "lock_ratio": 1.0
   },
   {
     "block": 23527527,
     "timestamp": 1759848083,
     "datetime": "2025-10-07T14:41:23",
-    "supply_yb": 4880280.412861491
+    "supply_yb": 4880280.412861491,
+    "yb_locked": 4880280.412861491,
+    "lock_ratio": 1.0
   },
   {
     "block": 23527827,
     "timestamp": 1759851683,
     "datetime": "2025-10-07T15:41:23",
-    "supply_yb": 4880280.412861491
+    "supply_yb": 4880280.412861491,
+    "yb_locked": 4880280.412861491,
+    "lock_ratio": 1.0
   },
   {
     "block": 23528127,
     "timestamp": 1759855283,
     "datetime": "2025-10-07T16:41:23",
-    "supply_yb": 4880280.412861491
+    "supply_yb": 4880280.412861491,
+    "yb_locked": 4880280.412861491,
+    "lock_ratio": 1.0
   },
   {
     "block": 23528427,
     "timestamp": 1759858883,
     "datetime": "2025-10-07T17:41:23",
-    "supply_yb": 4880280.412861491
+    "supply_yb": 4880280.412861491,
+    "yb_locked": 4880280.412861491,
+    "lock_ratio": 1.0
   },
   {
     "block": 23528727,
     "timestamp": 1759862483,
     "datetime": "2025-10-07T18:41:23",
-    "supply_yb": 4880280.412861491
+    "supply_yb": 4880280.412861491,
+    "yb_locked": 4880280.412861491,
+    "lock_ratio": 1.0
   },
   {
     "block": 23529027,
     "timestamp": 1759866083,
     "datetime": "2025-10-07T19:41:23",
-    "supply_yb": 4880280.412861491
+    "supply_yb": 4880280.412861491,
+    "yb_locked": 4880280.412861491,
+    "lock_ratio": 1.0
   },
   {
     "block": 23529327,
     "timestamp": 1759869683,
     "datetime": "2025-10-07T20:41:23",
-    "supply_yb": 4880280.412861491
+    "supply_yb": 4880280.412861491,
+    "yb_locked": 4880280.412861491,
+    "lock_ratio": 1.0
   },
   {
     "block": 23529627,
     "timestamp": 1759873283,
     "datetime": "2025-10-07T21:41:23",
-    "supply_yb": 4880280.412861491
+    "supply_yb": 4880280.412861491,
+    "yb_locked": 4880280.412861491,
+    "lock_ratio": 1.0
   },
   {
     "block": 23529927,
     "timestamp": 1759876883,
     "datetime": "2025-10-07T22:41:23",
-    "supply_yb": 4880280.412861491
+    "supply_yb": 4880280.412861491,
+    "yb_locked": 4880280.412861491,
+    "lock_ratio": 1.0
   },
   {
     "block": 23530227,
     "timestamp": 1759880483,
     "datetime": "2025-10-07T23:41:23",
-    "supply_yb": 4880280.412861491
+    "supply_yb": 4880280.412861491,
+    "yb_locked": 4880280.412861491,
+    "lock_ratio": 1.0
   },
   {
     "block": 23530527,
     "timestamp": 1759884083,
     "datetime": "2025-10-08T00:41:23",
-    "supply_yb": 4880280.412861491
+    "supply_yb": 4880280.412861491,
+    "yb_locked": 4880280.412861491,
+    "lock_ratio": 1.0
   },
   {
     "block": 23530827,
     "timestamp": 1759887683,
     "datetime": "2025-10-08T01:41:23",
-    "supply_yb": 4880280.412861491
+    "supply_yb": 4880280.412861491,
+    "yb_locked": 4880280.412861491,
+    "lock_ratio": 1.0
   },
   {
     "block": 23531127,
     "timestamp": 1759891283,
     "datetime": "2025-10-08T02:41:23",
-    "supply_yb": 4880280.412861491
+    "supply_yb": 4880280.412861491,
+    "yb_locked": 4880280.412861491,
+    "lock_ratio": 1.0
   },
   {
     "block": 23531427,
     "timestamp": 1759894883,
     "datetime": "2025-10-08T03:41:23",
-    "supply_yb": 4880280.412861491
+    "supply_yb": 4880280.412861491,
+    "yb_locked": 4880280.412861491,
+    "lock_ratio": 1.0
   },
   {
     "block": 23531727,
     "timestamp": 1759898483,
     "datetime": "2025-10-08T04:41:23",
-    "supply_yb": 4880280.412861491
+    "supply_yb": 4880280.412861491,
+    "yb_locked": 4880280.412861491,
+    "lock_ratio": 1.0
   },
   {
     "block": 23532027,
     "timestamp": 1759902083,
     "datetime": "2025-10-08T05:41:23",
-    "supply_yb": 4880280.412861491
+    "supply_yb": 4880280.412861491,
+    "yb_locked": 4880280.412861491,
+    "lock_ratio": 1.0
   },
   {
     "block": 23532327,
     "timestamp": 1759905683,
     "datetime": "2025-10-08T06:41:23",
-    "supply_yb": 4880280.412861491
+    "supply_yb": 4880280.412861491,
+    "yb_locked": 4880280.412861491,
+    "lock_ratio": 1.0
   },
   {
     "block": 23532627,
     "timestamp": 1759909283,
     "datetime": "2025-10-08T07:41:23",
-    "supply_yb": 4880280.412861491
+    "supply_yb": 4880280.412861491,
+    "yb_locked": 4880280.412861491,
+    "lock_ratio": 1.0
   },
   {
     "block": 23532927,
     "timestamp": 1759912883,
     "datetime": "2025-10-08T08:41:23",
-    "supply_yb": 4880280.412861491
+    "supply_yb": 4880280.412861491,
+    "yb_locked": 4880280.412861491,
+    "lock_ratio": 1.0
   },
   {
     "block": 23533227,
     "timestamp": 1759916483,
     "datetime": "2025-10-08T09:41:23",
-    "supply_yb": 4880280.412861491
+    "supply_yb": 4880280.412861491,
+    "yb_locked": 4880280.412861491,
+    "lock_ratio": 1.0
   },
   {
     "block": 23533527,
     "timestamp": 1759920083,
     "datetime": "2025-10-08T10:41:23",
-    "supply_yb": 4880280.412861491
+    "supply_yb": 4880280.412861491,
+    "yb_locked": 4880280.412861491,
+    "lock_ratio": 1.0
   },
   {
     "block": 23533827,
     "timestamp": 1759923683,
     "datetime": "2025-10-08T11:41:23",
-    "supply_yb": 4880280.412861491
+    "supply_yb": 4880280.412861491,
+    "yb_locked": 4880280.412861491,
+    "lock_ratio": 1.0
   },
   {
     "block": 23534127,
     "timestamp": 1759927283,
     "datetime": "2025-10-08T12:41:23",
-    "supply_yb": 4880280.412861491
+    "supply_yb": 4880280.412861491,
+    "yb_locked": 4880280.412861491,
+    "lock_ratio": 1.0
   },
   {
     "block": 23534427,
     "timestamp": 1759930883,
     "datetime": "2025-10-08T13:41:23",
-    "supply_yb": 4880280.412861491
+    "supply_yb": 4880280.412861491,
+    "yb_locked": 4880280.412861491,
+    "lock_ratio": 1.0
   },
   {
     "block": 23534727,
     "timestamp": 1759934483,
     "datetime": "2025-10-08T14:41:23",
-    "supply_yb": 6536821.936834093
+    "supply_yb": 6536821.936834093,
+    "yb_locked": 6536821.936834093,
+    "lock_ratio": 1.0
   },
   {
     "block": 23535027,
     "timestamp": 1759938083,
     "datetime": "2025-10-08T15:41:23",
-    "supply_yb": 6536821.936834093
+    "supply_yb": 6536821.936834093,
+    "yb_locked": 6536821.936834093,
+    "lock_ratio": 1.0
   },
   {
     "block": 23535327,
     "timestamp": 1759941683,
     "datetime": "2025-10-08T16:41:23",
-    "supply_yb": 6536821.936834093
+    "supply_yb": 6536821.936834093,
+    "yb_locked": 6536821.936834093,
+    "lock_ratio": 1.0
   },
   {
     "block": 23535627,
     "timestamp": 1759945283,
     "datetime": "2025-10-08T17:41:23",
-    "supply_yb": 6536821.936834093
+    "supply_yb": 6536821.936834093,
+    "yb_locked": 6536821.936834093,
+    "lock_ratio": 1.0
   },
   {
     "block": 23535927,
     "timestamp": 1759948883,
     "datetime": "2025-10-08T18:41:23",
-    "supply_yb": 6536821.936834093
+    "supply_yb": 6536821.936834093,
+    "yb_locked": 6536821.936834093,
+    "lock_ratio": 1.0
   },
   {
     "block": 23536227,
     "timestamp": 1759952483,
     "datetime": "2025-10-08T19:41:23",
-    "supply_yb": 6536821.936834093
+    "supply_yb": 6536821.936834093,
+    "yb_locked": 6536821.936834093,
+    "lock_ratio": 1.0
   },
   {
     "block": 23536527,
     "timestamp": 1759956083,
     "datetime": "2025-10-08T20:41:23",
-    "supply_yb": 6536821.936834093
+    "supply_yb": 6536821.936834093,
+    "yb_locked": 6536821.936834093,
+    "lock_ratio": 1.0
   },
   {
     "block": 23536827,
     "timestamp": 1759959683,
     "datetime": "2025-10-08T21:41:23",
-    "supply_yb": 6536821.936834093
+    "supply_yb": 6536821.936834093,
+    "yb_locked": 6536821.936834093,
+    "lock_ratio": 1.0
   },
   {
     "block": 23537127,
     "timestamp": 1759963283,
     "datetime": "2025-10-08T22:41:23",
-    "supply_yb": 6536821.936834093
+    "supply_yb": 6536821.936834093,
+    "yb_locked": 6536821.936834093,
+    "lock_ratio": 1.0
   },
   {
     "block": 23537427,
     "timestamp": 1759966883,
     "datetime": "2025-10-08T23:41:23",
-    "supply_yb": 6536821.936834093
+    "supply_yb": 6536821.936834093,
+    "yb_locked": 6536821.936834093,
+    "lock_ratio": 1.0
   },
   {
     "block": 23537727,
     "timestamp": 1759970483,
     "datetime": "2025-10-09T00:41:23",
-    "supply_yb": 6536821.936834093
+    "supply_yb": 6536821.936834093,
+    "yb_locked": 6536821.936834093,
+    "lock_ratio": 1.0
   },
   {
     "block": 23538027,
     "timestamp": 1759974083,
     "datetime": "2025-10-09T01:41:23",
-    "supply_yb": 7105849.714611871
+    "supply_yb": 7105849.714611871,
+    "yb_locked": 7105849.714611871,
+    "lock_ratio": 1.0
   },
   {
     "block": 23538327,
     "timestamp": 1759977683,
     "datetime": "2025-10-09T02:41:23",
-    "supply_yb": 7105849.714611871
+    "supply_yb": 7105849.714611871,
+    "yb_locked": 7105849.714611871,
+    "lock_ratio": 1.0
   },
   {
     "block": 23538627,
     "timestamp": 1759981283,
     "datetime": "2025-10-09T03:41:23",
-    "supply_yb": 7105849.714611871
+    "supply_yb": 7105849.714611871,
+    "yb_locked": 7105849.714611871,
+    "lock_ratio": 1.0
   },
   {
     "block": 23538927,
     "timestamp": 1759984883,
     "datetime": "2025-10-09T04:41:23",
-    "supply_yb": 7105849.714611871
+    "supply_yb": 7105849.714611871,
+    "yb_locked": 7105849.714611871,
+    "lock_ratio": 1.0
   },
   {
     "block": 23539227,
     "timestamp": 1759988483,
     "datetime": "2025-10-09T05:41:23",
-    "supply_yb": 7105849.714611871
+    "supply_yb": 7105849.714611871,
+    "yb_locked": 7105849.714611871,
+    "lock_ratio": 1.0
   },
   {
     "block": 23539527,
     "timestamp": 1759992083,
     "datetime": "2025-10-09T06:41:23",
-    "supply_yb": 7105849.714611871
+    "supply_yb": 7105849.714611871,
+    "yb_locked": 7105849.714611871,
+    "lock_ratio": 1.0
   },
   {
     "block": 23539827,
     "timestamp": 1759995683,
     "datetime": "2025-10-09T07:41:23",
-    "supply_yb": 7105849.714611871
+    "supply_yb": 7105849.714611871,
+    "yb_locked": 7105849.714611871,
+    "lock_ratio": 1.0
   },
   {
     "block": 23540127,
     "timestamp": 1759999283,
     "datetime": "2025-10-09T08:41:23",
-    "supply_yb": 7105849.714611871
+    "supply_yb": 7105849.714611871,
+    "yb_locked": 7105849.714611871,
+    "lock_ratio": 1.0
   },
   {
     "block": 23540427,
     "timestamp": 1760002883,
     "datetime": "2025-10-09T09:41:23",
-    "supply_yb": 7105849.714611871
+    "supply_yb": 7105849.714611871,
+    "yb_locked": 7105849.714611871,
+    "lock_ratio": 1.0
   },
   {
     "block": 23540727,
     "timestamp": 1760006483,
     "datetime": "2025-10-09T10:41:23",
-    "supply_yb": 7105849.714611871
+    "supply_yb": 7105849.714611871,
+    "yb_locked": 7105849.714611871,
+    "lock_ratio": 1.0
   },
   {
     "block": 23541027,
     "timestamp": 1760010083,
     "datetime": "2025-10-09T11:41:23",
-    "supply_yb": 7105849.714611871
+    "supply_yb": 7105849.714611871,
+    "yb_locked": 7105849.714611871,
+    "lock_ratio": 1.0
   },
   {
     "block": 23541327,
     "timestamp": 1760013683,
     "datetime": "2025-10-09T12:41:23",
-    "supply_yb": 7105849.714611871
+    "supply_yb": 7105849.714611871,
+    "yb_locked": 7105849.714611871,
+    "lock_ratio": 1.0
   },
   {
     "block": 23541627,
     "timestamp": 1760017283,
     "datetime": "2025-10-09T13:41:23",
-    "supply_yb": 7105849.714611871
+    "supply_yb": 7105849.714611871,
+    "yb_locked": 7105849.714611871,
+    "lock_ratio": 1.0
   },
   {
     "block": 23541927,
     "timestamp": 1760020883,
     "datetime": "2025-10-09T14:41:23",
-    "supply_yb": 7105849.714611871
+    "supply_yb": 7105849.714611871,
+    "yb_locked": 7105849.714611871,
+    "lock_ratio": 1.0
   },
   {
     "block": 23542227,
     "timestamp": 1760024483,
     "datetime": "2025-10-09T15:41:23",
-    "supply_yb": 7105849.714611871
+    "supply_yb": 7105849.714611871,
+    "yb_locked": 7105849.714611871,
+    "lock_ratio": 1.0
   },
   {
     "block": 23542527,
     "timestamp": 1760028083,
     "datetime": "2025-10-09T16:41:23",
-    "supply_yb": 7105849.714611871
+    "supply_yb": 7105849.714611871,
+    "yb_locked": 7105849.714611871,
+    "lock_ratio": 1.0
   },
   {
     "block": 23542827,
     "timestamp": 1760031683,
     "datetime": "2025-10-09T17:41:23",
-    "supply_yb": 7105849.714611871
+    "supply_yb": 7105849.714611871,
+    "yb_locked": 7105849.714611871,
+    "lock_ratio": 1.0
   },
   {
     "block": 23543127,
     "timestamp": 1760035283,
     "datetime": "2025-10-09T18:41:23",
-    "supply_yb": 7105849.714611871
+    "supply_yb": 7105849.714611871,
+    "yb_locked": 7105849.714611871,
+    "lock_ratio": 1.0
   },
   {
     "block": 23543427,
     "timestamp": 1760038883,
     "datetime": "2025-10-09T19:41:23",
-    "supply_yb": 7105849.714611871
+    "supply_yb": 7105849.714611871,
+    "yb_locked": 7105849.714611871,
+    "lock_ratio": 1.0
   },
   {
     "block": 23543727,
     "timestamp": 1760042483,
     "datetime": "2025-10-09T20:41:23",
-    "supply_yb": 7105849.714611871
+    "supply_yb": 7105849.714611871,
+    "yb_locked": 7105849.714611871,
+    "lock_ratio": 1.0
   },
   {
     "block": 23544027,
     "timestamp": 1760046083,
     "datetime": "2025-10-09T21:41:23",
-    "supply_yb": 7105849.714611871
+    "supply_yb": 7105849.714611871,
+    "yb_locked": 7105849.714611871,
+    "lock_ratio": 1.0
   },
   {
     "block": 23544327,
     "timestamp": 1760049683,
     "datetime": "2025-10-09T22:41:23",
-    "supply_yb": 7105849.714611871
+    "supply_yb": 7105849.714611871,
+    "yb_locked": 7105849.714611871,
+    "lock_ratio": 1.0
   },
   {
     "block": 23544627,
     "timestamp": 1760053283,
     "datetime": "2025-10-09T23:41:23",
-    "supply_yb": 7105849.714611871
+    "supply_yb": 7105849.714611871,
+    "yb_locked": 7105849.714611871,
+    "lock_ratio": 1.0
   },
   {
     "block": 23544927,
     "timestamp": 1760056883,
     "datetime": "2025-10-10T00:41:23",
-    "supply_yb": 7105849.714611871
+    "supply_yb": 7105849.714611871,
+    "yb_locked": 7105849.714611871,
+    "lock_ratio": 1.0
   },
   {
     "block": 23545227,
     "timestamp": 1760060483,
     "datetime": "2025-10-10T01:41:23",
-    "supply_yb": 7105849.714611871
+    "supply_yb": 7105849.714611871,
+    "yb_locked": 7105849.714611871,
+    "lock_ratio": 1.0
   },
   {
     "block": 23545527,
     "timestamp": 1760064083,
     "datetime": "2025-10-10T02:41:23",
-    "supply_yb": 7105849.714611871
+    "supply_yb": 7105849.714611871,
+    "yb_locked": 7105849.714611871,
+    "lock_ratio": 1.0
   },
   {
     "block": 23545827,
     "timestamp": 1760067683,
     "datetime": "2025-10-10T03:41:23",
-    "supply_yb": 7105849.714611871
+    "supply_yb": 7105849.714611871,
+    "yb_locked": 7105849.714611871,
+    "lock_ratio": 1.0
   },
   {
     "block": 23546127,
     "timestamp": 1760071283,
     "datetime": "2025-10-10T04:41:23",
-    "supply_yb": 7105849.714611871
+    "supply_yb": 7105849.714611871,
+    "yb_locked": 7105849.714611871,
+    "lock_ratio": 1.0
   },
   {
     "block": 23546427,
     "timestamp": 1760074883,
     "datetime": "2025-10-10T05:41:23",
-    "supply_yb": 7105849.714611871
+    "supply_yb": 7105849.714611871,
+    "yb_locked": 7105849.714611871,
+    "lock_ratio": 1.0
   },
   {
     "block": 23546727,
     "timestamp": 1760078483,
     "datetime": "2025-10-10T06:41:23",
-    "supply_yb": 7105849.714611871
+    "supply_yb": 7105849.714611871,
+    "yb_locked": 7105849.714611871,
+    "lock_ratio": 1.0
   },
   {
     "block": 23547027,
     "timestamp": 1760082083,
     "datetime": "2025-10-10T07:41:23",
-    "supply_yb": 7105849.714611871
+    "supply_yb": 7105849.714611871,
+    "yb_locked": 7105849.714611871,
+    "lock_ratio": 1.0
   },
   {
     "block": 23547327,
     "timestamp": 1760085683,
     "datetime": "2025-10-10T08:41:23",
-    "supply_yb": 7105849.714611871
+    "supply_yb": 7105849.714611871,
+    "yb_locked": 7105849.714611871,
+    "lock_ratio": 1.0
   },
   {
     "block": 23547627,
     "timestamp": 1760089283,
     "datetime": "2025-10-10T09:41:23",
-    "supply_yb": 7105849.714611871
+    "supply_yb": 7105849.714611871,
+    "yb_locked": 7105849.714611871,
+    "lock_ratio": 1.0
   },
   {
     "block": 23547927,
     "timestamp": 1760092883,
     "datetime": "2025-10-10T10:41:23",
-    "supply_yb": 7105849.714611871
+    "supply_yb": 7105849.714611871,
+    "yb_locked": 7105849.714611871,
+    "lock_ratio": 1.0
   },
   {
     "block": 23548227,
     "timestamp": 1760096483,
     "datetime": "2025-10-10T11:41:23",
-    "supply_yb": 7108518.207762556
+    "supply_yb": 7108518.207762556,
+    "yb_locked": 7108518.207762556,
+    "lock_ratio": 1.0
   },
   {
     "block": 23548527,
     "timestamp": 1760100083,
     "datetime": "2025-10-10T12:41:23",
-    "supply_yb": 7108518.207762556
+    "supply_yb": 7108518.207762556,
+    "yb_locked": 7108518.207762556,
+    "lock_ratio": 1.0
   },
   {
     "block": 23548827,
     "timestamp": 1760103683,
     "datetime": "2025-10-10T13:41:23",
-    "supply_yb": 7108518.207762556
+    "supply_yb": 7108518.207762556,
+    "yb_locked": 7108518.207762556,
+    "lock_ratio": 1.0
   },
   {
     "block": 23549127,
     "timestamp": 1760107283,
     "datetime": "2025-10-10T14:41:23",
-    "supply_yb": 7108518.207762556
+    "supply_yb": 7108518.207762556,
+    "yb_locked": 7108518.207762556,
+    "lock_ratio": 1.0
   },
   {
     "block": 23549427,
     "timestamp": 1760110883,
     "datetime": "2025-10-10T15:41:23",
-    "supply_yb": 7108518.207762556
+    "supply_yb": 7108518.207762556,
+    "yb_locked": 7108518.207762556,
+    "lock_ratio": 1.0
   },
   {
     "block": 23549727,
     "timestamp": 1760114483,
     "datetime": "2025-10-10T16:41:23",
-    "supply_yb": 7108518.207762556
+    "supply_yb": 7108518.207762556,
+    "yb_locked": 7108518.207762556,
+    "lock_ratio": 1.0
   },
   {
     "block": 23550027,
     "timestamp": 1760118083,
     "datetime": "2025-10-10T17:41:23",
-    "supply_yb": 7108518.207762556
+    "supply_yb": 7108518.207762556,
+    "yb_locked": 7108518.207762556,
+    "lock_ratio": 1.0
   },
   {
     "block": 23550327,
     "timestamp": 1760121683,
     "datetime": "2025-10-10T18:41:23",
-    "supply_yb": 7108518.207762556
+    "supply_yb": 7108518.207762556,
+    "yb_locked": 7108518.207762556,
+    "lock_ratio": 1.0
   },
   {
     "block": 23550627,
     "timestamp": 1760125283,
     "datetime": "2025-10-10T19:41:23",
-    "supply_yb": 7108518.207762556
+    "supply_yb": 7108518.207762556,
+    "yb_locked": 7108518.207762556,
+    "lock_ratio": 1.0
   },
   {
     "block": 23550927,
     "timestamp": 1760142779,
     "datetime": "2025-10-11T00:32:59",
-    "supply_yb": 7108518.207762556
+    "supply_yb": 7108518.207762556,
+    "yb_locked": 7108518.207762556,
+    "lock_ratio": 1.0
   },
   {
     "block": 23551227,
     "timestamp": 1760132483,
     "datetime": "2025-10-10T21:41:23",
-    "supply_yb": 7108518.207762556
+    "supply_yb": 7108518.207762556,
+    "yb_locked": 7108518.207762556,
+    "lock_ratio": 1.0
   },
   {
     "block": 23551527,
     "timestamp": 1760136083,
     "datetime": "2025-10-10T22:41:23",
-    "supply_yb": 7108518.207762556
+    "supply_yb": 7108518.207762556,
+    "yb_locked": 7108518.207762556,
+    "lock_ratio": 1.0
   },
   {
     "block": 23551827,
     "timestamp": 1760139683,
     "datetime": "2025-10-10T23:41:23",
-    "supply_yb": 7108518.207762556
+    "supply_yb": 7108518.207762556,
+    "yb_locked": 7108518.207762556,
+    "lock_ratio": 1.0
   },
   {
     "block": 23552127,
     "timestamp": 1760143283,
     "datetime": "2025-10-11T00:41:23",
-    "supply_yb": 7108518.207762556
+    "supply_yb": 7108518.207762556,
+    "yb_locked": 7108518.207762556,
+    "lock_ratio": 1.0
   },
   {
     "block": 23552427,
     "timestamp": 1760146883,
     "datetime": "2025-10-11T01:41:23",
-    "supply_yb": 7108518.207762556
+    "supply_yb": 7108518.207762556,
+    "yb_locked": 7108518.207762556,
+    "lock_ratio": 1.0
   },
   {
     "block": 23552727,
     "timestamp": 1760150483,
     "datetime": "2025-10-11T02:41:23",
-    "supply_yb": 7108518.207762556
+    "supply_yb": 7108518.207762556,
+    "yb_locked": 7108518.207762556,
+    "lock_ratio": 1.0
   },
   {
     "block": 23553027,
     "timestamp": 1760154083,
     "datetime": "2025-10-11T03:41:23",
-    "supply_yb": 7108518.207762556
+    "supply_yb": 7108518.207762556,
+    "yb_locked": 7108518.207762556,
+    "lock_ratio": 1.0
   },
   {
     "block": 23553327,
     "timestamp": 1760157683,
     "datetime": "2025-10-11T04:41:23",
-    "supply_yb": 7108518.207762556
+    "supply_yb": 7108518.207762556,
+    "yb_locked": 7108518.207762556,
+    "lock_ratio": 1.0
   },
   {
     "block": 23553627,
     "timestamp": 1760161283,
     "datetime": "2025-10-11T05:41:23",
-    "supply_yb": 7108518.207762556
+    "supply_yb": 7108518.207762556,
+    "yb_locked": 7108518.207762556,
+    "lock_ratio": 1.0
   },
   {
     "block": 23553927,
     "timestamp": 1760164883,
     "datetime": "2025-10-11T06:41:23",
-    "supply_yb": 7108518.207762556
+    "supply_yb": 7108518.207762556,
+    "yb_locked": 7108518.207762556,
+    "lock_ratio": 1.0
   },
   {
     "block": 23554227,
     "timestamp": 1760168483,
     "datetime": "2025-10-11T07:41:23",
-    "supply_yb": 7108518.207762556
+    "supply_yb": 7108518.207762556,
+    "yb_locked": 7108518.207762556,
+    "lock_ratio": 1.0
   },
   {
     "block": 23554527,
     "timestamp": 1760172083,
     "datetime": "2025-10-11T08:41:23",
-    "supply_yb": 7108518.207762556
+    "supply_yb": 7108518.207762556,
+    "yb_locked": 7108518.207762556,
+    "lock_ratio": 1.0
   },
   {
     "block": 23554827,
     "timestamp": 1760175683,
     "datetime": "2025-10-11T09:41:23",
-    "supply_yb": 7108518.207762556
+    "supply_yb": 7108518.207762556,
+    "yb_locked": 7108518.207762556,
+    "lock_ratio": 1.0
   },
   {
     "block": 23555127,
     "timestamp": 1760179283,
     "datetime": "2025-10-11T10:41:23",
-    "supply_yb": 7108518.207762556
+    "supply_yb": 7108518.207762556,
+    "yb_locked": 7108518.207762556,
+    "lock_ratio": 1.0
   },
   {
     "block": 23555427,
     "timestamp": 1760182883,
     "datetime": "2025-10-11T11:41:23",
-    "supply_yb": 7108518.207762556
+    "supply_yb": 7108518.207762556,
+    "yb_locked": 7108518.207762556,
+    "lock_ratio": 1.0
   },
   {
     "block": 23555727,
     "timestamp": 1760186483,
     "datetime": "2025-10-11T12:41:23",
-    "supply_yb": 7108518.207762556
+    "supply_yb": 7108518.207762556,
+    "yb_locked": 7108518.207762556,
+    "lock_ratio": 1.0
   },
   {
     "block": 23556027,
     "timestamp": 1760190083,
     "datetime": "2025-10-11T13:41:23",
-    "supply_yb": 7108518.207762556
+    "supply_yb": 7108518.207762556,
+    "yb_locked": 7108518.207762556,
+    "lock_ratio": 1.0
   },
   {
     "block": 23556327,
     "timestamp": 1760193683,
     "datetime": "2025-10-11T14:41:23",
-    "supply_yb": 7108518.207762556
+    "supply_yb": 7108518.207762556,
+    "yb_locked": 7108518.207762556,
+    "lock_ratio": 1.0
   },
   {
     "block": 23556627,
     "timestamp": 1760197283,
     "datetime": "2025-10-11T15:41:23",
-    "supply_yb": 7108518.207762556
+    "supply_yb": 7108518.207762556,
+    "yb_locked": 7108518.207762556,
+    "lock_ratio": 1.0
   },
   {
     "block": 23556927,
     "timestamp": 1760200883,
     "datetime": "2025-10-11T16:41:23",
-    "supply_yb": 7108518.207762556
+    "supply_yb": 7108518.207762556,
+    "yb_locked": 7108518.207762556,
+    "lock_ratio": 1.0
   },
   {
     "block": 23557227,
     "timestamp": 1760204483,
     "datetime": "2025-10-11T17:41:23",
-    "supply_yb": 7108518.207762556
+    "supply_yb": 7108518.207762556,
+    "yb_locked": 7108518.207762556,
+    "lock_ratio": 1.0
   },
   {
     "block": 23557527,
     "timestamp": 1760208083,
     "datetime": "2025-10-11T18:41:23",
-    "supply_yb": 7108518.207762556
+    "supply_yb": 7108518.207762556,
+    "yb_locked": 7108518.207762556,
+    "lock_ratio": 1.0
   },
   {
     "block": 23557827,
     "timestamp": 1760211683,
     "datetime": "2025-10-11T19:41:23",
-    "supply_yb": 7108518.207762556
+    "supply_yb": 7108518.207762556,
+    "yb_locked": 7108518.207762556,
+    "lock_ratio": 1.0
   },
   {
     "block": 23558127,
     "timestamp": 1760215283,
     "datetime": "2025-10-11T20:41:23",
-    "supply_yb": 7108518.207762556
+    "supply_yb": 7108518.207762556,
+    "yb_locked": 7108518.207762556,
+    "lock_ratio": 1.0
   },
   {
     "block": 23558427,
     "timestamp": 1760218883,
     "datetime": "2025-10-11T21:41:23",
-    "supply_yb": 7108518.207762556
+    "supply_yb": 7108518.207762556,
+    "yb_locked": 7108518.207762556,
+    "lock_ratio": 1.0
   },
   {
     "block": 23558727,
     "timestamp": 1760222483,
     "datetime": "2025-10-11T22:41:23",
-    "supply_yb": 7108518.207762556
+    "supply_yb": 7108518.207762556,
+    "yb_locked": 7108518.207762556,
+    "lock_ratio": 1.0
   },
   {
     "block": 23559027,
     "timestamp": 1760226083,
     "datetime": "2025-10-11T23:41:23",
-    "supply_yb": 7108518.207762556
+    "supply_yb": 7108518.207762556,
+    "yb_locked": 7108518.207762556,
+    "lock_ratio": 1.0
   },
   {
     "block": 23559327,
     "timestamp": 1760229683,
     "datetime": "2025-10-12T00:41:23",
-    "supply_yb": 7108518.207762556
+    "supply_yb": 7108518.207762556,
+    "yb_locked": 7108518.207762556,
+    "lock_ratio": 1.0
   },
   {
     "block": 23559627,
     "timestamp": 1760233283,
     "datetime": "2025-10-12T01:41:23",
-    "supply_yb": 7108518.207762556
+    "supply_yb": 7108518.207762556,
+    "yb_locked": 7108518.207762556,
+    "lock_ratio": 1.0
   },
   {
     "block": 23559927,
     "timestamp": 1760236883,
     "datetime": "2025-10-12T02:41:23",
-    "supply_yb": 7108518.207762556
+    "supply_yb": 7108518.207762556,
+    "yb_locked": 7108518.207762556,
+    "lock_ratio": 1.0
   },
   {
     "block": 23560227,
     "timestamp": 1760240483,
     "datetime": "2025-10-12T03:41:23",
-    "supply_yb": 7108518.207762556
+    "supply_yb": 7108518.207762556,
+    "yb_locked": 7108518.207762556,
+    "lock_ratio": 1.0
   },
   {
     "block": 23560527,
     "timestamp": 1760244083,
     "datetime": "2025-10-12T04:41:23",
-    "supply_yb": 7108518.207762556
+    "supply_yb": 7108518.207762556,
+    "yb_locked": 7108518.207762556,
+    "lock_ratio": 1.0
   },
   {
     "block": 23560827,
     "timestamp": 1760247683,
     "datetime": "2025-10-12T05:41:23",
-    "supply_yb": 7108518.207762556
+    "supply_yb": 7108518.207762556,
+    "yb_locked": 7108518.207762556,
+    "lock_ratio": 1.0
   },
   {
     "block": 23561127,
     "timestamp": 1760251283,
     "datetime": "2025-10-12T06:41:23",
-    "supply_yb": 7108518.207762556
+    "supply_yb": 7108518.207762556,
+    "yb_locked": 7108518.207762556,
+    "lock_ratio": 1.0
   },
   {
     "block": 23561427,
     "timestamp": 1760254883,
     "datetime": "2025-10-12T07:41:23",
-    "supply_yb": 7108518.207762556
+    "supply_yb": 7108518.207762556,
+    "yb_locked": 7108518.207762556,
+    "lock_ratio": 1.0
   },
   {
     "block": 23561727,
     "timestamp": 1760258483,
     "datetime": "2025-10-12T08:41:23",
-    "supply_yb": 7108518.207762556
+    "supply_yb": 7108518.207762556,
+    "yb_locked": 7108518.207762556,
+    "lock_ratio": 1.0
   },
   {
     "block": 23562027,
     "timestamp": 1760262083,
     "datetime": "2025-10-12T09:41:23",
-    "supply_yb": 7108518.207762556
+    "supply_yb": 7108518.207762556,
+    "yb_locked": 7108518.207762556,
+    "lock_ratio": 1.0
   },
   {
     "block": 23562327,
     "timestamp": 1760265683,
     "datetime": "2025-10-12T10:41:23",
-    "supply_yb": 7108518.207762556
+    "supply_yb": 7108518.207762556,
+    "yb_locked": 7108518.207762556,
+    "lock_ratio": 1.0
   },
   {
     "block": 23562627,
     "timestamp": 1760269283,
     "datetime": "2025-10-12T11:41:23",
-    "supply_yb": 7108518.207762556
+    "supply_yb": 7108518.207762556,
+    "yb_locked": 7108518.207762556,
+    "lock_ratio": 1.0
   },
   {
     "block": 23562927,
     "timestamp": 1760272883,
     "datetime": "2025-10-12T12:41:23",
-    "supply_yb": 7108518.207762556
+    "supply_yb": 7108518.207762556,
+    "yb_locked": 7108518.207762556,
+    "lock_ratio": 1.0
   },
   {
     "block": 23563227,
     "timestamp": 1760276483,
     "datetime": "2025-10-12T13:41:23",
-    "supply_yb": 7108518.207762556
+    "supply_yb": 7108518.207762556,
+    "yb_locked": 7108518.207762556,
+    "lock_ratio": 1.0
   },
   {
     "block": 23563527,
     "timestamp": 1760280083,
     "datetime": "2025-10-12T14:41:23",
-    "supply_yb": 7108518.207762556
+    "supply_yb": 7108518.207762556,
+    "yb_locked": 7108518.207762556,
+    "lock_ratio": 1.0
   },
   {
     "block": 23563827,
     "timestamp": 1760283683,
     "datetime": "2025-10-12T15:41:23",
-    "supply_yb": 7108518.207762556
+    "supply_yb": 7108518.207762556,
+    "yb_locked": 7108518.207762556,
+    "lock_ratio": 1.0
   },
   {
     "block": 23564127,
     "timestamp": 1760287283,
     "datetime": "2025-10-12T16:41:23",
-    "supply_yb": 7108518.207762556
+    "supply_yb": 7108518.207762556,
+    "yb_locked": 7108518.207762556,
+    "lock_ratio": 1.0
   },
   {
     "block": 23564427,
     "timestamp": 1760290883,
     "datetime": "2025-10-12T17:41:23",
-    "supply_yb": 7108518.207762556
+    "supply_yb": 7108518.207762556,
+    "yb_locked": 7108518.207762556,
+    "lock_ratio": 1.0
   },
   {
     "block": 23564727,
     "timestamp": 1760294483,
     "datetime": "2025-10-12T18:41:23",
-    "supply_yb": 7108518.207762556
+    "supply_yb": 7108518.207762556,
+    "yb_locked": 7108518.207762556,
+    "lock_ratio": 1.0
   },
   {
     "block": 23565027,
     "timestamp": 1760298083,
     "datetime": "2025-10-12T19:41:23",
-    "supply_yb": 7108518.207762556
+    "supply_yb": 7108518.207762556,
+    "yb_locked": 7108518.207762556,
+    "lock_ratio": 1.0
   },
   {
     "block": 23565327,
     "timestamp": 1760301683,
     "datetime": "2025-10-12T20:41:23",
-    "supply_yb": 7108518.207762556
+    "supply_yb": 7108518.207762556,
+    "yb_locked": 7108518.207762556,
+    "lock_ratio": 1.0
   },
   {
     "block": 23565627,
     "timestamp": 1760305283,
     "datetime": "2025-10-12T21:41:23",
-    "supply_yb": 7108518.207762556
+    "supply_yb": 7108518.207762556,
+    "yb_locked": 7108518.207762556,
+    "lock_ratio": 1.0
   },
   {
     "block": 23565927,
     "timestamp": 1760308883,
     "datetime": "2025-10-12T22:41:23",
-    "supply_yb": 7108518.207762556
+    "supply_yb": 7108518.207762556,
+    "yb_locked": 7108518.207762556,
+    "lock_ratio": 1.0
   },
   {
     "block": 23566227,
     "timestamp": 1760312483,
     "datetime": "2025-10-12T23:41:23",
-    "supply_yb": 7108518.207762556
+    "supply_yb": 7108518.207762556,
+    "yb_locked": 7108518.207762556,
+    "lock_ratio": 1.0
   },
   {
     "block": 23566527,
     "timestamp": 1760316083,
     "datetime": "2025-10-13T00:41:23",
-    "supply_yb": 7108518.207762556
+    "supply_yb": 7108518.207762556,
+    "yb_locked": 7108518.207762556,
+    "lock_ratio": 1.0
   },
   {
     "block": 23566827,
     "timestamp": 1760319683,
     "datetime": "2025-10-13T01:41:23",
-    "supply_yb": 7108518.207762556
+    "supply_yb": 7108518.207762556,
+    "yb_locked": 7108518.207762556,
+    "lock_ratio": 1.0
   },
   {
     "block": 23567127,
     "timestamp": 1760323283,
     "datetime": "2025-10-13T02:41:23",
-    "supply_yb": 7108518.207762556
+    "supply_yb": 7108518.207762556,
+    "yb_locked": 7108518.207762556,
+    "lock_ratio": 1.0
   },
   {
     "block": 23567427,
     "timestamp": 1760326883,
     "datetime": "2025-10-13T03:41:23",
-    "supply_yb": 7108518.207762556
+    "supply_yb": 7108518.207762556,
+    "yb_locked": 7108518.207762556,
+    "lock_ratio": 1.0
   },
   {
     "block": 23567727,
     "timestamp": 1760330483,
     "datetime": "2025-10-13T04:41:23",
-    "supply_yb": 7108518.207762556
+    "supply_yb": 7108518.207762556,
+    "yb_locked": 7108518.207762556,
+    "lock_ratio": 1.0
   },
   {
     "block": 23568027,
     "timestamp": 1760334083,
     "datetime": "2025-10-13T05:41:23",
-    "supply_yb": 7108518.207762556
+    "supply_yb": 7108518.207762556,
+    "yb_locked": 7108518.207762556,
+    "lock_ratio": 1.0
   },
   {
     "block": 23568327,
     "timestamp": 1760337683,
     "datetime": "2025-10-13T06:41:23",
-    "supply_yb": 7108518.207762556
+    "supply_yb": 7108518.207762556,
+    "yb_locked": 7108518.207762556,
+    "lock_ratio": 1.0
   },
   {
     "block": 23568627,
     "timestamp": 1760341283,
     "datetime": "2025-10-13T07:41:23",
-    "supply_yb": 7108518.207762556
+    "supply_yb": 7108518.207762556,
+    "yb_locked": 7108518.207762556,
+    "lock_ratio": 1.0
   },
   {
     "block": 23568927,
     "timestamp": 1760344883,
     "datetime": "2025-10-13T08:41:23",
-    "supply_yb": 7108518.207762556
+    "supply_yb": 7108518.207762556,
+    "yb_locked": 7108518.207762556,
+    "lock_ratio": 1.0
   },
   {
     "block": 23569227,
     "timestamp": 1760348483,
     "datetime": "2025-10-13T09:41:23",
-    "supply_yb": 7108518.207762556
+    "supply_yb": 7108518.207762556,
+    "yb_locked": 7108518.207762556,
+    "lock_ratio": 1.0
   },
   {
     "block": 23569527,
     "timestamp": 1760352083,
     "datetime": "2025-10-13T10:41:23",
-    "supply_yb": 7108518.207762556
+    "supply_yb": 7108518.207762556,
+    "yb_locked": 7108518.207762556,
+    "lock_ratio": 1.0
   },
   {
     "block": 23569827,
     "timestamp": 1760355683,
     "datetime": "2025-10-13T11:41:23",
-    "supply_yb": 7108518.207762556
+    "supply_yb": 7108518.207762556,
+    "yb_locked": 7108518.207762556,
+    "lock_ratio": 1.0
   },
   {
     "block": 23570127,
     "timestamp": 1760359283,
     "datetime": "2025-10-13T12:41:23",
-    "supply_yb": 7108518.207762556
+    "supply_yb": 7108518.207762556,
+    "yb_locked": 7108518.207762556,
+    "lock_ratio": 1.0
   },
   {
     "block": 23570427,
     "timestamp": 1760362883,
     "datetime": "2025-10-13T13:41:23",
-    "supply_yb": 7108518.207762556
+    "supply_yb": 7108518.207762556,
+    "yb_locked": 7108518.207762556,
+    "lock_ratio": 1.0
   },
   {
     "block": 23570727,
     "timestamp": 1760366483,
     "datetime": "2025-10-13T14:41:23",
-    "supply_yb": 7108518.207762556
+    "supply_yb": 7108518.207762556,
+    "yb_locked": 7108518.207762556,
+    "lock_ratio": 1.0
   },
   {
     "block": 23571027,
     "timestamp": 1760370083,
     "datetime": "2025-10-13T15:41:23",
-    "supply_yb": 7108518.207762556
+    "supply_yb": 7108518.207762556,
+    "yb_locked": 7108518.207762556,
+    "lock_ratio": 1.0
   },
   {
     "block": 23571327,
     "timestamp": 1760373683,
     "datetime": "2025-10-13T16:41:23",
-    "supply_yb": 7118101.464992388
+    "supply_yb": 7118101.464992388,
+    "yb_locked": 7118101.464992388,
+    "lock_ratio": 1.0
   },
   {
     "block": 23571627,
     "timestamp": 1760377283,
     "datetime": "2025-10-13T17:41:23",
-    "supply_yb": 7118101.464992388
+    "supply_yb": 7118101.464992388,
+    "yb_locked": 7118101.464992388,
+    "lock_ratio": 1.0
   },
   {
     "block": 23571927,
     "timestamp": 1760380883,
     "datetime": "2025-10-13T18:41:23",
-    "supply_yb": 7118101.464992388
+    "supply_yb": 7118101.464992388,
+    "yb_locked": 7118101.464992388,
+    "lock_ratio": 1.0
   },
   {
     "block": 23572227,
     "timestamp": 1760384483,
     "datetime": "2025-10-13T19:41:23",
-    "supply_yb": 7118101.464992388
+    "supply_yb": 7118101.464992388,
+    "yb_locked": 7118101.464992388,
+    "lock_ratio": 1.0
   },
   {
     "block": 23572527,
     "timestamp": 1760388083,
     "datetime": "2025-10-13T20:41:23",
-    "supply_yb": 7118101.464992388
+    "supply_yb": 7118101.464992388,
+    "yb_locked": 7118101.464992388,
+    "lock_ratio": 1.0
   },
   {
     "block": 23572827,
     "timestamp": 1760391683,
     "datetime": "2025-10-13T21:41:23",
-    "supply_yb": 7118101.464992388
+    "supply_yb": 7118101.464992388,
+    "yb_locked": 7118101.464992388,
+    "lock_ratio": 1.0
   },
   {
     "block": 23573127,
     "timestamp": 1760395283,
     "datetime": "2025-10-13T22:41:23",
-    "supply_yb": 7118101.464992388
+    "supply_yb": 7118101.464992388,
+    "yb_locked": 7118101.464992388,
+    "lock_ratio": 1.0
   },
   {
     "block": 23573427,
     "timestamp": 1760398883,
     "datetime": "2025-10-13T23:41:23",
-    "supply_yb": 7118101.464992388
+    "supply_yb": 7118101.464992388,
+    "yb_locked": 7118101.464992388,
+    "lock_ratio": 1.0
   },
   {
     "block": 23573727,
     "timestamp": 1760402483,
     "datetime": "2025-10-14T00:41:23",
-    "supply_yb": 7118101.464992388
+    "supply_yb": 7118101.464992388,
+    "yb_locked": 7118101.464992388,
+    "lock_ratio": 1.0
   },
   {
     "block": 23574027,
     "timestamp": 1760406083,
     "datetime": "2025-10-14T01:41:23",
-    "supply_yb": 7118101.464992388
+    "supply_yb": 7118101.464992388,
+    "yb_locked": 7118101.464992388,
+    "lock_ratio": 1.0
   },
   {
     "block": 23574327,
     "timestamp": 1760409683,
     "datetime": "2025-10-14T02:41:23",
-    "supply_yb": 7118101.464992388
+    "supply_yb": 7118101.464992388,
+    "yb_locked": 7118101.464992388,
+    "lock_ratio": 1.0
   },
   {
     "block": 23574627,
     "timestamp": 1760413283,
     "datetime": "2025-10-14T03:41:23",
-    "supply_yb": 7118101.464992388
+    "supply_yb": 7118101.464992388,
+    "yb_locked": 7118101.464992388,
+    "lock_ratio": 1.0
   },
   {
     "block": 23574927,
     "timestamp": 1760416883,
     "datetime": "2025-10-14T04:41:23",
-    "supply_yb": 7118101.464992388
+    "supply_yb": 7118101.464992388,
+    "yb_locked": 7118101.464992388,
+    "lock_ratio": 1.0
   },
   {
     "block": 23575227,
     "timestamp": 1760420483,
     "datetime": "2025-10-14T05:41:23",
-    "supply_yb": 7118101.464992388
+    "supply_yb": 7118101.464992388,
+    "yb_locked": 7118101.464992388,
+    "lock_ratio": 1.0
   },
   {
     "block": 23575527,
     "timestamp": 1760424083,
     "datetime": "2025-10-14T06:41:23",
-    "supply_yb": 8480449.353120243
+    "supply_yb": 8480449.353120243,
+    "yb_locked": 8480449.353120243,
+    "lock_ratio": 1.0
   },
   {
     "block": 23575827,
     "timestamp": 1760427683,
     "datetime": "2025-10-14T07:41:23",
-    "supply_yb": 8480449.353120243
+    "supply_yb": 8480449.353120243,
+    "yb_locked": 8480449.353120243,
+    "lock_ratio": 1.0
   },
   {
     "block": 23576127,
     "timestamp": 1760431283,
     "datetime": "2025-10-14T08:41:23",
-    "supply_yb": 8480449.353120243
+    "supply_yb": 8480449.353120243,
+    "yb_locked": 8480449.353120243,
+    "lock_ratio": 1.0
   },
   {
     "block": 23576427,
     "timestamp": 1760434883,
     "datetime": "2025-10-14T09:41:23",
-    "supply_yb": 8484382.082382038
+    "supply_yb": 8484382.082382038,
+    "yb_locked": 8484382.082382038,
+    "lock_ratio": 1.0
   },
   {
     "block": 23576727,
     "timestamp": 1760438483,
     "datetime": "2025-10-14T10:41:23",
-    "supply_yb": 8484382.082382038
+    "supply_yb": 8484382.082382038,
+    "yb_locked": 8484382.082382038,
+    "lock_ratio": 1.0
   },
   {
     "block": 23577027,
     "timestamp": 1760442083,
     "datetime": "2025-10-14T11:41:23",
-    "supply_yb": 8484382.082382038
+    "supply_yb": 8484382.082382038,
+    "yb_locked": 8484382.082382038,
+    "lock_ratio": 1.0
   },
   {
     "block": 23577327,
     "timestamp": 1760445683,
     "datetime": "2025-10-14T12:41:23",
-    "supply_yb": 8484382.082382038
+    "supply_yb": 8484382.082382038,
+    "yb_locked": 8484382.082382038,
+    "lock_ratio": 1.0
   },
   {
     "block": 23577627,
     "timestamp": 1760449283,
     "datetime": "2025-10-14T13:41:23",
-    "supply_yb": 8484382.082382038
+    "supply_yb": 8484382.082382038,
+    "yb_locked": 8484382.082382038,
+    "lock_ratio": 1.0
   },
   {
     "block": 23577927,
     "timestamp": 1760452883,
     "datetime": "2025-10-14T14:41:23",
-    "supply_yb": 8484382.082382038
+    "supply_yb": 8484382.082382038,
+    "yb_locked": 8484382.082382038,
+    "lock_ratio": 1.0
   },
   {
     "block": 23578227,
     "timestamp": 1760456483,
     "datetime": "2025-10-14T15:41:23",
-    "supply_yb": 8484382.082382038
+    "supply_yb": 8484382.082382038,
+    "yb_locked": 8484382.082382038,
+    "lock_ratio": 1.0
   },
   {
     "block": 23578527,
     "timestamp": 1760460083,
     "datetime": "2025-10-14T16:41:23",
-    "supply_yb": 8484382.082382038
+    "supply_yb": 8484382.082382038,
+    "yb_locked": 8484382.082382038,
+    "lock_ratio": 1.0
   },
   {
     "block": 23578827,
     "timestamp": 1760463683,
     "datetime": "2025-10-14T17:41:23",
-    "supply_yb": 8484382.082382038
+    "supply_yb": 8484382.082382038,
+    "yb_locked": 8484382.082382038,
+    "lock_ratio": 1.0
   },
   {
     "block": 23579127,
     "timestamp": 1760467283,
     "datetime": "2025-10-14T18:41:23",
-    "supply_yb": 8484382.082382038
+    "supply_yb": 8484382.082382038,
+    "yb_locked": 8484382.082382038,
+    "lock_ratio": 1.0
   },
   {
     "block": 23579427,
     "timestamp": 1760470883,
     "datetime": "2025-10-14T19:41:23",
-    "supply_yb": 8484382.082382038
+    "supply_yb": 8484382.082382038,
+    "yb_locked": 8484382.082382038,
+    "lock_ratio": 1.0
   },
   {
     "block": 23579727,
     "timestamp": 1760474483,
     "datetime": "2025-10-14T20:41:23",
-    "supply_yb": 8484382.082382038
+    "supply_yb": 8484382.082382038,
+    "yb_locked": 8484382.082382038,
+    "lock_ratio": 1.0
   },
   {
     "block": 23580027,
     "timestamp": 1760478083,
     "datetime": "2025-10-14T21:41:23",
-    "supply_yb": 8484382.082382038
+    "supply_yb": 8484382.082382038,
+    "yb_locked": 8484382.082382038,
+    "lock_ratio": 1.0
   },
   {
     "block": 23580327,
     "timestamp": 1760481683,
     "datetime": "2025-10-14T22:41:23",
-    "supply_yb": 8484382.082382038
+    "supply_yb": 8484382.082382038,
+    "yb_locked": 8484382.082382038,
+    "lock_ratio": 1.0
   },
   {
     "block": 23580627,
     "timestamp": 1760485283,
     "datetime": "2025-10-14T23:41:23",
-    "supply_yb": 8484382.082382038
+    "supply_yb": 8484382.082382038,
+    "yb_locked": 8484382.082382038,
+    "lock_ratio": 1.0
   },
   {
     "block": 23580927,
     "timestamp": 1760505131,
     "datetime": "2025-10-15T05:12:11",
-    "supply_yb": 8484382.082382038
+    "supply_yb": 8484382.082382038,
+    "yb_locked": 8484382.082382038,
+    "lock_ratio": 1.0
   },
   {
     "block": 23581227,
     "timestamp": 1760492483,
     "datetime": "2025-10-15T01:41:23",
-    "supply_yb": 8485141.899733637
+    "supply_yb": 8485141.899733637,
+    "yb_locked": 8485141.899733637,
+    "lock_ratio": 1.0
   },
   {
     "block": 23581527,
     "timestamp": 1760496083,
     "datetime": "2025-10-15T02:41:23",
-    "supply_yb": 8525400.699200911
+    "supply_yb": 8525400.699200911,
+    "yb_locked": 8525400.699200911,
+    "lock_ratio": 1.0
   },
   {
     "block": 23581827,
     "timestamp": 1760499683,
     "datetime": "2025-10-15T03:41:23",
-    "supply_yb": 8525400.699200911
+    "supply_yb": 8525400.699200911,
+    "yb_locked": 8525400.699200911,
+    "lock_ratio": 1.0
   },
   {
     "block": 23582127,
     "timestamp": 1760503283,
     "datetime": "2025-10-15T04:41:23",
-    "supply_yb": 8525400.699200911
+    "supply_yb": 8525400.699200911,
+    "yb_locked": 8525400.699200911,
+    "lock_ratio": 1.0
   },
   {
     "block": 23582427,
     "timestamp": 1760506883,
     "datetime": "2025-10-15T05:41:23",
-    "supply_yb": 8529431.699200911
+    "supply_yb": 8529431.699200911,
+    "yb_locked": 8529431.699200911,
+    "lock_ratio": 1.0
   },
   {
     "block": 23582727,
     "timestamp": 1760510483,
     "datetime": "2025-10-15T06:41:23",
-    "supply_yb": 8539357.726604486
+    "supply_yb": 8539357.726604486,
+    "yb_locked": 8539357.726604486,
+    "lock_ratio": 1.0
   },
   {
     "block": 23583027,
     "timestamp": 1760514083,
     "datetime": "2025-10-15T07:41:23",
-    "supply_yb": 8608209.222855251
+    "supply_yb": 8608209.222855251,
+    "yb_locked": 8608209.222855251,
+    "lock_ratio": 1.0
   },
   {
     "block": 23583327,
     "timestamp": 1760517683,
     "datetime": "2025-10-15T08:41:23",
-    "supply_yb": 8684125.57661344
+    "supply_yb": 8684125.57661344,
+    "yb_locked": 8684125.57661344,
+    "lock_ratio": 1.0
   },
   {
     "block": 23583627,
     "timestamp": 1760521283,
     "datetime": "2025-10-15T09:41:23",
-    "supply_yb": 8702027.785444885
+    "supply_yb": 8702027.785444885,
+    "yb_locked": 8702027.785444885,
+    "lock_ratio": 1.0
   },
   {
     "block": 23583927,
     "timestamp": 1760524883,
     "datetime": "2025-10-15T10:41:23",
-    "supply_yb": 8763158.507755576
+    "supply_yb": 8763158.507755576,
+    "yb_locked": 8763158.507755576,
+    "lock_ratio": 1.0
   },
   {
     "block": 23584227,
     "timestamp": 1760528483,
     "datetime": "2025-10-15T11:41:23",
-    "supply_yb": 8770670.379183428
+    "supply_yb": 8770670.379183428,
+    "yb_locked": 8770670.379183428,
+    "lock_ratio": 1.0
   },
   {
     "block": 23584527,
     "timestamp": 1760532083,
     "datetime": "2025-10-15T12:41:23",
-    "supply_yb": 8809119.030146427
+    "supply_yb": 8809119.030146427,
+    "yb_locked": 8809119.030146427,
+    "lock_ratio": 1.0
   },
   {
     "block": 23584827,
     "timestamp": 1760535683,
     "datetime": "2025-10-15T13:41:23",
-    "supply_yb": 8817843.118000915
+    "supply_yb": 8817843.118000915,
+    "yb_locked": 8817843.118000915,
+    "lock_ratio": 1.0
   },
   {
     "block": 23585127,
     "timestamp": 1760539283,
     "datetime": "2025-10-15T14:41:23",
-    "supply_yb": 8926446.707697827
+    "supply_yb": 8926446.707697827,
+    "yb_locked": 8926446.707697827,
+    "lock_ratio": 1.0
   },
   {
     "block": 23585427,
     "timestamp": 1760542883,
     "datetime": "2025-10-15T15:41:23",
-    "supply_yb": 8930025.644780934
+    "supply_yb": 8930025.644780934,
+    "yb_locked": 8930025.644780934,
+    "lock_ratio": 1.0
   },
   {
     "block": 23585727,
     "timestamp": 1760546483,
     "datetime": "2025-10-15T16:41:23",
-    "supply_yb": 8981480.38497745
+    "supply_yb": 8981480.38497745,
+    "yb_locked": 8981480.38497745,
+    "lock_ratio": 1.0
   },
   {
     "block": 23586027,
     "timestamp": 1760550083,
     "datetime": "2025-10-15T17:41:23",
-    "supply_yb": 9011750.492461082
+    "supply_yb": 9011750.492461082,
+    "yb_locked": 9011750.492461082,
+    "lock_ratio": 1.0
   },
   {
     "block": 23586327,
     "timestamp": 1760553683,
     "datetime": "2025-10-15T18:41:23",
-    "supply_yb": 9011763.16746108
+    "supply_yb": 9011763.16746108,
+    "yb_locked": 9011763.16746108,
+    "lock_ratio": 1.0
   },
   {
     "block": 23586627,
     "timestamp": 1760557283,
     "datetime": "2025-10-15T19:41:23",
-    "supply_yb": 9013062.25346954
+    "supply_yb": 9013062.25346954,
+    "yb_locked": 9013062.25346954,
+    "lock_ratio": 1.0
   },
   {
     "block": 23586927,
     "timestamp": 1760560883,
     "datetime": "2025-10-15T20:41:23",
-    "supply_yb": 9016912.30281197
+    "supply_yb": 9016912.30281197,
+    "yb_locked": 9016912.30281197,
+    "lock_ratio": 1.0
   },
   {
     "block": 23587227,
     "timestamp": 1760564483,
     "datetime": "2025-10-15T21:41:23",
-    "supply_yb": 9017012.30281197
+    "supply_yb": 9017012.30281197,
+    "yb_locked": 9017012.30281197,
+    "lock_ratio": 1.0
   },
   {
     "block": 23587527,
     "timestamp": 1760568083,
     "datetime": "2025-10-15T22:41:23",
-    "supply_yb": 9038434.854989579
+    "supply_yb": 9038434.854989579,
+    "yb_locked": 9038434.854989579,
+    "lock_ratio": 1.0
   },
   {
     "block": 23587827,
     "timestamp": 1760571683,
     "datetime": "2025-10-15T23:41:23",
-    "supply_yb": 9043044.6624859
+    "supply_yb": 9043044.6624859,
+    "yb_locked": 9043044.6624859,
+    "lock_ratio": 1.0
   },
   {
     "block": 23588127,
     "timestamp": 1760575283,
     "datetime": "2025-10-16T00:41:23",
-    "supply_yb": 9043044.6624859
+    "supply_yb": 9043044.6624859,
+    "yb_locked": 9043044.6624859,
+    "lock_ratio": 1.0
   },
   {
     "block": 23588427,
     "timestamp": 1760578883,
     "datetime": "2025-10-16T01:41:23",
-    "supply_yb": 9048047.879191915
+    "supply_yb": 9048047.879191915,
+    "yb_locked": 9048047.879191915,
+    "lock_ratio": 1.0
   },
   {
     "block": 23588727,
     "timestamp": 1760582483,
     "datetime": "2025-10-16T02:41:23",
-    "supply_yb": 9049556.221632078
+    "supply_yb": 9049556.221632078,
+    "yb_locked": 9049556.221632078,
+    "lock_ratio": 1.0
   },
   {
     "block": 23589027,
     "timestamp": 1760586083,
     "datetime": "2025-10-16T03:41:23",
-    "supply_yb": 9050851.888468044
+    "supply_yb": 9050851.888468044,
+    "yb_locked": 9050851.888468044,
+    "lock_ratio": 1.0
   },
   {
     "block": 23589327,
     "timestamp": 1760589683,
     "datetime": "2025-10-16T04:41:23",
-    "supply_yb": 9052419.28436434
+    "supply_yb": 9052419.28436434,
+    "yb_locked": 9052419.28436434,
+    "lock_ratio": 1.0
   },
   {
     "block": 23589627,
     "timestamp": 1760593283,
     "datetime": "2025-10-16T05:41:23",
-    "supply_yb": 9114630.992052905
+    "supply_yb": 9114630.992052905,
+    "yb_locked": 9114630.992052905,
+    "lock_ratio": 1.0
   },
   {
     "block": 23589927,
     "timestamp": 1760596883,
     "datetime": "2025-10-16T06:41:23",
-    "supply_yb": 9152343.119249715
+    "supply_yb": 9152343.119249715,
+    "yb_locked": 9152343.119249715,
+    "lock_ratio": 1.0
   },
   {
     "block": 23590227,
     "timestamp": 1760600483,
     "datetime": "2025-10-16T07:41:23",
-    "supply_yb": 9231571.458023516
+    "supply_yb": 9231571.458023516,
+    "yb_locked": 9231571.458023516,
+    "lock_ratio": 1.0
   },
   {
     "block": 23590527,
     "timestamp": 1760604083,
     "datetime": "2025-10-16T08:41:23",
-    "supply_yb": 9240823.951685205
+    "supply_yb": 9240823.951685205,
+    "yb_locked": 9240823.951685205,
+    "lock_ratio": 1.0
   },
   {
     "block": 23590827,
     "timestamp": 1760607683,
     "datetime": "2025-10-16T09:41:23",
-    "supply_yb": 9250586.427690161
+    "supply_yb": 9250586.427690161,
+    "yb_locked": 9250586.427690161,
+    "lock_ratio": 1.0
   },
   {
     "block": 23591127,
     "timestamp": 1760611283,
     "datetime": "2025-10-16T10:41:23",
-    "supply_yb": 9303224.162697233
+    "supply_yb": 9303224.162697233,
+    "yb_locked": 9303224.162697233,
+    "lock_ratio": 1.0
   },
   {
     "block": 23591427,
     "timestamp": 1760614883,
     "datetime": "2025-10-16T11:41:23",
-    "supply_yb": 9306347.068190293
+    "supply_yb": 9306347.068190293,
+    "yb_locked": 9306347.068190293,
+    "lock_ratio": 1.0
   },
   {
     "block": 23591727,
     "timestamp": 1760618483,
     "datetime": "2025-10-16T12:41:23",
-    "supply_yb": 9310906.307195954
+    "supply_yb": 9310906.307195954,
+    "yb_locked": 9310906.307195954,
+    "lock_ratio": 1.0
   },
   {
     "block": 23592027,
     "timestamp": 1760622083,
     "datetime": "2025-10-16T13:41:23",
-    "supply_yb": 9315182.540645793
+    "supply_yb": 9315182.540645793,
+    "yb_locked": 9315182.540645793,
+    "lock_ratio": 1.0
   },
   {
     "block": 23592327,
     "timestamp": 1760625683,
     "datetime": "2025-10-16T14:41:23",
-    "supply_yb": 9337710.540645793
+    "supply_yb": 9337710.540645793,
+    "yb_locked": 9337710.540645793,
+    "lock_ratio": 1.0
   },
   {
     "block": 23592627,
     "timestamp": 1760629283,
     "datetime": "2025-10-16T15:41:23",
-    "supply_yb": 9756908.281990154
+    "supply_yb": 9756908.281990154,
+    "yb_locked": 9756908.281990154,
+    "lock_ratio": 1.0
   },
   {
     "block": 23592927,
     "timestamp": 1760632883,
     "datetime": "2025-10-16T16:41:23",
-    "supply_yb": 10276118.232522879
+    "supply_yb": 10276118.232522879,
+    "yb_locked": 10276118.232522879,
+    "lock_ratio": 1.0
   },
   {
     "block": 23593227,
     "timestamp": 1760636483,
     "datetime": "2025-10-16T17:41:23",
-    "supply_yb": 10276118.232522879
+    "supply_yb": 10276118.232522879,
+    "yb_locked": 10276118.232522879,
+    "lock_ratio": 1.0
   },
   {
     "block": 23593527,
     "timestamp": 1760640083,
     "datetime": "2025-10-16T18:41:23",
-    "supply_yb": 10276195.375113215
+    "supply_yb": 10276195.375113215,
+    "yb_locked": 10276195.375113215,
+    "lock_ratio": 1.0
   },
   {
     "block": 23593827,
     "timestamp": 1760643683,
     "datetime": "2025-10-16T19:41:23",
-    "supply_yb": 10276705.375113215
+    "supply_yb": 10276705.375113215,
+    "yb_locked": 10276705.375113215,
+    "lock_ratio": 1.0
   },
   {
     "block": 23594127,
     "timestamp": 1760647283,
     "datetime": "2025-10-16T20:41:23",
-    "supply_yb": 10276707.375113215
+    "supply_yb": 10276707.375113215,
+    "yb_locked": 10276707.375113215,
+    "lock_ratio": 1.0
   },
   {
     "block": 23594427,
     "timestamp": 1760650883,
     "datetime": "2025-10-16T21:41:23",
-    "supply_yb": 10285655.437579742
+    "supply_yb": 10285655.437579742,
+    "yb_locked": 10285655.437579742,
+    "lock_ratio": 1.0
   },
   {
     "block": 23594727,
     "timestamp": 1760654483,
     "datetime": "2025-10-16T22:41:23",
-    "supply_yb": 10285755.437579742
+    "supply_yb": 10285755.437579742,
+    "yb_locked": 10285755.437579742,
+    "lock_ratio": 1.0
   },
   {
     "block": 23595027,
     "timestamp": 1760658083,
     "datetime": "2025-10-16T23:41:23",
-    "supply_yb": 10285755.437579742
+    "supply_yb": 10285755.437579742,
+    "yb_locked": 10285755.437579742,
+    "lock_ratio": 1.0
   },
   {
     "block": 23595327,
     "timestamp": 1760661683,
     "datetime": "2025-10-17T00:41:23",
-    "supply_yb": 10285767.538052905
+    "supply_yb": 10285767.538052905,
+    "yb_locked": 10285767.538052905,
+    "lock_ratio": 1.0
   },
   {
     "block": 23595627,
     "timestamp": 1760665283,
     "datetime": "2025-10-17T01:41:23",
-    "supply_yb": 10285767.538052905
+    "supply_yb": 10285767.538052905,
+    "yb_locked": 10285767.538052905,
+    "lock_ratio": 1.0
   },
   {
     "block": 23595927,
     "timestamp": 1760668883,
     "datetime": "2025-10-17T02:41:23",
-    "supply_yb": 10288670.579825092
+    "supply_yb": 10288670.579825092,
+    "yb_locked": 10288670.579825092,
+    "lock_ratio": 1.0
   },
   {
     "block": 23596227,
     "timestamp": 1760672483,
     "datetime": "2025-10-17T03:41:23",
-    "supply_yb": 10288670.579825092
+    "supply_yb": 10288670.579825092,
+    "yb_locked": 10288670.579825092,
+    "lock_ratio": 1.0
   },
   {
     "block": 23596527,
     "timestamp": 1760676083,
     "datetime": "2025-10-17T04:41:23",
-    "supply_yb": 10294261.042163735
+    "supply_yb": 10294261.042163735,
+    "yb_locked": 10294261.042163735,
+    "lock_ratio": 1.0
   },
   {
     "block": 23596827,
     "timestamp": 1760679683,
     "datetime": "2025-10-17T05:41:23",
-    "supply_yb": 10309059.042163735
+    "supply_yb": 10309059.042163735,
+    "yb_locked": 10309059.042163735,
+    "lock_ratio": 1.0
   },
   {
     "block": 23597127,
     "timestamp": 1760683283,
     "datetime": "2025-10-17T06:41:23",
-    "supply_yb": 10309809.042163735
+    "supply_yb": 10309809.042163735,
+    "yb_locked": 10309809.042163735,
+    "lock_ratio": 1.0
   },
   {
     "block": 23597427,
     "timestamp": 1760686883,
     "datetime": "2025-10-17T07:41:23",
-    "supply_yb": 10313582.907510707
+    "supply_yb": 10313582.907510707,
+    "yb_locked": 10313582.907510707,
+    "lock_ratio": 1.0
   },
   {
     "block": 23597727,
     "timestamp": 1760690483,
     "datetime": "2025-10-17T08:41:23",
-    "supply_yb": 10314413.441104755
+    "supply_yb": 10314413.441104755,
+    "yb_locked": 10314413.441104755,
+    "lock_ratio": 1.0
   },
   {
     "block": 23598027,
     "timestamp": 1760694083,
     "datetime": "2025-10-17T09:41:23",
-    "supply_yb": 10318390.329996563
+    "supply_yb": 10318390.329996563,
+    "yb_locked": 10318390.329996563,
+    "lock_ratio": 1.0
   },
   {
     "block": 23598327,
     "timestamp": 1760697683,
     "datetime": "2025-10-17T10:41:23",
-    "supply_yb": 10319694.733654521
+    "supply_yb": 10319694.733654521,
+    "yb_locked": 10319694.733654521,
+    "lock_ratio": 1.0
   },
   {
     "block": 23598627,
     "timestamp": 1760701283,
     "datetime": "2025-10-17T11:41:23",
-    "supply_yb": 10319694.733654521
+    "supply_yb": 10319694.733654521,
+    "yb_locked": 10319694.733654521,
+    "lock_ratio": 1.0
   },
   {
     "block": 23598927,
     "timestamp": 1760704883,
     "datetime": "2025-10-17T12:41:23",
-    "supply_yb": 10323634.80683857
+    "supply_yb": 10323634.80683857,
+    "yb_locked": 10323634.80683857,
+    "lock_ratio": 1.0
   },
   {
     "block": 23599227,
     "timestamp": 1760708483,
     "datetime": "2025-10-17T13:41:23",
-    "supply_yb": 10323634.80683857
+    "supply_yb": 10323634.80683857,
+    "yb_locked": 10323634.80683857,
+    "lock_ratio": 1.0
   },
   {
     "block": 23599527,
     "timestamp": 1760712083,
     "datetime": "2025-10-17T14:41:23",
-    "supply_yb": 10323634.80683857
+    "supply_yb": 10323634.80683857,
+    "yb_locked": 10323634.80683857,
+    "lock_ratio": 1.0
   },
   {
     "block": 23599827,
     "timestamp": 1760715683,
     "datetime": "2025-10-17T15:41:23",
-    "supply_yb": 10324225.61732441
+    "supply_yb": 10324225.61732441,
+    "yb_locked": 10324225.61732441,
+    "lock_ratio": 1.0
   },
   {
     "block": 23600127,
     "timestamp": 1760719283,
     "datetime": "2025-10-17T16:41:23",
-    "supply_yb": 10324225.61732441
+    "supply_yb": 10324225.61732441,
+    "yb_locked": 10324225.61732441,
+    "lock_ratio": 1.0
   },
   {
     "block": 23600427,
     "timestamp": 1760722883,
     "datetime": "2025-10-17T17:41:23",
-    "supply_yb": 10324707.90823798
+    "supply_yb": 10324707.90823798,
+    "yb_locked": 10324707.90823798,
+    "lock_ratio": 1.0
   },
   {
     "block": 23600727,
     "timestamp": 1760726483,
     "datetime": "2025-10-17T18:41:23",
-    "supply_yb": 10325707.90823798
+    "supply_yb": 10325707.90823798,
+    "yb_locked": 10325707.90823798,
+    "lock_ratio": 1.0
   },
   {
     "block": 23601027,
     "timestamp": 1760730083,
     "datetime": "2025-10-17T19:41:23",
-    "supply_yb": 10325717.293511007
+    "supply_yb": 10325717.293511007,
+    "yb_locked": 10325717.293511007,
+    "lock_ratio": 1.0
   },
   {
     "block": 23601327,
     "timestamp": 1760733683,
     "datetime": "2025-10-17T20:41:23",
-    "supply_yb": 10325817.293511007
+    "supply_yb": 10325817.293511007,
+    "yb_locked": 10325817.293511007,
+    "lock_ratio": 1.0
   },
   {
     "block": 23601627,
     "timestamp": 1760737283,
     "datetime": "2025-10-17T21:41:23",
-    "supply_yb": 10326788.76450745
+    "supply_yb": 10326788.76450745,
+    "yb_locked": 10326788.76450745,
+    "lock_ratio": 1.0
   },
   {
     "block": 23601927,
     "timestamp": 1760740883,
     "datetime": "2025-10-17T22:41:23",
-    "supply_yb": 10326788.76450745
+    "supply_yb": 10326788.76450745,
+    "yb_locked": 10326788.76450745,
+    "lock_ratio": 1.0
   },
   {
     "block": 23602227,
     "timestamp": 1760744483,
     "datetime": "2025-10-17T23:41:23",
-    "supply_yb": 10328038.76450745
+    "supply_yb": 10328038.76450745,
+    "yb_locked": 10328038.76450745,
+    "lock_ratio": 1.0
   },
   {
     "block": 23602527,
     "timestamp": 1760748083,
     "datetime": "2025-10-18T00:41:23",
-    "supply_yb": 10328038.76450745
+    "supply_yb": 10328038.76450745,
+    "yb_locked": 10328038.76450745,
+    "lock_ratio": 1.0
   },
   {
     "block": 23602827,
     "timestamp": 1760751683,
     "datetime": "2025-10-18T01:41:23",
-    "supply_yb": 10330492.777394444
+    "supply_yb": 10330492.777394444,
+    "yb_locked": 10330492.777394444,
+    "lock_ratio": 1.0
   },
   {
     "block": 23603127,
     "timestamp": 1760755283,
     "datetime": "2025-10-18T02:41:23",
-    "supply_yb": 10330492.777394444
+    "supply_yb": 10330492.777394444,
+    "yb_locked": 10330492.777394444,
+    "lock_ratio": 1.0
   },
   {
     "block": 23603427,
     "timestamp": 1760758883,
     "datetime": "2025-10-18T03:41:23",
-    "supply_yb": 10338492.777394444
+    "supply_yb": 10338492.777394444,
+    "yb_locked": 10338492.777394444,
+    "lock_ratio": 1.0
   },
   {
     "block": 23603727,
     "timestamp": 1760762483,
     "datetime": "2025-10-18T04:41:23",
-    "supply_yb": 10344894.969774444
+    "supply_yb": 10344894.969774444,
+    "yb_locked": 10344894.969774444,
+    "lock_ratio": 1.0
   },
   {
     "block": 23604027,
     "timestamp": 1760766083,
     "datetime": "2025-10-18T05:41:23",
-    "supply_yb": 10344894.969774444
+    "supply_yb": 10344894.969774444,
+    "yb_locked": 10344894.969774444,
+    "lock_ratio": 1.0
   },
   {
     "block": 23604327,
     "timestamp": 1760769683,
     "datetime": "2025-10-18T06:41:23",
-    "supply_yb": 10372337.168708676
+    "supply_yb": 10372337.168708676,
+    "yb_locked": 10372337.168708676,
+    "lock_ratio": 1.0
   },
   {
     "block": 23604627,
     "timestamp": 1760773283,
     "datetime": "2025-10-18T07:41:23",
-    "supply_yb": 10377024.953608619
+    "supply_yb": 10377024.953608619,
+    "yb_locked": 10377024.953608619,
+    "lock_ratio": 1.0
   },
   {
     "block": 23604927,
     "timestamp": 1760776883,
     "datetime": "2025-10-18T08:41:23",
-    "supply_yb": 10378822.430500695
+    "supply_yb": 10378822.430500695,
+    "yb_locked": 10378822.430500695,
+    "lock_ratio": 1.0
   },
   {
     "block": 23605227,
     "timestamp": 1760780483,
     "datetime": "2025-10-18T09:41:23",
-    "supply_yb": 10378822.430500695
+    "supply_yb": 10378822.430500695,
+    "yb_locked": 10378822.430500695,
+    "lock_ratio": 1.0
   },
   {
     "block": 23605527,
     "timestamp": 1760784083,
     "datetime": "2025-10-18T10:41:23",
-    "supply_yb": 10378822.430500695
+    "supply_yb": 10378822.430500695,
+    "yb_locked": 10378822.430500695,
+    "lock_ratio": 1.0
   },
   {
     "block": 23605827,
     "timestamp": 1760787683,
     "datetime": "2025-10-18T11:41:23",
-    "supply_yb": 10389817.29341305
+    "supply_yb": 10389817.29341305,
+    "yb_locked": 10389817.29341305,
+    "lock_ratio": 1.0
   },
   {
     "block": 23606127,
     "timestamp": 1760791283,
     "datetime": "2025-10-18T12:41:23",
-    "supply_yb": 10389817.29341305
+    "supply_yb": 10389817.29341305,
+    "yb_locked": 10389817.29341305,
+    "lock_ratio": 1.0
   },
   {
     "block": 23606427,
     "timestamp": 1760794883,
     "datetime": "2025-10-18T13:41:23",
-    "supply_yb": 10389817.29341305
+    "supply_yb": 10389817.29341305,
+    "yb_locked": 10389817.29341305,
+    "lock_ratio": 1.0
   },
   {
     "block": 23606727,
     "timestamp": 1760798483,
     "datetime": "2025-10-18T14:41:23",
-    "supply_yb": 10390693.910308091
+    "supply_yb": 10390693.910308091,
+    "yb_locked": 10390693.910308091,
+    "lock_ratio": 1.0
   },
   {
     "block": 23607027,
     "timestamp": 1760802083,
     "datetime": "2025-10-18T15:41:23",
-    "supply_yb": 10390706.265233353
+    "supply_yb": 10390706.265233353,
+    "yb_locked": 10390706.265233353,
+    "lock_ratio": 1.0
   },
   {
     "block": 23607327,
     "timestamp": 1760805683,
     "datetime": "2025-10-18T16:41:23",
-    "supply_yb": 10394309.37109995
+    "supply_yb": 10394309.37109995,
+    "yb_locked": 10394309.37109995,
+    "lock_ratio": 1.0
   },
   {
     "block": 23607627,
     "timestamp": 1760809283,
     "datetime": "2025-10-18T17:41:23",
-    "supply_yb": 10394319.927633723
+    "supply_yb": 10394319.927633723,
+    "yb_locked": 10394319.927633723,
+    "lock_ratio": 1.0
   },
   {
     "block": 23607927,
     "timestamp": 1760812883,
     "datetime": "2025-10-18T18:41:23",
-    "supply_yb": 10394412.875260545
+    "supply_yb": 10394412.875260545,
+    "yb_locked": 10394412.875260545,
+    "lock_ratio": 1.0
   },
   {
     "block": 23608227,
     "timestamp": 1760816483,
     "datetime": "2025-10-18T19:41:23",
-    "supply_yb": 10397624.280543583
+    "supply_yb": 10397624.280543583,
+    "yb_locked": 10397624.280543583,
+    "lock_ratio": 1.0
   },
   {
     "block": 23608527,
     "timestamp": 1760820083,
     "datetime": "2025-10-18T20:41:23",
-    "supply_yb": 10397624.280543583
+    "supply_yb": 10397624.280543583,
+    "yb_locked": 10397624.280543583,
+    "lock_ratio": 1.0
   },
   {
     "block": 23608827,
     "timestamp": 1760823683,
     "datetime": "2025-10-18T21:41:23",
-    "supply_yb": 10397624.280543583
+    "supply_yb": 10397624.280543583,
+    "yb_locked": 10397624.280543583,
+    "lock_ratio": 1.0
   },
   {
     "block": 23609127,
     "timestamp": 1760827283,
     "datetime": "2025-10-18T22:41:23",
-    "supply_yb": 10400124.280543583
+    "supply_yb": 10400124.280543583,
+    "yb_locked": 10400124.280543583,
+    "lock_ratio": 1.0
   },
   {
     "block": 23609427,
     "timestamp": 1760830883,
     "datetime": "2025-10-18T23:41:23",
-    "supply_yb": 10402137.94640827
+    "supply_yb": 10402137.94640827,
+    "yb_locked": 10402137.94640827,
+    "lock_ratio": 1.0
   },
   {
     "block": 23609727,
     "timestamp": 1760834483,
     "datetime": "2025-10-19T00:41:23",
-    "supply_yb": 10402137.94640827
+    "supply_yb": 10402137.94640827,
+    "yb_locked": 10402137.94640827,
+    "lock_ratio": 1.0
   },
   {
     "block": 23610027,
     "timestamp": 1760838083,
     "datetime": "2025-10-19T01:41:23",
-    "supply_yb": 10402237.94640827
+    "supply_yb": 10402237.94640827,
+    "yb_locked": 10402237.94640827,
+    "lock_ratio": 1.0
   },
   {
     "block": 23610327,
     "timestamp": 1760841683,
     "datetime": "2025-10-19T02:41:23",
-    "supply_yb": 10402737.94640827
+    "supply_yb": 10402737.94640827,
+    "yb_locked": 10402737.94640827,
+    "lock_ratio": 1.0
   },
   {
     "block": 23610627,
     "timestamp": 1760845283,
     "datetime": "2025-10-19T03:41:23",
-    "supply_yb": 10402746.42567618
+    "supply_yb": 10402746.42567618,
+    "yb_locked": 10402746.42567618,
+    "lock_ratio": 1.0
   },
   {
     "block": 23610927,
     "timestamp": 1760867771,
     "datetime": "2025-10-19T09:56:11",
-    "supply_yb": 10402746.42567618
+    "supply_yb": 10402746.42567618,
+    "yb_locked": 10402746.42567618,
+    "lock_ratio": 1.0
   },
   {
     "block": 23611227,
     "timestamp": 1760852483,
     "datetime": "2025-10-19T05:41:23",
-    "supply_yb": 10403993.525776992
+    "supply_yb": 10403993.525776992,
+    "yb_locked": 10403993.525776992,
+    "lock_ratio": 1.0
   },
   {
     "block": 23611527,
     "timestamp": 1760856083,
     "datetime": "2025-10-19T06:41:23",
-    "supply_yb": 10521093.525776992
+    "supply_yb": 10521093.525776992,
+    "yb_locked": 10521093.525776992,
+    "lock_ratio": 1.0
   },
   {
     "block": 23611827,
     "timestamp": 1760859683,
     "datetime": "2025-10-19T07:41:23",
-    "supply_yb": 10521880.524724102
+    "supply_yb": 10521880.524724102,
+    "yb_locked": 10521880.524724102,
+    "lock_ratio": 1.0
   },
   {
     "block": 23612127,
     "timestamp": 1760863283,
     "datetime": "2025-10-19T08:41:23",
-    "supply_yb": 10521880.524724102
+    "supply_yb": 10521880.524724102,
+    "yb_locked": 10521880.524724102,
+    "lock_ratio": 1.0
   },
   {
     "block": 23612427,
     "timestamp": 1760866883,
     "datetime": "2025-10-19T09:41:23",
-    "supply_yb": 10523649.20334661
+    "supply_yb": 10523649.20334661,
+    "yb_locked": 10523649.20334661,
+    "lock_ratio": 1.0
   },
   {
     "block": 23612727,
     "timestamp": 1760870483,
     "datetime": "2025-10-19T10:41:23",
-    "supply_yb": 10523650.20334661
+    "supply_yb": 10523650.20334661,
+    "yb_locked": 10523650.20334661,
+    "lock_ratio": 1.0
   },
   {
     "block": 23613027,
     "timestamp": 1760874083,
     "datetime": "2025-10-19T11:41:23",
-    "supply_yb": 10523650.20334661
+    "supply_yb": 10523650.20334661,
+    "yb_locked": 10523650.20334661,
+    "lock_ratio": 1.0
   },
   {
     "block": 23613327,
     "timestamp": 1760877683,
     "datetime": "2025-10-19T12:41:23",
-    "supply_yb": 10523650.20334661
+    "supply_yb": 10523650.20334661,
+    "yb_locked": 10523650.20334661,
+    "lock_ratio": 1.0
   },
   {
     "block": 23613627,
     "timestamp": 1760881283,
     "datetime": "2025-10-19T13:41:23",
-    "supply_yb": 10523650.20334661
+    "supply_yb": 10523650.20334661,
+    "yb_locked": 10523650.20334661,
+    "lock_ratio": 1.0
   },
   {
     "block": 23613927,
     "timestamp": 1760884883,
     "datetime": "2025-10-19T14:41:23",
-    "supply_yb": 10523650.20334661
+    "supply_yb": 10523650.20334661,
+    "yb_locked": 10523650.20334661,
+    "lock_ratio": 1.0
   },
   {
     "block": 23614227,
     "timestamp": 1760888483,
     "datetime": "2025-10-19T15:41:23",
-    "supply_yb": 10524561.212825568
+    "supply_yb": 10524561.212825568,
+    "yb_locked": 10524561.212825568,
+    "lock_ratio": 1.0
   },
   {
     "block": 23614527,
     "timestamp": 1760892083,
     "datetime": "2025-10-19T16:41:23",
-    "supply_yb": 10528973.130135741
+    "supply_yb": 10528973.130135741,
+    "yb_locked": 10528973.130135741,
+    "lock_ratio": 1.0
   },
   {
     "block": 23614827,
     "timestamp": 1760895683,
     "datetime": "2025-10-19T17:41:23",
-    "supply_yb": 10528973.130135741
+    "supply_yb": 10528973.130135741,
+    "yb_locked": 10528973.130135741,
+    "lock_ratio": 1.0
   },
   {
     "block": 23615127,
     "timestamp": 1760899283,
     "datetime": "2025-10-19T18:41:23",
-    "supply_yb": 10528973.130135741
+    "supply_yb": 10528973.130135741,
+    "yb_locked": 10528973.130135741,
+    "lock_ratio": 1.0
   },
   {
     "block": 23615427,
     "timestamp": 1760902883,
     "datetime": "2025-10-19T19:41:23",
-    "supply_yb": 10528973.130135741
+    "supply_yb": 10528973.130135741,
+    "yb_locked": 10528973.130135741,
+    "lock_ratio": 1.0
   },
   {
     "block": 23615727,
     "timestamp": 1760906483,
     "datetime": "2025-10-19T20:41:23",
-    "supply_yb": 10529190.194070917
+    "supply_yb": 10529190.194070917,
+    "yb_locked": 10529190.194070917,
+    "lock_ratio": 1.0
   },
   {
     "block": 23616027,
     "timestamp": 1760910083,
     "datetime": "2025-10-19T21:41:23",
-    "supply_yb": 10529943.260145122
+    "supply_yb": 10529943.260145122,
+    "yb_locked": 10529943.260145122,
+    "lock_ratio": 1.0
   },
   {
     "block": 23616327,
     "timestamp": 1760913683,
     "datetime": "2025-10-19T22:41:23",
-    "supply_yb": 10529943.260145122
+    "supply_yb": 10529943.260145122,
+    "yb_locked": 10529943.260145122,
+    "lock_ratio": 1.0
   },
   {
     "block": 23616627,
     "timestamp": 1760917283,
     "datetime": "2025-10-19T23:41:23",
-    "supply_yb": 10532252.441209706
+    "supply_yb": 10532252.441209706,
+    "yb_locked": 10532252.441209706,
+    "lock_ratio": 1.0
   },
   {
     "block": 23616927,
     "timestamp": 1760920883,
     "datetime": "2025-10-20T00:41:23",
-    "supply_yb": 10532252.441209706
+    "supply_yb": 10532252.441209706,
+    "yb_locked": 10532252.441209706,
+    "lock_ratio": 1.0
   },
   {
     "block": 23617227,
     "timestamp": 1760924483,
     "datetime": "2025-10-20T01:41:23",
-    "supply_yb": 10538002.647609055
+    "supply_yb": 10538002.647609055,
+    "yb_locked": 10538002.647609055,
+    "lock_ratio": 1.0
   },
   {
     "block": 23617527,
     "timestamp": 1760928083,
     "datetime": "2025-10-20T02:41:23",
-    "supply_yb": 10538002.647609055
+    "supply_yb": 10538002.647609055,
+    "yb_locked": 10538002.647609055,
+    "lock_ratio": 1.0
   },
   {
     "block": 23617827,
     "timestamp": 1760931683,
     "datetime": "2025-10-20T03:41:23",
-    "supply_yb": 10542411.648048451
+    "supply_yb": 10542411.648048451,
+    "yb_locked": 10542411.648048451,
+    "lock_ratio": 1.0
   },
   {
     "block": 23618127,
     "timestamp": 1760935283,
     "datetime": "2025-10-20T04:41:23",
-    "supply_yb": 10542411.648048451
+    "supply_yb": 10542411.648048451,
+    "yb_locked": 10542411.648048451,
+    "lock_ratio": 1.0
   },
   {
     "block": 23618427,
     "timestamp": 1760938883,
     "datetime": "2025-10-20T05:41:23",
-    "supply_yb": 10544911.648048451
+    "supply_yb": 10544911.648048451,
+    "yb_locked": 10544911.648048451,
+    "lock_ratio": 1.0
   },
   {
     "block": 23618727,
     "timestamp": 1760942483,
     "datetime": "2025-10-20T06:41:23",
-    "supply_yb": 10544911.648048451
+    "supply_yb": 10544911.648048451,
+    "yb_locked": 10544911.648048451,
+    "lock_ratio": 1.0
   },
   {
     "block": 23619027,
     "timestamp": 1760946083,
     "datetime": "2025-10-20T07:41:23",
-    "supply_yb": 10544911.648048451
+    "supply_yb": 10544911.648048451,
+    "yb_locked": 10544911.648048451,
+    "lock_ratio": 1.0
   },
   {
     "block": 23619327,
     "timestamp": 1760949683,
     "datetime": "2025-10-20T08:41:23",
-    "supply_yb": 10544911.648048451
+    "supply_yb": 10544911.648048451,
+    "yb_locked": 10544911.648048451,
+    "lock_ratio": 1.0
   },
   {
     "block": 23619627,
     "timestamp": 1760953283,
     "datetime": "2025-10-20T09:41:23",
-    "supply_yb": 10544911.648048451
+    "supply_yb": 10544911.648048451,
+    "yb_locked": 10544911.648048451,
+    "lock_ratio": 1.0
   },
   {
     "block": 23619927,
     "timestamp": 1760956883,
     "datetime": "2025-10-20T10:41:23",
-    "supply_yb": 10544911.648048451
+    "supply_yb": 10544911.648048451,
+    "yb_locked": 10544911.648048451,
+    "lock_ratio": 1.0
   },
   {
     "block": 23620227,
     "timestamp": 1760960483,
     "datetime": "2025-10-20T11:41:23",
-    "supply_yb": 10544911.648048451
+    "supply_yb": 10544911.648048451,
+    "yb_locked": 10544911.648048451,
+    "lock_ratio": 1.0
   },
   {
     "block": 23620527,
     "timestamp": 1760964083,
     "datetime": "2025-10-20T12:41:23",
-    "supply_yb": 10544911.648048451
+    "supply_yb": 10544911.648048451,
+    "yb_locked": 10544911.648048451,
+    "lock_ratio": 1.0
   },
   {
     "block": 23620827,
     "timestamp": 1760967683,
     "datetime": "2025-10-20T13:41:23",
-    "supply_yb": 10544911.648048451
+    "supply_yb": 10544911.648048451,
+    "yb_locked": 10544911.648048451,
+    "lock_ratio": 1.0
   },
   {
     "block": 23621127,
     "timestamp": 1760971283,
     "datetime": "2025-10-20T14:41:23",
-    "supply_yb": 10545807.234045407
+    "supply_yb": 10545807.234045407,
+    "yb_locked": 10545807.234045407,
+    "lock_ratio": 1.0
   },
   {
     "block": 23621427,
     "timestamp": 1760974883,
     "datetime": "2025-10-20T15:41:23",
-    "supply_yb": 10545807.234045407
+    "supply_yb": 10545807.234045407,
+    "yb_locked": 10545807.234045407,
+    "lock_ratio": 1.0
   },
   {
     "block": 23621727,
     "timestamp": 1760978483,
     "datetime": "2025-10-20T16:41:23",
-    "supply_yb": 10547787.330144111
+    "supply_yb": 10547787.330144111,
+    "yb_locked": 10547787.330144111,
+    "lock_ratio": 1.0
   },
   {
     "block": 23622027,
     "timestamp": 1760982083,
     "datetime": "2025-10-20T17:41:23",
-    "supply_yb": 10547787.330144111
+    "supply_yb": 10547787.330144111,
+    "yb_locked": 10547787.330144111,
+    "lock_ratio": 1.0
   },
   {
     "block": 23622327,
     "timestamp": 1760985683,
     "datetime": "2025-10-20T18:41:23",
-    "supply_yb": 10547787.330144111
+    "supply_yb": 10547787.330144111,
+    "yb_locked": 10547787.330144111,
+    "lock_ratio": 1.0
   },
   {
     "block": 23622627,
     "timestamp": 1760989283,
     "datetime": "2025-10-20T19:41:23",
-    "supply_yb": 10547787.330144111
+    "supply_yb": 10547787.330144111,
+    "yb_locked": 10547787.330144111,
+    "lock_ratio": 1.0
   },
   {
     "block": 23622927,
     "timestamp": 1760992883,
     "datetime": "2025-10-20T20:41:23",
-    "supply_yb": 10547787.330144111
+    "supply_yb": 10547787.330144111,
+    "yb_locked": 10547787.330144111,
+    "lock_ratio": 1.0
   },
   {
     "block": 23623227,
     "timestamp": 1760996483,
     "datetime": "2025-10-20T21:41:23",
-    "supply_yb": 10707460.048154647
+    "supply_yb": 10707460.048154647,
+    "yb_locked": 10707460.048154647,
+    "lock_ratio": 1.0
   },
   {
     "block": 23623527,
     "timestamp": 1761000083,
     "datetime": "2025-10-20T22:41:23",
-    "supply_yb": 10707460.048154647
+    "supply_yb": 10707460.048154647,
+    "yb_locked": 10707460.048154647,
+    "lock_ratio": 1.0
   },
   {
     "block": 23623827,
     "timestamp": 1761003683,
     "datetime": "2025-10-20T23:41:23",
-    "supply_yb": 10707987.64596796
+    "supply_yb": 10707987.64596796,
+    "yb_locked": 10707987.64596796,
+    "lock_ratio": 1.0
   },
   {
     "block": 23624127,
     "timestamp": 1761007283,
     "datetime": "2025-10-21T00:41:23",
-    "supply_yb": 10707987.64596796
+    "supply_yb": 10707987.64596796,
+    "yb_locked": 10707987.64596796,
+    "lock_ratio": 1.0
   },
   {
     "block": 23624427,
     "timestamp": 1761010883,
     "datetime": "2025-10-21T01:41:23",
-    "supply_yb": 10719436.086360592
+    "supply_yb": 10719436.086360592,
+    "yb_locked": 10719436.086360592,
+    "lock_ratio": 1.0
   },
   {
     "block": 23624727,
     "timestamp": 1761014483,
     "datetime": "2025-10-21T02:41:23",
-    "supply_yb": 10719501.086360592
+    "supply_yb": 10719501.086360592,
+    "yb_locked": 10719501.086360592,
+    "lock_ratio": 1.0
   },
   {
     "block": 23625027,
     "timestamp": 1761018083,
     "datetime": "2025-10-21T03:41:23",
-    "supply_yb": 10719501.086360592
+    "supply_yb": 10719501.086360592,
+    "yb_locked": 10719501.086360592,
+    "lock_ratio": 1.0
   },
   {
     "block": 23625327,
     "timestamp": 1761021683,
     "datetime": "2025-10-21T04:41:23",
-    "supply_yb": 10719501.086360592
+    "supply_yb": 10719501.086360592,
+    "yb_locked": 10719501.086360592,
+    "lock_ratio": 1.0
   },
   {
     "block": 23625627,
     "timestamp": 1761025283,
     "datetime": "2025-10-21T05:41:23",
-    "supply_yb": 10719501.086360592
+    "supply_yb": 10719501.086360592,
+    "yb_locked": 10719501.086360592,
+    "lock_ratio": 1.0
   },
   {
     "block": 23625927,
     "timestamp": 1761028883,
     "datetime": "2025-10-21T06:41:23",
-    "supply_yb": 10719501.086360592
+    "supply_yb": 10719501.086360592,
+    "yb_locked": 10719501.086360592,
+    "lock_ratio": 1.0
   },
   {
     "block": 23626227,
     "timestamp": 1761032483,
     "datetime": "2025-10-21T07:41:23",
-    "supply_yb": 10793684.959179547
+    "supply_yb": 10793684.959179547,
+    "yb_locked": 10793684.959179547,
+    "lock_ratio": 1.0
   },
   {
     "block": 23626527,
     "timestamp": 1761036083,
     "datetime": "2025-10-21T08:41:23",
-    "supply_yb": 10806302.65165909
+    "supply_yb": 10806302.65165909,
+    "yb_locked": 10806302.65165909,
+    "lock_ratio": 1.0
   },
   {
     "block": 23626827,
     "timestamp": 1761039683,
     "datetime": "2025-10-21T09:41:23",
-    "supply_yb": 10818478.577466715
+    "supply_yb": 10818478.577466715,
+    "yb_locked": 10818478.577466715,
+    "lock_ratio": 1.0
   },
   {
     "block": 23627127,
     "timestamp": 1761043283,
     "datetime": "2025-10-21T10:41:23",
-    "supply_yb": 10818478.577466715
+    "supply_yb": 10818478.577466715,
+    "yb_locked": 10818478.577466715,
+    "lock_ratio": 1.0
   },
   {
     "block": 23627427,
     "timestamp": 1761046883,
     "datetime": "2025-10-21T11:41:23",
-    "supply_yb": 10818990.694208702
+    "supply_yb": 10818990.694208702,
+    "yb_locked": 10818990.694208702,
+    "lock_ratio": 1.0
   },
   {
     "block": 23627727,
     "timestamp": 1761050483,
     "datetime": "2025-10-21T12:41:23",
-    "supply_yb": 11040795.199305065
+    "supply_yb": 11040795.199305065,
+    "yb_locked": 11040795.199305065,
+    "lock_ratio": 1.0
   },
   {
     "block": 23628027,
     "timestamp": 1761054083,
     "datetime": "2025-10-21T13:41:23",
-    "supply_yb": 11048356.37580505
+    "supply_yb": 11048356.37580505,
+    "yb_locked": 11048356.37580505,
+    "lock_ratio": 1.0
   },
   {
     "block": 23628327,
     "timestamp": 1761057683,
     "datetime": "2025-10-21T14:41:23",
-    "supply_yb": 11059539.586305868
+    "supply_yb": 11059539.586305868,
+    "yb_locked": 11059539.586305868,
+    "lock_ratio": 1.0
   },
   {
     "block": 23628627,
     "timestamp": 1761061283,
     "datetime": "2025-10-21T15:41:23",
-    "supply_yb": 11059539.586305868
+    "supply_yb": 11059539.586305868,
+    "yb_locked": 11059539.586305868,
+    "lock_ratio": 1.0
   },
   {
     "block": 23628927,
     "timestamp": 1761064883,
     "datetime": "2025-10-21T16:41:23",
-    "supply_yb": 11061012.392840868
+    "supply_yb": 11061012.392840868,
+    "yb_locked": 11061012.392840868,
+    "lock_ratio": 1.0
   },
   {
     "block": 23629227,
     "timestamp": 1761068483,
     "datetime": "2025-10-21T17:41:23",
-    "supply_yb": 11076017.964658625
+    "supply_yb": 11076017.964658625,
+    "yb_locked": 11076017.964658625,
+    "lock_ratio": 1.0
   },
   {
     "block": 23629527,
     "timestamp": 1761072083,
     "datetime": "2025-10-21T18:41:23",
-    "supply_yb": 11076017.964658625
+    "supply_yb": 11076017.964658625,
+    "yb_locked": 11076017.964658625,
+    "lock_ratio": 1.0
   },
   {
     "block": 23629827,
     "timestamp": 1761075683,
     "datetime": "2025-10-21T19:41:23",
-    "supply_yb": 11076124.473358914
+    "supply_yb": 11076124.473358914,
+    "yb_locked": 11076124.473358914,
+    "lock_ratio": 1.0
   },
   {
     "block": 23630127,
     "timestamp": 1761079283,
     "datetime": "2025-10-21T20:41:23",
-    "supply_yb": 11076124.473358914
+    "supply_yb": 11076124.473358914,
+    "yb_locked": 11076124.473358914,
+    "lock_ratio": 1.0
   },
   {
     "block": 23630427,
     "timestamp": 1761082883,
     "datetime": "2025-10-21T21:41:23",
-    "supply_yb": 11122039.057888057
+    "supply_yb": 11122039.057888057,
+    "yb_locked": 11122039.057888057,
+    "lock_ratio": 1.0
   },
   {
     "block": 23630727,
     "timestamp": 1761086483,
     "datetime": "2025-10-21T22:41:23",
-    "supply_yb": 11122039.057888057
+    "supply_yb": 11122039.057888057,
+    "yb_locked": 11122039.057888057,
+    "lock_ratio": 1.0
   },
   {
     "block": 23631027,
     "timestamp": 1761090083,
     "datetime": "2025-10-21T23:41:23",
-    "supply_yb": 11123539.057888057
+    "supply_yb": 11123539.057888057,
+    "yb_locked": 11123539.057888057,
+    "lock_ratio": 1.0
   },
   {
     "block": 23631327,
     "timestamp": 1761093683,
     "datetime": "2025-10-22T00:41:23",
-    "supply_yb": 11123539.057888057
+    "supply_yb": 11123539.057888057,
+    "yb_locked": 11123539.057888057,
+    "lock_ratio": 1.0
   },
   {
     "block": 23631627,
     "timestamp": 1761097283,
     "datetime": "2025-10-22T01:41:23",
-    "supply_yb": 11126489.434939813
+    "supply_yb": 11126489.434939813,
+    "yb_locked": 11126489.434939813,
+    "lock_ratio": 1.0
   },
   {
     "block": 23631927,
     "timestamp": 1761100883,
     "datetime": "2025-10-22T02:41:23",
-    "supply_yb": 11128867.270932587
+    "supply_yb": 11128867.270932587,
+    "yb_locked": 11128867.270932587,
+    "lock_ratio": 1.0
   },
   {
     "block": 23632227,
     "timestamp": 1761104483,
     "datetime": "2025-10-22T03:41:23",
-    "supply_yb": 11131070.867263198
+    "supply_yb": 11131070.867263198,
+    "yb_locked": 11131070.867263198,
+    "lock_ratio": 1.0
   },
   {
     "block": 23632527,
     "timestamp": 1761108083,
     "datetime": "2025-10-22T04:41:23",
-    "supply_yb": 11141720.867263198
+    "supply_yb": 11141720.867263198,
+    "yb_locked": 11141720.867263198,
+    "lock_ratio": 1.0
   },
   {
     "block": 23632827,
     "timestamp": 1761111683,
     "datetime": "2025-10-22T05:41:23",
-    "supply_yb": 11141720.867263198
+    "supply_yb": 11141720.867263198,
+    "yb_locked": 11141720.867263198,
+    "lock_ratio": 1.0
   },
   {
     "block": 23633127,
     "timestamp": 1761115283,
     "datetime": "2025-10-22T06:41:23",
-    "supply_yb": 11153549.528829757
+    "supply_yb": 11153549.528829757,
+    "yb_locked": 11153549.528829757,
+    "lock_ratio": 1.0
   },
   {
     "block": 23633427,
     "timestamp": 1761118883,
     "datetime": "2025-10-22T07:41:23",
-    "supply_yb": 11153549.528829757
+    "supply_yb": 11153549.528829757,
+    "yb_locked": 11153549.528829757,
+    "lock_ratio": 1.0
   },
   {
     "block": 23633727,
     "timestamp": 1761122483,
     "datetime": "2025-10-22T08:41:23",
-    "supply_yb": 11161850.925860714
+    "supply_yb": 11161850.925860714,
+    "yb_locked": 11161850.925860714,
+    "lock_ratio": 1.0
   },
   {
     "block": 23634027,
     "timestamp": 1761126083,
     "datetime": "2025-10-22T09:41:23",
-    "supply_yb": 11162693.856217587
+    "supply_yb": 11162693.856217587,
+    "yb_locked": 11162693.856217587,
+    "lock_ratio": 1.0
   },
   {
     "block": 23634327,
     "timestamp": 1761129683,
     "datetime": "2025-10-22T10:41:23",
-    "supply_yb": 11188472.179154864
+    "supply_yb": 11188472.179154864,
+    "yb_locked": 11188472.179154864,
+    "lock_ratio": 1.0
   },
   {
     "block": 23634627,
     "timestamp": 1761133283,
     "datetime": "2025-10-22T11:41:23",
-    "supply_yb": 11190365.929385865
+    "supply_yb": 11190365.929385865,
+    "yb_locked": 11190365.929385865,
+    "lock_ratio": 1.0
   },
   {
     "block": 23634927,
     "timestamp": 1761136883,
     "datetime": "2025-10-22T12:41:23",
-    "supply_yb": 11211482.031492865
+    "supply_yb": 11211482.031492865,
+    "yb_locked": 11211482.031492865,
+    "lock_ratio": 1.0
   },
   {
     "block": 23635227,
     "timestamp": 1761140483,
     "datetime": "2025-10-22T13:41:23",
-    "supply_yb": 11211484.539102945
+    "supply_yb": 11211484.539102945,
+    "yb_locked": 11211484.539102945,
+    "lock_ratio": 1.0
   },
   {
     "block": 23635527,
     "timestamp": 1761144083,
     "datetime": "2025-10-22T14:41:23",
-    "supply_yb": 11213176.924967881
+    "supply_yb": 11213176.924967881,
+    "yb_locked": 11213176.924967881,
+    "lock_ratio": 1.0
   },
   {
     "block": 23635827,
     "timestamp": 1761147683,
     "datetime": "2025-10-22T15:41:23",
-    "supply_yb": 11213176.924967881
+    "supply_yb": 11213176.924967881,
+    "yb_locked": 11213176.924967881,
+    "lock_ratio": 1.0
   },
   {
     "block": 23636127,
     "timestamp": 1761151283,
     "datetime": "2025-10-22T16:41:23",
-    "supply_yb": 11213176.924967881
+    "supply_yb": 11213176.924967881,
+    "yb_locked": 11213176.924967881,
+    "lock_ratio": 1.0
   },
   {
     "block": 23636427,
     "timestamp": 1761154883,
     "datetime": "2025-10-22T17:41:23",
-    "supply_yb": 11213176.924967881
+    "supply_yb": 11213176.924967881,
+    "yb_locked": 11213176.924967881,
+    "lock_ratio": 1.0
   },
   {
     "block": 23636727,
     "timestamp": 1761158483,
     "datetime": "2025-10-22T18:41:23",
-    "supply_yb": 11214238.784669688
+    "supply_yb": 11214238.784669688,
+    "yb_locked": 11214238.784669688,
+    "lock_ratio": 1.0
   },
   {
     "block": 23637027,
     "timestamp": 1761162083,
     "datetime": "2025-10-22T19:41:23",
-    "supply_yb": 11238176.796574518
+    "supply_yb": 11238176.796574518,
+    "yb_locked": 11238176.796574518,
+    "lock_ratio": 1.0
   },
   {
     "block": 23637327,
     "timestamp": 1761165683,
     "datetime": "2025-10-22T20:41:23",
-    "supply_yb": 11241586.728081368
+    "supply_yb": 11241586.728081368,
+    "yb_locked": 11241586.728081368,
+    "lock_ratio": 1.0
   },
   {
     "block": 23637627,
     "timestamp": 1761169283,
     "datetime": "2025-10-22T21:41:23",
-    "supply_yb": 11244200.801169677
+    "supply_yb": 11244200.801169677,
+    "yb_locked": 11244200.801169677,
+    "lock_ratio": 1.0
   },
   {
     "block": 23637927,
     "timestamp": 1761172883,
     "datetime": "2025-10-22T22:41:23",
-    "supply_yb": 11244211.801169677
+    "supply_yb": 11244211.801169677,
+    "yb_locked": 11244211.801169677,
+    "lock_ratio": 1.0
   },
   {
     "block": 23638227,
     "timestamp": 1761176483,
     "datetime": "2025-10-22T23:41:23",
-    "supply_yb": 11244211.801169677
+    "supply_yb": 11244211.801169677,
+    "yb_locked": 11244211.801169677,
+    "lock_ratio": 1.0
   },
   {
     "block": 23638527,
     "timestamp": 1761180083,
     "datetime": "2025-10-23T00:41:23",
-    "supply_yb": 11245149.801169677
+    "supply_yb": 11245149.801169677,
+    "yb_locked": 11245149.801169677,
+    "lock_ratio": 1.0
   },
   {
     "block": 23638827,
     "timestamp": 1761183683,
     "datetime": "2025-10-23T01:41:23",
-    "supply_yb": 11245149.801169677
+    "supply_yb": 11245149.801169677,
+    "yb_locked": 11245149.801169677,
+    "lock_ratio": 1.0
   },
   {
     "block": 23639127,
     "timestamp": 1761187283,
     "datetime": "2025-10-23T02:41:23",
-    "supply_yb": 11245865.4296507
+    "supply_yb": 11245865.4296507,
+    "yb_locked": 11245865.4296507,
+    "lock_ratio": 1.0
   },
   {
     "block": 23639427,
     "timestamp": 1761190883,
     "datetime": "2025-10-23T03:41:23",
-    "supply_yb": 11295682.668612814
+    "supply_yb": 11295682.668612814,
+    "yb_locked": 11295682.668612814,
+    "lock_ratio": 1.0
   },
   {
     "block": 23639727,
     "timestamp": 1761194483,
     "datetime": "2025-10-23T04:41:23",
-    "supply_yb": 11297793.653214509
+    "supply_yb": 11297793.653214509,
+    "yb_locked": 11297793.653214509,
+    "lock_ratio": 1.0
   },
   {
     "block": 23640027,
     "timestamp": 1761198083,
     "datetime": "2025-10-23T05:41:23",
-    "supply_yb": 11298949.338150006
+    "supply_yb": 11298949.338150006,
+    "yb_locked": 11298949.338150006,
+    "lock_ratio": 1.0
   },
   {
     "block": 23640327,
     "timestamp": 1761201683,
     "datetime": "2025-10-23T06:41:23",
-    "supply_yb": 11300000.138150005
+    "supply_yb": 11300000.138150005,
+    "yb_locked": 11300000.138150005,
+    "lock_ratio": 1.0
   },
   {
     "block": 23640627,
     "timestamp": 1761205283,
     "datetime": "2025-10-23T07:41:23",
-    "supply_yb": 11315225.044440327
+    "supply_yb": 11315225.044440327,
+    "yb_locked": 11315225.044440327,
+    "lock_ratio": 1.0
   },
   {
     "block": 23640927,
     "timestamp": 1761231239,
     "datetime": "2025-10-23T14:53:59",
-    "supply_yb": 11315685.044440327
+    "supply_yb": 11315685.044440327,
+    "yb_locked": 11315685.044440327,
+    "lock_ratio": 1.0
   },
   {
     "block": 23641227,
     "timestamp": 1761212483,
     "datetime": "2025-10-23T09:41:23",
-    "supply_yb": 11348711.320619667
+    "supply_yb": 11348711.320619667,
+    "yb_locked": 11348711.320619667,
+    "lock_ratio": 1.0
   },
   {
     "block": 23641527,
     "timestamp": 1761216083,
     "datetime": "2025-10-23T10:41:23",
-    "supply_yb": 11348711.320619667
+    "supply_yb": 11348711.320619667,
+    "yb_locked": 11348711.320619667,
+    "lock_ratio": 1.0
   },
   {
     "block": 23641827,
     "timestamp": 1761219683,
     "datetime": "2025-10-23T11:41:23",
-    "supply_yb": 11349885.320619667
+    "supply_yb": 11349885.320619667,
+    "yb_locked": 11349885.320619667,
+    "lock_ratio": 1.0
   },
   {
     "block": 23642127,
     "timestamp": 1761223283,
     "datetime": "2025-10-23T12:41:23",
-    "supply_yb": 11432642.327707544
+    "supply_yb": 11432642.327707544,
+    "yb_locked": 11432642.327707544,
+    "lock_ratio": 1.0
   },
   {
     "block": 23642427,
     "timestamp": 1761226883,
     "datetime": "2025-10-23T13:41:23",
-    "supply_yb": 11435642.327707544
+    "supply_yb": 11435642.327707544,
+    "yb_locked": 11435642.327707544,
+    "lock_ratio": 1.0
   },
   {
     "block": 23642727,
     "timestamp": 1761230483,
     "datetime": "2025-10-23T14:41:23",
-    "supply_yb": 11435642.327707544
+    "supply_yb": 11435642.327707544,
+    "yb_locked": 11435642.327707544,
+    "lock_ratio": 1.0
   },
   {
     "block": 23643027,
     "timestamp": 1761234083,
     "datetime": "2025-10-23T15:41:23",
-    "supply_yb": 11435800.006557599
+    "supply_yb": 11435800.006557599,
+    "yb_locked": 11435800.006557599,
+    "lock_ratio": 1.0
   },
   {
     "block": 23643327,
     "timestamp": 1761237683,
     "datetime": "2025-10-23T16:41:23",
-    "supply_yb": 11437368.864297599
+    "supply_yb": 11437368.864297599,
+    "yb_locked": 11437368.864297599,
+    "lock_ratio": 1.0
   },
   {
     "block": 23643627,
     "timestamp": 1761241283,
     "datetime": "2025-10-23T17:41:23",
-    "supply_yb": 11443400.85584079
+    "supply_yb": 11443400.85584079,
+    "yb_locked": 11443400.85584079,
+    "lock_ratio": 1.0
   },
   {
     "block": 23643927,
     "timestamp": 1761244883,
     "datetime": "2025-10-23T18:41:23",
-    "supply_yb": 11443400.85584079
+    "supply_yb": 11443400.85584079,
+    "yb_locked": 11443400.85584079,
+    "lock_ratio": 1.0
   },
   {
     "block": 23644227,
     "timestamp": 1761248483,
     "datetime": "2025-10-23T19:41:23",
-    "supply_yb": 11444609.097974572
+    "supply_yb": 11444609.097974572,
+    "yb_locked": 11444609.097974572,
+    "lock_ratio": 1.0
   },
   {
     "block": 23644527,
     "timestamp": 1761252083,
     "datetime": "2025-10-23T20:41:23",
-    "supply_yb": 11444609.097974572
+    "supply_yb": 11444609.097974572,
+    "yb_locked": 11444609.097974572,
+    "lock_ratio": 1.0
   },
   {
     "block": 23644827,
     "timestamp": 1761255683,
     "datetime": "2025-10-23T21:41:23",
-    "supply_yb": 11446752.927474571
+    "supply_yb": 11446752.927474571,
+    "yb_locked": 11446752.927474571,
+    "lock_ratio": 1.0
   },
   {
     "block": 23645127,
     "timestamp": 1761259283,
     "datetime": "2025-10-23T22:41:23",
-    "supply_yb": 11454190.636689076
+    "supply_yb": 11454190.636689076,
+    "yb_locked": 11454190.636689076,
+    "lock_ratio": 1.0
   },
   {
     "block": 23645427,
     "timestamp": 1761262883,
     "datetime": "2025-10-23T23:41:23",
-    "supply_yb": 11454190.636689076
+    "supply_yb": 11454190.636689076,
+    "yb_locked": 11454190.636689076,
+    "lock_ratio": 1.0
   },
   {
     "block": 23645727,
     "timestamp": 1761266483,
     "datetime": "2025-10-24T00:41:23",
-    "supply_yb": 11454190.636689076
+    "supply_yb": 11454190.636689076,
+    "yb_locked": 11454190.636689076,
+    "lock_ratio": 1.0
   },
   {
     "block": 23646027,
     "timestamp": 1761270083,
     "datetime": "2025-10-24T01:41:23",
-    "supply_yb": 11455186.126689076
+    "supply_yb": 11455186.126689076,
+    "yb_locked": 11455186.126689076,
+    "lock_ratio": 1.0
   },
   {
     "block": 23646327,
     "timestamp": 1761273683,
     "datetime": "2025-10-24T02:41:23",
-    "supply_yb": 11556419.490672374
+    "supply_yb": 11556419.490672374,
+    "yb_locked": 11556419.490672374,
+    "lock_ratio": 1.0
   },
   {
     "block": 23646627,
     "timestamp": 1761277283,
     "datetime": "2025-10-24T03:41:23",
-    "supply_yb": 11556419.490672374
+    "supply_yb": 11556419.490672374,
+    "yb_locked": 11556419.490672374,
+    "lock_ratio": 1.0
   },
   {
     "block": 23646927,
     "timestamp": 1761280883,
     "datetime": "2025-10-24T04:41:23",
-    "supply_yb": 11556419.490672374
+    "supply_yb": 11556419.490672374,
+    "yb_locked": 11556419.490672374,
+    "lock_ratio": 1.0
   },
   {
     "block": 23647227,
     "timestamp": 1761284483,
     "datetime": "2025-10-24T05:41:23",
-    "supply_yb": 11556419.490672374
+    "supply_yb": 11556419.490672374,
+    "yb_locked": 11556419.490672374,
+    "lock_ratio": 1.0
   },
   {
     "block": 23647527,
     "timestamp": 1761288083,
     "datetime": "2025-10-24T06:41:23",
-    "supply_yb": 11557168.261729553
+    "supply_yb": 11557168.261729553,
+    "yb_locked": 11557168.261729553,
+    "lock_ratio": 1.0
   },
   {
     "block": 23647827,
     "timestamp": 1761291683,
     "datetime": "2025-10-24T07:41:23",
-    "supply_yb": 11563370.646013903
+    "supply_yb": 11563370.646013903,
+    "yb_locked": 11563370.646013903,
+    "lock_ratio": 1.0
   },
   {
     "block": 23648127,
     "timestamp": 1761295283,
     "datetime": "2025-10-24T08:41:23",
-    "supply_yb": 11573786.464583997
+    "supply_yb": 11573786.464583997,
+    "yb_locked": 11573786.464583997,
+    "lock_ratio": 1.0
   },
   {
     "block": 23648427,
     "timestamp": 1761298883,
     "datetime": "2025-10-24T09:41:23",
-    "supply_yb": 11584411.207734682
+    "supply_yb": 11584411.207734682,
+    "yb_locked": 11584411.207734682,
+    "lock_ratio": 1.0
   },
   {
     "block": 23648727,
     "timestamp": 1761302483,
     "datetime": "2025-10-24T10:41:23",
-    "supply_yb": 11584642.50272128
+    "supply_yb": 11584642.50272128,
+    "yb_locked": 11584642.50272128,
+    "lock_ratio": 1.0
   },
   {
     "block": 23649027,
     "timestamp": 1761306083,
     "datetime": "2025-10-24T11:41:23",
-    "supply_yb": 11584642.50272128
+    "supply_yb": 11584642.50272128,
+    "yb_locked": 11584642.50272128,
+    "lock_ratio": 1.0
   },
   {
     "block": 23649327,
     "timestamp": 1761309683,
     "datetime": "2025-10-24T12:41:23",
-    "supply_yb": 11586492.52142128
+    "supply_yb": 11586492.52142128,
+    "yb_locked": 11586492.52142128,
+    "lock_ratio": 1.0
   },
   {
     "block": 23649627,
     "timestamp": 1761313283,
     "datetime": "2025-10-24T13:41:23",
-    "supply_yb": 11586492.52142128
+    "supply_yb": 11586492.52142128,
+    "yb_locked": 11586492.52142128,
+    "lock_ratio": 1.0
   },
   {
     "block": 23649927,
     "timestamp": 1761316883,
     "datetime": "2025-10-24T14:41:23",
-    "supply_yb": 11586632.851884387
+    "supply_yb": 11586632.851884387,
+    "yb_locked": 11586632.851884387,
+    "lock_ratio": 1.0
   },
   {
     "block": 23650227,
     "timestamp": 1761320483,
     "datetime": "2025-10-24T15:41:23",
-    "supply_yb": 11589392.005785748
+    "supply_yb": 11589392.005785748,
+    "yb_locked": 11589392.005785748,
+    "lock_ratio": 1.0
   },
   {
     "block": 23650527,
     "timestamp": 1761324083,
     "datetime": "2025-10-24T16:41:23",
-    "supply_yb": 11589392.005785748
+    "supply_yb": 11589392.005785748,
+    "yb_locked": 11589392.005785748,
+    "lock_ratio": 1.0
   },
   {
     "block": 23650827,
     "timestamp": 1761327683,
     "datetime": "2025-10-24T17:41:23",
-    "supply_yb": 11589755.380422276
+    "supply_yb": 11589755.380422276,
+    "yb_locked": 11589755.380422276,
+    "lock_ratio": 1.0
   },
   {
     "block": 23651127,
     "timestamp": 1761331283,
     "datetime": "2025-10-24T18:41:23",
-    "supply_yb": 11590188.03898502
+    "supply_yb": 11590188.03898502,
+    "yb_locked": 11590188.03898502,
+    "lock_ratio": 1.0
   },
   {
     "block": 23651427,
     "timestamp": 1761334883,
     "datetime": "2025-10-24T19:41:23",
-    "supply_yb": 11591105.116040219
+    "supply_yb": 11591105.116040219,
+    "yb_locked": 11591105.116040219,
+    "lock_ratio": 1.0
   },
   {
     "block": 23651727,
     "timestamp": 1761338483,
     "datetime": "2025-10-24T20:41:23",
-    "supply_yb": 11591105.116040219
+    "supply_yb": 11591105.116040219,
+    "yb_locked": 11591105.116040219,
+    "lock_ratio": 1.0
   },
   {
     "block": 23652027,
     "timestamp": 1761342083,
     "datetime": "2025-10-24T21:41:23",
-    "supply_yb": 11591105.116040219
+    "supply_yb": 11591105.116040219,
+    "yb_locked": 11591105.116040219,
+    "lock_ratio": 1.0
   },
   {
     "block": 23652327,
     "timestamp": 1761345683,
     "datetime": "2025-10-24T22:41:23",
-    "supply_yb": 11591105.116040219
+    "supply_yb": 11591105.116040219,
+    "yb_locked": 11591105.116040219,
+    "lock_ratio": 1.0
   },
   {
     "block": 23652627,
     "timestamp": 1761349283,
     "datetime": "2025-10-24T23:41:23",
-    "supply_yb": 11591105.116040219
+    "supply_yb": 11591105.116040219,
+    "yb_locked": 11591105.116040219,
+    "lock_ratio": 1.0
   },
   {
     "block": 23652927,
     "timestamp": 1761352883,
     "datetime": "2025-10-25T00:41:23",
-    "supply_yb": 11591105.116040219
+    "supply_yb": 11591105.116040219,
+    "yb_locked": 11591105.116040219,
+    "lock_ratio": 1.0
   },
   {
     "block": 23653227,
     "timestamp": 1761356483,
     "datetime": "2025-10-25T01:41:23",
-    "supply_yb": 11592209.882013937
+    "supply_yb": 11592209.882013937,
+    "yb_locked": 11592209.882013937,
+    "lock_ratio": 1.0
   },
   {
     "block": 23653527,
     "timestamp": 1761360083,
     "datetime": "2025-10-25T02:41:23",
-    "supply_yb": 11641137.091442833
+    "supply_yb": 11641137.091442833,
+    "yb_locked": 11641137.091442833,
+    "lock_ratio": 1.0
   },
   {
     "block": 23653827,
     "timestamp": 1761363683,
     "datetime": "2025-10-25T03:41:23",
-    "supply_yb": 11643049.182619832
+    "supply_yb": 11643049.182619832,
+    "yb_locked": 11643049.182619832,
+    "lock_ratio": 1.0
   },
   {
     "block": 23654127,
     "timestamp": 1761367283,
     "datetime": "2025-10-25T04:41:23",
-    "supply_yb": 11643049.182619832
+    "supply_yb": 11643049.182619832,
+    "yb_locked": 11643049.182619832,
+    "lock_ratio": 1.0
   },
   {
     "block": 23654427,
     "timestamp": 1761370883,
     "datetime": "2025-10-25T05:41:23",
-    "supply_yb": 11643049.182619832
+    "supply_yb": 11643049.182619832,
+    "yb_locked": 11643049.182619832,
+    "lock_ratio": 1.0
   },
   {
     "block": 23654727,
     "timestamp": 1761374483,
     "datetime": "2025-10-25T06:41:23",
-    "supply_yb": 11646701.84084424
+    "supply_yb": 11646701.84084424,
+    "yb_locked": 11646701.84084424,
+    "lock_ratio": 1.0
   },
   {
     "block": 23655027,
     "timestamp": 1761378083,
     "datetime": "2025-10-25T07:41:23",
-    "supply_yb": 11646701.84084424
+    "supply_yb": 11646701.84084424,
+    "yb_locked": 11646701.84084424,
+    "lock_ratio": 1.0
   },
   {
     "block": 23655327,
     "timestamp": 1761381683,
     "datetime": "2025-10-25T08:41:23",
-    "supply_yb": 11719756.41084424
+    "supply_yb": 11719756.41084424,
+    "yb_locked": 11719756.41084424,
+    "lock_ratio": 1.0
   },
   {
     "block": 23655627,
     "timestamp": 1761385283,
     "datetime": "2025-10-25T09:41:23",
-    "supply_yb": 11719756.41084424
+    "supply_yb": 11719756.41084424,
+    "yb_locked": 11719756.41084424,
+    "lock_ratio": 1.0
   },
   {
     "block": 23655927,
     "timestamp": 1761388883,
     "datetime": "2025-10-25T10:41:23",
-    "supply_yb": 11728506.41084424
+    "supply_yb": 11728506.41084424,
+    "yb_locked": 11728506.41084424,
+    "lock_ratio": 1.0
   },
   {
     "block": 23656227,
     "timestamp": 1761392483,
     "datetime": "2025-10-25T11:41:23",
-    "supply_yb": 11743969.69212712
+    "supply_yb": 11743969.69212712,
+    "yb_locked": 11743969.69212712,
+    "lock_ratio": 1.0
   },
   {
     "block": 23656527,
     "timestamp": 1761396083,
     "datetime": "2025-10-25T12:41:23",
-    "supply_yb": 11779370.770318804
+    "supply_yb": 11779370.770318804,
+    "yb_locked": 11779370.770318804,
+    "lock_ratio": 1.0
   },
   {
     "block": 23656827,
     "timestamp": 1761399683,
     "datetime": "2025-10-25T13:41:23",
-    "supply_yb": 11793516.703397362
+    "supply_yb": 11793516.703397362,
+    "yb_locked": 11793516.703397362,
+    "lock_ratio": 1.0
   },
   {
     "block": 23657127,
     "timestamp": 1761403283,
     "datetime": "2025-10-25T14:41:23",
-    "supply_yb": 11794888.431890849
+    "supply_yb": 11794888.431890849,
+    "yb_locked": 11794888.431890849,
+    "lock_ratio": 1.0
   },
   {
     "block": 23657427,
     "timestamp": 1761406883,
     "datetime": "2025-10-25T15:41:23",
-    "supply_yb": 11794889.431890849
+    "supply_yb": 11794889.431890849,
+    "yb_locked": 11794889.431890849,
+    "lock_ratio": 1.0
   },
   {
     "block": 23657727,
     "timestamp": 1761410483,
     "datetime": "2025-10-25T16:41:23",
-    "supply_yb": 11794889.431890849
+    "supply_yb": 11794889.431890849,
+    "yb_locked": 11794889.431890849,
+    "lock_ratio": 1.0
   },
   {
     "block": 23658027,
     "timestamp": 1761414083,
     "datetime": "2025-10-25T17:41:23",
-    "supply_yb": 11798687.863699483
+    "supply_yb": 11798687.863699483,
+    "yb_locked": 11798687.863699483,
+    "lock_ratio": 1.0
   },
   {
     "block": 23658327,
     "timestamp": 1761417683,
     "datetime": "2025-10-25T18:41:23",
-    "supply_yb": 11799389.037105372
+    "supply_yb": 11799389.037105372,
+    "yb_locked": 11799389.037105372,
+    "lock_ratio": 1.0
   },
   {
     "block": 23658627,
     "timestamp": 1761421283,
     "datetime": "2025-10-25T19:41:23",
-    "supply_yb": 11800318.9274156
+    "supply_yb": 11800318.9274156,
+    "yb_locked": 11800318.9274156,
+    "lock_ratio": 1.0
   },
   {
     "block": 23658927,
     "timestamp": 1761424883,
     "datetime": "2025-10-25T20:41:23",
-    "supply_yb": 11800318.9274156
+    "supply_yb": 11800318.9274156,
+    "yb_locked": 11800318.9274156,
+    "lock_ratio": 1.0
   },
   {
     "block": 23659227,
     "timestamp": 1761428483,
     "datetime": "2025-10-25T21:41:23",
-    "supply_yb": 11907682.41676111
+    "supply_yb": 11907682.41676111,
+    "yb_locked": 11907682.41676111,
+    "lock_ratio": 1.0
   },
   {
     "block": 23659527,
     "timestamp": 1761432083,
     "datetime": "2025-10-25T22:41:23",
-    "supply_yb": 11910287.54676111
+    "supply_yb": 11910287.54676111,
+    "yb_locked": 11910287.54676111,
+    "lock_ratio": 1.0
   },
   {
     "block": 23659827,
     "timestamp": 1761435683,
     "datetime": "2025-10-25T23:41:23",
-    "supply_yb": 11911319.793971594
+    "supply_yb": 11911319.793971594,
+    "yb_locked": 11911319.793971594,
+    "lock_ratio": 1.0
   },
   {
     "block": 23660127,
     "timestamp": 1761439283,
     "datetime": "2025-10-26T00:41:23",
-    "supply_yb": 11911319.793971594
+    "supply_yb": 11911319.793971594,
+    "yb_locked": 11911319.793971594,
+    "lock_ratio": 1.0
   },
   {
     "block": 23660427,
     "timestamp": 1761442883,
     "datetime": "2025-10-26T01:41:23",
-    "supply_yb": 12059539.83769332
+    "supply_yb": 12059539.83769332,
+    "yb_locked": 12059539.83769332,
+    "lock_ratio": 1.0
   },
   {
     "block": 23660727,
     "timestamp": 1761446483,
     "datetime": "2025-10-26T02:41:23",
-    "supply_yb": 12059539.83769332
+    "supply_yb": 12059539.83769332,
+    "yb_locked": 12059539.83769332,
+    "lock_ratio": 1.0
   },
   {
     "block": 23661027,
     "timestamp": 1761450083,
     "datetime": "2025-10-26T03:41:23",
-    "supply_yb": 12072134.40019332
+    "supply_yb": 12072134.40019332,
+    "yb_locked": 12072134.40019332,
+    "lock_ratio": 1.0
   },
   {
     "block": 23661327,
     "timestamp": 1761453683,
     "datetime": "2025-10-26T04:41:23",
-    "supply_yb": 12072134.40019332
+    "supply_yb": 12072134.40019332,
+    "yb_locked": 12072134.40019332,
+    "lock_ratio": 1.0
   },
   {
     "block": 23661627,
     "timestamp": 1761457283,
     "datetime": "2025-10-26T05:41:23",
-    "supply_yb": 12072134.40019332
+    "supply_yb": 12072134.40019332,
+    "yb_locked": 12072134.40019332,
+    "lock_ratio": 1.0
   },
   {
     "block": 23661927,
     "timestamp": 1761460883,
     "datetime": "2025-10-26T06:41:23",
-    "supply_yb": 12072134.40019332
+    "supply_yb": 12072134.40019332,
+    "yb_locked": 12072134.40019332,
+    "lock_ratio": 1.0
   },
   {
     "block": 23662227,
     "timestamp": 1761464483,
     "datetime": "2025-10-26T07:41:23",
-    "supply_yb": 12081538.380354121
+    "supply_yb": 12081538.380354121,
+    "yb_locked": 12081538.380354121,
+    "lock_ratio": 1.0
   },
   {
     "block": 23662527,
     "timestamp": 1761468083,
     "datetime": "2025-10-26T08:41:23",
-    "supply_yb": 12083091.832524084
+    "supply_yb": 12083091.832524084,
+    "yb_locked": 12083091.832524084,
+    "lock_ratio": 1.0
   },
   {
     "block": 23662827,
     "timestamp": 1761471683,
     "datetime": "2025-10-26T09:41:23",
-    "supply_yb": 12089345.750392096
+    "supply_yb": 12089345.750392096,
+    "yb_locked": 12089345.750392096,
+    "lock_ratio": 1.0
   },
   {
     "block": 23663127,
     "timestamp": 1761475283,
     "datetime": "2025-10-26T10:41:23",
-    "supply_yb": 12100533.202319505
+    "supply_yb": 12100533.202319505,
+    "yb_locked": 12100533.202319505,
+    "lock_ratio": 1.0
   },
   {
     "block": 23663427,
     "timestamp": 1761478883,
     "datetime": "2025-10-26T11:41:23",
-    "supply_yb": 12103284.964141985
+    "supply_yb": 12103284.964141985,
+    "yb_locked": 12103284.964141985,
+    "lock_ratio": 1.0
   },
   {
     "block": 23663727,
     "timestamp": 1761482483,
     "datetime": "2025-10-26T12:41:23",
-    "supply_yb": 12112102.518091477
+    "supply_yb": 12112102.518091477,
+    "yb_locked": 12112102.518091477,
+    "lock_ratio": 1.0
   },
   {
     "block": 23664027,
     "timestamp": 1761486083,
     "datetime": "2025-10-26T13:41:23",
-    "supply_yb": 12112102.518091477
+    "supply_yb": 12112102.518091477,
+    "yb_locked": 12112102.518091477,
+    "lock_ratio": 1.0
   },
   {
     "block": 23664327,
     "timestamp": 1761489683,
     "datetime": "2025-10-26T14:41:23",
-    "supply_yb": 12112102.518091477
+    "supply_yb": 12112102.518091477,
+    "yb_locked": 12112102.518091477,
+    "lock_ratio": 1.0
   },
   {
     "block": 23664627,
     "timestamp": 1761493283,
     "datetime": "2025-10-26T15:41:23",
-    "supply_yb": 12140802.116780909
+    "supply_yb": 12140802.116780909,
+    "yb_locked": 12140802.116780909,
+    "lock_ratio": 1.0
   },
   {
     "block": 23664927,
     "timestamp": 1761496883,
     "datetime": "2025-10-26T16:41:23",
-    "supply_yb": 12153961.749860154
+    "supply_yb": 12153961.749860154,
+    "yb_locked": 12153961.749860154,
+    "lock_ratio": 1.0
   },
   {
     "block": 23665227,
     "timestamp": 1761500483,
     "datetime": "2025-10-26T17:41:23",
-    "supply_yb": 12157873.848932477
+    "supply_yb": 12157873.848932477,
+    "yb_locked": 12157873.848932477,
+    "lock_ratio": 1.0
   },
   {
     "block": 23665527,
     "timestamp": 1761504083,
     "datetime": "2025-10-26T18:41:23",
-    "supply_yb": 12168416.96915304
+    "supply_yb": 12168416.96915304,
+    "yb_locked": 12168416.96915304,
+    "lock_ratio": 1.0
   },
   {
     "block": 23665827,
     "timestamp": 1761507683,
     "datetime": "2025-10-26T19:41:23",
-    "supply_yb": 12168416.96915304
+    "supply_yb": 12168416.96915304,
+    "yb_locked": 12168416.96915304,
+    "lock_ratio": 1.0
   },
   {
     "block": 23666127,
     "timestamp": 1761511283,
     "datetime": "2025-10-26T20:41:23",
-    "supply_yb": 12168416.96915304
+    "supply_yb": 12168416.96915304,
+    "yb_locked": 12168416.96915304,
+    "lock_ratio": 1.0
   },
   {
     "block": 23666427,
     "timestamp": 1761514883,
     "datetime": "2025-10-26T21:41:23",
-    "supply_yb": 12168416.96915304
+    "supply_yb": 12168416.96915304,
+    "yb_locked": 12168416.96915304,
+    "lock_ratio": 1.0
   },
   {
     "block": 23666727,
     "timestamp": 1761518483,
     "datetime": "2025-10-26T22:41:23",
-    "supply_yb": 12173561.339077713
+    "supply_yb": 12173561.339077713,
+    "yb_locked": 12173561.339077713,
+    "lock_ratio": 1.0
   },
   {
     "block": 23667027,
     "timestamp": 1761522083,
     "datetime": "2025-10-26T23:41:23",
-    "supply_yb": 12178561.339077713
+    "supply_yb": 12178561.339077713,
+    "yb_locked": 12178561.339077713,
+    "lock_ratio": 1.0
   },
   {
     "block": 23667327,
     "timestamp": 1761525683,
     "datetime": "2025-10-27T00:41:23",
-    "supply_yb": 12179832.173397679
+    "supply_yb": 12179832.173397679,
+    "yb_locked": 12179832.173397679,
+    "lock_ratio": 1.0
   },
   {
     "block": 23667627,
     "timestamp": 1761529283,
     "datetime": "2025-10-27T01:41:23",
-    "supply_yb": 12269782.685827129
+    "supply_yb": 12269782.685827129,
+    "yb_locked": 12269782.685827129,
+    "lock_ratio": 1.0
   },
   {
     "block": 23667927,
     "timestamp": 1761532883,
     "datetime": "2025-10-27T02:41:23",
-    "supply_yb": 12271110.873403365
+    "supply_yb": 12271110.873403365,
+    "yb_locked": 12271110.873403365,
+    "lock_ratio": 1.0
   },
   {
     "block": 23668227,
     "timestamp": 1761536483,
     "datetime": "2025-10-27T03:41:23",
-    "supply_yb": 12272376.923106287
+    "supply_yb": 12272376.923106287,
+    "yb_locked": 12272376.923106287,
+    "lock_ratio": 1.0
   },
   {
     "block": 23668527,
     "timestamp": 1761540083,
     "datetime": "2025-10-27T04:41:23",
-    "supply_yb": 12281250.691506902
+    "supply_yb": 12281250.691506902,
+    "yb_locked": 12281250.691506902,
+    "lock_ratio": 1.0
   },
   {
     "block": 23668827,
     "timestamp": 1761543683,
     "datetime": "2025-10-27T05:41:23",
-    "supply_yb": 12281351.329077583
+    "supply_yb": 12281351.329077583,
+    "yb_locked": 12281351.329077583,
+    "lock_ratio": 1.0
   },
   {
     "block": 23669127,
     "timestamp": 1761547283,
     "datetime": "2025-10-27T06:41:23",
-    "supply_yb": 12281543.858493794
+    "supply_yb": 12281543.858493794,
+    "yb_locked": 12281543.858493794,
+    "lock_ratio": 1.0
   },
   {
     "block": 23669427,
     "timestamp": 1761550883,
     "datetime": "2025-10-27T07:41:23",
-    "supply_yb": 12281543.858493794
+    "supply_yb": 12281543.858493794,
+    "yb_locked": 12281543.858493794,
+    "lock_ratio": 1.0
   },
   {
     "block": 23669727,
     "timestamp": 1761554483,
     "datetime": "2025-10-27T08:41:23",
-    "supply_yb": 12283834.657156007
+    "supply_yb": 12283834.657156007,
+    "yb_locked": 12283834.657156007,
+    "lock_ratio": 1.0
   },
   {
     "block": 23670027,
     "timestamp": 1761558083,
     "datetime": "2025-10-27T09:41:23",
-    "supply_yb": 12306306.657117529
+    "supply_yb": 12306306.657117529,
+    "yb_locked": 12306306.657117529,
+    "lock_ratio": 1.0
   },
   {
     "block": 23670327,
     "timestamp": 1761561683,
     "datetime": "2025-10-27T10:41:23",
-    "supply_yb": 12313792.515267884
+    "supply_yb": 12313792.515267884,
+    "yb_locked": 12313792.515267884,
+    "lock_ratio": 1.0
   },
   {
     "block": 23670627,
     "timestamp": 1761565283,
     "datetime": "2025-10-27T11:41:23",
-    "supply_yb": 12313792.515267884
+    "supply_yb": 12313792.515267884,
+    "yb_locked": 12313792.515267884,
+    "lock_ratio": 1.0
   },
   {
     "block": 23670927,
     "timestamp": 1761594059,
     "datetime": "2025-10-27T19:40:59",
-    "supply_yb": 12313990.115267884
+    "supply_yb": 12313990.115267884,
+    "yb_locked": 12313990.115267884,
+    "lock_ratio": 1.0
   },
   {
     "block": 23671227,
     "timestamp": 1761572483,
     "datetime": "2025-10-27T13:41:23",
-    "supply_yb": 12314576.55593252
+    "supply_yb": 12314576.55593252,
+    "yb_locked": 12314576.55593252,
+    "lock_ratio": 1.0
   },
   {
     "block": 23671527,
     "timestamp": 1761576083,
     "datetime": "2025-10-27T14:41:23",
-    "supply_yb": 12324576.55593252
+    "supply_yb": 12324576.55593252,
+    "yb_locked": 12324576.55593252,
+    "lock_ratio": 1.0
   },
   {
     "block": 23671827,
     "timestamp": 1761579683,
     "datetime": "2025-10-27T15:41:23",
-    "supply_yb": 12324576.55593252
+    "supply_yb": 12324576.55593252,
+    "yb_locked": 12324576.55593252,
+    "lock_ratio": 1.0
   },
   {
     "block": 23672127,
     "timestamp": 1761583283,
     "datetime": "2025-10-27T16:41:23",
-    "supply_yb": 12324576.55593252
+    "supply_yb": 12324576.55593252,
+    "yb_locked": 12324576.55593252,
+    "lock_ratio": 1.0
   },
   {
     "block": 23672427,
     "timestamp": 1761586883,
     "datetime": "2025-10-27T17:41:23",
-    "supply_yb": 12331653.229756363
+    "supply_yb": 12331653.229756363,
+    "yb_locked": 12331653.229756363,
+    "lock_ratio": 1.0
   },
   {
     "block": 23672727,
     "timestamp": 1761590483,
     "datetime": "2025-10-27T18:41:23",
-    "supply_yb": 12331653.229756363
+    "supply_yb": 12331653.229756363,
+    "yb_locked": 12331653.229756363,
+    "lock_ratio": 1.0
   },
   {
     "block": 23673027,
     "timestamp": 1761594083,
     "datetime": "2025-10-27T19:41:23",
-    "supply_yb": 12333916.304039575
+    "supply_yb": 12333916.304039575,
+    "yb_locked": 12333916.304039575,
+    "lock_ratio": 1.0
   },
   {
     "block": 23673327,
     "timestamp": 1761597683,
     "datetime": "2025-10-27T20:41:23",
-    "supply_yb": 12333916.304039575
+    "supply_yb": 12333916.304039575,
+    "yb_locked": 12333916.304039575,
+    "lock_ratio": 1.0
   },
   {
     "block": 23673627,
     "timestamp": 1761601283,
     "datetime": "2025-10-27T21:41:23",
-    "supply_yb": 12333916.304039575
+    "supply_yb": 12333916.304039575,
+    "yb_locked": 12333916.304039575,
+    "lock_ratio": 1.0
   },
   {
     "block": 23673927,
     "timestamp": 1761604883,
     "datetime": "2025-10-27T22:41:23",
-    "supply_yb": 12337001.828139575
+    "supply_yb": 12337001.828139575,
+    "yb_locked": 12337001.828139575,
+    "lock_ratio": 1.0
   },
   {
     "block": 23674227,
     "timestamp": 1761608483,
     "datetime": "2025-10-27T23:41:23",
-    "supply_yb": 12337001.828139575
+    "supply_yb": 12337001.828139575,
+    "yb_locked": 12337001.828139575,
+    "lock_ratio": 1.0
   },
   {
     "block": 23674527,
     "timestamp": 1761612083,
     "datetime": "2025-10-28T00:41:23",
-    "supply_yb": 12337351.133320626
+    "supply_yb": 12337351.133320626,
+    "yb_locked": 12337351.133320626,
+    "lock_ratio": 1.0
   },
   {
     "block": 23674827,
     "timestamp": 1761615683,
     "datetime": "2025-10-28T01:41:23",
-    "supply_yb": 12337351.133320626
+    "supply_yb": 12337351.133320626,
+    "yb_locked": 12337351.133320626,
+    "lock_ratio": 1.0
   },
   {
     "block": 23675127,
     "timestamp": 1761619283,
     "datetime": "2025-10-28T02:41:23",
-    "supply_yb": 12337351.133320626
+    "supply_yb": 12337351.133320626,
+    "yb_locked": 12337351.133320626,
+    "lock_ratio": 1.0
   },
   {
     "block": 23675427,
     "timestamp": 1761622883,
     "datetime": "2025-10-28T03:41:23",
-    "supply_yb": 12366971.983200962
+    "supply_yb": 12366971.983200962,
+    "yb_locked": 12366971.983200962,
+    "lock_ratio": 1.0
   },
   {
     "block": 23675727,
     "timestamp": 1761626483,
     "datetime": "2025-10-28T04:41:23",
-    "supply_yb": 12366971.983200962
+    "supply_yb": 12366971.983200962,
+    "yb_locked": 12366971.983200962,
+    "lock_ratio": 1.0
   },
   {
     "block": 23676027,
     "timestamp": 1761630083,
     "datetime": "2025-10-28T05:41:23",
-    "supply_yb": 12366971.983200962
+    "supply_yb": 12366971.983200962,
+    "yb_locked": 12366971.983200962,
+    "lock_ratio": 1.0
   },
   {
     "block": 23676327,
     "timestamp": 1761633683,
     "datetime": "2025-10-28T06:41:23",
-    "supply_yb": 12367721.983200962
+    "supply_yb": 12367721.983200962,
+    "yb_locked": 12367721.983200962,
+    "lock_ratio": 1.0
   },
   {
     "block": 23676627,
     "timestamp": 1761637283,
     "datetime": "2025-10-28T07:41:23",
-    "supply_yb": 12367721.983200962
+    "supply_yb": 12367721.983200962,
+    "yb_locked": 12367721.983200962,
+    "lock_ratio": 1.0
   },
   {
     "block": 23676927,
     "timestamp": 1761640883,
     "datetime": "2025-10-28T08:41:23",
-    "supply_yb": 12369184.773613656
+    "supply_yb": 12369184.773613656,
+    "yb_locked": 12369184.773613656,
+    "lock_ratio": 1.0
   },
   {
     "block": 23677227,
     "timestamp": 1761644483,
     "datetime": "2025-10-28T09:41:23",
-    "supply_yb": 12369184.773613656
+    "supply_yb": 12369184.773613656,
+    "yb_locked": 12369184.773613656,
+    "lock_ratio": 1.0
   },
   {
     "block": 23677527,
     "timestamp": 1761648083,
     "datetime": "2025-10-28T10:41:23",
-    "supply_yb": 12369184.773613656
+    "supply_yb": 12369184.773613656,
+    "yb_locked": 12369184.773613656,
+    "lock_ratio": 1.0
   },
   {
     "block": 23677827,
     "timestamp": 1761651683,
     "datetime": "2025-10-28T11:41:23",
-    "supply_yb": 12371111.853406902
+    "supply_yb": 12371111.853406902,
+    "yb_locked": 12371111.853406902,
+    "lock_ratio": 1.0
   },
   {
     "block": 23678127,
     "timestamp": 1761655283,
     "datetime": "2025-10-28T12:41:23",
-    "supply_yb": 12901691.929224491
+    "supply_yb": 12901691.929224491,
+    "yb_locked": 12901691.929224491,
+    "lock_ratio": 1.0
   },
   {
     "block": 23678427,
     "timestamp": 1761658883,
     "datetime": "2025-10-28T13:41:23",
-    "supply_yb": 16351943.689117946
+    "supply_yb": 16351943.689117946,
+    "yb_locked": 16351943.689117946,
+    "lock_ratio": 1.0
   },
   {
     "block": 23678727,
     "timestamp": 1761662483,
     "datetime": "2025-10-28T14:41:23",
-    "supply_yb": 16351943.689117946
+    "supply_yb": 16351943.689117946,
+    "yb_locked": 16351943.689117946,
+    "lock_ratio": 1.0
   },
   {
     "block": 23679027,
     "timestamp": 1761666083,
     "datetime": "2025-10-28T15:41:23",
-    "supply_yb": 16352150.769156551
+    "supply_yb": 16352150.769156551,
+    "yb_locked": 16352150.769156551,
+    "lock_ratio": 1.0
   },
   {
     "block": 23679327,
     "timestamp": 1761669683,
     "datetime": "2025-10-28T16:41:23",
-    "supply_yb": 16353169.617767291
+    "supply_yb": 16353169.617767291,
+    "yb_locked": 16353169.617767291,
+    "lock_ratio": 1.0
   },
   {
     "block": 23679627,
     "timestamp": 1761673283,
     "datetime": "2025-10-28T17:41:23",
-    "supply_yb": 16367349.26084075
+    "supply_yb": 16367349.26084075,
+    "yb_locked": 16367349.26084075,
+    "lock_ratio": 1.0
   },
   {
     "block": 23679927,
     "timestamp": 1761676883,
     "datetime": "2025-10-28T18:41:23",
-    "supply_yb": 16367349.26084075
+    "supply_yb": 16367349.26084075,
+    "yb_locked": 16367349.26084075,
+    "lock_ratio": 1.0
   },
   {
     "block": 23680227,
     "timestamp": 1761680483,
     "datetime": "2025-10-28T19:41:23",
-    "supply_yb": 16368134.260840748
+    "supply_yb": 16368134.260840748,
+    "yb_locked": 16368134.260840748,
+    "lock_ratio": 1.0
   },
   {
     "block": 23680527,
     "timestamp": 1761684083,
     "datetime": "2025-10-28T20:41:23",
-    "supply_yb": 16370418.096818678
+    "supply_yb": 16370418.096818678,
+    "yb_locked": 16370418.096818678,
+    "lock_ratio": 1.0
   },
   {
     "block": 23680827,
     "timestamp": 1761687683,
     "datetime": "2025-10-28T21:41:23",
-    "supply_yb": 16375737.648970056
+    "supply_yb": 16375737.648970056,
+    "yb_locked": 16375737.648970056,
+    "lock_ratio": 1.0
   },
   {
     "block": 23681127,
     "timestamp": 1761691283,
     "datetime": "2025-10-28T22:41:23",
-    "supply_yb": 16375737.648970056
+    "supply_yb": 16375737.648970056,
+    "yb_locked": 16375737.648970056,
+    "lock_ratio": 1.0
   },
   {
     "block": 23681427,
     "timestamp": 1761694883,
     "datetime": "2025-10-28T23:41:23",
-    "supply_yb": 16473629.269568697
+    "supply_yb": 16473629.269568697,
+    "yb_locked": 16473629.269568697,
+    "lock_ratio": 1.0
   },
   {
     "block": 23681727,
     "timestamp": 1761698483,
     "datetime": "2025-10-29T00:41:23",
-    "supply_yb": 16473930.485110799
+    "supply_yb": 16473930.485110799,
+    "yb_locked": 16473930.485110799,
+    "lock_ratio": 1.0
   },
   {
     "block": 23682027,
     "timestamp": 1761702083,
     "datetime": "2025-10-29T01:41:23",
-    "supply_yb": 16473930.485110799
+    "supply_yb": 16473930.485110799,
+    "yb_locked": 16473930.485110799,
+    "lock_ratio": 1.0
   },
   {
     "block": 23682327,
     "timestamp": 1761705683,
     "datetime": "2025-10-29T02:41:23",
-    "supply_yb": 16474509.620604942
+    "supply_yb": 16474509.620604942,
+    "yb_locked": 16474509.620604942,
+    "lock_ratio": 1.0
   },
   {
     "block": 23682627,
     "timestamp": 1761709283,
     "datetime": "2025-10-29T03:41:23",
-    "supply_yb": 16474509.620604942
+    "supply_yb": 16474509.620604942,
+    "yb_locked": 16474509.620604942,
+    "lock_ratio": 1.0
   },
   {
     "block": 23682927,
     "timestamp": 1761712883,
     "datetime": "2025-10-29T04:41:23",
-    "supply_yb": 16487709.013752826
+    "supply_yb": 16487709.013752826,
+    "yb_locked": 16487709.013752826,
+    "lock_ratio": 1.0
   },
   {
     "block": 23683227,
     "timestamp": 1761716483,
     "datetime": "2025-10-29T05:41:23",
-    "supply_yb": 16490150.751385955
+    "supply_yb": 16490150.751385955,
+    "yb_locked": 16490150.751385955,
+    "lock_ratio": 1.0
   },
   {
     "block": 23683527,
     "timestamp": 1761720083,
     "datetime": "2025-10-29T06:41:23",
-    "supply_yb": 16490860.061739195
+    "supply_yb": 16490860.061739195,
+    "yb_locked": 16490860.061739195,
+    "lock_ratio": 1.0
   },
   {
     "block": 23683827,
     "timestamp": 1761723683,
     "datetime": "2025-10-29T07:41:23",
-    "supply_yb": 16490860.061739195
+    "supply_yb": 16490860.061739195,
+    "yb_locked": 16490860.061739195,
+    "lock_ratio": 1.0
   },
   {
     "block": 23684127,
     "timestamp": 1761727283,
     "datetime": "2025-10-29T08:41:23",
-    "supply_yb": 16497125.523569899
+    "supply_yb": 16497125.523569899,
+    "yb_locked": 16497125.523569899,
+    "lock_ratio": 1.0
   },
   {
     "block": 23684427,
     "timestamp": 1761730883,
     "datetime": "2025-10-29T09:41:23",
-    "supply_yb": 16500625.523569899
+    "supply_yb": 16500625.523569899,
+    "yb_locked": 16500625.523569899,
+    "lock_ratio": 1.0
   },
   {
     "block": 23684727,
     "timestamp": 1761734483,
     "datetime": "2025-10-29T10:41:23",
-    "supply_yb": 16500625.523569899
+    "supply_yb": 16500625.523569899,
+    "yb_locked": 16500625.523569899,
+    "lock_ratio": 1.0
   },
   {
     "block": 23685027,
     "timestamp": 1761738083,
     "datetime": "2025-10-29T11:41:23",
-    "supply_yb": 16510621.286814258
+    "supply_yb": 16510621.286814258,
+    "yb_locked": 16510621.286814258,
+    "lock_ratio": 1.0
   },
   {
     "block": 23685327,
     "timestamp": 1761741683,
     "datetime": "2025-10-29T12:41:23",
-    "supply_yb": 16511198.121668622
+    "supply_yb": 16511198.121668622,
+    "yb_locked": 16511198.121668622,
+    "lock_ratio": 1.0
   },
   {
     "block": 23685627,
     "timestamp": 1761745283,
     "datetime": "2025-10-29T13:41:23",
-    "supply_yb": 16530904.385909645
+    "supply_yb": 16530904.385909645,
+    "yb_locked": 16530904.385909645,
+    "lock_ratio": 1.0
   },
   {
     "block": 23685927,
     "timestamp": 1761748883,
     "datetime": "2025-10-29T14:41:23",
-    "supply_yb": 16577536.10092015
+    "supply_yb": 16577536.10092015,
+    "yb_locked": 16577536.10092015,
+    "lock_ratio": 1.0
   },
   {
     "block": 23686227,
     "timestamp": 1761752483,
     "datetime": "2025-10-29T15:41:23",
-    "supply_yb": 16638158.55692015
+    "supply_yb": 16638158.55692015,
+    "yb_locked": 16638158.55692015,
+    "lock_ratio": 1.0
   },
   {
     "block": 23686527,
     "timestamp": 1761756083,
     "datetime": "2025-10-29T16:41:23",
-    "supply_yb": 16638438.383159637
+    "supply_yb": 16638438.383159637,
+    "yb_locked": 16638438.383159637,
+    "lock_ratio": 1.0
   },
   {
     "block": 23686827,
     "timestamp": 1761759683,
     "datetime": "2025-10-29T17:41:23",
-    "supply_yb": 16639034.5779846
+    "supply_yb": 16639034.5779846,
+    "yb_locked": 16639034.5779846,
+    "lock_ratio": 1.0
   },
   {
     "block": 23687127,
     "timestamp": 1761763283,
     "datetime": "2025-10-29T18:41:23",
-    "supply_yb": 16639071.394769954
+    "supply_yb": 16639071.394769954,
+    "yb_locked": 16639071.394769954,
+    "lock_ratio": 1.0
   },
   {
     "block": 23687427,
     "timestamp": 1761766883,
     "datetime": "2025-10-29T19:41:23",
-    "supply_yb": 16639071.394769954
+    "supply_yb": 16639071.394769954,
+    "yb_locked": 16639071.394769954,
+    "lock_ratio": 1.0
   },
   {
     "block": 23687727,
     "timestamp": 1761770483,
     "datetime": "2025-10-29T20:41:23",
-    "supply_yb": 16639071.394769954
+    "supply_yb": 16639071.394769954,
+    "yb_locked": 16639071.394769954,
+    "lock_ratio": 1.0
   },
   {
     "block": 23688027,
     "timestamp": 1761774083,
     "datetime": "2025-10-29T21:41:23",
-    "supply_yb": 16639540.253464932
+    "supply_yb": 16639540.253464932,
+    "yb_locked": 16639540.253464932,
+    "lock_ratio": 1.0
   },
   {
     "block": 23688327,
     "timestamp": 1761777683,
     "datetime": "2025-10-29T22:41:23",
-    "supply_yb": 16644540.253464932
+    "supply_yb": 16644540.253464932,
+    "yb_locked": 16644540.253464932,
+    "lock_ratio": 1.0
   },
   {
     "block": 23688627,
     "timestamp": 1761781283,
     "datetime": "2025-10-29T23:41:23",
-    "supply_yb": 16645371.948568221
+    "supply_yb": 16645371.948568221,
+    "yb_locked": 16645371.948568221,
+    "lock_ratio": 1.0
   },
   {
     "block": 23688927,
     "timestamp": 1761784883,
     "datetime": "2025-10-30T00:41:23",
-    "supply_yb": 16646323.276774613
+    "supply_yb": 16646323.276774613,
+    "yb_locked": 16646323.276774613,
+    "lock_ratio": 1.0
   },
   {
     "block": 23689227,
     "timestamp": 1761788483,
     "datetime": "2025-10-30T01:41:23",
-    "supply_yb": 16646323.276774613
+    "supply_yb": 16646323.276774613,
+    "yb_locked": 16646323.276774613,
+    "lock_ratio": 1.0
   },
   {
     "block": 23689527,
     "timestamp": 1761792083,
     "datetime": "2025-10-30T02:41:23",
-    "supply_yb": 16705065.510641096
+    "supply_yb": 16705065.510641096,
+    "yb_locked": 16705065.510641096,
+    "lock_ratio": 1.0
   },
   {
     "block": 23689827,
     "timestamp": 1761795683,
     "datetime": "2025-10-30T03:41:23",
-    "supply_yb": 16705065.510641096
+    "supply_yb": 16705065.510641096,
+    "yb_locked": 16705065.510641096,
+    "lock_ratio": 1.0
   },
   {
     "block": 23690127,
     "timestamp": 1761799283,
     "datetime": "2025-10-30T04:41:23",
-    "supply_yb": 16705065.510641096
+    "supply_yb": 16705065.510641096,
+    "yb_locked": 16705065.510641096,
+    "lock_ratio": 1.0
   },
   {
     "block": 23690427,
     "timestamp": 1761802883,
     "datetime": "2025-10-30T05:41:23",
-    "supply_yb": 16749916.114272831
+    "supply_yb": 16749916.114272831,
+    "yb_locked": 16749916.114272831,
+    "lock_ratio": 1.0
   },
   {
     "block": 23690727,
     "timestamp": 1761806483,
     "datetime": "2025-10-30T06:41:23",
-    "supply_yb": 16771416.11427283
+    "supply_yb": 16771416.11427283,
+    "yb_locked": 16771416.11427283,
+    "lock_ratio": 1.0
   },
   {
     "block": 23691027,
     "timestamp": 1761810083,
     "datetime": "2025-10-30T07:41:23",
-    "supply_yb": 16771841.94193912
+    "supply_yb": 16771841.94193912,
+    "yb_locked": 16771841.94193912,
+    "lock_ratio": 1.0
   },
   {
     "block": 23691327,
     "timestamp": 1761813683,
     "datetime": "2025-10-30T08:41:23",
-    "supply_yb": 16771841.94193912
+    "supply_yb": 16771841.94193912,
+    "yb_locked": 16771841.94193912,
+    "lock_ratio": 1.0
   },
   {
     "block": 23691627,
     "timestamp": 1761817283,
     "datetime": "2025-10-30T09:41:23",
-    "supply_yb": 16771841.94193912
+    "supply_yb": 16771841.94193912,
+    "yb_locked": 16771841.94193912,
+    "lock_ratio": 1.0
   },
   {
     "block": 23691927,
     "timestamp": 1761820883,
     "datetime": "2025-10-30T10:41:23",
-    "supply_yb": 16771841.94193912
+    "supply_yb": 16771841.94193912,
+    "yb_locked": 16771841.94193912,
+    "lock_ratio": 1.0
   },
   {
     "block": 23692227,
     "timestamp": 1761824483,
     "datetime": "2025-10-30T11:41:23",
-    "supply_yb": 16771841.94193912
+    "supply_yb": 16771841.94193912,
+    "yb_locked": 16771841.94193912,
+    "lock_ratio": 1.0
   },
   {
     "block": 23692527,
     "timestamp": 1761828083,
     "datetime": "2025-10-30T12:41:23",
-    "supply_yb": 16772691.94193912
+    "supply_yb": 16772691.94193912,
+    "yb_locked": 16772691.94193912,
+    "lock_ratio": 1.0
   },
   {
     "block": 23692827,
     "timestamp": 1761831683,
     "datetime": "2025-10-30T13:41:23",
-    "supply_yb": 16774295.437883856
+    "supply_yb": 16774295.437883856,
+    "yb_locked": 16774295.437883856,
+    "lock_ratio": 1.0
   },
   {
     "block": 23693127,
     "timestamp": 1761835283,
     "datetime": "2025-10-30T14:41:23",
-    "supply_yb": 16784193.240149163
+    "supply_yb": 16784193.240149163,
+    "yb_locked": 16784193.240149163,
+    "lock_ratio": 1.0
   },
   {
     "block": 23693427,
     "timestamp": 1761838883,
     "datetime": "2025-10-30T15:41:23",
-    "supply_yb": 16785170.79957706
+    "supply_yb": 16785170.79957706,
+    "yb_locked": 16785170.79957706,
+    "lock_ratio": 1.0
   },
   {
     "block": 23693727,
     "timestamp": 1761842483,
     "datetime": "2025-10-30T16:41:23",
-    "supply_yb": 16787031.42176096
+    "supply_yb": 16787031.42176096,
+    "yb_locked": 16787031.42176096,
+    "lock_ratio": 1.0
   },
   {
     "block": 23694027,
     "timestamp": 1761846083,
     "datetime": "2025-10-30T17:41:23",
-    "supply_yb": 16787948.003688946
+    "supply_yb": 16787948.003688946,
+    "yb_locked": 16787948.003688946,
+    "lock_ratio": 1.0
   },
   {
     "block": 23694327,
     "timestamp": 1761849683,
     "datetime": "2025-10-30T18:41:23",
-    "supply_yb": 16787948.003688946
+    "supply_yb": 16787948.003688946,
+    "yb_locked": 16787948.003688946,
+    "lock_ratio": 1.0
   },
   {
     "block": 23694627,
     "timestamp": 1761853283,
     "datetime": "2025-10-30T19:41:23",
-    "supply_yb": 16805365.278570723
+    "supply_yb": 16805365.278570723,
+    "yb_locked": 16805365.278570723,
+    "lock_ratio": 1.0
   },
   {
     "block": 23694927,
     "timestamp": 1761856883,
     "datetime": "2025-10-30T20:41:23",
-    "supply_yb": 16805553.512067523
+    "supply_yb": 16805553.512067523,
+    "yb_locked": 16805553.512067523,
+    "lock_ratio": 1.0
   },
   {
     "block": 23695227,
     "timestamp": 1761860483,
     "datetime": "2025-10-30T21:41:23",
-    "supply_yb": 16806325.621566817
+    "supply_yb": 16806325.621566817,
+    "yb_locked": 16806325.621566817,
+    "lock_ratio": 1.0
   },
   {
     "block": 23695527,
     "timestamp": 1761864083,
     "datetime": "2025-10-30T22:41:23",
-    "supply_yb": 16806325.621566817
+    "supply_yb": 16806325.621566817,
+    "yb_locked": 16806325.621566817,
+    "lock_ratio": 1.0
   },
   {
     "block": 23695827,
     "timestamp": 1761867683,
     "datetime": "2025-10-30T23:41:23",
-    "supply_yb": 16808592.662514567
+    "supply_yb": 16808592.662514567,
+    "yb_locked": 16808592.662514567,
+    "lock_ratio": 1.0
   },
   {
     "block": 23696127,
     "timestamp": 1761871283,
     "datetime": "2025-10-31T00:41:23",
-    "supply_yb": 16810054.407500472
+    "supply_yb": 16810054.407500472,
+    "yb_locked": 16810054.407500472,
+    "lock_ratio": 1.0
   },
   {
     "block": 23696427,
     "timestamp": 1761874883,
     "datetime": "2025-10-31T01:41:23",
-    "supply_yb": 16810054.407500472
+    "supply_yb": 16810054.407500472,
+    "yb_locked": 16810054.407500472,
+    "lock_ratio": 1.0
   },
   {
     "block": 23696727,
     "timestamp": 1761878483,
     "datetime": "2025-10-31T02:41:23",
-    "supply_yb": 16834416.308404304
+    "supply_yb": 16834416.308404304,
+    "yb_locked": 16834416.308404304,
+    "lock_ratio": 1.0
   },
   {
     "block": 23697027,
     "timestamp": 1761882083,
     "datetime": "2025-10-31T03:41:23",
-    "supply_yb": 16851988.63169271
+    "supply_yb": 16851988.63169271,
+    "yb_locked": 16851988.63169271,
+    "lock_ratio": 1.0
   },
   {
     "block": 23697327,
     "timestamp": 1761885683,
     "datetime": "2025-10-31T04:41:23",
-    "supply_yb": 16851988.63169271
+    "supply_yb": 16851988.63169271,
+    "yb_locked": 16851988.63169271,
+    "lock_ratio": 1.0
   },
   {
     "block": 23697627,
     "timestamp": 1761889283,
     "datetime": "2025-10-31T05:41:23",
-    "supply_yb": 16851988.63169271
+    "supply_yb": 16851988.63169271,
+    "yb_locked": 16851988.63169271,
+    "lock_ratio": 1.0
   },
   {
     "block": 23697927,
     "timestamp": 1761892883,
     "datetime": "2025-10-31T06:41:23",
-    "supply_yb": 16853765.81273455
+    "supply_yb": 16853765.81273455,
+    "yb_locked": 16853765.81273455,
+    "lock_ratio": 1.0
   },
   {
     "block": 23698227,
     "timestamp": 1761896483,
     "datetime": "2025-10-31T07:41:23",
-    "supply_yb": 16853765.81273455
+    "supply_yb": 16853765.81273455,
+    "yb_locked": 16853765.81273455,
+    "lock_ratio": 1.0
   },
   {
     "block": 23698527,
     "timestamp": 1761900083,
     "datetime": "2025-10-31T08:41:23",
-    "supply_yb": 16859045.7783252
+    "supply_yb": 16859045.7783252,
+    "yb_locked": 16859045.7783252,
+    "lock_ratio": 1.0
   },
   {
     "block": 23698827,
     "timestamp": 1761903683,
     "datetime": "2025-10-31T09:41:23",
-    "supply_yb": 16859045.7783252
+    "supply_yb": 16859045.7783252,
+    "yb_locked": 16859045.7783252,
+    "lock_ratio": 1.0
   },
   {
     "block": 23699127,
     "timestamp": 1761907283,
     "datetime": "2025-10-31T10:41:23",
-    "supply_yb": 16859045.7783252
+    "supply_yb": 16859045.7783252,
+    "yb_locked": 16859045.7783252,
+    "lock_ratio": 1.0
   },
   {
     "block": 23699427,
     "timestamp": 1761910883,
     "datetime": "2025-10-31T11:41:23",
-    "supply_yb": 16859045.7783252
+    "supply_yb": 16859045.7783252,
+    "yb_locked": 16859045.7783252,
+    "lock_ratio": 1.0
   },
   {
     "block": 23699727,
     "timestamp": 1761914483,
     "datetime": "2025-10-31T12:41:23",
-    "supply_yb": 16859045.7783252
+    "supply_yb": 16859045.7783252,
+    "yb_locked": 16859045.7783252,
+    "lock_ratio": 1.0
   },
   {
     "block": 23700027,
     "timestamp": 1761918083,
     "datetime": "2025-10-31T13:41:23",
-    "supply_yb": 16859045.7783252
+    "supply_yb": 16859045.7783252,
+    "yb_locked": 16859045.7783252,
+    "lock_ratio": 1.0
   },
   {
     "block": 23700327,
     "timestamp": 1761921683,
     "datetime": "2025-10-31T14:41:23",
-    "supply_yb": 16859045.7783252
+    "supply_yb": 16859045.7783252,
+    "yb_locked": 16859045.7783252,
+    "lock_ratio": 1.0
   },
   {
     "block": 23700627,
     "timestamp": 1761925283,
     "datetime": "2025-10-31T15:41:23",
-    "supply_yb": 16859045.7783252
+    "supply_yb": 16859045.7783252,
+    "yb_locked": 16859045.7783252,
+    "lock_ratio": 1.0
   },
   {
     "block": 23700927,
     "timestamp": 1761957143,
     "datetime": "2025-11-01T00:32:23",
-    "supply_yb": 16859851.700821202
+    "supply_yb": 16859851.700821202,
+    "yb_locked": 16859851.700821202,
+    "lock_ratio": 1.0
   },
   {
     "block": 23701227,
     "timestamp": 1761932483,
     "datetime": "2025-10-31T17:41:23",
-    "supply_yb": 16859851.700821202
+    "supply_yb": 16859851.700821202,
+    "yb_locked": 16859851.700821202,
+    "lock_ratio": 1.0
   },
   {
     "block": 23701527,
     "timestamp": 1761936083,
     "datetime": "2025-10-31T18:41:23",
-    "supply_yb": 16860307.186614428
+    "supply_yb": 16860307.186614428,
+    "yb_locked": 16860307.186614428,
+    "lock_ratio": 1.0
   },
   {
     "block": 23701827,
     "timestamp": 1761939683,
     "datetime": "2025-10-31T19:41:23",
-    "supply_yb": 16860307.186614428
+    "supply_yb": 16860307.186614428,
+    "yb_locked": 16860307.186614428,
+    "lock_ratio": 1.0
   },
   {
     "block": 23702127,
     "timestamp": 1761943283,
     "datetime": "2025-10-31T20:41:23",
-    "supply_yb": 16860307.186614428
+    "supply_yb": 16860307.186614428,
+    "yb_locked": 16860307.186614428,
+    "lock_ratio": 1.0
   },
   {
     "block": 23702427,
     "timestamp": 1761946883,
     "datetime": "2025-10-31T21:41:23",
-    "supply_yb": 16860307.186614428
+    "supply_yb": 16860307.186614428,
+    "yb_locked": 16860307.186614428,
+    "lock_ratio": 1.0
   },
   {
     "block": 23702727,
     "timestamp": 1761950483,
     "datetime": "2025-10-31T22:41:23",
-    "supply_yb": 16860307.186614428
+    "supply_yb": 16860307.186614428,
+    "yb_locked": 16860307.186614428,
+    "lock_ratio": 1.0
   },
   {
     "block": 23703027,
     "timestamp": 1761954083,
     "datetime": "2025-10-31T23:41:23",
-    "supply_yb": 16860307.186614428
+    "supply_yb": 16860307.186614428,
+    "yb_locked": 16860307.186614428,
+    "lock_ratio": 1.0
   },
   {
     "block": 23703327,
     "timestamp": 1761957683,
     "datetime": "2025-11-01T00:41:23",
-    "supply_yb": 16860967.993311536
+    "supply_yb": 16860967.993311536,
+    "yb_locked": 16860967.993311536,
+    "lock_ratio": 1.0
   },
   {
     "block": 23703627,
     "timestamp": 1761961283,
     "datetime": "2025-11-01T01:41:23",
-    "supply_yb": 16861100.993311536
+    "supply_yb": 16861100.993311536,
+    "yb_locked": 16861100.993311536,
+    "lock_ratio": 1.0
   },
   {
     "block": 23703927,
     "timestamp": 1761964883,
     "datetime": "2025-11-01T02:41:23",
-    "supply_yb": 16861793.818672847
+    "supply_yb": 16861793.818672847,
+    "yb_locked": 16861793.818672847,
+    "lock_ratio": 1.0
   },
   {
     "block": 23704227,
     "timestamp": 1761968483,
     "datetime": "2025-11-01T03:41:23",
-    "supply_yb": 16861793.818672847
+    "supply_yb": 16861793.818672847,
+    "yb_locked": 16861793.818672847,
+    "lock_ratio": 1.0
   },
   {
     "block": 23704527,
     "timestamp": 1761972083,
     "datetime": "2025-11-01T04:41:23",
-    "supply_yb": 16861793.818672847
+    "supply_yb": 16861793.818672847,
+    "yb_locked": 16861793.818672847,
+    "lock_ratio": 1.0
   },
   {
     "block": 23704827,
     "timestamp": 1761975683,
     "datetime": "2025-11-01T05:41:23",
-    "supply_yb": 16861793.818672847
+    "supply_yb": 16861793.818672847,
+    "yb_locked": 16861793.818672847,
+    "lock_ratio": 1.0
   },
   {
     "block": 23705127,
     "timestamp": 1761979283,
     "datetime": "2025-11-01T06:41:23",
-    "supply_yb": 16861982.95476985
+    "supply_yb": 16861982.95476985,
+    "yb_locked": 16861982.95476985,
+    "lock_ratio": 1.0
   },
   {
     "block": 23705427,
     "timestamp": 1761982883,
     "datetime": "2025-11-01T07:41:23",
-    "supply_yb": 16861982.95476985
+    "supply_yb": 16861982.95476985,
+    "yb_locked": 16861982.95476985,
+    "lock_ratio": 1.0
   },
   {
     "block": 23705727,
     "timestamp": 1761986483,
     "datetime": "2025-11-01T08:41:23",
-    "supply_yb": 16861988.499015946
+    "supply_yb": 16861988.499015946,
+    "yb_locked": 16861988.499015946,
+    "lock_ratio": 1.0
   },
   {
     "block": 23706027,
     "timestamp": 1761990083,
     "datetime": "2025-11-01T09:41:23",
-    "supply_yb": 16861988.499015946
+    "supply_yb": 16861988.499015946,
+    "yb_locked": 16861988.499015946,
+    "lock_ratio": 1.0
   },
   {
     "block": 23706327,
     "timestamp": 1761993683,
     "datetime": "2025-11-01T10:41:23",
-    "supply_yb": 16861988.499015946
+    "supply_yb": 16861988.499015946,
+    "yb_locked": 16861988.499015946,
+    "lock_ratio": 1.0
   },
   {
     "block": 23706627,
     "timestamp": 1761997283,
     "datetime": "2025-11-01T11:41:23",
-    "supply_yb": 16861988.499015946
+    "supply_yb": 16861988.499015946,
+    "yb_locked": 16861988.499015946,
+    "lock_ratio": 1.0
   },
   {
     "block": 23706927,
     "timestamp": 1762000883,
     "datetime": "2025-11-01T12:41:23",
-    "supply_yb": 16861988.499015946
+    "supply_yb": 16861988.499015946,
+    "yb_locked": 16861988.499015946,
+    "lock_ratio": 1.0
   },
   {
     "block": 23707227,
     "timestamp": 1762004483,
     "datetime": "2025-11-01T13:41:23",
-    "supply_yb": 16861988.499015946
+    "supply_yb": 16861988.499015946,
+    "yb_locked": 16861988.499015946,
+    "lock_ratio": 1.0
   },
   {
     "block": 23707527,
     "timestamp": 1762008083,
     "datetime": "2025-11-01T14:41:23",
-    "supply_yb": 16861988.499015946
+    "supply_yb": 16861988.499015946,
+    "yb_locked": 16861988.499015946,
+    "lock_ratio": 1.0
   },
   {
     "block": 23707827,
     "timestamp": 1762011683,
     "datetime": "2025-11-01T15:41:23",
-    "supply_yb": 16861988.499015946
+    "supply_yb": 16861988.499015946,
+    "yb_locked": 16861988.499015946,
+    "lock_ratio": 1.0
   },
   {
     "block": 23708127,
     "timestamp": 1762015283,
     "datetime": "2025-11-01T16:41:23",
-    "supply_yb": 16861988.499015946
+    "supply_yb": 16861988.499015946,
+    "yb_locked": 16861988.499015946,
+    "lock_ratio": 1.0
   },
   {
     "block": 23708427,
     "timestamp": 1762018883,
     "datetime": "2025-11-01T17:41:23",
-    "supply_yb": 16861988.499015946
+    "supply_yb": 16861988.499015946,
+    "yb_locked": 16861988.499015946,
+    "lock_ratio": 1.0
   },
   {
     "block": 23708727,
     "timestamp": 1762022483,
     "datetime": "2025-11-01T18:41:23",
-    "supply_yb": 16861988.499015946
+    "supply_yb": 16861988.499015946,
+    "yb_locked": 16861988.499015946,
+    "lock_ratio": 1.0
   },
   {
     "block": 23709027,
     "timestamp": 1762026083,
     "datetime": "2025-11-01T19:41:23",
-    "supply_yb": 16863069.340357736
+    "supply_yb": 16863069.340357736,
+    "yb_locked": 16863069.340357736,
+    "lock_ratio": 1.0
   },
   {
     "block": 23709327,
     "timestamp": 1762029683,
     "datetime": "2025-11-01T20:41:23",
-    "supply_yb": 16863069.340357736
+    "supply_yb": 16863069.340357736,
+    "yb_locked": 16863069.340357736,
+    "lock_ratio": 1.0
   },
   {
     "block": 23709627,
     "timestamp": 1762033283,
     "datetime": "2025-11-01T21:41:23",
-    "supply_yb": 16863069.340357736
+    "supply_yb": 16863069.340357736,
+    "yb_locked": 16863069.340357736,
+    "lock_ratio": 1.0
   },
   {
     "block": 23709927,
     "timestamp": 1762036883,
     "datetime": "2025-11-01T22:41:23",
-    "supply_yb": 16863069.340357736
+    "supply_yb": 16863069.340357736,
+    "yb_locked": 16863069.340357736,
+    "lock_ratio": 1.0
   },
   {
     "block": 23710227,
     "timestamp": 1762040483,
     "datetime": "2025-11-01T23:41:23",
-    "supply_yb": 16863069.340357736
+    "supply_yb": 16863069.340357736,
+    "yb_locked": 16863069.340357736,
+    "lock_ratio": 1.0
   },
   {
     "block": 23710527,
     "timestamp": 1762044083,
     "datetime": "2025-11-02T00:41:23",
-    "supply_yb": 16863069.340357736
+    "supply_yb": 16863069.340357736,
+    "yb_locked": 16863069.340357736,
+    "lock_ratio": 1.0
   },
   {
     "block": 23710827,
     "timestamp": 1762047683,
     "datetime": "2025-11-02T01:41:23",
-    "supply_yb": 16863921.797537837
+    "supply_yb": 16863921.797537837,
+    "yb_locked": 16863921.797537837,
+    "lock_ratio": 1.0
   },
   {
     "block": 23711127,
     "timestamp": 1762051283,
     "datetime": "2025-11-02T02:41:23",
-    "supply_yb": 16864488.80643314
+    "supply_yb": 16864488.80643314,
+    "yb_locked": 16864488.80643314,
+    "lock_ratio": 1.0
   },
   {
     "block": 23711427,
     "timestamp": 1762054883,
     "datetime": "2025-11-02T03:41:23",
-    "supply_yb": 16864488.80643314
+    "supply_yb": 16864488.80643314,
+    "yb_locked": 16864488.80643314,
+    "lock_ratio": 1.0
   },
   {
     "block": 23711727,
     "timestamp": 1762058483,
     "datetime": "2025-11-02T04:41:23",
-    "supply_yb": 16867327.98640565
+    "supply_yb": 16867327.98640565,
+    "yb_locked": 16867327.98640565,
+    "lock_ratio": 1.0
   },
   {
     "block": 23712027,
     "timestamp": 1762062083,
     "datetime": "2025-11-02T05:41:23",
-    "supply_yb": 16867947.98640565
+    "supply_yb": 16867947.98640565,
+    "yb_locked": 16867947.98640565,
+    "lock_ratio": 1.0
   },
   {
     "block": 23712327,
     "timestamp": 1762065683,
     "datetime": "2025-11-02T06:41:23",
-    "supply_yb": 16867947.98640565
+    "supply_yb": 16867947.98640565,
+    "yb_locked": 16867947.98640565,
+    "lock_ratio": 1.0
   },
   {
     "block": 23712627,
     "timestamp": 1762069283,
     "datetime": "2025-11-02T07:41:23",
-    "supply_yb": 16867947.98640565
+    "supply_yb": 16867947.98640565,
+    "yb_locked": 16867947.98640565,
+    "lock_ratio": 1.0
   },
   {
     "block": 23712927,
     "timestamp": 1762072883,
     "datetime": "2025-11-02T08:41:23",
-    "supply_yb": 16867947.98640565
+    "supply_yb": 16867947.98640565,
+    "yb_locked": 16867947.98640565,
+    "lock_ratio": 1.0
   },
   {
     "block": 23713227,
     "timestamp": 1762076483,
     "datetime": "2025-11-02T09:41:23",
-    "supply_yb": 16867947.98640565
+    "supply_yb": 16867947.98640565,
+    "yb_locked": 16867947.98640565,
+    "lock_ratio": 1.0
   },
   {
     "block": 23713527,
     "timestamp": 1762080083,
     "datetime": "2025-11-02T10:41:23",
-    "supply_yb": 16867947.98640565
+    "supply_yb": 16867947.98640565,
+    "yb_locked": 16867947.98640565,
+    "lock_ratio": 1.0
   },
   {
     "block": 23713827,
     "timestamp": 1762083683,
     "datetime": "2025-11-02T11:41:23",
-    "supply_yb": 16867947.98640565
+    "supply_yb": 16867947.98640565,
+    "yb_locked": 16867947.98640565,
+    "lock_ratio": 1.0
   },
   {
     "block": 23714127,
     "timestamp": 1762087283,
     "datetime": "2025-11-02T12:41:23",
-    "supply_yb": 16867947.98640565
+    "supply_yb": 16867947.98640565,
+    "yb_locked": 16867947.98640565,
+    "lock_ratio": 1.0
   },
   {
     "block": 23714427,
     "timestamp": 1762090883,
     "datetime": "2025-11-02T13:41:23",
-    "supply_yb": 16868586.85883235
+    "supply_yb": 16868586.85883235,
+    "yb_locked": 16868586.85883235,
+    "lock_ratio": 1.0
   },
   {
     "block": 23714727,
     "timestamp": 1762094483,
     "datetime": "2025-11-02T14:41:23",
-    "supply_yb": 16868687.45883235
+    "supply_yb": 16868687.45883235,
+    "yb_locked": 16868687.45883235,
+    "lock_ratio": 1.0
   },
   {
     "block": 23715027,
     "timestamp": 1762098083,
     "datetime": "2025-11-02T15:41:23",
-    "supply_yb": 16869364.75643235
+    "supply_yb": 16869364.75643235,
+    "yb_locked": 16869364.75643235,
+    "lock_ratio": 1.0
   },
   {
     "block": 23715327,
     "timestamp": 1762101683,
     "datetime": "2025-11-02T16:41:23",
-    "supply_yb": 16869364.75643235
+    "supply_yb": 16869364.75643235,
+    "yb_locked": 16869364.75643235,
+    "lock_ratio": 1.0
   },
   {
     "block": 23715627,
     "timestamp": 1762105283,
     "datetime": "2025-11-02T17:41:23",
-    "supply_yb": 16869364.75643235
+    "supply_yb": 16869364.75643235,
+    "yb_locked": 16869364.75643235,
+    "lock_ratio": 1.0
   },
   {
     "block": 23715927,
     "timestamp": 1762108883,
     "datetime": "2025-11-02T18:41:23",
-    "supply_yb": 16869364.75643235
+    "supply_yb": 16869364.75643235,
+    "yb_locked": 16869364.75643235,
+    "lock_ratio": 1.0
   },
   {
     "block": 23716227,
     "timestamp": 1762112483,
     "datetime": "2025-11-02T19:41:23",
-    "supply_yb": 16869364.75643235
+    "supply_yb": 16869364.75643235,
+    "yb_locked": 16869364.75643235,
+    "lock_ratio": 1.0
   },
   {
     "block": 23716527,
     "timestamp": 1762116083,
     "datetime": "2025-11-02T20:41:23",
-    "supply_yb": 16869364.75643235
+    "supply_yb": 16869364.75643235,
+    "yb_locked": 16869364.75643235,
+    "lock_ratio": 1.0
   },
   {
     "block": 23716827,
     "timestamp": 1762119683,
     "datetime": "2025-11-02T21:41:23",
-    "supply_yb": 16869364.75643235
+    "supply_yb": 16869364.75643235,
+    "yb_locked": 16869364.75643235,
+    "lock_ratio": 1.0
   },
   {
     "block": 23717127,
     "timestamp": 1762123283,
     "datetime": "2025-11-02T22:41:23",
-    "supply_yb": 16870013.627318464
+    "supply_yb": 16870013.627318464,
+    "yb_locked": 16870013.627318464,
+    "lock_ratio": 1.0
   },
   {
     "block": 23717427,
     "timestamp": 1762126883,
     "datetime": "2025-11-02T23:41:23",
-    "supply_yb": 16870013.627318464
+    "supply_yb": 16870013.627318464,
+    "yb_locked": 16870013.627318464,
+    "lock_ratio": 1.0
   },
   {
     "block": 23717727,
     "timestamp": 1762130483,
     "datetime": "2025-11-03T00:41:23",
-    "supply_yb": 16872222.795547593
+    "supply_yb": 16872222.795547593,
+    "yb_locked": 16872222.795547593,
+    "lock_ratio": 1.0
   },
   {
     "block": 23718027,
     "timestamp": 1762134083,
     "datetime": "2025-11-03T01:41:23",
-    "supply_yb": 16872222.795547593
+    "supply_yb": 16872222.795547593,
+    "yb_locked": 16872222.795547593,
+    "lock_ratio": 1.0
   },
   {
     "block": 23718327,
     "timestamp": 1762137683,
     "datetime": "2025-11-03T02:41:23",
-    "supply_yb": 16872222.795547593
+    "supply_yb": 16872222.795547593,
+    "yb_locked": 16872222.795547593,
+    "lock_ratio": 1.0
   },
   {
     "block": 23718627,
     "timestamp": 1762141283,
     "datetime": "2025-11-03T03:41:23",
-    "supply_yb": 16875523.392816007
+    "supply_yb": 16875523.392816007,
+    "yb_locked": 16875523.392816007,
+    "lock_ratio": 1.0
   },
   {
     "block": 23718927,
     "timestamp": 1762144883,
     "datetime": "2025-11-03T04:41:23",
-    "supply_yb": 16875523.392816007
+    "supply_yb": 16875523.392816007,
+    "yb_locked": 16875523.392816007,
+    "lock_ratio": 1.0
   },
   {
     "block": 23719227,
     "timestamp": 1762148483,
     "datetime": "2025-11-03T05:41:23",
-    "supply_yb": 16875523.392816007
+    "supply_yb": 16875523.392816007,
+    "yb_locked": 16875523.392816007,
+    "lock_ratio": 1.0
   },
   {
     "block": 23719527,
     "timestamp": 1762152083,
     "datetime": "2025-11-03T06:41:23",
-    "supply_yb": 16875523.392816007
+    "supply_yb": 16875523.392816007,
+    "yb_locked": 16875523.392816007,
+    "lock_ratio": 1.0
   },
   {
     "block": 23719827,
     "timestamp": 1762155683,
     "datetime": "2025-11-03T07:41:23",
-    "supply_yb": 16875525.936888747
+    "supply_yb": 16875525.936888747,
+    "yb_locked": 16875525.936888747,
+    "lock_ratio": 1.0
   },
   {
     "block": 23720127,
     "timestamp": 1762159283,
     "datetime": "2025-11-03T08:41:23",
-    "supply_yb": 16881300.177306086
+    "supply_yb": 16881300.177306086,
+    "yb_locked": 16881300.177306086,
+    "lock_ratio": 1.0
   },
   {
     "block": 23720427,
     "timestamp": 1762162883,
     "datetime": "2025-11-03T09:41:23",
-    "supply_yb": 16884057.616423286
+    "supply_yb": 16884057.616423286,
+    "yb_locked": 16884057.616423286,
+    "lock_ratio": 1.0
   },
   {
     "block": 23720727,
     "timestamp": 1762166483,
     "datetime": "2025-11-03T10:41:23",
-    "supply_yb": 16884057.616423286
+    "supply_yb": 16884057.616423286,
+    "yb_locked": 16884057.616423286,
+    "lock_ratio": 1.0
   },
   {
     "block": 23721027,
     "timestamp": 1762170083,
     "datetime": "2025-11-03T11:41:23",
-    "supply_yb": 16884057.616423286
+    "supply_yb": 16884057.616423286,
+    "yb_locked": 16884057.616423286,
+    "lock_ratio": 1.0
   },
   {
     "block": 23721327,
     "timestamp": 1762173683,
     "datetime": "2025-11-03T12:41:23",
-    "supply_yb": 16884057.616423286
+    "supply_yb": 16884057.616423286,
+    "yb_locked": 16884057.616423286,
+    "lock_ratio": 1.0
   },
   {
     "block": 23721627,
     "timestamp": 1762177283,
     "datetime": "2025-11-03T13:41:23",
-    "supply_yb": 16884207.616423286
+    "supply_yb": 16884207.616423286,
+    "yb_locked": 16884207.616423286,
+    "lock_ratio": 1.0
   },
   {
     "block": 23721927,
     "timestamp": 1762180883,
     "datetime": "2025-11-03T14:41:23",
-    "supply_yb": 16884736.74303023
+    "supply_yb": 16884736.74303023,
+    "yb_locked": 16884736.74303023,
+    "lock_ratio": 1.0
   },
   {
     "block": 23722227,
     "timestamp": 1762184483,
     "datetime": "2025-11-03T15:41:23",
-    "supply_yb": 16885619.893643726
+    "supply_yb": 16885619.893643726,
+    "yb_locked": 16885619.893643726,
+    "lock_ratio": 1.0
   },
   {
     "block": 23722527,
     "timestamp": 1762188083,
     "datetime": "2025-11-03T16:41:23",
-    "supply_yb": 16885619.893643726
+    "supply_yb": 16885619.893643726,
+    "yb_locked": 16885619.893643726,
+    "lock_ratio": 1.0
   },
   {
     "block": 23722827,
     "timestamp": 1762191683,
     "datetime": "2025-11-03T17:41:23",
-    "supply_yb": 16905619.89543412
+    "supply_yb": 16905619.89543412,
+    "yb_locked": 16905619.89543412,
+    "lock_ratio": 1.0
   },
   {
     "block": 23723127,
     "timestamp": 1762195283,
     "datetime": "2025-11-03T18:41:23",
-    "supply_yb": 16905619.89543412
+    "supply_yb": 16905619.89543412,
+    "yb_locked": 16905619.89543412,
+    "lock_ratio": 1.0
   },
   {
     "block": 23723427,
     "timestamp": 1762198883,
     "datetime": "2025-11-03T19:41:23",
-    "supply_yb": 16905619.89543412
+    "supply_yb": 16905619.89543412,
+    "yb_locked": 16905619.89543412,
+    "lock_ratio": 1.0
   },
   {
     "block": 23723727,
     "timestamp": 1762202483,
     "datetime": "2025-11-03T20:41:23",
-    "supply_yb": 16906743.639726356
+    "supply_yb": 16906743.639726356,
+    "yb_locked": 16906743.639726356,
+    "lock_ratio": 1.0
   },
   {
     "block": 23724027,
     "timestamp": 1762206083,
     "datetime": "2025-11-03T21:41:23",
-    "supply_yb": 16906743.639726356
+    "supply_yb": 16906743.639726356,
+    "yb_locked": 16906743.639726356,
+    "lock_ratio": 1.0
   },
   {
     "block": 23724327,
     "timestamp": 1762209683,
     "datetime": "2025-11-03T22:41:23",
-    "supply_yb": 16906743.639726356
+    "supply_yb": 16906743.639726356,
+    "yb_locked": 16906743.639726356,
+    "lock_ratio": 1.0
   },
   {
     "block": 23724627,
     "timestamp": 1762213283,
     "datetime": "2025-11-03T23:41:23",
-    "supply_yb": 16906743.639726356
+    "supply_yb": 16906743.639726356,
+    "yb_locked": 16906743.639726356,
+    "lock_ratio": 1.0
   },
   {
     "block": 23724927,
     "timestamp": 1762216883,
     "datetime": "2025-11-04T00:41:23",
-    "supply_yb": 16906747.75587257
+    "supply_yb": 16906747.75587257,
+    "yb_locked": 16906747.75587257,
+    "lock_ratio": 1.0
   },
   {
     "block": 23725227,
     "timestamp": 1762220483,
     "datetime": "2025-11-04T01:41:23",
-    "supply_yb": 16906747.75587257
+    "supply_yb": 16906747.75587257,
+    "yb_locked": 16906747.75587257,
+    "lock_ratio": 1.0
   },
   {
     "block": 23725527,
     "timestamp": 1762224083,
     "datetime": "2025-11-04T02:41:23",
-    "supply_yb": 16906747.75587257
+    "supply_yb": 16906747.75587257,
+    "yb_locked": 16906747.75587257,
+    "lock_ratio": 1.0
   },
   {
     "block": 23725827,
     "timestamp": 1762227683,
     "datetime": "2025-11-04T03:41:23",
-    "supply_yb": 16906747.75587257
+    "supply_yb": 16906747.75587257,
+    "yb_locked": 16906747.75587257,
+    "lock_ratio": 1.0
   },
   {
     "block": 23726127,
     "timestamp": 1762231283,
     "datetime": "2025-11-04T04:41:23",
-    "supply_yb": 16906748.833974298
+    "supply_yb": 16906748.833974298,
+    "yb_locked": 16906748.833974298,
+    "lock_ratio": 1.0
   },
   {
     "block": 23726427,
     "timestamp": 1762234883,
     "datetime": "2025-11-04T05:41:23",
-    "supply_yb": 16906748.833974298
+    "supply_yb": 16906748.833974298,
+    "yb_locked": 16906748.833974298,
+    "lock_ratio": 1.0
   },
   {
     "block": 23726727,
     "timestamp": 1762238483,
     "datetime": "2025-11-04T06:41:23",
-    "supply_yb": 16906748.833974298
+    "supply_yb": 16906748.833974298,
+    "yb_locked": 16906748.833974298,
+    "lock_ratio": 1.0
   },
   {
     "block": 23727027,
     "timestamp": 1762242083,
     "datetime": "2025-11-04T07:41:23",
-    "supply_yb": 16906748.833974298
+    "supply_yb": 16906748.833974298,
+    "yb_locked": 16906748.833974298,
+    "lock_ratio": 1.0
   },
   {
     "block": 23727327,
     "timestamp": 1762245683,
     "datetime": "2025-11-04T08:41:23",
-    "supply_yb": 16924974.81248377
+    "supply_yb": 16924974.81248377,
+    "yb_locked": 16924974.81248377,
+    "lock_ratio": 1.0
   },
   {
     "block": 23727627,
     "timestamp": 1762249283,
     "datetime": "2025-11-04T09:41:23",
-    "supply_yb": 16924974.81248377
+    "supply_yb": 16924974.81248377,
+    "yb_locked": 16924974.81248377,
+    "lock_ratio": 1.0
   },
   {
     "block": 23727927,
     "timestamp": 1762252883,
     "datetime": "2025-11-04T10:41:23",
-    "supply_yb": 16924974.81248377
+    "supply_yb": 16924974.81248377,
+    "yb_locked": 16924974.81248377,
+    "lock_ratio": 1.0
   },
   {
     "block": 23728227,
     "timestamp": 1762256483,
     "datetime": "2025-11-04T11:41:23",
-    "supply_yb": 16924974.81248377
+    "supply_yb": 16924974.81248377,
+    "yb_locked": 16924974.81248377,
+    "lock_ratio": 1.0
   },
   {
     "block": 23728527,
     "timestamp": 1762260083,
     "datetime": "2025-11-04T12:41:23",
-    "supply_yb": 16924974.81248377
+    "supply_yb": 16924974.81248377,
+    "yb_locked": 16924974.81248377,
+    "lock_ratio": 1.0
   },
   {
     "block": 23728827,
     "timestamp": 1762263683,
     "datetime": "2025-11-04T13:41:23",
-    "supply_yb": 16924974.81248377
+    "supply_yb": 16924974.81248377,
+    "yb_locked": 16924974.81248377,
+    "lock_ratio": 1.0
   },
   {
     "block": 23729127,
     "timestamp": 1762267283,
     "datetime": "2025-11-04T14:41:23",
-    "supply_yb": 16924974.81248377
+    "supply_yb": 16924974.81248377,
+    "yb_locked": 16924974.81248377,
+    "lock_ratio": 1.0
   },
   {
     "block": 23729427,
     "timestamp": 1762270883,
     "datetime": "2025-11-04T15:41:23",
-    "supply_yb": 16924974.81248377
+    "supply_yb": 16924974.81248377,
+    "yb_locked": 16924974.81248377,
+    "lock_ratio": 1.0
   },
   {
     "block": 23729727,
     "timestamp": 1762274483,
     "datetime": "2025-11-04T16:41:23",
-    "supply_yb": 16924974.81248377
+    "supply_yb": 16924974.81248377,
+    "yb_locked": 16924974.81248377,
+    "lock_ratio": 1.0
   },
   {
     "block": 23730027,
     "timestamp": 1762278083,
     "datetime": "2025-11-04T17:41:23",
-    "supply_yb": 16924974.81248377
+    "supply_yb": 16924974.81248377,
+    "yb_locked": 16924974.81248377,
+    "lock_ratio": 1.0
   },
   {
     "block": 23730327,
     "timestamp": 1762281683,
     "datetime": "2025-11-04T18:41:23",
-    "supply_yb": 16926474.81248377
+    "supply_yb": 16926474.81248377,
+    "yb_locked": 16926474.81248377,
+    "lock_ratio": 1.0
   },
   {
     "block": 23730627,
     "timestamp": 1762285283,
     "datetime": "2025-11-04T19:41:23",
-    "supply_yb": 16926474.81248377
+    "supply_yb": 16926474.81248377,
+    "yb_locked": 16926474.81248377,
+    "lock_ratio": 1.0
   },
   {
     "block": 23730927,
     "timestamp": 1762319435,
     "datetime": "2025-11-05T05:10:35",
-    "supply_yb": 16926474.81248377
+    "supply_yb": 16926474.81248377,
+    "yb_locked": 16926474.81248377,
+    "lock_ratio": 1.0
   },
   {
     "block": 23731227,
     "timestamp": 1762292483,
     "datetime": "2025-11-04T21:41:23",
-    "supply_yb": 16926474.81248377
+    "supply_yb": 16926474.81248377,
+    "yb_locked": 16926474.81248377,
+    "lock_ratio": 1.0
   },
   {
     "block": 23731527,
     "timestamp": 1762296083,
     "datetime": "2025-11-04T22:41:23",
-    "supply_yb": 16927078.769865807
+    "supply_yb": 16927078.769865807,
+    "yb_locked": 16927078.769865807,
+    "lock_ratio": 1.0
   },
   {
     "block": 23731827,
     "timestamp": 1762299683,
     "datetime": "2025-11-04T23:41:23",
-    "supply_yb": 16927078.769865807
+    "supply_yb": 16927078.769865807,
+    "yb_locked": 16927078.769865807,
+    "lock_ratio": 1.0
   },
   {
     "block": 23732127,
     "timestamp": 1762303283,
     "datetime": "2025-11-05T00:41:23",
-    "supply_yb": 16927078.769865807
+    "supply_yb": 16927078.769865807,
+    "yb_locked": 16927078.769865807,
+    "lock_ratio": 1.0
   },
   {
     "block": 23732427,
     "timestamp": 1762306883,
     "datetime": "2025-11-05T01:41:23",
-    "supply_yb": 16927322.463042874
+    "supply_yb": 16927322.463042874,
+    "yb_locked": 16927322.463042874,
+    "lock_ratio": 1.0
   },
   {
     "block": 23732727,
     "timestamp": 1762310483,
     "datetime": "2025-11-05T02:41:23",
-    "supply_yb": 16927712.64387698
+    "supply_yb": 16927712.64387698,
+    "yb_locked": 16927712.64387698,
+    "lock_ratio": 1.0
   },
   {
     "block": 23733027,
     "timestamp": 1762314083,
     "datetime": "2025-11-05T03:41:23",
-    "supply_yb": 17081322.701117974
+    "supply_yb": 17081322.701117974,
+    "yb_locked": 17081322.701117974,
+    "lock_ratio": 1.0
   },
   {
     "block": 23733327,
     "timestamp": 1762317683,
     "datetime": "2025-11-05T04:41:23",
-    "supply_yb": 17081322.701117974
+    "supply_yb": 17081322.701117974,
+    "yb_locked": 17081322.701117974,
+    "lock_ratio": 1.0
   },
   {
     "block": 23733627,
     "timestamp": 1762321283,
     "datetime": "2025-11-05T05:41:23",
-    "supply_yb": 17086607.80054985
+    "supply_yb": 17086607.80054985,
+    "yb_locked": 17086607.80054985,
+    "lock_ratio": 1.0
   },
   {
     "block": 23733927,
     "timestamp": 1762324883,
     "datetime": "2025-11-05T06:41:23",
-    "supply_yb": 17086607.80054985
+    "supply_yb": 17086607.80054985,
+    "yb_locked": 17086607.80054985,
+    "lock_ratio": 1.0
   },
   {
     "block": 23734227,
     "timestamp": 1762328483,
     "datetime": "2025-11-05T07:41:23",
-    "supply_yb": 17086607.80054985
+    "supply_yb": 17086607.80054985,
+    "yb_locked": 17086607.80054985,
+    "lock_ratio": 1.0
   },
   {
     "block": 23734527,
     "timestamp": 1762332083,
     "datetime": "2025-11-05T08:41:23",
-    "supply_yb": 17086617.80054985
+    "supply_yb": 17086617.80054985,
+    "yb_locked": 17086617.80054985,
+    "lock_ratio": 1.0
   },
   {
     "block": 23734827,
     "timestamp": 1762335683,
     "datetime": "2025-11-05T09:41:23",
-    "supply_yb": 17091237.04554793
+    "supply_yb": 17091237.04554793,
+    "yb_locked": 17091237.04554793,
+    "lock_ratio": 1.0
   },
   {
     "block": 23735127,
     "timestamp": 1762339283,
     "datetime": "2025-11-05T10:41:23",
-    "supply_yb": 17091237.04554793
+    "supply_yb": 17091237.04554793,
+    "yb_locked": 17091237.04554793,
+    "lock_ratio": 1.0
   },
   {
     "block": 23735427,
     "timestamp": 1762342883,
     "datetime": "2025-11-05T11:41:23",
-    "supply_yb": 17102643.931263633
+    "supply_yb": 17102643.931263633,
+    "yb_locked": 17102643.931263633,
+    "lock_ratio": 1.0
   },
   {
     "block": 23735727,
     "timestamp": 1762346483,
     "datetime": "2025-11-05T12:41:23",
-    "supply_yb": 17102643.931263633
+    "supply_yb": 17102643.931263633,
+    "yb_locked": 17102643.931263633,
+    "lock_ratio": 1.0
   },
   {
     "block": 23736027,
     "timestamp": 1762350083,
     "datetime": "2025-11-05T13:41:23",
-    "supply_yb": 17104554.10579391
+    "supply_yb": 17104554.10579391,
+    "yb_locked": 17104554.10579391,
+    "lock_ratio": 1.0
   },
   {
     "block": 23736327,
     "timestamp": 1762353683,
     "datetime": "2025-11-05T14:41:23",
-    "supply_yb": 17109601.66427717
+    "supply_yb": 17109601.66427717,
+    "yb_locked": 17109601.66427717,
+    "lock_ratio": 1.0
   },
   {
     "block": 23736627,
     "timestamp": 1762357283,
     "datetime": "2025-11-05T15:41:23",
-    "supply_yb": 17109676.507159676
+    "supply_yb": 17109676.507159676,
+    "yb_locked": 17109676.507159676,
+    "lock_ratio": 1.0
   },
   {
     "block": 23736927,
     "timestamp": 1762360883,
     "datetime": "2025-11-05T16:41:23",
-    "supply_yb": 17109676.507159676
+    "supply_yb": 17109676.507159676,
+    "yb_locked": 17109676.507159676,
+    "lock_ratio": 1.0
   },
   {
     "block": 23737227,
     "timestamp": 1762364483,
     "datetime": "2025-11-05T17:41:23",
-    "supply_yb": 17110030.088805556
+    "supply_yb": 17110030.088805556,
+    "yb_locked": 17110030.088805556,
+    "lock_ratio": 1.0
   },
   {
     "block": 23737527,
     "timestamp": 1762368083,
     "datetime": "2025-11-05T18:41:23",
-    "supply_yb": 17110030.088805556
+    "supply_yb": 17110030.088805556,
+    "yb_locked": 17110030.088805556,
+    "lock_ratio": 1.0
   },
   {
     "block": 23737827,
     "timestamp": 1762371683,
     "datetime": "2025-11-05T19:41:23",
-    "supply_yb": 17110030.088805556
+    "supply_yb": 17110030.088805556,
+    "yb_locked": 17110030.088805556,
+    "lock_ratio": 1.0
   },
   {
     "block": 23738127,
     "timestamp": 1762375283,
     "datetime": "2025-11-05T20:41:23",
-    "supply_yb": 17110030.088805556
+    "supply_yb": 17110030.088805556,
+    "yb_locked": 17110030.088805556,
+    "lock_ratio": 1.0
   },
   {
     "block": 23738427,
     "timestamp": 1762378883,
     "datetime": "2025-11-05T21:41:23",
-    "supply_yb": 17110030.088805556
+    "supply_yb": 17110030.088805556,
+    "yb_locked": 17110030.088805556,
+    "lock_ratio": 1.0
   },
   {
     "block": 23738727,
     "timestamp": 1762382483,
     "datetime": "2025-11-05T22:41:23",
-    "supply_yb": 17110030.088805556
+    "supply_yb": 17110030.088805556,
+    "yb_locked": 17110030.088805556,
+    "lock_ratio": 1.0
   },
   {
     "block": 23739027,
     "timestamp": 1762386083,
     "datetime": "2025-11-05T23:41:23",
-    "supply_yb": 17110030.088805556
+    "supply_yb": 17110030.088805556,
+    "yb_locked": 17110030.088805556,
+    "lock_ratio": 1.0
   },
   {
     "block": 23739327,
     "timestamp": 1762389683,
     "datetime": "2025-11-06T00:41:23",
-    "supply_yb": 17110030.088805556
+    "supply_yb": 17110030.088805556,
+    "yb_locked": 17110030.088805556,
+    "lock_ratio": 1.0
   },
   {
     "block": 23739627,
     "timestamp": 1762393283,
     "datetime": "2025-11-06T01:41:23",
-    "supply_yb": 17110030.088805556
+    "supply_yb": 17110030.088805556,
+    "yb_locked": 17110030.088805556,
+    "lock_ratio": 1.0
   },
   {
     "block": 23739927,
     "timestamp": 1762396883,
     "datetime": "2025-11-06T02:41:23",
-    "supply_yb": 17110030.088805556
+    "supply_yb": 17110030.088805556,
+    "yb_locked": 17110030.088805556,
+    "lock_ratio": 1.0
   },
   {
     "block": 23740227,
     "timestamp": 1762400483,
     "datetime": "2025-11-06T03:41:23",
-    "supply_yb": 17110030.088805556
+    "supply_yb": 17110030.088805556,
+    "yb_locked": 17110030.088805556,
+    "lock_ratio": 1.0
   },
   {
     "block": 23740527,
     "timestamp": 1762404083,
     "datetime": "2025-11-06T04:41:23",
-    "supply_yb": 17110030.088805556
+    "supply_yb": 17110030.088805556,
+    "yb_locked": 17110030.088805556,
+    "lock_ratio": 1.0
   },
   {
     "block": 23740827,
     "timestamp": 1762407683,
     "datetime": "2025-11-06T05:41:23",
-    "supply_yb": 17110030.088805556
+    "supply_yb": 17110030.088805556,
+    "yb_locked": 17110030.088805556,
+    "lock_ratio": 1.0
   },
   {
     "block": 23741127,
     "timestamp": 1762411283,
     "datetime": "2025-11-06T06:41:23",
-    "supply_yb": 17110030.088805556
+    "supply_yb": 17110030.088805556,
+    "yb_locked": 17110030.088805556,
+    "lock_ratio": 1.0
   },
   {
     "block": 23741427,
     "timestamp": 1762414883,
     "datetime": "2025-11-06T07:41:23",
-    "supply_yb": 17110030.088805556
+    "supply_yb": 17110030.088805556,
+    "yb_locked": 17110030.088805556,
+    "lock_ratio": 1.0
   },
   {
     "block": 23741727,
     "timestamp": 1762418483,
     "datetime": "2025-11-06T08:41:23",
-    "supply_yb": 17114030.088805556
+    "supply_yb": 17114030.088805556,
+    "yb_locked": 17114030.088805556,
+    "lock_ratio": 1.0
   },
   {
     "block": 23742027,
     "timestamp": 1762422083,
     "datetime": "2025-11-06T09:41:23",
-    "supply_yb": 17114030.088805556
+    "supply_yb": 17114030.088805556,
+    "yb_locked": 17114030.088805556,
+    "lock_ratio": 1.0
   },
   {
     "block": 23742327,
     "timestamp": 1762425683,
     "datetime": "2025-11-06T10:41:23",
-    "supply_yb": 17114030.088805556
+    "supply_yb": 17114030.088805556,
+    "yb_locked": 17114030.088805556,
+    "lock_ratio": 1.0
   },
   {
     "block": 23742627,
     "timestamp": 1762429283,
     "datetime": "2025-11-06T11:41:23",
-    "supply_yb": 17114030.088805556
+    "supply_yb": 17114030.088805556,
+    "yb_locked": 17114030.088805556,
+    "lock_ratio": 1.0
   },
   {
     "block": 23742927,
     "timestamp": 1762432883,
     "datetime": "2025-11-06T12:41:23",
-    "supply_yb": 17114030.088805556
+    "supply_yb": 17114030.088805556,
+    "yb_locked": 17114030.088805556,
+    "lock_ratio": 1.0
   },
   {
     "block": 23743227,
     "timestamp": 1762436483,
     "datetime": "2025-11-06T13:41:23",
-    "supply_yb": 17189813.90144582
+    "supply_yb": 17189813.90144582,
+    "yb_locked": 17189813.90144582,
+    "lock_ratio": 1.0
   },
   {
     "block": 23743527,
     "timestamp": 1762440083,
     "datetime": "2025-11-06T14:41:23",
-    "supply_yb": 17189813.90144582
+    "supply_yb": 17189813.90144582,
+    "yb_locked": 17189813.90144582,
+    "lock_ratio": 1.0
   },
   {
     "block": 23743827,
     "timestamp": 1762443683,
     "datetime": "2025-11-06T15:41:23",
-    "supply_yb": 17189813.90144582
+    "supply_yb": 17189813.90144582,
+    "yb_locked": 17189813.90144582,
+    "lock_ratio": 1.0
   },
   {
     "block": 23744127,
     "timestamp": 1762447283,
     "datetime": "2025-11-06T16:41:23",
-    "supply_yb": 17189813.90144582
+    "supply_yb": 17189813.90144582,
+    "yb_locked": 17189813.90144582,
+    "lock_ratio": 1.0
   },
   {
     "block": 23744427,
     "timestamp": 1762450883,
     "datetime": "2025-11-06T17:41:23",
-    "supply_yb": 17189813.90144582
+    "supply_yb": 17189813.90144582,
+    "yb_locked": 17189813.90144582,
+    "lock_ratio": 1.0
   },
   {
     "block": 23744727,
     "timestamp": 1762454483,
     "datetime": "2025-11-06T18:41:23",
-    "supply_yb": 17189813.90144582
+    "supply_yb": 17189813.90144582,
+    "yb_locked": 17189813.90144582,
+    "lock_ratio": 1.0
   },
   {
     "block": 23745027,
     "timestamp": 1762458083,
     "datetime": "2025-11-06T19:41:23",
-    "supply_yb": 17190009.987172496
+    "supply_yb": 17190009.987172496,
+    "yb_locked": 17190009.987172496,
+    "lock_ratio": 1.0
   },
   {
     "block": 23745327,
     "timestamp": 1762461683,
     "datetime": "2025-11-06T20:41:23",
-    "supply_yb": 17190009.987172496
+    "supply_yb": 17190009.987172496,
+    "yb_locked": 17190009.987172496,
+    "lock_ratio": 1.0
   },
   {
     "block": 23745627,
     "timestamp": 1762465283,
     "datetime": "2025-11-06T21:41:23",
-    "supply_yb": 17092118.366573855
+    "supply_yb": 17092118.366573855,
+    "yb_locked": 17092118.366573855,
+    "lock_ratio": 1.0
   },
   {
     "block": 23745927,
     "timestamp": 1762468883,
     "datetime": "2025-11-06T22:41:23",
-    "supply_yb": 17092118.366573855
+    "supply_yb": 17092118.366573855,
+    "yb_locked": 17092118.366573855,
+    "lock_ratio": 1.0
   },
   {
     "block": 23746227,
     "timestamp": 1762472483,
     "datetime": "2025-11-06T23:41:23",
-    "supply_yb": 17092118.366573855
+    "supply_yb": 17092118.366573855,
+    "yb_locked": 17092118.366573855,
+    "lock_ratio": 1.0
   },
   {
     "block": 23746527,
     "timestamp": 1762476083,
     "datetime": "2025-11-07T00:41:23",
-    "supply_yb": 17092118.366573855
+    "supply_yb": 17092118.366573855,
+    "yb_locked": 17092118.366573855,
+    "lock_ratio": 1.0
   },
   {
     "block": 23746827,
     "timestamp": 1762479683,
     "datetime": "2025-11-07T01:41:23",
-    "supply_yb": 17094168.39114985
+    "supply_yb": 17094168.39114985,
+    "yb_locked": 17094168.39114985,
+    "lock_ratio": 1.0
   },
   {
     "block": 23747127,
     "timestamp": 1762483283,
     "datetime": "2025-11-07T02:41:23",
-    "supply_yb": 17094168.39114985
+    "supply_yb": 17094168.39114985,
+    "yb_locked": 17094168.39114985,
+    "lock_ratio": 1.0
   },
   {
     "block": 23747427,
     "timestamp": 1762486883,
     "datetime": "2025-11-07T03:41:23",
-    "supply_yb": 17094333.792652313
+    "supply_yb": 17094333.792652313,
+    "yb_locked": 17094333.792652313,
+    "lock_ratio": 1.0
   },
   {
     "block": 23747727,
     "timestamp": 1762490483,
     "datetime": "2025-11-07T04:41:23",
-    "supply_yb": 17118251.32938231
+    "supply_yb": 17118251.32938231,
+    "yb_locked": 17118251.32938231,
+    "lock_ratio": 1.0
   },
   {
     "block": 23748027,
     "timestamp": 1762494083,
     "datetime": "2025-11-07T05:41:23",
-    "supply_yb": 17191643.32938231
+    "supply_yb": 17191643.32938231,
+    "yb_locked": 17191643.32938231,
+    "lock_ratio": 1.0
   },
   {
     "block": 23748327,
     "timestamp": 1762497683,
     "datetime": "2025-11-07T06:41:23",
-    "supply_yb": 17195346.739798732
+    "supply_yb": 17195346.739798732,
+    "yb_locked": 17195346.739798732,
+    "lock_ratio": 1.0
   },
   {
     "block": 23748627,
     "timestamp": 1762501283,
     "datetime": "2025-11-07T07:41:23",
-    "supply_yb": 17230393.387458067
+    "supply_yb": 17230393.387458067,
+    "yb_locked": 17230393.387458067,
+    "lock_ratio": 1.0
   },
   {
     "block": 23748927,
     "timestamp": 1762504883,
     "datetime": "2025-11-07T08:41:23",
-    "supply_yb": 17241816.122239225
+    "supply_yb": 17241816.122239225,
+    "yb_locked": 17241816.122239225,
+    "lock_ratio": 1.0
   },
   {
     "block": 23749227,
     "timestamp": 1762508483,
     "datetime": "2025-11-07T09:41:23",
-    "supply_yb": 17241816.122239225
+    "supply_yb": 17241816.122239225,
+    "yb_locked": 17241816.122239225,
+    "lock_ratio": 1.0
   },
   {
     "block": 23749527,
     "timestamp": 1762512083,
     "datetime": "2025-11-07T10:41:23",
-    "supply_yb": 17492077.529766962
+    "supply_yb": 17492077.529766962,
+    "yb_locked": 17492077.529766962,
+    "lock_ratio": 1.0
   },
   {
     "block": 23749827,
     "timestamp": 1762515683,
     "datetime": "2025-11-07T11:41:23",
-    "supply_yb": 17492150.56904793
+    "supply_yb": 17492150.56904793,
+    "yb_locked": 17492150.56904793,
+    "lock_ratio": 1.0
   },
   {
     "block": 23750127,
     "timestamp": 1762519283,
     "datetime": "2025-11-07T12:41:23",
-    "supply_yb": 17570487.721259877
+    "supply_yb": 17570487.721259877,
+    "yb_locked": 17570487.721259877,
+    "lock_ratio": 1.0
   },
   {
     "block": 23750427,
     "timestamp": 1762522883,
     "datetime": "2025-11-07T13:41:23",
-    "supply_yb": 17588050.853998695
+    "supply_yb": 17588050.853998695,
+    "yb_locked": 17588050.853998695,
+    "lock_ratio": 1.0
   },
   {
     "block": 23750727,
     "timestamp": 1762526483,
     "datetime": "2025-11-07T14:41:23",
-    "supply_yb": 17589482.39314789
+    "supply_yb": 17589482.39314789,
+    "yb_locked": 17589482.39314789,
+    "lock_ratio": 1.0
   },
   {
     "block": 23751027,
     "timestamp": 1762530083,
     "datetime": "2025-11-07T15:41:23",
-    "supply_yb": 17592204.539753657
+    "supply_yb": 17592204.539753657,
+    "yb_locked": 17592204.539753657,
+    "lock_ratio": 1.0
   },
   {
     "block": 23751327,
     "timestamp": 1762533683,
     "datetime": "2025-11-07T16:41:23",
-    "supply_yb": 17592216.856906768
+    "supply_yb": 17592216.856906768,
+    "yb_locked": 17592216.856906768,
+    "lock_ratio": 1.0
   },
   {
     "block": 23751627,
     "timestamp": 1762537283,
     "datetime": "2025-11-07T17:41:23",
-    "supply_yb": 17593735.281340115
+    "supply_yb": 17593735.281340115,
+    "yb_locked": 17593735.281340115,
+    "lock_ratio": 1.0
   },
   {
     "block": 23751927,
     "timestamp": 1762540883,
     "datetime": "2025-11-07T18:41:23",
-    "supply_yb": 17593735.281340115
+    "supply_yb": 17593735.281340115,
+    "yb_locked": 17593735.281340115,
+    "lock_ratio": 1.0
   },
   {
     "block": 23752227,
     "timestamp": 1762544483,
     "datetime": "2025-11-07T19:41:23",
-    "supply_yb": 17594287.137577113
+    "supply_yb": 17594287.137577113,
+    "yb_locked": 17594287.137577113,
+    "lock_ratio": 1.0
   },
   {
     "block": 23752527,
     "timestamp": 1762548083,
     "datetime": "2025-11-07T20:41:23",
-    "supply_yb": 17594287.137577113
+    "supply_yb": 17594287.137577113,
+    "yb_locked": 17594287.137577113,
+    "lock_ratio": 1.0
   },
   {
     "block": 23752827,
     "timestamp": 1762551683,
     "datetime": "2025-11-07T21:41:23",
-    "supply_yb": 17594287.137577113
+    "supply_yb": 17594287.137577113,
+    "yb_locked": 17594287.137577113,
+    "lock_ratio": 1.0
   },
   {
     "block": 23753127,
     "timestamp": 1762555283,
     "datetime": "2025-11-07T22:41:23",
-    "supply_yb": 17594287.137577113
+    "supply_yb": 17594287.137577113,
+    "yb_locked": 17594287.137577113,
+    "lock_ratio": 1.0
   },
   {
     "block": 23753427,
     "timestamp": 1762558883,
     "datetime": "2025-11-07T23:41:23",
-    "supply_yb": 17594297.277577113
+    "supply_yb": 17594297.277577113,
+    "yb_locked": 17594297.277577113,
+    "lock_ratio": 1.0
   },
   {
     "block": 23753727,
     "timestamp": 1762562483,
     "datetime": "2025-11-08T00:41:23",
-    "supply_yb": 17601334.491281744
+    "supply_yb": 17601334.491281744,
+    "yb_locked": 17601334.491281744,
+    "lock_ratio": 1.0
   },
   {
     "block": 23754027,
     "timestamp": 1762566083,
     "datetime": "2025-11-08T01:41:23",
-    "supply_yb": 17602928.9967857
+    "supply_yb": 17602928.9967857,
+    "yb_locked": 17602928.9967857,
+    "lock_ratio": 1.0
   },
   {
     "block": 23754327,
     "timestamp": 1762569683,
     "datetime": "2025-11-08T02:41:23",
-    "supply_yb": 17602928.9967857
+    "supply_yb": 17602928.9967857,
+    "yb_locked": 17602928.9967857,
+    "lock_ratio": 1.0
   },
   {
     "block": 23754627,
     "timestamp": 1762573283,
     "datetime": "2025-11-08T03:41:23",
-    "supply_yb": 17603939.57907101
+    "supply_yb": 17603939.57907101,
+    "yb_locked": 17603939.57907101,
+    "lock_ratio": 1.0
   },
   {
     "block": 23754927,
     "timestamp": 1762576883,
     "datetime": "2025-11-08T04:41:23",
-    "supply_yb": 17604141.933599405
+    "supply_yb": 17604141.933599405,
+    "yb_locked": 17604141.933599405,
+    "lock_ratio": 1.0
   },
   {
     "block": 23755227,
     "timestamp": 1762580483,
     "datetime": "2025-11-08T05:41:23",
-    "supply_yb": 17604141.933599405
+    "supply_yb": 17604141.933599405,
+    "yb_locked": 17604141.933599405,
+    "lock_ratio": 1.0
   },
   {
     "block": 23755527,
     "timestamp": 1762584083,
     "datetime": "2025-11-08T06:41:23",
-    "supply_yb": 17604141.933599405
+    "supply_yb": 17604141.933599405,
+    "yb_locked": 17604141.933599405,
+    "lock_ratio": 1.0
   },
   {
     "block": 23755827,
     "timestamp": 1762587683,
     "datetime": "2025-11-08T07:41:23",
-    "supply_yb": 17605988.866109103
+    "supply_yb": 17605988.866109103,
+    "yb_locked": 17605988.866109103,
+    "lock_ratio": 1.0
   },
   {
     "block": 23756127,
     "timestamp": 1762591283,
     "datetime": "2025-11-08T08:41:23",
-    "supply_yb": 17615135.866109103
+    "supply_yb": 17615135.866109103,
+    "yb_locked": 17615135.866109103,
+    "lock_ratio": 1.0
   },
   {
     "block": 23756427,
     "timestamp": 1762594883,
     "datetime": "2025-11-08T09:41:23",
-    "supply_yb": 17615135.866109103
+    "supply_yb": 17615135.866109103,
+    "yb_locked": 17615135.866109103,
+    "lock_ratio": 1.0
   },
   {
     "block": 23756727,
     "timestamp": 1762598483,
     "datetime": "2025-11-08T10:41:23",
-    "supply_yb": 17631627.632801402
+    "supply_yb": 17631627.632801402,
+    "yb_locked": 17631627.632801402,
+    "lock_ratio": 1.0
   },
   {
     "block": 23757027,
     "timestamp": 1762602083,
     "datetime": "2025-11-08T11:41:23",
-    "supply_yb": 17631627.632801402
+    "supply_yb": 17631627.632801402,
+    "yb_locked": 17631627.632801402,
+    "lock_ratio": 1.0
   },
   {
     "block": 23757327,
     "timestamp": 1762605683,
     "datetime": "2025-11-08T12:41:23",
-    "supply_yb": 17631720.44722672
+    "supply_yb": 17631720.44722672,
+    "yb_locked": 17631720.44722672,
+    "lock_ratio": 1.0
   },
   {
     "block": 23757627,
     "timestamp": 1762609283,
     "datetime": "2025-11-08T13:41:23",
-    "supply_yb": 17631720.44722672
+    "supply_yb": 17631720.44722672,
+    "yb_locked": 17631720.44722672,
+    "lock_ratio": 1.0
   },
   {
     "block": 23757927,
     "timestamp": 1762612883,
     "datetime": "2025-11-08T14:41:23",
-    "supply_yb": 17631720.44722672
+    "supply_yb": 17631720.44722672,
+    "yb_locked": 17631720.44722672,
+    "lock_ratio": 1.0
   },
   {
     "block": 23758227,
     "timestamp": 1762616483,
     "datetime": "2025-11-08T15:41:23",
-    "supply_yb": 17631720.44722672
+    "supply_yb": 17631720.44722672,
+    "yb_locked": 17631720.44722672,
+    "lock_ratio": 1.0
   },
   {
     "block": 23758527,
     "timestamp": 1762620083,
     "datetime": "2025-11-08T16:41:23",
-    "supply_yb": 17631720.44722672
+    "supply_yb": 17631720.44722672,
+    "yb_locked": 17631720.44722672,
+    "lock_ratio": 1.0
   },
   {
     "block": 23758827,
     "timestamp": 1762623683,
     "datetime": "2025-11-08T17:41:23",
-    "supply_yb": 17631720.44722672
+    "supply_yb": 17631720.44722672,
+    "yb_locked": 17631720.44722672,
+    "lock_ratio": 1.0
   },
   {
     "block": 23759127,
     "timestamp": 1762627283,
     "datetime": "2025-11-08T18:41:23",
-    "supply_yb": 17631720.44722672
+    "supply_yb": 17631720.44722672,
+    "yb_locked": 17631720.44722672,
+    "lock_ratio": 1.0
   },
   {
     "block": 23759427,
     "timestamp": 1762630883,
     "datetime": "2025-11-08T19:41:23",
-    "supply_yb": 17631720.44722672
+    "supply_yb": 17631720.44722672,
+    "yb_locked": 17631720.44722672,
+    "lock_ratio": 1.0
   },
   {
     "block": 23759727,
     "timestamp": 1762634483,
     "datetime": "2025-11-08T20:41:23",
-    "supply_yb": 17631720.44722672
+    "supply_yb": 17631720.44722672,
+    "yb_locked": 17631720.44722672,
+    "lock_ratio": 1.0
   },
   {
     "block": 23760027,
     "timestamp": 1762638083,
     "datetime": "2025-11-08T21:41:23",
-    "supply_yb": 17633520.44722672
+    "supply_yb": 17633520.44722672,
+    "yb_locked": 17633520.44722672,
+    "lock_ratio": 1.0
   },
   {
     "block": 23760327,
     "timestamp": 1762641683,
     "datetime": "2025-11-08T22:41:23",
-    "supply_yb": 17633520.44722672
+    "supply_yb": 17633520.44722672,
+    "yb_locked": 17633520.44722672,
+    "lock_ratio": 1.0
   },
   {
     "block": 23760627,
     "timestamp": 1762645283,
     "datetime": "2025-11-08T23:41:23",
-    "supply_yb": 17633520.44722672
+    "supply_yb": 17633520.44722672,
+    "yb_locked": 17633520.44722672,
+    "lock_ratio": 1.0
   },
   {
     "block": 23760927,
     "timestamp": 1762681895,
     "datetime": "2025-11-09T09:51:35",
-    "supply_yb": 17633520.44722672
+    "supply_yb": 17633520.44722672,
+    "yb_locked": 17633520.44722672,
+    "lock_ratio": 1.0
   },
   {
     "block": 23761227,
     "timestamp": 1762652483,
     "datetime": "2025-11-09T01:41:23",
-    "supply_yb": 17633520.44722672
+    "supply_yb": 17633520.44722672,
+    "yb_locked": 17633520.44722672,
+    "lock_ratio": 1.0
   },
   {
     "block": 23761527,
     "timestamp": 1762656083,
     "datetime": "2025-11-09T02:41:23",
-    "supply_yb": 17636909.557830736
+    "supply_yb": 17636909.557830736,
+    "yb_locked": 17636909.557830736,
+    "lock_ratio": 1.0
   },
   {
     "block": 23761827,
     "timestamp": 1762659683,
     "datetime": "2025-11-09T03:41:23",
-    "supply_yb": 17636909.557830736
+    "supply_yb": 17636909.557830736,
+    "yb_locked": 17636909.557830736,
+    "lock_ratio": 1.0
   },
   {
     "block": 23762127,
     "timestamp": 1762663283,
     "datetime": "2025-11-09T04:41:23",
-    "supply_yb": 17636909.557830736
+    "supply_yb": 17636909.557830736,
+    "yb_locked": 17636909.557830736,
+    "lock_ratio": 1.0
   },
   {
     "block": 23762427,
     "timestamp": 1762666883,
     "datetime": "2025-11-09T05:41:23",
-    "supply_yb": 17636909.557830736
+    "supply_yb": 17636909.557830736,
+    "yb_locked": 17636909.557830736,
+    "lock_ratio": 1.0
   },
   {
     "block": 23762727,
     "timestamp": 1762670483,
     "datetime": "2025-11-09T06:41:23",
-    "supply_yb": 17636909.557830736
+    "supply_yb": 17636909.557830736,
+    "yb_locked": 17636909.557830736,
+    "lock_ratio": 1.0
   },
   {
     "block": 23763027,
     "timestamp": 1762674083,
     "datetime": "2025-11-09T07:41:23",
-    "supply_yb": 17637234.679084033
+    "supply_yb": 17637234.679084033,
+    "yb_locked": 17637234.679084033,
+    "lock_ratio": 1.0
   },
   {
     "block": 23763327,
     "timestamp": 1762677683,
     "datetime": "2025-11-09T08:41:23",
-    "supply_yb": 17637234.679084033
+    "supply_yb": 17637234.679084033,
+    "yb_locked": 17637234.679084033,
+    "lock_ratio": 1.0
   },
   {
     "block": 23763627,
     "timestamp": 1762681283,
     "datetime": "2025-11-09T09:41:23",
-    "supply_yb": 17641334.934352856
+    "supply_yb": 17641334.934352856,
+    "yb_locked": 17641334.934352856,
+    "lock_ratio": 1.0
   },
   {
     "block": 23763927,
     "timestamp": 1762684883,
     "datetime": "2025-11-09T10:41:23",
-    "supply_yb": 17641334.934352856
+    "supply_yb": 17641334.934352856,
+    "yb_locked": 17641334.934352856,
+    "lock_ratio": 1.0
   },
   {
     "block": 23764227,
     "timestamp": 1762688483,
     "datetime": "2025-11-09T11:41:23",
-    "supply_yb": 17645616.009127606
+    "supply_yb": 17645616.009127606,
+    "yb_locked": 17645616.009127606,
+    "lock_ratio": 1.0
   },
   {
     "block": 23764527,
     "timestamp": 1762692083,
     "datetime": "2025-11-09T12:41:23",
-    "supply_yb": 17645616.009127606
+    "supply_yb": 17645616.009127606,
+    "yb_locked": 17645616.009127606,
+    "lock_ratio": 1.0
   },
   {
     "block": 23764827,
     "timestamp": 1762695683,
     "datetime": "2025-11-09T13:41:23",
-    "supply_yb": 17647678.324270476
+    "supply_yb": 17647678.324270476,
+    "yb_locked": 17647678.324270476,
+    "lock_ratio": 1.0
   },
   {
     "block": 23765127,
     "timestamp": 1762699283,
     "datetime": "2025-11-09T14:41:23",
-    "supply_yb": 17652890.526319742
+    "supply_yb": 17652890.526319742,
+    "yb_locked": 17652890.526319742,
+    "lock_ratio": 1.0
   },
   {
     "block": 23765427,
     "timestamp": 1762702883,
     "datetime": "2025-11-09T15:41:23",
-    "supply_yb": 17653943.375711735
+    "supply_yb": 17653943.375711735,
+    "yb_locked": 17653943.375711735,
+    "lock_ratio": 1.0
   },
   {
     "block": 23765727,
     "timestamp": 1762706483,
     "datetime": "2025-11-09T16:41:23",
-    "supply_yb": 17657318.125508044
+    "supply_yb": 17657318.125508044,
+    "yb_locked": 17657318.125508044,
+    "lock_ratio": 1.0
   },
   {
     "block": 23766027,
     "timestamp": 1762710083,
     "datetime": "2025-11-09T17:41:23",
-    "supply_yb": 17665745.746116653
+    "supply_yb": 17665745.746116653,
+    "yb_locked": 17665745.746116653,
+    "lock_ratio": 1.0
   },
   {
     "block": 23766327,
     "timestamp": 1762713683,
     "datetime": "2025-11-09T18:41:23",
-    "supply_yb": 17665745.746116653
+    "supply_yb": 17665745.746116653,
+    "yb_locked": 17665745.746116653,
+    "lock_ratio": 1.0
   },
   {
     "block": 23766627,
     "timestamp": 1762717283,
     "datetime": "2025-11-09T19:41:23",
-    "supply_yb": 17665757.38861193
+    "supply_yb": 17665757.38861193,
+    "yb_locked": 17665757.38861193,
+    "lock_ratio": 1.0
   },
   {
     "block": 23766927,
     "timestamp": 1762720883,
     "datetime": "2025-11-09T20:41:23",
-    "supply_yb": 17665757.38861193
+    "supply_yb": 17665757.38861193,
+    "yb_locked": 17665757.38861193,
+    "lock_ratio": 1.0
   },
   {
     "block": 23767227,
     "timestamp": 1762724483,
     "datetime": "2025-11-09T21:41:23",
-    "supply_yb": 17665757.38861193
+    "supply_yb": 17665757.38861193,
+    "yb_locked": 17665757.38861193,
+    "lock_ratio": 1.0
   },
   {
     "block": 23767527,
     "timestamp": 1762728083,
     "datetime": "2025-11-09T22:41:23",
-    "supply_yb": 17665796.463289667
+    "supply_yb": 17665796.463289667,
+    "yb_locked": 17665796.463289667,
+    "lock_ratio": 1.0
   },
   {
     "block": 23767827,
     "timestamp": 1762731683,
     "datetime": "2025-11-09T23:41:23",
-    "supply_yb": 17668080.336296722
+    "supply_yb": 17668080.336296722,
+    "yb_locked": 17668080.336296722,
+    "lock_ratio": 1.0
   },
   {
     "block": 23768127,
     "timestamp": 1762735283,
     "datetime": "2025-11-10T00:41:23",
-    "supply_yb": 17669169.38399257
+    "supply_yb": 17669169.38399257,
+    "yb_locked": 17669169.38399257,
+    "lock_ratio": 1.0
   },
   {
     "block": 23768427,
     "timestamp": 1762738883,
     "datetime": "2025-11-10T01:41:23",
-    "supply_yb": 17669169.38399257
+    "supply_yb": 17669169.38399257,
+    "yb_locked": 17669169.38399257,
+    "lock_ratio": 1.0
   },
   {
     "block": 23768727,
     "timestamp": 1762742483,
     "datetime": "2025-11-10T02:41:23",
-    "supply_yb": 17669689.567395013
+    "supply_yb": 17669689.567395013,
+    "yb_locked": 17669689.567395013,
+    "lock_ratio": 1.0
   },
   {
     "block": 23769027,
     "timestamp": 1762746083,
     "datetime": "2025-11-10T03:41:23",
-    "supply_yb": 17670102.629308343
+    "supply_yb": 17670102.629308343,
+    "yb_locked": 17670102.629308343,
+    "lock_ratio": 1.0
   },
   {
     "block": 23769327,
     "timestamp": 1762749683,
     "datetime": "2025-11-10T04:41:23",
-    "supply_yb": 17670102.629308343
+    "supply_yb": 17670102.629308343,
+    "yb_locked": 17670102.629308343,
+    "lock_ratio": 1.0
   },
   {
     "block": 23769627,
     "timestamp": 1762753283,
     "datetime": "2025-11-10T05:41:23",
-    "supply_yb": 17670102.629308343
+    "supply_yb": 17670102.629308343,
+    "yb_locked": 17670102.629308343,
+    "lock_ratio": 1.0
   },
   {
     "block": 23769927,
     "timestamp": 1762756883,
     "datetime": "2025-11-10T06:41:23",
-    "supply_yb": 17671890.678853586
+    "supply_yb": 17671890.678853586,
+    "yb_locked": 17671890.678853586,
+    "lock_ratio": 1.0
   },
   {
     "block": 23770227,
     "timestamp": 1762760483,
     "datetime": "2025-11-10T07:41:23",
-    "supply_yb": 17671890.678853586
+    "supply_yb": 17671890.678853586,
+    "yb_locked": 17671890.678853586,
+    "lock_ratio": 1.0
   },
   {
     "block": 23770527,
     "timestamp": 1762764083,
     "datetime": "2025-11-10T08:41:23",
-    "supply_yb": 17672182.07231475
+    "supply_yb": 17672182.07231475,
+    "yb_locked": 17672182.07231475,
+    "lock_ratio": 1.0
   },
   {
     "block": 23770827,
     "timestamp": 1762767683,
     "datetime": "2025-11-10T09:41:23",
-    "supply_yb": 17672182.07231475
+    "supply_yb": 17672182.07231475,
+    "yb_locked": 17672182.07231475,
+    "lock_ratio": 1.0
   },
   {
     "block": 23771127,
     "timestamp": 1762771283,
     "datetime": "2025-11-10T10:41:23",
-    "supply_yb": 17672182.07231475
+    "supply_yb": 17672182.07231475,
+    "yb_locked": 17672182.07231475,
+    "lock_ratio": 1.0
   },
   {
     "block": 23771427,
     "timestamp": 1762774883,
     "datetime": "2025-11-10T11:41:23",
-    "supply_yb": 17672182.07231475
+    "supply_yb": 17672182.07231475,
+    "yb_locked": 17672182.07231475,
+    "lock_ratio": 1.0
   },
   {
     "block": 23771727,
     "timestamp": 1762778483,
     "datetime": "2025-11-10T12:41:23",
-    "supply_yb": 17672182.07231475
+    "supply_yb": 17672182.07231475,
+    "yb_locked": 17672182.07231475,
+    "lock_ratio": 1.0
   },
   {
     "block": 23772027,
     "timestamp": 1762782083,
     "datetime": "2025-11-10T13:41:23",
-    "supply_yb": 17672182.07231475
+    "supply_yb": 17672182.07231475,
+    "yb_locked": 17672182.07231475,
+    "lock_ratio": 1.0
   },
   {
     "block": 23772327,
     "timestamp": 1762785683,
     "datetime": "2025-11-10T14:41:23",
-    "supply_yb": 17672182.07231475
+    "supply_yb": 17672182.07231475,
+    "yb_locked": 17672182.07231475,
+    "lock_ratio": 1.0
   },
   {
     "block": 23772627,
     "timestamp": 1762789283,
     "datetime": "2025-11-10T15:41:23",
-    "supply_yb": 17672182.07231475
+    "supply_yb": 17672182.07231475,
+    "yb_locked": 17672182.07231475,
+    "lock_ratio": 1.0
   },
   {
     "block": 23772927,
     "timestamp": 1762792883,
     "datetime": "2025-11-10T16:41:23",
-    "supply_yb": 17673113.4171204
+    "supply_yb": 17673113.4171204,
+    "yb_locked": 17673113.4171204,
+    "lock_ratio": 1.0
   },
   {
     "block": 23773227,
     "timestamp": 1762796483,
     "datetime": "2025-11-10T17:41:23",
-    "supply_yb": 17673113.4171204
+    "supply_yb": 17673113.4171204,
+    "yb_locked": 17673113.4171204,
+    "lock_ratio": 1.0
   },
   {
     "block": 23773527,
     "timestamp": 1762800083,
     "datetime": "2025-11-10T18:41:23",
-    "supply_yb": 17673114.427120402
+    "supply_yb": 17673114.427120402,
+    "yb_locked": 17673114.427120402,
+    "lock_ratio": 1.0
   },
   {
     "block": 23773827,
     "timestamp": 1762803683,
     "datetime": "2025-11-10T19:41:23",
-    "supply_yb": 17673114.427120402
+    "supply_yb": 17673114.427120402,
+    "yb_locked": 17673114.427120402,
+    "lock_ratio": 1.0
   },
   {
     "block": 23774127,
     "timestamp": 1762807283,
     "datetime": "2025-11-10T20:41:23",
-    "supply_yb": 17673114.427120402
+    "supply_yb": 17673114.427120402,
+    "yb_locked": 17673114.427120402,
+    "lock_ratio": 1.0
   },
   {
     "block": 23774427,
     "timestamp": 1762810883,
     "datetime": "2025-11-10T21:41:23",
-    "supply_yb": 17673114.427120402
+    "supply_yb": 17673114.427120402,
+    "yb_locked": 17673114.427120402,
+    "lock_ratio": 1.0
   },
   {
     "block": 23774727,
     "timestamp": 1762814483,
     "datetime": "2025-11-10T22:41:23",
-    "supply_yb": 17673114.427120402
+    "supply_yb": 17673114.427120402,
+    "yb_locked": 17673114.427120402,
+    "lock_ratio": 1.0
   },
   {
     "block": 23775027,
     "timestamp": 1762818083,
     "datetime": "2025-11-10T23:41:23",
-    "supply_yb": 17673114.427120402
+    "supply_yb": 17673114.427120402,
+    "yb_locked": 17673114.427120402,
+    "lock_ratio": 1.0
   },
   {
     "block": 23775327,
     "timestamp": 1762821683,
     "datetime": "2025-11-11T00:41:23",
-    "supply_yb": 17708640.372192804
+    "supply_yb": 17708640.372192804,
+    "yb_locked": 17708640.372192804,
+    "lock_ratio": 1.0
   },
   {
     "block": 23775627,
     "timestamp": 1762825283,
     "datetime": "2025-11-11T01:41:23",
-    "supply_yb": 17708640.372192804
+    "supply_yb": 17708640.372192804,
+    "yb_locked": 17708640.372192804,
+    "lock_ratio": 1.0
   },
   {
     "block": 23775927,
     "timestamp": 1762828883,
     "datetime": "2025-11-11T02:41:23",
-    "supply_yb": 17714808.372192804
+    "supply_yb": 17714808.372192804,
+    "yb_locked": 17714808.372192804,
+    "lock_ratio": 1.0
   },
   {
     "block": 23776227,
     "timestamp": 1762832483,
     "datetime": "2025-11-11T03:41:23",
-    "supply_yb": 17714808.372192804
+    "supply_yb": 17714808.372192804,
+    "yb_locked": 17714808.372192804,
+    "lock_ratio": 1.0
   },
   {
     "block": 23776527,
     "timestamp": 1762836083,
     "datetime": "2025-11-11T04:41:23",
-    "supply_yb": 17715625.054655302
+    "supply_yb": 17715625.054655302,
+    "yb_locked": 17715625.054655302,
+    "lock_ratio": 1.0
   },
   {
     "block": 23776827,
     "timestamp": 1762839683,
     "datetime": "2025-11-11T05:41:23",
-    "supply_yb": 17715746.894655302
+    "supply_yb": 17715746.894655302,
+    "yb_locked": 17715746.894655302,
+    "lock_ratio": 1.0
   },
   {
     "block": 23777127,
     "timestamp": 1762843283,
     "datetime": "2025-11-11T06:41:23",
-    "supply_yb": 17715746.894655302
+    "supply_yb": 17715746.894655302,
+    "yb_locked": 17715746.894655302,
+    "lock_ratio": 1.0
   },
   {
     "block": 23777427,
     "timestamp": 1762846883,
     "datetime": "2025-11-11T07:41:23",
-    "supply_yb": 17715746.894655302
+    "supply_yb": 17715746.894655302,
+    "yb_locked": 17715746.894655302,
+    "lock_ratio": 1.0
   },
   {
     "block": 23777727,
     "timestamp": 1762850483,
     "datetime": "2025-11-11T08:41:23",
-    "supply_yb": 17715746.894655302
+    "supply_yb": 17715746.894655302,
+    "yb_locked": 17715746.894655302,
+    "lock_ratio": 1.0
   },
   {
     "block": 23778027,
     "timestamp": 1762854083,
     "datetime": "2025-11-11T09:41:23",
-    "supply_yb": 17716461.459803782
+    "supply_yb": 17716461.459803782,
+    "yb_locked": 17716461.459803782,
+    "lock_ratio": 1.0
   },
   {
     "block": 23778327,
     "timestamp": 1762857683,
     "datetime": "2025-11-11T10:41:23",
-    "supply_yb": 17717354.921051934
+    "supply_yb": 17717354.921051934,
+    "yb_locked": 17717354.921051934,
+    "lock_ratio": 1.0
   },
   {
     "block": 23778627,
     "timestamp": 1762861283,
     "datetime": "2025-11-11T11:41:23",
-    "supply_yb": 17718859.17352163
+    "supply_yb": 17718859.17352163,
+    "yb_locked": 17718859.17352163,
+    "lock_ratio": 1.0
   },
   {
     "block": 23778927,
     "timestamp": 1762864883,
     "datetime": "2025-11-11T12:41:23",
-    "supply_yb": 17719949.17352163
+    "supply_yb": 17719949.17352163,
+    "yb_locked": 17719949.17352163,
+    "lock_ratio": 1.0
   },
   {
     "block": 23779227,
     "timestamp": 1762868483,
     "datetime": "2025-11-11T13:41:23",
-    "supply_yb": 17719949.17352163
+    "supply_yb": 17719949.17352163,
+    "yb_locked": 17719949.17352163,
+    "lock_ratio": 1.0
   },
   {
     "block": 23779527,
     "timestamp": 1762872083,
     "datetime": "2025-11-11T14:41:23",
-    "supply_yb": 17719949.17352163
+    "supply_yb": 17719949.17352163,
+    "yb_locked": 17719949.17352163,
+    "lock_ratio": 1.0
   },
   {
     "block": 23779827,
     "timestamp": 1762875683,
     "datetime": "2025-11-11T15:41:23",
-    "supply_yb": 17719949.17352163
+    "supply_yb": 17719949.17352163,
+    "yb_locked": 17719949.17352163,
+    "lock_ratio": 1.0
   },
   {
     "block": 23780127,
     "timestamp": 1762879283,
     "datetime": "2025-11-11T16:41:23",
-    "supply_yb": 17732564.191046458
+    "supply_yb": 17732564.191046458,
+    "yb_locked": 17732564.191046458,
+    "lock_ratio": 1.0
   },
   {
     "block": 23780427,
     "timestamp": 1762882883,
     "datetime": "2025-11-11T17:41:23",
-    "supply_yb": 17732564.191046458
+    "supply_yb": 17732564.191046458,
+    "yb_locked": 17732564.191046458,
+    "lock_ratio": 1.0
   },
   {
     "block": 23780727,
     "timestamp": 1762886483,
     "datetime": "2025-11-11T18:41:23",
-    "supply_yb": 17738324.19894905
+    "supply_yb": 17738324.19894905,
+    "yb_locked": 17738324.19894905,
+    "lock_ratio": 1.0
   },
   {
     "block": 23781027,
     "timestamp": 1762890083,
     "datetime": "2025-11-11T19:41:23",
-    "supply_yb": 17738324.19894905
+    "supply_yb": 17738324.19894905,
+    "yb_locked": 17738324.19894905,
+    "lock_ratio": 1.0
   },
   {
     "block": 23781327,
     "timestamp": 1762893683,
     "datetime": "2025-11-11T20:41:23",
-    "supply_yb": 17738764.191534806
+    "supply_yb": 17738764.191534806,
+    "yb_locked": 17738764.191534806,
+    "lock_ratio": 1.0
   },
   {
     "block": 23781627,
     "timestamp": 1762897283,
     "datetime": "2025-11-11T21:41:23",
-    "supply_yb": 17752401.09406809
+    "supply_yb": 17752401.09406809,
+    "yb_locked": 17752401.09406809,
+    "lock_ratio": 1.0
   },
   {
     "block": 23781927,
     "timestamp": 1762900883,
     "datetime": "2025-11-11T22:41:23",
-    "supply_yb": 17753219.36169488
+    "supply_yb": 17753219.36169488,
+    "yb_locked": 17753219.36169488,
+    "lock_ratio": 1.0
   },
   {
     "block": 23782227,
     "timestamp": 1762904483,
     "datetime": "2025-11-11T23:41:23",
-    "supply_yb": 17753221.37269488
+    "supply_yb": 17753221.37269488,
+    "yb_locked": 17753221.37269488,
+    "lock_ratio": 1.0
   },
   {
     "block": 23782527,
     "timestamp": 1762908083,
     "datetime": "2025-11-12T00:41:23",
-    "supply_yb": 17753221.37269488
+    "supply_yb": 17753221.37269488,
+    "yb_locked": 17753221.37269488,
+    "lock_ratio": 1.0
   },
   {
     "block": 23782827,
     "timestamp": 1762911683,
     "datetime": "2025-11-12T01:41:23",
-    "supply_yb": 17753221.37269488
+    "supply_yb": 17753221.37269488,
+    "yb_locked": 17753221.37269488,
+    "lock_ratio": 1.0
   },
   {
     "block": 23783127,
     "timestamp": 1762915283,
     "datetime": "2025-11-12T02:41:23",
-    "supply_yb": 17753221.37269488
+    "supply_yb": 17753221.37269488,
+    "yb_locked": 17753221.37269488,
+    "lock_ratio": 1.0
   },
   {
     "block": 23783427,
     "timestamp": 1762918883,
     "datetime": "2025-11-12T03:41:23",
-    "supply_yb": 17753221.37269488
+    "supply_yb": 17753221.37269488,
+    "yb_locked": 17753221.37269488,
+    "lock_ratio": 1.0
   },
   {
     "block": 23783727,
     "timestamp": 1762922483,
     "datetime": "2025-11-12T04:41:23",
-    "supply_yb": 17753221.37269488
+    "supply_yb": 17753221.37269488,
+    "yb_locked": 17753221.37269488,
+    "lock_ratio": 1.0
   },
   {
     "block": 23784027,
     "timestamp": 1762926083,
     "datetime": "2025-11-12T05:41:23",
-    "supply_yb": 17801087.859564226
+    "supply_yb": 17801087.859564226,
+    "yb_locked": 17801087.859564226,
+    "lock_ratio": 1.0
   },
   {
     "block": 23784327,
     "timestamp": 1762929683,
     "datetime": "2025-11-12T06:41:23",
-    "supply_yb": 17804697.38332804
+    "supply_yb": 17804697.38332804,
+    "yb_locked": 17804697.38332804,
+    "lock_ratio": 1.0
   },
   {
     "block": 23784627,
     "timestamp": 1762933283,
     "datetime": "2025-11-12T07:41:23",
-    "supply_yb": 17850799.762779575
+    "supply_yb": 17850799.762779575,
+    "yb_locked": 17850799.762779575,
+    "lock_ratio": 1.0
   },
   {
     "block": 23784927,
     "timestamp": 1762936883,
     "datetime": "2025-11-12T08:41:23",
-    "supply_yb": 17865458.701271683
+    "supply_yb": 17865458.701271683,
+    "yb_locked": 17865458.701271683,
+    "lock_ratio": 1.0
   },
   {
     "block": 23785227,
     "timestamp": 1762940483,
     "datetime": "2025-11-12T09:41:23",
-    "supply_yb": 17877812.440216117
+    "supply_yb": 17877812.440216117,
+    "yb_locked": 17877812.440216117,
+    "lock_ratio": 1.0
   },
   {
     "block": 23785527,
     "timestamp": 1762944083,
     "datetime": "2025-11-12T10:41:23",
-    "supply_yb": 17880227.59608491
+    "supply_yb": 17880227.59608491,
+    "yb_locked": 17880227.59608491,
+    "lock_ratio": 1.0
   },
   {
     "block": 23785827,
     "timestamp": 1762947683,
     "datetime": "2025-11-12T11:41:23",
-    "supply_yb": 17882326.340980295
+    "supply_yb": 17882326.340980295,
+    "yb_locked": 17882326.340980295,
+    "lock_ratio": 1.0
   },
   {
     "block": 23786127,
     "timestamp": 1762951283,
     "datetime": "2025-11-12T12:41:23",
-    "supply_yb": 17882326.340980295
+    "supply_yb": 17882326.340980295,
+    "yb_locked": 17882326.340980295,
+    "lock_ratio": 1.0
   },
   {
     "block": 23786427,
     "timestamp": 1762954883,
     "datetime": "2025-11-12T13:41:23",
-    "supply_yb": 17890212.788687404
+    "supply_yb": 17890212.788687404,
+    "yb_locked": 17890212.788687404,
+    "lock_ratio": 1.0
   },
   {
     "block": 23786727,
     "timestamp": 1762958483,
     "datetime": "2025-11-12T14:41:23",
-    "supply_yb": 17890212.788687404
+    "supply_yb": 17890212.788687404,
+    "yb_locked": 17890212.788687404,
+    "lock_ratio": 1.0
   },
   {
     "block": 23787027,
     "timestamp": 1762962083,
     "datetime": "2025-11-12T15:41:23",
-    "supply_yb": 18114781.599888615
+    "supply_yb": 18114781.599888615,
+    "yb_locked": 18114781.599888615,
+    "lock_ratio": 1.0
   },
   {
     "block": 23787327,
     "timestamp": 1762965683,
     "datetime": "2025-11-12T16:41:23",
-    "supply_yb": 18115306.246947847
+    "supply_yb": 18115306.246947847,
+    "yb_locked": 18115306.246947847,
+    "lock_ratio": 1.0
   },
   {
     "block": 23787627,
     "timestamp": 1762969283,
     "datetime": "2025-11-12T17:41:23",
-    "supply_yb": 18116189.177920073
+    "supply_yb": 18116189.177920073,
+    "yb_locked": 18116189.177920073,
+    "lock_ratio": 1.0
   },
   {
     "block": 23787927,
     "timestamp": 1762972883,
     "datetime": "2025-11-12T18:41:23",
-    "supply_yb": 18116189.177920073
+    "supply_yb": 18116189.177920073,
+    "yb_locked": 18116189.177920073,
+    "lock_ratio": 1.0
   },
   {
     "block": 23788227,
     "timestamp": 1762976483,
     "datetime": "2025-11-12T19:41:23",
-    "supply_yb": 18117188.861606985
+    "supply_yb": 18117188.861606985,
+    "yb_locked": 18117188.861606985,
+    "lock_ratio": 1.0
   },
   {
     "block": 23788527,
     "timestamp": 1762980083,
     "datetime": "2025-11-12T20:41:23",
-    "supply_yb": 18118576.932128333
+    "supply_yb": 18118576.932128333,
+    "yb_locked": 18118576.932128333,
+    "lock_ratio": 1.0
   },
   {
     "block": 23788827,
     "timestamp": 1762983683,
     "datetime": "2025-11-12T21:41:23",
-    "supply_yb": 18157112.891032442
+    "supply_yb": 18157112.891032442,
+    "yb_locked": 18157112.891032442,
+    "lock_ratio": 1.0
   },
   {
     "block": 23789127,
     "timestamp": 1762987283,
     "datetime": "2025-11-12T22:41:23",
-    "supply_yb": 18157271.041032445
+    "supply_yb": 18157271.041032445,
+    "yb_locked": 18157271.041032445,
+    "lock_ratio": 1.0
   },
   {
     "block": 23789427,
     "timestamp": 1762990883,
     "datetime": "2025-11-12T23:41:23",
-    "supply_yb": 18157695.255316067
+    "supply_yb": 18157695.255316067,
+    "yb_locked": 18157695.255316067,
+    "lock_ratio": 1.0
   },
   {
     "block": 23789727,
     "timestamp": 1762994483,
     "datetime": "2025-11-13T00:41:23",
-    "supply_yb": 18157358.09512735
+    "supply_yb": 18157358.09512735,
+    "yb_locked": 18157358.09512735,
+    "lock_ratio": 1.0
   },
   {
     "block": 23790027,
     "timestamp": 1762998083,
     "datetime": "2025-11-13T01:41:23",
-    "supply_yb": 18157358.09512735
+    "supply_yb": 18157358.09512735,
+    "yb_locked": 18157358.09512735,
+    "lock_ratio": 1.0
   },
   {
     "block": 23790327,
     "timestamp": 1763001683,
     "datetime": "2025-11-13T02:41:23",
-    "supply_yb": 18157358.09512735
+    "supply_yb": 18157358.09512735,
+    "yb_locked": 18157358.09512735,
+    "lock_ratio": 1.0
   },
   {
     "block": 23790627,
     "timestamp": 1763005283,
     "datetime": "2025-11-13T03:41:23",
-    "supply_yb": 18157410.412237357
+    "supply_yb": 18157410.412237357,
+    "yb_locked": 18157410.412237357,
+    "lock_ratio": 1.0
   },
   {
     "block": 23790927,
     "timestamp": 1763044655,
     "datetime": "2025-11-13T14:37:35",
-    "supply_yb": 18157410.412237357
+    "supply_yb": 18157410.412237357,
+    "yb_locked": 18157410.412237357,
+    "lock_ratio": 1.0
   },
   {
     "block": 23791227,
     "timestamp": 1763012483,
     "datetime": "2025-11-13T05:41:23",
-    "supply_yb": 18257410.412237357
+    "supply_yb": 18257410.412237357,
+    "yb_locked": 18257410.412237357,
+    "lock_ratio": 1.0
   },
   {
     "block": 23791527,
     "timestamp": 1763016083,
     "datetime": "2025-11-13T06:41:23",
-    "supply_yb": 18249910.20583801
+    "supply_yb": 18249910.20583801,
+    "yb_locked": 18249910.20583801,
+    "lock_ratio": 1.0
   },
   {
     "block": 23791827,
     "timestamp": 1763019683,
     "datetime": "2025-11-13T07:41:23",
-    "supply_yb": 18250200.085733093
+    "supply_yb": 18250200.085733093,
+    "yb_locked": 18250200.085733093,
+    "lock_ratio": 1.0
   },
   {
     "block": 23792127,
     "timestamp": 1763023283,
     "datetime": "2025-11-13T08:41:23",
-    "supply_yb": 18251318.085733093
+    "supply_yb": 18251318.085733093,
+    "yb_locked": 18251318.085733093,
+    "lock_ratio": 1.0
   },
   {
     "block": 23792427,
     "timestamp": 1763026883,
     "datetime": "2025-11-13T09:41:23",
-    "supply_yb": 18251318.085733093
+    "supply_yb": 18251318.085733093,
+    "yb_locked": 18251318.085733093,
+    "lock_ratio": 1.0
   },
   {
     "block": 23792727,
     "timestamp": 1763030483,
     "datetime": "2025-11-13T10:41:23",
-    "supply_yb": 18251379.464115914
+    "supply_yb": 18251379.464115914,
+    "yb_locked": 18251379.464115914,
+    "lock_ratio": 1.0
   },
   {
     "block": 23793027,
     "timestamp": 1763034083,
     "datetime": "2025-11-13T11:41:23",
-    "supply_yb": 18251379.464115914
+    "supply_yb": 18251379.464115914,
+    "yb_locked": 18251379.464115914,
+    "lock_ratio": 1.0
   },
   {
     "block": 23793327,
     "timestamp": 1763037683,
     "datetime": "2025-11-13T12:41:23",
-    "supply_yb": 18251940.836953882
+    "supply_yb": 18251940.836953882,
+    "yb_locked": 18251940.836953882,
+    "lock_ratio": 1.0
   },
   {
     "block": 23793627,
     "timestamp": 1763041283,
     "datetime": "2025-11-13T13:41:23",
-    "supply_yb": 18253794.505324833
+    "supply_yb": 18253794.505324833,
+    "yb_locked": 18253794.505324833,
+    "lock_ratio": 1.0
   },
   {
     "block": 23793927,
     "timestamp": 1763044883,
     "datetime": "2025-11-13T14:41:23",
-    "supply_yb": 18253794.505324833
+    "supply_yb": 18253794.505324833,
+    "yb_locked": 18253794.505324833,
+    "lock_ratio": 1.0
   },
   {
     "block": 23794227,
     "timestamp": 1763048483,
     "datetime": "2025-11-13T15:41:23",
-    "supply_yb": 18253961.098138314
+    "supply_yb": 18253961.098138314,
+    "yb_locked": 18253961.098138314,
+    "lock_ratio": 1.0
   },
   {
     "block": 23794527,
     "timestamp": 1763052083,
     "datetime": "2025-11-13T16:41:23",
-    "supply_yb": 18249552.097698916
+    "supply_yb": 18249552.097698916,
+    "yb_locked": 18249552.097698916,
+    "lock_ratio": 1.0
   },
   {
     "block": 23794827,
     "timestamp": 1763055683,
     "datetime": "2025-11-13T17:41:23",
-    "supply_yb": 18251818.854822118
+    "supply_yb": 18251818.854822118,
+    "yb_locked": 18251818.854822118,
+    "lock_ratio": 1.0
   },
   {
     "block": 23795127,
     "timestamp": 1763059283,
     "datetime": "2025-11-13T18:41:23",
-    "supply_yb": 18254013.559270345
+    "supply_yb": 18254013.559270345,
+    "yb_locked": 18254013.559270345,
+    "lock_ratio": 1.0
   },
   {
     "block": 23795427,
     "timestamp": 1763062883,
     "datetime": "2025-11-13T19:41:23",
-    "supply_yb": 18254013.559270345
+    "supply_yb": 18254013.559270345,
+    "yb_locked": 18254013.559270345,
+    "lock_ratio": 1.0
   },
   {
     "block": 23795727,
     "timestamp": 1763066483,
     "datetime": "2025-11-13T20:41:23",
-    "supply_yb": 18285770.836010344
+    "supply_yb": 18285770.836010344,
+    "yb_locked": 18285770.836010344,
+    "lock_ratio": 1.0
   },
   {
     "block": 23796027,
     "timestamp": 1763070083,
     "datetime": "2025-11-13T21:41:23",
-    "supply_yb": 18287630.836010344
+    "supply_yb": 18287630.836010344,
+    "yb_locked": 18287630.836010344,
+    "lock_ratio": 1.0
   },
   {
     "block": 23796327,
     "timestamp": 1763073683,
     "datetime": "2025-11-13T22:41:23",
-    "supply_yb": 18289932.98643492
+    "supply_yb": 18289932.98643492,
+    "yb_locked": 18289932.98643492,
+    "lock_ratio": 1.0
   },
   {
     "block": 23796627,
     "timestamp": 1763077283,
     "datetime": "2025-11-13T23:41:23",
-    "supply_yb": 18289932.98643492
+    "supply_yb": 18289932.98643492,
+    "yb_locked": 18289932.98643492,
+    "lock_ratio": 1.0
   },
   {
     "block": 23796927,
     "timestamp": 1763080883,
     "datetime": "2025-11-14T00:41:23",
-    "supply_yb": 18289932.98643492
+    "supply_yb": 18289932.98643492,
+    "yb_locked": 18289932.98643492,
+    "lock_ratio": 1.0
   },
   {
     "block": 23797227,
     "timestamp": 1763084483,
     "datetime": "2025-11-14T01:41:23",
-    "supply_yb": 18289932.98643492
+    "supply_yb": 18289932.98643492,
+    "yb_locked": 18289932.98643492,
+    "lock_ratio": 1.0
   },
   {
     "block": 23797527,
     "timestamp": 1763088083,
     "datetime": "2025-11-14T02:41:23",
-    "supply_yb": 18289932.98643492
+    "supply_yb": 18289932.98643492,
+    "yb_locked": 18289932.98643492,
+    "lock_ratio": 1.0
   },
   {
     "block": 23797827,
     "timestamp": 1763091683,
     "datetime": "2025-11-14T03:41:23",
-    "supply_yb": 18289932.98643492
+    "supply_yb": 18289932.98643492,
+    "yb_locked": 18289932.98643492,
+    "lock_ratio": 1.0
   },
   {
     "block": 23798127,
     "timestamp": 1763095283,
     "datetime": "2025-11-14T04:41:23",
-    "supply_yb": 18289932.98643492
+    "supply_yb": 18289932.98643492,
+    "yb_locked": 18289932.98643492,
+    "lock_ratio": 1.0
   },
   {
     "block": 23798427,
     "timestamp": 1763098883,
     "datetime": "2025-11-14T05:41:23",
-    "supply_yb": 18289432.98643492
+    "supply_yb": 18289432.98643492,
+    "yb_locked": 18289432.98643492,
+    "lock_ratio": 1.0
   },
   {
     "block": 23798727,
     "timestamp": 1763102483,
     "datetime": "2025-11-14T06:41:23",
-    "supply_yb": 18299481.599446878
+    "supply_yb": 18299481.599446878,
+    "yb_locked": 18299481.599446878,
+    "lock_ratio": 1.0
   },
   {
     "block": 23799027,
     "timestamp": 1763106083,
     "datetime": "2025-11-14T07:41:23",
-    "supply_yb": 18309803.216190398
+    "supply_yb": 18309803.216190398,
+    "yb_locked": 18309803.216190398,
+    "lock_ratio": 1.0
   },
   {
     "block": 23799327,
     "timestamp": 1763109683,
     "datetime": "2025-11-14T08:41:23",
-    "supply_yb": 18325348.56851373
+    "supply_yb": 18325348.56851373,
+    "yb_locked": 18325348.56851373,
+    "lock_ratio": 1.0
   },
   {
     "block": 23799627,
     "timestamp": 1763113283,
     "datetime": "2025-11-14T09:41:23",
-    "supply_yb": 18400343.775010012
+    "supply_yb": 18400343.775010012,
+    "yb_locked": 18400343.775010012,
+    "lock_ratio": 1.0
   },
   {
     "block": 23799927,
     "timestamp": 1763116883,
     "datetime": "2025-11-14T10:41:23",
-    "supply_yb": 18407631.382153187
+    "supply_yb": 18407631.382153187,
+    "yb_locked": 18407631.382153187,
+    "lock_ratio": 1.0
   },
   {
     "block": 23800227,
     "timestamp": 1763120483,
     "datetime": "2025-11-14T11:41:23",
-    "supply_yb": 18407679.751219876
+    "supply_yb": 18407679.751219876,
+    "yb_locked": 18407679.751219876,
+    "lock_ratio": 1.0
   },
   {
     "block": 23800527,
     "timestamp": 1763124083,
     "datetime": "2025-11-14T12:41:23",
-    "supply_yb": 18409856.328222867
+    "supply_yb": 18409856.328222867,
+    "yb_locked": 18409856.328222867,
+    "lock_ratio": 1.0
   },
   {
     "block": 23800827,
     "timestamp": 1763127683,
     "datetime": "2025-11-14T13:41:23",
-    "supply_yb": 18409857.328222867
+    "supply_yb": 18409857.328222867,
+    "yb_locked": 18409857.328222867,
+    "lock_ratio": 1.0
   },
   {
     "block": 23801127,
     "timestamp": 1763131283,
     "datetime": "2025-11-14T14:41:23",
-    "supply_yb": 18414027.733170606
+    "supply_yb": 18414027.733170606,
+    "yb_locked": 18414027.733170606,
+    "lock_ratio": 1.0
   },
   {
     "block": 23801427,
     "timestamp": 1763134883,
     "datetime": "2025-11-14T15:41:23",
-    "supply_yb": 18440518.753915492
+    "supply_yb": 18440518.753915492,
+    "yb_locked": 18440518.753915492,
+    "lock_ratio": 1.0
   },
   {
     "block": 23801727,
     "timestamp": 1763138483,
     "datetime": "2025-11-14T16:41:23",
-    "supply_yb": 18440518.753915492
+    "supply_yb": 18440518.753915492,
+    "yb_locked": 18440518.753915492,
+    "lock_ratio": 1.0
   },
   {
     "block": 23802027,
     "timestamp": 1763142083,
     "datetime": "2025-11-14T17:41:23",
-    "supply_yb": 18602495.983487047
+    "supply_yb": 18602495.983487047,
+    "yb_locked": 18602495.983487047,
+    "lock_ratio": 1.0
   },
   {
     "block": 23802327,
     "timestamp": 1763145683,
     "datetime": "2025-11-14T18:41:23",
-    "supply_yb": 18602495.983487047
+    "supply_yb": 18602495.983487047,
+    "yb_locked": 18602495.983487047,
+    "lock_ratio": 1.0
   },
   {
     "block": 23802627,
     "timestamp": 1763149283,
     "datetime": "2025-11-14T19:41:23",
-    "supply_yb": 18606512.755159926
+    "supply_yb": 18606512.755159926,
+    "yb_locked": 18606512.755159926,
+    "lock_ratio": 1.0
   },
   {
     "block": 23802927,
     "timestamp": 1763152883,
     "datetime": "2025-11-14T20:41:23",
-    "supply_yb": 18607656.97795042
+    "supply_yb": 18607656.97795042,
+    "yb_locked": 18607656.97795042,
+    "lock_ratio": 1.0
   },
   {
     "block": 23803227,
     "timestamp": 1763156483,
     "datetime": "2025-11-14T21:41:23",
-    "supply_yb": 18607219.50390753
+    "supply_yb": 18607219.50390753,
+    "yb_locked": 18607219.50390753,
+    "lock_ratio": 1.0
   },
   {
     "block": 23803527,
     "timestamp": 1763160083,
     "datetime": "2025-11-14T22:41:23",
-    "supply_yb": 18607219.50390753
+    "supply_yb": 18607219.50390753,
+    "yb_locked": 18607219.50390753,
+    "lock_ratio": 1.0
   },
   {
     "block": 23803827,
     "timestamp": 1763163683,
     "datetime": "2025-11-14T23:41:23",
-    "supply_yb": 18607219.50390753
+    "supply_yb": 18607219.50390753,
+    "yb_locked": 18607219.50390753,
+    "lock_ratio": 1.0
   },
   {
     "block": 23804127,
     "timestamp": 1763167283,
     "datetime": "2025-11-15T00:41:23",
-    "supply_yb": 18600211.11400757
+    "supply_yb": 18600211.11400757,
+    "yb_locked": 18600211.11400757,
+    "lock_ratio": 1.0
   },
   {
     "block": 23804427,
     "timestamp": 1763170883,
     "datetime": "2025-11-15T01:41:23",
-    "supply_yb": 18600311.11400757
+    "supply_yb": 18600311.11400757,
+    "yb_locked": 18600311.11400757,
+    "lock_ratio": 1.0
   },
   {
     "block": 23804727,
     "timestamp": 1763174483,
     "datetime": "2025-11-15T02:41:23",
-    "supply_yb": 18600367.480675742
+    "supply_yb": 18600367.480675742,
+    "yb_locked": 18600367.480675742,
+    "lock_ratio": 1.0
   },
   {
     "block": 23805027,
     "timestamp": 1763178083,
     "datetime": "2025-11-15T03:41:23",
-    "supply_yb": 18600759.516581636
+    "supply_yb": 18600759.516581636,
+    "yb_locked": 18600759.516581636,
+    "lock_ratio": 1.0
   },
   {
     "block": 23805327,
     "timestamp": 1763181683,
     "datetime": "2025-11-15T04:41:23",
-    "supply_yb": 18599363.418782603
+    "supply_yb": 18599363.418782603,
+    "yb_locked": 18599363.418782603,
+    "lock_ratio": 1.0
   },
   {
     "block": 23805627,
     "timestamp": 1763185283,
     "datetime": "2025-11-15T05:41:23",
-    "supply_yb": 18601336.825766843
+    "supply_yb": 18601336.825766843,
+    "yb_locked": 18601336.825766843,
+    "lock_ratio": 1.0
   },
   {
     "block": 23805927,
     "timestamp": 1763188883,
     "datetime": "2025-11-15T06:41:23",
-    "supply_yb": 18601336.825766843
+    "supply_yb": 18601336.825766843,
+    "yb_locked": 18601336.825766843,
+    "lock_ratio": 1.0
   },
   {
     "block": 23806227,
     "timestamp": 1763192483,
     "datetime": "2025-11-15T07:41:23",
-    "supply_yb": 18601454.859682374
+    "supply_yb": 18601454.859682374,
+    "yb_locked": 18601454.859682374,
+    "lock_ratio": 1.0
   },
   {
     "block": 23806527,
     "timestamp": 1763196083,
     "datetime": "2025-11-15T08:41:23",
-    "supply_yb": 18601456.359682374
+    "supply_yb": 18601456.359682374,
+    "yb_locked": 18601456.359682374,
+    "lock_ratio": 1.0
   },
   {
     "block": 23806827,
     "timestamp": 1763199683,
     "datetime": "2025-11-15T09:41:23",
-    "supply_yb": 18610582.964395247
+    "supply_yb": 18610582.964395247,
+    "yb_locked": 18610582.964395247,
+    "lock_ratio": 1.0
   },
   {
     "block": 23807127,
     "timestamp": 1763203283,
     "datetime": "2025-11-15T10:41:23",
-    "supply_yb": 18610655.15438034
+    "supply_yb": 18610655.15438034,
+    "yb_locked": 18610655.15438034,
+    "lock_ratio": 1.0
   },
   {
     "block": 23807427,
     "timestamp": 1763206883,
     "datetime": "2025-11-15T11:41:23",
-    "supply_yb": 18610665.15438034
+    "supply_yb": 18610665.15438034,
+    "yb_locked": 18610665.15438034,
+    "lock_ratio": 1.0
   },
   {
     "block": 23807727,
     "timestamp": 1763210483,
     "datetime": "2025-11-15T12:41:23",
-    "supply_yb": 18610765.886717003
+    "supply_yb": 18610765.886717003,
+    "yb_locked": 18610765.886717003,
+    "lock_ratio": 1.0
   },
   {
     "block": 23808027,
     "timestamp": 1763214083,
     "datetime": "2025-11-15T13:41:23",
-    "supply_yb": 18610765.886717003
+    "supply_yb": 18610765.886717003,
+    "yb_locked": 18610765.886717003,
+    "lock_ratio": 1.0
   },
   {
     "block": 23808327,
     "timestamp": 1763217683,
     "datetime": "2025-11-15T14:41:23",
-    "supply_yb": 18610765.886717003
+    "supply_yb": 18610765.886717003,
+    "yb_locked": 18610765.886717003,
+    "lock_ratio": 1.0
   },
   {
     "block": 23808627,
     "timestamp": 1763221283,
     "datetime": "2025-11-15T15:41:23",
-    "supply_yb": 18610765.886717003
+    "supply_yb": 18610765.886717003,
+    "yb_locked": 18610765.886717003,
+    "lock_ratio": 1.0
   },
   {
     "block": 23808927,
     "timestamp": 1763224883,
     "datetime": "2025-11-15T16:41:23",
-    "supply_yb": 18617854.554009423
+    "supply_yb": 18617854.554009423,
+    "yb_locked": 18617854.554009423,
+    "lock_ratio": 1.0
   },
   {
     "block": 23809227,
     "timestamp": 1763228483,
     "datetime": "2025-11-15T17:41:23",
-    "supply_yb": 18617854.554009423
+    "supply_yb": 18617854.554009423,
+    "yb_locked": 18617854.554009423,
+    "lock_ratio": 1.0
   },
   {
     "block": 23809527,
     "timestamp": 1763232083,
     "datetime": "2025-11-15T18:41:23",
-    "supply_yb": 18617854.554009423
+    "supply_yb": 18617854.554009423,
+    "yb_locked": 18617854.554009423,
+    "lock_ratio": 1.0
   },
   {
     "block": 23809827,
     "timestamp": 1763235683,
     "datetime": "2025-11-15T19:41:23",
-    "supply_yb": 18617854.654009424
+    "supply_yb": 18617854.654009424,
+    "yb_locked": 18617854.654009424,
+    "lock_ratio": 1.0
   },
   {
     "block": 23810127,
     "timestamp": 1763239283,
     "datetime": "2025-11-15T20:41:23",
-    "supply_yb": 18617854.654009424
+    "supply_yb": 18617854.654009424,
+    "yb_locked": 18617854.654009424,
+    "lock_ratio": 1.0
   },
   {
     "block": 23810427,
     "timestamp": 1763242883,
     "datetime": "2025-11-15T21:41:23",
-    "supply_yb": 18609225.879513085
+    "supply_yb": 18609225.879513085,
+    "yb_locked": 18609225.879513085,
+    "lock_ratio": 1.0
   },
   {
     "block": 23810727,
     "timestamp": 1763246483,
     "datetime": "2025-11-15T22:41:23",
-    "supply_yb": 18621171.349526122
+    "supply_yb": 18621171.349526122,
+    "yb_locked": 18621171.349526122,
+    "lock_ratio": 1.0
   },
   {
     "block": 23811027,
     "timestamp": 1763250083,
     "datetime": "2025-11-15T23:41:23",
-    "supply_yb": 18640507.514157876
+    "supply_yb": 18640507.514157876,
+    "yb_locked": 18640507.514157876,
+    "lock_ratio": 1.0
   },
   {
     "block": 23811327,
     "timestamp": 1763253683,
     "datetime": "2025-11-16T00:41:23",
-    "supply_yb": 18651100.035147846
+    "supply_yb": 18651100.035147846,
+    "yb_locked": 18651100.035147846,
+    "lock_ratio": 1.0
   },
   {
     "block": 23811627,
     "timestamp": 1763257283,
     "datetime": "2025-11-16T01:41:23",
-    "supply_yb": 18654740.275293626
+    "supply_yb": 18654740.275293626,
+    "yb_locked": 18654740.275293626,
+    "lock_ratio": 1.0
   },
   {
     "block": 23811927,
     "timestamp": 1763260883,
     "datetime": "2025-11-16T02:41:23",
-    "supply_yb": 18654740.275293626
+    "supply_yb": 18654740.275293626,
+    "yb_locked": 18654740.275293626,
+    "lock_ratio": 1.0
   },
   {
     "block": 23812227,
     "timestamp": 1763264483,
     "datetime": "2025-11-16T03:41:23",
-    "supply_yb": 18654878.43673031
+    "supply_yb": 18654878.43673031,
+    "yb_locked": 18654878.43673031,
+    "lock_ratio": 1.0
   },
   {
     "block": 23812527,
     "timestamp": 1763268083,
     "datetime": "2025-11-16T04:41:23",
-    "supply_yb": 18652459.43673031
+    "supply_yb": 18652459.43673031,
+    "yb_locked": 18652459.43673031,
+    "lock_ratio": 1.0
   },
   {
     "block": 23812827,
     "timestamp": 1763271683,
     "datetime": "2025-11-16T05:41:23",
-    "supply_yb": 18652472.667578254
+    "supply_yb": 18652472.667578254,
+    "yb_locked": 18652472.667578254,
+    "lock_ratio": 1.0
   },
   {
     "block": 23813127,
     "timestamp": 1763275283,
     "datetime": "2025-11-16T06:41:23",
-    "supply_yb": 18714941.943732638
+    "supply_yb": 18714941.943732638,
+    "yb_locked": 18714941.943732638,
+    "lock_ratio": 1.0
   },
   {
     "block": 23813427,
     "timestamp": 1763278883,
     "datetime": "2025-11-16T07:41:23",
-    "supply_yb": 18714941.943732638
+    "supply_yb": 18714941.943732638,
+    "yb_locked": 18714941.943732638,
+    "lock_ratio": 1.0
   },
   {
     "block": 23813727,
     "timestamp": 1763282483,
     "datetime": "2025-11-16T08:41:23",
-    "supply_yb": 18706238.76126825
+    "supply_yb": 18706238.76126825,
+    "yb_locked": 18706238.76126825,
+    "lock_ratio": 1.0
   },
   {
     "block": 23814027,
     "timestamp": 1763286083,
     "datetime": "2025-11-16T09:41:23",
-    "supply_yb": 18709570.253405184
+    "supply_yb": 18709570.253405184,
+    "yb_locked": 18709570.253405184,
+    "lock_ratio": 1.0
   },
   {
     "block": 23814327,
     "timestamp": 1763289683,
     "datetime": "2025-11-16T10:41:23",
-    "supply_yb": 18711662.674342517
+    "supply_yb": 18711662.674342517,
+    "yb_locked": 18711662.674342517,
+    "lock_ratio": 1.0
   },
   {
     "block": 23814627,
     "timestamp": 1763293283,
     "datetime": "2025-11-16T11:41:23",
-    "supply_yb": 18711662.674342517
+    "supply_yb": 18711662.674342517,
+    "yb_locked": 18711662.674342517,
+    "lock_ratio": 1.0
   },
   {
     "block": 23814927,
     "timestamp": 1763296883,
     "datetime": "2025-11-16T12:41:23",
-    "supply_yb": 18711662.674342517
+    "supply_yb": 18711662.674342517,
+    "yb_locked": 18711662.674342517,
+    "lock_ratio": 1.0
   },
   {
     "block": 23815227,
     "timestamp": 1763300483,
     "datetime": "2025-11-16T13:41:23",
-    "supply_yb": 18713667.84678031
+    "supply_yb": 18713667.84678031,
+    "yb_locked": 18713667.84678031,
+    "lock_ratio": 1.0
   },
   {
     "block": 23815527,
     "timestamp": 1763304083,
     "datetime": "2025-11-16T14:41:23",
-    "supply_yb": 18715053.904578473
+    "supply_yb": 18715053.904578473,
+    "yb_locked": 18715053.904578473,
+    "lock_ratio": 1.0
   },
   {
     "block": 23815827,
     "timestamp": 1763307683,
     "datetime": "2025-11-16T15:41:23",
-    "supply_yb": 18715662.948425684
+    "supply_yb": 18715662.948425684,
+    "yb_locked": 18715662.948425684,
+    "lock_ratio": 1.0
   },
   {
     "block": 23816127,
     "timestamp": 1763311283,
     "datetime": "2025-11-16T16:41:23",
-    "supply_yb": 18715662.948425684
+    "supply_yb": 18715662.948425684,
+    "yb_locked": 18715662.948425684,
+    "lock_ratio": 1.0
   },
   {
     "block": 23816427,
     "timestamp": 1763314883,
     "datetime": "2025-11-16T17:41:23",
-    "supply_yb": 18715662.948425684
+    "supply_yb": 18715662.948425684,
+    "yb_locked": 18715662.948425684,
+    "lock_ratio": 1.0
   },
   {
     "block": 23816727,
     "timestamp": 1763318483,
     "datetime": "2025-11-16T18:41:23",
-    "supply_yb": 18715662.948425684
+    "supply_yb": 18715662.948425684,
+    "yb_locked": 18715662.948425684,
+    "lock_ratio": 1.0
   },
   {
     "block": 23817027,
     "timestamp": 1763322083,
     "datetime": "2025-11-16T19:41:23",
-    "supply_yb": 18715662.948425684
+    "supply_yb": 18715662.948425684,
+    "yb_locked": 18715662.948425684,
+    "lock_ratio": 1.0
   },
   {
     "block": 23817327,
     "timestamp": 1763325683,
     "datetime": "2025-11-16T20:41:23",
-    "supply_yb": 18726872.64193761
+    "supply_yb": 18726872.64193761,
+    "yb_locked": 18726872.64193761,
+    "lock_ratio": 1.0
   },
   {
     "block": 23817627,
     "timestamp": 1763329283,
     "datetime": "2025-11-16T21:41:23",
-    "supply_yb": 18729154.679900285
+    "supply_yb": 18729154.679900285,
+    "yb_locked": 18729154.679900285,
+    "lock_ratio": 1.0
   },
   {
     "block": 23817927,
     "timestamp": 1763332883,
     "datetime": "2025-11-16T22:41:23",
-    "supply_yb": 18729154.679900285
+    "supply_yb": 18729154.679900285,
+    "yb_locked": 18729154.679900285,
+    "lock_ratio": 1.0
   },
   {
     "block": 23818227,
     "timestamp": 1763336483,
     "datetime": "2025-11-16T23:41:23",
-    "supply_yb": 18729154.679900285
+    "supply_yb": 18729154.679900285,
+    "yb_locked": 18729154.679900285,
+    "lock_ratio": 1.0
   },
   {
     "block": 23818527,
     "timestamp": 1763340083,
     "datetime": "2025-11-17T00:41:23",
-    "supply_yb": 18730405.864450287
+    "supply_yb": 18730405.864450287,
+    "yb_locked": 18730405.864450287,
+    "lock_ratio": 1.0
   },
   {
     "block": 23818827,
     "timestamp": 1763343683,
     "datetime": "2025-11-17T01:41:23",
-    "supply_yb": 18730405.864450287
+    "supply_yb": 18730405.864450287,
+    "yb_locked": 18730405.864450287,
+    "lock_ratio": 1.0
   },
   {
     "block": 23819127,
     "timestamp": 1763347283,
     "datetime": "2025-11-17T02:41:23",
-    "supply_yb": 18754100.30372698
+    "supply_yb": 18754100.30372698,
+    "yb_locked": 18754100.30372698,
+    "lock_ratio": 1.0
   },
   {
     "block": 23819427,
     "timestamp": 1763350883,
     "datetime": "2025-11-17T03:41:23",
-    "supply_yb": 18759739.2965212
+    "supply_yb": 18759739.2965212,
+    "yb_locked": 18759739.2965212,
+    "lock_ratio": 1.0
   },
   {
     "block": 23819727,
     "timestamp": 1763354483,
     "datetime": "2025-11-17T04:41:23",
-    "supply_yb": 18762950.8820412
+    "supply_yb": 18762950.8820412,
+    "yb_locked": 18762950.8820412,
+    "lock_ratio": 1.0
   },
   {
     "block": 23820027,
     "timestamp": 1763358083,
     "datetime": "2025-11-17T05:41:23",
-    "supply_yb": 18773265.145773478
+    "supply_yb": 18773265.145773478,
+    "yb_locked": 18773265.145773478,
+    "lock_ratio": 1.0
   },
   {
     "block": 23820327,
     "timestamp": 1763361683,
     "datetime": "2025-11-17T06:41:23",
-    "supply_yb": 18773265.145773478
+    "supply_yb": 18773265.145773478,
+    "yb_locked": 18773265.145773478,
+    "lock_ratio": 1.0
   },
   {
     "block": 23820627,
     "timestamp": 1763365283,
     "datetime": "2025-11-17T07:41:23",
-    "supply_yb": 18773810.68055216
+    "supply_yb": 18773810.68055216,
+    "yb_locked": 18773810.68055216,
+    "lock_ratio": 1.0
   },
   {
     "block": 23820927,
     "timestamp": 1763407235,
     "datetime": "2025-11-17T19:20:35",
-    "supply_yb": 18769836.79166035
+    "supply_yb": 18769836.79166035,
+    "yb_locked": 18769836.79166035,
+    "lock_ratio": 1.0
   },
   {
     "block": 23821227,
     "timestamp": 1763372483,
     "datetime": "2025-11-17T09:41:23",
-    "supply_yb": 18769954.391660348
+    "supply_yb": 18769954.391660348,
+    "yb_locked": 18769954.391660348,
+    "lock_ratio": 1.0
   },
   {
     "block": 23821527,
     "timestamp": 1763376083,
     "datetime": "2025-11-17T10:41:23",
-    "supply_yb": 18759954.391660348
+    "supply_yb": 18759954.391660348,
+    "yb_locked": 18759954.391660348,
+    "lock_ratio": 1.0
   },
   {
     "block": 23821827,
     "timestamp": 1763379683,
     "datetime": "2025-11-17T11:41:23",
-    "supply_yb": 18759954.391660348
+    "supply_yb": 18759954.391660348,
+    "yb_locked": 18759954.391660348,
+    "lock_ratio": 1.0
   },
   {
     "block": 23822127,
     "timestamp": 1763383283,
     "datetime": "2025-11-17T12:41:23",
-    "supply_yb": 18759954.391660348
+    "supply_yb": 18759954.391660348,
+    "yb_locked": 18759954.391660348,
+    "lock_ratio": 1.0
   },
   {
     "block": 23822427,
     "timestamp": 1763386883,
     "datetime": "2025-11-17T13:41:23",
-    "supply_yb": 18759954.391660348
+    "supply_yb": 18759954.391660348,
+    "yb_locked": 18759954.391660348,
+    "lock_ratio": 1.0
   },
   {
     "block": 23822727,
     "timestamp": 1763390483,
     "datetime": "2025-11-17T14:41:23",
-    "supply_yb": 18759954.391660348
+    "supply_yb": 18759954.391660348,
+    "yb_locked": 18759954.391660348,
+    "lock_ratio": 1.0
   },
   {
     "block": 23823027,
     "timestamp": 1763394083,
     "datetime": "2025-11-17T15:41:23",
-    "supply_yb": 18759954.391660348
+    "supply_yb": 18759954.391660348,
+    "yb_locked": 18759954.391660348,
+    "lock_ratio": 1.0
   },
   {
     "block": 23823327,
     "timestamp": 1763397683,
     "datetime": "2025-11-17T16:41:23",
-    "supply_yb": 18760105.87762136
+    "supply_yb": 18760105.87762136,
+    "yb_locked": 18760105.87762136,
+    "lock_ratio": 1.0
   },
   {
     "block": 23823627,
     "timestamp": 1763401283,
     "datetime": "2025-11-17T17:41:23",
-    "supply_yb": 18760105.87762136
+    "supply_yb": 18760105.87762136,
+    "yb_locked": 18760105.87762136,
+    "lock_ratio": 1.0
   },
   {
     "block": 23823927,
     "timestamp": 1763404883,
     "datetime": "2025-11-17T18:41:23",
-    "supply_yb": 18760122.06594712
+    "supply_yb": 18760122.06594712,
+    "yb_locked": 18760122.06594712,
+    "lock_ratio": 1.0
   },
   {
     "block": 23824227,
     "timestamp": 1763408483,
     "datetime": "2025-11-17T19:41:23",
-    "supply_yb": 18760122.06594712
+    "supply_yb": 18760122.06594712,
+    "yb_locked": 18760122.06594712,
+    "lock_ratio": 1.0
   },
   {
     "block": 23824527,
     "timestamp": 1763412083,
     "datetime": "2025-11-17T20:41:23",
-    "supply_yb": 18760122.06594712
+    "supply_yb": 18760122.06594712,
+    "yb_locked": 18760122.06594712,
+    "lock_ratio": 1.0
   },
   {
     "block": 23824827,
     "timestamp": 1763415683,
     "datetime": "2025-11-17T21:41:23",
-    "supply_yb": 18760122.06594712
+    "supply_yb": 18760122.06594712,
+    "yb_locked": 18760122.06594712,
+    "lock_ratio": 1.0
   },
   {
     "block": 23825127,
     "timestamp": 1763419283,
     "datetime": "2025-11-17T22:41:23",
-    "supply_yb": 18773658.498563003
+    "supply_yb": 18773658.498563003,
+    "yb_locked": 18773658.498563003,
+    "lock_ratio": 1.0
   },
   {
     "block": 23825427,
     "timestamp": 1763422883,
     "datetime": "2025-11-17T23:41:23",
-    "supply_yb": 18773658.498563003
+    "supply_yb": 18773658.498563003,
+    "yb_locked": 18773658.498563003,
+    "lock_ratio": 1.0
   },
   {
     "block": 23825727,
     "timestamp": 1763426483,
     "datetime": "2025-11-18T00:41:23",
-    "supply_yb": 18773658.498563003
+    "supply_yb": 18773658.498563003,
+    "yb_locked": 18773658.498563003,
+    "lock_ratio": 1.0
   },
   {
     "block": 23826027,
     "timestamp": 1763430083,
     "datetime": "2025-11-18T01:41:23",
-    "supply_yb": 18773658.498563003
+    "supply_yb": 18773658.498563003,
+    "yb_locked": 18773658.498563003,
+    "lock_ratio": 1.0
   },
   {
     "block": 23826327,
     "timestamp": 1763433683,
     "datetime": "2025-11-18T02:41:23",
-    "supply_yb": 18773658.498563003
+    "supply_yb": 18773658.498563003,
+    "yb_locked": 18773658.498563003,
+    "lock_ratio": 1.0
   },
   {
     "block": 23826627,
     "timestamp": 1763437283,
     "datetime": "2025-11-18T03:41:23",
-    "supply_yb": 18773658.498563003
+    "supply_yb": 18773658.498563003,
+    "yb_locked": 18773658.498563003,
+    "lock_ratio": 1.0
   },
   {
     "block": 23826927,
     "timestamp": 1763440883,
     "datetime": "2025-11-18T04:41:23",
-    "supply_yb": 18777067.67400504
+    "supply_yb": 18777067.67400504,
+    "yb_locked": 18777067.67400504,
+    "lock_ratio": 1.0
   },
   {
     "block": 23827227,
     "timestamp": 1763444483,
     "datetime": "2025-11-18T05:41:23",
-    "supply_yb": 18777067.67400504
+    "supply_yb": 18777067.67400504,
+    "yb_locked": 18777067.67400504,
+    "lock_ratio": 1.0
   },
   {
     "block": 23827527,
     "timestamp": 1763448083,
     "datetime": "2025-11-18T06:41:23",
-    "supply_yb": 18776991.531414703
+    "supply_yb": 18776991.531414703,
+    "yb_locked": 18776991.531414703,
+    "lock_ratio": 1.0
   },
   {
     "block": 23827827,
     "timestamp": 1763451683,
     "datetime": "2025-11-18T07:41:23",
-    "supply_yb": 18793244.01246354
+    "supply_yb": 18793244.01246354,
+    "yb_locked": 18793244.01246354,
+    "lock_ratio": 1.0
   },
   {
     "block": 23828127,
     "timestamp": 1763455283,
     "datetime": "2025-11-18T08:41:23",
-    "supply_yb": 18805781.377986215
+    "supply_yb": 18805781.377986215,
+    "yb_locked": 18805781.377986215,
+    "lock_ratio": 1.0
   },
   {
     "block": 23828427,
     "timestamp": 1763458883,
     "datetime": "2025-11-18T09:41:23",
-    "supply_yb": 18808470.814615842
+    "supply_yb": 18808470.814615842,
+    "yb_locked": 18808470.814615842,
+    "lock_ratio": 1.0
   },
   {
     "block": 23828727,
     "timestamp": 1763462483,
     "datetime": "2025-11-18T10:41:23",
-    "supply_yb": 18808470.814615842
+    "supply_yb": 18808470.814615842,
+    "yb_locked": 18808470.814615842,
+    "lock_ratio": 1.0
   },
   {
     "block": 23829027,
     "timestamp": 1763466083,
     "datetime": "2025-11-18T11:41:23",
-    "supply_yb": 18808470.814615842
+    "supply_yb": 18808470.814615842,
+    "yb_locked": 18808470.814615842,
+    "lock_ratio": 1.0
   },
   {
     "block": 23829327,
     "timestamp": 1763469683,
     "datetime": "2025-11-18T12:41:23",
-    "supply_yb": 18809002.832542382
+    "supply_yb": 18809002.832542382,
+    "yb_locked": 18809002.832542382,
+    "lock_ratio": 1.0
   },
   {
     "block": 23829627,
     "timestamp": 1763473283,
     "datetime": "2025-11-18T13:41:23",
-    "supply_yb": 18809223.92963573
+    "supply_yb": 18809223.92963573,
+    "yb_locked": 18809223.92963573,
+    "lock_ratio": 1.0
   },
   {
     "block": 23829927,
     "timestamp": 1763476883,
     "datetime": "2025-11-18T14:41:23",
-    "supply_yb": 18809223.92963573
+    "supply_yb": 18809223.92963573,
+    "yb_locked": 18809223.92963573,
+    "lock_ratio": 1.0
   },
   {
     "block": 23830227,
     "timestamp": 1763480483,
     "datetime": "2025-11-18T15:41:23",
-    "supply_yb": 18809223.92963573
+    "supply_yb": 18809223.92963573,
+    "yb_locked": 18809223.92963573,
+    "lock_ratio": 1.0
   },
   {
     "block": 23830527,
     "timestamp": 1763484083,
     "datetime": "2025-11-18T16:41:23",
-    "supply_yb": 18809223.92963573
+    "supply_yb": 18809223.92963573,
+    "yb_locked": 18809223.92963573,
+    "lock_ratio": 1.0
   },
   {
     "block": 23830827,
     "timestamp": 1763487683,
     "datetime": "2025-11-18T17:41:23",
-    "supply_yb": 18809322.8470536
+    "supply_yb": 18809322.8470536,
+    "yb_locked": 18809322.8470536,
+    "lock_ratio": 1.0
   },
   {
     "block": 23831127,
     "timestamp": 1763491283,
     "datetime": "2025-11-18T18:41:23",
-    "supply_yb": 18809322.8470536
+    "supply_yb": 18809322.8470536,
+    "yb_locked": 18809322.8470536,
+    "lock_ratio": 1.0
   },
   {
     "block": 23831427,
     "timestamp": 1763494883,
     "datetime": "2025-11-18T19:41:23",
-    "supply_yb": 18812822.484708544
+    "supply_yb": 18812822.484708544,
+    "yb_locked": 18812822.484708544,
+    "lock_ratio": 1.0
   },
   {
     "block": 23831727,
     "timestamp": 1763498483,
     "datetime": "2025-11-18T20:41:23",
-    "supply_yb": 18813320.589032266
+    "supply_yb": 18813320.589032266,
+    "yb_locked": 18813320.589032266,
+    "lock_ratio": 1.0
   },
   {
     "block": 23832027,
     "timestamp": 1763502083,
     "datetime": "2025-11-18T21:41:23",
-    "supply_yb": 18815933.6489724
+    "supply_yb": 18815933.6489724,
+    "yb_locked": 18815933.6489724,
+    "lock_ratio": 1.0
   },
   {
     "block": 23832327,
     "timestamp": 1763505683,
     "datetime": "2025-11-18T22:41:23",
-    "supply_yb": 18984234.44540729
+    "supply_yb": 18984234.44540729,
+    "yb_locked": 18984234.44540729,
+    "lock_ratio": 1.0
   },
   {
     "block": 23832627,
     "timestamp": 1763509283,
     "datetime": "2025-11-18T23:41:23",
-    "supply_yb": 19034434.44540729
+    "supply_yb": 19034434.44540729,
+    "yb_locked": 19034434.44540729,
+    "lock_ratio": 1.0
   },
   {
     "block": 23832927,
     "timestamp": 1763512883,
     "datetime": "2025-11-19T00:41:23",
-    "supply_yb": 19034642.61391287
+    "supply_yb": 19034642.61391287,
+    "yb_locked": 19034642.61391287,
+    "lock_ratio": 1.0
   },
   {
     "block": 23833227,
     "timestamp": 1763516483,
     "datetime": "2025-11-19T01:41:23",
-    "supply_yb": 19034642.61391287
+    "supply_yb": 19034642.61391287,
+    "yb_locked": 19034642.61391287,
+    "lock_ratio": 1.0
   },
   {
     "block": 23833527,
     "timestamp": 1763520083,
     "datetime": "2025-11-19T02:41:23",
-    "supply_yb": 19035164.239780985
+    "supply_yb": 19035164.239780985,
+    "yb_locked": 19035164.239780985,
+    "lock_ratio": 1.0
   },
   {
     "block": 23833827,
     "timestamp": 1763523683,
     "datetime": "2025-11-19T03:41:23",
-    "supply_yb": 19035164.239780985
+    "supply_yb": 19035164.239780985,
+    "yb_locked": 19035164.239780985,
+    "lock_ratio": 1.0
   },
   {
     "block": 23834127,
     "timestamp": 1763527283,
     "datetime": "2025-11-19T04:41:23",
-    "supply_yb": 19051654.540963665
+    "supply_yb": 19051654.540963665,
+    "yb_locked": 19051654.540963665,
+    "lock_ratio": 1.0
   },
   {
     "block": 23834427,
     "timestamp": 1763530883,
     "datetime": "2025-11-19T05:41:23",
-    "supply_yb": 19051654.540963665
+    "supply_yb": 19051654.540963665,
+    "yb_locked": 19051654.540963665,
+    "lock_ratio": 1.0
   },
   {
     "block": 23834727,
     "timestamp": 1763534483,
     "datetime": "2025-11-19T06:41:23",
-    "supply_yb": 19063331.920963664
+    "supply_yb": 19063331.920963664,
+    "yb_locked": 19063331.920963664,
+    "lock_ratio": 1.0
   },
   {
     "block": 23835027,
     "timestamp": 1763538083,
     "datetime": "2025-11-19T07:41:23",
-    "supply_yb": 19063351.267029524
+    "supply_yb": 19063351.267029524,
+    "yb_locked": 19063351.267029524,
+    "lock_ratio": 1.0
   },
   {
     "block": 23835327,
     "timestamp": 1763541683,
     "datetime": "2025-11-19T08:41:23",
-    "supply_yb": 19065623.049135085
+    "supply_yb": 19065623.049135085,
+    "yb_locked": 19065623.049135085,
+    "lock_ratio": 1.0
   },
   {
     "block": 23835627,
     "timestamp": 1763545283,
     "datetime": "2025-11-19T09:41:23",
-    "supply_yb": 19065623.049135085
+    "supply_yb": 19065623.049135085,
+    "yb_locked": 19065623.049135085,
+    "lock_ratio": 1.0
   },
   {
     "block": 23835927,
     "timestamp": 1763548883,
     "datetime": "2025-11-19T10:41:23",
-    "supply_yb": 19066023.049135085
+    "supply_yb": 19066023.049135085,
+    "yb_locked": 19066023.049135085,
+    "lock_ratio": 1.0
   },
   {
     "block": 23836227,
     "timestamp": 1763552483,
     "datetime": "2025-11-19T11:41:23",
-    "supply_yb": 19066023.049135085
+    "supply_yb": 19066023.049135085,
+    "yb_locked": 19066023.049135085,
+    "lock_ratio": 1.0
   },
   {
     "block": 23836527,
     "timestamp": 1763556083,
     "datetime": "2025-11-19T12:41:23",
-    "supply_yb": 19066150.29609595
+    "supply_yb": 19066150.29609595,
+    "yb_locked": 19066150.29609595,
+    "lock_ratio": 1.0
   },
   {
     "block": 23836827,
     "timestamp": 1763559683,
     "datetime": "2025-11-19T13:41:23",
-    "supply_yb": 19066150.29609595
+    "supply_yb": 19066150.29609595,
+    "yb_locked": 19066150.29609595,
+    "lock_ratio": 1.0
   },
   {
     "block": 23837127,
     "timestamp": 1763563283,
     "datetime": "2025-11-19T14:41:23",
-    "supply_yb": 19066150.29609595
+    "supply_yb": 19066150.29609595,
+    "yb_locked": 19066150.29609595,
+    "lock_ratio": 1.0
   },
   {
     "block": 23837427,
     "timestamp": 1763566883,
     "datetime": "2025-11-19T15:41:23",
-    "supply_yb": 19063545.16609595
+    "supply_yb": 19063545.16609595,
+    "yb_locked": 19063545.16609595,
+    "lock_ratio": 1.0
   },
   {
     "block": 23837727,
     "timestamp": 1763570483,
     "datetime": "2025-11-19T16:41:23",
-    "supply_yb": 19068305.68504388
+    "supply_yb": 19068305.68504388,
+    "yb_locked": 19068305.68504388,
+    "lock_ratio": 1.0
   },
   {
     "block": 23838027,
     "timestamp": 1763574083,
     "datetime": "2025-11-19T17:41:23",
-    "supply_yb": 19071244.969517946
+    "supply_yb": 19071244.969517946,
+    "yb_locked": 19071244.969517946,
+    "lock_ratio": 1.0
   },
   {
     "block": 23838327,
     "timestamp": 1763577683,
     "datetime": "2025-11-19T18:41:23",
-    "supply_yb": 19071244.969517946
+    "supply_yb": 19071244.969517946,
+    "yb_locked": 19071244.969517946,
+    "lock_ratio": 1.0
   },
   {
     "block": 23838627,
     "timestamp": 1763581283,
     "datetime": "2025-11-19T19:41:23",
-    "supply_yb": 19072190.033115458
+    "supply_yb": 19072190.033115458,
+    "yb_locked": 19072190.033115458,
+    "lock_ratio": 1.0
   },
   {
     "block": 23838927,
     "timestamp": 1763584883,
     "datetime": "2025-11-19T20:41:23",
-    "supply_yb": 19054622.77533706
+    "supply_yb": 19054622.77533706,
+    "yb_locked": 19054622.77533706,
+    "lock_ratio": 1.0
   },
   {
     "block": 23839227,
     "timestamp": 1763588483,
     "datetime": "2025-11-19T21:41:23",
-    "supply_yb": 19057337.48178838
+    "supply_yb": 19057337.48178838,
+    "yb_locked": 19057337.48178838,
+    "lock_ratio": 1.0
   },
   {
     "block": 23839527,
     "timestamp": 1763592083,
     "datetime": "2025-11-19T22:41:23",
-    "supply_yb": 19057437.48178838
+    "supply_yb": 19057437.48178838,
+    "yb_locked": 19057437.48178838,
+    "lock_ratio": 1.0
   },
   {
     "block": 23839827,
     "timestamp": 1763595683,
     "datetime": "2025-11-19T23:41:23",
-    "supply_yb": 19057437.48178838
+    "supply_yb": 19057437.48178838,
+    "yb_locked": 19057437.48178838,
+    "lock_ratio": 1.0
   },
   {
     "block": 23840127,
     "timestamp": 1763599283,
     "datetime": "2025-11-20T00:41:23",
-    "supply_yb": 19058134.004763838
+    "supply_yb": 19058134.004763838,
+    "yb_locked": 19058134.004763838,
+    "lock_ratio": 1.0
   },
   {
     "block": 23840427,
     "timestamp": 1763602883,
     "datetime": "2025-11-20T01:41:23",
-    "supply_yb": 19058134.004763838
+    "supply_yb": 19058134.004763838,
+    "yb_locked": 19058134.004763838,
+    "lock_ratio": 1.0
   },
   {
     "block": 23840727,
     "timestamp": 1763606483,
     "datetime": "2025-11-20T02:41:23",
-    "supply_yb": 19058134.004763838
+    "supply_yb": 19058134.004763838,
+    "yb_locked": 19058134.004763838,
+    "lock_ratio": 1.0
   },
   {
     "block": 23841027,
     "timestamp": 1763610083,
     "datetime": "2025-11-20T03:41:23",
-    "supply_yb": 19070134.004763838
+    "supply_yb": 19070134.004763838,
+    "yb_locked": 19070134.004763838,
+    "lock_ratio": 1.0
   },
   {
     "block": 23841327,
     "timestamp": 1763613683,
     "datetime": "2025-11-20T04:41:23",
-    "supply_yb": 19070134.004763838
+    "supply_yb": 19070134.004763838,
+    "yb_locked": 19070134.004763838,
+    "lock_ratio": 1.0
   },
   {
     "block": 23841627,
     "timestamp": 1763617283,
     "datetime": "2025-11-20T05:41:23",
-    "supply_yb": 19070134.004763838
+    "supply_yb": 19070134.004763838,
+    "yb_locked": 19070134.004763838,
+    "lock_ratio": 1.0
   },
   {
     "block": 23841927,
     "timestamp": 1763620883,
     "datetime": "2025-11-20T06:41:23",
-    "supply_yb": 19070134.004763838
+    "supply_yb": 19070134.004763838,
+    "yb_locked": 19070134.004763838,
+    "lock_ratio": 1.0
   },
   {
     "block": 23842227,
     "timestamp": 1763624483,
     "datetime": "2025-11-20T07:41:23",
-    "supply_yb": 19082021.705053836
+    "supply_yb": 19082021.705053836,
+    "yb_locked": 19082021.705053836,
+    "lock_ratio": 1.0
   },
   {
     "block": 23842527,
     "timestamp": 1763628083,
     "datetime": "2025-11-20T08:41:23",
-    "supply_yb": 19097681.094946295
+    "supply_yb": 19097681.094946295,
+    "yb_locked": 19097681.094946295,
+    "lock_ratio": 1.0
   },
   {
     "block": 23842827,
     "timestamp": 1763631683,
     "datetime": "2025-11-20T09:41:23",
-    "supply_yb": 19146277.02813124
+    "supply_yb": 19146277.02813124,
+    "yb_locked": 19146277.02813124,
+    "lock_ratio": 1.0
   },
   {
     "block": 23843127,
     "timestamp": 1763635283,
     "datetime": "2025-11-20T10:41:23",
-    "supply_yb": 19146277.02813124
+    "supply_yb": 19146277.02813124,
+    "yb_locked": 19146277.02813124,
+    "lock_ratio": 1.0
   },
   {
     "block": 23843427,
     "timestamp": 1763638883,
     "datetime": "2025-11-20T11:41:23",
-    "supply_yb": 19146277.02813124
+    "supply_yb": 19146277.02813124,
+    "yb_locked": 19146277.02813124,
+    "lock_ratio": 1.0
   },
   {
     "block": 23843727,
     "timestamp": 1763642483,
     "datetime": "2025-11-20T12:41:23",
-    "supply_yb": 19156624.909036834
+    "supply_yb": 19156624.909036834,
+    "yb_locked": 19156624.909036834,
+    "lock_ratio": 1.0
   },
   {
     "block": 23844027,
     "timestamp": 1763646083,
     "datetime": "2025-11-20T13:41:23",
-    "supply_yb": 19156624.909036834
+    "supply_yb": 19156624.909036834,
+    "yb_locked": 19156624.909036834,
+    "lock_ratio": 1.0
   },
   {
     "block": 23844327,
     "timestamp": 1763649683,
     "datetime": "2025-11-20T14:41:23",
-    "supply_yb": 19158970.64296425
+    "supply_yb": 19158970.64296425,
+    "yb_locked": 19158970.64296425,
+    "lock_ratio": 1.0
   },
   {
     "block": 23844627,
     "timestamp": 1763653283,
     "datetime": "2025-11-20T15:41:23",
-    "supply_yb": 19110260.51137305
+    "supply_yb": 19110260.51137305,
+    "yb_locked": 19110260.51137305,
+    "lock_ratio": 1.0
   },
   {
     "block": 23844927,
     "timestamp": 1763656883,
     "datetime": "2025-11-20T16:41:23",
-    "supply_yb": 19110260.51137305
+    "supply_yb": 19110260.51137305,
+    "yb_locked": 19110260.51137305,
+    "lock_ratio": 1.0
   },
   {
     "block": 23845227,
     "timestamp": 1763660483,
     "datetime": "2025-11-20T17:41:23",
-    "supply_yb": 19112939.43070334
+    "supply_yb": 19112939.43070334,
+    "yb_locked": 19112939.43070334,
+    "lock_ratio": 1.0
   },
   {
     "block": 23845527,
     "timestamp": 1763664083,
     "datetime": "2025-11-20T18:41:23",
-    "supply_yb": 19112939.43070334
+    "supply_yb": 19112939.43070334,
+    "yb_locked": 19112939.43070334,
+    "lock_ratio": 1.0
   },
   {
     "block": 23845827,
     "timestamp": 1763667683,
     "datetime": "2025-11-20T19:41:23",
-    "supply_yb": 19581420.15264333
+    "supply_yb": 19581420.15264333,
+    "yb_locked": 19581420.15264333,
+    "lock_ratio": 1.0
   },
   {
     "block": 23846127,
     "timestamp": 1763671283,
     "datetime": "2025-11-20T20:41:23",
-    "supply_yb": 19582144.895391926
+    "supply_yb": 19582144.895391926,
+    "yb_locked": 19582144.895391926,
+    "lock_ratio": 1.0
   },
   {
     "block": 23846427,
     "timestamp": 1763674883,
     "datetime": "2025-11-20T21:41:23",
-    "supply_yb": 19584167.938711926
+    "supply_yb": 19584167.938711926,
+    "yb_locked": 19584167.938711926,
+    "lock_ratio": 1.0
   },
   {
     "block": 23846727,
     "timestamp": 1763678483,
     "datetime": "2025-11-20T22:41:23",
-    "supply_yb": 19587106.180634513
+    "supply_yb": 19587106.180634513,
+    "yb_locked": 19587106.180634513,
+    "lock_ratio": 1.0
   },
   {
     "block": 23847027,
     "timestamp": 1763682083,
     "datetime": "2025-11-20T23:41:23",
-    "supply_yb": 19587106.180634513
+    "supply_yb": 19587106.180634513,
+    "yb_locked": 19587106.180634513,
+    "lock_ratio": 1.0
   },
   {
     "block": 23847327,
     "timestamp": 1763685683,
     "datetime": "2025-11-21T00:41:23",
-    "supply_yb": 19588121.24259074
+    "supply_yb": 19588121.24259074,
+    "yb_locked": 19588121.24259074,
+    "lock_ratio": 1.0
   },
   {
     "block": 23847627,
     "timestamp": 1763689283,
     "datetime": "2025-11-21T01:41:23",
-    "supply_yb": 19606420.05315173
+    "supply_yb": 19606420.05315173,
+    "yb_locked": 19606420.05315173,
+    "lock_ratio": 1.0
   },
   {
     "block": 23847927,
     "timestamp": 1763692883,
     "datetime": "2025-11-21T02:41:23",
-    "supply_yb": 19606420.05315173
+    "supply_yb": 19606420.05315173,
+    "yb_locked": 19606420.05315173,
+    "lock_ratio": 1.0
   },
   {
     "block": 23848227,
     "timestamp": 1763696483,
     "datetime": "2025-11-21T03:41:23",
-    "supply_yb": 19628301.757408466
+    "supply_yb": 19628301.757408466,
+    "yb_locked": 19628301.757408466,
+    "lock_ratio": 1.0
   },
   {
     "block": 23848527,
     "timestamp": 1763700083,
     "datetime": "2025-11-21T04:41:23",
-    "supply_yb": 19628301.757408466
+    "supply_yb": 19628301.757408466,
+    "yb_locked": 19628301.757408466,
+    "lock_ratio": 1.0
   },
   {
     "block": 23848827,
     "timestamp": 1763703683,
     "datetime": "2025-11-21T05:41:23",
-    "supply_yb": 19667047.969575144
+    "supply_yb": 19667047.969575144,
+    "yb_locked": 19667047.969575144,
+    "lock_ratio": 1.0
   },
   {
     "block": 23849127,
     "timestamp": 1763707283,
     "datetime": "2025-11-21T06:41:23",
-    "supply_yb": 19670266.115362946
+    "supply_yb": 19670266.115362946,
+    "yb_locked": 19670266.115362946,
+    "lock_ratio": 1.0
   },
   {
     "block": 23849427,
     "timestamp": 1763710883,
     "datetime": "2025-11-21T07:41:23",
-    "supply_yb": 19670266.115362946
+    "supply_yb": 19670266.115362946,
+    "yb_locked": 19670266.115362946,
+    "lock_ratio": 1.0
   },
   {
     "block": 23849727,
     "timestamp": 1763714483,
     "datetime": "2025-11-21T08:41:23",
-    "supply_yb": 19670362.4763654
+    "supply_yb": 19670362.4763654,
+    "yb_locked": 19670362.4763654,
+    "lock_ratio": 1.0
   },
   {
     "block": 23850027,
     "timestamp": 1763718083,
     "datetime": "2025-11-21T09:41:23",
-    "supply_yb": 19670362.4763654
+    "supply_yb": 19670362.4763654,
+    "yb_locked": 19670362.4763654,
+    "lock_ratio": 1.0
   },
   {
     "block": 23850327,
     "timestamp": 1763721683,
     "datetime": "2025-11-21T10:41:23",
-    "supply_yb": 19670362.4763654
+    "supply_yb": 19670362.4763654,
+    "yb_locked": 19670362.4763654,
+    "lock_ratio": 1.0
   },
   {
     "block": 23850627,
     "timestamp": 1763725283,
     "datetime": "2025-11-21T11:41:23",
-    "supply_yb": 19670362.4763654
+    "supply_yb": 19670362.4763654,
+    "yb_locked": 19670362.4763654,
+    "lock_ratio": 1.0
   },
   {
     "block": 23850927,
     "timestamp": 1763771219,
     "datetime": "2025-11-22T00:26:59",
-    "supply_yb": 19670362.4763654
+    "supply_yb": 19670362.4763654,
+    "yb_locked": 19670362.4763654,
+    "lock_ratio": 1.0
   },
   {
     "block": 23851227,
     "timestamp": 1763732483,
     "datetime": "2025-11-21T13:41:23",
-    "supply_yb": 19680467.674826737
+    "supply_yb": 19680467.674826737,
+    "yb_locked": 19680467.674826737,
+    "lock_ratio": 1.0
   },
   {
     "block": 23851527,
     "timestamp": 1763736083,
     "datetime": "2025-11-21T14:41:23",
-    "supply_yb": 19680467.674826737
+    "supply_yb": 19680467.674826737,
+    "yb_locked": 19680467.674826737,
+    "lock_ratio": 1.0
   },
   {
     "block": 23851827,
     "timestamp": 1763739683,
     "datetime": "2025-11-21T15:41:23",
-    "supply_yb": 19684517.249679774
+    "supply_yb": 19684517.249679774,
+    "yb_locked": 19684517.249679774,
+    "lock_ratio": 1.0
   },
   {
     "block": 23852127,
     "timestamp": 1763743283,
     "datetime": "2025-11-21T16:41:23",
-    "supply_yb": 19685955.255588144
+    "supply_yb": 19685955.255588144,
+    "yb_locked": 19685955.255588144,
+    "lock_ratio": 1.0
   },
   {
     "block": 23852427,
     "timestamp": 1763746883,
     "datetime": "2025-11-21T17:41:23",
-    "supply_yb": 19685955.255588144
+    "supply_yb": 19685955.255588144,
+    "yb_locked": 19685955.255588144,
+    "lock_ratio": 1.0
   },
   {
     "block": 23852727,
     "timestamp": 1763750483,
     "datetime": "2025-11-21T18:41:23",
-    "supply_yb": 19685955.255588144
+    "supply_yb": 19685955.255588144,
+    "yb_locked": 19685955.255588144,
+    "lock_ratio": 1.0
   },
   {
     "block": 23853027,
     "timestamp": 1763754083,
     "datetime": "2025-11-21T19:41:23",
-    "supply_yb": 19685955.255588144
+    "supply_yb": 19685955.255588144,
+    "yb_locked": 19685955.255588144,
+    "lock_ratio": 1.0
   },
   {
     "block": 23853327,
     "timestamp": 1763757683,
     "datetime": "2025-11-21T20:41:23",
-    "supply_yb": 19706430.866462912
+    "supply_yb": 19706430.866462912,
+    "yb_locked": 19706430.866462912,
+    "lock_ratio": 1.0
   },
   {
     "block": 23853627,
     "timestamp": 1763761283,
     "datetime": "2025-11-21T21:41:23",
-    "supply_yb": 19824463.099335764
+    "supply_yb": 19824463.099335764,
+    "yb_locked": 19824463.099335764,
+    "lock_ratio": 1.0
   },
   {
     "block": 23853927,
     "timestamp": 1763764883,
     "datetime": "2025-11-21T22:41:23",
-    "supply_yb": 19826001.310761545
+    "supply_yb": 19826001.310761545,
+    "yb_locked": 19826001.310761545,
+    "lock_ratio": 1.0
   },
   {
     "block": 23854227,
     "timestamp": 1763768483,
     "datetime": "2025-11-21T23:41:23",
-    "supply_yb": 19826596.60004446
+    "supply_yb": 19826596.60004446,
+    "yb_locked": 19826596.60004446,
+    "lock_ratio": 1.0
   },
   {
     "block": 23854527,
     "timestamp": 1763772083,
     "datetime": "2025-11-22T00:41:23",
-    "supply_yb": 19826596.60004446
+    "supply_yb": 19826596.60004446,
+    "yb_locked": 19826596.60004446,
+    "lock_ratio": 1.0
   },
   {
     "block": 23854827,
     "timestamp": 1763775683,
     "datetime": "2025-11-22T01:41:23",
-    "supply_yb": 19826945.470450487
+    "supply_yb": 19826945.470450487,
+    "yb_locked": 19826945.470450487,
+    "lock_ratio": 1.0
   },
   {
     "block": 23855127,
     "timestamp": 1763779283,
     "datetime": "2025-11-22T02:41:23",
-    "supply_yb": 19838535.739426676
+    "supply_yb": 19838535.739426676,
+    "yb_locked": 19838535.739426676,
+    "lock_ratio": 1.0
   },
   {
     "block": 23855427,
     "timestamp": 1763782883,
     "datetime": "2025-11-22T03:41:23",
-    "supply_yb": 19838344.769010253
+    "supply_yb": 19838344.769010253,
+    "yb_locked": 19838344.769010253,
+    "lock_ratio": 1.0
   },
   {
     "block": 23855727,
     "timestamp": 1763786483,
     "datetime": "2025-11-22T04:41:23",
-    "supply_yb": 19840757.770182688
+    "supply_yb": 19840757.770182688,
+    "yb_locked": 19840757.770182688,
+    "lock_ratio": 1.0
   },
   {
     "block": 23856027,
     "timestamp": 1763790083,
     "datetime": "2025-11-22T05:41:23",
-    "supply_yb": 19838400.77658104
+    "supply_yb": 19838400.77658104,
+    "yb_locked": 19838400.77658104,
+    "lock_ratio": 1.0
   },
   {
     "block": 23856327,
     "timestamp": 1763793683,
     "datetime": "2025-11-22T06:41:23",
-    "supply_yb": 19838400.77658104
+    "supply_yb": 19838400.77658104,
+    "yb_locked": 19838400.77658104,
+    "lock_ratio": 1.0
   },
   {
     "block": 23856627,
     "timestamp": 1763797283,
     "datetime": "2025-11-22T07:41:23",
-    "supply_yb": 19838400.77658104
+    "supply_yb": 19838400.77658104,
+    "yb_locked": 19838400.77658104,
+    "lock_ratio": 1.0
   },
   {
     "block": 23856927,
     "timestamp": 1763800883,
     "datetime": "2025-11-22T08:41:23",
-    "supply_yb": 19842100.77658104
+    "supply_yb": 19842100.77658104,
+    "yb_locked": 19842100.77658104,
+    "lock_ratio": 1.0
   },
   {
     "block": 23857227,
     "timestamp": 1763804483,
     "datetime": "2025-11-22T09:41:23",
-    "supply_yb": 19845993.274547193
+    "supply_yb": 19845993.274547193,
+    "yb_locked": 19845993.274547193,
+    "lock_ratio": 1.0
   },
   {
     "block": 23857527,
     "timestamp": 1763808083,
     "datetime": "2025-11-22T10:41:23",
-    "supply_yb": 19845993.274547193
+    "supply_yb": 19845993.274547193,
+    "yb_locked": 19845993.274547193,
+    "lock_ratio": 1.0
   },
   {
     "block": 23857827,
     "timestamp": 1763811683,
     "datetime": "2025-11-22T11:41:23",
-    "supply_yb": 19845993.274547193
+    "supply_yb": 19845993.274547193,
+    "yb_locked": 19845993.274547193,
+    "lock_ratio": 1.0
   },
   {
     "block": 23858127,
     "timestamp": 1763815283,
     "datetime": "2025-11-22T12:41:23",
-    "supply_yb": 19845993.274547193
+    "supply_yb": 19845993.274547193,
+    "yb_locked": 19845993.274547193,
+    "lock_ratio": 1.0
   },
   {
     "block": 23858427,
     "timestamp": 1763818883,
     "datetime": "2025-11-22T13:41:23",
-    "supply_yb": 19861341.9940255
+    "supply_yb": 19861341.9940255,
+    "yb_locked": 19861341.9940255,
+    "lock_ratio": 1.0
   },
   {
     "block": 23858727,
     "timestamp": 1763822483,
     "datetime": "2025-11-22T14:41:23",
-    "supply_yb": 19861341.9940255
+    "supply_yb": 19861341.9940255,
+    "yb_locked": 19861341.9940255,
+    "lock_ratio": 1.0
   },
   {
     "block": 23859027,
     "timestamp": 1763826083,
     "datetime": "2025-11-22T15:41:23",
-    "supply_yb": 19861341.9940255
+    "supply_yb": 19861341.9940255,
+    "yb_locked": 19861341.9940255,
+    "lock_ratio": 1.0
   },
   {
     "block": 23859327,
     "timestamp": 1763829683,
     "datetime": "2025-11-22T16:41:23",
-    "supply_yb": 19861341.9940255
+    "supply_yb": 19861341.9940255,
+    "yb_locked": 19861341.9940255,
+    "lock_ratio": 1.0
   },
   {
     "block": 23859627,
     "timestamp": 1763833283,
     "datetime": "2025-11-22T17:41:23",
-    "supply_yb": 19861341.9940255
+    "supply_yb": 19861341.9940255,
+    "yb_locked": 19861341.9940255,
+    "lock_ratio": 1.0
   },
   {
     "block": 23859927,
     "timestamp": 1763836883,
     "datetime": "2025-11-22T18:41:23",
-    "supply_yb": 19870062.68591936
+    "supply_yb": 19870062.68591936,
+    "yb_locked": 19870062.68591936,
+    "lock_ratio": 1.0
   },
   {
     "block": 23860227,
     "timestamp": 1763840483,
     "datetime": "2025-11-22T19:41:23",
-    "supply_yb": 19870062.68591936
+    "supply_yb": 19870062.68591936,
+    "yb_locked": 19870062.68591936,
+    "lock_ratio": 1.0
   },
   {
     "block": 23860527,
     "timestamp": 1763844083,
     "datetime": "2025-11-22T20:41:23",
-    "supply_yb": 19872296.89417395
+    "supply_yb": 19872296.89417395,
+    "yb_locked": 19872296.89417395,
+    "lock_ratio": 1.0
   },
   {
     "block": 23860827,
     "timestamp": 1763847683,
     "datetime": "2025-11-22T21:41:23",
-    "supply_yb": 19872296.89417395
+    "supply_yb": 19872296.89417395,
+    "yb_locked": 19872296.89417395,
+    "lock_ratio": 1.0
   },
   {
     "block": 23861127,
     "timestamp": 1763851283,
     "datetime": "2025-11-22T22:41:23",
-    "supply_yb": 19872911.89417395
+    "supply_yb": 19872911.89417395,
+    "yb_locked": 19872911.89417395,
+    "lock_ratio": 1.0
   },
   {
     "block": 23861427,
     "timestamp": 1763854883,
     "datetime": "2025-11-22T23:41:23",
-    "supply_yb": 19872911.89417395
+    "supply_yb": 19872911.89417395,
+    "yb_locked": 19872911.89417395,
+    "lock_ratio": 1.0
   },
   {
     "block": 23861727,
     "timestamp": 1763858483,
     "datetime": "2025-11-23T00:41:23",
-    "supply_yb": 19872911.89417395
+    "supply_yb": 19872911.89417395,
+    "yb_locked": 19872911.89417395,
+    "lock_ratio": 1.0
   },
   {
     "block": 23862027,
     "timestamp": 1763862083,
     "datetime": "2025-11-23T01:41:23",
-    "supply_yb": 19938206.13612181
+    "supply_yb": 19938206.13612181,
+    "yb_locked": 19938206.13612181,
+    "lock_ratio": 1.0
   },
   {
     "block": 23862327,
     "timestamp": 1763865683,
     "datetime": "2025-11-23T02:41:23",
-    "supply_yb": 19938393.903449833
+    "supply_yb": 19938393.903449833,
+    "yb_locked": 19938393.903449833,
+    "lock_ratio": 1.0
   },
   {
     "block": 23862627,
     "timestamp": 1763869283,
     "datetime": "2025-11-23T03:41:23",
-    "supply_yb": 19938393.903449833
+    "supply_yb": 19938393.903449833,
+    "yb_locked": 19938393.903449833,
+    "lock_ratio": 1.0
   },
   {
     "block": 23862927,
     "timestamp": 1763872883,
     "datetime": "2025-11-23T04:41:23",
-    "supply_yb": 19938393.903449833
+    "supply_yb": 19938393.903449833,
+    "yb_locked": 19938393.903449833,
+    "lock_ratio": 1.0
   },
   {
     "block": 23863227,
     "timestamp": 1763876483,
     "datetime": "2025-11-23T05:41:23",
-    "supply_yb": 19939301.509005167
+    "supply_yb": 19939301.509005167,
+    "yb_locked": 19939301.509005167,
+    "lock_ratio": 1.0
   },
   {
     "block": 23863527,
     "timestamp": 1763880083,
     "datetime": "2025-11-23T06:41:23",
-    "supply_yb": 19939301.509005167
+    "supply_yb": 19939301.509005167,
+    "yb_locked": 19939301.509005167,
+    "lock_ratio": 1.0
   },
   {
     "block": 23863827,
     "timestamp": 1763883683,
     "datetime": "2025-11-23T07:41:23",
-    "supply_yb": 19939186.6782208
+    "supply_yb": 19939186.6782208,
+    "yb_locked": 19939186.6782208,
+    "lock_ratio": 1.0
   },
   {
     "block": 23864127,
     "timestamp": 1763887283,
     "datetime": "2025-11-23T08:41:23",
-    "supply_yb": 19945606.055440787
+    "supply_yb": 19945606.055440787,
+    "yb_locked": 19945606.055440787,
+    "lock_ratio": 1.0
   },
   {
     "block": 23864427,
     "timestamp": 1763890883,
     "datetime": "2025-11-23T09:41:23",
-    "supply_yb": 19952251.001746975
+    "supply_yb": 19952251.001746975,
+    "yb_locked": 19952251.001746975,
+    "lock_ratio": 1.0
   },
   {
     "block": 23864727,
     "timestamp": 1763894483,
     "datetime": "2025-11-23T10:41:23",
-    "supply_yb": 19952251.001746975
+    "supply_yb": 19952251.001746975,
+    "yb_locked": 19952251.001746975,
+    "lock_ratio": 1.0
   },
   {
     "block": 23865027,
     "timestamp": 1763898083,
     "datetime": "2025-11-23T11:41:23",
-    "supply_yb": 20000638.79163004
+    "supply_yb": 20000638.79163004,
+    "yb_locked": 20000638.79163004,
+    "lock_ratio": 1.0
   },
   {
     "block": 23865327,
     "timestamp": 1763901683,
     "datetime": "2025-11-23T12:41:23",
-    "supply_yb": 20000638.79163004
+    "supply_yb": 20000638.79163004,
+    "yb_locked": 20000638.79163004,
+    "lock_ratio": 1.0
   },
   {
     "block": 23865627,
     "timestamp": 1763905283,
     "datetime": "2025-11-23T13:41:23",
-    "supply_yb": 20005344.721638307
+    "supply_yb": 20005344.721638307,
+    "yb_locked": 20005344.721638307,
+    "lock_ratio": 1.0
   },
   {
     "block": 23865927,
     "timestamp": 1763908883,
     "datetime": "2025-11-23T14:41:23",
-    "supply_yb": 20005511.330487076
+    "supply_yb": 20005511.330487076,
+    "yb_locked": 20005511.330487076,
+    "lock_ratio": 1.0
   },
   {
     "block": 23866227,
     "timestamp": 1763912483,
     "datetime": "2025-11-23T15:41:23",
-    "supply_yb": 20005511.330487076
+    "supply_yb": 20005511.330487076,
+    "yb_locked": 20005511.330487076,
+    "lock_ratio": 1.0
   },
   {
     "block": 23866527,
     "timestamp": 1763916083,
     "datetime": "2025-11-23T16:41:23",
-    "supply_yb": 20005511.330487076
+    "supply_yb": 20005511.330487076,
+    "yb_locked": 20005511.330487076,
+    "lock_ratio": 1.0
   },
   {
     "block": 23866827,
     "timestamp": 1763919683,
     "datetime": "2025-11-23T17:41:23",
-    "supply_yb": 20007387.084865965
+    "supply_yb": 20007387.084865965,
+    "yb_locked": 20007387.084865965,
+    "lock_ratio": 1.0
   },
   {
     "block": 23867127,
     "timestamp": 1763923283,
     "datetime": "2025-11-23T18:41:23",
-    "supply_yb": 20007387.084865965
+    "supply_yb": 20007387.084865965,
+    "yb_locked": 20007387.084865965,
+    "lock_ratio": 1.0
   },
   {
     "block": 23867427,
     "timestamp": 1763926883,
     "datetime": "2025-11-23T19:41:23",
-    "supply_yb": 20007387.084865965
+    "supply_yb": 20007387.084865965,
+    "yb_locked": 20007387.084865965,
+    "lock_ratio": 1.0
   },
   {
     "block": 23867727,
     "timestamp": 1763930483,
     "datetime": "2025-11-23T20:41:23",
-    "supply_yb": 20017241.764922857
+    "supply_yb": 20017241.764922857,
+    "yb_locked": 20017241.764922857,
+    "lock_ratio": 1.0
   },
   {
     "block": 23868027,
     "timestamp": 1763934083,
     "datetime": "2025-11-23T21:41:23",
-    "supply_yb": 20017321.64019224
+    "supply_yb": 20017321.64019224,
+    "yb_locked": 20017321.64019224,
+    "lock_ratio": 1.0
   },
   {
     "block": 23868327,
     "timestamp": 1763937683,
     "datetime": "2025-11-23T22:41:23",
-    "supply_yb": 20017656.52654728
+    "supply_yb": 20017656.52654728,
+    "yb_locked": 20017656.52654728,
+    "lock_ratio": 1.0
   },
   {
     "block": 23868627,
     "timestamp": 1763941283,
     "datetime": "2025-11-23T23:41:23",
-    "supply_yb": 20017687.417223494
+    "supply_yb": 20017687.417223494,
+    "yb_locked": 20017687.417223494,
+    "lock_ratio": 1.0
   },
   {
     "block": 23868927,
     "timestamp": 1763944883,
     "datetime": "2025-11-24T00:41:23",
-    "supply_yb": 20075052.70636313
+    "supply_yb": 20075052.70636313,
+    "yb_locked": 20075052.70636313,
+    "lock_ratio": 1.0
   },
   {
     "block": 23869227,
     "timestamp": 1763948483,
     "datetime": "2025-11-24T01:41:23",
-    "supply_yb": 20153231.809259236
+    "supply_yb": 20153231.809259236,
+    "yb_locked": 20153231.809259236,
+    "lock_ratio": 1.0
   },
   {
     "block": 23869527,
     "timestamp": 1763952083,
     "datetime": "2025-11-24T02:41:23",
-    "supply_yb": 20153800.158769634
+    "supply_yb": 20153800.158769634,
+    "yb_locked": 20153800.158769634,
+    "lock_ratio": 1.0
   },
   {
     "block": 23869827,
     "timestamp": 1763955683,
     "datetime": "2025-11-24T03:41:23",
-    "supply_yb": 20155520.984488413
+    "supply_yb": 20155520.984488413,
+    "yb_locked": 20155520.984488413,
+    "lock_ratio": 1.0
   },
   {
     "block": 23870127,
     "timestamp": 1763959283,
     "datetime": "2025-11-24T04:41:23",
-    "supply_yb": 20155520.984488413
+    "supply_yb": 20155520.984488413,
+    "yb_locked": 20155520.984488413,
+    "lock_ratio": 1.0
   },
   {
     "block": 23870427,
     "timestamp": 1763962883,
     "datetime": "2025-11-24T05:41:23",
-    "supply_yb": 20970642.752088413
+    "supply_yb": 20970642.752088413,
+    "yb_locked": 20970642.752088413,
+    "lock_ratio": 1.0
   },
   {
     "block": 23870727,
     "timestamp": 1763966483,
     "datetime": "2025-11-24T06:41:23",
-    "supply_yb": 20970642.752088413
+    "supply_yb": 20970642.752088413,
+    "yb_locked": 20970642.752088413,
+    "lock_ratio": 1.0
   },
   {
     "block": 23871027,
     "timestamp": 1763970083,
     "datetime": "2025-11-24T07:41:23",
-    "supply_yb": 20970642.752088413
+    "supply_yb": 20970642.752088413,
+    "yb_locked": 20970642.752088413,
+    "lock_ratio": 1.0
   },
   {
     "block": 23871327,
     "timestamp": 1763973683,
     "datetime": "2025-11-24T08:41:23",
-    "supply_yb": 20990643.642088413
+    "supply_yb": 20990643.642088413,
+    "yb_locked": 20990643.642088413,
+    "lock_ratio": 1.0
   },
   {
     "block": 23871627,
     "timestamp": 1763977283,
     "datetime": "2025-11-24T09:41:23",
-    "supply_yb": 20990643.642088413
+    "supply_yb": 20990643.642088413,
+    "yb_locked": 20990643.642088413,
+    "lock_ratio": 1.0
   },
   {
     "block": 23871927,
     "timestamp": 1763980883,
     "datetime": "2025-11-24T10:41:23",
-    "supply_yb": 20990643.642088413
+    "supply_yb": 20990643.642088413,
+    "yb_locked": 20990643.642088413,
+    "lock_ratio": 1.0
   },
   {
     "block": 23872227,
     "timestamp": 1763984483,
     "datetime": "2025-11-24T11:41:23",
-    "supply_yb": 20990882.663729493
+    "supply_yb": 20990882.663729493,
+    "yb_locked": 20990882.663729493,
+    "lock_ratio": 1.0
   },
   {
     "block": 23872527,
     "timestamp": 1763988083,
     "datetime": "2025-11-24T12:41:23",
-    "supply_yb": 20990882.663729493
+    "supply_yb": 20990882.663729493,
+    "yb_locked": 20990882.663729493,
+    "lock_ratio": 1.0
   },
   {
     "block": 23872827,
     "timestamp": 1763991683,
     "datetime": "2025-11-24T13:41:23",
-    "supply_yb": 20990882.663729493
+    "supply_yb": 20990882.663729493,
+    "yb_locked": 20990882.663729493,
+    "lock_ratio": 1.0
   },
   {
     "block": 23873127,
     "timestamp": 1763995283,
     "datetime": "2025-11-24T14:41:23",
-    "supply_yb": 20990882.663729493
+    "supply_yb": 20990882.663729493,
+    "yb_locked": 20990882.663729493,
+    "lock_ratio": 1.0
   },
   {
     "block": 23873427,
     "timestamp": 1763998883,
     "datetime": "2025-11-24T15:41:23",
-    "supply_yb": 20990882.663729493
+    "supply_yb": 20990882.663729493,
+    "yb_locked": 20990882.663729493,
+    "lock_ratio": 1.0
   },
   {
     "block": 23873727,
     "timestamp": 1764002483,
     "datetime": "2025-11-24T16:41:23",
-    "supply_yb": 20992506.991377316
+    "supply_yb": 20992506.991377316,
+    "yb_locked": 20992506.991377316,
+    "lock_ratio": 1.0
   },
   {
     "block": 23874027,
     "timestamp": 1764006083,
     "datetime": "2025-11-24T17:41:23",
-    "supply_yb": 20992506.991377316
+    "supply_yb": 20992506.991377316,
+    "yb_locked": 20992506.991377316,
+    "lock_ratio": 1.0
   },
   {
     "block": 23874327,
     "timestamp": 1764009683,
     "datetime": "2025-11-24T18:41:23",
-    "supply_yb": 20992506.991377316
+    "supply_yb": 20992506.991377316,
+    "yb_locked": 20992506.991377316,
+    "lock_ratio": 1.0
   },
   {
     "block": 23874627,
     "timestamp": 1764013283,
     "datetime": "2025-11-24T19:41:23",
-    "supply_yb": 20992506.991377316
+    "supply_yb": 20992506.991377316,
+    "yb_locked": 20992506.991377316,
+    "lock_ratio": 1.0
   },
   {
     "block": 23874927,
     "timestamp": 1764016883,
     "datetime": "2025-11-24T20:41:23",
-    "supply_yb": 20996533.062600948
+    "supply_yb": 20996533.062600948,
+    "yb_locked": 20996533.062600948,
+    "lock_ratio": 1.0
   },
   {
     "block": 23875227,
     "timestamp": 1764020483,
     "datetime": "2025-11-24T21:41:23",
-    "supply_yb": 21001973.17367209
+    "supply_yb": 21001973.17367209,
+    "yb_locked": 21001973.17367209,
+    "lock_ratio": 1.0
   },
   {
     "block": 23875527,
     "timestamp": 1764024083,
     "datetime": "2025-11-24T22:41:23",
-    "supply_yb": 21002177.89887534
+    "supply_yb": 21002177.89887534,
+    "yb_locked": 21002177.89887534,
+    "lock_ratio": 1.0
   },
   {
     "block": 23875827,
     "timestamp": 1764027683,
     "datetime": "2025-11-24T23:41:23",
-    "supply_yb": 21003588.545875438
+    "supply_yb": 21003588.545875438,
+    "yb_locked": 21003588.545875438,
+    "lock_ratio": 1.0
   },
   {
     "block": 23876127,
     "timestamp": 1764031283,
     "datetime": "2025-11-25T00:41:23",
-    "supply_yb": 20969147.363791257
+    "supply_yb": 20969147.363791257,
+    "yb_locked": 20969147.363791257,
+    "lock_ratio": 1.0
   },
   {
     "block": 23876427,
     "timestamp": 1764034883,
     "datetime": "2025-11-25T01:41:23",
-    "supply_yb": 20969147.363791257
+    "supply_yb": 20969147.363791257,
+    "yb_locked": 20969147.363791257,
+    "lock_ratio": 1.0
   },
   {
     "block": 23876727,
     "timestamp": 1764038483,
     "datetime": "2025-11-25T02:41:23",
-    "supply_yb": 20971658.375619877
+    "supply_yb": 20971658.375619877,
+    "yb_locked": 20971658.375619877,
+    "lock_ratio": 1.0
   },
   {
     "block": 23877027,
     "timestamp": 1764042083,
     "datetime": "2025-11-25T03:41:23",
-    "supply_yb": 20971673.12155701
+    "supply_yb": 20971673.12155701,
+    "yb_locked": 20971673.12155701,
+    "lock_ratio": 1.0
   },
   {
     "block": 23877327,
     "timestamp": 1764045683,
     "datetime": "2025-11-25T04:41:23",
-    "supply_yb": 20971673.12155701
+    "supply_yb": 20971673.12155701,
+    "yb_locked": 20971673.12155701,
+    "lock_ratio": 1.0
   },
   {
     "block": 23877627,
     "timestamp": 1764049283,
     "datetime": "2025-11-25T05:41:23",
-    "supply_yb": 20972579.92155701
+    "supply_yb": 20972579.92155701,
+    "yb_locked": 20972579.92155701,
+    "lock_ratio": 1.0
   },
   {
     "block": 23877927,
     "timestamp": 1764052883,
     "datetime": "2025-11-25T06:41:23",
-    "supply_yb": 20975079.92155701
+    "supply_yb": 20975079.92155701,
+    "yb_locked": 20975079.92155701,
+    "lock_ratio": 1.0
   },
   {
     "block": 23878227,
     "timestamp": 1764056483,
     "datetime": "2025-11-25T07:41:23",
-    "supply_yb": 20975079.92155701
+    "supply_yb": 20975079.92155701,
+    "yb_locked": 20975079.92155701,
+    "lock_ratio": 1.0
   },
   {
     "block": 23878527,
     "timestamp": 1764060083,
     "datetime": "2025-11-25T08:41:23",
-    "supply_yb": 20985079.92155701
+    "supply_yb": 20985079.92155701,
+    "yb_locked": 20985079.92155701,
+    "lock_ratio": 1.0
   },
   {
     "block": 23878827,
     "timestamp": 1764063683,
     "datetime": "2025-11-25T09:41:23",
-    "supply_yb": 20985079.92155701
+    "supply_yb": 20985079.92155701,
+    "yb_locked": 20985079.92155701,
+    "lock_ratio": 1.0
   },
   {
     "block": 23879127,
     "timestamp": 1764067283,
     "datetime": "2025-11-25T10:41:23",
-    "supply_yb": 20989510.016589392
+    "supply_yb": 20989510.016589392,
+    "yb_locked": 20989510.016589392,
+    "lock_ratio": 1.0
   },
   {
     "block": 23879427,
     "timestamp": 1764070883,
     "datetime": "2025-11-25T11:41:23",
-    "supply_yb": 20989510.016589392
+    "supply_yb": 20989510.016589392,
+    "yb_locked": 20989510.016589392,
+    "lock_ratio": 1.0
   },
   {
     "block": 23879727,
     "timestamp": 1764074483,
     "datetime": "2025-11-25T12:41:23",
-    "supply_yb": 20989510.016589392
+    "supply_yb": 20989510.016589392,
+    "yb_locked": 20989510.016589392,
+    "lock_ratio": 1.0
   },
   {
     "block": 23880027,
     "timestamp": 1764078083,
     "datetime": "2025-11-25T13:41:23",
-    "supply_yb": 20989510.016589392
+    "supply_yb": 20989510.016589392,
+    "yb_locked": 20989510.016589392,
+    "lock_ratio": 1.0
   },
   {
     "block": 23880327,
     "timestamp": 1764081683,
     "datetime": "2025-11-25T14:41:23",
-    "supply_yb": 20989510.016589392
+    "supply_yb": 20989510.016589392,
+    "yb_locked": 20989510.016589392,
+    "lock_ratio": 1.0
   },
   {
     "block": 23880627,
     "timestamp": 1764085283,
     "datetime": "2025-11-25T15:41:23",
-    "supply_yb": 20989510.016589392
+    "supply_yb": 20989510.016589392,
+    "yb_locked": 20989510.016589392,
+    "lock_ratio": 1.0
   },
   {
     "block": 23880927,
     "timestamp": 1764135935,
     "datetime": "2025-11-26T05:45:35",
-    "supply_yb": 20990144.301967885
+    "supply_yb": 20990144.301967885,
+    "yb_locked": 20990144.301967885,
+    "lock_ratio": 1.0
   },
   {
     "block": 23881227,
     "timestamp": 1764092483,
     "datetime": "2025-11-25T17:41:23",
-    "supply_yb": 20992364.081332013
+    "supply_yb": 20992364.081332013,
+    "yb_locked": 20992364.081332013,
+    "lock_ratio": 1.0
   },
   {
     "block": 23881527,
     "timestamp": 1764096083,
     "datetime": "2025-11-25T18:41:23",
-    "supply_yb": 21036310.597570088
+    "supply_yb": 21036310.597570088,
+    "yb_locked": 21036310.597570088,
+    "lock_ratio": 1.0
   },
   {
     "block": 23881827,
     "timestamp": 1764099683,
     "datetime": "2025-11-25T19:41:23",
-    "supply_yb": 21036310.597570088
+    "supply_yb": 21036310.597570088,
+    "yb_locked": 21036310.597570088,
+    "lock_ratio": 1.0
   },
   {
     "block": 23882127,
     "timestamp": 1764103283,
     "datetime": "2025-11-25T20:41:23",
-    "supply_yb": 21037566.74548335
+    "supply_yb": 21037566.74548335,
+    "yb_locked": 21037566.74548335,
+    "lock_ratio": 1.0
   },
   {
     "block": 23882427,
     "timestamp": 1764106883,
     "datetime": "2025-11-25T21:41:23",
-    "supply_yb": 21037566.74548335
+    "supply_yb": 21037566.74548335,
+    "yb_locked": 21037566.74548335,
+    "lock_ratio": 1.0
   },
   {
     "block": 23882727,
     "timestamp": 1764110483,
     "datetime": "2025-11-25T22:41:23",
-    "supply_yb": 21037566.979310926
+    "supply_yb": 21037566.979310926,
+    "yb_locked": 21037566.979310926,
+    "lock_ratio": 1.0
   },
   {
     "block": 23883027,
     "timestamp": 1764114083,
     "datetime": "2025-11-25T23:41:23",
-    "supply_yb": 21037631.918437768
+    "supply_yb": 21037631.918437768,
+    "yb_locked": 21037631.918437768,
+    "lock_ratio": 1.0
   },
   {
     "block": 23883327,
     "timestamp": 1764117683,
     "datetime": "2025-11-26T00:41:23",
-    "supply_yb": 21037631.918437768
+    "supply_yb": 21037631.918437768,
+    "yb_locked": 21037631.918437768,
+    "lock_ratio": 1.0
   },
   {
     "block": 23883627,
     "timestamp": 1764121283,
     "datetime": "2025-11-26T01:41:23",
-    "supply_yb": 21056631.918437768
+    "supply_yb": 21056631.918437768,
+    "yb_locked": 21056631.918437768,
+    "lock_ratio": 1.0
   },
   {
     "block": 23883927,
     "timestamp": 1764124883,
     "datetime": "2025-11-26T02:41:23",
-    "supply_yb": 21057098.588827554
+    "supply_yb": 21057098.588827554,
+    "yb_locked": 21057098.588827554,
+    "lock_ratio": 1.0
   },
   {
     "block": 23884227,
     "timestamp": 1764128483,
     "datetime": "2025-11-26T03:41:23",
-    "supply_yb": 21057098.588827554
+    "supply_yb": 21057098.588827554,
+    "yb_locked": 21057098.588827554,
+    "lock_ratio": 1.0
   },
   {
     "block": 23884527,
     "timestamp": 1764132083,
     "datetime": "2025-11-26T04:41:23",
-    "supply_yb": 21064166.92175209
+    "supply_yb": 21064166.92175209,
+    "yb_locked": 21064166.92175209,
+    "lock_ratio": 1.0
   },
   {
     "block": 23884827,
     "timestamp": 1764135683,
     "datetime": "2025-11-26T05:41:23",
-    "supply_yb": 21064710.415373478
+    "supply_yb": 21064710.415373478,
+    "yb_locked": 21064710.415373478,
+    "lock_ratio": 1.0
   },
   {
     "block": 23885127,
     "timestamp": 1764139283,
     "datetime": "2025-11-26T06:41:23",
-    "supply_yb": 21066084.53227533
+    "supply_yb": 21066084.53227533,
+    "yb_locked": 21066084.53227533,
+    "lock_ratio": 1.0
   },
   {
     "block": 23885427,
     "timestamp": 1764142883,
     "datetime": "2025-11-26T07:41:23",
-    "supply_yb": 21068267.17816188
+    "supply_yb": 21068267.17816188,
+    "yb_locked": 21068267.17816188,
+    "lock_ratio": 1.0
   },
   {
     "block": 23885727,
     "timestamp": 1764146483,
     "datetime": "2025-11-26T08:41:23",
-    "supply_yb": 21068622.802221943
+    "supply_yb": 21068622.802221943,
+    "yb_locked": 21068622.802221943,
+    "lock_ratio": 1.0
   },
   {
     "block": 23886027,
     "timestamp": 1764150083,
     "datetime": "2025-11-26T09:41:23",
-    "supply_yb": 21068622.802221943
+    "supply_yb": 21068622.802221943,
+    "yb_locked": 21068622.802221943,
+    "lock_ratio": 1.0
   },
   {
     "block": 23886327,
     "timestamp": 1764153683,
     "datetime": "2025-11-26T10:41:23",
-    "supply_yb": 21160403.44677812
+    "supply_yb": 21160403.44677812,
+    "yb_locked": 21160403.44677812,
+    "lock_ratio": 1.0
   },
   {
     "block": 23886627,
     "timestamp": 1764157283,
     "datetime": "2025-11-26T11:41:23",
-    "supply_yb": 21160600.65137101
+    "supply_yb": 21160600.65137101,
+    "yb_locked": 21160600.65137101,
+    "lock_ratio": 1.0
   },
   {
     "block": 23886927,
     "timestamp": 1764160883,
     "datetime": "2025-11-26T12:41:23",
-    "supply_yb": 21160600.65137101
+    "supply_yb": 21160600.65137101,
+    "yb_locked": 21160600.65137101,
+    "lock_ratio": 1.0
   },
   {
     "block": 23887227,
     "timestamp": 1764164483,
     "datetime": "2025-11-26T13:41:23",
-    "supply_yb": 21159089.63155253
+    "supply_yb": 21159089.63155253,
+    "yb_locked": 21159089.63155253,
+    "lock_ratio": 1.0
   },
   {
     "block": 23887527,
     "timestamp": 1764168083,
     "datetime": "2025-11-26T14:41:23",
-    "supply_yb": 21159089.63155253
+    "supply_yb": 21159089.63155253,
+    "yb_locked": 21159089.63155253,
+    "lock_ratio": 1.0
   },
   {
     "block": 23887827,
     "timestamp": 1764171683,
     "datetime": "2025-11-26T15:41:23",
-    "supply_yb": 21159089.63155253
+    "supply_yb": 21159089.63155253,
+    "yb_locked": 21159089.63155253,
+    "lock_ratio": 1.0
   },
   {
     "block": 23888127,
     "timestamp": 1764175283,
     "datetime": "2025-11-26T16:41:23",
-    "supply_yb": 21159089.63155253
+    "supply_yb": 21159089.63155253,
+    "yb_locked": 21159089.63155253,
+    "lock_ratio": 1.0
   },
   {
     "block": 23888427,
     "timestamp": 1764178883,
     "datetime": "2025-11-26T17:41:23",
-    "supply_yb": 21159932.251797613
+    "supply_yb": 21159932.251797613,
+    "yb_locked": 21159932.251797613,
+    "lock_ratio": 1.0
   },
   {
     "block": 23888727,
     "timestamp": 1764182483,
     "datetime": "2025-11-26T18:41:23",
-    "supply_yb": 21159932.251797613
+    "supply_yb": 21159932.251797613,
+    "yb_locked": 21159932.251797613,
+    "lock_ratio": 1.0
   },
   {
     "block": 23889027,
     "timestamp": 1764186083,
     "datetime": "2025-11-26T19:41:23",
-    "supply_yb": 21159959.346740857
+    "supply_yb": 21159959.346740857,
+    "yb_locked": 21159959.346740857,
+    "lock_ratio": 1.0
   },
   {
     "block": 23889327,
     "timestamp": 1764189683,
     "datetime": "2025-11-26T20:41:23",
-    "supply_yb": 21161924.558231536
+    "supply_yb": 21161924.558231536,
+    "yb_locked": 21161924.558231536,
+    "lock_ratio": 1.0
   },
   {
     "block": 23889627,
     "timestamp": 1764193283,
     "datetime": "2025-11-26T21:41:23",
-    "supply_yb": 21162477.901201874
+    "supply_yb": 21162477.901201874,
+    "yb_locked": 21162477.901201874,
+    "lock_ratio": 1.0
   },
   {
     "block": 23889927,
     "timestamp": 1764196883,
     "datetime": "2025-11-26T22:41:23",
-    "supply_yb": 21163632.31773923
+    "supply_yb": 21163632.31773923,
+    "yb_locked": 21163632.31773923,
+    "lock_ratio": 1.0
   },
   {
     "block": 23890227,
     "timestamp": 1764200483,
     "datetime": "2025-11-26T23:41:23",
-    "supply_yb": 21165827.675153278
+    "supply_yb": 21165827.675153278,
+    "yb_locked": 21165827.675153278,
+    "lock_ratio": 1.0
   },
   {
     "block": 23890527,
     "timestamp": 1764204083,
     "datetime": "2025-11-27T00:41:23",
-    "supply_yb": 21173384.97547069
+    "supply_yb": 21173384.97547069,
+    "yb_locked": 21173384.97547069,
+    "lock_ratio": 1.0
   },
   {
     "block": 23890827,
     "timestamp": 1764207683,
     "datetime": "2025-11-27T01:41:23",
-    "supply_yb": 21163594.941246834
+    "supply_yb": 21163594.941246834,
+    "yb_locked": 21163594.941246834,
+    "lock_ratio": 1.0
   },
   {
     "block": 23891127,
     "timestamp": 1764211283,
     "datetime": "2025-11-27T02:41:23",
-    "supply_yb": 21163594.941246834
+    "supply_yb": 21163594.941246834,
+    "yb_locked": 21163594.941246834,
+    "lock_ratio": 1.0
   },
   {
     "block": 23891427,
     "timestamp": 1764214883,
     "datetime": "2025-11-27T03:41:23",
-    "supply_yb": 21168060.416341543
+    "supply_yb": 21168060.416341543,
+    "yb_locked": 21168060.416341543,
+    "lock_ratio": 1.0
   },
   {
     "block": 23891727,
     "timestamp": 1764218483,
     "datetime": "2025-11-27T04:41:23",
-    "supply_yb": 21168060.416341543
+    "supply_yb": 21168060.416341543,
+    "yb_locked": 21168060.416341543,
+    "lock_ratio": 1.0
   },
   {
-    "block": 23891924,
-    "timestamp": 1764269267,
-    "datetime": "2025-11-27T18:47:47",
-    "supply_yb": 21168060.416341543
+    "block": 23892027,
+    "timestamp": 1764222083,
+    "datetime": "2025-11-27T05:41:23",
+    "supply_yb": 21168152.810741544,
+    "yb_locked": 21168152.810741544,
+    "lock_ratio": 1.0
   },
   {
-    "block": 23891987,
-    "timestamp": 1764270023,
-    "datetime": "2025-11-27T19:00:23",
-    "supply_yb": 21168152.810741544
-  },
-  {
-    "block": 23892052,
-    "timestamp": 1764270803,
-    "datetime": "2025-11-27T19:13:23",
-    "supply_yb": 21172704.445836015
-  },
-  {
-    "block": 23892115,
-    "timestamp": 1764271571,
-    "datetime": "2025-11-27T19:26:11",
-    "supply_yb": 21172930.417481795
-  },
-  {
-    "block": 23892181,
-    "timestamp": 1764272363,
-    "datetime": "2025-11-27T19:39:23",
-    "supply_yb": 21172930.417481795
-  },
-  {
-    "block": 23892264,
-    "timestamp": 1764273371,
-    "datetime": "2025-11-27T19:56:11",
-    "supply_yb": 21172930.417481795
-  },
-  {
-    "block": 23892362,
-    "timestamp": 1764274547,
-    "datetime": "2025-11-27T20:15:47",
-    "supply_yb": 21172930.417481795
-  },
-  {
-    "block": 23892428,
-    "timestamp": 1764275339,
-    "datetime": "2025-11-27T20:28:59",
-    "supply_yb": 21172930.417481795
-  },
-  {
-    "block": 23892493,
-    "timestamp": 1764276119,
-    "datetime": "2025-11-27T20:41:59",
+    "block": 23892327,
+    "timestamp": 1764225683,
+    "datetime": "2025-11-27T06:41:23",
     "supply_yb": 21172930.417481795,
     "yb_locked": 21172930.417481795,
     "lock_ratio": 1.0
   },
   {
-    "block": 23892558,
-    "timestamp": 1764276899,
-    "datetime": "2025-11-27T20:54:59",
+    "block": 23892627,
+    "timestamp": 1764229283,
+    "datetime": "2025-11-27T07:41:23",
     "supply_yb": 21172930.417481795,
     "yb_locked": 21172930.417481795,
     "lock_ratio": 1.0
   },
   {
-    "block": 23892623,
-    "timestamp": 1764277691,
-    "datetime": "2025-11-27T21:08:11",
+    "block": 23892638,
+    "timestamp": 1764277871,
+    "datetime": "2025-11-27T21:11:11",
     "supply_yb": 21172930.417481795,
     "yb_locked": 21172930.417481795,
     "lock_ratio": 1.0
   },
   {
-    "block": 23892687,
-    "timestamp": 1764278459,
-    "datetime": "2025-11-27T21:20:59",
+    "block": 23892750,
+    "timestamp": 1764279215,
+    "datetime": "2025-11-27T21:33:35",
     "supply_yb": 21172930.417481795,
     "yb_locked": 21172930.417481795,
     "lock_ratio": 1.0

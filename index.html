@@ -1,4 +1,4 @@
-// Last updated: 2025-11-27 21:22:27 UTC
+// Last updated: 2025-11-27 21:35:11 UTC
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -258,11 +258,55 @@
 
         .contract-selector {
             display: flex;
+            flex-wrap: wrap;
             gap: 10px;
             background: #0f172a;
             padding: 6px;
             border-radius: 8px;
-            margin-bottom: 15px;
+            margin-bottom: 10px;
+            align-items: center;
+        }
+
+        .dashboard-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .dashboard-link {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.2s;
+        }
+
+        .dashboard-link.blue {
+            background: #3b82f6;
+            color: #f1f5f9;
+        }
+        .dashboard-link.blue:hover {
+            background: #2563eb;
+        }
+
+        .dashboard-link.green {
+            background: #10b981;
+            color: #0f172a;
+        }
+        .dashboard-link.green:hover {
+            background: #059669;
+        }
+
+        .dashboard-link.purple {
+            background: #8b5cf6;
+            color: #f1f5f9;
+        }
+        .dashboard-link.purple:hover {
+            background: #7c3aed;
         }
 
         .contract-btn {
@@ -482,10 +526,9 @@
                 gap: 6px;
             }
 
-            .contract-selector a {
+            .dashboard-link {
                 padding: 8px 12px !important;
-                font-size: 0.8em !important;
-                margin-left: 0 !important;
+                font-size: 0.85em !important;
             }
 
             .market-selector {
@@ -629,9 +672,9 @@
                 padding: 4px;
             }
 
-            .contract-selector a {
-                padding: 6px 8px !important;
-                font-size: 0.7em !important;
+            .dashboard-link {
+                padding: 6px 10px !important;
+                font-size: 0.75em !important;
                 white-space: nowrap;
             }
 
@@ -743,9 +786,11 @@
                     <div class="contract-selector">
                         <button class="contract-btn active" data-version="new" onclick="switchContractVersion('new')">NEW</button>
                         <button class="contract-btn" data-version="old" onclick="switchContractVersion('old')">OLD</button>
-                        <a href="pps_dashboard.html" style="padding: 10px 20px; background: #3b82f6; border: none; border-radius: 6px; color: #f1f5f9; font-weight: 600; cursor: pointer; text-decoration: none; display: inline-block; transition: all 0.2s; margin-left: auto;" onmouseover="this.style.background='#2563eb'" onmouseout="this.style.background='#3b82f6'">📈 Fundamental Profit</a>
-                        <a href="dashboard.html" style="padding: 10px 20px; background: #10b981; border: none; border-radius: 6px; color: #0f172a; font-weight: 600; cursor: pointer; text-decoration: none; display: inline-block; transition: all 0.2s; margin-left: 10px;" onmouseover="this.style.background='#059669'" onmouseout="this.style.background='#10b981'">📊 Summary dashboard</a>
-                        <a href="veyb_dashboard.html" style="padding: 10px 20px; background: #8b5cf6; border: none; border-radius: 6px; color: #f1f5f9; font-weight: 600; cursor: pointer; text-decoration: none; display: inline-block; transition: all 0.2s; margin-left: 10px;" onmouseover="this.style.background='#7c3aed'" onmouseout="this.style.background='#8b5cf6'">🔒 veYB Revenue</a>
+                    </div>
+                    <div class="dashboard-links">
+                        <a href="pps_dashboard.html" class="dashboard-link blue">📈 Fundamental Profit</a>
+                        <a href="dashboard.html" class="dashboard-link green">📊 Summary dashboard</a>
+                        <a href="veyb_dashboard.html" class="dashboard-link purple">🔒 veYB Revenue</a>
                     </div>
                     <div class="market-selector">
                         <button class="market-btn active" data-market="cbbtc" onclick="switchMarket('cbbtc')">yb-cbBTC</button>

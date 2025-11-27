@@ -1,4 +1,4 @@
-// Last updated: 2025-11-27 21:22:27 UTC
+// Last updated: 2025-11-27 21:35:11 UTC
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -302,7 +302,7 @@
             <!-- Main metrics row -->
             <div class="main-metrics-row">
                 <div class="main-card">
-                    <div class="main-card-label">Total Locked</div>
+                    <div class="main-card-label">Total Voting Power</div>
                     <div class="main-card-value" id="totalLocked">-</div>
                     <div class="main-card-sub" id="totalLockedBtc">-</div>
                 </div>
@@ -337,8 +337,8 @@
                     <div class="stat-value" id="daysActive">-</div>
                 </div>
                 <div class="stat-card">
-                    <div class="stat-label">Current YB/BTC Price</div>
-                    <div class="stat-value" id="currentYbPrice">-</div>
+                    <div class="stat-label">Total Locked YB</div>
+                    <div class="stat-value" id="totalLockedYb">-</div>
                 </div>
                 <div class="stat-card">
                     <div class="stat-label">Avg Lock Duration</div>
@@ -399,6 +399,32 @@
                 </div>
             </div>
 
+            <!-- Cumulative Admin Fees Chart -->
+            <div class="chart-container">
+                <div class="chart-title">Cumulative Admin Fees (BTC)</div>
+                <div class="chart-wrapper">
+                    <canvas id="adminFeesChart"></canvas>
+                </div>
+                <div class="compact-range">
+                    <div class="period-buttons" id="adminFeesPeriodButtons">
+                        <span class="period-label">Period:</span>
+                        <button class="period-button" data-days="7">7d</button>
+                        <button class="period-button" data-days="14">14d</button>
+                        <button class="period-button" data-days="30">30d</button>
+                        <button class="period-button active" data-days="all">All</button>
+                    </div>
+                    <div class="range-slider">
+                        <div class="range-fill" id="adminFeesRangeFill"></div>
+                        <input type="range" id="adminFeesRangeStart" min="0" max="100" value="0">
+                        <input type="range" id="adminFeesRangeEnd" min="0" max="100" value="100">
+                    </div>
+                    <div class="range-labels">
+                        <span id="adminFeesStartLabel">Start</span>
+                        <span id="adminFeesEndLabel">End</span>
+                    </div>
+                </div>
+            </div>
+
             <!-- Supply Chart -->
             <div class="chart-container">
                 <div class="chart-title">Total Locked veYB</div>
@@ -447,32 +473,6 @@
                     <div class="range-labels">
                         <span id="lockRatioStartLabel">Start</span>
                         <span id="lockRatioEndLabel">End</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Cumulative Admin Fees Chart -->
-            <div class="chart-container">
-                <div class="chart-title">Cumulative Admin Fees (BTC)</div>
-                <div class="chart-wrapper">
-                    <canvas id="adminFeesChart"></canvas>
-                </div>
-                <div class="compact-range">
-                    <div class="period-buttons" id="adminFeesPeriodButtons">
-                        <span class="period-label">Period:</span>
-                        <button class="period-button" data-days="7">7d</button>
-                        <button class="period-button" data-days="14">14d</button>
-                        <button class="period-button" data-days="30">30d</button>
-                        <button class="period-button active" data-days="all">All</button>
-                    </div>
-                    <div class="range-slider">
-                        <div class="range-fill" id="adminFeesRangeFill"></div>
-                        <input type="range" id="adminFeesRangeStart" min="0" max="100" value="0">
-                        <input type="range" id="adminFeesRangeEnd" min="0" max="100" value="100">
-                    </div>
-                    <div class="range-labels">
-                        <span id="adminFeesStartLabel">Start</span>
-                        <span id="adminFeesEndLabel">End</span>
                     </div>
                 </div>
             </div>
@@ -1145,56 +1145,78 @@
         }
 
         function extractAdminFeesData() {
-            // Build cumulative admin fees timeline from withdrawal events
+            // Build cumulative admin fees from revenue_yield data (continuous) + withdrawals
             const result = [];
 
-            if (typeof adminFeeWithdrawalsData === 'undefined' || !adminFeeWithdrawalsData.length) {
-                return result;
-            }
-
-            // Get current fees in contracts from revenue_yield data
-            let currentInContracts = 0;
             const sources = [
                 typeof yieldData_wbtc !== 'undefined' ? yieldData_wbtc.data : null,
                 typeof yieldData_cbbtc !== 'undefined' ? yieldData_cbbtc.data : null,
                 typeof yieldData_tbtc !== 'undefined' ? yieldData_tbtc.data : null
             ].filter(Boolean);
 
-            // Get latest admin_fees_btc from each source
-            for (const data of sources) {
-                if (data.length > 0) {
-                    const latest = data[data.length - 1];
-                    currentInContracts += (latest.admin_fees_btc || 0);
+            if (sources.length === 0) return result;
+
+            // Build withdrawal lookup by timestamp
+            const withdrawalsByTimestamp = {};
+            if (typeof adminFeeWithdrawalsData !== 'undefined' && adminFeeWithdrawalsData.length) {
+                for (const w of adminFeeWithdrawalsData) {
+                    withdrawalsByTimestamp[w.timestamp] = w.cumulative_total;
                 }
             }
 
-            // Add withdrawal events
-            for (const event of adminFeeWithdrawalsData) {
-                result.push({
-                    timestamp: event.timestamp,
-                    datetime: event.datetime,
-                    cumulative_withdrawn: event.cumulative_total,
-                    market: event.market
-                });
+            // Collect all unique timestamps from all sources
+            const timestampSet = new Set();
+            for (const data of sources) {
+                for (const point of data) {
+                    timestampSet.add(point.timestamp);
+                }
             }
 
-            // Add current total (withdrawn + in contracts)
-            if (result.length > 0) {
-                const lastWithdrawn = result[result.length - 1].cumulative_withdrawn;
-                // Add a current point
-                const now = Math.floor(Date.now() / 1000);
-                result.push({
-                    timestamp: now,
-                    datetime: new Date().toISOString().slice(0, 19),
-                    cumulative_withdrawn: lastWithdrawn,
-                    in_contracts: currentInContracts,
-                    total: lastWithdrawn + currentInContracts
-                });
-            }
+            const timestamps = Array.from(timestampSet).sort((a, b) => a - b);
 
-            // Calculate total for each point
-            for (let i = 0; i < result.length - 1; i++) {
-                result[i].total = result[i].cumulative_withdrawn;
+            // For each timestamp, sum admin_fees_btc from all markets + cumulative withdrawn
+            let lastCumulativeWithdrawn = 0;
+            for (const ts of timestamps) {
+                let inContracts = 0;
+
+                // Sum admin_fees_btc from each market at this timestamp
+                for (const data of sources) {
+                    // Find closest point <= timestamp
+                    let closest = null;
+                    for (const point of data) {
+                        if (point.timestamp <= ts) {
+                            closest = point;
+                        } else {
+                            break;
+                        }
+                    }
+                    if (closest) {
+                        inContracts += (closest.admin_fees_btc || 0);
+                    }
+                }
+
+                // Get cumulative withdrawn at this timestamp
+                let cumulativeWithdrawn = lastCumulativeWithdrawn;
+                if (typeof adminFeeWithdrawalsData !== 'undefined') {
+                    for (const w of adminFeeWithdrawalsData) {
+                        if (w.timestamp <= ts) {
+                            cumulativeWithdrawn = w.cumulative_total;
+                        } else {
+                            break;
+                        }
+                    }
+                }
+                lastCumulativeWithdrawn = cumulativeWithdrawn;
+
+                const total = inContracts + cumulativeWithdrawn;
+
+                result.push({
+                    timestamp: ts,
+                    datetime: new Date(ts * 1000).toISOString().slice(0, 19),
+                    in_contracts: inContracts,
+                    cumulative_withdrawn: cumulativeWithdrawn,
+                    total: total
+                });
             }
 
             return result;
@@ -1217,10 +1239,9 @@
                         backgroundColor: 'rgba(245, 158, 11, 0.1)',
                         fill: true,
                         tension: 0.4,
-                        pointRadius: data.length < 50 ? 4 : 0,
+                        pointRadius: 0,
                         pointHoverRadius: 6,
-                        borderWidth: 2,
-                        stepped: 'before'
+                        borderWidth: 2
                     }]
                 },
                 options: {
@@ -1339,8 +1360,14 @@
                     document.getElementById('feesBreakdown').textContent = '';
                 }
 
-                // Current YB/BTC Price
-                document.getElementById('currentYbPrice').textContent = latestApr.ybBtcPrice.toFixed(8);
+                // Total Locked YB (from lock ratio data or fallback to supply_yb)
+                if (lockRatioData.length > 0) {
+                    const latestLock = lockRatioData[lockRatioData.length - 1];
+                    const ybLocked = latestLock.yb_locked || latest.supply_yb;
+                    document.getElementById('totalLockedYb').textContent = formatNumber(ybLocked) + ' YB';
+                } else {
+                    document.getElementById('totalLockedYb').textContent = formatNumber(latest.supply_yb) + ' YB';
+                }
 
                 // Daily Revenue (average)
                 const avgDaily = latestApr.adminFees / latestApr.daysSinceGenesis;
