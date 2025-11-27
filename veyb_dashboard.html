@@ -1,4 +1,4 @@
-// Last updated: 2025-11-27 19:40:42 UTC
+// Last updated: 2025-11-27 19:57:29 UTC
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -179,6 +179,64 @@
             padding: 20px;
             font-size: 0.9em;
         }
+
+        /* Range slider */
+        .compact-range {
+            margin-top: 15px;
+            padding-top: 10px;
+            border-top: 1px solid #334155;
+        }
+        .range-slider {
+            width: 100%;
+            height: 4px;
+            background: #334155;
+            border-radius: 2px;
+            position: relative;
+            margin: 15px 0 8px 0;
+        }
+        .range-slider input[type="range"] {
+            position: absolute;
+            width: 100%;
+            height: 4px;
+            background: transparent;
+            pointer-events: none;
+            -webkit-appearance: none;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        .range-slider input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 14px;
+            height: 14px;
+            background: #667eea;
+            border-radius: 50%;
+            cursor: pointer;
+            pointer-events: all;
+            border: 2px solid #0f172a;
+        }
+        .range-slider input[type="range"]::-moz-range-thumb {
+            width: 14px;
+            height: 14px;
+            background: #667eea;
+            border-radius: 50%;
+            cursor: pointer;
+            pointer-events: all;
+            border: 2px solid #0f172a;
+        }
+        .range-fill {
+            position: absolute;
+            height: 4px;
+            background: #667eea;
+            border-radius: 2px;
+            pointer-events: none;
+        }
+        .range-labels {
+            display: flex;
+            justify-content: space-between;
+            color: #64748b;
+            font-size: 0.75em;
+        }
     </style>
 </head>
 <body>
@@ -234,13 +292,21 @@
                     <button class="period-button" data-period="1d" data-chart="apr">1D</button>
                     <button class="period-button" data-period="7d" data-chart="apr">7D</button>
                     <button class="period-button active" data-period="all" data-chart="apr">All</button>
-                    <label class="checkbox-label" style="margin-left: 20px; display: inline-flex; align-items: center; cursor: pointer;">
-                        <input type="checkbox" id="useHistoricalPrice" checked style="margin-right: 6px; cursor: pointer;">
-                        <span style="font-size: 0.85em; color: #94a3b8;">Historical YB/BTC price</span>
-                    </label>
                 </div>
                 <div class="chart-wrapper">
                     <canvas id="aprChart"></canvas>
+                </div>
+
+                <div class="compact-range">
+                    <div class="range-slider">
+                        <div class="range-fill" id="aprRangeFill"></div>
+                        <input type="range" id="aprRangeStart" min="0" max="100" value="0">
+                        <input type="range" id="aprRangeEnd" min="0" max="100" value="100">
+                    </div>
+                    <div class="range-labels">
+                        <span id="aprStartLabel">Start</span>
+                        <span id="aprEndLabel">End</span>
+                    </div>
                 </div>
             </div>
 
@@ -495,15 +561,21 @@
             }
         }
 
-        function updateAprChart(period = 'all') {
-            const filteredData = filterDataByPeriod(aprData, period);
+        // Store both APR datasets globally for filtering
+        let aprDataLatest = [];
 
-            const labels = filteredData.map(d => new Date(d.timestamp * 1000));
-            const values = filteredData.map(d => d.apr);
+        function updateAprChart(period = 'all') {
+            const filteredHistorical = filterDataByPeriod(aprData, period);
+            const filteredLatest = filterDataByPeriod(aprDataLatest, period);
+
+            const labels = filteredLatest.map(d => new Date(d.timestamp * 1000));
+            const valuesHistorical = filteredHistorical.map(d => d.apr);
+            const valuesLatest = filteredLatest.map(d => d.apr);
 
             if (aprChart) {
                 aprChart.data.labels = labels;
-                aprChart.data.datasets[0].data = values;
+                aprChart.data.datasets[0].data = valuesLatest;      // Current price (main)
+                aprChart.data.datasets[1].data = valuesHistorical;  // Historical price
                 aprChart.update('none');
             }
         }
@@ -583,14 +655,15 @@
 
             const labels = data.map(d => new Date(d.timestamp * 1000));
             const values = data.map(d => d.apr);
+            const valuesLatest = aprDataLatest.map(d => d.apr);
 
             aprChart = new Chart(ctx, {
                 type: 'line',
                 data: {
                     labels: labels,
                     datasets: [{
-                        label: 'APR %',
-                        data: values,
+                        label: 'APR (Current YB/BTC price)',
+                        data: valuesLatest,
                         borderColor: '#10b981',
                         backgroundColor: 'rgba(16, 185, 129, 0.1)',
                         fill: true,
@@ -598,6 +671,18 @@
                         pointRadius: data.length < 50 ? 4 : 0,
                         pointHoverRadius: 6,
                         borderWidth: 2
+                    }, {
+                        label: 'APR (Historical YB/BTC price)',
+                        data: values,
+                        borderColor: '#f59e0b',
+                        backgroundColor: 'transparent',
+                        fill: false,
+                        tension: 0.4,
+                        pointRadius: 0,
+                        pointHoverRadius: 4,
+                        borderWidth: 2,
+                        borderDash: [5, 5],
+                        hidden: true
                     }]
                 },
                 options: {
@@ -608,7 +693,10 @@
                         mode: 'index'
                     },
                     plugins: {
-                        legend: { display: false },
+                        legend: {
+                            display: true,
+                            labels: { color: '#94a3b8' }
+                        },
                         tooltip: {
                             backgroundColor: '#1e293b',
                             titleColor: '#e2e8f0',
@@ -621,12 +709,12 @@
                                     return date.toLocaleString();
                                 },
                                 label: (item) => {
-                                    const point = aprData.find(d => d.timestamp === Math.floor(item.parsed.x / 1000));
-                                    let lines = [`APR: ${item.raw.toFixed(2)}%`];
+                                    const dataArr = item.datasetIndex === 0 ? aprDataLatest : aprData;
+                                    const point = dataArr.find(d => d.timestamp === Math.floor(item.parsed.x / 1000));
+                                    let lines = [`${item.dataset.label}: ${item.raw.toFixed(2)}%`];
                                     if (point) {
-                                        lines.push(`Admin Fees: ${point.adminFees.toFixed(4)} BTC`);
-                                        lines.push(`veYB Value: ${point.veyBtcValue.toFixed(4)} BTC`);
-                                        lines.push(`Days: ${point.daysSinceGenesis.toFixed(1)}`);
+                                        lines.push(`YB/BTC: ${point.ybBtcPrice.toFixed(8)}`);
+                                        lines.push(`veYB Value: ${point.veyBtcValue.toFixed(2)} BTC`);
                                     }
                                     return lines;
                                 }
@@ -789,9 +877,10 @@
 
             allData = veYBSupplyData;
 
-            // Calculate APR data
-            aprData = calculateAprData();
-            console.log('APR data calculated:', aprData.length, 'points');
+            // Calculate APR data (both with historical and current price)
+            aprData = calculateAprData(true);
+            aprDataLatest = calculateAprData(false);
+            console.log('APR data calculated:', aprData.length, 'points (historical), ', aprDataLatest.length, 'points (latest)');
 
             // Extract price data
             priceData = extractPriceData();
@@ -847,27 +936,6 @@
                 });
             });
 
-            // Period buttons for APR chart
-            document.querySelectorAll('#aprPeriodButtons .period-button').forEach(btn => {
-                btn.addEventListener('click', () => {
-                    document.querySelectorAll('#aprPeriodButtons .period-button').forEach(b => b.classList.remove('active'));
-                    btn.classList.add('active');
-                    updateAprChart(btn.dataset.period);
-                });
-            });
-
-            // Checkbox for historical price toggle
-            document.getElementById('useHistoricalPrice').addEventListener('change', (e) => {
-                const useHistorical = e.target.checked;
-                aprData = calculateAprData(useHistorical);
-                console.log('APR recalculated with historical=' + useHistorical + ':', aprData.length, 'points');
-
-                // Get current period
-                const activeBtn = document.querySelector('#aprPeriodButtons .period-button.active');
-                const period = activeBtn ? activeBtn.dataset.period : 'all';
-                updateAprChart(period);
-            });
-
             // Period buttons for price chart
             document.querySelectorAll('#pricePeriodButtons .period-button').forEach(btn => {
                 btn.addEventListener('click', () => {
@@ -876,6 +944,108 @@
                     updatePriceChart(btn.dataset.period);
                 });
             });
+
+            // ====== APR RANGE SLIDER LOGIC ======
+            let aprRangeStart = 0;
+            let aprRangeEnd = aprDataLatest.length - 1;
+
+            function updateAprSliderUI() {
+                const rangeStart = document.getElementById('aprRangeStart');
+                const rangeEnd = document.getElementById('aprRangeEnd');
+                const rangeFill = document.getElementById('aprRangeFill');
+
+                const startPercent = (parseInt(rangeStart.value) / parseInt(rangeStart.max)) * 100;
+                const endPercent = (parseInt(rangeEnd.value) / parseInt(rangeEnd.max)) * 100;
+
+                rangeFill.style.left = startPercent + '%';
+                rangeFill.style.width = (endPercent - startPercent) + '%';
+
+                if (aprDataLatest.length > 0 && aprRangeStart < aprDataLatest.length && aprRangeEnd < aprDataLatest.length) {
+                    const startDate = new Date(aprDataLatest[aprRangeStart].timestamp * 1000).toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+                    const endDate = new Date(aprDataLatest[aprRangeEnd].timestamp * 1000).toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+                    document.getElementById('aprStartLabel').textContent = startDate;
+                    document.getElementById('aprEndLabel').textContent = endDate;
+                }
+            }
+
+            function filterAprByRange() {
+                if (aprDataLatest.length === 0) return;
+
+                const filteredLatest = aprDataLatest.slice(aprRangeStart, aprRangeEnd + 1);
+                const filteredHistorical = aprData.slice(aprRangeStart, aprRangeEnd + 1);
+
+                const labels = filteredLatest.map(d => new Date(d.timestamp * 1000));
+                const valuesLatest = filteredLatest.map(d => d.apr);
+                const valuesHistorical = filteredHistorical.map(d => d.apr);
+
+                if (aprChart) {
+                    aprChart.data.labels = labels;
+                    aprChart.data.datasets[0].data = valuesLatest;
+                    aprChart.data.datasets[1].data = valuesHistorical;
+                    aprChart.update('none');
+                }
+            }
+
+            document.getElementById('aprRangeStart').addEventListener('input', function() {
+                let startValue = parseInt(this.value);
+                let endValue = parseInt(document.getElementById('aprRangeEnd').value);
+
+                if (startValue >= endValue - 2) {
+                    startValue = endValue - 2;
+                    this.value = startValue;
+                }
+
+                aprRangeStart = Math.floor((startValue / 100) * (aprDataLatest.length - 1));
+                updateAprSliderUI();
+            });
+
+            document.getElementById('aprRangeEnd').addEventListener('input', function() {
+                let startValue = parseInt(document.getElementById('aprRangeStart').value);
+                let endValue = parseInt(this.value);
+
+                if (endValue <= startValue + 2) {
+                    endValue = startValue + 2;
+                    this.value = endValue;
+                }
+
+                aprRangeEnd = Math.floor((endValue / 100) * (aprDataLatest.length - 1));
+                updateAprSliderUI();
+            });
+
+            document.getElementById('aprRangeStart').addEventListener('change', filterAprByRange);
+            document.getElementById('aprRangeEnd').addEventListener('change', filterAprByRange);
+
+            // Period buttons reset slider
+            document.querySelectorAll('#aprPeriodButtons .period-button').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    document.querySelectorAll('#aprPeriodButtons .period-button').forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    const period = btn.dataset.period;
+                    if (period === 'all') {
+                        aprRangeStart = 0;
+                        aprRangeEnd = aprDataLatest.length - 1;
+                    } else {
+                        aprRangeEnd = aprDataLatest.length - 1;
+                        const endTimestamp = aprDataLatest[aprRangeEnd].timestamp;
+                        const days = period === '1d' ? 1 : 7;
+                        const targetTimestamp = endTimestamp - (days * 86400);
+                        aprRangeStart = aprDataLatest.findIndex(p => p.timestamp >= targetTimestamp);
+                        if (aprRangeStart === -1) aprRangeStart = 0;
+                    }
+
+                    const startPercent = (aprRangeStart / (aprDataLatest.length - 1)) * 100;
+                    const endPercent = (aprRangeEnd / (aprDataLatest.length - 1)) * 100;
+
+                    document.getElementById('aprRangeStart').value = startPercent;
+                    document.getElementById('aprRangeEnd').value = endPercent;
+
+                    updateAprSliderUI();
+                    filterAprByRange();
+                });
+            });
+
+            updateAprSliderUI();
+            // ====== END APR RANGE SLIDER LOGIC ======
 
             // Show content
             document.getElementById('loading').style.display = 'none';
