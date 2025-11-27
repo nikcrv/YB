@@ -1,4 +1,4 @@
-// Last updated: 2025-11-27 21:48:18 UTC
+// Last updated: 2025-11-27 22:01:14 UTC
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -303,8 +303,8 @@
             <div class="main-metrics-row">
                 <div class="main-card">
                     <div class="main-card-label">Total Voting Power</div>
-                    <div class="main-card-value" id="totalLocked">-</div>
-                    <div class="main-card-sub" id="totalLockedBtc">-</div>
+                    <div class="main-card-value" id="totalVotingPower">-</div>
+                    <div class="main-card-sub" id="lockedYbInfo" style="font-size: 0.85em;">-</div>
                 </div>
                 <div class="main-card apr-card">
                     <div class="main-card-label">Current APR</div>
@@ -312,9 +312,9 @@
                     <div class="main-card-sub">annualized yield</div>
                 </div>
                 <div class="main-card fees-card">
-                    <div class="main-card-label">Total Admin Fees</div>
+                    <div class="main-card-label">Total Revenue</div>
                     <div class="main-card-value" id="totalAdminFees">-</div>
-                    <div class="main-card-sub" id="feesBreakdown">-</div>
+                    <div class="main-card-sub" id="feesBreakdown" style="font-size: 1.1em; font-weight: 600;">-</div>
                 </div>
             </div>
 
@@ -337,8 +337,8 @@
                     <div class="stat-value" id="daysActive">-</div>
                 </div>
                 <div class="stat-card">
-                    <div class="stat-label">Total Locked YB</div>
-                    <div class="stat-value" id="totalLockedYb">-</div>
+                    <div class="stat-label">YB Price</div>
+                    <div class="stat-value" id="ybPrice">-</div>
                 </div>
                 <div class="stat-card">
                     <div class="stat-label">Avg Lock Duration</div>
@@ -1324,7 +1324,9 @@
             const latest = allData[allData.length - 1];
             const first = allData[0];
 
-            document.getElementById('totalLocked').textContent = formatNumber(latest.supply_yb) + ' veYB';
+            // Total Voting Power (veYB - decays over time)
+            const totalVotes = latest.total_votes || latest.supply_yb;
+            document.getElementById('totalVotingPower').textContent = formatNumber(totalVotes) + ' veYB';
 
             // APR metrics
             if (aprData.length > 0) {
@@ -1344,30 +1346,32 @@
                     }
                 }
 
-                // Total Locked in BTC + USD
-                let totalLockedText = `≈ ${latestApr.veyBtcValue.toFixed(2)} BTC`;
+                // Locked YB with BTC + USD valuation
+                const ybLocked = latest.supply_yb;
+                const ybBtcValue = ybLocked * latestApr.ybBtcPrice;
+                let lockedYbText = `Locked: ${formatNumber(ybLocked)} YB ≈ ${ybBtcValue.toFixed(1)} BTC`;
                 if (btcUsdPrice) {
-                    const lockedUsd = latestApr.veyBtcValue * btcUsdPrice;
-                    totalLockedText += `    ≈ $${lockedUsd.toLocaleString(undefined, {maximumFractionDigits: 0})}`;
+                    const lockedUsd = ybBtcValue * btcUsdPrice;
+                    lockedYbText += ` ≈ $${(lockedUsd/1000000).toFixed(1)}M`;
                 }
-                document.getElementById('totalLockedBtc').textContent = totalLockedText;
+                document.getElementById('lockedYbInfo').textContent = lockedYbText;
 
                 // Show USD value for Admin Fees
                 if (btcUsdPrice) {
                     const feesUsd = latestApr.adminFees * btcUsdPrice;
-                    document.getElementById('feesBreakdown').textContent = `≈ $${feesUsd.toLocaleString(undefined, {maximumFractionDigits: 0})}`;
+                    document.getElementById('feesBreakdown').textContent = `$${feesUsd.toLocaleString(undefined, {maximumFractionDigits: 0})}`;
                 } else {
                     document.getElementById('feesBreakdown').textContent = '';
                 }
 
-                // Total Locked YB (from lock ratio data or fallback to supply_yb)
-                if (lockRatioData.length > 0) {
-                    const latestLock = lockRatioData[lockRatioData.length - 1];
-                    const ybLocked = latestLock.yb_locked || latest.supply_yb;
-                    document.getElementById('totalLockedYb').textContent = formatNumber(ybLocked) + ' YB';
-                } else {
-                    document.getElementById('totalLockedYb').textContent = formatNumber(latest.supply_yb) + ' YB';
+                // YB Price in BTC and USD
+                const ybBtcPrice = latestApr.ybBtcPrice;
+                let ybPriceText = (ybBtcPrice * 1e8).toFixed(0) + ' sats';
+                if (btcUsdPrice) {
+                    const ybUsdPrice = ybBtcPrice * btcUsdPrice;
+                    ybPriceText += ` / $${ybUsdPrice.toFixed(2)}`;
                 }
+                document.getElementById('ybPrice').textContent = ybPriceText;
 
                 // Daily Revenue (average)
                 const avgDaily = latestApr.adminFees / latestApr.daysSinceGenesis;
