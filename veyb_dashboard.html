@@ -290,8 +290,8 @@
     </style>
 </head>
 <body>
-<div id="update-time" style="position:fixed;bottom:5px;left:10px;font-size:10px;color:#666;z-index:50;">Updated: 2025-11-28 20:05:13 UTC</div>
-<script>(function(){var u=new Date("2025-11-28 20:05:13 UTC"),n=function(){var d=Math.floor((Date.now()-u)/1e3),t="";if(d<60)t=d+"s ago";else if(d<3600)t=Math.floor(d/60)+"m ago";else if(d<86400)t=Math.floor(d/3600)+"h ago";else t=Math.floor(d/86400)+"d ago";document.getElementById("update-time").textContent="Updated: "+t;setTimeout(n,d<3600?1e4:6e4)};n()})();</script>
+<div id="update-time" style="position:fixed;bottom:5px;left:10px;font-size:10px;color:#666;z-index:50;">Updated: 2025-11-28 20:18:12 UTC</div>
+<script>(function(){var u=new Date("2025-11-28 20:18:12 UTC"),n=function(){var d=Math.floor((Date.now()-u)/1e3),t="";if(d<60)t=d+"s ago";else if(d<3600)t=Math.floor(d/60)+"m ago";else if(d<86400)t=Math.floor(d/3600)+"h ago";else t=Math.floor(d/86400)+"d ago";document.getElementById("update-time").textContent="Updated: "+t;setTimeout(n,d<3600?1e4:6e4)};n()})();</script>
     <div class="container">
         <div class="header">
             <a href="index.html" class="back-button">Back</a>
@@ -549,6 +549,26 @@
         // Genesis timestamp for new contracts (Nov 12, 2025)
         const CONTRACTS_GENESIS_TIMESTAMP = 1762963200;
 
+        // Хелпер для парсинга datetime как UTC (добавляет 'Z' если отсутствует)
+        function parseAsUTC(dateString) {
+            if (!dateString) return new Date();
+            if (dateString.endsWith('Z') || /[+-]\d{2}:\d{2}$/.test(dateString)) {
+                return new Date(dateString);
+            }
+            return new Date(dateString + 'Z');
+        }
+
+        // Форматирование даты в UTC
+        function formatDateUTC(date) {
+            const d = date instanceof Date ? date : new Date(date);
+            const day = String(d.getUTCDate()).padStart(2, '0');
+            const month = String(d.getUTCMonth() + 1).padStart(2, '0');
+            const year = d.getUTCFullYear();
+            const hours = String(d.getUTCHours()).padStart(2, '0');
+            const minutes = String(d.getUTCMinutes()).padStart(2, '0');
+            return `${day}.${month}.${year} ${hours}:${minutes} UTC`;
+        }
+
         function formatNumber(num, decimals = 2) {
             if (num >= 1e9) return (num / 1e9).toFixed(decimals) + 'B';
             if (num >= 1e6) return (num / 1e6).toFixed(decimals) + 'M';
@@ -761,7 +781,7 @@
             // Use {x, y} format for proper time scale positioning
             // Use datetime string if available (more accurate than calculated timestamp)
             const chartData = data.map(d => ({
-                x: d.datetime ? new Date(d.datetime) : new Date(d.timestamp * 1000),
+                x: d.datetime ? parseAsUTC(d.datetime) : new Date(d.timestamp * 1000),
                 y: d.supply_yb
             }));
 
@@ -798,7 +818,7 @@
                             callbacks: {
                                 title: (items) => {
                                     const date = new Date(items[0].parsed.x);
-                                    return date.toLocaleString();
+                                    return formatDateUTC(date);
                                 },
                                 label: (item) => `Locked: ${formatNumber(item.parsed.y)} veYB`
                             }
@@ -883,7 +903,7 @@
                             callbacks: {
                                 title: (items) => {
                                     const date = new Date(items[0].parsed.x);
-                                    return date.toLocaleString();
+                                    return formatDateUTC(date);
                                 },
                                 label: (item) => {
                                     const dataArr = item.datasetIndex === 0 ? aprData : aprDataLatest;
@@ -1024,7 +1044,7 @@
                             callbacks: {
                                 title: (items) => {
                                     const date = new Date(items[0].parsed.x);
-                                    return date.toLocaleString();
+                                    return formatDateUTC(date);
                                 },
                                 label: (item) => {
                                     if (item.datasetIndex === 0) {
@@ -1143,7 +1163,7 @@
                             callbacks: {
                                 title: (items) => {
                                     const date = new Date(items[0].parsed.x);
-                                    return date.toLocaleString();
+                                    return formatDateUTC(date);
                                 },
                                 label: (item) => {
                                     const point = lockRatioData.find(d => d.timestamp === Math.floor(item.parsed.x / 1000));
@@ -1302,7 +1322,7 @@
                             callbacks: {
                                 title: (items) => {
                                     const date = new Date(items[0].parsed.x);
-                                    return date.toLocaleString();
+                                    return formatDateUTC(date);
                                 },
                                 label: (item) => {
                                     return `Total: ${item.raw.toFixed(4)} BTC`;
@@ -1503,8 +1523,8 @@
                 rangeFill.style.width = (endPercent - startPercent) + '%';
 
                 if (aprDataLatest.length > 0 && aprRangeStart < aprDataLatest.length && aprRangeEnd < aprDataLatest.length) {
-                    const startDate = new Date(aprDataLatest[aprRangeStart].timestamp * 1000).toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
-                    const endDate = new Date(aprDataLatest[aprRangeEnd].timestamp * 1000).toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+                    const startDate = new Date(aprDataLatest[aprRangeStart].timestamp * 1000).toLocaleDateString('en-US', { month: 'short', day: 'numeric', timeZone: 'UTC' });
+                    const endDate = new Date(aprDataLatest[aprRangeEnd].timestamp * 1000).toLocaleDateString('en-US', { month: 'short', day: 'numeric', timeZone: 'UTC' });
                     document.getElementById('aprStartLabel').textContent = startDate;
                     document.getElementById('aprEndLabel').textContent = endDate;
                 }
@@ -1604,8 +1624,8 @@
                 rangeFill.style.width = (endPercent - startPercent) + '%';
 
                 if (priceData.length > 0 && priceRangeStart < priceData.length && priceRangeEnd < priceData.length) {
-                    const startDate = new Date(priceData[priceRangeStart].timestamp * 1000).toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
-                    const endDate = new Date(priceData[priceRangeEnd].timestamp * 1000).toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+                    const startDate = new Date(priceData[priceRangeStart].timestamp * 1000).toLocaleDateString('en-US', { month: 'short', day: 'numeric', timeZone: 'UTC' });
+                    const endDate = new Date(priceData[priceRangeEnd].timestamp * 1000).toLocaleDateString('en-US', { month: 'short', day: 'numeric', timeZone: 'UTC' });
                     document.getElementById('priceStartLabel').textContent = startDate;
                     document.getElementById('priceEndLabel').textContent = endDate;
                 }
@@ -1689,8 +1709,8 @@
                 rangeFill.style.width = (endPercent - startPercent) + '%';
 
                 if (allData.length > 0 && supplyRangeStart < allData.length && supplyRangeEnd < allData.length) {
-                    const startDate = new Date(allData[supplyRangeStart].timestamp * 1000).toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
-                    const endDate = new Date(allData[supplyRangeEnd].timestamp * 1000).toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+                    const startDate = new Date(allData[supplyRangeStart].timestamp * 1000).toLocaleDateString('en-US', { month: 'short', day: 'numeric', timeZone: 'UTC' });
+                    const endDate = new Date(allData[supplyRangeEnd].timestamp * 1000).toLocaleDateString('en-US', { month: 'short', day: 'numeric', timeZone: 'UTC' });
                     document.getElementById('supplyStartLabel').textContent = startDate;
                     document.getElementById('supplyEndLabel').textContent = endDate;
                 }
@@ -1772,8 +1792,8 @@
                 rangeFill.style.width = (endPercent - startPercent) + '%';
 
                 if (lockRatioData.length > 0 && lockRatioRangeStart < lockRatioData.length && lockRatioRangeEnd < lockRatioData.length) {
-                    const startDate = new Date(lockRatioData[lockRatioRangeStart].timestamp * 1000).toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
-                    const endDate = new Date(lockRatioData[lockRatioRangeEnd].timestamp * 1000).toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+                    const startDate = new Date(lockRatioData[lockRatioRangeStart].timestamp * 1000).toLocaleDateString('en-US', { month: 'short', day: 'numeric', timeZone: 'UTC' });
+                    const endDate = new Date(lockRatioData[lockRatioRangeEnd].timestamp * 1000).toLocaleDateString('en-US', { month: 'short', day: 'numeric', timeZone: 'UTC' });
                     document.getElementById('lockRatioStartLabel').textContent = startDate;
                     document.getElementById('lockRatioEndLabel').textContent = endDate;
                 }
@@ -1855,8 +1875,8 @@
                 rangeFill.style.width = (endPercent - startPercent) + '%';
 
                 if (adminFeesData.length > 0 && adminFeesRangeStart < adminFeesData.length && adminFeesRangeEnd < adminFeesData.length) {
-                    const startDate = new Date(adminFeesData[adminFeesRangeStart].timestamp * 1000).toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
-                    const endDate = new Date(adminFeesData[adminFeesRangeEnd].timestamp * 1000).toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+                    const startDate = new Date(adminFeesData[adminFeesRangeStart].timestamp * 1000).toLocaleDateString('en-US', { month: 'short', day: 'numeric', timeZone: 'UTC' });
+                    const endDate = new Date(adminFeesData[adminFeesRangeEnd].timestamp * 1000).toLocaleDateString('en-US', { month: 'short', day: 'numeric', timeZone: 'UTC' });
                     document.getElementById('adminFeesStartLabel').textContent = startDate;
                     document.getElementById('adminFeesEndLabel').textContent = endDate;
                 }

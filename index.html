@@ -752,8 +752,8 @@
     </style>
 </head>
 <body>
-<div id="update-time" style="position:fixed;bottom:5px;left:10px;font-size:10px;color:#666;z-index:50;">Updated: 2025-11-28 20:05:13 UTC</div>
-<script>(function(){var u=new Date("2025-11-28 20:05:13 UTC"),n=function(){var d=Math.floor((Date.now()-u)/1e3),t="";if(d<60)t=d+"s ago";else if(d<3600)t=Math.floor(d/60)+"m ago";else if(d<86400)t=Math.floor(d/3600)+"h ago";else t=Math.floor(d/86400)+"d ago";document.getElementById("update-time").textContent="Updated: "+t;setTimeout(n,d<3600?1e4:6e4)};n()})();</script>
+<div id="update-time" style="position:fixed;bottom:5px;left:10px;font-size:10px;color:#666;z-index:50;">Updated: 2025-11-28 20:18:12 UTC</div>
+<script>(function(){var u=new Date("2025-11-28 20:18:12 UTC"),n=function(){var d=Math.floor((Date.now()-u)/1e3),t="";if(d<60)t=d+"s ago";else if(d<3600)t=Math.floor(d/60)+"m ago";else if(d<86400)t=Math.floor(d/3600)+"h ago";else t=Math.floor(d/86400)+"d ago";document.getElementById("update-time").textContent="Updated: "+t;setTimeout(n,d<3600?1e4:6e4)};n()})();</script>
     <div class="container">
         <header>
             <div class="header-top">
@@ -1027,6 +1027,17 @@
         let showEmissionFundamental = true; // Show emission for Fundamental
         let showEmissionWithdrawable = true; // Show emission for Withdrawable
         let showBtcPrice = true; // Show BTC price overlay on PPS chart
+
+        // Хелпер для парсинга datetime как UTC (добавляет 'Z' если отсутствует)
+        function parseAsUTC(dateString) {
+            if (!dateString) return new Date();
+            // Если строка уже содержит Z или timezone offset, парсим как есть
+            if (dateString.endsWith('Z') || /[+-]\d{2}:\d{2}$/.test(dateString)) {
+                return new Date(dateString);
+            }
+            // Иначе добавляем 'Z' чтобы интерпретировать как UTC
+            return new Date(dateString + 'Z');
+        }
 
         // TVL interpolation function
         function getTVLAt(timestamp, market) {
@@ -1364,19 +1375,19 @@
         function initializeDateInputs() {
             if (!currentYieldData || !currentYieldData.data || currentYieldData.data.length === 0) return;
 
-            const startDate = new Date(currentYieldData.data[0].datetime);
-            const endDate = new Date(currentYieldData.data[currentYieldData.data.length - 1].datetime);
+            const startDate = parseAsUTC(currentYieldData.data[0].datetime);
+            const endDate = parseAsUTC(currentYieldData.data[currentYieldData.data.length - 1].datetime);
 
             document.getElementById('startDate').value = formatDateForInput(startDate);
             document.getElementById('endDate').value = formatDateForInput(endDate);
         }
 
         function formatDateForInput(date) {
-            const year = date.getFullYear();
-            const month = String(date.getMonth() + 1).padStart(2, '0');
-            const day = String(date.getDate()).padStart(2, '0');
-            const hours = String(date.getHours()).padStart(2, '0');
-            const minutes = String(date.getMinutes()).padStart(2, '0');
+            const year = date.getUTCFullYear();
+            const month = String(date.getUTCMonth() + 1).padStart(2, '0');
+            const day = String(date.getUTCDate()).padStart(2, '0');
+            const hours = String(date.getUTCHours()).padStart(2, '0');
+            const minutes = String(date.getUTCMinutes()).padStart(2, '0');
             return `${year}-${month}-${day}T${hours}:${minutes}`;
         }
 
@@ -1389,8 +1400,9 @@
                 return;
             }
 
-            const startTime = new Date(startInput).getTime();
-            const endTime = new Date(endInput).getTime();
+            // Интерпретируем ввод даты как UTC (добавляем 'Z')
+            const startTime = parseAsUTC(startInput).getTime();
+            const endTime = parseAsUTC(endInput).getTime();
 
             const filteredData = originalData.data.filter(d => {
                 const timestamp = d.timestamp * 1000;
@@ -1520,7 +1532,7 @@
             let prevEmission = startEmissionTotal;
 
             for (let i = 0; i < currentYieldData.data.length; i++) {
-                const pointTimestamp = Math.floor(new Date(currentYieldData.data[i].datetime).getTime() / 1000);
+                const pointTimestamp = Math.floor(parseAsUTC(currentYieldData.data[i].datetime).getTime() / 1000);
                 if (pointTimestamp <= startTimestamp) continue;
                 if (pointTimestamp > endTimestamp) break;
 
@@ -1561,8 +1573,8 @@
 
                 console.log('Withdrawable emission data:', {hasData: !!emissionDataSource, length: emissionDataSource?.length, field: emissionField});
                 if (emissionDataSource && emissionDataSource.length > 0 && emissionField) {
-                    const startTimestamp = Math.floor(new Date(currentYieldData.data[0].datetime).getTime() / 1000);
-                    const endTimestamp = Math.floor(new Date(currentYieldData.data[currentYieldData.data.length - 1].datetime).getTime() / 1000);
+                    const startTimestamp = Math.floor(parseAsUTC(currentYieldData.data[0].datetime).getTime() / 1000);
+                    const endTimestamp = Math.floor(parseAsUTC(currentYieldData.data[currentYieldData.data.length - 1].datetime).getTime() / 1000);
 
                     const emissionSorted = emissionDataSource
                         .filter(e => e[emissionField] !== null && e[emissionField] !== undefined)
@@ -1628,8 +1640,8 @@
 
                 if (ppsDataSource && ppsDataSource.data) {
                     // Получаем start и end timestamps из текущих данных
-                    const startTimestamp = Math.floor(new Date(currentYieldData.data[0].datetime).getTime() / 1000);
-                    const endTimestamp = Math.floor(new Date(currentYieldData.data[currentYieldData.data.length - 1].datetime).getTime() / 1000);
+                    const startTimestamp = Math.floor(parseAsUTC(currentYieldData.data[0].datetime).getTime() / 1000);
+                    const endTimestamp = Math.floor(parseAsUTC(currentYieldData.data[currentYieldData.data.length - 1].datetime).getTime() / 1000);
 
                     // Находим ближайшие PPS точки для start и end
                     const ppsSorted = ppsDataSource.data
@@ -1763,8 +1775,8 @@
 
                     if (emissionDataSource && emissionDataSource.length > 0 && emissionField) {
                         // Получаем start и end timestamps из текущих данных
-                        const startTimestamp = Math.floor(new Date(currentYieldData.data[0].datetime).getTime() / 1000);
-                        const endTimestamp = Math.floor(new Date(currentYieldData.data[currentYieldData.data.length - 1].datetime).getTime() / 1000);
+                        const startTimestamp = Math.floor(parseAsUTC(currentYieldData.data[0].datetime).getTime() / 1000);
+                        const endTimestamp = Math.floor(parseAsUTC(currentYieldData.data[currentYieldData.data.length - 1].datetime).getTime() / 1000);
 
                         // Сортируем эмиссию по timestamp
                         const emissionSorted = emissionDataSource
@@ -2316,19 +2328,24 @@
             const legendPadding = isMobile ? 2 : 10;
             const legendBoxWidth = isMobile ? 12 : 40;
 
-            // Функция форматирования даты для мобильных устройств
+            // Функция форматирования даты для мобильных устройств (отображает в UTC)
             function formatDateLabel(dateString) {
-                const date = new Date(dateString);
+                const date = parseAsUTC(dateString);
                 if (isMobile) {
-                    // Для мобильных: "DD.MM HH:MM" (без года и секунд)
-                    const day = String(date.getDate()).padStart(2, '0');
-                    const month = String(date.getMonth() + 1).padStart(2, '0');
-                    const hours = String(date.getHours()).padStart(2, '0');
-                    const minutes = String(date.getMinutes()).padStart(2, '0');
+                    // Для мобильных: "DD.MM HH:MM UTC" (без года и секунд)
+                    const day = String(date.getUTCDate()).padStart(2, '0');
+                    const month = String(date.getUTCMonth() + 1).padStart(2, '0');
+                    const hours = String(date.getUTCHours()).padStart(2, '0');
+                    const minutes = String(date.getUTCMinutes()).padStart(2, '0');
                     return `${day}.${month} ${hours}:${minutes}`;
                 } else {
-                    // Для десктопа: стандартный формат
-                    return date.toLocaleString();
+                    // Для десктопа: UTC формат
+                    const day = String(date.getUTCDate()).padStart(2, '0');
+                    const month = String(date.getUTCMonth() + 1).padStart(2, '0');
+                    const year = date.getUTCFullYear();
+                    const hours = String(date.getUTCHours()).padStart(2, '0');
+                    const minutes = String(date.getUTCMinutes()).padStart(2, '0');
+                    return `${day}.${month}.${year} ${hours}:${minutes} UTC`;
                 }
             }
 
@@ -2531,7 +2548,7 @@
 
                     // Сопоставляем с данными yield по времени с интерполяцией
                     fundamentalPpsValues = validPpsData.map(d => {
-                        const targetTimestamp = Math.floor(new Date(d.datetime).getTime() / 1000);
+                        const targetTimestamp = Math.floor(parseAsUTC(d.datetime).getTime() / 1000);
 
                         // Находим ближайшие точки PPS данных
                         let closestBefore = null;
@@ -2644,7 +2661,7 @@
                     const baseMarket = config.baseMarket || 'wbtc';
 
                     // Get start emission to calculate relative emission from start point
-                    const startTimestamp = Math.floor(new Date(currentYieldData.data[0].datetime).getTime() / 1000);
+                    const startTimestamp = Math.floor(parseAsUTC(currentYieldData.data[0].datetime).getTime() / 1000);
                     const startEmissionTotal = getCumulativeEmission(startTimestamp);
 
                     // Calculate accumulated emission per token over time (relative to start)
@@ -2656,7 +2673,7 @@
 
                         // Iterate through data points up to target
                         for (let i = 0; i < currentYieldData.data.length; i++) {
-                            const pointTimestamp = Math.floor(new Date(currentYieldData.data[i].datetime).getTime() / 1000);
+                            const pointTimestamp = Math.floor(parseAsUTC(currentYieldData.data[i].datetime).getTime() / 1000);
                             if (pointTimestamp > targetTimestamp) break;
 
                             const currentEmission = getCumulativeEmission(pointTimestamp);
@@ -2684,7 +2701,7 @@
                     // Вычисляем PPS + Emission для Fundamental (если включено)
                     if (showEmissionFundamental && fundamentalPpsValues) {
                         ppsWithEmissionFundamental = validPpsData.map((d, index) => {
-                            const targetTimestamp = Math.floor(new Date(d.datetime).getTime() / 1000);
+                            const targetTimestamp = Math.floor(parseAsUTC(d.datetime).getTime() / 1000);
                             const basePps = fundamentalPpsValues[index];
                             if (basePps === null) return null;
 
@@ -2696,7 +2713,7 @@
                     // Вычисляем PPS + Emission для Withdrawable (если включено)
                     if (showEmissionWithdrawable) {
                         ppsWithEmissionWithdrawable = validPpsData.map((d, index) => {
-                            const targetTimestamp = Math.floor(new Date(d.datetime).getTime() / 1000);
+                            const targetTimestamp = Math.floor(parseAsUTC(d.datetime).getTime() / 1000);
                             const basePps = ppsValues[index];
                             if (basePps === null) return null;
 
@@ -2719,8 +2736,8 @@
                     }
 
                     // Логируем несколько примеров для отладки
-                    const debugFirstTimestamp = Math.floor(new Date(currentYieldData.data[0].datetime).getTime() / 1000);
-                    const debugLastTimestamp = Math.floor(new Date(currentYieldData.data[currentYieldData.data.length - 1].datetime).getTime() / 1000);
+                    const debugFirstTimestamp = Math.floor(parseAsUTC(currentYieldData.data[0].datetime).getTime() / 1000);
+                    const debugLastTimestamp = Math.floor(parseAsUTC(currentYieldData.data[currentYieldData.data.length - 1].datetime).getTime() / 1000);
 
                     const firstEmission = getCumulativeEmission(debugFirstTimestamp);
                     const lastEmission = getCumulativeEmission(debugLastTimestamp);
@@ -2849,7 +2866,7 @@
                 if (fallbackSource) {
                     // Интерполируем BTC price по timestamp
                     btcPriceData = validPpsData.map(d => {
-                        const ts = new Date(d.datetime).getTime() / 1000;
+                        const ts = parseAsUTC(d.datetime).getTime() / 1000;
                         for (let i = 0; i < fallbackSource.length - 1; i++) {
                             const t1 = fallbackSource[i].timestamp;
                             const t2 = fallbackSource[i + 1].timestamp;
@@ -3193,8 +3210,8 @@
             rangeFill.style.width = (endPercent - startPercent) + '%';
 
             // Update labels - use originalData since currentRangeStart/End are indices in original array
-            const startDate = new Date(originalData.data[currentRangeStart].timestamp * 1000).toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
-            const endDate = new Date(originalData.data[currentRangeEnd].timestamp * 1000).toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+            const startDate = new Date(originalData.data[currentRangeStart].timestamp * 1000).toLocaleDateString('en-US', { month: 'short', day: 'numeric', timeZone: 'UTC' });
+            const endDate = new Date(originalData.data[currentRangeEnd].timestamp * 1000).toLocaleDateString('en-US', { month: 'short', day: 'numeric', timeZone: 'UTC' });
 
             document.getElementById('rangeStartLabel').textContent = startDate;
             document.getElementById('rangeEndLabel').textContent = endDate;
