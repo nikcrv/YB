@@ -149,8 +149,8 @@
     </style>
 </head>
 <body>
-<div id="update-time" style="position:fixed;bottom:5px;left:10px;font-size:10px;color:#666;z-index:50;">Updated: 2025-11-28 21:36:46 UTC</div>
-<script>(function(){var u=new Date("2025-11-28 21:36:46 UTC"),n=function(){var d=Math.floor((Date.now()-u)/1e3),t="";if(d<60)t=d+"s ago";else if(d<3600)t=Math.floor(d/60)+"m ago";else if(d<86400)t=Math.floor(d/3600)+"h ago";else t=Math.floor(d/86400)+"d ago";document.getElementById("update-time").textContent="Updated: "+t;setTimeout(n,d<3600?1e4:6e4)};n()})();</script>
+<div id="update-time" style="position:fixed;bottom:5px;left:10px;font-size:10px;color:#666;z-index:50;">Updated: 2025-11-28 21:40:58 UTC</div>
+<script>(function(){var u=new Date("2025-11-28 21:40:58 UTC"),n=function(){var d=Math.floor((Date.now()-u)/1e3),t="";if(d<60)t=d+"s ago";else if(d<3600)t=Math.floor(d/60)+"m ago";else if(d<86400)t=Math.floor(d/3600)+"h ago";else t=Math.floor(d/86400)+"d ago";document.getElementById("update-time").textContent="Updated: "+t;setTimeout(n,d<3600?1e4:6e4)};n()})();</script>
     <a href="index.html" class="back-button">Back</a>
     <div class="container">
         <header>
@@ -216,11 +216,32 @@
 
             document.getElementById('period').textContent = `${poolsData.period.start} — ${poolsData.period.end}`;
 
-            // Note: "Updated: Xm ago" is handled by the injected script from pools_data.js
-            // Remove the HTML #update-time element since pools_data.js already creates one
+            // Check if pools_data.js already injected an update-time element (happens on deployed version)
+            const injectedUpdateTime = document.body.querySelector(':scope > #update-time');
             const htmlUpdateTime = document.querySelector('.container #update-time');
-            if (htmlUpdateTime) {
-                htmlUpdateTime.remove();
+
+            if (injectedUpdateTime) {
+                // Deployed version: pools_data.js handles it, remove duplicate HTML element
+                if (htmlUpdateTime) {
+                    htmlUpdateTime.remove();
+                }
+            } else if (htmlUpdateTime) {
+                // Local version: use HTML element with our own updateAgo logic
+                // Parse generated timestamp - it's in local server time, not UTC
+                const updateTime = new Date(poolsData.generated);
+                function updateAgo() {
+                    const diff = Math.floor((Date.now() - updateTime) / 1000);
+                    // Handle negative values (future dates due to timezone issues)
+                    const absDiff = Math.abs(diff);
+                    let ago;
+                    if (absDiff < 60) ago = absDiff + 's ago';
+                    else if (absDiff < 3600) ago = Math.floor(absDiff / 60) + 'm ago';
+                    else if (absDiff < 86400) ago = Math.floor(absDiff / 3600) + 'h ago';
+                    else ago = Math.floor(absDiff / 86400) + 'd ago';
+                    htmlUpdateTime.textContent = 'Updated: ' + ago;
+                    setTimeout(updateAgo, absDiff < 3600 ? 10000 : 60000);
+                }
+                updateAgo();
             }
 
             // Tab switching
