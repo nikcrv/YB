@@ -355,8 +355,8 @@
     </style>
 </head>
 <body>
-<div id="update-time" style="position:fixed;bottom:5px;left:10px;font-size:10px;color:#666;z-index:50;">Updated: 2025-11-28 21:10:31 UTC</div>
-<script>(function(){var u=new Date("2025-11-28 21:10:31 UTC"),n=function(){var d=Math.floor((Date.now()-u)/1e3),t="";if(d<60)t=d+"s ago";else if(d<3600)t=Math.floor(d/60)+"m ago";else if(d<86400)t=Math.floor(d/3600)+"h ago";else t=Math.floor(d/86400)+"d ago";document.getElementById("update-time").textContent="Updated: "+t;setTimeout(n,d<3600?1e4:6e4)};n()})();</script>
+<div id="update-time" style="position:fixed;bottom:5px;left:10px;font-size:10px;color:#666;z-index:50;">Updated: 2025-11-28 21:23:46 UTC</div>
+<script>(function(){var u=new Date("2025-11-28 21:23:46 UTC"),n=function(){var d=Math.floor((Date.now()-u)/1e3),t="";if(d<60)t=d+"s ago";else if(d<3600)t=Math.floor(d/60)+"m ago";else if(d<86400)t=Math.floor(d/3600)+"h ago";else t=Math.floor(d/86400)+"d ago";document.getElementById("update-time").textContent="Updated: "+t;setTimeout(n,d<3600?1e4:6e4)};n()})();</script>
     <div class="container">
         <div class="contract-selector">
             <button class="contract-btn active" data-version="new" onclick="switchContractVersion('new')">NEW Contracts</button>
@@ -1199,6 +1199,34 @@
                 const lastData = profitChart.data.datasets[0].data[profitChart.data.datasets[0].data.length - 1];
                 document.getElementById('finalProfit').textContent = lastData.y.toFixed(8) + ' BTC';
 
+                // Обновляем BTC price данные если checkbox включен
+                if (document.getElementById('toggleBtcPrice').checked && typeof window.getBtcPriceForTimestamp === 'function') {
+                    const btcPricePoints = profitData.map(d => ({
+                        x: d.timestamp * 1000,
+                        y: window.getBtcPriceForTimestamp(d.timestamp)
+                    }));
+
+                    // Пересчитываем min/max для нового диапазона
+                    const btcPrices = btcPricePoints.map(p => p.y).filter(v => v !== null);
+                    if (btcPrices.length > 0) {
+                        const minBtcPrice = Math.min(...btcPrices);
+                        const maxBtcPrice = Math.max(...btcPrices);
+                        const btcPricePadding = (maxBtcPrice - minBtcPrice) * 0.05;
+
+                        // Обновляем данные BTC price dataset
+                        const btcIndex = profitChart.data.datasets.findIndex(ds => ds.label === 'BTC Price');
+                        if (btcIndex !== -1) {
+                            profitChart.data.datasets[btcIndex].data = btcPricePoints;
+                        }
+
+                        // Обновляем границы оси
+                        if (profitChart.options.scales.yBtcPrice) {
+                            profitChart.options.scales.yBtcPrice.min = minBtcPrice - btcPricePadding;
+                            profitChart.options.scales.yBtcPrice.max = maxBtcPrice + btcPricePadding;
+                        }
+                    }
+                }
+
                 profitChart.update();
 
                 // Обновляем TVL график
@@ -1365,6 +1393,34 @@
                 document.getElementById('finalProfit').textContent = finalValue.toFixed(8) + ' BTC';
                 document.getElementById('answerBox').className = 'answer';  // Всегда зеленый
 
+                // Обновляем BTC price данные если checkbox включен
+                if (document.getElementById('toggleBtcPrice').checked && typeof window.getBtcPriceForTimestamp === 'function') {
+                    const btcPricePoints = profitData.map(d => ({
+                        x: d.timestamp * 1000,
+                        y: window.getBtcPriceForTimestamp(d.timestamp)
+                    }));
+
+                    // Пересчитываем min/max для текущего диапазона
+                    const btcPrices = btcPricePoints.map(p => p.y).filter(v => v !== null);
+                    if (btcPrices.length > 0) {
+                        const minBtcPrice = Math.min(...btcPrices);
+                        const maxBtcPrice = Math.max(...btcPrices);
+                        const btcPricePadding = (maxBtcPrice - minBtcPrice) * 0.05;
+
+                        // Обновляем данные BTC price dataset
+                        const btcIndex = profitChart.data.datasets.findIndex(ds => ds.label === 'BTC Price');
+                        if (btcIndex !== -1) {
+                            profitChart.data.datasets[btcIndex].data = btcPricePoints;
+                        }
+
+                        // Обновляем границы оси
+                        if (profitChart.options.scales.yBtcPrice) {
+                            profitChart.options.scales.yBtcPrice.min = minBtcPrice - btcPricePadding;
+                            profitChart.options.scales.yBtcPrice.max = maxBtcPrice + btcPricePadding;
+                        }
+                    }
+                }
+
                 profitChart.update();
             }
 
@@ -1446,8 +1502,8 @@
             const hasBtcPriceData = btcPriceSource && btcPriceSource.length > 0;
             console.log('BTC price data available:', hasBtcPriceData, 'source points:', btcPriceSource?.length || 0);
 
-            // Функция интерполяции BTC цены по timestamp
-            function getBtcPriceForTimestamp(timestamp) {
+            // Функция интерполяции BTC цены по timestamp (глобальная для доступа из других функций)
+            window.getBtcPriceForTimestamp = function(timestamp) {
                 if (!btcPriceSource || btcPriceSource.length === 0) return null;
 
                 // Ищем ближайшие точки
@@ -1476,13 +1532,25 @@
                 showBtcPrice = document.getElementById('toggleBtcPrice').checked;
 
                 if (showBtcPrice && hasBtcPriceData) {
+                    // Вычисляем данные BTC для текущего диапазона
+                    const btcPricePoints = profitData.map(d => ({
+                        x: d.timestamp * 1000,
+                        y: window.getBtcPriceForTimestamp(d.timestamp)
+                    }));
+
+                    // Вычисляем min/max для оси BTC price
+                    const btcPrices = btcPricePoints.map(p => p.y).filter(v => v !== null);
+                    const minBtcPrice = Math.min(...btcPrices);
+                    const maxBtcPrice = Math.max(...btcPrices);
+                    // Добавляем 5% padding сверху и снизу
+                    const btcPricePadding = (maxBtcPrice - minBtcPrice) * 0.05;
+                    const btcPriceMin = minBtcPrice - btcPricePadding;
+                    const btcPriceMax = maxBtcPrice + btcPricePadding;
+
                     // Добавляем dataset с ценой BTC
                     const btcDataset = {
                         label: 'BTC Price',
-                        data: profitData.map(d => ({
-                            x: d.timestamp * 1000,
-                            y: getBtcPriceForTimestamp(d.timestamp)
-                        })),
+                        data: btcPricePoints,
                         borderColor: 'rgba(148, 163, 184, 0.4)',
                         backgroundColor: 'transparent',
                         borderWidth: 1,
@@ -1498,12 +1566,17 @@
                     const existingIndex = profitChart.data.datasets.findIndex(ds => ds.label === 'BTC Price');
                     if (existingIndex === -1) {
                         profitChart.data.datasets.push(btcDataset);
+                    } else {
+                        // Обновляем данные существующего dataset
+                        profitChart.data.datasets[existingIndex].data = btcPricePoints;
                     }
 
                     // Добавляем ось для BTC price с долларовыми значениями
                     profitChart.options.scales.yBtcPrice = {
                         display: true,
                         position: 'right',
+                        min: btcPriceMin,
+                        max: btcPriceMax,
                         grid: { display: false, drawOnChartArea: false },
                         ticks: {
                             color: '#94a3b8',
