@@ -316,8 +316,8 @@
     </style>
 </head>
 <body>
-<div id="update-time" style="position:fixed;bottom:5px;left:10px;font-size:10px;color:#666;z-index:50;">Updated: 2025-11-28 20:31:24 UTC</div>
-<script>(function(){var u=new Date("2025-11-28 20:31:24 UTC"),n=function(){var d=Math.floor((Date.now()-u)/1e3),t="";if(d<60)t=d+"s ago";else if(d<3600)t=Math.floor(d/60)+"m ago";else if(d<86400)t=Math.floor(d/3600)+"h ago";else t=Math.floor(d/86400)+"d ago";document.getElementById("update-time").textContent="Updated: "+t;setTimeout(n,d<3600?1e4:6e4)};n()})();</script>
+<div id="update-time" style="position:fixed;bottom:5px;left:10px;font-size:10px;color:#666;z-index:50;">Updated: 2025-11-28 20:44:26 UTC</div>
+<script>(function(){var u=new Date("2025-11-28 20:44:26 UTC"),n=function(){var d=Math.floor((Date.now()-u)/1e3),t="";if(d<60)t=d+"s ago";else if(d<3600)t=Math.floor(d/60)+"m ago";else if(d<86400)t=Math.floor(d/3600)+"h ago";else t=Math.floor(d/86400)+"d ago";document.getElementById("update-time").textContent="Updated: "+t;setTimeout(n,d<3600?1e4:6e4)};n()})();</script>
     <div class="container">
         <div class="header" id="dashboardHeader">
             <h1>Fundamental Value Dashboard</h1>
@@ -468,6 +468,18 @@
     <script src="pps_data_old_tbtc.js"></script>
 
     <script>
+        let useUTC = false; // false = local time (default), true = UTC
+
+        // Функция переключения UTC/Local
+        function toggleTimezone() {
+            useUTC = !useUTC;
+            const btn = document.getElementById('timezone-toggle');
+            btn.textContent = useUTC ? '🕐 UTC' : '🕐 Local';
+            btn.style.background = useUTC ? '#2a4a3a' : '#333';
+            // Перезагружаем страницу для обновления графиков (простой способ)
+            window.dispatchEvent(new Event('resize'));
+        }
+
         window.addEventListener('load', function() {
             try {
                 // Check if data is loaded
@@ -733,7 +745,9 @@
 
                     function formatDate(timestamp) {
                         const date = new Date(timestamp);
-                        return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric', timeZone: 'UTC' });
+                        const opts = { month: 'short', day: 'numeric', year: 'numeric' };
+                        if (useUTC) opts.timeZone = 'UTC';
+                        return date.toLocaleDateString('en-US', opts);
                     }
 
                     function updateChart() {
@@ -1137,5 +1151,10 @@
             }
         }
     </script>
+
+    <!-- Timezone Toggle -->
+    <div id="timezone-panel" style="position: fixed; bottom: 8px; left: 10px; font-size: 11px; color: #888; z-index: 100; display: flex; align-items: center; gap: 8px;">
+        <span id="timezone-toggle" onclick="toggleTimezone()" style="cursor: pointer; padding: 2px 6px; border: 1px solid #555; border-radius: 3px; background: #333;" title="Click to toggle UTC/Local time">🕐 Local</span>
+    </div>
 </body>
 </html>

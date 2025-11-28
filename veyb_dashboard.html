@@ -290,8 +290,8 @@
     </style>
 </head>
 <body>
-<div id="update-time" style="position:fixed;bottom:5px;left:10px;font-size:10px;color:#666;z-index:50;">Updated: 2025-11-28 20:31:24 UTC</div>
-<script>(function(){var u=new Date("2025-11-28 20:31:24 UTC"),n=function(){var d=Math.floor((Date.now()-u)/1e3),t="";if(d<60)t=d+"s ago";else if(d<3600)t=Math.floor(d/60)+"m ago";else if(d<86400)t=Math.floor(d/3600)+"h ago";else t=Math.floor(d/86400)+"d ago";document.getElementById("update-time").textContent="Updated: "+t;setTimeout(n,d<3600?1e4:6e4)};n()})();</script>
+<div id="update-time" style="position:fixed;bottom:5px;left:10px;font-size:10px;color:#666;z-index:50;">Updated: 2025-11-28 20:44:26 UTC</div>
+<script>(function(){var u=new Date("2025-11-28 20:44:26 UTC"),n=function(){var d=Math.floor((Date.now()-u)/1e3),t="";if(d<60)t=d+"s ago";else if(d<3600)t=Math.floor(d/60)+"m ago";else if(d<86400)t=Math.floor(d/3600)+"h ago";else t=Math.floor(d/86400)+"d ago";document.getElementById("update-time").textContent="Updated: "+t;setTimeout(n,d<3600?1e4:6e4)};n()})();</script>
     <div class="container">
         <div class="header">
             <a href="index.html" class="back-button">Back</a>
@@ -549,6 +549,9 @@
         // Genesis timestamp for new contracts (Nov 12, 2025)
         const CONTRACTS_GENESIS_TIMESTAMP = 1762963200;
 
+        // Загружаем настройку timezone из localStorage или используем local по умолчанию
+        let useUTC = localStorage.getItem('useUTC') === 'true';
+
         // Хелпер для парсинга datetime как UTC (добавляет 'Z' если отсутствует)
         function parseAsUTC(dateString) {
             if (!dateString) return new Date();
@@ -558,15 +561,48 @@
             return new Date(dateString + 'Z');
         }
 
-        // Форматирование даты в UTC
+        // Форматирование даты (UTC или Local в зависимости от useUTC)
         function formatDateUTC(date) {
             const d = date instanceof Date ? date : new Date(date);
-            const day = String(d.getUTCDate()).padStart(2, '0');
-            const month = String(d.getUTCMonth() + 1).padStart(2, '0');
-            const year = d.getUTCFullYear();
-            const hours = String(d.getUTCHours()).padStart(2, '0');
-            const minutes = String(d.getUTCMinutes()).padStart(2, '0');
-            return `${day}.${month}.${year} ${hours}:${minutes} UTC`;
+            if (useUTC) {
+                const day = String(d.getUTCDate()).padStart(2, '0');
+                const month = String(d.getUTCMonth() + 1).padStart(2, '0');
+                const year = d.getUTCFullYear();
+                const hours = String(d.getUTCHours()).padStart(2, '0');
+                const minutes = String(d.getUTCMinutes()).padStart(2, '0');
+                return `${day}.${month}.${year} ${hours}:${minutes} UTC`;
+            } else {
+                const day = String(d.getDate()).padStart(2, '0');
+                const month = String(d.getMonth() + 1).padStart(2, '0');
+                const year = d.getFullYear();
+                const hours = String(d.getHours()).padStart(2, '0');
+                const minutes = String(d.getMinutes()).padStart(2, '0');
+                return `${day}.${month}.${year} ${hours}:${minutes}`;
+            }
+        }
+
+        // Функция переключения UTC/Local
+        function toggleTimezone() {
+            useUTC = !useUTC;
+            localStorage.setItem('useUTC', useUTC);
+            location.reload();
+        }
+
+        // Обновляем кнопку при загрузке
+        document.addEventListener('DOMContentLoaded', function() {
+            const btn = document.getElementById('timezone-toggle');
+            if (btn) {
+                btn.textContent = useUTC ? '🕐 UTC' : '🕐 Local';
+                btn.style.background = useUTC ? '#2a4a3a' : '#333';
+            }
+        });
+
+        function destroyCharts() {
+            if (supplyChart) { supplyChart.destroy(); supplyChart = null; }
+            if (aprChart) { aprChart.destroy(); aprChart = null; }
+            if (priceChart) { priceChart.destroy(); priceChart = null; }
+            if (lockRatioChart) { lockRatioChart.destroy(); lockRatioChart = null; }
+            if (adminFeesChart) { adminFeesChart.destroy(); adminFeesChart = null; }
         }
 
         function formatNumber(num, decimals = 2) {
@@ -1950,5 +1986,10 @@
         // Initialize when DOM is ready
         document.addEventListener('DOMContentLoaded', init);
     </script>
+
+    <!-- Timezone Toggle -->
+    <div id="timezone-panel" style="position: fixed; bottom: 8px; left: 10px; font-size: 11px; color: #888; z-index: 100; display: flex; align-items: center; gap: 8px;">
+        <span id="timezone-toggle" onclick="toggleTimezone()" style="cursor: pointer; padding: 2px 6px; border: 1px solid #555; border-radius: 3px; background: #333;" title="Click to toggle UTC/Local time">🕐 Local</span>
+    </div>
 </body>
 </html>
