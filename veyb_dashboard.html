@@ -48,10 +48,16 @@
         }
         .loading { text-align: center; font-size: 1.5em; color: #667eea; padding: 50px; }
 
-        .notice-banner {
+        .notice-container {
             position: absolute;
             top: 15px;
             right: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            z-index: 100;
+        }
+        .notice-banner {
             background: rgba(51, 65, 85, 0.95);
             border: 1px solid #64748b;
             border-radius: 4px;
@@ -59,14 +65,14 @@
             color: #94a3b8;
             font-size: 0.75em;
             display: flex;
-            align-items: center;
+            align-items: flex-start;
             gap: 6px;
-            max-width: 280px;
-            z-index: 100;
+            max-width: 300px;
         }
         .notice-banner::before {
             content: '\2139';
             font-size: 1em;
+            flex-shrink: 0;
         }
 
         /* Main metrics row */
@@ -284,8 +290,8 @@
     </style>
 </head>
 <body>
-<div id="update-time" style="position:fixed;bottom:5px;left:10px;font-size:10px;color:#666;z-index:50;">Updated: 2025-11-28 02:08:45 UTC</div>
-<script>(function(){var u=new Date("2025-11-28 02:08:45 UTC"),n=function(){var d=Math.floor((Date.now()-u)/1e3),t="";if(d<60)t=d+"s ago";else if(d<3600)t=Math.floor(d/60)+"m ago";else if(d<86400)t=Math.floor(d/3600)+"h ago";else t=Math.floor(d/86400)+"d ago";document.getElementById("update-time").textContent="Updated: "+t;setTimeout(n,d<3600?1e4:6e4)};n()})();</script>
+<div id="update-time" style="position:fixed;bottom:5px;left:10px;font-size:10px;color:#666;z-index:50;">Updated: 2025-11-28 02:21:47 UTC</div>
+<script>(function(){var u=new Date("2025-11-28 02:21:47 UTC"),n=function(){var d=Math.floor((Date.now()-u)/1e3),t="";if(d<60)t=d+"s ago";else if(d<3600)t=Math.floor(d/60)+"m ago";else if(d<86400)t=Math.floor(d/3600)+"h ago";else t=Math.floor(d/86400)+"d ago";document.getElementById("update-time").textContent="Updated: "+t;setTimeout(n,d<3600?1e4:6e4)};n()})();</script>
     <div class="container">
         <div class="header">
             <a href="index.html" class="back-button">Back</a>
@@ -293,8 +299,13 @@
             <div style="width: 100px;"></div>
         </div>
 
-        <div class="notice-banner">
-            Reward distribution for veYB has not started yet, but rewards are already accumulating
+        <div class="notice-container">
+            <div class="notice-banner">
+                Reward distribution for veYB has not started yet, but rewards are already accumulating
+            </div>
+            <div class="notice-banner">
+                Data from new markets only. Deprecated markets contain additional admin fees (exact amount TBD)
+            </div>
         </div>
 
         <div id="loading" class="loading">Loading data...</div>
