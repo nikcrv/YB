@@ -752,8 +752,8 @@
     </style>
 </head>
 <body>
-<div id="update-time" style="position:fixed;bottom:5px;left:10px;font-size:10px;color:#666;z-index:50;">Updated: 2025-11-28 03:13:27 UTC</div>
-<script>(function(){var u=new Date("2025-11-28 03:13:27 UTC"),n=function(){var d=Math.floor((Date.now()-u)/1e3),t="";if(d<60)t=d+"s ago";else if(d<3600)t=Math.floor(d/60)+"m ago";else if(d<86400)t=Math.floor(d/3600)+"h ago";else t=Math.floor(d/86400)+"d ago";document.getElementById("update-time").textContent="Updated: "+t;setTimeout(n,d<3600?1e4:6e4)};n()})();</script>
+<div id="update-time" style="position:fixed;bottom:5px;left:10px;font-size:10px;color:#666;z-index:50;">Updated: 2025-11-28 03:25:59 UTC</div>
+<script>(function(){var u=new Date("2025-11-28 03:25:59 UTC"),n=function(){var d=Math.floor((Date.now()-u)/1e3),t="";if(d<60)t=d+"s ago";else if(d<3600)t=Math.floor(d/60)+"m ago";else if(d<86400)t=Math.floor(d/3600)+"h ago";else t=Math.floor(d/86400)+"d ago";document.getElementById("update-time").textContent="Updated: "+t;setTimeout(n,d<3600?1e4:6e4)};n()})();</script>
     <div class="container">
         <header>
             <div class="header-top">
@@ -765,9 +765,10 @@
                     <div class="contract-selector">
                         <button class="contract-btn active" data-version="new" onclick="switchContractVersion('new')">NEW</button>
                         <button class="contract-btn" data-version="old" onclick="switchContractVersion('old')">OLD</button>
-                        <a href="pps_dashboard.html" style="padding: 10px 20px; background: #3b82f6; border: none; border-radius: 6px; color: #f1f5f9; font-weight: 600; cursor: pointer; text-decoration: none; display: inline-block; transition: all 0.2s; margin-left: auto;" onmouseover="this.style.background='#2563eb'" onmouseout="this.style.background='#3b82f6'">📈 Fundamental Profit</a>
-                        <a href="dashboard.html" style="padding: 10px 20px; background: #10b981; border: none; border-radius: 6px; color: #0f172a; font-weight: 600; cursor: pointer; text-decoration: none; display: inline-block; transition: all 0.2s; margin-left: 10px;" onmouseover="this.style.background='#059669'" onmouseout="this.style.background='#10b981'">📊 Summary<span class="hide-mobile"> dashboard</span></a>
-                        <a href="veyb_dashboard.html" style="padding: 10px 20px; background: #8b5cf6; border: none; border-radius: 6px; color: #f1f5f9; font-weight: 600; cursor: pointer; text-decoration: none; display: inline-block; transition: all 0.2s; margin-left: 10px;" onmouseover="this.style.background='#7c3aed'" onmouseout="this.style.background='#8b5cf6'">🔒 veYB Revenue</a>
+                        <a href="pps_dashboard.html" style="padding: 10px 20px; background: #3b82f6; border: none; border-radius: 6px; color: #f1f5f9; font-weight: 600; cursor: pointer; text-decoration: none; display: inline-block; transition: all 0.2s; margin-left: auto;" onmouseover="this.style.background='#2563eb'" onmouseout="this.style.background='#3b82f6'">📈 F.PnL</a>
+                        <a href="dashboard.html" style="padding: 10px 20px; background: #10b981; border: none; border-radius: 6px; color: #0f172a; font-weight: 600; cursor: pointer; text-decoration: none; display: inline-block; transition: all 0.2s; margin-left: 10px;" onmouseover="this.style.background='#059669'" onmouseout="this.style.background='#10b981'">📊 Summary</a>
+                        <a href="veyb_dashboard.html" style="padding: 10px 20px; background: #8b5cf6; border: none; border-radius: 6px; color: #f1f5f9; font-weight: 600; cursor: pointer; text-decoration: none; display: inline-block; transition: all 0.2s; margin-left: 10px;" onmouseover="this.style.background='#7c3aed'" onmouseout="this.style.background='#8b5cf6'">🔒 veYB</a>
+                        <a href="ybpools.html" style="padding: 10px 20px; background: #f59e0b; border: none; border-radius: 6px; color: #0f172a; font-weight: 600; cursor: pointer; text-decoration: none; display: inline-block; transition: all 0.2s; margin-left: 10px;" onmouseover="this.style.background='#d97706'" onmouseout="this.style.background='#f59e0b'">⚖️ Pools</a>
                     </div>
                     <div class="market-selector">
                         <button class="market-btn active" data-market="cbbtc" onclick="switchMarket('cbbtc')">yb-cbBTC</button>
