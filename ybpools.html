@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>YB Pools - Анализ баланса</title>
+    <title>YB Pools - Balance Analysis</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns"></script>
     <style>
@@ -149,8 +149,8 @@
     </style>
 </head>
 <body>
-<div id="update-time" style="position:fixed;bottom:5px;left:10px;font-size:10px;color:#666;z-index:50;">Updated: 2025-11-28 21:40:58 UTC</div>
-<script>(function(){var u=new Date("2025-11-28 21:40:58 UTC"),n=function(){var d=Math.floor((Date.now()-u)/1e3),t="";if(d<60)t=d+"s ago";else if(d<3600)t=Math.floor(d/60)+"m ago";else if(d<86400)t=Math.floor(d/3600)+"h ago";else t=Math.floor(d/86400)+"d ago";document.getElementById("update-time").textContent="Updated: "+t;setTimeout(n,d<3600?1e4:6e4)};n()})();</script>
+<div id="update-time" style="position:fixed;bottom:5px;left:10px;font-size:10px;color:#666;z-index:50;">Updated: 2025-11-28 21:54:01 UTC</div>
+<script>(function(){var u=new Date("2025-11-28 21:54:01 UTC"),n=function(){var d=Math.floor((Date.now()-u)/1e3),t="";if(d<60)t=d+"s ago";else if(d<3600)t=Math.floor(d/60)+"m ago";else if(d<86400)t=Math.floor(d/3600)+"h ago";else t=Math.floor(d/86400)+"d ago";document.getElementById("update-time").textContent="Updated: "+t;setTimeout(n,d<3600?1e4:6e4)};n()})();</script>
     <a href="index.html" class="back-button">Back</a>
     <div class="container">
         <header>
@@ -166,8 +166,10 @@
 
         <div id="pool-content"></div>
 
-        <footer>
-            Data via DRPC
+        <footer style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
+            <a href="https://etherscan.io/address/0xd9ff8396554a0d18b2cfbec53e1979b7ecce8373" target="_blank" style="color: #f7931a; text-decoration: none;">WBTC Pool ↗</a>
+            <a href="https://etherscan.io/address/0x83f24023d15d835a213df24fd309c47dAb5BEb32" target="_blank" style="color: #0052ff; text-decoration: none;">cbBTC Pool ↗</a>
+            <a href="https://etherscan.io/address/0xf1F435B05D255a5dBdE37333C0f61DA6F69c6127" target="_blank" style="color: #7b1fa2; text-decoration: none;">tBTC Pool ↗</a>
         </footer>
         <div id="update-time">Updated: --</div>
     </div>
@@ -210,7 +212,7 @@
 
         document.addEventListener('DOMContentLoaded', () => {
             if (!poolsData || !poolsData.pools) {
-                document.getElementById('pool-content').innerHTML = '<p>Нет данных</p>';
+                document.getElementById('pool-content').innerHTML = '<p>No data</p>';
                 return;
             }
 
@@ -260,7 +262,7 @@
         function renderPool(poolId) {
             const pool = poolsData.pools[poolId];
             if (!pool || !pool.data || pool.data.length === 0) {
-                document.getElementById('pool-content').innerHTML = '<p style="text-align:center;padding:40px;">Нет данных для этого пула</p>';
+                document.getElementById('pool-content').innerHTML = '<p style="text-align:center;padding:40px;">No data for this pool</p>';
                 return;
             }
 
@@ -435,7 +437,7 @@
                 data: {
                     labels: chartData.map(d => new Date(d.timestamp)),
                     datasets: [{
-                        label: 'Дисбаланс',
+                        label: 'Imbalance',
                         data: chartData.map(d => d.imbalance),
                         backgroundColor: chartData.map(d => d.imbalance > 20 ? 'rgba(244,67,54,0.7)' : d.imbalance > 10 ? 'rgba(255,152,0,0.7)' : 'rgba(76,175,80,0.7)'),
                         borderRadius: 3
