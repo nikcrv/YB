@@ -752,8 +752,8 @@
     </style>
 </head>
 <body>
-<div id="update-time" style="position:fixed;bottom:5px;left:10px;font-size:10px;color:#666;z-index:50;">Updated: 2025-11-28 20:18:12 UTC</div>
-<script>(function(){var u=new Date("2025-11-28 20:18:12 UTC"),n=function(){var d=Math.floor((Date.now()-u)/1e3),t="";if(d<60)t=d+"s ago";else if(d<3600)t=Math.floor(d/60)+"m ago";else if(d<86400)t=Math.floor(d/3600)+"h ago";else t=Math.floor(d/86400)+"d ago";document.getElementById("update-time").textContent="Updated: "+t;setTimeout(n,d<3600?1e4:6e4)};n()})();</script>
+<div id="update-time" style="position:fixed;bottom:5px;left:10px;font-size:10px;color:#666;z-index:50;">Updated: 2025-11-28 20:31:24 UTC</div>
+<script>(function(){var u=new Date("2025-11-28 20:31:24 UTC"),n=function(){var d=Math.floor((Date.now()-u)/1e3),t="";if(d<60)t=d+"s ago";else if(d<3600)t=Math.floor(d/60)+"m ago";else if(d<86400)t=Math.floor(d/3600)+"h ago";else t=Math.floor(d/86400)+"d ago";document.getElementById("update-time").textContent="Updated: "+t;setTimeout(n,d<3600?1e4:6e4)};n()})();</script>
     <div class="container">
         <header>
             <div class="header-top">
@@ -810,6 +810,11 @@
 
         <div id="content-area">
             <div class="loading">Loading market data...</div>
+        </div>
+
+        <!-- Fixed bottom-left timezone toggle -->
+        <div id="timezone-panel" style="position: fixed; bottom: 8px; left: 10px; font-size: 11px; color: #888; z-index: 100; display: flex; align-items: center; gap: 8px;">
+            <span id="timezone-toggle" onclick="toggleTimezone()" style="cursor: pointer; padding: 2px 6px; border: 1px solid #555; border-radius: 3px; background: #333;" title="Click to toggle UTC/Local time">🕐 Local</span>
         </div>
     </div>
 
@@ -1027,6 +1032,7 @@
         let showEmissionFundamental = true; // Show emission for Fundamental
         let showEmissionWithdrawable = true; // Show emission for Withdrawable
         let showBtcPrice = true; // Show BTC price overlay on PPS chart
+        let useUTC = false; // false = local time (default), true = UTC
 
         // Хелпер для парсинга datetime как UTC (добавляет 'Z' если отсутствует)
         function parseAsUTC(dateString) {
@@ -1037,6 +1043,18 @@
             }
             // Иначе добавляем 'Z' чтобы интерпретировать как UTC
             return new Date(dateString + 'Z');
+        }
+
+        // Функция переключения UTC/Local
+        function toggleTimezone() {
+            useUTC = !useUTC;
+            const btn = document.getElementById('timezone-toggle');
+            btn.textContent = useUTC ? '🕐 UTC' : '🕐 Local';
+            btn.style.background = useUTC ? '#2a4a3a' : '#333';
+            // Перерисовываем графики с новым форматом времени
+            if (currentMarket) {
+                loadMarketData(currentMarket);
+            }
         }
 
         // TVL interpolation function
@@ -1383,12 +1401,21 @@
         }
 
         function formatDateForInput(date) {
-            const year = date.getUTCFullYear();
-            const month = String(date.getUTCMonth() + 1).padStart(2, '0');
-            const day = String(date.getUTCDate()).padStart(2, '0');
-            const hours = String(date.getUTCHours()).padStart(2, '0');
-            const minutes = String(date.getUTCMinutes()).padStart(2, '0');
-            return `${year}-${month}-${day}T${hours}:${minutes}`;
+            if (useUTC) {
+                const year = date.getUTCFullYear();
+                const month = String(date.getUTCMonth() + 1).padStart(2, '0');
+                const day = String(date.getUTCDate()).padStart(2, '0');
+                const hours = String(date.getUTCHours()).padStart(2, '0');
+                const minutes = String(date.getUTCMinutes()).padStart(2, '0');
+                return `${year}-${month}-${day}T${hours}:${minutes}`;
+            } else {
+                const year = date.getFullYear();
+                const month = String(date.getMonth() + 1).padStart(2, '0');
+                const day = String(date.getDate()).padStart(2, '0');
+                const hours = String(date.getHours()).padStart(2, '0');
+                const minutes = String(date.getMinutes()).padStart(2, '0');
+                return `${year}-${month}-${day}T${hours}:${minutes}`;
+            }
         }
 
         function applyDateFilter() {
@@ -2328,24 +2355,29 @@
             const legendPadding = isMobile ? 2 : 10;
             const legendBoxWidth = isMobile ? 12 : 40;
 
-            // Функция форматирования даты для мобильных устройств (отображает в UTC)
+            // Функция форматирования даты (поддерживает переключение UTC/Local)
             function formatDateLabel(dateString) {
                 const date = parseAsUTC(dateString);
-                if (isMobile) {
-                    // Для мобильных: "DD.MM HH:MM UTC" (без года и секунд)
-                    const day = String(date.getUTCDate()).padStart(2, '0');
-                    const month = String(date.getUTCMonth() + 1).padStart(2, '0');
-                    const hours = String(date.getUTCHours()).padStart(2, '0');
-                    const minutes = String(date.getUTCMinutes()).padStart(2, '0');
-                    return `${day}.${month} ${hours}:${minutes}`;
+                if (useUTC) {
+                    if (isMobile) {
+                        const day = String(date.getUTCDate()).padStart(2, '0');
+                        const month = String(date.getUTCMonth() + 1).padStart(2, '0');
+                        const hours = String(date.getUTCHours()).padStart(2, '0');
+                        const minutes = String(date.getUTCMinutes()).padStart(2, '0');
+                        return `${day}.${month} ${hours}:${minutes}`;
+                    } else {
+                        return date.toLocaleString('en-GB', { timeZone: 'UTC' }) + ' UTC';
+                    }
                 } else {
-                    // Для десктопа: UTC формат
-                    const day = String(date.getUTCDate()).padStart(2, '0');
-                    const month = String(date.getUTCMonth() + 1).padStart(2, '0');
-                    const year = date.getUTCFullYear();
-                    const hours = String(date.getUTCHours()).padStart(2, '0');
-                    const minutes = String(date.getUTCMinutes()).padStart(2, '0');
-                    return `${day}.${month}.${year} ${hours}:${minutes} UTC`;
+                    if (isMobile) {
+                        const day = String(date.getDate()).padStart(2, '0');
+                        const month = String(date.getMonth() + 1).padStart(2, '0');
+                        const hours = String(date.getHours()).padStart(2, '0');
+                        const minutes = String(date.getMinutes()).padStart(2, '0');
+                        return `${day}.${month} ${hours}:${minutes}`;
+                    } else {
+                        return date.toLocaleString();
+                    }
                 }
             }
 
@@ -3210,8 +3242,9 @@
             rangeFill.style.width = (endPercent - startPercent) + '%';
 
             // Update labels - use originalData since currentRangeStart/End are indices in original array
-            const startDate = new Date(originalData.data[currentRangeStart].timestamp * 1000).toLocaleDateString('en-US', { month: 'short', day: 'numeric', timeZone: 'UTC' });
-            const endDate = new Date(originalData.data[currentRangeEnd].timestamp * 1000).toLocaleDateString('en-US', { month: 'short', day: 'numeric', timeZone: 'UTC' });
+            const tzOpts = useUTC ? { month: 'short', day: 'numeric', timeZone: 'UTC' } : { month: 'short', day: 'numeric' };
+            const startDate = new Date(originalData.data[currentRangeStart].timestamp * 1000).toLocaleDateString('en-US', tzOpts);
+            const endDate = new Date(originalData.data[currentRangeEnd].timestamp * 1000).toLocaleDateString('en-US', tzOpts);
 
             document.getElementById('rangeStartLabel').textContent = startDate;
             document.getElementById('rangeEndLabel').textContent = endDate;
