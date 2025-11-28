@@ -355,8 +355,8 @@
     </style>
 </head>
 <body>
-<div id="update-time" style="position:fixed;bottom:5px;left:10px;font-size:10px;color:#666;z-index:50;">Updated: 2025-11-28 20:57:28 UTC</div>
-<script>(function(){var u=new Date("2025-11-28 20:57:28 UTC"),n=function(){var d=Math.floor((Date.now()-u)/1e3),t="";if(d<60)t=d+"s ago";else if(d<3600)t=Math.floor(d/60)+"m ago";else if(d<86400)t=Math.floor(d/3600)+"h ago";else t=Math.floor(d/86400)+"d ago";document.getElementById("update-time").textContent="Updated: "+t;setTimeout(n,d<3600?1e4:6e4)};n()})();</script>
+<div id="update-time" style="position:fixed;bottom:5px;left:10px;font-size:10px;color:#666;z-index:50;">Updated: 2025-11-28 21:10:31 UTC</div>
+<script>(function(){var u=new Date("2025-11-28 21:10:31 UTC"),n=function(){var d=Math.floor((Date.now()-u)/1e3),t="";if(d<60)t=d+"s ago";else if(d<3600)t=Math.floor(d/60)+"m ago";else if(d<86400)t=Math.floor(d/3600)+"h ago";else t=Math.floor(d/86400)+"d ago";document.getElementById("update-time").textContent="Updated: "+t;setTimeout(n,d<3600?1e4:6e4)};n()})();</script>
     <div class="container">
         <div class="contract-selector">
             <button class="contract-btn active" data-version="new" onclick="switchContractVersion('new')">NEW Contracts</button>
@@ -1500,20 +1500,35 @@
                         profitChart.data.datasets.push(btcDataset);
                     }
 
-                    // Добавляем скрытую ось для BTC price (только для масштабирования линии)
+                    // Добавляем ось для BTC price с долларовыми значениями
                     profitChart.options.scales.yBtcPrice = {
-                        display: false,  // Скрываем ось чтобы не конфликтовала с y1
+                        display: true,
                         position: 'right',
-                        grid: { display: false, drawOnChartArea: false }
+                        grid: { display: false, drawOnChartArea: false },
+                        ticks: {
+                            color: '#94a3b8',
+                            callback: function(value) {
+                                return '$' + (value / 1000).toFixed(0) + 'k';
+                            }
+                        },
+                        title: {
+                            display: true,
+                            text: 'BTC Price',
+                            color: '#94a3b8'
+                        }
                     };
+                    // Скрываем % of TVL ось когда показываем BTC price
+                    profitChart.options.scales.y1.display = false;
                 } else {
                     // Удаляем dataset BTC Price
                     const index = profitChart.data.datasets.findIndex(ds => ds.label === 'BTC Price');
                     if (index !== -1) {
                         profitChart.data.datasets.splice(index, 1);
                     }
-                    // Удаляем ось
+                    // Удаляем ось BTC price
                     delete profitChart.options.scales.yBtcPrice;
+                    // Возвращаем % of TVL ось
+                    profitChart.options.scales.y1.display = true;
                 }
 
                 profitChart.update();
