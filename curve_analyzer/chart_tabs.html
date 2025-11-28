@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YB Pools - Анализ баланса</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns"></script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: #e0e0e0;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .container { max-width: 1400px; margin: 0 auto; }
+        header { text-align: center; margin-bottom: 20px; }
+        h1 { font-size: 1.8rem; color: #fff; margin-bottom: 5px; }
+        .subtitle { color: #888; font-size: 0.85rem; }
+
+        /* Tabs */
+        .tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 25px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .tab-btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            background: rgba(255,255,255,0.1);
+            color: #ccc;
+            cursor: pointer;
+            font-size: 0.95rem;
+            transition: all 0.2s;
+        }
+        .tab-btn:hover { background: rgba(255,255,255,0.15); }
+        .tab-btn.active {
+            background: linear-gradient(135deg, #f7931a, #ffb74d);
+            color: #000;
+            font-weight: bold;
+        }
+        .tab-btn.active.pool2 { background: linear-gradient(135deg, #0052ff, #4d8dff); color: #fff; }
+        .tab-btn.active.pool3 { background: linear-gradient(135deg, #7b1fa2, #ba68c8); color: #fff; }
+
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 12px;
+            margin-bottom: 25px;
+        }
+        .stat-card {
+            background: rgba(255,255,255,0.05);
+            border-radius: 10px;
+            padding: 15px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        .stat-card h3 { font-size: 0.75rem; color: #888; margin-bottom: 6px; text-transform: uppercase; }
+        .stat-card .value { font-size: 1.3rem; font-weight: bold; color: #fff; }
+        .stat-card .change { font-size: 0.8rem; margin-top: 4px; }
+        .change.positive { color: #4caf50; }
+        .change.negative { color: #f44336; }
+
+        .chart-container {
+            background: rgba(255,255,255,0.03);
+            border-radius: 14px;
+            padding: 20px;
+            margin-bottom: 20px;
+            border: 1px solid rgba(255,255,255,0.08);
+        }
+        .chart-title { font-size: 1rem; margin-bottom: 15px; color: #fff; }
+        .chart-wrapper { position: relative; height: 280px; }
+
+        .balance-indicator {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin: 15px 0;
+        }
+        .balance-bar {
+            flex: 1;
+            max-width: 500px;
+            height: 35px;
+            border-radius: 18px;
+            overflow: hidden;
+            display: flex;
+            position: relative;
+        }
+        .balance-bar .token1 { transition: width 0.3s; }
+        .balance-bar .token0 { transition: width 0.3s; }
+        .balance-bar .center-line {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: #fff;
+            opacity: 0.5;
+        }
+
+        /* Pool colors */
+        .pool1 .token1 { background: linear-gradient(90deg, #f7931a, #ffb74d); }
+        .pool1 .token0 { background: linear-gradient(90deg, #00c853, #69f0ae); }
+        .pool2 .token1 { background: linear-gradient(90deg, #0052ff, #4d8dff); }
+        .pool2 .token0 { background: linear-gradient(90deg, #00c853, #69f0ae); }
+        .pool3 .token1 { background: linear-gradient(90deg, #7b1fa2, #ba68c8); }
+        .pool3 .token0 { background: linear-gradient(90deg, #00c853, #69f0ae); }
+
+        .legend { display: flex; gap: 25px; justify-content: center; margin-top: 12px; }
+        .legend-item { display: flex; align-items: center; gap: 6px; font-size: 0.9rem; }
+        .legend-dot { width: 10px; height: 10px; border-radius: 50%; }
+
+        footer { text-align: center; margin-top: 30px; color: #666; font-size: 0.8rem; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Yield Basis Pools</h1>
+            <p class="subtitle">Анализ соотношения балансов | Период: <span id="period"></span></p>
+        </header>
+
+        <div class="tabs">
+            <button class="tab-btn active" data-pool="wbtc_crvusd">WBTC/crvUSD</button>
+            <button class="tab-btn pool2" data-pool="cbbtc_crvusd">cbBTC/crvUSD</button>
+            <button class="tab-btn pool3" data-pool="tbtc_crvusd">tBTC/crvUSD</button>
+        </div>
+
+        <div id="pool-content"></div>
+
+        <footer>
+            Данные через DRPC | Обновлено: <span id="updated"></span>
+        </footer>
+    </div>
+
+    <script src="pools_data.js"></script>
+    <script>
+        const poolsData = POOLS_DATA;
+
+        const POOL_COLORS = {
+            wbtc_crvusd: { token1: '#f7931a', token0: '#00c853' },
+            cbbtc_crvusd: { token1: '#0052ff', token0: '#00c853' },
+            tbtc_crvusd: { token1: '#7b1fa2', token0: '#00c853' }
+        };
+
+        let currentChart = null;
+
+        document.addEventListener('DOMContentLoaded', () => {
+            if (!poolsData || !poolsData.pools) {
+                document.getElementById('pool-content').innerHTML = '<p>Нет данных</p>';
+                return;
+            }
+
+            document.getElementById('period').textContent = `${poolsData.period.start} — ${poolsData.period.end}`;
+            document.getElementById('updated').textContent = new Date(poolsData.generated).toLocaleString('ru');
+
+            // Tab switching
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    renderPool(btn.dataset.pool);
+                });
+            });
+
+            // Initial render
+            renderPool('wbtc_crvusd');
+        });
+
+        function renderPool(poolId) {
+            const pool = poolsData.pools[poolId];
+            if (!pool || !pool.data || pool.data.length === 0) {
+                document.getElementById('pool-content').innerHTML = '<p style="text-align:center;padding:40px;">Нет данных для этого пула</p>';
+                return;
+            }
+
+            const data = pool.data;
+            const latest = data[data.length - 1];
+            const first = data[0];
+            const colors = POOL_COLORS[poolId];
+            const poolClass = poolId === 'wbtc_crvusd' ? 'pool1' : poolId === 'cbbtc_crvusd' ? 'pool2' : 'pool3';
+
+            // Берём первое значение где TVL > $1M для корректного расчёта %
+            const firstValid = data.find(d => d.total_value > 1000000) || first;
+            const tvlChange = firstValid.total_value > 1000000 ? ((latest.total_value - firstValid.total_value) / firstValid.total_value * 100) : 0;
+
+            document.getElementById('pool-content').innerHTML = `
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <h3>TVL</h3>
+                        <div class="value">$${(latest.total_value / 1e6).toFixed(2)}M</div>
+                        <div class="change ${tvlChange >= 0 ? 'positive' : 'negative'}">${tvlChange >= 0 ? '+' : ''}${tvlChange.toFixed(1)}%</div>
+                    </div>
+                    <div class="stat-card">
+                        <h3>${pool.token1}</h3>
+                        <div class="value">${latest.token1_bal.toFixed(2)}</div>
+                    </div>
+                    <div class="stat-card">
+                        <h3>${pool.token0}</h3>
+                        <div class="value">${(latest.token0_bal / 1e6).toFixed(2)}M</div>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Дисбаланс</h3>
+                        <div class="value">${latest.imbalance.toFixed(1)}%</div>
+                        <div class="change ${latest.imbalance < 10 ? 'positive' : 'negative'}">${latest.imbalance < 10 ? 'Норма' : latest.imbalance < 20 ? 'Умеренный' : 'Высокий'}</div>
+                    </div>
+                </div>
+
+                <div class="chart-container">
+                    <div class="chart-title">Текущее соотношение</div>
+                    <div class="balance-indicator">
+                        <span>${latest.token1_ratio.toFixed(1)}% ${pool.token1}</span>
+                        <div class="balance-bar ${poolClass}">
+                            <div class="token1" style="width: ${latest.token1_ratio}%"></div>
+                            <div class="token0" style="width: ${latest.token0_ratio}%"></div>
+                            <div class="center-line"></div>
+                        </div>
+                        <span>${latest.token0_ratio.toFixed(1)}% ${pool.token0}</span>
+                    </div>
+                    <div class="legend">
+                        <div class="legend-item"><div class="legend-dot" style="background:${colors.token1}"></div> ${pool.token1}</div>
+                        <div class="legend-item"><div class="legend-dot" style="background:${colors.token0}"></div> ${pool.token0}</div>
+                    </div>
+                </div>
+
+                <div class="chart-container">
+                    <div class="chart-title">Соотношение балансов</div>
+                    <div class="chart-wrapper">
+                        <canvas id="ratioChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="chart-container">
+                    <div class="chart-title">TVL пула</div>
+                    <div class="chart-wrapper">
+                        <canvas id="tvlChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="chart-container">
+                    <div class="chart-title">Дисбаланс от 50/50</div>
+                    <div class="chart-wrapper">
+                        <canvas id="imbalanceChart"></canvas>
+                    </div>
+                </div>
+            `;
+
+            // Destroy old charts
+            Object.keys(Chart.instances).forEach(key => {
+                Chart.instances[key].destroy();
+            });
+
+            // Create charts with small delay to ensure DOM is ready
+            setTimeout(() => {
+                createRatioChart(data, pool, colors);
+                createTvlChart(data);
+                createImbalanceChart(data);
+            }, 50);
+        }
+
+        function createRatioChart(data, pool, colors) {
+            // Прореживаем данные если их слишком много (>120 точек)
+            let chartData = data;
+            if (data.length > 120) {
+                const step = Math.ceil(data.length / 100);
+                chartData = data.filter((_, i) => i % step === 0);
+            }
+
+            const ctx = document.getElementById('ratioChart').getContext('2d');
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: chartData.map(d => new Date(d.timestamp)),
+                    datasets: [{
+                        label: pool.token1,
+                        data: chartData.map(d => d.token1_ratio),
+                        backgroundColor: colors.token1,
+                        borderWidth: 0
+                    }, {
+                        label: pool.token0,
+                        data: chartData.map(d => d.token0_ratio),
+                        backgroundColor: colors.token0,
+                        borderWidth: 0
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    interaction: { mode: 'index', intersect: false },
+                    scales: {
+                        x: { type: 'time', time: { unit: 'week' }, stacked: true, grid: { color: 'rgba(255,255,255,0.05)' }, ticks: { color: '#888' }},
+                        y: { min: 0, max: 100, stacked: true, grid: { color: 'rgba(255,255,255,0.05)' }, ticks: { color: '#888', callback: v => v + '%' }}
+                    },
+                    plugins: {
+                        legend: { labels: { color: '#ccc' }},
+                        tooltip: { callbacks: { label: ctx => ctx.dataset.label + ': ' + ctx.parsed.y.toFixed(1) + '%' }}
+                    }
+                }
+            });
+        }
+
+        function createTvlChart(data) {
+            const ctx = document.getElementById('tvlChart').getContext('2d');
+            new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: data.map(d => new Date(d.timestamp)),
+                    datasets: [{
+                        label: 'TVL',
+                        data: data.map(d => d.total_value / 1e6),
+                        borderColor: '#4caf50',
+                        backgroundColor: 'rgba(76, 175, 80, 0.1)',
+                        fill: true,
+                        tension: 0.3
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        x: { type: 'time', time: { unit: 'week' }, grid: { color: 'rgba(255,255,255,0.05)' }, ticks: { color: '#888' }},
+                        y: { grid: { color: 'rgba(255,255,255,0.05)' }, ticks: { color: '#888', callback: v => '$' + v + 'M' }}
+                    },
+                    plugins: { legend: { display: false }}
+                }
+            });
+        }
+
+        function createImbalanceChart(data) {
+            // Прореживаем данные если их слишком много (>120 точек)
+            let chartData = data;
+            if (data.length > 120) {
+                const step = Math.ceil(data.length / 100);
+                chartData = data.filter((_, i) => i % step === 0);
+            }
+
+            const ctx = document.getElementById('imbalanceChart').getContext('2d');
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: chartData.map(d => new Date(d.timestamp)),
+                    datasets: [{
+                        label: 'Дисбаланс',
+                        data: chartData.map(d => d.imbalance),
+                        backgroundColor: chartData.map(d => d.imbalance > 20 ? 'rgba(244,67,54,0.7)' : d.imbalance > 10 ? 'rgba(255,152,0,0.7)' : 'rgba(76,175,80,0.7)'),
+                        borderRadius: 3
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        x: { type: 'time', time: { unit: 'week' }, grid: { color: 'rgba(255,255,255,0.05)' }, ticks: { color: '#888' }},
+                        y: { grid: { color: 'rgba(255,255,255,0.05)' }, ticks: { color: '#888', callback: v => v + '%' }}
+                    },
+                    plugins: { legend: { display: false }}
+                }
+            });
+        }
+    </script>
+</body>
+</html>
