@@ -1,14 +1,14 @@
-// Last updated: 2025-11-29 19:15:15 UTC
+// Last updated: 2025-11-29 19:28:15 UTC
 const old_yieldData_tbtc = {
   "metadata": {
     "market": "tBTC (OLD)",
     "contract": "0x2B513eBe7070Cff91cf699a0BFe5075020C732FF",
-    "collected": "2025-11-29T19:13:10.863750Z",
-    "points": 7639,
+    "collected": "2025-11-29T19:26:17.297159Z",
+    "points": 7640,
     "synchronized": true,
     "transaction_based": true,
     "zero_loss": true,
-    "incremental_update": false,
+    "incremental_update": true,
     "old_contract": true
   },
   "data": [
@@ -68760,6 +68760,15 @@ const old_yieldData_tbtc = {
       "total_withdrawable_btc": 19.607967374943982,
       "deposits_btc": 0.0,
       "withdrawals_btc": 0.0,
+      "admin_fee_withdrawals_btc": 0.0,
+      "admin_fees_btc": 0.0
+    },
+    {
+      "block": 23906363,
+      "timestamp": 1764443927,
+      "total_withdrawable_btc": 19.595727885146996,
+      "deposits_btc": 0,
+      "withdrawals_btc": 0.005329725872128513,
       "admin_fee_withdrawals_btc": 0.0,
       "admin_fees_btc": 0.0
     }
