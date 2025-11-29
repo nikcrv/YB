@@ -149,8 +149,8 @@
     </style>
 </head>
 <body>
-<div id="update-time" style="position:fixed;bottom:5px;left:10px;font-size:10px;color:#666;z-index:50;">Updated: 2025-11-28 23:50:49 UTC</div>
-<script>(function(){var u=new Date("2025-11-28 23:50:49 UTC"),n=function(){var d=Math.floor((Date.now()-u)/1e3),t="";if(d<60)t=d+"s ago";else if(d<3600)t=Math.floor(d/60)+"m ago";else if(d<86400)t=Math.floor(d/3600)+"h ago";else t=Math.floor(d/86400)+"d ago";document.getElementById("update-time").textContent="Updated: "+t;setTimeout(n,d<3600?1e4:6e4)};n()})();</script>
+<div id="update-time" style="position:fixed;bottom:5px;left:10px;font-size:10px;color:#666;z-index:50;">Updated: 2025-11-29 00:03:59 UTC</div>
+<script>(function(){var u=new Date("2025-11-29 00:03:59 UTC"),n=function(){var d=Math.floor((Date.now()-u)/1e3),t="";if(d<60)t=d+"s ago";else if(d<3600)t=Math.floor(d/60)+"m ago";else if(d<86400)t=Math.floor(d/3600)+"h ago";else t=Math.floor(d/86400)+"d ago";document.getElementById("update-time").textContent="Updated: "+t;setTimeout(n,d<3600?1e4:6e4)};n()})();</script>
     <a href="index.html" class="back-button">Back</a>
     <div class="container">
         <header>
@@ -188,26 +188,45 @@
 
         let useUTC = false; // false = local time (default), true = UTC
 
-        // Хелпер для парсинга datetime как UTC
-        function parseAsUTC(dateString) {
-            if (!dateString) return new Date();
-            if (dateString.endsWith('Z') || /[+-]\d{2}:\d{2}$/.test(dateString)) {
-                return new Date(dateString);
+        // Helper to format date based on useUTC setting
+        function formatChartDate(timestamp) {
+            const date = new Date(timestamp);
+            if (useUTC) {
+                const month = date.toLocaleString('en', { month: 'short', timeZone: 'UTC' });
+                const day = date.getUTCDate();
+                return `${month} ${day}`;
+            } else {
+                const month = date.toLocaleString('en', { month: 'short' });
+                const day = date.getDate();
+                return `${month} ${day}`;
             }
-            return new Date(dateString + 'Z');
         }
 
-        // Функция переключения UTC/Local
+        // Toggle UTC/Local timezone
         function toggleTimezone() {
             useUTC = !useUTC;
             const btn = document.getElementById('timezone-toggle');
             btn.textContent = useUTC ? '🕐 UTC' : '🕐 Local';
             btn.style.background = useUTC ? '#2a4a3a' : '#333';
-            // Перерисовываем текущий пул
+            localStorage.setItem('ybpools_useUTC', useUTC);
+            // Re-render current pool
             const activeTab = document.querySelector('.tab-btn.active');
             if (activeTab) {
                 renderPool(activeTab.dataset.pool);
             }
+        }
+
+        // Load saved timezone preference
+        const savedUTC = localStorage.getItem('ybpools_useUTC');
+        if (savedUTC === 'true') {
+            useUTC = true;
+            document.addEventListener('DOMContentLoaded', () => {
+                const btn = document.getElementById('timezone-toggle');
+                if (btn) {
+                    btn.textContent = '🕐 UTC';
+                    btn.style.background = '#2a4a3a';
+                }
+            });
         }
 
         document.addEventListener('DOMContentLoaded', () => {
@@ -367,7 +386,7 @@
             new Chart(ctx, {
                 type: 'bar',
                 data: {
-                    labels: chartData.map(d => new Date(d.timestamp)),
+                    labels: chartData.map(d => formatChartDate(d.timestamp)),
                     datasets: [{
                         label: pool.token1,
                         data: chartData.map(d => d.token1_ratio),
@@ -385,7 +404,7 @@
                     maintainAspectRatio: false,
                     interaction: { mode: 'index', intersect: false },
                     scales: {
-                        x: { type: 'time', time: { unit: 'week' }, stacked: true, grid: { color: 'rgba(255,255,255,0.05)' }, ticks: { color: '#888' }},
+                        x: { stacked: true, grid: { color: 'rgba(255,255,255,0.05)' }, ticks: { color: '#888', maxRotation: 45 }},
                         y: { min: 0, max: 100, stacked: true, grid: { color: 'rgba(255,255,255,0.05)' }, ticks: { color: '#888', callback: v => v + '%' }}
                     },
                     plugins: {
@@ -401,21 +420,22 @@
             new Chart(ctx, {
                 type: 'line',
                 data: {
-                    labels: data.map(d => new Date(d.timestamp)),
+                    labels: data.map(d => formatChartDate(d.timestamp)),
                     datasets: [{
                         label: 'TVL',
                         data: data.map(d => d.total_value / 1e6),
                         borderColor: '#4caf50',
                         backgroundColor: 'rgba(76, 175, 80, 0.1)',
                         fill: true,
-                        tension: 0.3
+                        tension: 0.3,
+                        pointRadius: 0
                     }]
                 },
                 options: {
                     responsive: true,
                     maintainAspectRatio: false,
                     scales: {
-                        x: { type: 'time', time: { unit: 'week' }, grid: { color: 'rgba(255,255,255,0.05)' }, ticks: { color: '#888' }},
+                        x: { grid: { color: 'rgba(255,255,255,0.05)' }, ticks: { color: '#888', maxRotation: 45 }},
                         y: { grid: { color: 'rgba(255,255,255,0.05)' }, ticks: { color: '#888', callback: v => '$' + v + 'M' }}
                     },
                     plugins: { legend: { display: false }}
@@ -435,7 +455,7 @@
             new Chart(ctx, {
                 type: 'bar',
                 data: {
-                    labels: chartData.map(d => new Date(d.timestamp)),
+                    labels: chartData.map(d => formatChartDate(d.timestamp)),
                     datasets: [{
                         label: 'Imbalance',
                         data: chartData.map(d => d.imbalance),
@@ -447,7 +467,7 @@
                     responsive: true,
                     maintainAspectRatio: false,
                     scales: {
-                        x: { type: 'time', time: { unit: 'week' }, grid: { color: 'rgba(255,255,255,0.05)' }, ticks: { color: '#888' }},
+                        x: { grid: { color: 'rgba(255,255,255,0.05)' }, ticks: { color: '#888', maxRotation: 45 }},
                         y: { grid: { color: 'rgba(255,255,255,0.05)' }, ticks: { color: '#888', callback: v => v + '%' }}
                     },
                     plugins: { legend: { display: false }}
