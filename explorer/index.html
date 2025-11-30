@@ -734,7 +734,7 @@
         function blockToDate(block){const refBlock=21000000,refTime=1729552859,blockTime=12,calculated=(refTime+(block-refBlock)*blockTime)*1000,now=Date.now();return new Date(Math.min(calculated,now));}
         function formatBlockDate(block){const d=blockToDate(block);const months=t('months');return d.getDate()+' '+months[d.getMonth()];}
         // Cache functions for faster testing - version 2 (with gauge support)
-        const CACHE_VERSION='v2';
+        const CACHE_VERSION='v4';
         function getCacheKey(poolIdx,address){return 'yb_cache_'+CACHE_VERSION+'_'+poolIdx+'_'+address.toLowerCase();}
         function getFromCache(poolIdx,address){
             const key=getCacheKey(poolIdx,address);
@@ -1211,7 +1211,38 @@
                 }
             }
 
-            // Build cumulative HODL line using REAL WBTC flows
+            // Find "free" token inflows - st-ybBTC mints where user didn't stake their own ybBTC
+            // These represent tokens received from others (staking on behalf, airdrops, etc.)
+            const freeTokenInflows=[];
+            if(userEvents){
+                // Group events by block to find paired stake operations
+                const eventsByBlock={};
+                for(const ev of userEvents){
+                    if(!eventsByBlock[ev.block])eventsByBlock[ev.block]=[];
+                    eventsByBlock[ev.block].push(ev);
+                }
+                for(const[block,evs]of Object.entries(eventsByBlock)){
+                    // Look for st-ybBTC STAKE (mint from 0x0) without ANY ybBTC STAKE (send to staker) in same block
+                    const stMints=evs.filter(e=>e.type==='STAKE'&&e.token==='ST'&&e.amount>0);
+                    const ltStakes=evs.filter(e=>e.type==='STAKE'&&e.token==='LT'&&e.amount<0);
+                    // If user sent ANY ybBTC to staker in this block, these st-ybBTC mints are from their own stake
+                    const userStakedInBlock=ltStakes.length>0;
+                    for(const stMint of stMints){
+                        if(!userStakedInBlock){
+                            // This is a "free" token - user received st-ybBTC without staking their own ybBTC
+                            const idx=blocks.findIndex(b=>b>=parseInt(block));
+                            if(idx>=0){
+                                const sPps=stakedPps[idx]||1;
+                                const btcValue=Math.abs(stMint.amount)*sPps;
+                                freeTokenInflows.push({block:parseInt(block),amount:btcValue,tokens:Math.abs(stMint.amount)});
+                                console.log('Free st-ybBTC inflow at block',block,':',stMint.amount.toFixed(4),'tokens worth',btcValue.toFixed(4),'BTC');
+                            }
+                        }
+                    }
+                }
+            }
+
+            // Build cumulative HODL line using REAL WBTC flows + free token inflows
             let cumulativeDeposits=[];
             let currentHodl=0;
             for(let i=0;i<blocks.length;i++){
@@ -1220,6 +1251,12 @@
                 for(const dep of wbtcFlows.deposits){
                     if(dep.block<=block&&(i===0||dep.block>blocks[i-1])){
                         currentHodl+=dep.amount;
+                    }
+                }
+                // Add BTC-equivalent of free token inflows
+                for(const inflow of freeTokenInflows){
+                    if(inflow.block<=block&&(i===0||inflow.block>blocks[i-1])){
+                        currentHodl+=inflow.amount;
                     }
                 }
                 // Subtract REAL withdrawals at this block
