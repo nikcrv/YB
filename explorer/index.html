@@ -507,7 +507,26 @@
                 // Months
                 months: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
                 // Language
-                language: 'Language'
+                language: 'Language',
+                // Loading states
+                loadingBtn: 'Loading...',
+                loadingData: 'Loading data',
+                loadingFromBlockchain: 'Loading from blockchain...',
+                loadingFromCache: 'From cache...',
+                requests: 'requests',
+                invalidAddress: 'Select or enter a valid address (0x...)',
+                blockchainError: 'Blockchain loading error:',
+                noLoss: 'No loss',
+                percentOfLoss: '% of loss',
+                noEvents: 'No events',
+                eventsNotFound: 'No events found for this address',
+                eventsCount: 'events',
+                value: 'Value',
+                blockLabel: 'block',
+                gaugeStake: 'Staked in Gauge',
+                gaugeUnstake: 'Unstaked from Gauge',
+                transferOut: 'Sent to',
+                transferIn: 'Received from'
             },
             ru: {
                 // Header & Navigation
@@ -640,12 +659,35 @@
                 // Months
                 months: ['янв', 'фев', 'мар', 'апр', 'май', 'июн', 'июл', 'авг', 'сен', 'окт', 'ноя', 'дек'],
                 // Language
-                language: 'Язык'
+                language: 'Язык',
+                // Loading states
+                loadingBtn: 'Загрузка...',
+                loadingData: 'Загрузка данных',
+                loadingFromBlockchain: 'Загрузка из блокчейна...',
+                loadingFromCache: 'Из кеша...',
+                requests: 'запросов',
+                invalidAddress: 'Выберите или введите корректный адрес (0x...)',
+                blockchainError: 'Ошибка загрузки из блокчейна:',
+                noLoss: 'Нет убытка',
+                percentOfLoss: '% от убытка',
+                noEvents: 'Нет событий',
+                eventsNotFound: 'События не найдены для этого адреса',
+                eventsCount: 'событий',
+                value: 'Стоимость',
+                blockLabel: 'блок',
+                gaugeStake: 'Застейкано в Gauge',
+                gaugeUnstake: 'Выведено из Gauge',
+                transferOut: 'Отправлено на',
+                transferIn: 'Получено от'
             }
         };
 
         function t(key) {
             return translations[currentLang][key] || translations['en'][key] || key;
+        }
+
+        function getLocale() {
+            return currentLang === 'ru' ? 'ru-RU' : 'en-US';
         }
 
         function setLanguage(lang) {
@@ -713,6 +755,8 @@
         const RPC_URL='https://eth.drpc.org',FACTORY_ADDRESS='0x370a449FeBb9411c95bf897021377fe0B7D100c0',ZERO_ADDRESS='0x0000000000000000000000000000000000000000',TRANSFER_TOPIC='0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef';
         // Underlying token addresses for each pool
         const UNDERLYING_TOKENS=['0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599','0xcbB7C0000aB88B473b1f5aFd9ef808440eed33Bf','0x18084fbA666a33d37592fA2633fD49a74DD93a88']; // WBTC, cbBTC, tBTC
+        // Gauge (liquidity mining) contract addresses for each pool - g(yb-XXX) tokens
+        const GAUGE_ADDRESSES=['0x37f45e64935e7b8383d2f034048b32770b04e8bd','0x37f45e64935e7b8383d2f034048b32770b04e8bd','0x37f45e64935e7b8383d2f034048b32770b04e8bd']; // TODO: get actual gauge addresses for cbBTC and tBTC
         let contractAddresses={};
         const addressSearch=document.getElementById('addressSearch'),addressDropdown=document.getElementById('addressDropdown'),addressClear=document.getElementById('addressClear');
         function updateAddressCache(){const poolIdx=parseInt(document.getElementById('poolSelect').value);if(!DATA.userPnl||!DATA.userPnl[poolIdx]){allAddresses=[];return;}allAddresses=Object.entries(DATA.userPnl[poolIdx]).map(([addr,pnl])=>({addr,pnl})).sort((a,b)=>a.pnl-b.pnl);}
@@ -732,7 +776,7 @@
         const parallelProgress={'LT out':0,'LT in':0,'ST out':0,'ST in':0,'BTC out':0,'BTC in':0};
         function updateBtnProgress(text){
             const btn=document.getElementById('analyzeBtn');
-            if(btn)btn.textContent='Загрузка...';
+            if(btn)btn.textContent=t('loadingBtn');
             // Update preloader with parallel progress tracking
             const match=text.match(/^(.+?)\s+(\d+)%$/);
             if(match){
@@ -745,10 +789,10 @@
                 const phaseNames={'LT out':'ybBTC ↑','LT in':'ybBTC ↓','ST out':'st-ybBTC ↑','ST in':'st-ybBTC ↓','BTC out':'BTC ↑','BTC in':'BTC ↓','BTC→Migrator':'Migrate'};
                 // Show which phases are active
                 const activePhases=Object.entries(parallelProgress).filter(([k,v])=>v>0&&v<100).map(([k,v])=>phaseNames[k]||k);
-                document.getElementById('loaderPhase').textContent=activePhases.length>0?activePhases.join(', '):'Загрузка данных';
+                document.getElementById('loaderPhase').textContent=activePhases.length>0?activePhases.join(', '):t('loadingData');
                 document.getElementById('loaderBar').style.width=totalPct+'%';
                 document.getElementById('loaderPercent').textContent=totalPct+'%';
-                document.getElementById('loaderBatch').textContent=numRequests+' запросов';
+                document.getElementById('loaderBatch').textContent=numRequests+' '+t('requests');
             }
         }
         function resetParallelProgress(){
@@ -853,7 +897,7 @@
         async function fetchWithTimeout(url,options,timeout=15000){const controller=new AbortController();const id=setTimeout(()=>controller.abort(),timeout);try{const response=await fetch(url,{...options,signal:controller.signal});clearTimeout(id);return response;}catch(e){clearTimeout(id);if(e.name==='AbortError')throw new Error('Timeout');throw e;}}
         async function ethCall(to,data){const response=await fetch(RPC_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({jsonrpc:'2.0',method:'eth_call',params:[{to,data},'latest'],id:1})});return(await response.json()).result;}
         async function ethGetLogs(address,topics,fromBlock,toBlock,label=''){const BATCH_SIZE=10000;const allLogs=[];const totalBatches=Math.ceil((toBlock-fromBlock+1)/BATCH_SIZE);let batchNum=0;for(let start=fromBlock;start<=toBlock;start+=BATCH_SIZE){batchNum++;const pct=Math.round((batchNum/totalBatches)*100);if(label)updateBtnProgress(label+' '+pct+'%');const end=Math.min(start+BATCH_SIZE-1,toBlock);let retries=3;while(retries>0){try{const response=await fetchWithTimeout(RPC_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({jsonrpc:'2.0',method:'eth_getLogs',params:[{address,topics,fromBlock:'0x'+start.toString(16),toBlock:'0x'+end.toString(16)}],id:1})},15000);const result=await response.json();if(result.error){if(result.error.code===-32005||result.error.message?.includes('rate')||result.error.message?.includes('limit')){console.warn('Rate limit, wait 2s');await new Promise(r=>setTimeout(r,2000));retries--;continue;}console.error('eth_getLogs error:',result.error);break;}if(result.result)allLogs.push(...result.result);break;}catch(e){console.warn('Retry',4-retries,e.message);retries--;if(retries>0)await new Promise(r=>setTimeout(r,1000));}}}return allLogs;}
-        async function getContractAddresses(poolIdx){if(contractAddresses[poolIdx])return contractAddresses[poolIdx];const marketSelector='0xb1283e77'+poolIdx.toString(16).padStart(64,'0');const marketData=await ethCall(FACTORY_ADDRESS,marketSelector);if(!marketData||marketData==='0x')throw new Error('Failed to get market data');const ltAddress='0x'+marketData.slice(2+64*3+24,2+64*4);const stakerData=await ethCall(ltAddress,'0x5ebaf1db');const stakerAddress='0x'+stakerData.slice(26);contractAddresses[poolIdx]={lt:ltAddress,staker:stakerAddress};console.log('Pool '+poolIdx+' contracts:',contractAddresses[poolIdx]);return contractAddresses[poolIdx];}
+        async function getContractAddresses(poolIdx){if(contractAddresses[poolIdx])return contractAddresses[poolIdx];const marketSelector='0xb1283e77'+poolIdx.toString(16).padStart(64,'0');const marketData=await ethCall(FACTORY_ADDRESS,marketSelector);if(!marketData||marketData==='0x')throw new Error('Failed to get market data');const ltAddress='0x'+marketData.slice(2+64*3+24,2+64*4);const stakerData=await ethCall(ltAddress,'0x5ebaf1db');const stakerAddress='0x'+stakerData.slice(26);const gaugeAddress=GAUGE_ADDRESSES[poolIdx]||null;contractAddresses[poolIdx]={lt:ltAddress,staker:stakerAddress,gauge:gaugeAddress};console.log('Pool '+poolIdx+' contracts:',contractAddresses[poolIdx]);return contractAddresses[poolIdx];}
         function padAddress(address){return'0x'+address.toLowerCase().slice(2).padStart(64,'0');}
         async function fetchUserEvents(poolIdx,userAddress){
             const blocks=DATA.pnlLog?.blocks?.[poolIdx]||[];
@@ -927,6 +971,7 @@
             const events=[];
             const ltBalanceChanges={};
             const stBalanceChanges={};
+            const gaugeBalanceChanges={};
 
             for(const log of uniqueLogs){
                 const blockNum=parseInt(log.blockNumber,16);
@@ -937,30 +982,41 @@
                 const isTo=to.toLowerCase()===userAddress.toLowerCase();
                 let eventType,amount,description;
 
+                const gaugeAddr=contracts.gauge?.toLowerCase();
                 if(isFrom&&to.toLowerCase()===ZERO_ADDRESS){
                     eventType=log.token==='LT'?'WITHDRAW':'UNSTAKE';
                     amount=-value;
-                    description=(log.token==='LT'?'Выведено':'Анстейк')+' '+value.toFixed(6);
+                    description=t(log.token==='LT'?'withdrawDesc':'unstakeDesc')+' '+value.toFixed(6);
                 }else if(isTo&&from.toLowerCase()===ZERO_ADDRESS){
                     eventType=log.token==='LT'?'DEPOSIT':'STAKE';
                     amount=value;
-                    description=(log.token==='LT'?'Депозит':'Стейк')+' '+value.toFixed(6);
+                    description=t(log.token==='LT'?'depositDesc':'stakeDesc')+' '+value.toFixed(6);
                 }else if(isFrom&&to.toLowerCase()===contracts.staker.toLowerCase()){
                     eventType='STAKE';
                     amount=-value;
-                    description='Отправлено в стейкинг '+value.toFixed(6)+' ybBTC';
+                    description=t('sentToStaking')+' '+value.toFixed(6)+' ybBTC';
                 }else if(isTo&&from.toLowerCase()===contracts.staker.toLowerCase()){
                     eventType='UNSTAKE';
                     amount=value;
-                    description='Получено из стейкинга '+value.toFixed(6)+' ybBTC';
+                    description=t('receivedFromStaking')+' '+value.toFixed(6)+' ybBTC';
+                }else if(gaugeAddr&&isFrom&&to.toLowerCase()===gaugeAddr){
+                    // Sending ybBTC to gauge (gauge staking for YB rewards)
+                    eventType='GAUGE_STAKE';
+                    amount=-value;
+                    description=t('gaugeStake')+' '+value.toFixed(6)+' ybBTC';
+                }else if(gaugeAddr&&isTo&&from.toLowerCase()===gaugeAddr){
+                    // Receiving ybBTC from gauge (gauge unstaking)
+                    eventType='GAUGE_UNSTAKE';
+                    amount=value;
+                    description=t('gaugeUnstake')+' '+value.toFixed(6)+' ybBTC';
                 }else if(isFrom){
                     eventType='TRANSFER_OUT';
                     amount=-value;
-                    description='Отправлено '+to.slice(0,10)+'... '+value.toFixed(6)+' '+(log.token==='LT'?'ybBTC':'st-ybBTC');
+                    description=t('transferOut')+' '+to.slice(0,10)+'... '+value.toFixed(6)+' '+(log.token==='LT'?'ybBTC':'st-ybBTC');
                 }else if(isTo){
                     eventType='TRANSFER_IN';
                     amount=value;
-                    description='Получено от '+from.slice(0,10)+'... '+value.toFixed(6)+' '+(log.token==='LT'?'ybBTC':'st-ybBTC');
+                    description=t('transferIn')+' '+from.slice(0,10)+'... '+value.toFixed(6)+' '+(log.token==='LT'?'ybBTC':'st-ybBTC');
                 }
 
                 events.push({block:blockNum,type:eventType,token:log.token,amount,description,tx:log.transactionHash});
@@ -968,17 +1024,33 @@
                 if(log.token==='LT'){
                     const toStaker=to.toLowerCase()===contracts.staker.toLowerCase();
                     const fromStaker=from.toLowerCase()===contracts.staker.toLowerCase();
-                    if(!toStaker&&!fromStaker){
-                        if(!ltBalanceChanges[blockNum])ltBalanceChanges[blockNum]=0;
-                        ltBalanceChanges[blockNum]+=isTo?value:-value;
-                    }else if(toStaker&&isFrom){
-                        // Sending ybBTC to staker (staking)
+                    const toGauge=gaugeAddr&&to.toLowerCase()===gaugeAddr;
+                    const fromGauge=gaugeAddr&&from.toLowerCase()===gaugeAddr;
+
+                    if(toStaker&&isFrom){
+                        // Sending ybBTC to staker (staking) - removed from LT balance
                         if(!ltBalanceChanges[blockNum])ltBalanceChanges[blockNum]=0;
                         ltBalanceChanges[blockNum]+=-value;
                     }else if(fromStaker&&isTo){
-                        // Receiving ybBTC from staker (unstaking)
+                        // Receiving ybBTC from staker (unstaking) - added to LT balance
                         if(!ltBalanceChanges[blockNum])ltBalanceChanges[blockNum]=0;
                         ltBalanceChanges[blockNum]+=value;
+                    }else if(toGauge&&isFrom){
+                        // Sending ybBTC to gauge - removed from LT balance, added to gauge balance
+                        if(!ltBalanceChanges[blockNum])ltBalanceChanges[blockNum]=0;
+                        ltBalanceChanges[blockNum]+=-value;
+                        if(!gaugeBalanceChanges[blockNum])gaugeBalanceChanges[blockNum]=0;
+                        gaugeBalanceChanges[blockNum]+=value;
+                    }else if(fromGauge&&isTo){
+                        // Receiving ybBTC from gauge - added to LT balance, removed from gauge balance
+                        if(!ltBalanceChanges[blockNum])ltBalanceChanges[blockNum]=0;
+                        ltBalanceChanges[blockNum]+=value;
+                        if(!gaugeBalanceChanges[blockNum])gaugeBalanceChanges[blockNum]=0;
+                        gaugeBalanceChanges[blockNum]+=-value;
+                    }else if(!toStaker&&!fromStaker&&!toGauge&&!fromGauge){
+                        // Regular transfer (deposit/withdraw/transfer to other wallet)
+                        if(!ltBalanceChanges[blockNum])ltBalanceChanges[blockNum]=0;
+                        ltBalanceChanges[blockNum]+=isTo?value:-value;
                     }
                 }
                 if(log.token==='ST'){
@@ -990,7 +1062,8 @@
 
             const ltBalances=[];
             const stBalances=[];
-            let ltBal=0,stBal=0;
+            const gaugeBalances=[];
+            let ltBal=0,stBal=0,gaugeBal=0;
             for(const block of blocks){
                 for(const[changeBlock,change]of Object.entries(ltBalanceChanges)){
                     if(parseInt(changeBlock)<=block&&parseInt(changeBlock)>(blocks[blocks.indexOf(block)-1]||0)){ltBal+=change;}
@@ -998,31 +1071,35 @@
                 for(const[changeBlock,change]of Object.entries(stBalanceChanges)){
                     if(parseInt(changeBlock)<=block&&parseInt(changeBlock)>(blocks[blocks.indexOf(block)-1]||0)){stBal+=change;}
                 }
+                for(const[changeBlock,change]of Object.entries(gaugeBalanceChanges)){
+                    if(parseInt(changeBlock)<=block&&parseInt(changeBlock)>(blocks[blocks.indexOf(block)-1]||0)){gaugeBal+=change;}
+                }
                 ltBalances.push(Math.max(0,ltBal));
                 stBalances.push(Math.max(0,stBal));
+                gaugeBalances.push(Math.max(0,gaugeBal));
             }
 
-            console.log('Found '+events.length+' events, '+wbtcFlows.deposits.length+' WBTC deposits, '+wbtcFlows.withdrawals.length+' WBTC withdrawals');
-            return{events,balances:{lt:ltBalances,st:stBalances},wbtcFlows};
+            console.log('Found '+events.length+' events, '+wbtcFlows.deposits.length+' WBTC deposits, '+wbtcFlows.withdrawals.length+' WBTC withdrawals, gauge balance: '+gaugeBal.toFixed(4));
+            return{events,balances:{lt:ltBalances,st:stBalances,gauge:gaugeBalances},wbtcFlows};
         }
         function loadData(){const status=document.getElementById('loadingStatus');status.textContent=t('loading');if(DATA.pnlLog)document.getElementById('statusPnlLog').classList.add('loaded');if(DATA.userPnl)document.getElementById('statusUserPnl').classList.add('loaded');status.textContent=t('ready');setTimeout(()=>document.getElementById('loadingOverlay').classList.add('hidden'),300);updateAddressCache();}
-        async function analyzeUser(){const poolIdx=parseInt(document.getElementById('poolSelect').value);let address=selectedAddress;if(!address){const searchVal=addressSearch.value.trim();if(searchVal.startsWith('0x'))address=searchVal.split(' ')[0];}if(!address||!address.startsWith('0x')||address.length!==42){alert('Выберите или введите корректный адрес (0x...)');return;}const btn=document.getElementById('analyzeBtn');const originalText=btn.textContent;btn.textContent='Загрузка...';btn.disabled=true;showLoader();document.getElementById('resultsSection').classList.remove('hidden');const pnl=DATA.userPnl?.[poolIdx]?.[address]||0;const blocks=DATA.pnlLog?.blocks?.[poolIdx]||[];const stakedPps=DATA.pnlLog?.staked_pps?.[poolIdx]||[];const unstakedPps=DATA.pnlLog?.unstaked_pps?.[poolIdx]||[];let userEvents=[];let userBalances=null;let wbtcFlows={deposits:[],withdrawals:[]};try{
+        async function analyzeUser(){const poolIdx=parseInt(document.getElementById('poolSelect').value);let address=selectedAddress;if(!address){const searchVal=addressSearch.value.trim();if(searchVal.startsWith('0x'))address=searchVal.split(' ')[0];}if(!address||!address.startsWith('0x')||address.length!==42){alert(t('invalidAddress'));return;}const btn=document.getElementById('analyzeBtn');const originalText=btn.textContent;btn.textContent=t('loadingBtn');btn.disabled=true;showLoader();document.getElementById('resultsSection').classList.remove('hidden');const pnl=DATA.userPnl?.[poolIdx]?.[address]||0;const blocks=DATA.pnlLog?.blocks?.[poolIdx]||[];const stakedPps=DATA.pnlLog?.staked_pps?.[poolIdx]||[];const unstakedPps=DATA.pnlLog?.unstaked_pps?.[poolIdx]||[];let userEvents=[];let userBalances=null;let wbtcFlows={deposits:[],withdrawals:[]};try{
             const cached=getFromCache(poolIdx,address);
             if(cached){
-                btn.textContent='Из кеша...';
+                btn.textContent=t('loadingFromCache');
                 userEvents=cached.events||[];
                 userBalances=cached.balances;
                 wbtcFlows=cached.wbtcFlows||{deposits:[],withdrawals:[]};
             }else{
-                btn.textContent='Загрузка из блокчейна...';
+                btn.textContent=t('loadingFromBlockchain');
                 resetParallelProgress();
                 const blockchainData=await fetchUserEvents(poolIdx,address);
                 userEvents=blockchainData.events;
                 userBalances=blockchainData.balances;
                 wbtcFlows=blockchainData.wbtcFlows||{deposits:[],withdrawals:[]};
                 saveToCache(poolIdx,address,blockchainData);
-            }if(userEvents.length>0)document.getElementById('statusEvents').classList.add('loaded');if(userBalances)document.getElementById('statusBalances').classList.add('loaded');}catch(error){console.error('Ошибка загрузки из блокчейна:',error);}hideLoader();btn.textContent=originalText;btn.disabled=false;updateStats(poolIdx,address,pnl,blocks,userEvents,userBalances,wbtcFlows);buildCharts(poolIdx,address,blocks,stakedPps,unstakedPps,userBalances,userEvents,wbtcFlows);buildEventsTimeline(userEvents,userBalances,blocks,wbtcFlows);buildPnlBreakdown(poolIdx,address,blocks,stakedPps,unstakedPps,userBalances,wbtcFlows);document.getElementById('resultsSection').scrollIntoView({behavior:'smooth'});}
-        function updateStats(poolIdx,address,pnl,blocks,userEvents,userBalances,wbtcFlows){const pnlEl=document.getElementById('statPnl');pnlEl.textContent=(pnl>=0?'+':'')+pnl.toFixed(8)+' BTC';pnlEl.className='stat-value '+(pnl>=0?'positive':'negative');if(userBalances){const ltBalance=userBalances.lt?.[userBalances.lt.length-1]||0;const stBalance=userBalances.st?.[userBalances.st.length-1]||0;document.getElementById('statBalance').textContent=(ltBalance+stBalance).toFixed(6);document.getElementById('statBalanceType').textContent='ybBTC: '+ltBalance.toFixed(4)+' / st-ybBTC: '+stBalance.toFixed(4);}else{document.getElementById('statBalance').textContent='-';document.getElementById('statBalanceType').textContent=POOL_NAMES[poolIdx];}if(pnl<0&&DATA.pnlLog?.admin_fees&&DATA.pnlLog?.fair_admin_fees){const charged=DATA.pnlLog.admin_fees[poolIdx]?.slice(-1)[0]||0;const fair=DATA.pnlLog.fair_admin_fees[poolIdx]?.slice(-1)[0]||0;const overcharge=charged-fair;let totalLoss=0;if(DATA.userPnl?.[poolIdx]){Object.values(DATA.userPnl[poolIdx]).forEach(v=>{if(v<0)totalLoss+=-v;});}const refund=totalLoss>0?(-pnl/totalLoss)*overcharge:0;document.getElementById('statRefund').textContent='+'+refund.toFixed(8)+' BTC';document.getElementById('statRefundPercent').textContent=((refund/-pnl)*100).toFixed(2)+'% от убытка';}else{document.getElementById('statRefund').textContent='-';document.getElementById('statRefundPercent').textContent=pnl>=0?'Нет убытка':'Нет данных';}}
+            }if(userEvents.length>0)document.getElementById('statusEvents').classList.add('loaded');if(userBalances)document.getElementById('statusBalances').classList.add('loaded');}catch(error){console.error(t('blockchainError'),error);}hideLoader();btn.textContent=originalText;btn.disabled=false;updateStats(poolIdx,address,pnl,blocks,userEvents,userBalances,wbtcFlows);buildCharts(poolIdx,address,blocks,stakedPps,unstakedPps,userBalances,userEvents,wbtcFlows);buildEventsTimeline(userEvents,userBalances,blocks,wbtcFlows);buildPnlBreakdown(poolIdx,address,blocks,stakedPps,unstakedPps,userBalances,wbtcFlows);document.getElementById('resultsSection').scrollIntoView({behavior:'smooth'});}
+        function updateStats(poolIdx,address,pnl,blocks,userEvents,userBalances,wbtcFlows){const pnlEl=document.getElementById('statPnl');pnlEl.textContent=(pnl>=0?'+':'')+pnl.toFixed(8)+' BTC';pnlEl.className='stat-value '+(pnl>=0?'positive':'negative');if(userBalances){const ltBalance=userBalances.lt?.[userBalances.lt.length-1]||0;const stBalance=userBalances.st?.[userBalances.st.length-1]||0;const gaugeBalance=userBalances.gauge?.[userBalances.gauge.length-1]||0;const totalBalance=ltBalance+stBalance+gaugeBalance;document.getElementById('statBalance').textContent=totalBalance.toFixed(6);let balanceDetails='ybBTC: '+ltBalance.toFixed(4)+' / st-ybBTC: '+stBalance.toFixed(4);if(gaugeBalance>0.0001)balanceDetails+=' / gauge: '+gaugeBalance.toFixed(4);document.getElementById('statBalanceType').textContent=balanceDetails;}else{document.getElementById('statBalance').textContent='-';document.getElementById('statBalanceType').textContent=POOL_NAMES[poolIdx];}if(pnl<0&&DATA.pnlLog?.admin_fees&&DATA.pnlLog?.fair_admin_fees){const charged=DATA.pnlLog.admin_fees[poolIdx]?.slice(-1)[0]||0;const fair=DATA.pnlLog.fair_admin_fees[poolIdx]?.slice(-1)[0]||0;const overcharge=charged-fair;let totalLoss=0;if(DATA.userPnl?.[poolIdx]){Object.values(DATA.userPnl[poolIdx]).forEach(v=>{if(v<0)totalLoss+=-v;});}const refund=totalLoss>0?(-pnl/totalLoss)*overcharge:0;document.getElementById('statRefund').textContent='+'+refund.toFixed(8)+' BTC';document.getElementById('statRefundPercent').textContent=((refund/-pnl)*100).toFixed(2)+t('percentOfLoss');}else{document.getElementById('statRefund').textContent='-';document.getElementById('statRefundPercent').textContent=pnl>=0?t('noLoss'):t('noData');}}
         function buildCharts(poolIdx,address,blocks,stakedPps,unstakedPps,userBalances,userEvents,wbtcFlows){
             Object.values(charts).forEach(chart=>chart.destroy());
             charts={};
@@ -1156,8 +1233,8 @@
             const fullExits=[];
             if(userBalances){
                 for(let i=1;i<blocks.length;i++){
-                    const prevTotal=(userBalances.lt[i-1]||0)+(userBalances.st[i-1]||0);
-                    const currTotal=(userBalances.lt[i]||0)+(userBalances.st[i]||0);
+                    const prevTotal=(userBalances.lt[i-1]||0)+(userBalances.st[i-1]||0)+(userBalances.gauge?.[i-1]||0);
+                    const currTotal=(userBalances.lt[i]||0)+(userBalances.st[i]||0)+(userBalances.gauge?.[i]||0);
                     if(prevTotal>0.01 && currTotal<0.01){
                         // Balance dropped to near zero - this is a full exit
                         const uPps=unstakedPps[i]||1;
@@ -1188,7 +1265,7 @@
                 blocks=blocks.slice(0,trimIdx);
                 stakedPps=stakedPps.slice(0,trimIdx);
                 unstakedPps=unstakedPps.slice(0,trimIdx);
-                if(userBalances){userBalances.lt=userBalances.lt.slice(0,trimIdx);userBalances.st=userBalances.st.slice(0,trimIdx);}
+                if(userBalances){userBalances.lt=userBalances.lt.slice(0,trimIdx);userBalances.st=userBalances.st.slice(0,trimIdx);if(userBalances.gauge)userBalances.gauge=userBalances.gauge.slice(0,trimIdx);}
             }
 
             // Calculate cumulative PnL
@@ -1229,11 +1306,11 @@
                 pnlBadge.style.cssText='background:'+(pnl>=0?'rgba(0,255,136,0.1)':'rgba(255,51,102,0.1)')+';border-color:'+(pnl>=0?'rgba(0,255,136,0.3)':'rgba(255,51,102,0.3)')+';color:'+(pnl>=0?'#00ff88':'#ff3366');
             }
             if(userBalances){
-                const totalBal=(userBalances.lt?.slice(-1)[0]||0)+(userBalances.st?.slice(-1)[0]||0);
+                const totalBal=(userBalances.lt?.slice(-1)[0]||0)+(userBalances.st?.slice(-1)[0]||0)+(userBalances.gauge?.slice(-1)[0]||0);
                 const balBadge=document.getElementById('balanceBadge');
-                if(balBadge) balBadge.textContent='Баланс: '+totalBal.toFixed(2);
+                if(balBadge) balBadge.textContent=t('balance')+': '+totalBal.toFixed(2);
                 const valBadge=document.getElementById('valueBadge');
-                if(valBadge) valBadge.textContent='Стоимость: '+(totalBal*((endPpsU+endPpsS)/2)).toFixed(4)+' BTC';
+                if(valBadge) valBadge.textContent=t('value')+': '+(totalBal*((endPpsU+endPpsS)/2)).toFixed(4)+' BTC';
             }
 
             // Update explanations
@@ -1255,7 +1332,7 @@
                 interaction:{mode:'index',intersect:false},
                 plugins:{
                     legend:{position:'top',labels:{color:'#94a3b8',font:{family:'JetBrains Mono',size:11},usePointStyle:true,padding:15}},
-                    tooltip:{backgroundColor:'rgba(21,21,31,0.95)',titleColor:'#f8fafc',bodyColor:'#94a3b8',padding:12,callbacks:{title:function(ctx){const idx=ctx[0].dataIndex;const block=blockLabels[idx];const d=blockToDate(block);return d.toLocaleDateString('ru-RU',{day:'numeric',month:'short',year:'numeric'})+' (блок '+block+')';}},
+                    tooltip:{backgroundColor:'rgba(21,21,31,0.95)',titleColor:'#f8fafc',bodyColor:'#94a3b8',padding:12,callbacks:{title:function(ctx){const idx=ctx[0].dataIndex;const block=blockLabels[idx];const d=blockToDate(block);return d.toLocaleDateString(getLocale(),{day:'numeric',month:'short',year:'numeric'})+' ('+t('blockLabel')+' '+block+')';}},
                         bodyFont:{family:'JetBrains Mono',size:11},titleFont:{family:'Outfit',size:13,weight:600}}
                 },
                 scales:{
@@ -1400,7 +1477,7 @@
                 const tooltip = createMarkerTooltip();
                 const block = blockLabels[marker.idx];
                 const d = blockToDate(block);
-                const dateStr = d.toLocaleDateString('ru-RU', {day:'numeric',month:'short',year:'numeric'}) + ' ' + d.toLocaleTimeString('ru-RU', {hour:'2-digit',minute:'2-digit'});
+                const dateStr = d.toLocaleDateString(getLocale(), {day:'numeric',month:'short',year:'numeric'}) + ' ' + d.toLocaleTimeString(getLocale(), {hour:'2-digit',minute:'2-digit'});
 
                 let info = '';
                 if (marker.type === 'entry') {
@@ -1473,7 +1550,7 @@
                 const label=dataset.label;
                 const block=blockLabels[dataIndex];
                 const d=blockToDate(block);
-                const dateStr=d.toLocaleDateString('ru-RU',{day:'numeric',month:'short',year:'numeric'})+' '+d.toLocaleTimeString('ru-RU',{hour:'2-digit',minute:'2-digit'});
+                const dateStr=d.toLocaleDateString(getLocale(),{day:'numeric',month:'short',year:'numeric'})+' '+d.toLocaleTimeString(getLocale(),{hour:'2-digit',minute:'2-digit'});
                 let info='';
                 if(label.includes('Вход')){
                     const entry=entryPoints.find(e=>e.idx===dataIndex);
@@ -1582,7 +1659,7 @@
                     const idx = ctx[0].dataIndex;
                     const block = blockLabels[idx];
                     const d = blockToDate(block);
-                    return d.toLocaleDateString('ru-RU', {day:'numeric',month:'short',year:'numeric'}) + ' (блок ' + block + ')';
+                    return d.toLocaleDateString(getLocale(), {day:'numeric',month:'short',year:'numeric'}) + ' (блок ' + block + ')';
                 },
                 afterBody: function(ctx) {
                     const idx = ctx[0].dataIndex;
@@ -1592,37 +1669,45 @@
                 }
             };
 
-            // Balance Chart - show ybBTC and st-ybBTC separately (stacked)
+            // Balance Chart - show ybBTC, st-ybBTC and gauge separately (stacked)
             if(userBalances?.lt&&userBalances?.st){
-                const totalBalance=userBalances.lt.map((lt,i)=>(lt||0)+(userBalances.st[i]||0));
+                const gaugeData=userBalances.gauge||blocks.map(()=>0);
+                const totalBalance=userBalances.lt.map((lt,i)=>(lt||0)+(userBalances.st[i]||0)+(gaugeData[i]||0));
                 const maxLt=Math.max(...userBalances.lt.map(v=>v||0));
                 const maxSt=Math.max(...userBalances.st.map(v=>v||0));
+                const maxGauge=Math.max(...gaugeData.map(v=>v||0));
                 const hasLt=maxLt>0.0001;
                 const hasSt=maxSt>0.0001;
+                const hasGauge=maxGauge>0.0001;
                 const datasets=[];
                 if(hasLt)datasets.push({label:'ybBTC (unstaked)',data:userBalances.lt,borderColor:'#00d4ff',backgroundColor:'rgba(0,212,255,0.4)',fill:'origin',tension:0.3,pointRadius:0,borderWidth:2});
                 if(hasSt)datasets.push({label:'st-ybBTC (staked)',data:userBalances.st,borderColor:'#a855f7',backgroundColor:'rgba(168,85,247,0.4)',fill:hasLt?'-1':'origin',tension:0.3,pointRadius:0,borderWidth:2});
-                if(datasets.length===0)datasets.push({label:'Нет данных',data:blocks.map(()=>null),borderColor:'#666'});
+                if(hasGauge)datasets.push({label:'g(ybBTC) (gauge)',data:gaugeData,borderColor:'#f59e0b',backgroundColor:'rgba(245,158,11,0.4)',fill:hasSt?'-1':(hasLt?'-1':'origin'),tension:0.3,pointRadius:0,borderWidth:2});
+                if(datasets.length===0)datasets.push({label:t('noData'),data:blocks.map(()=>null),borderColor:'#666'});
                 charts.balance=new Chart(document.getElementById('balanceChart').getContext('2d'),{type:'line',data:{labels,datasets},options:{...commonOpts,scales:{...commonOpts.scales,y:{...commonOpts.scales.y,stacked:true}}}});
                 const balExpl=document.getElementById('balanceExplanation');
                 if(balExpl){
                     const maxTotal=Math.max(...totalBalance);
-                    balExpl.innerHTML='Максимум: <strong>'+maxTotal.toFixed(2)+'</strong> токенов (ybBTC: '+maxLt.toFixed(2)+', st-ybBTC: '+maxSt.toFixed(2)+'). Убыток = баланс × падение PPS.';
+                    let explText='Max: <strong>'+maxTotal.toFixed(2)+'</strong> tokens (ybBTC: '+maxLt.toFixed(2)+', st-ybBTC: '+maxSt.toFixed(2);
+                    if(hasGauge)explText+=', gauge: '+maxGauge.toFixed(2);
+                    explText+=')';
+                    balExpl.innerHTML=explText;
                 }
             }else{
-                charts.balance=new Chart(document.getElementById('balanceChart').getContext('2d'),{type:'line',data:{labels,datasets:[{label:'Нет данных',data:blocks.map(()=>null),borderColor:'#ff6b35'}]},options:commonOpts});
+                charts.balance=new Chart(document.getElementById('balanceChart').getContext('2d'),{type:'line',data:{labels,datasets:[{label:t('noData'),data:blocks.map(()=>null),borderColor:'#ff6b35'}]},options:commonOpts});
             }
 
             // Value Chart with 3 lines: Реальная, К выводу (с TRD), Фундаментальная
             // (curPoolIdx and imbalanceDataAll already defined above)
             let valueData=[],withdrawData=[],idealData=[];
             for(let i=0;i<blocks.length;i++){
-                const ltB=userBalances?.lt?.[i]||0,stB=userBalances?.st?.[i]||0;
-                const realVal=ltB*(unstakedPps[i]||1)+stB*(stakedPps[i]||1);
+                const ltB=userBalances?.lt?.[i]||0,stB=userBalances?.st?.[i]||0,gaugeB=userBalances?.gauge?.[i]||0;
+                // Gauge tokens have same PPS as unstaked ybBTC
+                const realVal=ltB*(unstakedPps[i]||1)+stB*(stakedPps[i]||1)+gaugeB*(unstakedPps[i]||1);
                 const trd=(imbalanceDataAll?.[i]?.imbalance||0)/100;
                 valueData.push(realVal);
                 withdrawData.push(realVal*(1-trd));
-                idealData.push(ltB+stB);
+                idealData.push(ltB+stB+gaugeB);
             }
             // ppsReturnData: показывает отклонение реальной стоимости от HODL в процентах
             // Формула: ((realValue - HODL) / HODL) * 100
@@ -1862,7 +1947,7 @@
                 const sharpChangeRetDataFiltered=sharpChangeRetData.map((v,i)=>chartPpsReturnData[i]!==null?v:null);
                 // Custom tooltip to show absolute PPS values
                 const ppsReturnOpts={...commonOpts,plugins:{...commonOpts.plugins,tooltip:{...commonOpts.plugins?.tooltip,callbacks:{
-                    title:ctx=>{const idx=ctx[0].dataIndex;const block=blockLabels[idx];const d=blockToDate(block);return d.toLocaleDateString('ru-RU',{day:'numeric',month:'short'})+' (блок '+block+')';},
+                    title:ctx=>{const idx=ctx[0].dataIndex;const block=blockLabels[idx];const d=blockToDate(block);return d.toLocaleDateString(getLocale(),{day:'numeric',month:'short'})+' ('+t('blockLabel')+' '+block+')';},
                     afterBody:ctx=>{const idx=ctx[0].dataIndex;const uPps=unstakedPps[idx]||1;const sPps=stakedPps[idx]||1;const ch=sharpChanges.find(c=>c.idx===idx);let lines=['','PPS: ybBTC='+uPps.toFixed(4)+' st='+sPps.toFixed(4)];if(ch)lines.push('⚠ '+ch.cause);return lines;}
                 }}}};
                 charts.ppsReturn=new Chart(ppsRetEl.getContext('2d'),{type:'line',data:{labels,datasets:[
@@ -2011,18 +2096,18 @@
                 canvas.addEventListener('mouseleave',hideMarkerInfo);
             });
         }
-        function buildEventsTimeline(userEvents,userBalances,blocks,wbtcFlows){const timeline=document.getElementById('eventsTimeline');if(!userEvents||userEvents.length===0){timeline.innerHTML='<div class="empty-state"><div class="empty-state-icon">📊</div><div class="empty-state-title">Нет событий</div><div class="empty-state-text">События не найдены для этого адреса</div></div>';document.getElementById('eventsCount').textContent='0 событий';return;}document.getElementById('eventsCount').textContent=userEvents.length+' событий';timeline.innerHTML=userEvents.map(event=>{const typeClass=event.type.toLowerCase();const amountClass=event.amount>=0?'positive':'negative';const amountSign=event.amount>=0?'+':'';const d=blockToDate(event.block);const dateStr=d.toLocaleDateString('ru-RU',{day:'numeric',month:'short',year:'numeric'})+' '+d.toLocaleTimeString('ru-RU',{hour:'2-digit',minute:'2-digit'});let balanceStr='';if(userBalances&&blocks){const idx=blocks.indexOf(event.block);if(idx===-1){const nearIdx=blocks.findIndex(b=>b>=event.block);if(nearIdx!==-1){const lt=userBalances.lt[nearIdx]||0;const st=userBalances.st[nearIdx]||0;balanceStr=' | Баланс: '+(lt+st).toFixed(4)+' (ybBTC:'+lt.toFixed(4)+' st-ybBTC:'+st.toFixed(4)+')';}}else{const lt=userBalances.lt[idx]||0;const st=userBalances.st[idx]||0;balanceStr=' | Баланс: '+(lt+st).toFixed(4)+' (ybBTC:'+lt.toFixed(4)+' st-ybBTC:'+st.toFixed(4)+')';}}return'<div class="event-item" data-type="'+typeClass+'"><div class="event-block">'+dateStr+'<br><small style="opacity:0.6">Block '+event.block+'</small></div><div class="event-info"><span class="event-type '+typeClass+'">'+event.type.replace('_',' ')+'</span><span class="event-description">'+(event.description||'')+balanceStr+'</span></div><div class="event-amount '+amountClass+'">'+amountSign+event.amount.toFixed(6)+'</div></div>';}).join('');document.querySelectorAll('.filter-btn').forEach(btn=>{btn.onclick=()=>{document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));btn.classList.add('active');const filter=btn.dataset.filter;document.querySelectorAll('.event-item').forEach(item=>{item.style.display=(filter==='all'||item.dataset.type.includes(filter))?'grid':'none';});};});}
-        function buildPnlBreakdown(poolIdx,address,blocks,stakedPps,unstakedPps,userBalances,wbtcFlows){const tbody=document.getElementById('breakdownBody');if(blocks.length===0){tbody.innerHTML='<tr><td colspan="9">Нет данных</td></tr>';return;}
+        function buildEventsTimeline(userEvents,userBalances,blocks,wbtcFlows){const timeline=document.getElementById('eventsTimeline');if(!userEvents||userEvents.length===0){timeline.innerHTML='<div class="empty-state"><div class="empty-state-icon">📊</div><div class="empty-state-title">'+t('noEvents')+'</div><div class="empty-state-text">'+t('eventsNotFound')+'</div></div>';document.getElementById('eventsCount').textContent='0 '+t('eventsCount');return;}document.getElementById('eventsCount').textContent=userEvents.length+' '+t('eventsCount');timeline.innerHTML=userEvents.map(event=>{const typeClass=event.type.toLowerCase();const amountClass=event.amount>=0?'positive':'negative';const amountSign=event.amount>=0?'+':'';const d=blockToDate(event.block);const dateStr=d.toLocaleDateString(getLocale(),{day:'numeric',month:'short',year:'numeric'})+' '+d.toLocaleTimeString(getLocale(),{hour:'2-digit',minute:'2-digit'});let balanceStr='';if(userBalances&&blocks){const idx=blocks.indexOf(event.block);if(idx===-1){const nearIdx=blocks.findIndex(b=>b>=event.block);if(nearIdx!==-1){const lt=userBalances.lt[nearIdx]||0;const st=userBalances.st[nearIdx]||0;balanceStr=' | '+t('balance')+': '+(lt+st).toFixed(4)+' (ybBTC:'+lt.toFixed(4)+' st-ybBTC:'+st.toFixed(4)+')';}}else{const lt=userBalances.lt[idx]||0;const st=userBalances.st[idx]||0;balanceStr=' | '+t('balance')+': '+(lt+st).toFixed(4)+' (ybBTC:'+lt.toFixed(4)+' st-ybBTC:'+st.toFixed(4)+')';}}return'<div class="event-item" data-type="'+typeClass+'"><div class="event-block">'+dateStr+'<br><small style="opacity:0.6">Block '+event.block+'</small></div><div class="event-info"><span class="event-type '+typeClass+'">'+event.type.replace('_',' ')+'</span><span class="event-description">'+(event.description||'')+balanceStr+'</span></div><div class="event-amount '+amountClass+'">'+amountSign+event.amount.toFixed(6)+'</div></div>';}).join('');document.querySelectorAll('.filter-btn').forEach(btn=>{btn.onclick=()=>{document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));btn.classList.add('active');const filter=btn.dataset.filter;document.querySelectorAll('.event-item').forEach(item=>{item.style.display=(filter==='all'||item.dataset.type.includes(filter))?'grid':'none';});};});}
+        function buildPnlBreakdown(poolIdx,address,blocks,stakedPps,unstakedPps,userBalances,wbtcFlows){const tbody=document.getElementById('breakdownBody');if(blocks.length===0){tbody.innerHTML='<tr><td colspan="9">'+t('noData')+'</td></tr>';return;}
             // Find last index with non-zero balance (position end)
             let lastActiveIdx=blocks.length-1;
             if(userBalances){
                 for(let i=blocks.length-1;i>=0;i--){
-                    const total=(userBalances.lt?.[i]||0)+(userBalances.st?.[i]||0);
+                    const total=(userBalances.lt?.[i]||0)+(userBalances.st?.[i]||0)+(userBalances.gauge?.[i]||0);
                     if(total>0.0001){lastActiveIdx=i+1;break;}
                 }
             }
             const activeBlocks=Math.min(blocks.length,lastActiveIdx+1);
-            const sampleRate=Math.max(1,Math.floor(activeBlocks/50));let rows=[];let cumulativePnl=0;let prevStakedPps=stakedPps[0]||1;let prevUnstakedPps=unstakedPps[0]||1;for(let i=0;i<activeBlocks;i+=sampleRate){const block=blocks[i];const d=blockToDate(block);const dateStr=d.toLocaleDateString('ru-RU',{day:'2-digit',month:'short'})+' '+d.toLocaleTimeString('ru-RU',{hour:'2-digit',minute:'2-digit'});const sPps=stakedPps[i]||1;const uPps=unstakedPps[i]||1;const ltBal=userBalances?.lt?.[i]||0;const stBal=userBalances?.st?.[i]||0;const totalBal=ltBal+stBal;let deltaPnl;if(userBalances){deltaPnl=(uPps-prevUnstakedPps)*ltBal+(sPps-prevStakedPps)*stBal;}else{deltaPnl=(sPps-prevStakedPps)+(uPps-prevUnstakedPps);}cumulativePnl+=deltaPnl;rows.push('<tr><td>'+block+'</td><td>'+dateStr+'</td><td>'+(userBalances?totalBal.toFixed(4):'-')+'</td><td>'+(userBalances?ltBal.toFixed(4):'-')+'</td><td>'+(userBalances?stBal.toFixed(4):'-')+'</td><td>'+uPps.toFixed(6)+'</td><td>'+sPps.toFixed(6)+'</td><td class="'+(deltaPnl>=0?'positive':'negative')+'">'+(deltaPnl>=0?'+':'')+deltaPnl.toFixed(6)+'</td><td class="'+(cumulativePnl>=0?'positive':'negative')+'">'+(cumulativePnl>=0?'+':'')+cumulativePnl.toFixed(6)+'</td></tr>');prevStakedPps=sPps;prevUnstakedPps=uPps;}tbody.innerHTML=rows.join('');}
+            const sampleRate=Math.max(1,Math.floor(activeBlocks/50));let rows=[];let cumulativePnl=0;let prevStakedPps=stakedPps[0]||1;let prevUnstakedPps=unstakedPps[0]||1;for(let i=0;i<activeBlocks;i+=sampleRate){const block=blocks[i];const d=blockToDate(block);const dateStr=d.toLocaleDateString(getLocale(),{day:'2-digit',month:'short'})+' '+d.toLocaleTimeString(getLocale(),{hour:'2-digit',minute:'2-digit'});const sPps=stakedPps[i]||1;const uPps=unstakedPps[i]||1;const ltBal=userBalances?.lt?.[i]||0;const stBal=userBalances?.st?.[i]||0;const gaugeBal=userBalances?.gauge?.[i]||0;const totalBal=ltBal+stBal+gaugeBal;let deltaPnl;if(userBalances){deltaPnl=(uPps-prevUnstakedPps)*(ltBal+gaugeBal)+(sPps-prevStakedPps)*stBal;}else{deltaPnl=(sPps-prevStakedPps)+(uPps-prevUnstakedPps);}cumulativePnl+=deltaPnl;rows.push('<tr><td>'+block+'</td><td>'+dateStr+'</td><td>'+(userBalances?totalBal.toFixed(4):'-')+'</td><td>'+(userBalances?ltBal.toFixed(4):'-')+'</td><td>'+(userBalances?stBal.toFixed(4):'-')+'</td><td>'+uPps.toFixed(6)+'</td><td>'+sPps.toFixed(6)+'</td><td class="'+(deltaPnl>=0?'positive':'negative')+'">'+(deltaPnl>=0?'+':'')+deltaPnl.toFixed(6)+'</td><td class="'+(cumulativePnl>=0?'positive':'negative')+'">'+(cumulativePnl>=0?'+':'')+cumulativePnl.toFixed(6)+'</td></tr>');prevStakedPps=sPps;prevUnstakedPps=uPps;}tbody.innerHTML=rows.join('');}
         document.getElementById('poolSelect').addEventListener('change',()=>{updateAddressCache();selectedAddress='';addressSearch.value='';addressClear.classList.remove('visible');});
         document.getElementById('analyzeBtn').addEventListener('click',analyzeUser);
         // Initialize language on page load
