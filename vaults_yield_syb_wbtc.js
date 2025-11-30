@@ -1,20 +1,20 @@
-// Last updated: 2025-11-30 07:45:37 UTC
+// Last updated: 2025-11-30 07:58:20 UTC
 const yieldData_syb_wbtc = {
   "metadata": {
     "contract": "0xbc56e3edB67b56d598aCE07668b138815F45d7aa",
     "start_date": "2025-11-12T20:08:23",
-    "end_date": "2025-11-30T11:44:35",
+    "end_date": "2025-11-30T11:57:23",
     "data_points": 425,
     "step_seconds": 3600
   },
   "metrics": {
-    "total_return": -0.020604039113845795,
-    "total_return_pct": -2.0604039113845793,
-    "apr": -0.34983989314106206,
-    "apr_pct": -34.9839893141062,
-    "days": 17.65013888888889,
+    "total_return": -0.020605960336204307,
+    "total_return_pct": -2.0605960336204308,
+    "apr": -0.3497253442716515,
+    "apr_pct": -34.97253442716515,
+    "days": 17.659027777777776,
     "start_pps": 0.99936376,
-    "end_pps": 0.97877283
+    "end_pps": 0.97877091
   },
   "data": [
     {
@@ -4233,7 +4233,7 @@ const yieldData_syb_wbtc = {
       "datetime": "2025-11-30T09:09:23",
       "pps_btc": 0.97879223,
       "ret_step": -9.072323181161902e-06,
-      "ret_step_pct": -0.0009072323181161901,
+      "ret_step_pct": -0.0009072323181161902,
       "btc_price": 90858.18783526495,
       "pps_yb": 0.9728927651153274
     },
@@ -4243,7 +4243,7 @@ const yieldData_syb_wbtc = {
       "datetime": "2025-11-30T10:09:23",
       "pps_btc": 0.97878582,
       "ret_step": -6.548887295519295e-06,
-      "ret_step_pct": -0.0006548887295519296,
+      "ret_step_pct": -0.0006548887295519295,
       "btc_price": 90820.86657093189,
       "pps_yb": 0.9728927651153274
     },
@@ -4258,12 +4258,12 @@ const yieldData_syb_wbtc = {
       "pps_yb": 0.9728927651153274
     },
     {
-      "block": 23910069,
-      "timestamp": 1764488675,
-      "datetime": "2025-11-30T11:44:35",
-      "pps_btc": 0.97877283,
-      "ret_step": -5.322963723215531e-06,
-      "ret_step_pct": -0.0005322963723215531,
+      "block": 23910130,
+      "timestamp": 1764489443,
+      "datetime": "2025-11-30T11:57:23",
+      "pps_btc": 0.97877091,
+      "ret_step": null,
+      "ret_step_pct": null,
       "btc_price": 90901.61050740648,
       "pps_yb": 0.9728927651153274
     }
