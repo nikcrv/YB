@@ -733,8 +733,9 @@
         // Convert block number to date
         function blockToDate(block){const refBlock=21000000,refTime=1729552859,blockTime=12,calculated=(refTime+(block-refBlock)*blockTime)*1000,now=Date.now();return new Date(Math.min(calculated,now));}
         function formatBlockDate(block){const d=blockToDate(block);const months=t('months');return d.getDate()+' '+months[d.getMonth()];}
-        // Cache functions for faster testing
-        function getCacheKey(poolIdx,address){return 'yb_cache_'+poolIdx+'_'+address.toLowerCase();}
+        // Cache functions for faster testing - version 2 (with gauge support)
+        const CACHE_VERSION='v2';
+        function getCacheKey(poolIdx,address){return 'yb_cache_'+CACHE_VERSION+'_'+poolIdx+'_'+address.toLowerCase();}
         function getFromCache(poolIdx,address){
             const key=getCacheKey(poolIdx,address);
             const cached=localStorage.getItem(key);
@@ -751,6 +752,8 @@
             const key=getCacheKey(poolIdx,address);
             try{localStorage.setItem(key,JSON.stringify(data));console.log('Saved to cache',address);}catch(e){console.warn('Cache save error',e);}
         }
+        // Clear old cache versions on load
+        Object.keys(localStorage).filter(k=>k.startsWith('yb_cache_')&&!k.startsWith('yb_cache_'+CACHE_VERSION)).forEach(k=>localStorage.removeItem(k));
 
         const RPC_URL='https://eth.drpc.org',FACTORY_ADDRESS='0x370a449FeBb9411c95bf897021377fe0B7D100c0',ZERO_ADDRESS='0x0000000000000000000000000000000000000000',TRANSFER_TOPIC='0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef';
         // Underlying token addresses for each pool
@@ -1313,15 +1316,6 @@
                 if(valBadge) valBadge.textContent=t('value')+': '+(totalBal*((endPpsU+endPpsS)/2)).toFixed(4)+' BTC';
             }
 
-            // Update explanations
-            const pnlExpl=document.getElementById('pnlExplanation');
-            if(pnlExpl){
-                if(pnl<0){
-                    pnlExpl.innerHTML='Блоки <strong>'+blocks[0]+'</strong> - <strong>'+blocks[blocks.length-1]+'</strong>: позиция потеряла <span class="loss">'+Math.abs(pnl).toFixed(6)+' BTC</span> из-за падения PPS.';
-                }else{
-                    pnlExpl.innerHTML='Позиция заработала <span class="gain">+'+pnl.toFixed(6)+' BTC</span> благодаря росту PPS.';
-                }
-            }
 
 
             const blockLabels=blocks;
@@ -1685,14 +1679,6 @@
                 if(hasGauge)datasets.push({label:'g(ybBTC) (gauge)',data:gaugeData,borderColor:'#f59e0b',backgroundColor:'rgba(245,158,11,0.4)',fill:hasSt?'-1':(hasLt?'-1':'origin'),tension:0.3,pointRadius:0,borderWidth:2});
                 if(datasets.length===0)datasets.push({label:t('noData'),data:blocks.map(()=>null),borderColor:'#666'});
                 charts.balance=new Chart(document.getElementById('balanceChart').getContext('2d'),{type:'line',data:{labels,datasets},options:{...commonOpts,scales:{...commonOpts.scales,y:{...commonOpts.scales.y,stacked:true}}}});
-                const balExpl=document.getElementById('balanceExplanation');
-                if(balExpl){
-                    const maxTotal=Math.max(...totalBalance);
-                    let explText='Max: <strong>'+maxTotal.toFixed(2)+'</strong> tokens (ybBTC: '+maxLt.toFixed(2)+', st-ybBTC: '+maxSt.toFixed(2);
-                    if(hasGauge)explText+=', gauge: '+maxGauge.toFixed(2);
-                    explText+=')';
-                    balExpl.innerHTML=explText;
-                }
             }else{
                 charts.balance=new Chart(document.getElementById('balanceChart').getContext('2d'),{type:'line',data:{labels,datasets:[{label:t('noData'),data:blocks.map(()=>null),borderColor:'#ff6b35'}]},options:commonOpts});
             }
@@ -2015,12 +2001,6 @@
                 });
                 setTimeout(() => drawMarkerOverlay(charts.poolImbalance, imbalMarkers), 100);
                 document.getElementById('poolImbalanceBadge').textContent=displayImbal.toFixed(1)+'%'+(hasExited?' (выход)':'');
-                const imbalExpl=document.getElementById('poolImbalanceExplanation');
-                if(imbalExpl){
-                    const severity=displayImbal<5?'низкий':displayImbal<15?'умеренный':'высокий';
-                    const sevClass=displayImbal<5?'gain':displayImbal<15?'':'loss';
-                    imbalExpl.innerHTML='<strong>TRD ('+imbalLabel+'):</strong> <strong class="'+sevClass+'">'+displayImbal.toFixed(1)+'%</strong> ('+severity+'). К выводу = Реальная × '+(100-displayImbal).toFixed(1)+'%.'+(hasExited?'':' Арбитраж восстанавливает баланс → TRD→0.');
-                }
                 // Update TRD stats
                 const trdEl=document.getElementById('statTrd');
                 if(trdEl){
@@ -2124,16 +2104,12 @@
             updateChartExplanations();
         }
         function updateChartExplanations() {
-            // PnL chart explanation
-            document.getElementById('pnlExplanation').innerHTML = '<strong>' + t('pnlExplanation') + '</strong><br>📉 ' + t('pnlExplanation2') + '<br>▲ ' + t('pnlExplanation3');
-            // Balance chart explanation
-            document.getElementById('balanceExplanation').innerHTML = '<strong>ybBTC</strong> ' + t('ybBTCUnstaked') + '. <strong>st-ybBTC</strong> ' + t('stYbBTCStaked') + '.<br><strong>' + (currentLang === 'ru' ? 'Важно:' : 'Important:') + '</strong> ' + t('balanceExplanation2');
-            // Value chart explanation
-            document.getElementById('valueExplanation').innerHTML = '<strong style="color:#00d4ff;">' + (currentLang === 'ru' ? 'Голубая' : 'Cyan') + '</strong> — ' + t('valueExplanation') + '<br><strong style="color:#fbbf24;">' + (currentLang === 'ru' ? 'Жёлтый' : 'Yellow') + '</strong> — ' + t('valueExplanation2') + '<br><strong style="color:#ff3366;">' + (currentLang === 'ru' ? 'Красная' : 'Red') + '</strong> — ' + t('valueExplanation3') + '<br>💡 ' + t('valueExplanation4');
-            // PPS Return chart explanation
-            document.getElementById('ppsReturnExplanation').innerHTML = '<strong>' + t('ppsReturnExplanation') + '</strong><br>⚠ ' + t('ppsReturnExplanation2');
-            // TRD chart explanation
-            document.getElementById('poolImbalanceExplanation').innerHTML = '<strong>TRD</strong> — ' + t('trdExplanation') + '<br>📊 ' + t('trdExplanation2') + '<br>💡 ' + t('trdExplanation3');
+            // Clear all chart explanations
+            document.getElementById('pnlExplanation').innerHTML = '';
+            document.getElementById('balanceExplanation').innerHTML = '';
+            document.getElementById('valueExplanation').innerHTML = '';
+            document.getElementById('ppsReturnExplanation').innerHTML = '';
+            document.getElementById('poolImbalanceExplanation').innerHTML = '';
         }
         window.addEventListener('DOMContentLoaded', () => {
             initLanguage();
