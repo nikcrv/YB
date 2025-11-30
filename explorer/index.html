@@ -1,0 +1,2059 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YB User Analytics</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns"></script>
+    <style>
+        :root {
+            --bg-primary: #0a0a0f;
+            --bg-secondary: #12121a;
+            --bg-tertiary: #1a1a25;
+            --bg-card: #15151f;
+            --accent-orange: #ff6b35;
+            --accent-cyan: #00d4ff;
+            --accent-green: #00ff88;
+            --accent-red: #ff3366;
+            --accent-purple: #a855f7;
+            --accent-yellow: #fbbf24;
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --text-muted: #64748b;
+            --border-color: rgba(255, 255, 255, 0.08);
+            --glow-orange: rgba(255, 107, 53, 0.4);
+            --glow-cyan: rgba(0, 212, 255, 0.3);
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Outfit', sans-serif; background: var(--bg-primary); color: var(--text-primary); min-height: 100vh; }
+        .container { max-width: 1600px; margin: 0 auto; padding: 2rem; }
+        .header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 2rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--border-color); }
+        .header-left { display: flex; align-items: center; gap: 1rem; }
+        .logo { display: flex; align-items: center; gap: 1rem; }
+        .lang-switcher { display: flex; gap: 0.25rem; background: var(--bg-secondary); padding: 0.25rem; border-radius: 8px; }
+        .lang-btn { padding: 0.5rem 0.75rem; border: none; background: transparent; color: var(--text-muted); font-size: 0.75rem; font-weight: 600; cursor: pointer; border-radius: 6px; transition: all 0.2s; }
+        .lang-btn:hover { color: var(--text-primary); }
+        .lang-btn.active { background: var(--accent-orange); color: white; }
+        .logo-icon { width: 48px; height: 48px; background: linear-gradient(135deg, var(--accent-orange), var(--accent-cyan)); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 1.25rem; }
+        .logo-text { font-size: 1.5rem; font-weight: 600; }
+        .logo-subtitle { font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 2px; }
+        .loading-overlay { position: fixed; inset: 0; background: var(--bg-primary); display: flex; flex-direction: column; align-items: center; justify-content: center; z-index: 1000; transition: opacity 0.5s; }
+        .loading-overlay.hidden { opacity: 0; pointer-events: none; }
+        .loading-spinner { width: 60px; height: 60px; border: 4px solid var(--bg-secondary); border-top-color: var(--accent-orange); border-radius: 50%; animation: spin 1s linear infinite; margin-bottom: 1.5rem; }
+        @keyframes spin { to { transform: rotate(360deg); } }
+        .loading-text { font-size: 1rem; color: var(--text-secondary); }
+        .loading-status { font-size: 0.75rem; color: var(--text-muted); margin-top: 0.5rem; font-family: 'JetBrains Mono', monospace; }
+        .data-status { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 12px; padding: 1rem 1.5rem; margin-bottom: 2rem; display: flex; align-items: center; gap: 2rem; flex-wrap: wrap; }
+        .status-item { display: flex; align-items: center; gap: 0.5rem; font-size: 0.875rem; }
+        .status-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent-red); }
+        .status-dot.loaded { background: var(--accent-green); box-shadow: 0 0 10px var(--accent-green); }
+        .status-label { color: var(--text-muted); font-family: 'JetBrains Mono', monospace; }
+        .selector-section { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 16px; padding: 2rem; margin-bottom: 2rem; }
+        .selector-title { font-size: 0.875rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 1.5rem; }
+        .selector-row { display: flex; gap: 1rem; align-items: flex-end; flex-wrap: wrap; }
+        .select-wrapper { flex: 1; min-width: 200px; }
+        .select-wrapper.address { min-width: 500px; flex: 2; }
+        .select-wrapper label { display: block; font-size: 0.75rem; color: var(--text-secondary); margin-bottom: 0.5rem; font-family: 'JetBrains Mono', monospace; }
+        .select-wrapper select, .select-wrapper input { width: 100%; padding: 1rem; background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: 8px; color: var(--text-primary); font-family: 'JetBrains Mono', monospace; font-size: 0.875rem; }
+        .select-wrapper select:focus, .select-wrapper input:focus { border-color: var(--accent-cyan); outline: none; }
+        .address-search-container { position: relative; width: 100%; }
+        .address-search-input { width: 100%; padding: 1rem; padding-right: 3rem; background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: 8px; color: var(--text-primary); font-family: 'JetBrains Mono', monospace; font-size: 0.875rem; }
+        .address-search-input:focus { border-color: var(--accent-cyan); outline: none; }
+        .address-search-input::placeholder { color: var(--text-muted); }
+        .address-search-clear { position: absolute; right: 12px; top: 50%; transform: translateY(-50%); width: 24px; height: 24px; background: var(--bg-tertiary); border: none; border-radius: 4px; color: var(--text-muted); cursor: pointer; display: none; align-items: center; justify-content: center; font-size: 14px; }
+        .address-search-clear:hover { background: var(--accent-red); color: white; }
+        .address-search-clear.visible { display: flex; }
+        .address-dropdown { position: absolute; top: 100%; left: 0; right: 0; max-height: 320px; overflow-y: auto; background: var(--bg-secondary); border: 1px solid var(--border-color); border-top: none; border-radius: 0 0 8px 8px; z-index: 100; display: none; box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5); }
+        .address-dropdown.open { display: block; }
+        .address-dropdown-item { padding: 0.75rem 1rem; cursor: pointer; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-color); }
+        .address-dropdown-item:hover, .address-dropdown-item.highlighted { background: rgba(255, 107, 53, 0.1); }
+        .address-dropdown-item.selected { background: rgba(0, 212, 255, 0.15); border-left: 3px solid var(--accent-cyan); }
+        .address-dropdown-addr { font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; color: var(--text-primary); }
+        .address-dropdown-pnl { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; font-weight: 600; }
+        .address-dropdown-pnl.positive { color: var(--accent-green); }
+        .address-dropdown-pnl.negative { color: var(--accent-red); }
+        .address-dropdown-empty { padding: 1.5rem; text-align: center; color: var(--text-muted); font-size: 0.875rem; }
+        .address-dropdown-stats { padding: 0.5rem 1rem; background: var(--bg-tertiary); font-size: 0.7rem; color: var(--text-muted); display: flex; justify-content: space-between; position: sticky; top: 0; z-index: 1; }
+        .address-dropdown::-webkit-scrollbar { width: 6px; }
+        .address-dropdown::-webkit-scrollbar-track { background: var(--bg-secondary); }
+        .address-dropdown::-webkit-scrollbar-thumb { background: var(--accent-orange); border-radius: 3px; }
+        .btn-analyze { padding: 1rem 2rem; background: linear-gradient(135deg, var(--accent-orange), #ff8555); border: none; border-radius: 8px; color: white; font-weight: 600; font-size: 0.875rem; cursor: pointer; box-shadow: 0 4px 20px var(--glow-orange); }
+        .btn-analyze:hover { transform: translateY(-2px); }
+        .btn-analyze:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+        .blockchain-loader { display: none; margin-top: 1.5rem; padding: 1.5rem; background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: 12px; }
+        .blockchain-loader.active { display: block; animation: fadeIn 0.3s ease; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+        .loader-header { display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem; }
+        .loader-spinner { width: 24px; height: 24px; border: 3px solid var(--bg-tertiary); border-top-color: var(--accent-cyan); border-radius: 50%; animation: spin 0.8s linear infinite; }
+        .loader-title { font-size: 0.875rem; color: var(--text-primary); font-weight: 500; }
+        .loader-phase { font-size: 0.75rem; color: var(--accent-cyan); font-family: 'JetBrains Mono', monospace; margin-left: auto; }
+        .loader-progress { height: 6px; background: var(--bg-tertiary); border-radius: 3px; overflow: hidden; margin-bottom: 0.75rem; }
+        .loader-progress-bar { height: 100%; background: linear-gradient(90deg, var(--accent-orange), var(--accent-cyan)); border-radius: 3px; transition: width 0.3s ease; width: 0%; }
+        .loader-stats { display: flex; justify-content: space-between; font-size: 0.7rem; color: var(--text-muted); font-family: 'JetBrains Mono', monospace; }
+        .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem; margin-bottom: 2rem; }
+        .stat-card { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 16px; padding: 1.5rem; }
+        .stat-label { font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.75rem; }
+        .stat-value { font-size: 1.75rem; font-weight: 700; font-family: 'JetBrains Mono', monospace; margin-bottom: 0.25rem; }
+        .stat-value.positive { color: var(--accent-green); }
+        .stat-value.negative { color: var(--accent-red); }
+        .stat-subvalue { font-size: 0.875rem; color: var(--text-secondary); font-family: 'JetBrains Mono', monospace; }
+        .charts-section { display: flex; flex-direction: column; gap: 2rem; margin-bottom: 2rem; }
+        
+        .chart-card { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 16px; padding: 1.5rem; }
+        .chart-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.5rem; }
+        .chart-title { font-size: 1rem; font-weight: 600; color: var(--text-primary); }
+        .chart-badge { padding: 0.375rem 0.75rem; background: rgba(0, 212, 255, 0.1); border: 1px solid rgba(0, 212, 255, 0.3); border-radius: 20px; font-size: 0.75rem; color: var(--accent-cyan); font-family: 'JetBrains Mono', monospace; }
+        .chart-container { position: relative; height: 400px; }
+        .chart-explanation { font-size: 0.8rem; color: var(--text-secondary); margin-top: 0.75rem; padding: 0.75rem; background: var(--bg-secondary); border-radius: 8px; line-height: 1.5; }
+        .chart-explanation strong { color: var(--text-primary); }
+        .chart-explanation .loss { color: var(--accent-red); font-weight: 600; }
+        .chart-explanation .gain { color: var(--accent-green); font-weight: 600; }
+        .chart-legend-custom { display: flex; gap: 1.5rem; flex-wrap: wrap; margin-top: 1rem; font-size: 0.75rem; }
+        .chart-legend-item { display: flex; align-items: center; gap: 0.5rem; }
+        .chart-legend-dot { width: 12px; height: 12px; border-radius: 3px; }
+        .chart-legend-line { width: 24px; height: 3px; border-radius: 2px; }
+        .events-section { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 16px; padding: 1.5rem; margin-bottom: 2rem; }
+        .events-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.5rem; }
+        .events-title { font-size: 1rem; font-weight: 600; }
+        .events-count { padding: 0.375rem 0.75rem; background: rgba(168, 85, 247, 0.1); border: 1px solid rgba(168, 85, 247, 0.3); border-radius: 20px; font-size: 0.75rem; color: var(--accent-purple); font-family: 'JetBrains Mono', monospace; }
+        .events-filters { display: flex; gap: 0.5rem; margin-bottom: 1.5rem; flex-wrap: wrap; }
+        .filter-btn { padding: 0.5rem 1rem; background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: 8px; color: var(--text-secondary); font-size: 0.75rem; cursor: pointer; }
+        .filter-btn:hover, .filter-btn.active { background: rgba(255, 107, 53, 0.1); border-color: var(--accent-orange); color: var(--accent-orange); }
+        .events-timeline { max-height: 500px; overflow-y: auto; padding-right: 1rem; }
+        .event-item { display: grid; grid-template-columns: 150px 1fr auto; gap: 1.5rem; padding: 1rem 0; border-bottom: 1px solid var(--border-color); align-items: center; }
+        .event-block { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--text-muted); }
+        .event-info { display: flex; align-items: center; gap: 1rem; }
+        .event-type { padding: 0.375rem 0.75rem; border-radius: 6px; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; }
+        .event-type.deposit { background: rgba(0, 255, 136, 0.1); color: var(--accent-green); border: 1px solid rgba(0, 255, 136, 0.3); }
+        .event-type.withdraw { background: rgba(255, 51, 102, 0.1); color: var(--accent-red); border: 1px solid rgba(255, 51, 102, 0.3); }
+        .event-type.stake { background: rgba(168, 85, 247, 0.1); color: var(--accent-purple); border: 1px solid rgba(168, 85, 247, 0.3); }
+        .event-type.unstake { background: rgba(251, 191, 36, 0.1); color: var(--accent-yellow); border: 1px solid rgba(251, 191, 36, 0.3); }
+        .event-type.transfer_in { background: rgba(0, 212, 255, 0.1); color: var(--accent-cyan); border: 1px solid rgba(0, 212, 255, 0.3); }
+        .event-type.transfer_out { background: rgba(255, 107, 53, 0.1); color: var(--accent-orange); border: 1px solid rgba(255, 107, 53, 0.3); }
+        .event-description { font-size: 0.875rem; color: var(--text-secondary); }
+        .event-amount { font-family: 'JetBrains Mono', monospace; font-size: 0.875rem; font-weight: 600; text-align: right; }
+        .event-amount.positive { color: var(--accent-green); }
+        .event-amount.negative { color: var(--accent-red); }
+        .pnl-breakdown { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 16px; padding: 1.5rem; }
+        .breakdown-title { font-size: 1rem; font-weight: 600; margin-bottom: 1.5rem; }
+        .breakdown-table { width: 100%; border-collapse: collapse; display: block; overflow-x: auto; }
+        .breakdown-table th { text-align: left; padding: 0.75rem; font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; border-bottom: 1px solid var(--border-color); white-space: nowrap; }
+        .breakdown-table td { padding: 1rem 0.75rem; font-family: 'JetBrains Mono', monospace; font-size: 0.875rem; border-bottom: 1px solid var(--border-color); white-space: nowrap; }
+        .positive { color: var(--accent-green); }
+        .negative { color: var(--accent-red); }
+        .empty-state { text-align: center; padding: 4rem 2rem; color: var(--text-muted); }
+        .empty-state-icon { font-size: 4rem; margin-bottom: 1rem; opacity: 0.3; }
+        .empty-state-title { font-size: 1.25rem; font-weight: 600; color: var(--text-secondary); margin-bottom: 0.5rem; }
+        .hidden { display: none !important; }
+        .education-section { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 16px; padding: 1.5rem; margin-bottom: 2rem; }
+        .education-header { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem; cursor: pointer; }
+        .education-header h2 { font-size: 1.1rem; font-weight: 600; margin: 0; }
+        .education-toggle { margin-left: auto; color: var(--text-muted); font-size: 0.75rem; }
+        .education-content { display: none; }
+        .education-content.open { display: block; }
+        .edu-card { background: var(--bg-secondary); border-radius: 12px; padding: 1.25rem; margin-bottom: 1rem; border-left: 4px solid var(--accent-cyan); }
+        .edu-card.warning { border-left-color: var(--accent-yellow); }
+        .edu-card.danger { border-left-color: var(--accent-red); }
+        .edu-card.success { border-left-color: var(--accent-green); }
+        .edu-card h3 { font-size: 0.95rem; color: var(--text-primary); margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.5rem; }
+        .edu-card p { font-size: 0.85rem; color: var(--text-secondary); line-height: 1.6; margin: 0; }
+        .edu-card .formula { font-family: 'JetBrains Mono', monospace; background: var(--bg-tertiary); padding: 0.5rem 1rem; border-radius: 6px; margin: 0.75rem 0; font-size: 0.8rem; color: var(--accent-cyan); }
+        .edu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1rem; }
+        .summary-box { background: linear-gradient(135deg, rgba(255,107,53,0.1), rgba(0,212,255,0.1)); border: 1px solid var(--border-color); border-radius: 12px; padding: 1.25rem; margin-top: 1.5rem; }
+        .summary-box h3 { font-size: 0.9rem; color: var(--accent-orange); margin-bottom: 0.75rem; }
+        .summary-box ul { margin: 0; padding-left: 1.25rem; }
+        .summary-box li { font-size: 0.85rem; color: var(--text-secondary); line-height: 1.8; }
+        .collapsible-chart .chart-content { transition: max-height 0.3s ease, opacity 0.3s ease, padding 0.3s ease; overflow: hidden; }
+        .collapsible-chart .chart-content.collapsed { max-height: 0; opacity: 0; padding: 0; }
+        .collapsible-chart .chart-content:not(.collapsed) { max-height: 600px; opacity: 1; }
+        .chart-toggle { font-size: 0.75rem; color: var(--accent-cyan); margin-left: 0.5rem; }
+        .collapsible-chart .chart-header:hover { background: rgba(0, 212, 255, 0.05); border-radius: 8px; margin: -0.5rem; padding: 0.5rem; }
+    </style>
+</head>
+<body>
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-spinner"></div>
+        <div class="loading-text" data-i18n="loading">Loading data...</div>
+        <div class="loading-status" id="loadingStatus" data-i18n="initialization">Initialization</div>
+    </div>
+    <div class="container">
+        <header class="header">
+            <div class="header-left">
+                <div class="logo">
+                    <div class="logo-icon">YB</div>
+                    <div><div class="logo-text">User Analytics</div><div class="logo-subtitle">Yield Basis Explorer</div></div>
+                </div>
+            </div>
+            <div class="lang-switcher">
+                <button class="lang-btn" data-lang="en" onclick="setLanguage('en')">EN</button>
+                <button class="lang-btn" data-lang="ru" onclick="setLanguage('ru')">RU</button>
+            </div>
+        </header>
+        <div class="data-status">
+            <div class="status-item"><div class="status-dot" id="statusPnlLog"></div><span class="status-label">pnl-log.json</span></div>
+            <div class="status-item"><div class="status-dot" id="statusUserPnl"></div><span class="status-label">user-pnl.json</span></div>
+            <div class="status-item"><div class="status-dot" id="statusEvents"></div><span class="status-label">events (blockchain)</span></div>
+            <div class="status-item"><div class="status-dot" id="statusBalances"></div><span class="status-label">balances (blockchain)</span></div>
+        </div>
+        <section class="selector-section">
+            <div class="selector-title" data-i18n="userSelection">User Selection</div>
+            <div class="selector-row">
+                <div class="select-wrapper">
+                    <label data-i18n="pool">Pool</label>
+                    <select id="poolSelect"><option value="0">WBTC</option><option value="1">cbBTC</option><option value="2">tBTC</option></select>
+                </div>
+                <div class="select-wrapper address">
+                    <label data-i18n="walletAddress">Wallet address (search by address)</label>
+                    <div class="address-search-container">
+                        <input type="text" class="address-search-input" id="addressSearch" data-i18n="addressPlaceholder" placeholder="Enter 0x... address or part to search" autocomplete="off">
+                        <button class="address-search-clear" id="addressClear">x</button>
+                        <div class="address-dropdown" id="addressDropdown"></div>
+                    </div>
+                </div>
+                <button class="btn-analyze" id="analyzeBtn" data-i18n="analyze">Analyze</button>
+                <button class="btn-analyze" id="clearCacheBtn" style="background:linear-gradient(135deg,#64748b,#94a3b8);box-shadow:none;margin-left:0.5rem;" onclick="Object.keys(localStorage).filter(k=>k.startsWith('yb_cache_')).forEach(k=>localStorage.removeItem(k));alert(t('cacheClearedAlert'));" data-i18n="clearCache">Clear Cache</button>
+            </div>
+            <div class="blockchain-loader" id="blockchainLoader">
+                <div class="loader-header">
+                    <div class="loader-spinner"></div>
+                    <span class="loader-title" data-i18n="loadingBlockchain">Loading blockchain data</span>
+                    <span class="loader-phase" id="loaderPhase" data-i18n="initialization">Initialization</span>
+                </div>
+                <div class="loader-progress"><div class="loader-progress-bar" id="loaderBar"></div></div>
+                <div class="loader-stats">
+                    <span id="loaderBatch"></span>
+                    <span id="loaderPercent">0%</span>
+                </div>
+            </div>
+        </section>
+        <div id="resultsSection" class="hidden">
+            <section class="stats-grid">
+                <div class="stat-card"><div class="stat-label" data-i18n="pnlNoTrd">PnL (without TRD)</div><div class="stat-value" id="statPnl">-</div><div class="stat-subvalue" id="statPnlPercent" data-i18n="valueChange">value change</div></div>
+                <div class="stat-card"><div class="stat-label" data-i18n="pnlWithTrd">PnL with TRD</div><div class="stat-value" id="statPnlTrd">-</div><div class="stat-subvalue" id="statPnlTrdPercent" data-i18n="toWithdrawNow">to withdraw now</div></div>
+                <div class="stat-card"><div class="stat-label" data-i18n="finalBalance">Final Balance</div><div class="stat-value" id="statBalance">-</div><div class="stat-subvalue" id="statBalanceType"></div></div>
+                <div class="stat-card"><div class="stat-label" data-i18n="refund">Refund</div><div class="stat-value positive" id="statRefund">-</div><div class="stat-subvalue" id="statRefundPercent"></div></div>
+                <div class="stat-card"><div class="stat-label" id="statTrdLabel" data-i18n="trdNow">TRD now</div><div class="stat-value" id="statTrd">-</div><div class="stat-subvalue" id="statTrdStatus" data-i18n="poolImbalance">pool imbalance</div></div>
+            </section>
+            <section class="education-section" style="display:none;">
+                <div class="education-header" onclick="document.getElementById('eduContent').classList.toggle('open');this.querySelector('.education-toggle').textContent=document.getElementById('eduContent').classList.contains('open')?t('hide'):t('show');">
+                    <h2 data-i18n="eduTitle">How to read these charts? What happens to my money?</h2>
+                    <span class="education-toggle" data-i18n="show">Show</span>
+                </div>
+                <div class="education-content" id="eduContent">
+                    <div class="summary-box" style="margin-top:0;margin-bottom:1.5rem;background:linear-gradient(135deg,rgba(255,51,102,0.15),rgba(255,107,53,0.1));border-color:rgba(255,51,102,0.3);">
+                        <h3 style="color:#ff3366;">⚠️ Главное: две "Фундаментальные" стоимости</h3>
+                        <p style="font-size:0.9rem;color:var(--text-primary);line-height:1.7;margin-bottom:0.75rem;">
+                            <strong style="color:#00d4ff;">Фундаментальная (adjusted)</strong> = баланс токенов (сумма депозитов). <em>База для расчёта refund.</em>
+                        </p>
+                        <p style="font-size:0.9rem;color:var(--text-primary);line-height:1.7;margin-bottom:0.75rem;">
+                            <strong style="color:#fbbf24;">Реальная стоимость</strong> = Баланс × PPS. Фактическая стоимость токенов без учёта TRD.
+                        </p>
+                        <p style="font-size:0.9rem;color:var(--text-primary);line-height:1.7;margin-bottom:0.75rem;">
+                            <strong style="color:#ff3366;">К выводу</strong> = Реальная × (1 − TRD). Сумма при выводе из пула сейчас.
+                        </p>
+                        <div class="formula" style="background:rgba(255,51,102,0.1);color:#ff6b35;font-size:0.85rem;">
+                            Убыток от PPS = Фундаментальная − Реальная | Убыток от TRD = Реальная − К выводу
+                        </div>
+                        <p style="font-size:0.85rem;color:var(--text-secondary);margin-top:0.75rem;">
+                            <strong>Пример:</strong> Депозит 100 BTC, PPS=0.95, TRD=5%. Реальная = 100 × 0.95 = 95 BTC. К выводу = 95 × 0.95 = 90.25 BTC.
+                        </p>
+                    </div>
+                    <div class="edu-grid">
+                        <div class="edu-card">
+                            <h3>📊 PPS (Price Per Share)</h3>
+                            <p>Стоимость одного токена в BTC. При депозите PPS≈1.0. Если PPS падает — токены обесцениваются.</p>
+                            <div class="formula">Стоимость без TRD = Токены × PPS</div>
+                        </div>
+                        <div class="edu-card warning">
+                            <h3>📉 Почему PPS падает?</h3>
+                            <p>Пул несёт убытки от: арбитража, комиссий протокола, ребалансировки. <strong>Staked PPS</strong> падает сильнее — stakers принимают больше риска за долю в доходах.</p>
+                        </div>
+                        <div class="edu-card danger">
+                            <h3>💰 Две "Фундаментальные"</h3>
+                            <p><strong style="color:#00d4ff;">Adjusted</strong> = баланс токенов (база для refund). <strong style="color:#fbbf24;">Реальная</strong> = баланс × PPS (фактическая стоимость).</p>
+                            <div class="formula">Убыток от PPS = Adjusted − Реальная</div>
+                        </div>
+                        <div class="edu-card success">
+                            <h3>🔄 Как работает Refund?</h3>
+                            <p>Протокол возвращает <strong>часть убытка</strong> от падения PPS. 91% refund = вернули 91% убытка.</p>
+                            <p style="margin-top:0.5rem;font-size:0.8rem;color:var(--text-muted);">Refund компенсирует падение PPS, но НЕ TRD!</p>
+                        </div>
+                        <div class="edu-card">
+                            <h3>⚖️ TRD (Temporary Redemption Discount)</h3>
+                            <p>При дисбалансе пула (BTC/crvUSD ≠ 50/50) возникает <strong>временная скидка при выводе</strong>. Арбитраж постепенно восстанавливает баланс → TRD снижается до 0.</p>
+                            <div class="formula">К выводу = Токены × PPS × (1 − TRD)</div>
+                        </div>
+                        <div class="edu-card">
+                            <h3>📈 "Влияние PPS" (%)</h3>
+                            <p>Нормализованное влияние PPS на позицию. >0% прибыль от PPS, <0% убыток. Без учёта размера депозитов.</p>
+                        </div>
+                    </div>
+                    <div class="summary-box">
+                        <h3>Итого: что мне важно знать?</h3>
+                        <ul>
+                            <li><strong style="color:#00d4ff;">Фундаментальная (adjusted)</strong> = баланс токенов (база для refund)</li>
+                            <li><strong style="color:#fbbf24;">Реальная стоимость</strong> = баланс × PPS — фактическая стоимость без TRD</li>
+                            <li><strong style="color:#ff3366;">К выводу</strong> = реальная × (1 − TRD) — сумма при выводе</li>
+                            <li><strong>TRD временный</strong> — пул ребалансируется, скидка уходит</li>
+                            <li><strong>Refund</strong> компенсирует убыток от PPS (adjusted − реальная)</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+            <section class="charts-section">
+                <div class="chart-card">
+                    <div class="chart-header">
+                        <div class="chart-title">💰 <span data-i18n="chartPnlTitle">Loss / profit from PPS (Adjusted − Real)</span></div>
+                        <div class="chart-badge" id="pnlBadge"><span data-i18n="chartPnlTotal">Total</span>: -</div>
+                    </div>
+                    <div class="chart-container"><canvas id="pnlChart"></canvas></div>
+                    <div class="chart-explanation" id="pnlExplanation"></div>
+                </div>
+                <div class="chart-card">
+                    <div class="chart-header">
+                        <div class="chart-title">📊 <span data-i18n="chartBalanceTitle">Your token balance over time</span></div>
+                        <div class="chart-badge" id="balanceBadge"><span data-i18n="chartBalanceNow">Now</span>: -</div>
+                    </div>
+                    <div class="chart-content">
+                        <div class="chart-container"><canvas id="balanceChart"></canvas></div>
+                        <div class="chart-explanation" id="balanceExplanation"></div>
+                    </div>
+                </div>
+                <div class="chart-card">
+                    <div class="chart-header">
+                        <div class="chart-title">📉 <span data-i18n="chartValueTitle">Value of your tokens in BTC</span></div>
+                        <div class="chart-badge" id="valueBadge"><span data-i18n="chartValueNow">Value</span>: -</div>
+                    </div>
+                    <div class="chart-container"><canvas id="valueChart"></canvas></div>
+                    <div class="chart-explanation" id="valueExplanation"></div>
+                </div>
+                <div class="chart-card">
+                    <div class="chart-header">
+                        <span class="chart-title">📈 <span data-i18n="chartPpsReturnTitle">PPS Impact (% vs HODL)</span></span>
+                        <span class="chart-badge" id="ppsReturnBadge">-</span>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="ppsReturnChart"></canvas>
+                    </div>
+                    <div class="chart-explanation" id="ppsReturnExplanation"></div>
+                </div>
+                <div class="chart-card">
+                    <div class="chart-header">
+                        <span class="chart-title">⚠️ <span data-i18n="chartTrdTitle">Pool Imbalance — withdrawal discount (TRD %)</span></span>
+                        <span class="chart-badge" id="poolImbalanceBadge">-</span>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="poolImbalanceChart"></canvas>
+                    </div>
+                    <div class="chart-explanation" id="poolImbalanceExplanation"></div>
+                </div>
+            </section>
+            <section class="events-section">
+                <div class="events-header"><div class="events-title" data-i18n="eventsHistory">Events History</div><div class="events-count" id="eventsCount">0 <span data-i18n="events">events</span></div></div>
+                <div class="events-filters">
+                    <button class="filter-btn active" data-filter="all" data-i18n="all">All</button>
+                    <button class="filter-btn" data-filter="deposit" data-i18n="deposit">Deposit</button>
+                    <button class="filter-btn" data-filter="withdraw" data-i18n="withdraw">Withdraw</button>
+                    <button class="filter-btn" data-filter="stake" data-i18n="stake">Stake</button>
+                    <button class="filter-btn" data-filter="unstake" data-i18n="unstake">Unstake</button>
+                    <button class="filter-btn" data-filter="transfer" data-i18n="transfer">Transfer</button>
+                </div>
+                <div class="events-timeline" id="eventsTimeline"></div>
+            </section>
+            <section class="pnl-breakdown">
+                <div class="breakdown-title" data-i18n="tableTitle">PPS Impact on Position by Period</div>
+                <table class="breakdown-table"><thead><tr><th data-i18n="block">Block</th><th data-i18n="date">Date</th><th data-i18n="total">Total</th><th>ybBTC</th><th>st-ybBTC</th><th data-i18n="ppsYbBTC">PPS (ybBTC)</th><th data-i18n="ppsSt">PPS (st)</th><th data-i18n="deltaFromPps">Δ from PPS</th><th data-i18n="totalPpsEffect">Σ PPS effect</th></tr></thead><tbody id="breakdownBody"></tbody></table>
+            </section>
+        </div>
+    </div>
+    <script src="data.js"></script>
+    <script src="pools_data.js"></script>
+    <script>
+        // Localization system
+        let currentLang = localStorage.getItem('yb_lang') || 'en';
+        const translations = {
+            en: {
+                // Header & Navigation
+                title: 'YB User Analytics',
+                subtitle: 'Yield Basis Explorer',
+                // Data status
+                loading: 'Loading data...',
+                ready: 'Ready!',
+                // Selector section
+                userSelection: 'User Selection',
+                pool: 'Pool',
+                walletAddress: 'Wallet address (search by address)',
+                addressPlaceholder: 'Enter 0x... address or part to search',
+                analyze: 'Analyze',
+                clearCache: 'Clear Cache',
+                cacheClearedAlert: 'Cache cleared!',
+                // Blockchain loader
+                loadingBlockchain: 'Loading blockchain data',
+                initialization: 'Initialization',
+                stage: 'Stage',
+                // Stats cards
+                pnlNoTrd: 'PnL (without TRD)',
+                valueChange: 'value change',
+                pnlWithTrd: 'PnL with TRD',
+                toWithdrawNow: 'to withdraw now',
+                deposited: 'deposited',
+                withdrew: 'withdrew',
+                finalBalance: 'Final Balance',
+                exited: 'exited',
+                was: 'was',
+                tokens: 'tokens',
+                atExit: 'at exit',
+                refund: 'Refund',
+                ofLoss: 'of loss',
+                trdNow: 'TRD now',
+                trdAtExit: 'TRD at exit',
+                poolImbalance: 'pool imbalance',
+                // TRD levels
+                low: 'low',
+                moderate: 'moderate',
+                high: 'high',
+                // Education section
+                eduTitle: 'How to read these charts? What happens to my money?',
+                show: 'Show',
+                hide: 'Hide',
+                // Chart titles
+                chartPnlTitle: 'Loss / profit from PPS (Adjusted − Real)',
+                chartPnlTotal: 'Total',
+                chartBalanceTitle: 'Your token balance over time',
+                chartBalanceNow: 'Now',
+                chartBalanceMax: 'Max',
+                chartValueTitle: 'Value of your tokens in BTC',
+                chartValueNow: 'Value',
+                chartPpsReturnTitle: 'PPS Impact (% vs HODL)',
+                chartTrdTitle: 'Pool Imbalance — withdrawal discount (TRD %)',
+                // Chart labels
+                adjustedLabel: 'Adjusted (refund base)',
+                realLabel: 'Real (without TRD)',
+                toWithdrawLabel: 'To withdraw (with TRD)',
+                hodlLabel: 'HODL (if just held)',
+                relHodlLabel: 'Rel. HODL (%)',
+                imbalanceLabel: 'Imbalance (%)',
+                normLabel: 'Norm',
+                ybBTCUnstaked: 'ybBTC (unstaked)',
+                stYbBTCStaked: 'st-ybBTC (staked)',
+                // Chart explanations
+                pnlExplanation: 'Cumulative PnL — loss/profit from PPS drop (excluding TRD).',
+                pnlExplanation2: 'Down = losing. Up = recovering.',
+                pnlExplanation3: 'Green = entries (deposits). Red = exits.',
+                balanceExplanation: 'tokens (unstaked). tokens (staked).',
+                balanceExplanation2: 'Important: Loss = balance × PPS drop. More tokens during drop = bigger loss.',
+                valueExplanation: 'Cyan — Adjusted (token balance = refund base).',
+                valueExplanation2: 'Yellow — Real (balance × PPS).',
+                valueExplanation3: 'Red — To withdraw (real × (1−TRD)).',
+                valueExplanation4: 'Difference cyan-yellow = PPS loss. Difference yellow-red = TRD loss.',
+                ppsReturnExplanation: 'PPS impact — token value change (excluding deposits/withdrawals).',
+                ppsReturnExplanation2: 'Yellow markers = sharp PPS changes. Hover for details.',
+                trdExplanation: 'TRD — temporary withdrawal discount due to pool imbalance.',
+                trdExplanation2: '<5% = low (normal). 5-15% = moderate. >15% = high (wait).',
+                trdExplanation3: 'Arbitrage restores balance → TRD decreases to 0 over time.',
+                // Events section
+                eventsHistory: 'Events History',
+                events: 'events',
+                all: 'All',
+                deposit: 'Deposit',
+                withdraw: 'Withdraw',
+                stake: 'Stake',
+                unstake: 'Unstake',
+                transfer: 'Transfer',
+                // Event descriptions
+                depositDesc: 'Deposit',
+                withdrawDesc: 'Withdrew',
+                stakeDesc: 'Stake',
+                unstakeDesc: 'Unstake',
+                sentToStaking: 'Sent to staking',
+                receivedFromStaking: 'Received from staking',
+                balance: 'Balance',
+                // Table headers
+                tableTitle: 'PPS Impact on Position by Period',
+                block: 'Block',
+                date: 'Date',
+                total: 'Total',
+                ppsYbBTC: 'PPS (ybBTC)',
+                ppsSt: 'PPS (st)',
+                deltaFromPps: 'Δ from PPS',
+                totalPpsEffect: 'Σ PPS effect',
+                // Misc
+                noData: 'No data',
+                addressNotFound: 'Address not found',
+                entries: 'Entries',
+                exits: 'Exits',
+                fullExit: 'Full exit',
+                exitHistory: 'Exit history',
+                relativeTo: 'Relative to HODL',
+                atExitMoment: 'at exit moment',
+                current: 'current',
+                ifHeldBtc: 'If just held BTC, would have more by',
+                blocksRange: 'Blocks',
+                positionLost: 'position lost',
+                dueToPpsDrop: 'due to PPS drop',
+                tokensMax: 'tokens max',
+                lossFormula: 'Loss = balance × PPS drop',
+                fromPps: 'from PPS',
+                fromTrd: 'from TRD',
+                toWithdrawAtExit: 'To withdraw (at exit)',
+                // Dropdown
+                shown: 'Shown',
+                of: 'of',
+                enterAddress: 'Enter address to search',
+                // Months
+                months: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+                // Language
+                language: 'Language'
+            },
+            ru: {
+                // Header & Navigation
+                title: 'YB User Analytics',
+                subtitle: 'Yield Basis Explorer',
+                // Data status
+                loading: 'Загрузка данных...',
+                ready: 'Готово!',
+                // Selector section
+                userSelection: 'Выбор пользователя',
+                pool: 'Пул',
+                walletAddress: 'Адрес кошелька (поиск по адресу)',
+                addressPlaceholder: 'Введите адрес 0x... или часть для поиска',
+                analyze: 'Анализировать',
+                clearCache: 'Очистить кеш',
+                cacheClearedAlert: 'Кеш очищен!',
+                // Blockchain loader
+                loadingBlockchain: 'Загрузка данных из блокчейна',
+                initialization: 'Инициализация',
+                stage: 'Этап',
+                // Stats cards
+                pnlNoTrd: 'PnL (без TRD)',
+                valueChange: 'изменение стоимости',
+                pnlWithTrd: 'PnL с TRD',
+                toWithdrawNow: 'к выводу сейчас',
+                deposited: 'внёс',
+                withdrew: 'вывел',
+                finalBalance: 'Финальный баланс',
+                exited: 'вышел',
+                was: 'было',
+                tokens: 'токенов',
+                atExit: 'на момент выхода',
+                refund: 'Возврат (Refund)',
+                ofLoss: 'от убытка',
+                trdNow: 'TRD сейчас',
+                trdAtExit: 'TRD на выходе',
+                poolImbalance: 'дисбаланс пула',
+                // TRD levels
+                low: 'низкий',
+                moderate: 'умеренный',
+                high: 'высокий',
+                // Education section
+                eduTitle: 'Как читать эти графики? Что происходит с моими деньгами?',
+                show: 'Показать',
+                hide: 'Скрыть',
+                // Chart titles
+                chartPnlTitle: 'Потери / прибыль от PPS (Adjusted − Реальная)',
+                chartPnlTotal: 'Итог',
+                chartBalanceTitle: 'Сколько токенов у вас было',
+                chartBalanceNow: 'Сейчас',
+                chartBalanceMax: 'Максимум',
+                chartValueTitle: 'Стоимость ваших токенов в BTC',
+                chartValueNow: 'Стоимость',
+                chartPpsReturnTitle: 'Влияние PPS (% отн. HODL)',
+                chartTrdTitle: 'Дисбаланс пула — потеря при выводе (TRD %)',
+                // Chart labels
+                adjustedLabel: 'Adjusted (база refund)',
+                realLabel: 'Реальная (без TRD)',
+                toWithdrawLabel: 'К выводу (с TRD)',
+                hodlLabel: 'HODL (если бы держал)',
+                relHodlLabel: 'Отн. HODL (%)',
+                imbalanceLabel: 'Дисбаланс (%)',
+                normLabel: 'Норма',
+                ybBTCUnstaked: 'ybBTC (нестейкнутые)',
+                stYbBTCStaked: 'st-ybBTC (застейканные)',
+                // Chart explanations
+                pnlExplanation: 'Накопленный PnL — убыток/прибыль от падения PPS (без учёта TRD).',
+                pnlExplanation2: 'Вниз = теряете. Вверх = восстанавливаетесь.',
+                pnlExplanation3: 'Зелёные = входы (депозиты). Красные = выходы.',
+                balanceExplanation: 'токенов (нестейкнутые). токенов (застейканные).',
+                balanceExplanation2: 'Важно: Убыток = баланс × падение PPS. Чем больше токенов в момент падения — тем больше убыток.',
+                valueExplanation: 'Голубая — Adjusted (баланс токенов = база для refund).',
+                valueExplanation2: 'Жёлтый — Реальная (баланс × PPS).',
+                valueExplanation3: 'Красная — К выводу (реальная × (1−TRD)).',
+                valueExplanation4: 'Разница голубой и жёлтой = убыток от PPS. Разница жёлтой и красной = потери от TRD.',
+                ppsReturnExplanation: 'Влияние PPS — изменение стоимости токенов (без учёта депозитов/выводов).',
+                ppsReturnExplanation2: 'Жёлтые маркеры = резкие изменения PPS. Наведите для деталей.',
+                trdExplanation: 'TRD — временная скидка при выводе из-за дисбаланса пула BTC/crvUSD.',
+                trdExplanation2: '<5% = низкий (норма). 5-15% = умеренный. >15% = высокий (подождать).',
+                trdExplanation3: 'Арбитраж восстанавливает баланс → TRD со временем падает до 0.',
+                // Events section
+                eventsHistory: 'История событий',
+                events: 'событий',
+                all: 'Все',
+                deposit: 'Депозит',
+                withdraw: 'Вывод',
+                stake: 'Стейк',
+                unstake: 'Анстейк',
+                transfer: 'Трансфер',
+                // Event descriptions
+                depositDesc: 'Депозит',
+                withdrawDesc: 'Выведено',
+                stakeDesc: 'Стейк',
+                unstakeDesc: 'Анстейк',
+                sentToStaking: 'Отправлено в стейкинг',
+                receivedFromStaking: 'Получено из стейкинга',
+                balance: 'Баланс',
+                // Table headers
+                tableTitle: 'Влияние PPS на позицию по периодам',
+                block: 'Блок',
+                date: 'Дата',
+                total: 'Всего',
+                ppsYbBTC: 'PPS (ybBTC)',
+                ppsSt: 'PPS (st)',
+                deltaFromPps: 'Δ от PPS',
+                totalPpsEffect: 'Σ эффект PPS',
+                // Misc
+                noData: 'Нет данных',
+                addressNotFound: 'Адрес не найден',
+                entries: 'Входов',
+                exits: 'Выходов',
+                fullExit: 'Полный выход',
+                exitHistory: 'История выходов',
+                relativeTo: 'Относительно HODL',
+                atExitMoment: 'на момент выхода',
+                current: 'текущее',
+                ifHeldBtc: 'Если бы просто держал BTC, имел бы больше на',
+                blocksRange: 'Блоки',
+                positionLost: 'позиция потеряла',
+                dueToPpsDrop: 'из-за падения PPS',
+                tokensMax: 'токенов макс.',
+                lossFormula: 'Убыток = баланс × падение PPS',
+                fromPps: 'от PPS',
+                fromTrd: 'от TRD',
+                toWithdrawAtExit: 'К выводу (на момент выхода)',
+                // Dropdown
+                shown: 'Показано',
+                of: 'из',
+                enterAddress: 'Введите адрес для поиска',
+                // Months
+                months: ['янв', 'фев', 'мар', 'апр', 'май', 'июн', 'июл', 'авг', 'сен', 'окт', 'ноя', 'дек'],
+                // Language
+                language: 'Язык'
+            }
+        };
+
+        function t(key) {
+            return translations[currentLang][key] || translations['en'][key] || key;
+        }
+
+        function setLanguage(lang) {
+            currentLang = lang;
+            localStorage.setItem('yb_lang', lang);
+            document.documentElement.lang = lang === 'ru' ? 'ru' : 'en';
+            updateAllTexts();
+            // Update language selector
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.lang === lang);
+            });
+            // Update chart explanations
+            if (typeof updateChartExplanations === 'function') updateChartExplanations();
+        }
+
+        function updateAllTexts() {
+            // Update static HTML elements with data-i18n attribute
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.dataset.i18n;
+                if (el.tagName === 'INPUT' && el.placeholder) {
+                    el.placeholder = t(key);
+                } else {
+                    el.textContent = t(key);
+                }
+            });
+            // Update page title
+            document.title = t('title');
+        }
+
+        const POOL_NAMES=['WBTC','cbBTC','tBTC'];let charts={},allAddresses=[],selectedAddress='',highlightedIndex=-1;
+        function toggleChartCard(cardId){
+            const card=document.getElementById(cardId);
+            const content=card.querySelector('.chart-content');
+            const toggle=card.querySelector('.chart-toggle');
+            if(content.classList.contains('collapsed')){
+                content.classList.remove('collapsed');
+                toggle.textContent='(свернуть)';
+            }else{
+                content.classList.add('collapsed');
+                toggle.textContent='(развернуть)';
+            }
+        }
+        // Convert block number to date
+        function blockToDate(block){const refBlock=21000000,refTime=1729552859,blockTime=12,calculated=(refTime+(block-refBlock)*blockTime)*1000,now=Date.now();return new Date(Math.min(calculated,now));}
+        function formatBlockDate(block){const d=blockToDate(block);const months=t('months');return d.getDate()+' '+months[d.getMonth()];}
+        // Cache functions for faster testing
+        function getCacheKey(poolIdx,address){return 'yb_cache_'+poolIdx+'_'+address.toLowerCase();}
+        function getFromCache(poolIdx,address){
+            const key=getCacheKey(poolIdx,address);
+            const cached=localStorage.getItem(key);
+            if(cached){
+                try{
+                    const data=JSON.parse(cached);
+                    console.log('Cache hit for',address);
+                    return data;
+                }catch(e){console.warn('Cache parse error',e);}
+            }
+            return null;
+        }
+        function saveToCache(poolIdx,address,data){
+            const key=getCacheKey(poolIdx,address);
+            try{localStorage.setItem(key,JSON.stringify(data));console.log('Saved to cache',address);}catch(e){console.warn('Cache save error',e);}
+        }
+
+        const RPC_URL='https://eth.drpc.org',FACTORY_ADDRESS='0x370a449FeBb9411c95bf897021377fe0B7D100c0',ZERO_ADDRESS='0x0000000000000000000000000000000000000000',TRANSFER_TOPIC='0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef';
+        // Underlying token addresses for each pool
+        const UNDERLYING_TOKENS=['0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599','0xcbB7C0000aB88B473b1f5aFd9ef808440eed33Bf','0x18084fbA666a33d37592fA2633fD49a74DD93a88']; // WBTC, cbBTC, tBTC
+        let contractAddresses={};
+        const addressSearch=document.getElementById('addressSearch'),addressDropdown=document.getElementById('addressDropdown'),addressClear=document.getElementById('addressClear');
+        function updateAddressCache(){const poolIdx=parseInt(document.getElementById('poolSelect').value);if(!DATA.userPnl||!DATA.userPnl[poolIdx]){allAddresses=[];return;}allAddresses=Object.entries(DATA.userPnl[poolIdx]).map(([addr,pnl])=>({addr,pnl})).sort((a,b)=>a.pnl-b.pnl);}
+        function filterAddresses(query){const q=query.toLowerCase().trim();if(!q)return allAddresses.slice(0,50);return allAddresses.filter(item=>item.addr.toLowerCase().includes(q)).slice(0,50);}
+        function renderDropdown(items,query=''){if(items.length===0){addressDropdown.innerHTML='<div class="address-dropdown-empty">'+(query?t('addressNotFound'):t('noData'))+'</div>';return;}const statsHtml='<div class="address-dropdown-stats"><span>'+t('shown')+': '+items.length+' '+t('of')+' '+allAddresses.length+'</span><span>'+t('enterAddress')+'</span></div>';const itemsHtml=items.map((item,idx)=>{const sign=item.pnl>=0?'+':'';const pnlClass=item.pnl>=0?'positive':'negative';const isSelected=item.addr===selectedAddress;const isHighlighted=idx===highlightedIndex;return'<div class="address-dropdown-item '+(isSelected?'selected':'')+' '+(isHighlighted?'highlighted':'')+'" data-address="'+item.addr+'" data-index="'+idx+'"><span class="address-dropdown-addr">'+item.addr+'</span><span class="address-dropdown-pnl '+pnlClass+'">'+sign+item.pnl.toFixed(6)+' BTC</span></div>';}).join('');addressDropdown.innerHTML=statsHtml+itemsHtml;addressDropdown.querySelectorAll('.address-dropdown-item').forEach(el=>{el.addEventListener('click',()=>selectAddress(el.dataset.address));});}
+        function selectAddress(addr){selectedAddress=addr;const item=allAddresses.find(a=>a.addr===addr);if(item){const sign=item.pnl>=0?'+':'';addressSearch.value=addr+' ('+sign+item.pnl.toFixed(6)+' BTC)';}else{addressSearch.value=addr;}closeDropdown();addressClear.classList.add('visible');}
+        function openDropdown(){addressDropdown.classList.add('open');highlightedIndex=-1;renderDropdown(filterAddresses(addressSearch.value),addressSearch.value);}
+        function closeDropdown(){addressDropdown.classList.remove('open');highlightedIndex=-1;}
+        function handleKeydown(e){const items=addressDropdown.querySelectorAll('.address-dropdown-item');const isOpen=addressDropdown.classList.contains('open');if(e.key==='Escape'){closeDropdown();return;}if(e.key==='Enter'){if(isOpen&&highlightedIndex>=0&&items[highlightedIndex]){selectAddress(items[highlightedIndex].dataset.address);}else{const val=addressSearch.value.trim();if(val.startsWith('0x')&&val.length===42)selectAddress(val);analyzeUser();}e.preventDefault();return;}if(!isOpen)return;if(e.key==='ArrowDown'){e.preventDefault();highlightedIndex=Math.min(highlightedIndex+1,items.length-1);updateHighlight(items);}else if(e.key==='ArrowUp'){e.preventDefault();highlightedIndex=Math.max(highlightedIndex-1,0);updateHighlight(items);}}
+        function updateHighlight(items){items.forEach((el,idx)=>el.classList.toggle('highlighted',idx===highlightedIndex));if(items[highlightedIndex])items[highlightedIndex].scrollIntoView({block:'nearest'});}
+        addressSearch.addEventListener('focus',openDropdown);
+        addressSearch.addEventListener('input',()=>{highlightedIndex=-1;renderDropdown(filterAddresses(addressSearch.value),addressSearch.value);addressClear.classList.toggle('visible',addressSearch.value.length>0);if(selectedAddress&&!addressSearch.value.includes(selectedAddress))selectedAddress='';});
+        addressSearch.addEventListener('keydown',handleKeydown);
+        addressClear.addEventListener('click',()=>{addressSearch.value='';selectedAddress='';addressClear.classList.remove('visible');addressSearch.focus();openDropdown();});
+        document.addEventListener('click',(e)=>{if(!e.target.closest('.address-search-container'))closeDropdown();});
+        // Track parallel progress for all 6 request types
+        const parallelProgress={'LT out':0,'LT in':0,'ST out':0,'ST in':0,'BTC out':0,'BTC in':0};
+        function updateBtnProgress(text){
+            const btn=document.getElementById('analyzeBtn');
+            if(btn)btn.textContent='Загрузка...';
+            // Update preloader with parallel progress tracking
+            const match=text.match(/^(.+?)\s+(\d+)%$/);
+            if(match){
+                const phase=match[1];
+                const pct=parseInt(match[2]);
+                parallelProgress[phase]=pct;
+                // Calculate average progress across all parallel requests (6 main + 1 migrator = 7)
+                const numRequests=Object.keys(parallelProgress).length||7;
+                const totalPct=Math.min(100,Math.round(Object.values(parallelProgress).reduce((a,b)=>a+b,0)/numRequests));
+                const phaseNames={'LT out':'ybBTC ↑','LT in':'ybBTC ↓','ST out':'st-ybBTC ↑','ST in':'st-ybBTC ↓','BTC out':'BTC ↑','BTC in':'BTC ↓','BTC→Migrator':'Migrate'};
+                // Show which phases are active
+                const activePhases=Object.entries(parallelProgress).filter(([k,v])=>v>0&&v<100).map(([k,v])=>phaseNames[k]||k);
+                document.getElementById('loaderPhase').textContent=activePhases.length>0?activePhases.join(', '):'Загрузка данных';
+                document.getElementById('loaderBar').style.width=totalPct+'%';
+                document.getElementById('loaderPercent').textContent=totalPct+'%';
+                document.getElementById('loaderBatch').textContent=numRequests+' запросов';
+            }
+        }
+        function resetParallelProgress(){
+            for(const k in parallelProgress)parallelProgress[k]=0;
+        }
+        function showLoader(){document.getElementById('blockchainLoader').classList.add('active');}
+        function hideLoader(){document.getElementById('blockchainLoader').classList.remove('active');}
+        // Get pool imbalance data for given blocks
+        function getPoolImbalanceData(blocks, poolIdx) {
+            if(typeof POOLS_DATA === 'undefined') return null;
+            const poolKeys = ['wbtc_crvusd', 'cbbtc_crvusd', 'tbtc_crvusd'];
+            const poolKey = poolKeys[poolIdx];
+            const pool = POOLS_DATA?.pools?.[poolKey];
+            if(!pool || !pool.data) return null;
+
+            const poolData = pool.data;
+            const result = [];
+
+            for(const block of blocks) {
+                // Find closest pool data point
+                let closest = null;
+                let minDiff = Infinity;
+                for(const pd of poolData) {
+                    const diff = Math.abs(pd.block - block);
+                    if(diff < minDiff) {
+                        minDiff = diff;
+                        closest = pd;
+                    }
+                }
+                result.push({
+                    block,
+                    imbalance: closest?.imbalance || 0,
+                    token0_ratio: closest?.token0_ratio || 50,
+                    token1_ratio: closest?.token1_ratio || 50,
+                    total_value: closest?.total_value || 0
+                });
+            }
+            return result;
+        }
+
+        // Detect sharp PPS changes and determine causes
+        function detectSharpPpsChanges(blocks, stakedPps, unstakedPps, poolIdx) {
+            const changes = [];
+            const threshold = 0.002; // 0.2% change threshold
+            const imbalanceData = getPoolImbalanceData(blocks, poolIdx);
+            const adminFees = DATA.pnlLog?.admin_fees?.[poolIdx] || [];
+            const fairAdminFees = DATA.pnlLog?.fair_admin_fees?.[poolIdx] || [];
+
+            for(let i = 1; i < blocks.length; i++) {
+                const prevU = unstakedPps[i-1] || 1;
+                const currU = unstakedPps[i] || 1;
+                const prevS = stakedPps[i-1] || 1;
+                const currS = stakedPps[i] || 1;
+
+                const changeU = (currU - prevU) / prevU;
+                const changeS = (currS - prevS) / prevS;
+
+                // Check if significant change
+                if(Math.abs(changeU) >= threshold || Math.abs(changeS) >= threshold) {
+                    let cause = 'Арбитраж';
+                    let severity = 'warning';
+
+                    // Check imbalance change
+                    if(imbalanceData && i > 0) {
+                        const prevImb = imbalanceData[i-1]?.imbalance || 0;
+                        const currImb = imbalanceData[i]?.imbalance || 0;
+                        if(currImb - prevImb > 2) {
+                            cause = 'Дисбаланс пула (' + currImb.toFixed(1) + '%)';
+                            severity = 'danger';
+                        }
+                    }
+
+                    // Check admin fees jump
+                    if(adminFees[i] && adminFees[i-1]) {
+                        const feeJump = adminFees[i] - adminFees[i-1];
+                        const fairJump = (fairAdminFees[i] || 0) - (fairAdminFees[i-1] || 0);
+                        if(feeJump > fairJump * 1.5 && feeJump > 0.01) {
+                            cause = 'Admin fee перевод';
+                            severity = 'info';
+                        }
+                    }
+
+                    // Severity based on magnitude
+                    const maxChange = Math.max(Math.abs(changeU), Math.abs(changeS));
+                    if(maxChange > 0.01) severity = 'danger';
+                    else if(maxChange > 0.005) severity = 'warning';
+
+                    changes.push({
+                        idx: i,
+                        block: blocks[i],
+                        changeU: changeU * 100,
+                        changeS: changeS * 100,
+                        cause,
+                        severity,
+                        imbalance: imbalanceData?.[i]?.imbalance || 0
+                    });
+                }
+            }
+            return changes;
+        }
+
+        async function fetchWithTimeout(url,options,timeout=15000){const controller=new AbortController();const id=setTimeout(()=>controller.abort(),timeout);try{const response=await fetch(url,{...options,signal:controller.signal});clearTimeout(id);return response;}catch(e){clearTimeout(id);if(e.name==='AbortError')throw new Error('Timeout');throw e;}}
+        async function ethCall(to,data){const response=await fetch(RPC_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({jsonrpc:'2.0',method:'eth_call',params:[{to,data},'latest'],id:1})});return(await response.json()).result;}
+        async function ethGetLogs(address,topics,fromBlock,toBlock,label=''){const BATCH_SIZE=10000;const allLogs=[];const totalBatches=Math.ceil((toBlock-fromBlock+1)/BATCH_SIZE);let batchNum=0;for(let start=fromBlock;start<=toBlock;start+=BATCH_SIZE){batchNum++;const pct=Math.round((batchNum/totalBatches)*100);if(label)updateBtnProgress(label+' '+pct+'%');const end=Math.min(start+BATCH_SIZE-1,toBlock);let retries=3;while(retries>0){try{const response=await fetchWithTimeout(RPC_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({jsonrpc:'2.0',method:'eth_getLogs',params:[{address,topics,fromBlock:'0x'+start.toString(16),toBlock:'0x'+end.toString(16)}],id:1})},15000);const result=await response.json();if(result.error){if(result.error.code===-32005||result.error.message?.includes('rate')||result.error.message?.includes('limit')){console.warn('Rate limit, wait 2s');await new Promise(r=>setTimeout(r,2000));retries--;continue;}console.error('eth_getLogs error:',result.error);break;}if(result.result)allLogs.push(...result.result);break;}catch(e){console.warn('Retry',4-retries,e.message);retries--;if(retries>0)await new Promise(r=>setTimeout(r,1000));}}}return allLogs;}
+        async function getContractAddresses(poolIdx){if(contractAddresses[poolIdx])return contractAddresses[poolIdx];const marketSelector='0xb1283e77'+poolIdx.toString(16).padStart(64,'0');const marketData=await ethCall(FACTORY_ADDRESS,marketSelector);if(!marketData||marketData==='0x')throw new Error('Failed to get market data');const ltAddress='0x'+marketData.slice(2+64*3+24,2+64*4);const stakerData=await ethCall(ltAddress,'0x5ebaf1db');const stakerAddress='0x'+stakerData.slice(26);contractAddresses[poolIdx]={lt:ltAddress,staker:stakerAddress};console.log('Pool '+poolIdx+' contracts:',contractAddresses[poolIdx]);return contractAddresses[poolIdx];}
+        function padAddress(address){return'0x'+address.toLowerCase().slice(2).padStart(64,'0');}
+        async function fetchUserEvents(poolIdx,userAddress){
+            const blocks=DATA.pnlLog?.blocks?.[poolIdx]||[];
+            if(blocks.length===0)return{events:[],balances:null,wbtcFlows:{deposits:[],withdrawals:[]}};
+            const startBlock=blocks[0];
+            const endBlock=blocks[blocks.length-1];
+            console.log('Fetching events for '+userAddress+' from block '+startBlock+' to '+endBlock);
+            const contracts=await getContractAddresses(poolIdx);
+            const paddedUser=padAddress(userAddress);
+            const underlyingToken=UNDERLYING_TOKENS[poolIdx];
+
+            // Fetch all logs in parallel for speed (6 requests at once instead of sequential)
+            const [ltFromLogs, ltToLogs, stFromLogs, stToLogs, wbtcFromLogs, wbtcToLogs] = await Promise.all([
+                ethGetLogs(contracts.lt,[TRANSFER_TOPIC,paddedUser,null],startBlock,endBlock,'LT out'),
+                ethGetLogs(contracts.lt,[TRANSFER_TOPIC,null,paddedUser],startBlock,endBlock,'LT in'),
+                ethGetLogs(contracts.staker,[TRANSFER_TOPIC,paddedUser,null],startBlock,endBlock,'ST out'),
+                ethGetLogs(contracts.staker,[TRANSFER_TOPIC,null,paddedUser],startBlock,endBlock,'ST in'),
+                ethGetLogs(underlyingToken,[TRANSFER_TOPIC,paddedUser,null],startBlock,endBlock,'BTC out'),
+                ethGetLogs(underlyingToken,[TRANSFER_TOPIC,null,paddedUser],startBlock,endBlock,'BTC in')
+            ]);
+
+            // Process WBTC flows (8 decimals for WBTC, 18 for cbBTC/tBTC)
+            const wbtcDecimals=poolIdx===0?8:18;
+            const wbtcFlows={deposits:[],withdrawals:[]};
+
+            // WBTC sent TO user = withdrawal from pool (user received real BTC)
+            // Also check for migrate_staked which sends WBTC to LTMigrator contract, not user
+            const LT_MIGRATOR='0xc51C8e4CFB7FB969DaE4b10052A1BB6d15fcd96B';
+            for(const log of wbtcToLogs){
+                const blockNum=parseInt(log.blockNumber,16);
+                const from='0x'+log.topics[1].slice(26);
+                const to='0x'+log.topics[2].slice(26);
+                const value=parseInt(log.data,16)/Math.pow(10,wbtcDecimals);
+                // Filter: count transfers FROM pool contract to user OR to migrator
+                if(from.toLowerCase()===contracts.lt.toLowerCase()){
+                    wbtcFlows.withdrawals.push({block:blockNum,amount:value,tx:log.transactionHash});
+                    console.log('WBTC withdrawal:',value,'BTC at block',blockNum,'to',to.slice(0,10));
+                }
+            }
+            // Also fetch WBTC transfers to LTMigrator from pool (for migrate_staked)
+            const migratorLogs=await ethGetLogs(underlyingToken,[TRANSFER_TOPIC,padAddress(contracts.lt),padAddress(LT_MIGRATOR)],startBlock,endBlock,'BTC→Migrator');
+            for(const log of migratorLogs){
+                const blockNum=parseInt(log.blockNumber,16);
+                const value=parseInt(log.data,16)/Math.pow(10,wbtcDecimals);
+                // Check if user had an unstake in same block (to confirm it's their migration)
+                const userHadUnstake=stFromLogs.some(s=>parseInt(s.blockNumber,16)===blockNum);
+                if(userHadUnstake){
+                    wbtcFlows.withdrawals.push({block:blockNum,amount:value,tx:log.transactionHash,type:'migrate'});
+                    console.log('WBTC migrate withdrawal:',value,'BTC at block',blockNum);
+                }
+            }
+
+            // WBTC sent FROM user = deposit to pool (user sent real BTC)
+            for(const log of wbtcFromLogs){
+                const blockNum=parseInt(log.blockNumber,16);
+                const to='0x'+log.topics[2].slice(26);
+                const value=parseInt(log.data,16)/Math.pow(10,wbtcDecimals);
+                // Filter: only count transfers TO pool contract
+                if(to.toLowerCase()===contracts.lt.toLowerCase()){
+                    wbtcFlows.deposits.push({block:blockNum,amount:value,tx:log.transactionHash});
+                    console.log('WBTC deposit:',value,'BTC at block',blockNum);
+                }
+            }
+
+            const allLogs=[...ltFromLogs.map(l=>({...l,token:'LT',contract:contracts.lt})),...ltToLogs.map(l=>({...l,token:'LT',contract:contracts.lt})),...stFromLogs.map(l=>({...l,token:'ST',contract:contracts.staker})),...stToLogs.map(l=>({...l,token:'ST',contract:contracts.staker}))];
+            const uniqueLogs=[];
+            const seen=new Set();
+            for(const log of allLogs){const key=log.transactionHash+log.logIndex;if(!seen.has(key)){seen.add(key);uniqueLogs.push(log);}}
+            uniqueLogs.sort((a,b)=>parseInt(a.blockNumber,16)-parseInt(b.blockNumber,16));
+
+            const events=[];
+            const ltBalanceChanges={};
+            const stBalanceChanges={};
+
+            for(const log of uniqueLogs){
+                const blockNum=parseInt(log.blockNumber,16);
+                const from='0x'+log.topics[1].slice(26);
+                const to='0x'+log.topics[2].slice(26);
+                const value=parseInt(log.data,16)/1e18;
+                const isFrom=from.toLowerCase()===userAddress.toLowerCase();
+                const isTo=to.toLowerCase()===userAddress.toLowerCase();
+                let eventType,amount,description;
+
+                if(isFrom&&to.toLowerCase()===ZERO_ADDRESS){
+                    eventType=log.token==='LT'?'WITHDRAW':'UNSTAKE';
+                    amount=-value;
+                    description=(log.token==='LT'?'Выведено':'Анстейк')+' '+value.toFixed(6);
+                }else if(isTo&&from.toLowerCase()===ZERO_ADDRESS){
+                    eventType=log.token==='LT'?'DEPOSIT':'STAKE';
+                    amount=value;
+                    description=(log.token==='LT'?'Депозит':'Стейк')+' '+value.toFixed(6);
+                }else if(isFrom&&to.toLowerCase()===contracts.staker.toLowerCase()){
+                    eventType='STAKE';
+                    amount=-value;
+                    description='Отправлено в стейкинг '+value.toFixed(6)+' ybBTC';
+                }else if(isTo&&from.toLowerCase()===contracts.staker.toLowerCase()){
+                    eventType='UNSTAKE';
+                    amount=value;
+                    description='Получено из стейкинга '+value.toFixed(6)+' ybBTC';
+                }else if(isFrom){
+                    eventType='TRANSFER_OUT';
+                    amount=-value;
+                    description='Отправлено '+to.slice(0,10)+'... '+value.toFixed(6)+' '+(log.token==='LT'?'ybBTC':'st-ybBTC');
+                }else if(isTo){
+                    eventType='TRANSFER_IN';
+                    amount=value;
+                    description='Получено от '+from.slice(0,10)+'... '+value.toFixed(6)+' '+(log.token==='LT'?'ybBTC':'st-ybBTC');
+                }
+
+                events.push({block:blockNum,type:eventType,token:log.token,amount,description,tx:log.transactionHash});
+
+                if(log.token==='LT'){
+                    const toStaker=to.toLowerCase()===contracts.staker.toLowerCase();
+                    const fromStaker=from.toLowerCase()===contracts.staker.toLowerCase();
+                    if(!toStaker&&!fromStaker){
+                        if(!ltBalanceChanges[blockNum])ltBalanceChanges[blockNum]=0;
+                        ltBalanceChanges[blockNum]+=isTo?value:-value;
+                    }else if(toStaker&&isFrom){
+                        // Sending ybBTC to staker (staking)
+                        if(!ltBalanceChanges[blockNum])ltBalanceChanges[blockNum]=0;
+                        ltBalanceChanges[blockNum]+=-value;
+                    }else if(fromStaker&&isTo){
+                        // Receiving ybBTC from staker (unstaking)
+                        if(!ltBalanceChanges[blockNum])ltBalanceChanges[blockNum]=0;
+                        ltBalanceChanges[blockNum]+=value;
+                    }
+                }
+                if(log.token==='ST'){
+                    if(!stBalanceChanges[blockNum])stBalanceChanges[blockNum]=0;
+                    stBalanceChanges[blockNum]+=isTo?value:-value;
+                    // DON'T auto-create WITHDRAW for st-ybBTC burn - we now track real WBTC!
+                }
+            }
+
+            const ltBalances=[];
+            const stBalances=[];
+            let ltBal=0,stBal=0;
+            for(const block of blocks){
+                for(const[changeBlock,change]of Object.entries(ltBalanceChanges)){
+                    if(parseInt(changeBlock)<=block&&parseInt(changeBlock)>(blocks[blocks.indexOf(block)-1]||0)){ltBal+=change;}
+                }
+                for(const[changeBlock,change]of Object.entries(stBalanceChanges)){
+                    if(parseInt(changeBlock)<=block&&parseInt(changeBlock)>(blocks[blocks.indexOf(block)-1]||0)){stBal+=change;}
+                }
+                ltBalances.push(Math.max(0,ltBal));
+                stBalances.push(Math.max(0,stBal));
+            }
+
+            console.log('Found '+events.length+' events, '+wbtcFlows.deposits.length+' WBTC deposits, '+wbtcFlows.withdrawals.length+' WBTC withdrawals');
+            return{events,balances:{lt:ltBalances,st:stBalances},wbtcFlows};
+        }
+        function loadData(){const status=document.getElementById('loadingStatus');status.textContent=t('loading');if(DATA.pnlLog)document.getElementById('statusPnlLog').classList.add('loaded');if(DATA.userPnl)document.getElementById('statusUserPnl').classList.add('loaded');status.textContent=t('ready');setTimeout(()=>document.getElementById('loadingOverlay').classList.add('hidden'),300);updateAddressCache();}
+        async function analyzeUser(){const poolIdx=parseInt(document.getElementById('poolSelect').value);let address=selectedAddress;if(!address){const searchVal=addressSearch.value.trim();if(searchVal.startsWith('0x'))address=searchVal.split(' ')[0];}if(!address||!address.startsWith('0x')||address.length!==42){alert('Выберите или введите корректный адрес (0x...)');return;}const btn=document.getElementById('analyzeBtn');const originalText=btn.textContent;btn.textContent='Загрузка...';btn.disabled=true;showLoader();document.getElementById('resultsSection').classList.remove('hidden');const pnl=DATA.userPnl?.[poolIdx]?.[address]||0;const blocks=DATA.pnlLog?.blocks?.[poolIdx]||[];const stakedPps=DATA.pnlLog?.staked_pps?.[poolIdx]||[];const unstakedPps=DATA.pnlLog?.unstaked_pps?.[poolIdx]||[];let userEvents=[];let userBalances=null;let wbtcFlows={deposits:[],withdrawals:[]};try{
+            const cached=getFromCache(poolIdx,address);
+            if(cached){
+                btn.textContent='Из кеша...';
+                userEvents=cached.events||[];
+                userBalances=cached.balances;
+                wbtcFlows=cached.wbtcFlows||{deposits:[],withdrawals:[]};
+            }else{
+                btn.textContent='Загрузка из блокчейна...';
+                resetParallelProgress();
+                const blockchainData=await fetchUserEvents(poolIdx,address);
+                userEvents=blockchainData.events;
+                userBalances=blockchainData.balances;
+                wbtcFlows=blockchainData.wbtcFlows||{deposits:[],withdrawals:[]};
+                saveToCache(poolIdx,address,blockchainData);
+            }if(userEvents.length>0)document.getElementById('statusEvents').classList.add('loaded');if(userBalances)document.getElementById('statusBalances').classList.add('loaded');}catch(error){console.error('Ошибка загрузки из блокчейна:',error);}hideLoader();btn.textContent=originalText;btn.disabled=false;updateStats(poolIdx,address,pnl,blocks,userEvents,userBalances,wbtcFlows);buildCharts(poolIdx,address,blocks,stakedPps,unstakedPps,userBalances,userEvents,wbtcFlows);buildEventsTimeline(userEvents,userBalances,blocks,wbtcFlows);buildPnlBreakdown(poolIdx,address,blocks,stakedPps,unstakedPps,userBalances,wbtcFlows);document.getElementById('resultsSection').scrollIntoView({behavior:'smooth'});}
+        function updateStats(poolIdx,address,pnl,blocks,userEvents,userBalances,wbtcFlows){const pnlEl=document.getElementById('statPnl');pnlEl.textContent=(pnl>=0?'+':'')+pnl.toFixed(8)+' BTC';pnlEl.className='stat-value '+(pnl>=0?'positive':'negative');if(userBalances){const ltBalance=userBalances.lt?.[userBalances.lt.length-1]||0;const stBalance=userBalances.st?.[userBalances.st.length-1]||0;document.getElementById('statBalance').textContent=(ltBalance+stBalance).toFixed(6);document.getElementById('statBalanceType').textContent='ybBTC: '+ltBalance.toFixed(4)+' / st-ybBTC: '+stBalance.toFixed(4);}else{document.getElementById('statBalance').textContent='-';document.getElementById('statBalanceType').textContent=POOL_NAMES[poolIdx];}if(pnl<0&&DATA.pnlLog?.admin_fees&&DATA.pnlLog?.fair_admin_fees){const charged=DATA.pnlLog.admin_fees[poolIdx]?.slice(-1)[0]||0;const fair=DATA.pnlLog.fair_admin_fees[poolIdx]?.slice(-1)[0]||0;const overcharge=charged-fair;let totalLoss=0;if(DATA.userPnl?.[poolIdx]){Object.values(DATA.userPnl[poolIdx]).forEach(v=>{if(v<0)totalLoss+=-v;});}const refund=totalLoss>0?(-pnl/totalLoss)*overcharge:0;document.getElementById('statRefund').textContent='+'+refund.toFixed(8)+' BTC';document.getElementById('statRefundPercent').textContent=((refund/-pnl)*100).toFixed(2)+'% от убытка';}else{document.getElementById('statRefund').textContent='-';document.getElementById('statRefundPercent').textContent=pnl>=0?'Нет убытка':'Нет данных';}}
+        function buildCharts(poolIdx,address,blocks,stakedPps,unstakedPps,userBalances,userEvents,wbtcFlows){
+            Object.values(charts).forEach(chart=>chart.destroy());
+            charts={};
+            if(blocks.length===0)return;
+
+            const pnl=DATA.userPnl?.[poolIdx]?.[address]||0;
+            wbtcFlows=wbtcFlows||{deposits:[],withdrawals:[]};
+
+            // Find entry/exit points from events with detailed price info
+            const entryPoints=[];
+            const exitPoints=[];
+            const curPoolIdx=parseInt(document.getElementById('poolSelect').value);
+            const imbalanceDataAll=getPoolImbalanceData(blocks,curPoolIdx);
+
+            // Calculate REAL WBTC totals from actual blockchain transfers
+            let totalWbtcDeposited=0;
+            let totalWbtcWithdrawn=0;
+
+            // Sum up all REAL WBTC deposits (actual BTC sent to pool)
+            for(const dep of wbtcFlows.deposits){
+                totalWbtcDeposited+=dep.amount;
+            }
+            // Sum up all REAL WBTC withdrawals (actual BTC received from pool)
+            for(const wd of wbtcFlows.withdrawals){
+                totalWbtcWithdrawn+=wd.amount;
+            }
+
+            console.log('REAL WBTC flows - Deposited:',totalWbtcDeposited.toFixed(6),'Withdrawn:',totalWbtcWithdrawn.toFixed(6),'Real PnL:',(totalWbtcWithdrawn-totalWbtcDeposited).toFixed(6));
+
+            // Track cumulative deposits over time for chart
+            const depositEventsForChart=[];
+
+            if(userEvents){
+                for(const ev of userEvents){
+                    let idx=blocks.findIndex(b=>b>=ev.block);
+                    // If event block is beyond pnl-log data, use last index
+                    if(idx<0 && ev.block>blocks[blocks.length-1]){
+                        idx=blocks.length-1;
+                    }
+                    if(idx>=0){
+                        // Get prices at this moment
+                        const uPps=unstakedPps[idx]||1;
+                        const sPps=stakedPps[idx]||1;
+                        const trd=(imbalanceDataAll?.[idx]?.imbalance||0)/100;
+                        let ltBal=userBalances?.lt?.[idx]||0;
+                        let stBal=userBalances?.st?.[idx]||0;
+
+                        if(ev.type==='WITHDRAW'||ev.type==='TRANSFER_OUT'){
+                            if(idx>0&&ltBal+stBal<0.001){
+                                ltBal=userBalances?.lt?.[idx-1]||0;
+                                stBal=userBalances?.st?.[idx-1]||0;
+                            }
+                        }
+                        const realValue=ltBal*uPps+stBal*sPps;
+                        const withdrawValue=realValue*(1-trd);
+
+                        if(ev.type==='DEPOSIT'||ev.type==='TRANSFER_IN'){
+                            // Find matching WBTC deposit for this event
+                            const matchingWbtc=wbtcFlows.deposits.find(d=>d.block===ev.block);
+                            const wbtcDeposited=matchingWbtc?matchingWbtc.amount:(Math.abs(ev.amount)*uPps);
+                            const tokensReceived=Math.abs(ev.amount);
+                            depositEventsForChart.push({idx,amount:wbtcDeposited,tokens:tokensReceived});
+                            entryPoints.push({idx,block:ev.block,amount:ev.amount,type:ev.type,uPps,sPps,trd,wbtcAmount:wbtcDeposited});
+                        }else if(ev.type==='WITHDRAW'||ev.type==='TRANSFER_OUT'){
+                            // Find matching WBTC withdrawal for this event
+                            const matchingWbtc=wbtcFlows.withdrawals.find(w=>w.block===ev.block);
+                            const wbtcReceived=matchingWbtc?matchingWbtc.amount:0;
+                            // Only mark as real exit if there was actual WBTC transfer
+                            exitPoints.push({idx,block:ev.block,amount:ev.amount,type:ev.type,uPps,sPps,trd,realValue,withdrawValue,ltBal,stBal,wbtcReceived,isReal:wbtcReceived>0});
+                        }
+                    }
+                }
+            }
+
+            // Also add exit points for WBTC withdrawals that don't have matching token events
+            // (e.g., one-click withdrawal where st-ybBTC burns but no WITHDRAW event for ybBTC)
+            for(const wd of wbtcFlows.withdrawals){
+                let idx=blocks.findIndex(b=>b>=wd.block);
+                // If withdrawal block is beyond pnl-log data, use last index
+                if(idx<0 && wd.block>blocks[blocks.length-1]){
+                    idx=blocks.length-1;
+                    console.log('WBTC withdrawal block',wd.block,'is beyond pnl-log data, using last index',idx);
+                }
+                if(idx>=0){
+                    // Check if we already have an exit point at this block
+                    const existingExit=exitPoints.find(e=>e.block===wd.block);
+                    if(!existingExit){
+                        const uPps=unstakedPps[idx]||1;
+                        const sPps=stakedPps[idx]||1;
+                        const trd=(imbalanceDataAll?.[idx]?.imbalance||0)/100;
+                        let ltBal=userBalances?.lt?.[idx]||0;
+                        let stBal=userBalances?.st?.[idx]||0;
+                        if(idx>0&&ltBal+stBal<0.001){
+                            ltBal=userBalances?.lt?.[idx-1]||0;
+                            stBal=userBalances?.st?.[idx-1]||0;
+                        }
+                        const realValue=ltBal*uPps+stBal*sPps;
+                        const withdrawValue=realValue*(1-trd);
+                        exitPoints.push({idx,block:wd.block,amount:-wd.amount,type:'WBTC_WITHDRAW',uPps,sPps,trd,realValue,withdrawValue,ltBal,stBal,wbtcReceived:wd.amount,isReal:true});
+                        console.log('Added WBTC exit point at block',wd.block,'amount',wd.amount);
+                    }else{
+                        // Update existing exit point with WBTC data
+                        existingExit.wbtcReceived=wd.amount;
+                        existingExit.isReal=true;
+                    }
+                }
+            }
+
+            // Build cumulative HODL line using REAL WBTC flows
+            let cumulativeDeposits=[];
+            let currentHodl=0;
+            for(let i=0;i<blocks.length;i++){
+                const block=blocks[i];
+                // Add REAL deposits at this block
+                for(const dep of wbtcFlows.deposits){
+                    if(dep.block<=block&&(i===0||dep.block>blocks[i-1])){
+                        currentHodl+=dep.amount;
+                    }
+                }
+                // Subtract REAL withdrawals at this block
+                for(const wd of wbtcFlows.withdrawals){
+                    if(wd.block<=block&&(i===0||wd.block>blocks[i-1])){
+                        currentHodl-=wd.amount;
+                        if(currentHodl<0)currentHodl=0;
+                    }
+                }
+                cumulativeDeposits.push(currentHodl);
+            }
+
+            // Find actual full exits (when balance goes to 0)
+            const fullExits=[];
+            if(userBalances){
+                for(let i=1;i<blocks.length;i++){
+                    const prevTotal=(userBalances.lt[i-1]||0)+(userBalances.st[i-1]||0);
+                    const currTotal=(userBalances.lt[i]||0)+(userBalances.st[i]||0);
+                    if(prevTotal>0.01 && currTotal<0.01){
+                        // Balance dropped to near zero - this is a full exit
+                        const uPps=unstakedPps[i]||1;
+                        const sPps=stakedPps[i-1]||1;
+                        const trd=(imbalanceDataAll?.[i]?.imbalance||0)/100;
+                        fullExits.push({idx:i,block:blocks[i],prevBalance:prevTotal,uPps,sPps,trd,type:'FULL_EXIT'});
+                    }
+                }
+            }
+
+            // Trim data to ~1 day after last full exit (no need to show weeks of empty data)
+            let trimIdx=blocks.length;
+            if(fullExits.length>0){
+                const lastExitIdx=fullExits[fullExits.length-1].idx;
+                const lastExitBlock=blocks[lastExitIdx];
+                const oneDayBlocks=7200; // ~1 day at 12s/block
+                for(let i=lastExitIdx+1;i<blocks.length;i++){
+                    if(blocks[i]-lastExitBlock>oneDayBlocks){trimIdx=i;break;}
+                }
+            }
+            // Ensure we include any real WBTC exit points (they may be at later block than token burn)
+            for(const ep of exitPoints){
+                if(ep.isReal && ep.idx >= trimIdx){
+                    trimIdx = ep.idx + 1; // Include this exit point
+                }
+            }
+            if(trimIdx<blocks.length){
+                blocks=blocks.slice(0,trimIdx);
+                stakedPps=stakedPps.slice(0,trimIdx);
+                unstakedPps=unstakedPps.slice(0,trimIdx);
+                if(userBalances){userBalances.lt=userBalances.lt.slice(0,trimIdx);userBalances.st=userBalances.st.slice(0,trimIdx);}
+            }
+
+            // Calculate cumulative PnL
+            let cumulativePnl=[];
+            let runningPnl=0;
+            let prevStakedPps=stakedPps[0]||1;
+            let prevUnstakedPps=unstakedPps[0]||1;
+
+            for(let i=0;i<blocks.length;i++){
+                const sPps=stakedPps[i]||1;
+                const uPps=unstakedPps[i]||1;
+                const ltBal=userBalances?.lt?.[i]||0;
+                const stBal=userBalances?.st?.[i]||0;
+                runningPnl+=(uPps-prevUnstakedPps)*ltBal+(sPps-prevStakedPps)*stBal;
+                cumulativePnl.push(runningPnl);
+                prevStakedPps=sPps;
+                prevUnstakedPps=uPps;
+            }
+
+            // Scale cumulative PnL to match actual user PnL from data
+            if(cumulativePnl.length>0&&cumulativePnl[cumulativePnl.length-1]!==0&&pnl!==0){
+                const scale=pnl/cumulativePnl[cumulativePnl.length-1];
+                cumulativePnl=cumulativePnl.map(v=>v*scale);
+            }else if(pnl===0){
+                cumulativePnl=cumulativePnl.map(()=>0);
+            }
+
+            // Stats for badges
+            const startPpsU=unstakedPps[0]||1, endPpsU=unstakedPps[unstakedPps.length-1]||1;
+            const startPpsS=stakedPps[0]||1, endPpsS=stakedPps[stakedPps.length-1]||1;
+            const ppsChangeU=((endPpsU-startPpsU)/startPpsU*100).toFixed(2);
+            const ppsChangeS=((endPpsS-startPpsS)/startPpsS*100).toFixed(2);
+
+            // Update badges
+            const pnlBadge=document.getElementById('pnlBadge');
+            if(pnlBadge){
+                pnlBadge.textContent='Итог: '+(pnl>=0?'+':'')+pnl.toFixed(4)+' BTC';
+                pnlBadge.style.cssText='background:'+(pnl>=0?'rgba(0,255,136,0.1)':'rgba(255,51,102,0.1)')+';border-color:'+(pnl>=0?'rgba(0,255,136,0.3)':'rgba(255,51,102,0.3)')+';color:'+(pnl>=0?'#00ff88':'#ff3366');
+            }
+            if(userBalances){
+                const totalBal=(userBalances.lt?.slice(-1)[0]||0)+(userBalances.st?.slice(-1)[0]||0);
+                const balBadge=document.getElementById('balanceBadge');
+                if(balBadge) balBadge.textContent='Баланс: '+totalBal.toFixed(2);
+                const valBadge=document.getElementById('valueBadge');
+                if(valBadge) valBadge.textContent='Стоимость: '+(totalBal*((endPpsU+endPpsS)/2)).toFixed(4)+' BTC';
+            }
+
+            // Update explanations
+            const pnlExpl=document.getElementById('pnlExplanation');
+            if(pnlExpl){
+                if(pnl<0){
+                    pnlExpl.innerHTML='Блоки <strong>'+blocks[0]+'</strong> - <strong>'+blocks[blocks.length-1]+'</strong>: позиция потеряла <span class="loss">'+Math.abs(pnl).toFixed(6)+' BTC</span> из-за падения PPS.';
+                }else{
+                    pnlExpl.innerHTML='Позиция заработала <span class="gain">+'+pnl.toFixed(6)+' BTC</span> благодаря росту PPS.';
+                }
+            }
+
+
+            const blockLabels=blocks;
+            const labels=blocks.map(b=>formatBlockDate(b));
+
+            const commonOpts={
+                responsive:true,maintainAspectRatio:false,
+                interaction:{mode:'index',intersect:false},
+                plugins:{
+                    legend:{position:'top',labels:{color:'#94a3b8',font:{family:'JetBrains Mono',size:11},usePointStyle:true,padding:15}},
+                    tooltip:{backgroundColor:'rgba(21,21,31,0.95)',titleColor:'#f8fafc',bodyColor:'#94a3b8',padding:12,callbacks:{title:function(ctx){const idx=ctx[0].dataIndex;const block=blockLabels[idx];const d=blockToDate(block);return d.toLocaleDateString('ru-RU',{day:'numeric',month:'short',year:'numeric'})+' (блок '+block+')';}},
+                        bodyFont:{family:'JetBrains Mono',size:11},titleFont:{family:'Outfit',size:13,weight:600}}
+                },
+                scales:{
+                    x:{grid:{color:'rgba(255,255,255,0.03)'},ticks:{color:'#64748b',font:{family:'JetBrains Mono',size:10},maxRotation:45,autoSkip:true,maxTicksLimit:10}},
+                    y:{grid:{color:'rgba(255,255,255,0.05)'},ticks:{color:'#64748b',font:{family:'JetBrains Mono',size:10}}}
+                }
+            };
+
+            // Custom overlay markers system - draws markers on top of chart and handles hover separately
+            const markerOverlays = {}; // Store marker data for each chart
+
+            function createMarkerOverlay(chartId, canvas) {
+                let overlay = document.getElementById(chartId + '-markers');
+                if (!overlay) {
+                    overlay = document.createElement('canvas');
+                    overlay.id = chartId + '-markers';
+                    // pointer-events:none allows Chart.js to receive hover events
+                    // We handle marker hover detection separately via parent element
+                    overlay.style.cssText = 'position:absolute;top:0;left:0;pointer-events:none;z-index:100;';
+                    canvas.parentElement.style.position = 'relative';
+                    canvas.parentElement.appendChild(overlay);
+
+                    // Add mousemove listener on parent to detect marker hover
+                    canvas.parentElement.addEventListener('mousemove', (e) => {
+                        const rect = overlay.getBoundingClientRect();
+                        const x = e.clientX - rect.left;
+                        const y = e.clientY - rect.top;
+                        const dpr = window.devicePixelRatio || 1;
+                        const positions = overlay._markerPositions || [];
+
+                        let foundMarker = null;
+                        for (const pos of positions) {
+                            // pos.x and pos.y are in canvas pixels (scaled by dpr)
+                            // x and y are in CSS pixels, so we need to scale them
+                            const dx = x * dpr - pos.x;
+                            const dy = y * dpr - pos.y;
+                            // Detection radius: 15 CSS pixels scaled by dpr
+                            if (Math.sqrt(dx*dx + dy*dy) < 20 * dpr) {
+                                foundMarker = pos;
+                                break;
+                            }
+                        }
+
+                        if (foundMarker) {
+                            canvas.parentElement.style.cursor = 'pointer';
+                            showMarkerTooltip(foundMarker.marker, e.clientX, e.clientY);
+                        } else {
+                            canvas.parentElement.style.cursor = '';
+                            hideMarkerTooltip();
+                        }
+                    });
+
+                    canvas.parentElement.addEventListener('mouseleave', () => {
+                        hideMarkerTooltip();
+                    });
+                }
+                overlay.width = canvas.width;
+                overlay.height = canvas.height;
+                overlay.style.width = canvas.style.width;
+                overlay.style.height = canvas.style.height;
+                return overlay;
+            }
+
+            function drawMarkerOverlay(chart, markers) {
+                const canvas = chart.canvas;
+                const overlay = createMarkerOverlay(chart.canvas.id, canvas);
+                const ctx = overlay.getContext('2d');
+                ctx.clearRect(0, 0, overlay.width, overlay.height);
+
+                const chartArea = chart.chartArea;
+                const xScale = chart.scales.x;
+                const yScale = chart.scales.y;
+
+                // Account for DPI scaling - Chart.js returns CSS pixels, but canvas is scaled
+                const dpr = window.devicePixelRatio || 1;
+
+                // Store marker positions for hover detection
+                const markerPositions = [];
+
+                markers.forEach(m => {
+                    if (m.value === null || m.value === undefined) return;
+                    const x = xScale.getPixelForValue(m.idx) * dpr;
+                    const y = yScale.getPixelForValue(m.value) * dpr;
+                    if (x < chartArea.left * dpr || x > chartArea.right * dpr) return;
+
+                    ctx.save();
+                    ctx.translate(x, y);
+
+                    // Scale marker size with DPI
+                    const s = dpr; // scale factor
+
+                    if (m.type === 'entry') {
+                        // Green triangle pointing up
+                        ctx.fillStyle = '#00ff88';
+                        ctx.strokeStyle = '#003322';
+                        ctx.lineWidth = 2 * s;
+                        ctx.beginPath();
+                        ctx.moveTo(0, -12 * s);
+                        ctx.lineTo(-10 * s, 8 * s);
+                        ctx.lineTo(10 * s, 8 * s);
+                        ctx.closePath();
+                        ctx.fill();
+                        ctx.stroke();
+                    } else if (m.type === 'exit') {
+                        // Red triangle pointing down
+                        ctx.fillStyle = '#ff3366';
+                        ctx.strokeStyle = '#330011';
+                        ctx.lineWidth = 2 * s;
+                        ctx.beginPath();
+                        ctx.moveTo(0, 12 * s);
+                        ctx.lineTo(-10 * s, -8 * s);
+                        ctx.lineTo(10 * s, -8 * s);
+                        ctx.closePath();
+                        ctx.fill();
+                        ctx.stroke();
+                    } else if (m.type === 'sharp') {
+                        // Yellow diamond
+                        ctx.fillStyle = '#fbbf24';
+                        ctx.strokeStyle = '#664400';
+                        ctx.lineWidth = 2 * s;
+                        ctx.beginPath();
+                        ctx.moveTo(0, -10 * s);
+                        ctx.lineTo(8 * s, 0);
+                        ctx.lineTo(0, 10 * s);
+                        ctx.lineTo(-8 * s, 0);
+                        ctx.closePath();
+                        ctx.fill();
+                        ctx.stroke();
+                    }
+                    ctx.restore();
+
+                    markerPositions.push({x, y, ...m, radius: 15 * dpr});
+                });
+
+                markerOverlays[chart.canvas.id] = markerPositions;
+
+                // Store marker positions on overlay for hover detection by parent element
+                overlay._markerPositions = markerPositions.map(m => ({...m, chart, marker: m}));
+            }
+
+            function showMarkerTooltip(marker, x, y) {
+                const tooltip = createMarkerTooltip();
+                const block = blockLabels[marker.idx];
+                const d = blockToDate(block);
+                const dateStr = d.toLocaleDateString('ru-RU', {day:'numeric',month:'short',year:'numeric'}) + ' ' + d.toLocaleTimeString('ru-RU', {hour:'2-digit',minute:'2-digit'});
+
+                let info = '';
+                if (marker.type === 'entry') {
+                    tooltip.style.borderColor = 'rgba(0,255,136,0.5)';
+                    const entry = marker.data;
+                    info = '<div style="color:#00ff88;font-weight:600;margin-bottom:6px;">▲ ВХОД</div>';
+                    info += '<div>' + dateStr + '</div>';
+                    info += '<div>Блок: ' + block + '</div>';
+                    if (entry) {
+                        info += '<div>Тип: ' + entry.type + '</div>';
+                        info += '<div>Сумма: <span style="color:#00ff88;">+' + Math.abs(entry.amount).toFixed(4) + '</span></div>';
+                        if (entry.wbtcAmount) info += '<div>WBTC: <span style="color:#00ff88;">+' + entry.wbtcAmount.toFixed(4) + '</span></div>';
+                    }
+                } else if (marker.type === 'exit') {
+                    tooltip.style.borderColor = 'rgba(255,51,102,0.5)';
+                    const exit = marker.data;
+                    info = '<div style="color:#ff3366;font-weight:600;margin-bottom:6px;">▼ ВЫХОД</div>';
+                    info += '<div>' + dateStr + '</div>';
+                    info += '<div>Блок: ' + block + '</div>';
+                    if (exit) {
+                        info += '<div>Тип: ' + (exit.type || 'WITHDRAW') + '</div>';
+                        info += '<div>Сумма: <span style="color:#ff3366;">-' + Math.abs(exit.amount || exit.prevBalance || 0).toFixed(4) + '</span></div>';
+                        if (exit.trd !== undefined) info += '<div>TRD: ' + (exit.trd * 100).toFixed(1) + '%</div>';
+                        if (exit.wbtcReceived) info += '<div>WBTC получено: ' + exit.wbtcReceived.toFixed(4) + '</div>';
+                    }
+                } else if (marker.type === 'sharp') {
+                    tooltip.style.borderColor = 'rgba(251,191,36,0.5)';
+                    const change = marker.data;
+                    info = '<div style="color:#fbbf24;font-weight:600;margin-bottom:6px;">⚠ РЕЗКОЕ ИЗМЕНЕНИЕ PPS</div>';
+                    info += '<div>' + dateStr + '</div>';
+                    info += '<div>Блок: ' + block + '</div>';
+                    if (change) {
+                        info += '<div>Причина: ' + change.cause + '</div>';
+                        info += '<div>ybBTC: <span style="color:' + (change.changeU >= 0 ? '#00ff88' : '#ff3366') + ';">' + (change.changeU >= 0 ? '+' : '') + change.changeU.toFixed(2) + '%</span></div>';
+                        info += '<div>st-ybBTC: <span style="color:' + (change.changeS >= 0 ? '#00ff88' : '#ff3366') + ';">' + (change.changeS >= 0 ? '+' : '') + change.changeS.toFixed(2) + '%</span></div>';
+                    }
+                }
+
+                if (info) {
+                    tooltip.innerHTML = info;
+                    tooltip.style.display = 'block';
+                    // Position tooltip above and to the left of cursor to avoid overlapping Chart.js tooltip
+                    // which typically appears below/right of the data point
+                    const tooltipWidth = 220; // approximate width
+                    const tooltipHeight = tooltip.offsetHeight || 120;
+                    tooltip.style.left = Math.max(10, x - tooltipWidth - 10) + 'px';
+                    tooltip.style.top = Math.max(10, y - tooltipHeight - 20) + 'px';
+                }
+            }
+
+            function hideMarkerTooltip() {
+                const tooltip = document.getElementById('markerTooltip');
+                if (tooltip) tooltip.style.display = 'none';
+            }
+
+            // Custom marker tooltip that shows on hover
+            function createMarkerTooltip(){
+                let tooltip=document.getElementById('markerTooltip');
+                if(!tooltip){
+                    tooltip=document.createElement('div');
+                    tooltip.id='markerTooltip';
+                    tooltip.style.cssText='position:fixed;background:rgba(21,21,31,0.98);border:1px solid rgba(0,255,136,0.3);border-radius:8px;padding:10px 14px;color:#f8fafc;font-size:12px;font-family:JetBrains Mono;pointer-events:none;z-index:10000;display:none;max-width:300px;box-shadow:0 4px 20px rgba(0,0,0,0.5);';
+                    document.body.appendChild(tooltip);
+                }
+                return tooltip;
+            }
+            function showMarkerInfo(chart,datasetIndex,dataIndex,x,y){
+                const tooltip=createMarkerTooltip();
+                const dataset=chart.data.datasets[datasetIndex];
+                const label=dataset.label;
+                const block=blockLabels[dataIndex];
+                const d=blockToDate(block);
+                const dateStr=d.toLocaleDateString('ru-RU',{day:'numeric',month:'short',year:'numeric'})+' '+d.toLocaleTimeString('ru-RU',{hour:'2-digit',minute:'2-digit'});
+                let info='';
+                if(label.includes('Вход')){
+                    const entry=entryPoints.find(e=>e.idx===dataIndex);
+                    if(entry){
+                        tooltip.style.borderColor='rgba(0,255,136,0.5)';
+                        info='<div style="color:#00ff88;font-weight:600;margin-bottom:6px;">▲ ВХОД</div>';
+                        info+='<div>'+dateStr+'</div>';
+                        info+='<div>Блок: '+block+'</div>';
+                        info+='<div>Тип: '+entry.type+'</div>';
+                        info+='<div>Токены: <span style="color:#00ff88;">+'+Math.abs(entry.amount).toFixed(6)+'</span></div>';
+                        if(entry.wbtcAmount)info+='<div>WBTC: <span style="color:#00ff88;">+'+entry.wbtcAmount.toFixed(6)+'</span></div>';
+                    }
+                }else if(label.includes('Выход')){
+                    const exit=exitPoints.find(e=>e.idx===dataIndex)||fullExits.find(e=>e.idx===dataIndex);
+                    if(exit){
+                        tooltip.style.borderColor='rgba(255,51,102,0.5)';
+                        info='<div style="color:#ff3366;font-weight:600;margin-bottom:6px;">▼ ВЫХОД</div>';
+                        info+='<div>'+dateStr+'</div>';
+                        info+='<div>Блок: '+block+'</div>';
+                        info+='<div>Тип: '+(exit.type||'WITHDRAW')+'</div>';
+                        info+='<div>Сумма: <span style="color:#ff3366;">-'+Math.abs(exit.amount||exit.prevBalance).toFixed(6)+'</span></div>';
+                        if(exit.trd!==undefined)info+='<div>TRD: '+(exit.trd*100).toFixed(1)+'%</div>';
+                    }
+                }
+                if(info){
+                    tooltip.innerHTML=info;
+                    tooltip.style.display='block';
+                    // Position above cursor to not overlap with Chart.js tooltip (which appears below)
+                    tooltip.style.left=(x-tooltip.offsetWidth/2)+'px';
+                    tooltip.style.top=(y-tooltip.offsetHeight-20)+'px';
+                }
+            }
+            function hideMarkerInfo(){
+                const tooltip=document.getElementById('markerTooltip');
+                if(tooltip)tooltip.style.display='none';
+            }
+
+            // Helper to find nearest block index for an event block
+            function findNearestBlockIdx(eventBlock){
+                let bestIdx=0;
+                let minDiff=Math.abs(blocks[0]-eventBlock);
+                for(let i=1;i<blocks.length;i++){
+                    const diff=Math.abs(blocks[i]-eventBlock);
+                    if(diff<minDiff){minDiff=diff;bestIdx=i;}
+                    if(blocks[i]>eventBlock)break; // blocks are sorted, no need to check further
+                }
+                return bestIdx;
+            }
+
+            // Create entry/exit point arrays for charts (find nearest block since event blocks may not match exactly)
+            const entryPnlData=blocks.map((b,i)=>{
+                const pt=entryPoints.find(e=>findNearestBlockIdx(e.block)===i);
+                return pt?cumulativePnl[i]:null;
+            });
+            const exitPnlData=blocks.map((b,i)=>{
+                const pt=exitPoints.find(e=>findNearestBlockIdx(e.block)===i);
+                return pt?cumulativePnl[i]:null;
+            });
+
+            // Detect sharp PPS changes early so we can use them on all charts
+            const sharpChanges = detectSharpPpsChanges(blocks, stakedPps, unstakedPps, curPoolIdx);
+            // Sharp change data for PnL chart
+            const sharpChangePnlData=blocks.map((b,i)=>{
+                const change=sharpChanges.find(c=>c.idx===i);
+                return change?cumulativePnl[i]:null;
+            });
+
+            // PnL Chart with entry/exit markers and percentage axis
+            // Calculate percentage based on total deposited
+            const pnlPercentData=cumulativePnl.map(v=>totalWbtcDeposited>0?(v/totalWbtcDeposited)*100:0);
+            const pnlChartOpts={
+                ...commonOpts,
+                scales:{
+                    ...commonOpts.scales,
+                    y:{...commonOpts.scales.y,position:'left',title:{display:true,text:'BTC',color:'#64748b',font:{size:10}}},
+                    y1:{position:'right',grid:{drawOnChartArea:false},ticks:{color:'#64748b',font:{family:'JetBrains Mono',size:10},callback:function(v){return v.toFixed(1)+'%';}},title:{display:true,text:'%',color:'#64748b',font:{size:10}}}
+                }
+            };
+            charts.pnl=new Chart(document.getElementById('pnlChart').getContext('2d'),{type:'line',data:{labels,datasets:[
+                {label:'Изменение от PPS (BTC)',data:cumulativePnl,borderColor:pnl>=0?'#00ff88':'#ff3366',backgroundColor:pnl>=0?'rgba(0,255,136,0.15)':'rgba(255,51,102,0.15)',fill:true,tension:0.3,pointRadius:0,pointHoverRadius:6,borderWidth:3,yAxisID:'y'},
+                {label:'% от депозита',data:pnlPercentData,borderColor:'rgba(148,163,184,0.5)',borderDash:[4,4],borderWidth:1,pointRadius:0,fill:false,yAxisID:'y1'},
+                {label:'',data:blocks.map(()=>0),borderColor:'rgba(255,255,255,0.3)',borderDash:[5,5],borderWidth:1,pointRadius:0,hidden:false,yAxisID:'y'}
+            ]},options:pnlChartOpts});
+            // Draw markers overlay for PnL chart
+            const pnlMarkers = [];
+            entryPoints.forEach(e => {
+                const idx = findNearestBlockIdx(e.block);
+                pnlMarkers.push({idx, value: cumulativePnl[idx], type: 'entry', data: e});
+            });
+            exitPoints.forEach(e => {
+                const idx = findNearestBlockIdx(e.block);
+                pnlMarkers.push({idx, value: cumulativePnl[idx], type: 'exit', data: e});
+            });
+            sharpChanges.forEach(c => {
+                pnlMarkers.push({idx: c.idx, value: cumulativePnl[c.idx], type: 'sharp', data: c});
+            });
+            setTimeout(() => drawMarkerOverlay(charts.pnl, pnlMarkers), 100);
+
+            // PPS Chart with sharp change markers (sharpChanges already defined above)
+            const sharpChangeData = blocks.map((b,i) => {
+                const change = sharpChanges.find(c => c.idx === i);
+                return change ? (unstakedPps[i] || 1) : null;
+            });
+            const ppsTooltipCallbacks = {
+                title: function(ctx) {
+                    const idx = ctx[0].dataIndex;
+                    const block = blockLabels[idx];
+                    const d = blockToDate(block);
+                    return d.toLocaleDateString('ru-RU', {day:'numeric',month:'short',year:'numeric'}) + ' (блок ' + block + ')';
+                },
+                afterBody: function(ctx) {
+                    const idx = ctx[0].dataIndex;
+                    const change = sharpChanges.find(c => c.idx === idx);
+                    if(change) return ['', '⚠ ' + change.cause, 'U: ' + (change.changeU >= 0 ? '+' : '') + change.changeU.toFixed(2) + '%', 'S: ' + (change.changeS >= 0 ? '+' : '') + change.changeS.toFixed(2) + '%'];
+                    return [];
+                }
+            };
+
+            // Balance Chart - show ybBTC and st-ybBTC separately (stacked)
+            if(userBalances?.lt&&userBalances?.st){
+                const totalBalance=userBalances.lt.map((lt,i)=>(lt||0)+(userBalances.st[i]||0));
+                const maxLt=Math.max(...userBalances.lt.map(v=>v||0));
+                const maxSt=Math.max(...userBalances.st.map(v=>v||0));
+                const hasLt=maxLt>0.0001;
+                const hasSt=maxSt>0.0001;
+                const datasets=[];
+                if(hasLt)datasets.push({label:'ybBTC (unstaked)',data:userBalances.lt,borderColor:'#00d4ff',backgroundColor:'rgba(0,212,255,0.4)',fill:'origin',tension:0.3,pointRadius:0,borderWidth:2});
+                if(hasSt)datasets.push({label:'st-ybBTC (staked)',data:userBalances.st,borderColor:'#a855f7',backgroundColor:'rgba(168,85,247,0.4)',fill:hasLt?'-1':'origin',tension:0.3,pointRadius:0,borderWidth:2});
+                if(datasets.length===0)datasets.push({label:'Нет данных',data:blocks.map(()=>null),borderColor:'#666'});
+                charts.balance=new Chart(document.getElementById('balanceChart').getContext('2d'),{type:'line',data:{labels,datasets},options:{...commonOpts,scales:{...commonOpts.scales,y:{...commonOpts.scales.y,stacked:true}}}});
+                const balExpl=document.getElementById('balanceExplanation');
+                if(balExpl){
+                    const maxTotal=Math.max(...totalBalance);
+                    balExpl.innerHTML='Максимум: <strong>'+maxTotal.toFixed(2)+'</strong> токенов (ybBTC: '+maxLt.toFixed(2)+', st-ybBTC: '+maxSt.toFixed(2)+'). Убыток = баланс × падение PPS.';
+                }
+            }else{
+                charts.balance=new Chart(document.getElementById('balanceChart').getContext('2d'),{type:'line',data:{labels,datasets:[{label:'Нет данных',data:blocks.map(()=>null),borderColor:'#ff6b35'}]},options:commonOpts});
+            }
+
+            // Value Chart with 3 lines: Реальная, К выводу (с TRD), Фундаментальная
+            // (curPoolIdx and imbalanceDataAll already defined above)
+            let valueData=[],withdrawData=[],idealData=[];
+            for(let i=0;i<blocks.length;i++){
+                const ltB=userBalances?.lt?.[i]||0,stB=userBalances?.st?.[i]||0;
+                const realVal=ltB*(unstakedPps[i]||1)+stB*(stakedPps[i]||1);
+                const trd=(imbalanceDataAll?.[i]?.imbalance||0)/100;
+                valueData.push(realVal);
+                withdrawData.push(realVal*(1-trd));
+                idealData.push(ltB+stB);
+            }
+            // ppsReturnData: показывает отклонение реальной стоимости от HODL в процентах
+            // Формула: ((realValue - HODL) / HODL) * 100
+            const ppsReturnData=blocks.map((b,i)=>{
+                const hodl=cumulativeDeposits[i]||0;
+                const realVal=valueData[i]||0;
+                if(hodl<0.0001)return null; // нет позиции - return null to not draw line
+                return ((realVal-hodl)/hodl)*100;
+            });
+            // Sharp change data for PPS Return chart (must be after ppsReturnData is filled)
+            const sharpChangeRetData=blocks.map((b,i)=>{
+                const change=sharpChanges.find(c=>c.idx===i);
+                return change?ppsReturnData[i]:null;
+            });
+            // Create entry/exit point arrays for value chart (find nearest block)
+            const entryValueData=blocks.map((b,i)=>{
+                const pt=entryPoints.find(e=>findNearestBlockIdx(e.block)===i);
+                return pt?valueData[i]:null;
+            });
+            const exitValueData=blocks.map((b,i)=>{
+                const pt=exitPoints.find(e=>findNearestBlockIdx(e.block)===i);
+                if(!pt)return null;
+                // For exits with real WBTC withdrawal, use that value
+                if(pt.wbtcReceived>0)return pt.wbtcReceived;
+                // For exits, use the withdraw value stored in the exit point (calculated before balance dropped)
+                // Or use previous index value if current is 0, or use realValue from exit point
+                if(pt.withdrawValue>0)return pt.withdrawValue;
+                if(pt.realValue>0)return pt.realValue;
+                if(withdrawData[i]>0)return withdrawData[i];
+                if(i>0&&withdrawData[i-1]>0)return withdrawData[i-1];
+                // Fallback: use the value at this point even if small
+                return valueData[i]||withdrawData[i]||0.001;
+            });
+            // Sharp change data for value chart
+            const sharpChangeValueData=blocks.map((b,i)=>{
+                const change=sharpChanges.find(c=>c.idx===i);
+                return change?valueData[i]:null;
+            });
+
+            charts.value=new Chart(document.getElementById('valueChart').getContext('2d'),{type:'line',data:{labels,datasets:[
+                {label:'HODL (если бы держал)',data:cumulativeDeposits,borderColor:'rgba(148,163,184,0.5)',borderWidth:1,borderDash:[8,4],pointRadius:0,fill:false,tension:0.1},
+                {label:'Adjusted (база refund)',data:idealData,borderColor:'#00d4ff',borderWidth:2,pointRadius:0,fill:false},
+                {label:'К выводу (с TRD)',data:withdrawData,borderColor:'#ff3366',backgroundColor:'rgba(255,51,102,0.15)',fill:true,tension:0.3,pointRadius:0,borderWidth:2},
+                {label:'Реальная (без TRD)',data:valueData,borderColor:'#fbbf24',borderDash:[3,3],backgroundColor:'transparent',fill:false,tension:0.3,pointRadius:0,borderWidth:2}
+            ]},options:commonOpts});
+            // Draw markers overlay for Value chart - bind to red line (withdrawData = К выводу с TRD)
+            // For entries: find stable value after deposit by looking ahead until value stabilizes
+            // For exits: use value BEFORE the exit so marker is on the line before drop
+            const valueMarkers = [];
+            // Find the maximum withdrawData value to know where line stabilizes
+            const maxWithdraw = Math.max(...withdrawData.filter(v => v > 0));
+
+            entryPoints.forEach((e, entryIndex) => {
+                const idx = findNearestBlockIdx(e.block);
+                let displayIdx = idx;
+                let val = 0;
+
+                // Find first index at or after entry where withdrawData is close to max (within 20%)
+                // This ensures markers appear on the main line, not during deposit transitions
+                for (let i = idx; i < withdrawData.length; i++) {
+                    if (withdrawData[i] > maxWithdraw * 0.8) {
+                        displayIdx = i;
+                        val = withdrawData[i];
+                        break;
+                    }
+                }
+
+                // If no good value found, fallback to any value > 1
+                if (!val || val < 1) {
+                    for (let i = idx; i < withdrawData.length; i++) {
+                        if (withdrawData[i] > 1) {
+                            displayIdx = i;
+                            val = withdrawData[i];
+                            break;
+                        }
+                    }
+                }
+
+                // Final fallback to valueData
+                if (!val || val < 1) {
+                    for (let i = idx; i < valueData.length; i++) {
+                        if (valueData[i] > 1) {
+                            displayIdx = i;
+                            val = valueData[i];
+                            break;
+                        }
+                    }
+                }
+                valueMarkers.push({idx: displayIdx, value: val, type: 'entry', data: e});
+            });
+            exitPoints.forEach(e => {
+                const idx = findNearestBlockIdx(e.block);
+                // Use previous index to show marker on the line before exit
+                const displayIdx = Math.max(idx - 1, 0);
+                let val = withdrawData[displayIdx];
+                if(!val || val < 0.001) val = withdrawData[idx] || valueData[idx];
+                valueMarkers.push({idx: displayIdx, value: val, type: 'exit', data: e});
+            });
+            sharpChanges.forEach(c => {
+                let displayIdx = c.idx;
+                let val = withdrawData[c.idx];
+                // If value is too low (likely before deposits), find nearest good value
+                if (!val || val < maxWithdraw * 0.5) {
+                    for (let i = c.idx; i < withdrawData.length; i++) {
+                        if (withdrawData[i] > maxWithdraw * 0.8) {
+                            displayIdx = i;
+                            val = withdrawData[i];
+                            break;
+                        }
+                    }
+                }
+                // Final fallback to valueData
+                if (!val || val < 1) val = valueData[displayIdx] || valueData[c.idx];
+                valueMarkers.push({idx: displayIdx, value: val, type: 'sharp', data: c});
+            });
+            setTimeout(() => drawMarkerOverlay(charts.value, valueMarkers), 100);
+
+            // Calculate PnL at withdrawal moments (not just last day)
+            // Use fullExits for more accurate data - it captures balance BEFORE exit
+            // IMPORTANT: realPnl = actual WBTC withdrawn - actual WBTC deposited (the true profit/loss)
+            let withdrawPnlInfo=null;
+            const realPnl=totalWbtcWithdrawn-totalWbtcDeposited;
+            if(fullExits.length>0){
+                const lastExit=fullExits[fullExits.length-1];
+                const exitIdx=lastExit.idx;
+                // Use idx-1 to get values BEFORE the exit (when balance was still non-zero)
+                const preExitIdx=Math.max(0,exitIdx-1);
+                const exitWithdrawValue=withdrawData[preExitIdx]||0;
+                const exitIdealValue=idealData[preExitIdx]||0;
+                withdrawPnlInfo={idx:preExitIdx,block:lastExit.block,withdrawValue:exitWithdrawValue,idealValue:exitIdealValue,pnl:realPnl,prevBalance:lastExit.prevBalance,totalWbtcDeposited,totalWbtcWithdrawn};
+            }else if(exitPoints.length>0){
+                const lastExit=exitPoints[exitPoints.length-1];
+                const exitIdx=lastExit.idx;
+                const preExitIdx=Math.max(0,exitIdx-1);
+                const exitWithdrawValue=withdrawData[preExitIdx]||0;
+                const exitIdealValue=idealData[preExitIdx]||0;
+                withdrawPnlInfo={idx:preExitIdx,block:lastExit.block,withdrawValue:exitWithdrawValue,idealValue:exitIdealValue,pnl:realPnl,totalWbtcDeposited,totalWbtcWithdrawn};
+            }
+
+            // Determine if user has fully exited
+            const currentBalance=(userBalances?.lt?.slice(-1)[0]||0)+(userBalances?.st?.slice(-1)[0]||0);
+            const hasExited=currentBalance<0.0001&&fullExits.length>0;
+
+            const valExpl=document.getElementById('valueExplanation');
+            if(valExpl&&userBalances){
+                let ideal,withd,displayTrd,displayLabel;
+                if(hasExited&&withdrawPnlInfo){
+                    // User has exited - show values at exit moment
+                    ideal=withdrawPnlInfo.idealValue;
+                    withd=withdrawPnlInfo.withdrawValue;
+                    const exitIdx=withdrawPnlInfo.idx;
+                    displayTrd=(imbalanceDataAll?.[exitIdx]?.imbalance||0);
+                    displayLabel='К выводу (на момент выхода)';
+                }else{
+                    // User still has position - show current values
+                    ideal=idealData.slice(-1)[0]||0;
+                    withd=withdrawData.slice(-1)[0]||0;
+                    displayTrd=(imbalanceDataAll?.slice(-1)[0]?.imbalance||0);
+                    displayLabel='К выводу сейчас';
+                }
+                const realVal=valueData.slice(-1)[0]||0;
+                const hasExitedNow=hasExited&&withdrawPnlInfo;
+                const exitRealVal=hasExitedNow?(valueData[withdrawPnlInfo.idx]||0):realVal;
+                const diff=withd-ideal;
+                const ppsLoss=ideal-exitRealVal;
+                const trdLoss=exitRealVal-withd;
+                let html='<strong style="color:#00d4ff;">Adjusted (база refund):</strong> <strong>'+ideal.toFixed(4)+' BTC</strong><br>'+
+                    '<strong style="color:#fbbf24;">Реальная (без TRD):</strong> <strong>'+exitRealVal.toFixed(4)+' BTC</strong> <span class="'+(ppsLoss<=0?'gain':'loss')+'">'+(ppsLoss<=0?'+':'-')+Math.abs(ppsLoss).toFixed(4)+' от PPS</span><br>'+
+                    '<strong style="color:#ff3366;">'+displayLabel+':</strong> <strong>'+withd.toFixed(4)+' BTC</strong> <span class="loss">-'+trdLoss.toFixed(4)+' от TRD ('+displayTrd.toFixed(1)+'%)</span>';
+
+                // Show detailed exit info
+                if(exitPoints.length>0){
+                    html+='<br><br><strong>История выходов:</strong>';
+                    for(const ex of exitPoints.slice(-3)){
+                        const exitPnl=ex.withdrawValue-(ex.ltBal+ex.stBal);
+                        html+='<br>▼ Блок '+ex.block+': '+ex.type+' '+Math.abs(ex.amount).toFixed(4)+' | PPS: U='+ex.uPps.toFixed(4)+' S='+ex.sPps.toFixed(4)+' | TRD: '+(ex.trd*100).toFixed(1)+'%';
+                    }
+                }
+                if(fullExits.length>0){
+                    html+='<br><br><strong style="color:#ff3366;">⚠ Полный выход:</strong>';
+                    for(const fe of fullExits){
+                        html+='<br>Блок '+fe.block+': вывел '+fe.prevBalance.toFixed(4)+' токенов | PPS: '+fe.uPps.toFixed(4)+' | TRD: '+(fe.trd*100).toFixed(1)+'%';
+                    }
+                }
+                html+='<br><span style="color:#00ff88;">▲</span> Входов: '+entryPoints.length+' | <span style="color:#ff3366;">▼</span> Выходов: '+exitPoints.length;
+                valExpl.innerHTML=html;
+                // Update balance stat and badges for exited users
+                if(hasExited&&fullExits.length>0){
+                    const lastExit=fullExits[fullExits.length-1];
+                    document.getElementById('statBalance').textContent='0 ('+t('exited')+')';
+                    document.getElementById('statBalanceType').textContent=t('was')+': '+lastExit.prevBalance.toFixed(4)+' '+t('tokens')+' — '+t('atExit');
+                    // Update value badge to show exit value
+                    const valBadge=document.getElementById('valueBadge');
+                    if(valBadge&&withdrawPnlInfo) valBadge.textContent=t('chartValueNow')+': '+withdrawPnlInfo.withdrawValue.toFixed(4)+' BTC ('+t('atExit')+')';
+                    // Update balance badge
+                    const balBadge=document.getElementById('balanceBadge');
+                    if(balBadge) balBadge.textContent=t('balance')+': 0 ('+t('exited')+')';
+                }
+            }
+            // PPS Return Chart
+            const ppsRetEl=document.getElementById('ppsReturnChart');
+            if(ppsRetEl&&ppsReturnData.length>0){
+                // For exited users, use PPS return at exit moment and hide data after exit
+                let finalRet;
+                let retLabel;
+                let chartPpsReturnData=ppsReturnData;
+                if(hasExited&&withdrawPnlInfo){
+                    finalRet=ppsReturnData[withdrawPnlInfo.idx]||0;
+                    retLabel=t('atExitMoment');
+                    // Set data after exit to null so chart doesn't show the flat 0% line
+                    chartPpsReturnData=ppsReturnData.map((v,i)=>i<=withdrawPnlInfo.idx?v:null);
+                }else{
+                    finalRet=ppsReturnData.slice(-1)[0]||0;
+                    retLabel=t('current');
+                }
+                // Calculate real PnL % for comparison line
+                let realPnlPercent=0;
+                if(totalWbtcDeposited>0){
+                    if(hasExited){
+                        realPnlPercent=(realPnl/totalWbtcDeposited)*100;
+                    }else{
+                        // For active users: (current value + withdrawn - deposited) / deposited
+                        const currentVal=withdrawData.slice(-1)[0]||0;
+                        realPnlPercent=((currentVal+totalWbtcWithdrawn-totalWbtcDeposited)/totalWbtcDeposited)*100;
+                    }
+                }
+                const entryRetData=blocks.map((b,i)=>{const pt=entryPoints.find(e=>findNearestBlockIdx(e.block)===i);return pt?chartPpsReturnData[i]:null;});
+                // For exited users, show exit marker at the last data point (withdrawPnlInfo.idx)
+                const exitRetData=blocks.map((b,i)=>{
+                    if(hasExited&&withdrawPnlInfo&&i===withdrawPnlInfo.idx) return chartPpsReturnData[i];
+                    const pt=exitPoints.find(e=>findNearestBlockIdx(e.block)===i);
+                    return pt?chartPpsReturnData[i]:null;
+                });
+                // Real PnL line - only show where we have PPS data
+                const realPnlLine=chartPpsReturnData.map(v=>v!==null?realPnlPercent:null);
+                // Sharp change markers (moved from old ppsChart)
+                const sharpChangeRetDataFiltered=sharpChangeRetData.map((v,i)=>chartPpsReturnData[i]!==null?v:null);
+                // Custom tooltip to show absolute PPS values
+                const ppsReturnOpts={...commonOpts,plugins:{...commonOpts.plugins,tooltip:{...commonOpts.plugins?.tooltip,callbacks:{
+                    title:ctx=>{const idx=ctx[0].dataIndex;const block=blockLabels[idx];const d=blockToDate(block);return d.toLocaleDateString('ru-RU',{day:'numeric',month:'short'})+' (блок '+block+')';},
+                    afterBody:ctx=>{const idx=ctx[0].dataIndex;const uPps=unstakedPps[idx]||1;const sPps=stakedPps[idx]||1;const ch=sharpChanges.find(c=>c.idx===idx);let lines=['','PPS: ybBTC='+uPps.toFixed(4)+' st='+sPps.toFixed(4)];if(ch)lines.push('⚠ '+ch.cause);return lines;}
+                }}}};
+                charts.ppsReturn=new Chart(ppsRetEl.getContext('2d'),{type:'line',data:{labels,datasets:[
+                    {label:'Отн. HODL (%)',data:chartPpsReturnData,borderColor:finalRet>=0?'#00ff88':'#ff3366',backgroundColor:finalRet>=0?'rgba(0,255,136,0.2)':'rgba(255,51,102,0.2)',fill:true,tension:0.3,pointRadius:0,borderWidth:2,spanGaps:false},
+                    {label:'',data:blocks.map(()=>0),borderColor:'rgba(255,255,255,0.3)',borderDash:[5,5],borderWidth:1,pointRadius:0}
+                ]},options:ppsReturnOpts});
+                // Draw markers overlay for PPS Return chart
+                const ppsRetMarkers = [];
+                entryPoints.forEach(e => {
+                    const idx = findNearestBlockIdx(e.block);
+                    if(chartPpsReturnData[idx] !== null) ppsRetMarkers.push({idx, value: chartPpsReturnData[idx], type: 'entry', data: e});
+                });
+                exitPoints.forEach(e => {
+                    const idx = findNearestBlockIdx(e.block);
+                    if(chartPpsReturnData[idx] !== null) ppsRetMarkers.push({idx, value: chartPpsReturnData[idx], type: 'exit', data: e});
+                });
+                if(hasExited && withdrawPnlInfo) {
+                    // Add exit at actual withdrawal point
+                    const exitData = exitPoints[exitPoints.length - 1] || fullExits[fullExits.length - 1];
+                    if(chartPpsReturnData[withdrawPnlInfo.idx] !== null) {
+                        ppsRetMarkers.push({idx: withdrawPnlInfo.idx, value: chartPpsReturnData[withdrawPnlInfo.idx], type: 'exit', data: exitData});
+                    }
+                }
+                sharpChanges.forEach(c => {
+                    if(chartPpsReturnData[c.idx] !== null) ppsRetMarkers.push({idx: c.idx, value: chartPpsReturnData[c.idx], type: 'sharp', data: c});
+                });
+                setTimeout(() => drawMarkerOverlay(charts.ppsReturn, ppsRetMarkers), 100);
+                document.getElementById('ppsReturnBadge').textContent=(finalRet>=0?'+':'')+finalRet.toFixed(2)+'%';
+                const retExpl=document.getElementById('ppsReturnExplanation');
+                if(retExpl)retExpl.innerHTML='Относительно HODL: <strong class="'+(finalRet>=0?'gain':'loss')+'">'+(finalRet>=0?'+':'')+finalRet.toFixed(2)+'%</strong> — '+retLabel+'. Если бы просто держал BTC, имел бы '+(finalRet<0?'больше':'меньше')+' на '+Math.abs(finalRet).toFixed(2)+'%.';
+            }
+            // Pool Imbalance Chart (reuse curPoolIdx and imbalanceDataAll from above)
+            const imbalanceData=imbalanceDataAll;
+            const imbalEl=document.getElementById('poolImbalanceChart');
+            if(imbalEl&&imbalanceData){
+                const imbalVals=imbalanceData.map(d=>d.imbalance);
+                const currentImbal=imbalVals.slice(-1)[0]||0;
+                // For exited users, show TRD at exit moment
+                let displayImbal=currentImbal;
+                let imbalLabel='сейчас';
+                if(hasExited&&withdrawPnlInfo){
+                    displayImbal=imbalVals[withdrawPnlInfo.idx]||0;
+                    imbalLabel='на момент выхода';
+                }
+                const entryImbalData=blocks.map((b,i)=>{const pt=entryPoints.find(e=>findNearestBlockIdx(e.block)===i);return pt?imbalVals[i]:null;});
+                const exitImbalData=blocks.map((b,i)=>{const pt=exitPoints.find(e=>findNearestBlockIdx(e.block)===i);return pt?imbalVals[i]:null;});
+                // Sharp change data for imbalance chart
+                const sharpChangeImbalData=blocks.map((b,i)=>{const change=sharpChanges.find(c=>c.idx===i);return change?imbalVals[i]:null;});
+                charts.poolImbalance=new Chart(imbalEl.getContext('2d'),{type:'line',data:{labels,datasets:[
+                    {label:'Дисбаланс (%)',data:imbalVals,borderColor:'#ff6b35',backgroundColor:'rgba(255,107,53,0.2)',fill:true,tension:0.3,pointRadius:0,borderWidth:2},
+                    {label:'Норма',data:blocks.map(()=>0),borderColor:'rgba(255,255,255,0.3)',borderDash:[5,5],borderWidth:1,pointRadius:0}
+                ]},options:{...commonOpts,scales:{...commonOpts.scales,y:{...commonOpts.scales.y,min:-5,max:Math.max(30,currentImbal+10)}}}});
+                // Draw markers overlay for Imbalance chart
+                const imbalMarkers = [];
+                entryPoints.forEach(e => {
+                    const idx = findNearestBlockIdx(e.block);
+                    imbalMarkers.push({idx, value: imbalVals[idx], type: 'entry', data: e});
+                });
+                exitPoints.forEach(e => {
+                    const idx = findNearestBlockIdx(e.block);
+                    imbalMarkers.push({idx, value: imbalVals[idx], type: 'exit', data: e});
+                });
+                sharpChanges.forEach(c => {
+                    imbalMarkers.push({idx: c.idx, value: imbalVals[c.idx], type: 'sharp', data: c});
+                });
+                setTimeout(() => drawMarkerOverlay(charts.poolImbalance, imbalMarkers), 100);
+                document.getElementById('poolImbalanceBadge').textContent=displayImbal.toFixed(1)+'%'+(hasExited?' (выход)':'');
+                const imbalExpl=document.getElementById('poolImbalanceExplanation');
+                if(imbalExpl){
+                    const severity=displayImbal<5?'низкий':displayImbal<15?'умеренный':'высокий';
+                    const sevClass=displayImbal<5?'gain':displayImbal<15?'':'loss';
+                    imbalExpl.innerHTML='<strong>TRD ('+imbalLabel+'):</strong> <strong class="'+sevClass+'">'+displayImbal.toFixed(1)+'%</strong> ('+severity+'). К выводу = Реальная × '+(100-displayImbal).toFixed(1)+'%.'+(hasExited?'':' Арбитраж восстанавливает баланс → TRD→0.');
+                }
+                // Update TRD stats
+                const trdEl=document.getElementById('statTrd');
+                if(trdEl){
+                    const severity=displayImbal<5?t('low'):displayImbal<15?t('moderate'):t('high');
+                    trdEl.textContent=displayImbal.toFixed(1)+'%';
+                    trdEl.className='stat-value '+(displayImbal<5?'positive':displayImbal<15?'':'negative');
+                    document.getElementById('statTrdLabel').textContent=hasExited?t('trdAtExit'):t('trdNow');
+                    document.getElementById('statTrdStatus').textContent=severity+' '+t('poolImbalance');
+                }
+                // Calculate PnL with TRD - prefer withdrawal moment if available
+                // Real PnL = actual WBTC withdrawn - actual WBTC deposited
+                const pnlTrdEl=document.getElementById('statPnlTrd');
+                if(pnlTrdEl){
+                    if(withdrawPnlInfo&&withdrawPnlInfo.totalWbtcDeposited>0){
+                        // Use real PnL based on actual WBTC amounts
+                        const pnl=withdrawPnlInfo.pnl;
+                        pnlTrdEl.textContent=(pnl>=0?'+':'')+pnl.toFixed(4)+' BTC';
+                        pnlTrdEl.className='stat-value '+(pnl>=0?'positive':'negative');
+                        document.getElementById('statPnlTrdPercent').textContent=t('deposited')+': '+withdrawPnlInfo.totalWbtcDeposited.toFixed(4)+' → '+t('withdrew')+': '+withdrawPnlInfo.totalWbtcWithdrawn.toFixed(4);
+                    }else if(withdrawPnlInfo){
+                        // Fallback for old data without WBTC tracking
+                        pnlTrdEl.textContent=(withdrawPnlInfo.pnl>=0?'+':'')+withdrawPnlInfo.pnl.toFixed(4)+' BTC';
+                        pnlTrdEl.className='stat-value '+(withdrawPnlInfo.pnl>=0?'positive':'negative');
+                        document.getElementById('statPnlTrdPercent').textContent=t('atExit')+' ('+t('block')+' '+withdrawPnlInfo.block+')';
+                    }else{
+                        // No withdrawals - show current estimated value
+                        const trdMultiplier=(100-currentImbal)/100;
+                        const realValue=valueData.slice(-1)[0]||0;
+                        const fundamentalValue=idealData.slice(-1)[0]||0;
+                        if(fundamentalValue>0){
+                            const withdrawValue=realValue*trdMultiplier;
+                            const pnlTrd=withdrawValue-totalWbtcDeposited;
+                            pnlTrdEl.textContent=(pnlTrd>=0?'+':'')+pnlTrd.toFixed(4)+' BTC';
+                            pnlTrdEl.className='stat-value '+(pnlTrd>=0?'positive':'negative');
+                            document.getElementById('statPnlTrdPercent').textContent=t('deposited')+': '+totalWbtcDeposited.toFixed(4)+' → '+t('toWithdrawNow')+': '+withdrawValue.toFixed(4);
+                        }
+                    }
+                }
+            }
+            // Add hover handlers for marker tooltips on all charts with markers
+            const chartsWithMarkers=['pnlChart','valueChart','ppsReturnChart','poolImbalanceChart'];
+            chartsWithMarkers.forEach(chartId=>{
+                const canvas=document.getElementById(chartId);
+                if(!canvas)return;
+                canvas.addEventListener('mousemove',function(e){
+                    const chart=Chart.getChart(canvas);
+                    if(!chart)return;
+                    const rect=canvas.getBoundingClientRect();
+                    const mouseX=e.clientX-rect.left;
+                    const mouseY=e.clientY-rect.top;
+                    // Check proximity to marker datasets directly
+                    let foundMarker=false;
+                    const hitRadius=25; // pixels - larger for easier activation
+                    for(let dsIdx=0;dsIdx<chart.data.datasets.length;dsIdx++){
+                        const ds=chart.data.datasets[dsIdx];
+                        if(!ds.label||(!(ds.label.includes('Вход'))&&!(ds.label.includes('Выход'))))continue;
+                        const meta=chart.getDatasetMeta(dsIdx);
+                        for(let ptIdx=0;ptIdx<meta.data.length;ptIdx++){
+                            if(ds.data[ptIdx]===null)continue;
+                            const pt=meta.data[ptIdx];
+                            const dx=mouseX-pt.x;
+                            const dy=mouseY-pt.y;
+                            if(Math.sqrt(dx*dx+dy*dy)<=hitRadius){
+                                showMarkerInfo(chart,dsIdx,ptIdx,e.clientX,e.clientY);
+                                foundMarker=true;
+                                break;
+                            }
+                        }
+                        if(foundMarker)break;
+                    }
+                    if(!foundMarker)hideMarkerInfo();
+                });
+                canvas.addEventListener('mouseleave',hideMarkerInfo);
+            });
+        }
+        function buildEventsTimeline(userEvents,userBalances,blocks,wbtcFlows){const timeline=document.getElementById('eventsTimeline');if(!userEvents||userEvents.length===0){timeline.innerHTML='<div class="empty-state"><div class="empty-state-icon">📊</div><div class="empty-state-title">Нет событий</div><div class="empty-state-text">События не найдены для этого адреса</div></div>';document.getElementById('eventsCount').textContent='0 событий';return;}document.getElementById('eventsCount').textContent=userEvents.length+' событий';timeline.innerHTML=userEvents.map(event=>{const typeClass=event.type.toLowerCase();const amountClass=event.amount>=0?'positive':'negative';const amountSign=event.amount>=0?'+':'';const d=blockToDate(event.block);const dateStr=d.toLocaleDateString('ru-RU',{day:'numeric',month:'short',year:'numeric'})+' '+d.toLocaleTimeString('ru-RU',{hour:'2-digit',minute:'2-digit'});let balanceStr='';if(userBalances&&blocks){const idx=blocks.indexOf(event.block);if(idx===-1){const nearIdx=blocks.findIndex(b=>b>=event.block);if(nearIdx!==-1){const lt=userBalances.lt[nearIdx]||0;const st=userBalances.st[nearIdx]||0;balanceStr=' | Баланс: '+(lt+st).toFixed(4)+' (ybBTC:'+lt.toFixed(4)+' st-ybBTC:'+st.toFixed(4)+')';}}else{const lt=userBalances.lt[idx]||0;const st=userBalances.st[idx]||0;balanceStr=' | Баланс: '+(lt+st).toFixed(4)+' (ybBTC:'+lt.toFixed(4)+' st-ybBTC:'+st.toFixed(4)+')';}}return'<div class="event-item" data-type="'+typeClass+'"><div class="event-block">'+dateStr+'<br><small style="opacity:0.6">Block '+event.block+'</small></div><div class="event-info"><span class="event-type '+typeClass+'">'+event.type.replace('_',' ')+'</span><span class="event-description">'+(event.description||'')+balanceStr+'</span></div><div class="event-amount '+amountClass+'">'+amountSign+event.amount.toFixed(6)+'</div></div>';}).join('');document.querySelectorAll('.filter-btn').forEach(btn=>{btn.onclick=()=>{document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));btn.classList.add('active');const filter=btn.dataset.filter;document.querySelectorAll('.event-item').forEach(item=>{item.style.display=(filter==='all'||item.dataset.type.includes(filter))?'grid':'none';});};});}
+        function buildPnlBreakdown(poolIdx,address,blocks,stakedPps,unstakedPps,userBalances,wbtcFlows){const tbody=document.getElementById('breakdownBody');if(blocks.length===0){tbody.innerHTML='<tr><td colspan="9">Нет данных</td></tr>';return;}
+            // Find last index with non-zero balance (position end)
+            let lastActiveIdx=blocks.length-1;
+            if(userBalances){
+                for(let i=blocks.length-1;i>=0;i--){
+                    const total=(userBalances.lt?.[i]||0)+(userBalances.st?.[i]||0);
+                    if(total>0.0001){lastActiveIdx=i+1;break;}
+                }
+            }
+            const activeBlocks=Math.min(blocks.length,lastActiveIdx+1);
+            const sampleRate=Math.max(1,Math.floor(activeBlocks/50));let rows=[];let cumulativePnl=0;let prevStakedPps=stakedPps[0]||1;let prevUnstakedPps=unstakedPps[0]||1;for(let i=0;i<activeBlocks;i+=sampleRate){const block=blocks[i];const d=blockToDate(block);const dateStr=d.toLocaleDateString('ru-RU',{day:'2-digit',month:'short'})+' '+d.toLocaleTimeString('ru-RU',{hour:'2-digit',minute:'2-digit'});const sPps=stakedPps[i]||1;const uPps=unstakedPps[i]||1;const ltBal=userBalances?.lt?.[i]||0;const stBal=userBalances?.st?.[i]||0;const totalBal=ltBal+stBal;let deltaPnl;if(userBalances){deltaPnl=(uPps-prevUnstakedPps)*ltBal+(sPps-prevStakedPps)*stBal;}else{deltaPnl=(sPps-prevStakedPps)+(uPps-prevUnstakedPps);}cumulativePnl+=deltaPnl;rows.push('<tr><td>'+block+'</td><td>'+dateStr+'</td><td>'+(userBalances?totalBal.toFixed(4):'-')+'</td><td>'+(userBalances?ltBal.toFixed(4):'-')+'</td><td>'+(userBalances?stBal.toFixed(4):'-')+'</td><td>'+uPps.toFixed(6)+'</td><td>'+sPps.toFixed(6)+'</td><td class="'+(deltaPnl>=0?'positive':'negative')+'">'+(deltaPnl>=0?'+':'')+deltaPnl.toFixed(6)+'</td><td class="'+(cumulativePnl>=0?'positive':'negative')+'">'+(cumulativePnl>=0?'+':'')+cumulativePnl.toFixed(6)+'</td></tr>');prevStakedPps=sPps;prevUnstakedPps=uPps;}tbody.innerHTML=rows.join('');}
+        document.getElementById('poolSelect').addEventListener('change',()=>{updateAddressCache();selectedAddress='';addressSearch.value='';addressClear.classList.remove('visible');});
+        document.getElementById('analyzeBtn').addEventListener('click',analyzeUser);
+        // Initialize language on page load
+        function initLanguage() {
+            // Set active button
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.lang === currentLang);
+            });
+            // Update HTML lang attribute
+            document.documentElement.lang = currentLang === 'ru' ? 'ru' : 'en';
+            // Update all texts
+            updateAllTexts();
+            // Update chart explanations
+            updateChartExplanations();
+        }
+        function updateChartExplanations() {
+            // PnL chart explanation
+            document.getElementById('pnlExplanation').innerHTML = '<strong>' + t('pnlExplanation') + '</strong><br>📉 ' + t('pnlExplanation2') + '<br>▲ ' + t('pnlExplanation3');
+            // Balance chart explanation
+            document.getElementById('balanceExplanation').innerHTML = '<strong>ybBTC</strong> ' + t('ybBTCUnstaked') + '. <strong>st-ybBTC</strong> ' + t('stYbBTCStaked') + '.<br><strong>' + (currentLang === 'ru' ? 'Важно:' : 'Important:') + '</strong> ' + t('balanceExplanation2');
+            // Value chart explanation
+            document.getElementById('valueExplanation').innerHTML = '<strong style="color:#00d4ff;">' + (currentLang === 'ru' ? 'Голубая' : 'Cyan') + '</strong> — ' + t('valueExplanation') + '<br><strong style="color:#fbbf24;">' + (currentLang === 'ru' ? 'Жёлтый' : 'Yellow') + '</strong> — ' + t('valueExplanation2') + '<br><strong style="color:#ff3366;">' + (currentLang === 'ru' ? 'Красная' : 'Red') + '</strong> — ' + t('valueExplanation3') + '<br>💡 ' + t('valueExplanation4');
+            // PPS Return chart explanation
+            document.getElementById('ppsReturnExplanation').innerHTML = '<strong>' + t('ppsReturnExplanation') + '</strong><br>⚠ ' + t('ppsReturnExplanation2');
+            // TRD chart explanation
+            document.getElementById('poolImbalanceExplanation').innerHTML = '<strong>TRD</strong> — ' + t('trdExplanation') + '<br>📊 ' + t('trdExplanation2') + '<br>💡 ' + t('trdExplanation3');
+        }
+        window.addEventListener('DOMContentLoaded', () => {
+            initLanguage();
+            loadData();
+        });
+    </script>
+</body>
+</html>
