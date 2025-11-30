@@ -245,61 +245,51 @@
                 </div>
                 <div class="education-content" id="eduContent">
                     <div class="summary-box" style="margin-top:0;margin-bottom:1.5rem;background:linear-gradient(135deg,rgba(255,51,102,0.15),rgba(255,107,53,0.1));border-color:rgba(255,51,102,0.3);">
-                        <h3 style="color:#ff3366;">⚠️ Главное: две "Фундаментальные" стоимости</h3>
-                        <p style="font-size:0.9rem;color:var(--text-primary);line-height:1.7;margin-bottom:0.75rem;">
-                            <strong style="color:#00d4ff;">Фундаментальная (adjusted)</strong> = баланс токенов (сумма депозитов). <em>База для расчёта refund.</em>
-                        </p>
-                        <p style="font-size:0.9rem;color:var(--text-primary);line-height:1.7;margin-bottom:0.75rem;">
-                            <strong style="color:#fbbf24;">Реальная стоимость</strong> = Баланс × PPS. Фактическая стоимость токенов без учёта TRD.
-                        </p>
-                        <p style="font-size:0.9rem;color:var(--text-primary);line-height:1.7;margin-bottom:0.75rem;">
-                            <strong style="color:#ff3366;">К выводу</strong> = Реальная × (1 − TRD). Сумма при выводе из пула сейчас.
-                        </p>
-                        <div class="formula" style="background:rgba(255,51,102,0.1);color:#ff6b35;font-size:0.85rem;">
-                            Убыток от PPS = Фундаментальная − Реальная | Убыток от TRD = Реальная − К выводу
-                        </div>
-                        <p style="font-size:0.85rem;color:var(--text-secondary);margin-top:0.75rem;">
-                            <strong>Пример:</strong> Депозит 100 BTC, PPS=0.95, TRD=5%. Реальная = 100 × 0.95 = 95 BTC. К выводу = 95 × 0.95 = 90.25 BTC.
-                        </p>
+                        <h3 style="color:#ff3366;">⚠️ <span data-i18n="eduMainTitle">Key point: two "Fundamental" values</span></h3>
+                        <p style="font-size:0.9rem;color:var(--text-primary);line-height:1.7;margin-bottom:0.75rem;" data-i18n-html="eduAdjustedDesc"></p>
+                        <p style="font-size:0.9rem;color:var(--text-primary);line-height:1.7;margin-bottom:0.75rem;" data-i18n-html="eduRealDesc"></p>
+                        <p style="font-size:0.9rem;color:var(--text-primary);line-height:1.7;margin-bottom:0.75rem;" data-i18n-html="eduWithdrawDesc"></p>
+                        <div class="formula" style="background:rgba(255,51,102,0.1);color:#ff6b35;font-size:0.85rem;" data-i18n="eduLossFormula"></div>
+                        <p style="font-size:0.85rem;color:var(--text-secondary);margin-top:0.75rem;" data-i18n-html="eduExample"></p>
                     </div>
                     <div class="edu-grid">
                         <div class="edu-card">
-                            <h3>📊 PPS (Price Per Share)</h3>
-                            <p>Стоимость одного токена в BTC. При депозите PPS≈1.0. Если PPS падает — токены обесцениваются.</p>
-                            <div class="formula">Стоимость без TRD = Токены × PPS</div>
+                            <h3>📊 <span data-i18n="eduPpsTitle">PPS (Price Per Share)</span></h3>
+                            <p data-i18n="eduPpsDesc"></p>
+                            <div class="formula" data-i18n="eduPpsFormula"></div>
                         </div>
                         <div class="edu-card warning">
-                            <h3>📉 Почему PPS падает?</h3>
-                            <p>Пул несёт убытки от: арбитража, комиссий протокола, ребалансировки. <strong>Staked PPS</strong> падает сильнее — stakers принимают больше риска за долю в доходах.</p>
+                            <h3>📉 <span data-i18n="eduWhyPpsTitle">Why does PPS drop?</span></h3>
+                            <p data-i18n-html="eduWhyPpsDesc"></p>
                         </div>
                         <div class="edu-card danger">
-                            <h3>💰 Две "Фундаментальные"</h3>
-                            <p><strong style="color:#00d4ff;">Adjusted</strong> = баланс токенов (база для refund). <strong style="color:#fbbf24;">Реальная</strong> = баланс × PPS (фактическая стоимость).</p>
-                            <div class="formula">Убыток от PPS = Adjusted − Реальная</div>
+                            <h3>💰 <span data-i18n="eduTwoFundTitle">Two "Fundamentals"</span></h3>
+                            <p data-i18n-html="eduTwoFundDesc"></p>
+                            <div class="formula" data-i18n="eduTwoFundFormula"></div>
                         </div>
                         <div class="edu-card success">
-                            <h3>🔄 Как работает Refund?</h3>
-                            <p>Протокол возвращает <strong>часть убытка</strong> от падения PPS. 91% refund = вернули 91% убытка.</p>
-                            <p style="margin-top:0.5rem;font-size:0.8rem;color:var(--text-muted);">Refund компенсирует падение PPS, но НЕ TRD!</p>
+                            <h3>🔄 <span data-i18n="eduRefundTitle">How does Refund work?</span></h3>
+                            <p data-i18n-html="eduRefundDesc"></p>
+                            <p style="margin-top:0.5rem;font-size:0.8rem;color:var(--text-muted);" data-i18n="eduRefundNote"></p>
                         </div>
                         <div class="edu-card">
-                            <h3>⚖️ TRD (Temporary Redemption Discount)</h3>
-                            <p>При дисбалансе пула (BTC/crvUSD ≠ 50/50) возникает <strong>временная скидка при выводе</strong>. Арбитраж постепенно восстанавливает баланс → TRD снижается до 0.</p>
-                            <div class="formula">К выводу = Токены × PPS × (1 − TRD)</div>
+                            <h3>⚖️ <span data-i18n="eduTrdTitle">TRD (Temporary Redemption Discount)</span></h3>
+                            <p data-i18n-html="eduTrdDesc"></p>
+                            <div class="formula" data-i18n="eduTrdFormula"></div>
                         </div>
                         <div class="edu-card">
-                            <h3>📈 "Влияние PPS" (%)</h3>
-                            <p>Нормализованное влияние PPS на позицию. >0% прибыль от PPS, <0% убыток. Без учёта размера депозитов.</p>
+                            <h3>📈 <span data-i18n="eduPpsImpactTitle">"PPS Impact" (%)</span></h3>
+                            <p data-i18n="eduPpsImpactDesc"></p>
                         </div>
                     </div>
                     <div class="summary-box">
-                        <h3>Итого: что мне важно знать?</h3>
+                        <h3 data-i18n="eduSummaryTitle">Summary: what do I need to know?</h3>
                         <ul>
-                            <li><strong style="color:#00d4ff;">Фундаментальная (adjusted)</strong> = баланс токенов (база для refund)</li>
-                            <li><strong style="color:#fbbf24;">Реальная стоимость</strong> = баланс × PPS — фактическая стоимость без TRD</li>
-                            <li><strong style="color:#ff3366;">К выводу</strong> = реальная × (1 − TRD) — сумма при выводе</li>
-                            <li><strong>TRD временный</strong> — пул ребалансируется, скидка уходит</li>
-                            <li><strong>Refund</strong> компенсирует убыток от PPS (adjusted − реальная)</li>
+                            <li data-i18n-html="eduSummary1"></li>
+                            <li data-i18n-html="eduSummary2"></li>
+                            <li data-i18n-html="eduSummary3"></li>
+                            <li data-i18n-html="eduSummary4"></li>
+                            <li data-i18n-html="eduSummary5"></li>
                         </ul>
                     </div>
                 </div>
@@ -526,7 +516,75 @@
                 gaugeStake: 'Staked in Gauge',
                 gaugeUnstake: 'Unstaked from Gauge',
                 transferOut: 'Sent to',
-                transferIn: 'Received from'
+                transferIn: 'Received from',
+                // Tooltip labels
+                entryLabel: 'ENTRY',
+                exitLabel: 'EXIT',
+                sharpChangeLabel: 'SHARP PPS CHANGE',
+                type: 'Type',
+                amount: 'Amount',
+                wbtcReceived: 'WBTC received',
+                cause: 'Cause',
+                // Value chart info
+                adjustedRefundBase: 'Adjusted (refund base)',
+                realWithoutTrd: 'Real (without TRD)',
+                toWithdrawAtExitTime: 'To withdraw (at exit time)',
+                exitHistoryLabel: 'Exit history',
+                fullExitLabel: 'Full exit',
+                withdrew: 'withdrew',
+                tokensLabel: 'tokens',
+                entriesLabel: 'Entries',
+                exitsLabel: 'Exits',
+                // PPS return chart
+                relativeToHodl: 'Relative to HODL',
+                ifHeldBtcMore: 'If just held BTC, would have',
+                more: 'more',
+                less: 'less',
+                by: 'by',
+                // Chart dataset labels (value, imbalance)
+                toWithdrawNowLabel: 'To withdraw now',
+                relHodlPercentLabel: 'Rel. HODL (%)',
+                imbalancePercentLabel: 'Imbalance (%)',
+                normLabel: 'Normal',
+                nowLabel: 'now',
+                atExitMomentLabel: 'at exit',
+                exitSuffix: '(exit)',
+                // PPS change causes
+                arbitrageCause: 'Arbitrage',
+                poolImbalanceCause: 'Pool imbalance',
+                adminFeeCause: 'Admin fee transfer',
+                // UI toggle
+                collapse: '(collapse)',
+                expand: '(expand)',
+                // Education section
+                eduMainTitle: 'Key point: two "Fundamental" values',
+                eduAdjustedDesc: '<strong style="color:#00d4ff;">Fundamental (adjusted)</strong> = token balance (sum of deposits). <em>Base for refund calculation.</em>',
+                eduRealDesc: '<strong style="color:#fbbf24;">Real value</strong> = Balance × PPS. Actual token value excluding TRD.',
+                eduWithdrawDesc: '<strong style="color:#ff3366;">To withdraw</strong> = Real × (1 − TRD). Amount when withdrawing from pool now.',
+                eduLossFormula: 'PPS Loss = Fundamental − Real | TRD Loss = Real − To withdraw',
+                eduExample: '<strong>Example:</strong> Deposit 100 BTC, PPS=0.95, TRD=5%. Real = 100 × 0.95 = 95 BTC. To withdraw = 95 × 0.95 = 90.25 BTC.',
+                eduPpsTitle: 'PPS (Price Per Share)',
+                eduPpsDesc: 'Value of one token in BTC. At deposit PPS≈1.0. If PPS drops — tokens depreciate.',
+                eduPpsFormula: 'Value without TRD = Tokens × PPS',
+                eduWhyPpsTitle: 'Why does PPS drop?',
+                eduWhyPpsDesc: 'Pool suffers losses from: arbitrage, protocol fees, rebalancing. <strong>Staked PPS</strong> drops more — stakers take more risk for share of profits.',
+                eduTwoFundTitle: 'Two "Fundamentals"',
+                eduTwoFundDesc: '<strong style="color:#00d4ff;">Adjusted</strong> = token balance (refund base). <strong style="color:#fbbf24;">Real</strong> = balance × PPS (actual value).',
+                eduTwoFundFormula: 'PPS Loss = Adjusted − Real',
+                eduRefundTitle: 'How does Refund work?',
+                eduRefundDesc: 'Protocol returns <strong>part of the loss</strong> from PPS drop. 91% refund = returned 91% of loss.',
+                eduRefundNote: 'Refund compensates PPS drop, but NOT TRD!',
+                eduTrdTitle: 'TRD (Temporary Redemption Discount)',
+                eduTrdDesc: 'When pool is imbalanced (BTC/crvUSD ≠ 50/50), a <strong>temporary withdrawal discount</strong> occurs. Arbitrage gradually restores balance → TRD decreases to 0.',
+                eduTrdFormula: 'To withdraw = Tokens × PPS × (1 − TRD)',
+                eduPpsImpactTitle: '"PPS Impact" (%)',
+                eduPpsImpactDesc: 'Normalized PPS impact on position. >0% profit from PPS, <0% loss. Excludes deposit sizes.',
+                eduSummaryTitle: 'Summary: what do I need to know?',
+                eduSummary1: '<strong style="color:#00d4ff;">Fundamental (adjusted)</strong> = token balance (refund base)',
+                eduSummary2: '<strong style="color:#fbbf24;">Real value</strong> = balance × PPS — actual value without TRD',
+                eduSummary3: '<strong style="color:#ff3366;">To withdraw</strong> = real × (1 − TRD) — amount on withdrawal',
+                eduSummary4: '<strong>TRD is temporary</strong> — pool rebalances, discount goes away',
+                eduSummary5: '<strong>Refund</strong> compensates PPS loss (adjusted − real)'
             },
             ru: {
                 // Header & Navigation
@@ -678,7 +736,75 @@
                 gaugeStake: 'Застейкано в Gauge',
                 gaugeUnstake: 'Выведено из Gauge',
                 transferOut: 'Отправлено на',
-                transferIn: 'Получено от'
+                transferIn: 'Получено от',
+                // Tooltip labels
+                entryLabel: 'ВХОД',
+                exitLabel: 'ВЫХОД',
+                sharpChangeLabel: 'РЕЗКОЕ ИЗМЕНЕНИЕ PPS',
+                type: 'Тип',
+                amount: 'Сумма',
+                wbtcReceived: 'WBTC получено',
+                cause: 'Причина',
+                // Value chart info
+                adjustedRefundBase: 'Adjusted (база refund)',
+                realWithoutTrd: 'Реальная (без TRD)',
+                toWithdrawAtExitTime: 'К выводу (на момент выхода)',
+                exitHistoryLabel: 'История выходов',
+                fullExitLabel: 'Полный выход',
+                withdrew: 'вывел',
+                tokensLabel: 'токенов',
+                entriesLabel: 'Входов',
+                exitsLabel: 'Выходов',
+                // PPS return chart
+                relativeToHodl: 'Относительно HODL',
+                ifHeldBtcMore: 'Если бы просто держал BTC, имел бы',
+                more: 'больше',
+                less: 'меньше',
+                by: 'на',
+                // Chart dataset labels (value, imbalance)
+                toWithdrawNowLabel: 'К выводу сейчас',
+                relHodlPercentLabel: 'Отн. HODL (%)',
+                imbalancePercentLabel: 'Дисбаланс (%)',
+                normLabel: 'Норма',
+                nowLabel: 'сейчас',
+                atExitMomentLabel: 'на момент выхода',
+                exitSuffix: '(выход)',
+                // PPS change causes
+                arbitrageCause: 'Арбитраж',
+                poolImbalanceCause: 'Дисбаланс пула',
+                adminFeeCause: 'Admin fee перевод',
+                // UI toggle
+                collapse: '(свернуть)',
+                expand: '(развернуть)',
+                // Education section
+                eduMainTitle: 'Главное: две "Фундаментальные" стоимости',
+                eduAdjustedDesc: '<strong style="color:#00d4ff;">Фундаментальная (adjusted)</strong> = баланс токенов (сумма депозитов). <em>База для расчёта refund.</em>',
+                eduRealDesc: '<strong style="color:#fbbf24;">Реальная стоимость</strong> = Баланс × PPS. Фактическая стоимость токенов без учёта TRD.',
+                eduWithdrawDesc: '<strong style="color:#ff3366;">К выводу</strong> = Реальная × (1 − TRD). Сумма при выводе из пула сейчас.',
+                eduLossFormula: 'Убыток от PPS = Фундаментальная − Реальная | Убыток от TRD = Реальная − К выводу',
+                eduExample: '<strong>Пример:</strong> Депозит 100 BTC, PPS=0.95, TRD=5%. Реальная = 100 × 0.95 = 95 BTC. К выводу = 95 × 0.95 = 90.25 BTC.',
+                eduPpsTitle: 'PPS (Price Per Share)',
+                eduPpsDesc: 'Стоимость одного токена в BTC. При депозите PPS≈1.0. Если PPS падает — токены обесцениваются.',
+                eduPpsFormula: 'Стоимость без TRD = Токены × PPS',
+                eduWhyPpsTitle: 'Почему PPS падает?',
+                eduWhyPpsDesc: 'Пул несёт убытки от: арбитража, комиссий протокола, ребалансировки. <strong>Staked PPS</strong> падает сильнее — stakers принимают больше риска за долю в доходах.',
+                eduTwoFundTitle: 'Две "Фундаментальные"',
+                eduTwoFundDesc: '<strong style="color:#00d4ff;">Adjusted</strong> = баланс токенов (база для refund). <strong style="color:#fbbf24;">Реальная</strong> = баланс × PPS (фактическая стоимость).',
+                eduTwoFundFormula: 'Убыток от PPS = Adjusted − Реальная',
+                eduRefundTitle: 'Как работает Refund?',
+                eduRefundDesc: 'Протокол возвращает <strong>часть убытка</strong> от падения PPS. 91% refund = вернули 91% убытка.',
+                eduRefundNote: 'Refund компенсирует падение PPS, но НЕ TRD!',
+                eduTrdTitle: 'TRD (Temporary Redemption Discount)',
+                eduTrdDesc: 'При дисбалансе пула (BTC/crvUSD ≠ 50/50) возникает <strong>временная скидка при выводе</strong>. Арбитраж постепенно восстанавливает баланс → TRD снижается до 0.',
+                eduTrdFormula: 'К выводу = Токены × PPS × (1 − TRD)',
+                eduPpsImpactTitle: '"Влияние PPS" (%)',
+                eduPpsImpactDesc: 'Нормализованное влияние PPS на позицию. >0% прибыль от PPS, <0% убыток. Без учёта размера депозитов.',
+                eduSummaryTitle: 'Итого: что мне важно знать?',
+                eduSummary1: '<strong style="color:#00d4ff;">Фундаментальная (adjusted)</strong> = баланс токенов (база для refund)',
+                eduSummary2: '<strong style="color:#fbbf24;">Реальная стоимость</strong> = баланс × PPS — фактическая стоимость без TRD',
+                eduSummary3: '<strong style="color:#ff3366;">К выводу</strong> = реальная × (1 − TRD) — сумма при выводе',
+                eduSummary4: '<strong>TRD временный</strong> — пул ребалансируется, скидка уходит',
+                eduSummary5: '<strong>Refund</strong> компенсирует убыток от PPS (adjusted − реальная)'
             }
         };
 
@@ -713,6 +839,11 @@
                     el.textContent = t(key);
                 }
             });
+            // Update elements with data-i18n-html attribute (allows HTML content)
+            document.querySelectorAll('[data-i18n-html]').forEach(el => {
+                const key = el.dataset.i18nHtml;
+                el.innerHTML = t(key);
+            });
             // Update page title
             document.title = t('title');
         }
@@ -724,10 +855,10 @@
             const toggle=card.querySelector('.chart-toggle');
             if(content.classList.contains('collapsed')){
                 content.classList.remove('collapsed');
-                toggle.textContent='(свернуть)';
+                toggle.textContent=t('collapse');
             }else{
                 content.classList.add('collapsed');
-                toggle.textContent='(развернуть)';
+                toggle.textContent=t('expand');
             }
         }
         // Convert block number to date
@@ -855,7 +986,7 @@
 
                 // Check if significant change
                 if(Math.abs(changeU) >= threshold || Math.abs(changeS) >= threshold) {
-                    let cause = 'Арбитраж';
+                    let cause = t('arbitrageCause');
                     let severity = 'warning';
 
                     // Check imbalance change
@@ -863,7 +994,7 @@
                         const prevImb = imbalanceData[i-1]?.imbalance || 0;
                         const currImb = imbalanceData[i]?.imbalance || 0;
                         if(currImb - prevImb > 2) {
-                            cause = 'Дисбаланс пула (' + currImb.toFixed(1) + '%)';
+                            cause = t('poolImbalanceCause') + ' (' + currImb.toFixed(1) + '%)';
                             severity = 'danger';
                         }
                     }
@@ -873,7 +1004,7 @@
                         const feeJump = adminFees[i] - adminFees[i-1];
                         const fairJump = (fairAdminFees[i] || 0) - (fairAdminFees[i-1] || 0);
                         if(feeJump > fairJump * 1.5 && feeJump > 0.01) {
-                            cause = 'Admin fee перевод';
+                            cause = t('adminFeeCause');
                             severity = 'info';
                         }
                     }
@@ -1342,7 +1473,7 @@
             // Update badges
             const pnlBadge=document.getElementById('pnlBadge');
             if(pnlBadge){
-                pnlBadge.textContent='Итог: '+(pnl>=0?'+':'')+pnl.toFixed(4)+' BTC';
+                pnlBadge.textContent=t('chartPnlTotal')+': '+(pnl>=0?'+':'')+pnl.toFixed(4)+' BTC';
                 pnlBadge.style.cssText='background:'+(pnl>=0?'rgba(0,255,136,0.1)':'rgba(255,51,102,0.1)')+';border-color:'+(pnl>=0?'rgba(0,255,136,0.3)':'rgba(255,51,102,0.3)')+';color:'+(pnl>=0?'#00ff88':'#ff3366');
             }
             if(userBalances){
@@ -1514,34 +1645,34 @@
                 if (marker.type === 'entry') {
                     tooltip.style.borderColor = 'rgba(0,255,136,0.5)';
                     const entry = marker.data;
-                    info = '<div style="color:#00ff88;font-weight:600;margin-bottom:6px;">▲ ВХОД</div>';
+                    info = '<div style="color:#00ff88;font-weight:600;margin-bottom:6px;">▲ ' + t('entryLabel') + '</div>';
                     info += '<div>' + dateStr + '</div>';
-                    info += '<div>Блок: ' + block + '</div>';
+                    info += '<div>' + t('block') + ': ' + block + '</div>';
                     if (entry) {
-                        info += '<div>Тип: ' + entry.type + '</div>';
-                        info += '<div>Сумма: <span style="color:#00ff88;">+' + Math.abs(entry.amount).toFixed(4) + '</span></div>';
+                        info += '<div>' + t('type') + ': ' + entry.type + '</div>';
+                        info += '<div>' + t('amount') + ': <span style="color:#00ff88;">+' + Math.abs(entry.amount).toFixed(4) + '</span></div>';
                         if (entry.wbtcAmount) info += '<div>WBTC: <span style="color:#00ff88;">+' + entry.wbtcAmount.toFixed(4) + '</span></div>';
                     }
                 } else if (marker.type === 'exit') {
                     tooltip.style.borderColor = 'rgba(255,51,102,0.5)';
                     const exit = marker.data;
-                    info = '<div style="color:#ff3366;font-weight:600;margin-bottom:6px;">▼ ВЫХОД</div>';
+                    info = '<div style="color:#ff3366;font-weight:600;margin-bottom:6px;">▼ ' + t('exitLabel') + '</div>';
                     info += '<div>' + dateStr + '</div>';
-                    info += '<div>Блок: ' + block + '</div>';
+                    info += '<div>' + t('block') + ': ' + block + '</div>';
                     if (exit) {
-                        info += '<div>Тип: ' + (exit.type || 'WITHDRAW') + '</div>';
-                        info += '<div>Сумма: <span style="color:#ff3366;">-' + Math.abs(exit.amount || exit.prevBalance || 0).toFixed(4) + '</span></div>';
+                        info += '<div>' + t('type') + ': ' + (exit.type || 'WITHDRAW') + '</div>';
+                        info += '<div>' + t('amount') + ': <span style="color:#ff3366;">-' + Math.abs(exit.amount || exit.prevBalance || 0).toFixed(4) + '</span></div>';
                         if (exit.trd !== undefined) info += '<div>TRD: ' + (exit.trd * 100).toFixed(1) + '%</div>';
-                        if (exit.wbtcReceived) info += '<div>WBTC получено: ' + exit.wbtcReceived.toFixed(4) + '</div>';
+                        if (exit.wbtcReceived) info += '<div>' + t('wbtcReceived') + ': ' + exit.wbtcReceived.toFixed(4) + '</div>';
                     }
                 } else if (marker.type === 'sharp') {
                     tooltip.style.borderColor = 'rgba(251,191,36,0.5)';
                     const change = marker.data;
-                    info = '<div style="color:#fbbf24;font-weight:600;margin-bottom:6px;">⚠ РЕЗКОЕ ИЗМЕНЕНИЕ PPS</div>';
+                    info = '<div style="color:#fbbf24;font-weight:600;margin-bottom:6px;">⚠ ' + t('sharpChangeLabel') + '</div>';
                     info += '<div>' + dateStr + '</div>';
-                    info += '<div>Блок: ' + block + '</div>';
+                    info += '<div>' + t('block') + ': ' + block + '</div>';
                     if (change) {
-                        info += '<div>Причина: ' + change.cause + '</div>';
+                        info += '<div>' + t('cause') + ': ' + change.cause + '</div>';
                         info += '<div>ybBTC: <span style="color:' + (change.changeU >= 0 ? '#00ff88' : '#ff3366') + ';">' + (change.changeU >= 0 ? '+' : '') + change.changeU.toFixed(2) + '%</span></div>';
                         info += '<div>st-ybBTC: <span style="color:' + (change.changeS >= 0 ? '#00ff88' : '#ff3366') + ';">' + (change.changeS >= 0 ? '+' : '') + change.changeS.toFixed(2) + '%</span></div>';
                     }
@@ -1583,26 +1714,29 @@
                 const d=blockToDate(block);
                 const dateStr=d.toLocaleDateString(getLocale(),{day:'numeric',month:'short',year:'numeric'})+' '+d.toLocaleTimeString(getLocale(),{hour:'2-digit',minute:'2-digit'});
                 let info='';
-                if(label.includes('Вход')){
+                // Check for entry label in both languages
+                const isEntry=label.includes(t('entriesLabel'))||label.includes('Вход')||label.includes('Entries')||label.includes('Entry');
+                const isExit=label.includes(t('exitsLabel'))||label.includes('Выход')||label.includes('Exits')||label.includes('Exit');
+                if(isEntry){
                     const entry=entryPoints.find(e=>e.idx===dataIndex);
                     if(entry){
                         tooltip.style.borderColor='rgba(0,255,136,0.5)';
-                        info='<div style="color:#00ff88;font-weight:600;margin-bottom:6px;">▲ ВХОД</div>';
+                        info='<div style="color:#00ff88;font-weight:600;margin-bottom:6px;">▲ '+t('entryLabel')+'</div>';
                         info+='<div>'+dateStr+'</div>';
-                        info+='<div>Блок: '+block+'</div>';
-                        info+='<div>Тип: '+entry.type+'</div>';
-                        info+='<div>Токены: <span style="color:#00ff88;">+'+Math.abs(entry.amount).toFixed(6)+'</span></div>';
+                        info+='<div>'+t('block')+': '+block+'</div>';
+                        info+='<div>'+t('type')+': '+entry.type+'</div>';
+                        info+='<div>'+t('amount')+': <span style="color:#00ff88;">+'+Math.abs(entry.amount).toFixed(6)+'</span></div>';
                         if(entry.wbtcAmount)info+='<div>WBTC: <span style="color:#00ff88;">+'+entry.wbtcAmount.toFixed(6)+'</span></div>';
                     }
-                }else if(label.includes('Выход')){
+                }else if(isExit){
                     const exit=exitPoints.find(e=>e.idx===dataIndex)||fullExits.find(e=>e.idx===dataIndex);
                     if(exit){
                         tooltip.style.borderColor='rgba(255,51,102,0.5)';
-                        info='<div style="color:#ff3366;font-weight:600;margin-bottom:6px;">▼ ВЫХОД</div>';
+                        info='<div style="color:#ff3366;font-weight:600;margin-bottom:6px;">▼ '+t('exitLabel')+'</div>';
                         info+='<div>'+dateStr+'</div>';
-                        info+='<div>Блок: '+block+'</div>';
-                        info+='<div>Тип: '+(exit.type||'WITHDRAW')+'</div>';
-                        info+='<div>Сумма: <span style="color:#ff3366;">-'+Math.abs(exit.amount||exit.prevBalance).toFixed(6)+'</span></div>';
+                        info+='<div>'+t('block')+': '+block+'</div>';
+                        info+='<div>'+t('type')+': '+(exit.type||'WITHDRAW')+'</div>';
+                        info+='<div>'+t('amount')+': <span style="color:#ff3366;">-'+Math.abs(exit.amount||exit.prevBalance).toFixed(6)+'</span></div>';
                         if(exit.trd!==undefined)info+='<div>TRD: '+(exit.trd*100).toFixed(1)+'%</div>';
                     }
                 }
@@ -1661,8 +1795,8 @@
                 }
             };
             charts.pnl=new Chart(document.getElementById('pnlChart').getContext('2d'),{type:'line',data:{labels,datasets:[
-                {label:'Изменение от PPS (BTC)',data:cumulativePnl,borderColor:pnl>=0?'#00ff88':'#ff3366',backgroundColor:pnl>=0?'rgba(0,255,136,0.15)':'rgba(255,51,102,0.15)',fill:true,tension:0.3,pointRadius:0,pointHoverRadius:6,borderWidth:3,yAxisID:'y'},
-                {label:'% от депозита',data:pnlPercentData,borderColor:'rgba(148,163,184,0.5)',borderDash:[4,4],borderWidth:1,pointRadius:0,fill:false,yAxisID:'y1'},
+                {label:t('fromPps')+' (BTC)',data:cumulativePnl,borderColor:pnl>=0?'#00ff88':'#ff3366',backgroundColor:pnl>=0?'rgba(0,255,136,0.15)':'rgba(255,51,102,0.15)',fill:true,tension:0.3,pointRadius:0,pointHoverRadius:6,borderWidth:3,yAxisID:'y'},
+                {label:'% '+t('fromPps'),data:pnlPercentData,borderColor:'rgba(148,163,184,0.5)',borderDash:[4,4],borderWidth:1,pointRadius:0,fill:false,yAxisID:'y1'},
                 {label:'',data:blocks.map(()=>0),borderColor:'rgba(255,255,255,0.3)',borderDash:[5,5],borderWidth:1,pointRadius:0,hidden:false,yAxisID:'y'}
             ]},options:pnlChartOpts});
             // Draw markers overlay for PnL chart
@@ -1690,7 +1824,7 @@
                     const idx = ctx[0].dataIndex;
                     const block = blockLabels[idx];
                     const d = blockToDate(block);
-                    return d.toLocaleDateString(getLocale(), {day:'numeric',month:'short',year:'numeric'}) + ' (блок ' + block + ')';
+                    return d.toLocaleDateString(getLocale(), {day:'numeric',month:'short',year:'numeric'}) + ' (' + t('blockLabel') + ' ' + block + ')';
                 },
                 afterBody: function(ctx) {
                     const idx = ctx[0].dataIndex;
@@ -1771,10 +1905,10 @@
             });
 
             charts.value=new Chart(document.getElementById('valueChart').getContext('2d'),{type:'line',data:{labels,datasets:[
-                {label:'HODL (если бы держал)',data:cumulativeDeposits,borderColor:'rgba(148,163,184,0.5)',borderWidth:1,borderDash:[8,4],pointRadius:0,fill:false,tension:0.1},
-                {label:'Adjusted (база refund)',data:idealData,borderColor:'#00d4ff',borderWidth:2,pointRadius:0,fill:false},
-                {label:'К выводу (с TRD)',data:withdrawData,borderColor:'#ff3366',backgroundColor:'rgba(255,51,102,0.15)',fill:true,tension:0.3,pointRadius:0,borderWidth:2},
-                {label:'Реальная (без TRD)',data:valueData,borderColor:'#fbbf24',borderDash:[3,3],backgroundColor:'transparent',fill:false,tension:0.3,pointRadius:0,borderWidth:2}
+                {label:t('hodlLabel'),data:cumulativeDeposits,borderColor:'rgba(148,163,184,0.5)',borderWidth:1,borderDash:[8,4],pointRadius:0,fill:false,tension:0.1},
+                {label:t('adjustedRefundBase'),data:idealData,borderColor:'#00d4ff',borderWidth:2,pointRadius:0,fill:false},
+                {label:t('toWithdrawLabel'),data:withdrawData,borderColor:'#ff3366',backgroundColor:'rgba(255,51,102,0.15)',fill:true,tension:0.3,pointRadius:0,borderWidth:2},
+                {label:t('realWithoutTrd'),data:valueData,borderColor:'#fbbf24',borderDash:[3,3],backgroundColor:'transparent',fill:false,tension:0.3,pointRadius:0,borderWidth:2}
             ]},options:commonOpts});
             // Draw markers overlay for Value chart - bind to red line (withdrawData = К выводу с TRD)
             // For entries: find stable value after deposit by looking ahead until value stabilizes
@@ -1883,13 +2017,13 @@
                     withd=withdrawPnlInfo.withdrawValue;
                     const exitIdx=withdrawPnlInfo.idx;
                     displayTrd=(imbalanceDataAll?.[exitIdx]?.imbalance||0);
-                    displayLabel='К выводу (на момент выхода)';
+                    displayLabel=t('toWithdrawAtExitTime');
                 }else{
                     // User still has position - show current values
                     ideal=idealData.slice(-1)[0]||0;
                     withd=withdrawData.slice(-1)[0]||0;
                     displayTrd=(imbalanceDataAll?.slice(-1)[0]?.imbalance||0);
-                    displayLabel='К выводу сейчас';
+                    displayLabel=t('toWithdrawNowLabel');
                 }
                 const realVal=valueData.slice(-1)[0]||0;
                 const hasExitedNow=hasExited&&withdrawPnlInfo;
@@ -1897,25 +2031,25 @@
                 const diff=withd-ideal;
                 const ppsLoss=ideal-exitRealVal;
                 const trdLoss=exitRealVal-withd;
-                let html='<strong style="color:#00d4ff;">Adjusted (база refund):</strong> <strong>'+ideal.toFixed(4)+' BTC</strong><br>'+
-                    '<strong style="color:#fbbf24;">Реальная (без TRD):</strong> <strong>'+exitRealVal.toFixed(4)+' BTC</strong> <span class="'+(ppsLoss<=0?'gain':'loss')+'">'+(ppsLoss<=0?'+':'-')+Math.abs(ppsLoss).toFixed(4)+' от PPS</span><br>'+
-                    '<strong style="color:#ff3366;">'+displayLabel+':</strong> <strong>'+withd.toFixed(4)+' BTC</strong> <span class="loss">-'+trdLoss.toFixed(4)+' от TRD ('+displayTrd.toFixed(1)+'%)</span>';
+                let html='<strong style="color:#00d4ff;">'+t('adjustedRefundBase')+':</strong> <strong>'+ideal.toFixed(4)+' BTC</strong><br>'+
+                    '<strong style="color:#fbbf24;">'+t('realWithoutTrd')+':</strong> <strong>'+exitRealVal.toFixed(4)+' BTC</strong> <span class="'+(ppsLoss<=0?'gain':'loss')+'">'+(ppsLoss<=0?'+':'-')+Math.abs(ppsLoss).toFixed(4)+' '+t('fromPps')+'</span><br>'+
+                    '<strong style="color:#ff3366;">'+displayLabel+':</strong> <strong>'+withd.toFixed(4)+' BTC</strong> <span class="loss">-'+trdLoss.toFixed(4)+' '+t('fromTrd')+' ('+displayTrd.toFixed(1)+'%)</span>';
 
                 // Show detailed exit info
                 if(exitPoints.length>0){
-                    html+='<br><br><strong>История выходов:</strong>';
+                    html+='<br><br><strong>'+t('exitHistoryLabel')+':</strong>';
                     for(const ex of exitPoints.slice(-3)){
                         const exitPnl=ex.withdrawValue-(ex.ltBal+ex.stBal);
-                        html+='<br>▼ Блок '+ex.block+': '+ex.type+' '+Math.abs(ex.amount).toFixed(4)+' | PPS: U='+ex.uPps.toFixed(4)+' S='+ex.sPps.toFixed(4)+' | TRD: '+(ex.trd*100).toFixed(1)+'%';
+                        html+='<br>▼ '+t('block')+' '+ex.block+': '+ex.type+' '+Math.abs(ex.amount).toFixed(4)+' | PPS: U='+ex.uPps.toFixed(4)+' S='+ex.sPps.toFixed(4)+' | TRD: '+(ex.trd*100).toFixed(1)+'%';
                     }
                 }
                 if(fullExits.length>0){
-                    html+='<br><br><strong style="color:#ff3366;">⚠ Полный выход:</strong>';
+                    html+='<br><br><strong style="color:#ff3366;">⚠ '+t('fullExitLabel')+':</strong>';
                     for(const fe of fullExits){
-                        html+='<br>Блок '+fe.block+': вывел '+fe.prevBalance.toFixed(4)+' токенов | PPS: '+fe.uPps.toFixed(4)+' | TRD: '+(fe.trd*100).toFixed(1)+'%';
+                        html+='<br>'+t('block')+' '+fe.block+': '+t('withdrew')+' '+fe.prevBalance.toFixed(4)+' '+t('tokensLabel')+' | PPS: '+fe.uPps.toFixed(4)+' | TRD: '+(fe.trd*100).toFixed(1)+'%';
                     }
                 }
-                html+='<br><span style="color:#00ff88;">▲</span> Входов: '+entryPoints.length+' | <span style="color:#ff3366;">▼</span> Выходов: '+exitPoints.length;
+                html+='<br><span style="color:#00ff88;">▲</span> '+t('entriesLabel')+': '+entryPoints.length+' | <span style="color:#ff3366;">▼</span> '+t('exitsLabel')+': '+exitPoints.length;
                 valExpl.innerHTML=html;
                 // Update balance stat and badges for exited users
                 if(hasExited&&fullExits.length>0){
@@ -1974,7 +2108,7 @@
                     afterBody:ctx=>{const idx=ctx[0].dataIndex;const uPps=unstakedPps[idx]||1;const sPps=stakedPps[idx]||1;const ch=sharpChanges.find(c=>c.idx===idx);let lines=['','PPS: ybBTC='+uPps.toFixed(4)+' st='+sPps.toFixed(4)];if(ch)lines.push('⚠ '+ch.cause);return lines;}
                 }}}};
                 charts.ppsReturn=new Chart(ppsRetEl.getContext('2d'),{type:'line',data:{labels,datasets:[
-                    {label:'Отн. HODL (%)',data:chartPpsReturnData,borderColor:finalRet>=0?'#00ff88':'#ff3366',backgroundColor:finalRet>=0?'rgba(0,255,136,0.2)':'rgba(255,51,102,0.2)',fill:true,tension:0.3,pointRadius:0,borderWidth:2,spanGaps:false},
+                    {label:t('relHodlPercentLabel'),data:chartPpsReturnData,borderColor:finalRet>=0?'#00ff88':'#ff3366',backgroundColor:finalRet>=0?'rgba(0,255,136,0.2)':'rgba(255,51,102,0.2)',fill:true,tension:0.3,pointRadius:0,borderWidth:2,spanGaps:false},
                     {label:'',data:blocks.map(()=>0),borderColor:'rgba(255,255,255,0.3)',borderDash:[5,5],borderWidth:1,pointRadius:0}
                 ]},options:ppsReturnOpts});
                 // Draw markers overlay for PPS Return chart
@@ -2000,7 +2134,7 @@
                 setTimeout(() => drawMarkerOverlay(charts.ppsReturn, ppsRetMarkers), 100);
                 document.getElementById('ppsReturnBadge').textContent=(finalRet>=0?'+':'')+finalRet.toFixed(2)+'%';
                 const retExpl=document.getElementById('ppsReturnExplanation');
-                if(retExpl)retExpl.innerHTML='Относительно HODL: <strong class="'+(finalRet>=0?'gain':'loss')+'">'+(finalRet>=0?'+':'')+finalRet.toFixed(2)+'%</strong> — '+retLabel+'. Если бы просто держал BTC, имел бы '+(finalRet<0?'больше':'меньше')+' на '+Math.abs(finalRet).toFixed(2)+'%.';
+                if(retExpl)retExpl.innerHTML=t('relativeToHodl')+': <strong class="'+(finalRet>=0?'gain':'loss')+'">'+(finalRet>=0?'+':'')+finalRet.toFixed(2)+'%</strong> — '+retLabel+'. '+t('ifHeldBtcMore')+' '+(finalRet<0?t('more'):t('less'))+' '+t('by')+' '+Math.abs(finalRet).toFixed(2)+'%.';
             }
             // Pool Imbalance Chart (reuse curPoolIdx and imbalanceDataAll from above)
             const imbalanceData=imbalanceDataAll;
@@ -2010,18 +2144,18 @@
                 const currentImbal=imbalVals.slice(-1)[0]||0;
                 // For exited users, show TRD at exit moment
                 let displayImbal=currentImbal;
-                let imbalLabel='сейчас';
+                let imbalLabel=t('nowLabel');
                 if(hasExited&&withdrawPnlInfo){
                     displayImbal=imbalVals[withdrawPnlInfo.idx]||0;
-                    imbalLabel='на момент выхода';
+                    imbalLabel=t('atExitMomentLabel');
                 }
                 const entryImbalData=blocks.map((b,i)=>{const pt=entryPoints.find(e=>findNearestBlockIdx(e.block)===i);return pt?imbalVals[i]:null;});
                 const exitImbalData=blocks.map((b,i)=>{const pt=exitPoints.find(e=>findNearestBlockIdx(e.block)===i);return pt?imbalVals[i]:null;});
                 // Sharp change data for imbalance chart
                 const sharpChangeImbalData=blocks.map((b,i)=>{const change=sharpChanges.find(c=>c.idx===i);return change?imbalVals[i]:null;});
                 charts.poolImbalance=new Chart(imbalEl.getContext('2d'),{type:'line',data:{labels,datasets:[
-                    {label:'Дисбаланс (%)',data:imbalVals,borderColor:'#ff6b35',backgroundColor:'rgba(255,107,53,0.2)',fill:true,tension:0.3,pointRadius:0,borderWidth:2},
-                    {label:'Норма',data:blocks.map(()=>0),borderColor:'rgba(255,255,255,0.3)',borderDash:[5,5],borderWidth:1,pointRadius:0}
+                    {label:t('imbalancePercentLabel'),data:imbalVals,borderColor:'#ff6b35',backgroundColor:'rgba(255,107,53,0.2)',fill:true,tension:0.3,pointRadius:0,borderWidth:2},
+                    {label:t('normLabel'),data:blocks.map(()=>0),borderColor:'rgba(255,255,255,0.3)',borderDash:[5,5],borderWidth:1,pointRadius:0}
                 ]},options:{...commonOpts,scales:{...commonOpts.scales,y:{...commonOpts.scales.y,min:-5,max:Math.max(30,currentImbal+10)}}}});
                 // Draw markers overlay for Imbalance chart
                 const imbalMarkers = [];
@@ -2037,7 +2171,7 @@
                     imbalMarkers.push({idx: c.idx, value: imbalVals[c.idx], type: 'sharp', data: c});
                 });
                 setTimeout(() => drawMarkerOverlay(charts.poolImbalance, imbalMarkers), 100);
-                document.getElementById('poolImbalanceBadge').textContent=displayImbal.toFixed(1)+'%'+(hasExited?' (выход)':'');
+                document.getElementById('poolImbalanceBadge').textContent=displayImbal.toFixed(1)+'%'+(hasExited?' '+t('exitSuffix'):'');
                 // Update TRD stats
                 const trdEl=document.getElementById('statTrd');
                 if(trdEl){
@@ -2093,7 +2227,9 @@
                     const hitRadius=25; // pixels - larger for easier activation
                     for(let dsIdx=0;dsIdx<chart.data.datasets.length;dsIdx++){
                         const ds=chart.data.datasets[dsIdx];
-                        if(!ds.label||(!(ds.label.includes('Вход'))&&!(ds.label.includes('Выход'))))continue;
+                        const isEntryDs=ds.label&&(ds.label.includes(t('entriesLabel'))||ds.label.includes('Вход')||ds.label.includes('Entries')||ds.label.includes('Entry'));
+                        const isExitDs=ds.label&&(ds.label.includes(t('exitsLabel'))||ds.label.includes('Выход')||ds.label.includes('Exits')||ds.label.includes('Exit'));
+                        if(!isEntryDs&&!isExitDs)continue;
                         const meta=chart.getDatasetMeta(dsIdx);
                         for(let ptIdx=0;ptIdx<meta.data.length;ptIdx++){
                             if(ds.data[ptIdx]===null)continue;
