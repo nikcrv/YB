@@ -1,4 +1,4 @@
-// Last updated: 2025-12-01 14:31:11 UTC
+// Last updated: 2025-12-01 14:44:15 UTC
 const yieldData_yb_tbtc = {
   "metadata": {
     "contract": "0x2B513eBe7070Cff91cf699a0BFe5075020C732FF",
