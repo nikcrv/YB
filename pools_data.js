@@ -1,6 +1,6 @@
-// Last updated: 2025-12-02 05:44:18 UTC
+// Last updated: 2025-12-02 05:56:41 UTC
 const POOLS_DATA = {
-  "generated": "2025-12-02T09:43:14.172461",
+  "generated": "2025-12-02T09:55:36.522440",
   "period": {
     "start": "2025-09-24",
     "end": "2025-11-28"
