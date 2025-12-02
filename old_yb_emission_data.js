@@ -1,4 +1,4 @@
-// Last updated: 2025-12-02 13:02:41 UTC
+// Last updated: 2025-12-02 13:15:11 UTC
 const old_ybEmissionData = [
   {
     "timestamp": 1760508000,
@@ -16451,5 +16451,17 @@ const old_ybEmissionData = [
     "cumulative_WBTC": 1610118.755822245,
     "cumulative_tBTC": 2165668.1819426343,
     "cumulative_total": 5542874.942768933
+  },
+  {
+    "timestamp": 1764680400,
+    "datetime": "2025-12-02T13:00:00",
+    "hourly_cbBTC": 0,
+    "hourly_WBTC": 0,
+    "hourly_tBTC": 48.457258961943424,
+    "hourly_total": 48.457258961943424,
+    "cumulative_cbBTC": 1767088.0050040542,
+    "cumulative_WBTC": 1610118.755822245,
+    "cumulative_tBTC": 2165716.6392015964,
+    "cumulative_total": 5542923.400027895
   }
 ];
