@@ -96,6 +96,27 @@
         .loader-stats { display: flex; justify-content: space-between; font-size: 0.7rem; color: var(--text-muted); font-family: 'JetBrains Mono', monospace; }
         .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem; margin-bottom: 2rem; }
         .stat-card { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 16px; padding: 1.5rem; }
+        .stat-card-expandable { cursor: pointer; transition: border-color 0.2s; position: relative; }
+        .stat-card-expandable:hover { border-color: var(--accent-cyan); }
+        .stat-expand-hint { font-size: 0.65rem; color: var(--text-muted); margin-top: 0.5rem; opacity: 0.7; }
+        .pnl-breakdown { display: none; grid-column: 1 / -1; background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: 12px; padding: 0; max-height: 0; overflow: hidden; transition: all 0.3s ease; }
+        .pnl-breakdown.open { display: block; padding: 1.25rem; max-height: 900px; margin-top: -0.5rem; margin-bottom: 1rem; overflow-y: auto; }
+        .pnl-breakdown-title { font-size: 0.85rem; font-weight: 600; color: var(--text-primary); margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem; }
+        .pnl-breakdown-steps { display: flex; flex-direction: column; gap: 0.75rem; }
+        .pnl-step { display: flex; align-items: flex-start; gap: 0.75rem; padding: 0.75rem; background: var(--bg-card); border-radius: 8px; border-left: 3px solid var(--accent-cyan); }
+        .pnl-step.loss { border-left-color: var(--accent-red); }
+        .pnl-step.gain { border-left-color: var(--accent-green); }
+        .pnl-step-num { width: 24px; height: 24px; background: var(--bg-secondary); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.7rem; font-weight: 700; color: var(--text-muted); flex-shrink: 0; }
+        .pnl-step-content { flex: 1; }
+        .pnl-step-label { font-size: 0.75rem; color: var(--text-secondary); margin-bottom: 0.25rem; }
+        .pnl-step-value { font-size: 0.9rem; font-weight: 600; color: var(--text-primary); font-family: 'JetBrains Mono', monospace; }
+        .pnl-step-calc { font-size: 0.7rem; color: var(--text-muted); margin-top: 0.25rem; font-family: 'JetBrains Mono', monospace; }
+        .pnl-step-value.positive { color: var(--accent-green); }
+        .pnl-step-value.negative { color: var(--accent-red); }
+        .pnl-result { margin-top: 1rem; padding: 1rem; background: linear-gradient(135deg, rgba(0,212,255,0.1), rgba(0,255,136,0.05)); border-radius: 8px; border: 1px solid rgba(0,212,255,0.2); }
+        .pnl-result-row { display: flex; justify-content: space-between; align-items: center; }
+        .pnl-result-label { font-size: 0.8rem; color: var(--text-secondary); }
+        .pnl-result-value { font-size: 1.1rem; font-weight: 700; font-family: 'JetBrains Mono', monospace; }
         .stat-label { font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.75rem; }
         .stat-value { font-size: 1.75rem; font-weight: 700; font-family: 'JetBrains Mono', monospace; margin-bottom: 0.25rem; }
         .stat-value.positive { color: var(--accent-green); }
@@ -233,7 +254,8 @@
         <div id="resultsSection" class="hidden">
             <section class="stats-grid">
                 <div class="stat-card"><div class="stat-label" data-i18n="pnlNoTrd">PnL (without TRD)</div><div class="stat-value" id="statPnl">-</div><div class="stat-subvalue" id="statPnlPercent" data-i18n="valueChange">value change</div></div>
-                <div class="stat-card"><div class="stat-label" data-i18n="pnlWithTrd">PnL with TRD</div><div class="stat-value" id="statPnlTrd">-</div><div class="stat-subvalue" id="statPnlTrdPercent" data-i18n="toWithdrawNow">to withdraw now</div></div>
+                <div class="stat-card stat-card-expandable" onclick="document.getElementById('pnlBreakdown').classList.toggle('open');"><div class="stat-label" data-i18n="pnlWithTrd">PnL with TRD</div><div class="stat-value" id="statPnlTrd">-</div><div class="stat-subvalue" id="statPnlTrdPercent" data-i18n="toWithdrawNow">to withdraw now</div><div class="stat-expand-hint" id="pnlExpandHint" data-i18n="clickForDetails">click for details</div></div>
+                <div class="pnl-breakdown" id="pnlBreakdown"></div>
                 <div class="stat-card"><div class="stat-label" data-i18n="finalBalance">Final Balance</div><div class="stat-value" id="statBalance">-</div><div class="stat-subvalue" id="statBalanceType"></div></div>
                 <div class="stat-card"><div class="stat-label" data-i18n="refund">Refund</div><div class="stat-value positive" id="statRefund">-</div><div class="stat-subvalue" id="statRefundPercent"></div></div>
                 <div class="stat-card"><div class="stat-label" id="statTrdLabel" data-i18n="trdNow">TRD now</div><div class="stat-value" id="statTrd">-</div><div class="stat-subvalue" id="statTrdStatus" data-i18n="poolImbalance">pool imbalance</div></div>
@@ -341,6 +363,16 @@
                     </div>
                     <div class="chart-explanation" id="poolImbalanceExplanation"></div>
                 </div>
+                <div class="chart-card" id="stakingValueCard" style="display:none;">
+                    <div class="chart-header">
+                        <span class="chart-title">📈 <span data-i18n="chartStakingTitle">Staking Value — st-ybBTC worth in BTC</span></span>
+                        <span class="chart-badge" id="stakingValueBadge">-</span>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="stakingValueChart"></canvas>
+                    </div>
+                    <div class="chart-explanation" id="stakingValueExplanation"></div>
+                </div>
             </section>
             <section class="events-section">
                 <div class="events-header"><div class="events-title" data-i18n="eventsHistory">Events History</div><div class="events-count" id="eventsCount">0 <span data-i18n="events">events</span></div></div>
@@ -362,9 +394,20 @@
     </div>
     <script src="data.js"></script>
     <script src="pools_data.js"></script>
+    <!-- TRD calculation data: preview_withdraw and pricePerShare -->
+    <script src="old_revenue_yield_wbtc_sync.js"></script>
+    <script src="old_revenue_yield_cbbtc_sync.js"></script>
+    <script src="old_revenue_yield_tbtc_sync.js"></script>
+    <script src="pps_data_old_wbtc.js"></script>
+    <script src="pps_data_old_cbbtc.js"></script>
+    <script src="pps_data_old_tbtc.js"></script>
+    <!-- Withdrawable PPS data -->
+    <script src="old_vaults_yield_wbtc.js"></script>
     <script>
         // Localization system
         let currentLang = localStorage.getItem('yb_lang') || 'en';
+        // Data for PnL breakdown (to update on language change)
+        let breakdownData = null;
         const translations = {
             en: {
                 // Header & Navigation
@@ -420,6 +463,13 @@
                 chartValueNow: 'Value',
                 chartPpsReturnTitle: 'PPS Impact (% vs HODL)',
                 chartTrdTitle: 'Pool Imbalance — withdrawal discount (TRD %)',
+                chartStakingTitle: 'Staking Value — st-ybBTC worth in BTC',
+                stakingStart: 'Stake',
+                stakingEnd: 'Unstake',
+                stakingMin: 'Min',
+                stakingMax: 'Max',
+                stakingLossExplain: 'Loss from staking: you unstaked not at the best moment',
+                fromMax: 'from max',
                 // Chart labels
                 adjustedLabel: 'Adjusted (refund base)',
                 realLabel: 'Real (without TRD)',
@@ -556,6 +606,54 @@
                 // UI toggle
                 collapse: '(collapse)',
                 expand: '(expand)',
+                // Token transfer
+                transferred: 'transferred',
+                tokensWorth: 'tokens worth',
+                // PnL breakdown
+                clickForDetails: 'click for details',
+                pnlBreakdownTitle: 'How is PnL calculated?',
+                stepDeposit: 'Deposit',
+                stepDepositDesc: 'You deposited WBTC to the pool',
+                stepTokensReceived: 'Tokens received',
+                stepTokensReceivedDesc: 'WBTC / PPS at deposit time',
+                stepEntryPpsLoss: 'Entry loss',
+                stepStaking: 'Staking',
+                stepStakingDesc: 'You staked tokens, received st-ybBTC',
+                stepStakingReceivedDesc: 'More tokens due to st-ybBTC PPS < ybBTC PPS',
+                stepUnstake: 'Unstake',
+                stepUnstakeDesc: 'You unstaked tokens',
+                stepUnstakeLoss: 'Less tokens — staking PPS dropped',
+                stepStakingLoss: 'Staking loss',
+                stepStakingGain: 'Staking gain',
+                stepStakingTokenLoss: 'Token loss from staking',
+                atCurrentPps: 'at current PPS',
+                stepPpsBeforeStake: 'Before staking',
+                stepStake: 'Stake',
+                stepStakeDesc: 'Convert ybBTC to st-ybBTC',
+                stepHoldingPeriod: 'Holding period',
+                stepRatioDropped: 'st-ybBTC/ybBTC ratio dropped',
+                stepRatioLoss: 'Ratio loss',
+                stepUnstakeDesc: 'Convert st-ybBTC back to ybBTC',
+                stepStakingResult: 'Staking result',
+                ratio: 'Ratio',
+                stepIfNotStaked: 'If not staked',
+                stepPpsGrowth: 'PPS growth',
+                stepPpsDrop: 'PPS drop',
+                ppsGrowthDesc: 'PPS growth profit',
+                stepFinalCalc: 'Final calculation',
+                stepHodlValue: 'If not staked (HODL)',
+                stepTokenValueAt: 'Token value',
+                stepPpsChange: 'PPS change (holding period)',
+                stepExit: 'Exit',
+                stepExitTransfer: 'Tokens transferred to another address',
+                stepExitWithdraw: 'Tokens withdrawn as WBTC',
+                stepTokenValue: 'Token value at exit',
+                stepTokenValueDesc: 'tokens × PPS',
+                stepTrdLoss: 'TRD discount',
+                stepTrdLossDesc: 'Pool imbalance fee',
+                stepFinalValue: 'Final value',
+                pnlResultLabel: 'Result',
+                pnlCalculation: 'Calculation',
                 // Education section
                 eduMainTitle: 'Key point: two "Fundamental" values',
                 eduAdjustedDesc: '<strong style="color:#00d4ff;">Fundamental (adjusted)</strong> = token balance (sum of deposits). <em>Base for refund calculation.</em>',
@@ -640,6 +738,13 @@
                 chartValueNow: 'Стоимость',
                 chartPpsReturnTitle: 'Влияние PPS (% отн. HODL)',
                 chartTrdTitle: 'Дисбаланс пула — потеря при выводе (TRD %)',
+                chartStakingTitle: 'Стоимость стейкинга — st-ybBTC в BTC',
+                stakingStart: 'Стейк',
+                stakingEnd: 'Анстейк',
+                stakingMin: 'Мин',
+                stakingMax: 'Макс',
+                stakingLossExplain: 'Потеря от стейкинга: вы анстейкнули не в лучший момент',
+                fromMax: 'от максимума',
                 // Chart labels
                 adjustedLabel: 'Adjusted (база refund)',
                 realLabel: 'Реальная (без TRD)',
@@ -776,6 +881,54 @@
                 // UI toggle
                 collapse: '(свернуть)',
                 expand: '(развернуть)',
+                // Token transfer
+                transferred: 'перевёл',
+                tokensWorth: 'токенов на',
+                // PnL breakdown
+                clickForDetails: 'нажмите для деталей',
+                pnlBreakdownTitle: 'Как рассчитывается PnL?',
+                stepDeposit: 'Депозит',
+                stepDepositDesc: 'Вы внесли WBTC в пул',
+                stepTokensReceived: 'Получено токенов',
+                stepTokensReceivedDesc: 'WBTC / PPS на момент депозита',
+                stepEntryPpsLoss: 'Убыток на входе',
+                stepStaking: 'Стейкинг',
+                stepStakingDesc: 'Вы застейкали токены, получили st-ybBTC',
+                stepStakingReceivedDesc: 'Больше токенов т.к. PPS st-ybBTC < PPS ybBTC',
+                stepUnstake: 'Анстейк',
+                stepUnstakeDesc: 'Вы вывели токены из стейкинга',
+                stepUnstakeLoss: 'Меньше токенов — PPS стейкинга упал',
+                stepStakingLoss: 'Потеря от стейкинга',
+                stepStakingGain: 'Прибыль от стейкинга',
+                stepStakingTokenLoss: 'Потеря токенов от стейкинга',
+                atCurrentPps: 'по текущему PPS',
+                stepPpsBeforeStake: 'До стейка',
+                stepStake: 'Стейк',
+                stepStakeDesc: 'Конвертация ybBTC в st-ybBTC',
+                stepHoldingPeriod: 'Период удержания',
+                stepRatioDropped: 'Курс st-ybBTC/ybBTC упал',
+                stepRatioLoss: 'Потеря от курса',
+                stepUnstakeDesc: 'Конвертация st-ybBTC обратно в ybBTC',
+                stepStakingResult: 'Итог стейкинга',
+                ratio: 'Курс',
+                stepIfNotStaked: 'Если бы не стейкал',
+                stepPpsGrowth: 'Рост PPS',
+                stepPpsDrop: 'Падение PPS',
+                ppsGrowthDesc: 'прибыль от роста PPS',
+                stepFinalCalc: 'Итоговый расчёт',
+                stepHodlValue: 'Если бы не стейкал (HODL)',
+                stepTokenValueAt: 'Стоимость токенов',
+                stepPpsChange: 'Изменение PPS (период удержания)',
+                stepExit: 'Выход',
+                stepExitTransfer: 'Токены переведены на другой адрес',
+                stepExitWithdraw: 'Токены выведены как WBTC',
+                stepTokenValue: 'Стоимость токенов на выходе',
+                stepTokenValueDesc: 'токены × PPS',
+                stepTrdLoss: 'Скидка TRD',
+                stepTrdLossDesc: 'Комиссия за дисбаланс пула',
+                stepFinalValue: 'Итоговая стоимость',
+                pnlResultLabel: 'Результат',
+                pnlCalculation: 'Расчёт',
                 // Education section
                 eduMainTitle: 'Главное: две "Фундаментальные" стоимости',
                 eduAdjustedDesc: '<strong style="color:#00d4ff;">Фундаментальная (adjusted)</strong> = баланс токенов (сумма депозитов). <em>База для расчёта refund.</em>',
@@ -827,6 +980,8 @@
             });
             // Update chart explanations
             if (typeof updateChartExplanations === 'function') updateChartExplanations();
+            // Update PnL breakdown
+            if (typeof updatePnlBreakdown === 'function') updatePnlBreakdown();
         }
 
         function updateAllTexts() {
@@ -865,7 +1020,7 @@
         function blockToDate(block){const refBlock=21000000,refTime=1729552859,blockTime=12,calculated=(refTime+(block-refBlock)*blockTime)*1000,now=Date.now();return new Date(Math.min(calculated,now));}
         function formatBlockDate(block){const d=blockToDate(block);const months=t('months');return d.getDate()+' '+months[d.getMonth()];}
         // Cache functions for faster testing - version 2 (with gauge support)
-        const CACHE_VERSION='v4';
+        const CACHE_VERSION='v5';
         function getCacheKey(poolIdx,address){return 'yb_cache_'+CACHE_VERSION+'_'+poolIdx+'_'+address.toLowerCase();}
         function getFromCache(poolIdx,address){
             const key=getCacheKey(poolIdx,address);
@@ -965,6 +1120,85 @@
                 });
             }
             return result;
+        }
+
+        // Get withdrawal data from revenue files for a specific block
+        // Returns the withdrawals_btc at that block (actual WBTC withdrawn)
+        function getWithdrawalAtBlock(block, poolIdx) {
+            const revenueDataMap = [
+                typeof old_yieldData_wbtc !== 'undefined' ? old_yieldData_wbtc : null,
+                typeof old_yieldData_cbbtc !== 'undefined' ? old_yieldData_cbbtc : null,
+                typeof old_yieldData_tbtc !== 'undefined' ? old_yieldData_tbtc : null
+            ];
+            const revenueData = revenueDataMap[poolIdx];
+            if (!revenueData?.data) return null;
+
+            // Find exact or closest block
+            let closest = null;
+            let minDiff = Infinity;
+            for (const rd of revenueData.data) {
+                const diff = Math.abs(rd.block - block);
+                if (diff < minDiff) {
+                    minDiff = diff;
+                    closest = rd;
+                }
+                // Prefer exact match
+                if (rd.block === block) {
+                    closest = rd;
+                    break;
+                }
+            }
+            return closest;
+        }
+
+        // Get PPS at a specific block from pps_data files
+        function getPpsAtBlock(block, poolIdx) {
+            const ppsDataMap = [
+                typeof ppsData_old_wbtc !== 'undefined' ? ppsData_old_wbtc : null,
+                typeof ppsData_old_cbbtc !== 'undefined' ? ppsData_old_cbbtc : null,
+                typeof ppsData_old_tbtc !== 'undefined' ? ppsData_old_tbtc : null
+            ];
+            const ppsData = ppsDataMap[poolIdx];
+            if (!ppsData?.data) return null;
+
+            // Find closest block (prefer <= block)
+            let closest = null;
+            let minDiff = Infinity;
+            for (const pd of ppsData.data) {
+                if (pd.block <= block) {
+                    const diff = block - pd.block;
+                    if (diff < minDiff) {
+                        minDiff = diff;
+                        closest = pd;
+                    }
+                }
+            }
+            return closest;
+        }
+
+        // Get WITHDRAWABLE PPS at a specific block (real trading price, not fundamental)
+        function getWithdrawablePpsAtBlock(block, poolIdx) {
+            const yieldDataMap = [
+                typeof yieldData_yb_wbtc !== 'undefined' ? yieldData_yb_wbtc : null,
+                null, // cbbtc - add when available
+                null  // tbtc - add when available
+            ];
+            const yieldData = yieldDataMap[poolIdx];
+            if (!yieldData?.data) return null;
+
+            // Find closest block (prefer <= block)
+            let closest = null;
+            let minDiff = Infinity;
+            for (const yd of yieldData.data) {
+                if (yd.block <= block) {
+                    const diff = block - yd.block;
+                    if (diff < minDiff) {
+                        minDiff = diff;
+                        closest = yd;
+                    }
+                }
+            }
+            return closest;
         }
 
         // Detect sharp PPS changes and determine causes
@@ -1261,6 +1495,9 @@
                 totalWbtcWithdrawn+=wd.amount;
             }
 
+            // Track value of tokens transferred out (not real WBTC withdrawal, but token value)
+            let totalTokensTransferredOutValue=0;
+
             console.log('REAL WBTC flows - Deposited:',totalWbtcDeposited.toFixed(6),'Withdrawn:',totalWbtcWithdrawn.toFixed(6),'Real PnL:',(totalWbtcWithdrawn-totalWbtcDeposited).toFixed(6));
 
             // Track cumulative deposits over time for chart
@@ -1300,9 +1537,39 @@
                         }else if(ev.type==='WITHDRAW'||ev.type==='TRANSFER_OUT'){
                             // Find matching WBTC withdrawal for this event
                             const matchingWbtc=wbtcFlows.withdrawals.find(w=>w.block===ev.block);
-                            const wbtcReceived=matchingWbtc?matchingWbtc.amount:0;
-                            // Only mark as real exit if there was actual WBTC transfer
-                            exitPoints.push({idx,block:ev.block,amount:ev.amount,type:ev.type,uPps,sPps,trd,realValue,withdrawValue,ltBal,stBal,wbtcReceived,isReal:wbtcReceived>0});
+                            let wbtcReceived=matchingWbtc?matchingWbtc.amount:0;
+
+                            // For TRANSFER_OUT without direct WBTC, try to get withdrawal from revenue data
+                            // This captures the case where tokens were transferred and then withdrawn by recipient
+                            if(ev.type==='TRANSFER_OUT' && wbtcReceived===0) {
+                                const revenueAtBlock = getWithdrawalAtBlock(ev.block, curPoolIdx);
+                                if(revenueAtBlock && revenueAtBlock.withdrawals_btc > 0) {
+                                    // Use withdrawal from revenue data as actual amount received
+                                    wbtcReceived = revenueAtBlock.withdrawals_btc;
+                                    console.log('Found withdrawal in revenue data at block',ev.block,':',wbtcReceived.toFixed(6),'BTC');
+                                }
+                            }
+
+                            // Calculate REAL TRD from actual withdrawal data
+                            // realTrd = 1 - (wbtcReceived / (tokens * pps))
+                            const tokensWithdrawn = Math.abs(ev.amount);
+                            const fundamentalValue = tokensWithdrawn * uPps;
+                            let realTrd = trd; // fallback to pool imbalance
+                            if(wbtcReceived > 0 && fundamentalValue > 0) {
+                                realTrd = 1 - (wbtcReceived / fundamentalValue);
+                                // Clamp to reasonable range [-0.1, 0.5] (allow small negative for rounding)
+                                realTrd = Math.max(-0.1, Math.min(0.5, realTrd));
+                            }
+
+                            // Calculate token value at transfer time
+                            const tokenValue = wbtcReceived > 0 ? wbtcReceived : (tokensWithdrawn * uPps * (1 - realTrd));
+                            if(ev.type==='TRANSFER_OUT'){
+                                totalTokensTransferredOutValue+=tokenValue;
+                                console.log('Token transfer out at block',ev.block,':',tokensWithdrawn.toFixed(4),'tokens, fundamental:',fundamentalValue.toFixed(6),'actual:',wbtcReceived.toFixed(6),'realTrd:',(realTrd*100).toFixed(2)+'%');
+                            }
+                            // Mark as real if we have actual withdrawal data
+                            const isRealExit = wbtcReceived > 0;
+                            exitPoints.push({idx,block:ev.block,amount:ev.amount,type:ev.type,uPps,sPps,trd,realTrd,realValue,withdrawValue,ltBal,stBal,wbtcReceived,isReal:isRealExit,tokenValue});
                         }
                     }
                 }
@@ -1330,14 +1597,29 @@
                             ltBal=userBalances?.lt?.[idx-1]||0;
                             stBal=userBalances?.st?.[idx-1]||0;
                         }
+                        const totalTokens = ltBal + stBal;
                         const realValue=ltBal*uPps+stBal*sPps;
-                        const withdrawValue=realValue*(1-trd);
-                        exitPoints.push({idx,block:wd.block,amount:-wd.amount,type:'WBTC_WITHDRAW',uPps,sPps,trd,realValue,withdrawValue,ltBal,stBal,wbtcReceived:wd.amount,isReal:true});
-                        console.log('Added WBTC exit point at block',wd.block,'amount',wd.amount);
+                        // Calculate REAL TRD from actual withdrawal
+                        const fundamentalValue = totalTokens * uPps;
+                        let realTrd = trd;
+                        if(wd.amount > 0 && fundamentalValue > 0) {
+                            realTrd = 1 - (wd.amount / fundamentalValue);
+                            realTrd = Math.max(0, Math.min(0.5, realTrd));
+                        }
+                        const withdrawValue=realValue*(1-realTrd);
+                        exitPoints.push({idx,block:wd.block,amount:-wd.amount,type:'WBTC_WITHDRAW',uPps,sPps,trd,realTrd,realValue,withdrawValue,ltBal,stBal,wbtcReceived:wd.amount,isReal:true,tokenValue:wd.amount});
+                        console.log('Added WBTC exit point at block',wd.block,'amount',wd.amount,'realTrd',realTrd);
                     }else{
-                        // Update existing exit point with WBTC data
+                        // Update existing exit point with WBTC data and recalculate realTrd
                         existingExit.wbtcReceived=wd.amount;
                         existingExit.isReal=true;
+                        existingExit.tokenValue=wd.amount;
+                        const totalTokens = (existingExit.ltBal||0) + (existingExit.stBal||0);
+                        const fundamentalValue = totalTokens * (existingExit.uPps||1);
+                        if(wd.amount > 0 && fundamentalValue > 0) {
+                            existingExit.realTrd = 1 - (wd.amount / fundamentalValue);
+                            existingExit.realTrd = Math.max(0, Math.min(0.5, existingExit.realTrd));
+                        }
                     }
                 }
             }
@@ -1457,10 +1739,27 @@
             }
 
             // Scale cumulative PnL to match actual user PnL from data
-            if(cumulativePnl.length>0&&cumulativePnl[cumulativePnl.length-1]!==0&&pnl!==0){
-                const scale=pnl/cumulativePnl[cumulativePnl.length-1];
+            // For exited users: use PnL at exit moment, not current (which may be 0)
+            let exitPnlIdx = cumulativePnl.length - 1;
+            let targetPnl = pnl;
+
+            // If user has fully exited, find the last non-zero cumulative PnL value
+            if(fullExits.length > 0) {
+                const lastExitIdx = fullExits[fullExits.length - 1].idx;
+                // Use the cumulative PnL at exit moment (or just before)
+                exitPnlIdx = Math.max(0, lastExitIdx - 1);
+                // If pnl from data is 0 but we have accumulated PnL, keep it
+                if(pnl === 0 && cumulativePnl[exitPnlIdx] !== 0) {
+                    // Don't scale, just use raw cumulative values - they represent actual PPS impact
+                    targetPnl = cumulativePnl[exitPnlIdx];
+                }
+            }
+
+            if(cumulativePnl.length>0&&cumulativePnl[exitPnlIdx]!==0&&targetPnl!==0){
+                const scale=targetPnl/cumulativePnl[exitPnlIdx];
                 cumulativePnl=cumulativePnl.map(v=>v*scale);
-            }else if(pnl===0){
+            }else if(targetPnl===0 && fullExits.length === 0){
+                // Only zero out if user hasn't exited - exited users may have real PnL history
                 cumulativePnl=cumulativePnl.map(()=>0);
             }
 
@@ -1662,7 +1961,7 @@
                     if (exit) {
                         info += '<div>' + t('type') + ': ' + (exit.type || 'WITHDRAW') + '</div>';
                         info += '<div>' + t('amount') + ': <span style="color:#ff3366;">-' + Math.abs(exit.amount || exit.prevBalance || 0).toFixed(4) + '</span></div>';
-                        if (exit.trd !== undefined) info += '<div>TRD: ' + (exit.trd * 100).toFixed(1) + '%</div>';
+                        if (exit.trd !== undefined) info += '<div>Imbalance: ' + (exit.trd * 100).toFixed(1) + '%</div>';
                         if (exit.wbtcReceived) info += '<div>' + t('wbtcReceived') + ': ' + exit.wbtcReceived.toFixed(4) + '</div>';
                     }
                 } else if (marker.type === 'sharp') {
@@ -1737,7 +2036,7 @@
                         info+='<div>'+t('block')+': '+block+'</div>';
                         info+='<div>'+t('type')+': '+(exit.type||'WITHDRAW')+'</div>';
                         info+='<div>'+t('amount')+': <span style="color:#ff3366;">-'+Math.abs(exit.amount||exit.prevBalance).toFixed(6)+'</span></div>';
-                        if(exit.trd!==undefined)info+='<div>TRD: '+(exit.trd*100).toFixed(1)+'%</div>';
+                        if(exit.trd!==undefined)info+='<div>Imbalance: '+(exit.trd*100).toFixed(1)+'%</div>';
                     }
                 }
                 if(info){
@@ -1994,14 +2293,14 @@
                 const preExitIdx=Math.max(0,exitIdx-1);
                 const exitWithdrawValue=withdrawData[preExitIdx]||0;
                 const exitIdealValue=idealData[preExitIdx]||0;
-                withdrawPnlInfo={idx:preExitIdx,block:lastExit.block,withdrawValue:exitWithdrawValue,idealValue:exitIdealValue,pnl:realPnl,prevBalance:lastExit.prevBalance,totalWbtcDeposited,totalWbtcWithdrawn};
+                withdrawPnlInfo={idx:preExitIdx,block:lastExit.block,withdrawValue:exitWithdrawValue,idealValue:exitIdealValue,pnl:realPnl,prevBalance:lastExit.prevBalance,totalWbtcDeposited,totalWbtcWithdrawn,totalTokensTransferredOutValue};
             }else if(exitPoints.length>0){
                 const lastExit=exitPoints[exitPoints.length-1];
                 const exitIdx=lastExit.idx;
                 const preExitIdx=Math.max(0,exitIdx-1);
                 const exitWithdrawValue=withdrawData[preExitIdx]||0;
                 const exitIdealValue=idealData[preExitIdx]||0;
-                withdrawPnlInfo={idx:preExitIdx,block:lastExit.block,withdrawValue:exitWithdrawValue,idealValue:exitIdealValue,pnl:realPnl,totalWbtcDeposited,totalWbtcWithdrawn};
+                withdrawPnlInfo={idx:preExitIdx,block:lastExit.block,withdrawValue:exitWithdrawValue,idealValue:exitIdealValue,pnl:realPnl,totalWbtcDeposited,totalWbtcWithdrawn,totalTokensTransferredOutValue};
             }
 
             // Determine if user has fully exited
@@ -2016,7 +2315,9 @@
                     ideal=withdrawPnlInfo.idealValue;
                     withd=withdrawPnlInfo.withdrawValue;
                     const exitIdx=withdrawPnlInfo.idx;
-                    displayTrd=(imbalanceDataAll?.[exitIdx]?.imbalance||0);
+                    // Use REAL TRD from exit point if available
+                    const lastRealExit = exitPoints.filter(e=>e.isReal && e.realTrd !== undefined).slice(-1)[0];
+                    displayTrd = lastRealExit ? (lastRealExit.realTrd * 100) : (imbalanceDataAll?.[exitIdx]?.imbalance||0);
                     displayLabel=t('toWithdrawAtExitTime');
                 }else{
                     // User still has position - show current values
@@ -2040,13 +2341,15 @@
                     html+='<br><br><strong>'+t('exitHistoryLabel')+':</strong>';
                     for(const ex of exitPoints.slice(-3)){
                         const exitPnl=ex.withdrawValue-(ex.ltBal+ex.stBal);
-                        html+='<br>▼ '+t('block')+' '+ex.block+': '+ex.type+' '+Math.abs(ex.amount).toFixed(4)+' | PPS: U='+ex.uPps.toFixed(4)+' S='+ex.sPps.toFixed(4)+' | TRD: '+(ex.trd*100).toFixed(1)+'%';
+                        const showTrd = ex.realTrd !== undefined ? ex.realTrd : ex.trd;
+                        const trdLabel = ex.realTrd !== undefined ? 'TRD' : 'Imbalance';
+                        html+='<br>▼ '+t('block')+' '+ex.block+': '+ex.type+' '+Math.abs(ex.amount).toFixed(4)+' | PPS: U='+ex.uPps.toFixed(4)+' S='+ex.sPps.toFixed(4)+' | '+trdLabel+': '+(showTrd*100).toFixed(2)+'%';
                     }
                 }
                 if(fullExits.length>0){
                     html+='<br><br><strong style="color:#ff3366;">⚠ '+t('fullExitLabel')+':</strong>';
                     for(const fe of fullExits){
-                        html+='<br>'+t('block')+' '+fe.block+': '+t('withdrew')+' '+fe.prevBalance.toFixed(4)+' '+t('tokensLabel')+' | PPS: '+fe.uPps.toFixed(4)+' | TRD: '+(fe.trd*100).toFixed(1)+'%';
+                        html+='<br>'+t('block')+' '+fe.block+': '+t('withdrew')+' '+fe.prevBalance.toFixed(4)+' '+t('tokensLabel')+' | PPS: '+fe.uPps.toFixed(4)+' | Imbalance: '+(fe.trd*100).toFixed(1)+'%';
                     }
                 }
                 html+='<br><span style="color:#00ff88;">▲</span> '+t('entriesLabel')+': '+entryPoints.length+' | <span style="color:#ff3366;">▼</span> '+t('exitsLabel')+': '+exitPoints.length;
@@ -2172,25 +2475,44 @@
                 });
                 setTimeout(() => drawMarkerOverlay(charts.poolImbalance, imbalMarkers), 100);
                 document.getElementById('poolImbalanceBadge').textContent=displayImbal.toFixed(1)+'%'+(hasExited?' '+t('exitSuffix'):'');
-                // Update TRD stats
+                // Update TRD stats - use REAL TRD from exit points if available
                 const trdEl=document.getElementById('statTrd');
                 if(trdEl){
-                    const severity=displayImbal<5?t('low'):displayImbal<15?t('moderate'):t('high');
-                    trdEl.textContent=displayImbal.toFixed(1)+'%';
-                    trdEl.className='stat-value '+(displayImbal<5?'positive':displayImbal<15?'':'negative');
+                    // Get real TRD from last exit point with actual withdrawal
+                    const lastRealExit = exitPoints.filter(e=>e.isReal && e.realTrd !== undefined).slice(-1)[0];
+                    let displayTrdValue = displayImbal;
+                    let isRealTrd = false;
+                    if(hasExited && lastRealExit) {
+                        displayTrdValue = lastRealExit.realTrd * 100;
+                        isRealTrd = true;
+                    }
+                    const severity=displayTrdValue<5?t('low'):displayTrdValue<15?t('moderate'):t('high');
+                    trdEl.textContent=displayTrdValue.toFixed(2)+'%';
+                    trdEl.className='stat-value '+(displayTrdValue<5?'positive':displayTrdValue<15?'':'negative');
                     document.getElementById('statTrdLabel').textContent=hasExited?t('trdAtExit'):t('trdNow');
-                    document.getElementById('statTrdStatus').textContent=severity+' '+t('poolImbalance');
+                    document.getElementById('statTrdStatus').textContent=severity+' '+(isRealTrd?'TRD':t('poolImbalance'));
                 }
                 // Calculate PnL with TRD - prefer withdrawal moment if available
                 // Real PnL = actual WBTC withdrawn - actual WBTC deposited
                 const pnlTrdEl=document.getElementById('statPnlTrd');
                 if(pnlTrdEl){
                     if(withdrawPnlInfo&&withdrawPnlInfo.totalWbtcDeposited>0){
-                        // Use real PnL based on actual WBTC amounts
-                        const pnl=withdrawPnlInfo.pnl;
+                        // Check if user transferred tokens instead of withdrawing WBTC
+                        const hasTokenTransfer=(withdrawPnlInfo.totalTokensTransferredOutValue||0)>0;
+                        const totalOut=withdrawPnlInfo.totalWbtcWithdrawn+(withdrawPnlInfo.totalTokensTransferredOutValue||0);
+                        // Use real PnL based on actual WBTC amounts + token transfer value
+                        const pnl=totalOut-withdrawPnlInfo.totalWbtcDeposited;
                         pnlTrdEl.textContent=(pnl>=0?'+':'')+pnl.toFixed(4)+' BTC';
                         pnlTrdEl.className='stat-value '+(pnl>=0?'positive':'negative');
-                        document.getElementById('statPnlTrdPercent').textContent=t('deposited')+': '+withdrawPnlInfo.totalWbtcDeposited.toFixed(4)+' → '+t('withdrew')+': '+withdrawPnlInfo.totalWbtcWithdrawn.toFixed(4);
+                        if(hasTokenTransfer&&withdrawPnlInfo.totalWbtcWithdrawn===0){
+                            // Only token transfer, no WBTC withdrawal
+                            document.getElementById('statPnlTrdPercent').textContent=t('deposited')+': '+withdrawPnlInfo.totalWbtcDeposited.toFixed(4)+' → '+t('transferred')+': '+(withdrawPnlInfo.totalTokensTransferredOutValue||0).toFixed(4);
+                        }else if(hasTokenTransfer){
+                            // Both WBTC withdrawal and token transfer
+                            document.getElementById('statPnlTrdPercent').textContent=t('deposited')+': '+withdrawPnlInfo.totalWbtcDeposited.toFixed(4)+' → '+t('withdrew')+': '+withdrawPnlInfo.totalWbtcWithdrawn.toFixed(4)+' + '+t('transferred')+': '+(withdrawPnlInfo.totalTokensTransferredOutValue||0).toFixed(4);
+                        }else{
+                            document.getElementById('statPnlTrdPercent').textContent=t('deposited')+': '+withdrawPnlInfo.totalWbtcDeposited.toFixed(4)+' → '+t('withdrew')+': '+withdrawPnlInfo.totalWbtcWithdrawn.toFixed(4);
+                        }
                     }else if(withdrawPnlInfo){
                         // Fallback for old data without WBTC tracking
                         pnlTrdEl.textContent=(withdrawPnlInfo.pnl>=0?'+':'')+withdrawPnlInfo.pnl.toFixed(4)+' BTC';
@@ -2210,6 +2532,273 @@
                         }
                     }
                 }
+            }
+
+            // Staking Value Chart - only for users who staked
+            const stakingCard = document.getElementById('stakingValueCard');
+            const stakeEvents = userEvents.filter(e => e.type === 'STAKE' && e.amount > 0);
+            const unstakeEvents = userEvents.filter(e => e.type === 'UNSTAKE' && e.amount > 0);
+
+            if(stakingCard && stakeEvents.length > 0 && unstakeEvents.length > 0) {
+                const firstStake = stakeEvents[0];
+                const lastUnstake = unstakeEvents[unstakeEvents.length - 1];
+                const stakeBlock = firstStake.block;
+                const unstakeBlock = lastUnstake.block;
+                const stTokens = Math.abs(firstStake.amount);
+
+                // Get PPS data for staking period
+                const ppsDataMap = [
+                    typeof ppsData_old_wbtc !== 'undefined' ? ppsData_old_wbtc : null,
+                    typeof ppsData_old_cbbtc !== 'undefined' ? ppsData_old_cbbtc : null,
+                    typeof ppsData_old_tbtc !== 'undefined' ? ppsData_old_tbtc : null
+                ];
+                const ppsData = ppsDataMap[curPoolIdx];
+
+                if(ppsData && ppsData.data) {
+                    // Filter data for staking period
+                    const stakingPeriod = ppsData.data.filter(d => d.block >= stakeBlock && d.block <= unstakeBlock);
+
+                    if(stakingPeriod.length > 0) {
+                        stakingCard.style.display = 'block';
+
+                        // Calculate st-ybBTC value in BTC over time
+                        const stakingLabels = stakingPeriod.map(d => {
+                            const date = new Date(d.timestamp * 1000);
+                            return date.toLocaleDateString(currentLang === 'ru' ? 'ru-RU' : 'en-US', {month: 'short', day: 'numeric'});
+                        });
+                        const stakingValues = stakingPeriod.map(d => stTokens * d.pps_staked);
+
+                        // Calculate HODL values (what you would have if didn't stake)
+                        // ybBTC sent to stake × pps_unstaked at each point
+                        const ybSentToStake = userEvents.find(e => e.type === 'STAKE' && e.amount < 0);
+                        const ybTokens = ybSentToStake ? Math.abs(ybSentToStake.amount) : stTokens;
+                        const hodlValues = stakingPeriod.map(d => ybTokens * d.pps_unstaked);
+
+                        // Find min, max
+                        let minIdx = 0, maxIdx = 0;
+                        stakingValues.forEach((v, i) => {
+                            if(v < stakingValues[minIdx]) minIdx = i;
+                            if(v > stakingValues[maxIdx]) maxIdx = i;
+                        });
+
+                        const startValue = stakingValues[0];
+                        const endValue = stakingValues[stakingValues.length - 1];
+                        const minValue = stakingValues[minIdx];
+                        const maxValue = stakingValues[maxIdx];
+
+                        // HODL comparison at unstake moment
+                        const hodlAtEnd = hodlValues[hodlValues.length - 1];
+                        const realStakingEffect = endValue - hodlAtEnd; // negative = loss from staking
+
+                        // Create markers data
+                        const markerData = stakingLabels.map(() => null);
+
+                        // Build datasets
+                        const stakingDatasets = [
+                            {
+                                label: t('chartStakingTitle'),
+                                data: stakingValues,
+                                borderColor: '#fbbf24',
+                                backgroundColor: 'rgba(251, 191, 36, 0.1)',
+                                fill: true,
+                                tension: 0.3,
+                                pointRadius: 0,
+                                borderWidth: 2
+                            },
+                            {
+                                label: 'HODL (ybBTC)',
+                                data: hodlValues,
+                                borderColor: '#60a5fa',
+                                backgroundColor: 'transparent',
+                                borderDash: [5, 5],
+                                fill: false,
+                                tension: 0.3,
+                                pointRadius: 0,
+                                borderWidth: 2
+                            },
+                            {
+                                label: t('stakingStart'),
+                                data: stakingLabels.map((l, i) => i === 0 ? stakingValues[0] : null),
+                                borderColor: '#22c55e',
+                                backgroundColor: '#22c55e',
+                                pointRadius: 8,
+                                pointStyle: 'triangle',
+                                showLine: false
+                            },
+                            {
+                                label: t('stakingEnd'),
+                                data: stakingLabels.map((l, i) => i === stakingLabels.length - 1 ? stakingValues[stakingValues.length - 1] : null),
+                                borderColor: '#ef4444',
+                                backgroundColor: '#ef4444',
+                                pointRadius: 8,
+                                pointStyle: 'rectRot',
+                                showLine: false
+                            },
+                            {
+                                label: t('stakingMin'),
+                                data: stakingLabels.map((l, i) => i === minIdx ? minValue : null),
+                                borderColor: '#ff6b6b',
+                                backgroundColor: '#ff6b6b',
+                                pointRadius: 6,
+                                pointStyle: 'crossRot',
+                                showLine: false
+                            },
+                            {
+                                label: t('stakingMax'),
+                                data: stakingLabels.map((l, i) => i === maxIdx ? maxValue : null),
+                                borderColor: '#4ade80',
+                                backgroundColor: '#4ade80',
+                                pointRadius: 6,
+                                pointStyle: 'star',
+                                showLine: false
+                            }
+                        ];
+
+                        const stakingEl = document.getElementById('stakingValueChart');
+                        charts.stakingValue = new Chart(stakingEl.getContext('2d'), {
+                            type: 'line',
+                            data: { labels: stakingLabels, datasets: stakingDatasets },
+                            options: {
+                                ...commonOpts,
+                                plugins: {
+                                    ...commonOpts.plugins,
+                                    tooltip: {
+                                        ...commonOpts.plugins.tooltip,
+                                        callbacks: {
+                                            label: function(ctx) {
+                                                if(ctx.raw === null) return null;
+                                                return ctx.dataset.label + ': ' + ctx.raw.toFixed(6) + ' BTC';
+                                            }
+                                        }
+                                    }
+                                },
+                                scales: {
+                                    ...commonOpts.scales,
+                                    y: {
+                                        ...commonOpts.scales.y,
+                                        ticks: {
+                                            ...commonOpts.scales.y.ticks,
+                                            callback: v => v.toFixed(4)
+                                        }
+                                    }
+                                }
+                            }
+                        });
+
+                        // Update badge - show real staking effect vs HODL
+                        const stakingBadge = document.getElementById('stakingValueBadge');
+                        if(stakingBadge) {
+                            stakingBadge.textContent = (realStakingEffect >= 0 ? '+' : '−') + Math.abs(realStakingEffect).toFixed(4) + ' BTC vs HODL';
+                            stakingBadge.className = 'chart-badge ' + (realStakingEffect >= 0 ? 'positive' : 'negative');
+                        }
+
+                        // Update explanation
+                        const stakingExpl = document.getElementById('stakingValueExplanation');
+                        if(stakingExpl) {
+                            const hodlStart = hodlValues[0];
+
+                            stakingExpl.innerHTML =
+                                '<strong>' + t('stakingStart') + ':</strong> ' + startValue.toFixed(6) + ' BTC (HODL: ' + hodlStart.toFixed(6) + ') | ' +
+                                '<strong>' + t('stakingEnd') + ':</strong> ' + endValue.toFixed(6) + ' BTC (HODL: ' + hodlAtEnd.toFixed(6) + ')' +
+                                '<br><span style="color:' + (realStakingEffect >= 0 ? 'var(--accent-green)' : 'var(--accent-red)') + ';">' +
+                                t('stepStakingLoss') + ' vs HODL: ' + (realStakingEffect >= 0 ? '+' : '−') + Math.abs(realStakingEffect).toFixed(4) + ' BTC' +
+                                '</span>';
+                        }
+                    }
+                }
+            }
+
+            // Generate PnL breakdown - Simple and clear format
+            const pnlBreakdownEl=document.getElementById('pnlBreakdown');
+            const pnlExpandHint=document.getElementById('pnlExpandHint');
+            if(pnlBreakdownEl&&userEvents&&userEvents.length>0){
+                // Find key events and data
+                const deposits=userEvents.filter(e=>e.type==='DEPOSIT');
+                const stYbReceived=userEvents.filter(e=>e.type==='STAKE'&&e.amount>0); // st-ybBTC minted
+                const ybReceivedFromUnstake=userEvents.filter(e=>e.type==='UNSTAKE'&&e.amount>0); // ybBTC received back
+
+                // Get tokens received at deposit
+                const firstDeposit=deposits[0];
+                const tokensAfterDeposit=firstDeposit?Math.abs(firstDeposit.amount):0;
+
+                // Staking details
+                const stakeSentEv=userEvents.find(e=>e.type==='STAKE'&&e.amount<0); // ybBTC sent to staker
+                const stakeReceivedEv=stYbReceived.length>0?stYbReceived[0]:null; // st-ybBTC received
+                const unstakeBurnEv=userEvents.find(e=>e.type==='UNSTAKE'&&e.amount<0); // st-ybBTC burned
+                const unstakeReceivedEv=ybReceivedFromUnstake.length>0?ybReceivedFromUnstake[ybReceivedFromUnstake.length-1]:null;
+
+                const ybSentToStake=stakeSentEv?Math.abs(stakeSentEv.amount):0;
+                const stYbGot=stakeReceivedEv?Math.abs(stakeReceivedEv.amount):0;
+                const stYbBurned=unstakeBurnEv?Math.abs(unstakeBurnEv.amount):0;
+                const tokensAfterUnstake=unstakeReceivedEv?Math.abs(unstakeReceivedEv.amount):tokensAfterDeposit;
+
+                // Get WITHDRAWABLE PPS at different stages (real trading price, not fundamental)
+                const depositBlock = firstDeposit?.block;
+                const stakeBlock = stakeSentEv?.block;
+                const unstakeBlock = unstakeReceivedEv?.block;
+
+                // Use withdrawable PPS (pps_btc) for accurate trading price
+                const depositPpsData = depositBlock ? getWithdrawablePpsAtBlock(depositBlock, curPoolIdx) : null;
+                const stakePpsData = stakeBlock ? getWithdrawablePpsAtBlock(stakeBlock, curPoolIdx) : null;
+                const unstakePpsData = unstakeBlock ? getWithdrawablePpsAtBlock(unstakeBlock, curPoolIdx) : null;
+
+                const depositPps = depositPpsData?.pps_btc || 1;
+                const stakePps = stakePpsData?.pps_btc || depositPps;
+                const unstakePps = unstakePpsData?.pps_btc || stakePps;
+
+                // Get final PPS at exit
+                const lastExitPoint=exitPoints.filter(e=>e.type==='TRANSFER_OUT'||e.type==='WITHDRAW').slice(-1)[0];
+                const exitBlock = lastExitPoint?.block;
+
+                // Get both fundamental and withdrawable PPS at exit
+                const exitFundamentalData = exitBlock ? getPpsAtBlock(exitBlock, curPoolIdx) : null;
+                const exitWithdrawableData = exitBlock ? getWithdrawablePpsAtBlock(exitBlock, curPoolIdx) : null;
+
+                const exitFundamentalPps = exitFundamentalData?.pps_unstaked || 1;
+                const exitWithdrawablePps = exitWithdrawableData?.pps_btc || exitFundamentalPps;
+
+                // Use withdrawable PPS for actual value calculation
+                const exitPps = exitWithdrawablePps;
+
+                // Calculate real TRD as (fundamental - withdrawable) / fundamental
+                const exitTrd = exitFundamentalPps > 0 ? (exitFundamentalPps - exitWithdrawablePps) / exitFundamentalPps : 0;
+
+                // Get transaction hashes for links
+                const depositTx = firstDeposit?.tx || null;
+                const stakeTx = stakeSentEv?.tx || null;
+                const unstakeTx = unstakeReceivedEv?.tx || null;
+                const exitEvent = userEvents.find(e=>(e.type==='TRANSFER_OUT'||e.type==='WITHDRAW') && e.block===lastExitPoint?.block);
+                const exitTx = exitEvent?.tx || null;
+
+                // Store data for language updates
+                breakdownData = {
+                    totalWbtcDeposited,
+                    tokensAfterDeposit,
+                    ybSentToStake,
+                    stYbGot,
+                    stYbBurned,
+                    tokensAfterUnstake,
+                    depositPps,
+                    stakePps,
+                    unstakePps,
+                    exitPps,
+                    exitFundamentalPps,
+                    exitTrd,
+                    hasStaking: stYbReceived.length>0 && ybReceivedFromUnstake.length>0,
+                    finalPnl: (withdrawPnlInfo?.totalWbtcWithdrawn||0)+(withdrawPnlInfo?.totalTokensTransferredOutValue||0)-totalWbtcDeposited,
+                    totalOut: (withdrawPnlInfo?.totalWbtcWithdrawn||0)+(withdrawPnlInfo?.totalTokensTransferredOutValue||0),
+                    // Transaction hashes for Etherscan links
+                    depositTx,
+                    stakeTx,
+                    unstakeTx,
+                    exitTx
+                };
+
+                updatePnlBreakdown();
+                if(pnlExpandHint)pnlExpandHint.style.display='block';
+            }else{
+                breakdownData = null;
+                if(pnlExpandHint)pnlExpandHint.style.display='none';
             }
             // Add hover handlers for marker tooltips on all charts with markers
             const chartsWithMarkers=['pnlChart','valueChart','ppsReturnChart','poolImbalanceChart'];
@@ -2275,6 +2864,138 @@
             updateAllTexts();
             // Update chart explanations
             updateChartExplanations();
+        }
+        function updatePnlBreakdown() {
+            const pnlBreakdownEl=document.getElementById('pnlBreakdown');
+            if(!pnlBreakdownEl || !breakdownData) return;
+
+            const d = breakdownData;
+            // Helper to create Etherscan tx link
+            const txLink = (hash) => hash ?
+                '<a href="https://etherscan.io/tx/'+hash+'" target="_blank" rel="noopener" style="color:var(--accent-cyan);font-size:0.7rem;margin-left:0.5rem;text-decoration:none;opacity:0.8;" title="View on Etherscan">🔗 tx</a>' : '';
+
+            let html='<div class="pnl-breakdown-title">📊 '+t('pnlBreakdownTitle')+'</div>';
+            html+='<div class="pnl-breakdown-steps">';
+            let stepNum=1;
+
+            // Step 1: Deposit
+            html+='<div class="pnl-step">';
+            html+='<div class="pnl-step-num">'+stepNum+'</div>';
+            html+='<div class="pnl-step-content">';
+            html+='<div class="pnl-step-label">'+t('stepDeposit')+' — '+t('stepDepositDesc')+txLink(d.depositTx)+'</div>';
+            html+='<div class="pnl-step-value">'+d.totalWbtcDeposited.toFixed(4)+' BTC → '+d.tokensAfterDeposit.toFixed(4)+' ybBTC</div>';
+            html+='</div></div>';
+            stepNum++;
+
+            // Step 2: Staking (if staked)
+            if(d.hasStaking){
+                // Step 1.5: PPS growth before staking (if any)
+                const ppsGrowthBeforeStake = d.stakePps - d.depositPps;
+                const ppsGrowthBeforeStakePercent = ((d.stakePps / d.depositPps) - 1) * 100;
+                if(Math.abs(ppsGrowthBeforeStakePercent) > 0.01){
+                    const valueAtDeposit = d.tokensAfterDeposit * d.depositPps;
+                    const valueAtStake = d.tokensAfterDeposit * d.stakePps;
+                    const gainBeforeStake = valueAtStake - valueAtDeposit;
+                    html+='<div class="pnl-step'+(gainBeforeStake > 0?' gain':'')+'">';
+                    html+='<div class="pnl-step-num">'+stepNum+'</div>';
+                    html+='<div class="pnl-step-content">';
+                    const ppsChangeLabel = gainBeforeStake >= 0 ? t('stepPpsGrowth') : t('stepPpsDrop');
+                    html+='<div class="pnl-step-label">'+t('stepPpsBeforeStake')+' — '+ppsChangeLabel+'</div>';
+                    html+='<div class="pnl-step-value">PPS: '+d.depositPps.toFixed(4)+' → '+d.stakePps.toFixed(4)+'</div>';
+                    html+='<div class="pnl-step-calc" style="color:'+(gainBeforeStake>=0?'var(--accent-green)':'var(--accent-red)')+';">'+(gainBeforeStake>=0?'+':'')+gainBeforeStake.toFixed(4)+' BTC ('+ppsGrowthBeforeStakePercent.toFixed(2)+'%)</div>';
+                    html+='</div></div>';
+                    stepNum++;
+                }
+
+                // Step 2a: Stake - convert ybBTC to st-ybBTC
+                const stakeRatio = d.stYbGot / d.ybSentToStake; // ratio at stake time
+                html+='<div class="pnl-step">';
+                html+='<div class="pnl-step-num">'+stepNum+'</div>';
+                html+='<div class="pnl-step-content">';
+                html+='<div class="pnl-step-label">'+t('stepStake')+' — '+t('stepStakeDesc')+txLink(d.stakeTx)+'</div>';
+                html+='<div class="pnl-step-value">'+d.ybSentToStake.toFixed(4)+' ybBTC → '+d.stYbGot.toFixed(4)+' st-ybBTC</div>';
+                html+='<div class="pnl-step-calc">'+t('ratio')+': 1 ybBTC = '+stakeRatio.toFixed(4)+' st-ybBTC</div>';
+                html+='</div></div>';
+                stepNum++;
+
+                // Step 2b: Holding period - st-ybBTC depreciated
+                const unstakeRatio = d.tokensAfterUnstake / d.stYbBurned; // ratio at unstake time
+                const ratioDrop = ((stakeRatio - (1/unstakeRatio)) / stakeRatio * 100);
+                const tokenLoss = d.ybSentToStake - d.tokensAfterUnstake;
+                const tokenLossInBtc = tokenLoss * d.exitPps;
+                const hasLoss = tokenLoss > 0.0001;
+
+                html+='<div class="pnl-step'+(hasLoss?' loss':'')+'">';
+                html+='<div class="pnl-step-num">'+stepNum+'</div>';
+                html+='<div class="pnl-step-content">';
+                html+='<div class="pnl-step-label">'+t('stepHoldingPeriod')+' — '+t('stepRatioDropped')+'</div>';
+                html+='<div class="pnl-step-value">'+t('ratio')+': '+(1/stakeRatio).toFixed(4)+' → '+(unstakeRatio).toFixed(4)+'</div>';
+                if(hasLoss){
+                    html+='<div class="pnl-step-calc" style="color:var(--accent-red);">'+t('stepRatioLoss')+': −'+Math.abs(ratioDrop).toFixed(1)+'%</div>';
+                }
+                html+='</div></div>';
+                stepNum++;
+
+                // Step 2c: Unstake - convert st-ybBTC back to ybBTC
+                html+='<div class="pnl-step'+(hasLoss?' loss':'')+'">';
+                html+='<div class="pnl-step-num">'+stepNum+'</div>';
+                html+='<div class="pnl-step-content">';
+                html+='<div class="pnl-step-label">'+t('stepUnstake')+' — '+t('stepUnstakeDesc')+txLink(d.unstakeTx)+'</div>';
+                html+='<div class="pnl-step-value">'+d.stYbBurned.toFixed(4)+' st-ybBTC → '+d.tokensAfterUnstake.toFixed(4)+' ybBTC</div>';
+                if(hasLoss){
+                    html+='<div class="pnl-step-calc" style="color:var(--accent-red);">'+t('stepStakingResult')+': −'+tokenLoss.toFixed(4)+' ybBTC = −'+tokenLossInBtc.toFixed(4)+' BTC</div>';
+                }
+                html+='</div></div>';
+                stepNum++;
+
+                // Step 4: What if not staked (PPS gain) - no tx link, it's hypothetical
+                const valueIfNotStaked = d.tokensAfterDeposit * d.exitPps;
+                const ppsGain = valueIfNotStaked - d.totalWbtcDeposited;
+                const hasPpsGain = ppsGain > 0.0001;
+
+                html+='<div class="pnl-step'+(hasPpsGain?' gain':'')+'">';
+                html+='<div class="pnl-step-num">'+stepNum+'</div>';
+                html+='<div class="pnl-step-content">';
+                html+='<div class="pnl-step-label">'+t('stepIfNotStaked')+' — '+t('stepPpsGrowth')+'</div>';
+                html+='<div class="pnl-step-value">'+d.tokensAfterDeposit.toFixed(4)+' × '+d.exitPps.toFixed(4)+' = '+valueIfNotStaked.toFixed(4)+' BTC</div>';
+                if(hasPpsGain){
+                    html+='<div class="pnl-step-calc" style="color:var(--accent-green);">+'+ppsGain.toFixed(4)+' BTC '+t('ppsGrowthDesc')+'</div>';
+                }
+                html+='</div></div>';
+                stepNum++;
+            }
+
+            // Step 4: Final result
+            const finalTokens = d.tokensAfterUnstake > 0 ? d.tokensAfterUnstake : d.tokensAfterDeposit;
+            const finalValueWithdrawable = finalTokens * d.exitPps; // withdrawable (what you actually get)
+            const finalValueFundamental = finalTokens * d.exitFundamentalPps; // fundamental (what it "should" be)
+            const trdLoss = finalValueFundamental - finalValueWithdrawable; // TRD loss = fundamental - withdrawable
+
+            html+='<div class="pnl-step">';
+            html+='<div class="pnl-step-num">'+stepNum+'</div>';
+            html+='<div class="pnl-step-content">';
+            html+='<div class="pnl-step-label">'+t('stepFinalCalc')+txLink(d.exitTx)+'</div>';
+            html+='<div class="pnl-step-value">'+finalTokens.toFixed(4)+' × '+d.exitPps.toFixed(4)+' = '+finalValueWithdrawable.toFixed(4)+' BTC</div>';
+            if(d.exitTrd > 0.0001){
+                // TRD% = (fundamental - withdrawable) / fundamental
+                const trdPercent = d.exitTrd * 100;
+                const trdDisplay = trdPercent < 0.1 ? trdPercent.toFixed(3) : trdPercent.toFixed(2);
+                // Show more decimals for very small losses so math makes sense
+                const trdLossDisplay = trdLoss < 0.0001 ? trdLoss.toFixed(6) : trdLoss.toFixed(4);
+                html+='<div class="pnl-step-calc">TRD '+trdDisplay+'%: −'+trdLossDisplay+' BTC</div>';
+            }
+            html+='</div></div>';
+
+            html+='</div>'; // end steps
+
+            // Result
+            html+='<div class="pnl-result">';
+            html+='<div class="pnl-result-row">';
+            html+='<div class="pnl-result-label">'+t('pnlResultLabel')+': '+d.totalWbtcDeposited.toFixed(4)+' → '+d.totalOut.toFixed(4)+' BTC</div>';
+            html+='<div class="pnl-result-value '+(d.finalPnl>=0?'positive':'negative')+'">'+(d.finalPnl>=0?'+':'')+d.finalPnl.toFixed(4)+' BTC</div>';
+            html+='</div></div>';
+
+            pnlBreakdownEl.innerHTML=html;
         }
         function updateChartExplanations() {
             // Clear all chart explanations
