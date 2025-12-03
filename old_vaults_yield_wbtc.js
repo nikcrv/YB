@@ -1,4 +1,4 @@
-// Last updated: 2025-12-03 03:44:15 UTC
+// Last updated: 2025-12-03 03:56:42 UTC
 const yieldData_yb_wbtc = {
   "metadata": {
     "contract": "0x6095a220C5567360d459462A25b1AD5aEAD45204",
