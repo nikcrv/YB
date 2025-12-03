@@ -1,4 +1,4 @@
-// Last updated: 2025-12-03 14:50:25 UTC
+// Last updated: 2025-12-03 14:52:14 UTC
 const veYBSupplyData = [
   {
     "block": 23370927,
