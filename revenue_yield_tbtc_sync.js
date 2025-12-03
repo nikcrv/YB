@@ -1,10 +1,10 @@
-// Last updated: 2025-12-03 09:54:43 UTC
+// Last updated: 2025-12-03 10:08:27 UTC
 const yieldData_tbtc = {
   "metadata": {
     "market": "tBTC",
     "contract": "0xaC0a340C1644321D0BBc6404946d828c1EBfAC92",
-    "collected": "2025-12-03T13:52:33.179206",
-    "points": 2137,
+    "collected": "2025-12-03T14:06:00.494964",
+    "points": 2143,
     "synchronized": true,
     "transaction_based": true,
     "zero_loss": true,
@@ -19241,6 +19241,60 @@ const yieldData_tbtc = {
       "total_withdrawable_btc": 490.6052088162949,
       "deposits_btc": 0.0,
       "withdrawals_btc": 0.0,
+      "admin_fee_withdrawals_btc": 0.0,
+      "admin_fees_btc": 0.0
+    },
+    {
+      "block": 23932165,
+      "timestamp": 1764755783,
+      "total_withdrawable_btc": 490.6048507673214,
+      "deposits_btc": 0.0,
+      "withdrawals_btc": 0.0,
+      "admin_fee_withdrawals_btc": 0.0,
+      "admin_fees_btc": 0.0
+    },
+    {
+      "block": 23932171,
+      "timestamp": 1764755855,
+      "total_withdrawable_btc": 490.60476482737226,
+      "deposits_btc": 0.0,
+      "withdrawals_btc": 0.0,
+      "admin_fee_withdrawals_btc": 0.0,
+      "admin_fees_btc": 0.0
+    },
+    {
+      "block": 23932172,
+      "timestamp": 1764755867,
+      "total_withdrawable_btc": 490.6047505381951,
+      "deposits_btc": 0.0,
+      "withdrawals_btc": 0.0,
+      "admin_fee_withdrawals_btc": 0.0,
+      "admin_fees_btc": 0.0
+    },
+    {
+      "block": 23932184,
+      "timestamp": 1764756011,
+      "total_withdrawable_btc": 490.6045786582969,
+      "deposits_btc": 0.0,
+      "withdrawals_btc": 0.0,
+      "admin_fee_withdrawals_btc": 0.0,
+      "admin_fees_btc": 0.0
+    },
+    {
+      "block": 23932185,
+      "timestamp": 1764756023,
+      "total_withdrawable_btc": 490.6045643691197,
+      "deposits_btc": 0.0,
+      "withdrawals_btc": 0.0,
+      "admin_fee_withdrawals_btc": 0.0,
+      "admin_fees_btc": 0.0
+    },
+    {
+      "block": 23932208,
+      "timestamp": 1764756299,
+      "total_withdrawable_btc": 490.6294880251572,
+      "deposits_btc": 0.02486844153269008,
+      "withdrawals_btc": 0,
       "admin_fee_withdrawals_btc": 0.0,
       "admin_fees_btc": 0.0
     }
