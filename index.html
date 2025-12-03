@@ -752,8 +752,8 @@
     </style>
 </head>
 <body>
-<div id="update-time" style="position:fixed;bottom:5px;left:10px;font-size:10px;color:#666;z-index:50;">Updated: 2025-12-03 10:36:27 UTC</div>
-<script>(function(){var u=new Date("2025-12-03 10:36:27 UTC"),n=function(){var d=Math.floor((Date.now()-u)/1e3),t="";if(d<60)t=d+"s ago";else if(d<3600)t=Math.floor(d/60)+"m ago";else if(d<86400)t=Math.floor(d/3600)+"h ago";else t=Math.floor(d/86400)+"d ago";document.getElementById("update-time").textContent="Updated: "+t;setTimeout(n,d<3600?1e4:6e4)};n()})();</script>
+<div id="update-time" style="position:fixed;bottom:5px;left:10px;font-size:10px;color:#666;z-index:50;">Updated: 2025-12-03 13:51:05 UTC</div>
+<script>(function(){var u=new Date("2025-12-03 13:51:05 UTC"),n=function(){var d=Math.floor((Date.now()-u)/1e3),t="";if(d<60)t=d+"s ago";else if(d<3600)t=Math.floor(d/60)+"m ago";else if(d<86400)t=Math.floor(d/3600)+"h ago";else t=Math.floor(d/86400)+"d ago";document.getElementById("update-time").textContent="Updated: "+t;setTimeout(n,d<3600?1e4:6e4)};n()})();</script>
     <div class="container">
         <header>
             <div class="header-top">
@@ -858,37 +858,37 @@
     </script>
 
     <!-- OLD contract data -->
-    <script src="old_vaults_yield_wbtc.js?v=6"></script>
+    <script src="vaults_yield_old_wbtc.js?v=7"></script>
     <script>
         // Store old wbtc data immediately after loading
-        const oldWbtcData = JSON.parse(JSON.stringify(yieldData_yb_wbtc));
+        const oldWbtcData = JSON.parse(JSON.stringify(yieldData_old_wbtc));
         console.log('Loaded OLD WBTC data:', oldWbtcData.metadata.contract, oldWbtcData.data.length, 'points');
     </script>
-    <script src="old_vaults_yield_cbbtc.js?v=6"></script>
+    <script src="vaults_yield_old_cbbtc.js?v=7"></script>
     <script>
         // Store old cbbtc data immediately after loading
-        const oldCbbtcData = JSON.parse(JSON.stringify(yieldData_yb_cbbtc));
+        const oldCbbtcData = JSON.parse(JSON.stringify(yieldData_old_cbbtc));
         console.log('Loaded OLD cbBTC data:', oldCbbtcData.metadata.contract, oldCbbtcData.data.length, 'points');
     </script>
-    <script src="old_vaults_yield_tbtc.js?v=6"></script>
+    <script src="vaults_yield_old_tbtc.js?v=7"></script>
     <script>
         // Store old tbtc data immediately after loading
-        const oldTbtcData = JSON.parse(JSON.stringify(yieldData_yb_tbtc));
+        const oldTbtcData = JSON.parse(JSON.stringify(yieldData_old_tbtc));
         console.log('Loaded OLD tBTC data:', oldTbtcData.metadata.contract, oldTbtcData.data.length, 'points');
     </script>
-    <script src="old_vaults_yield_syb_wbtc.js?v=6"></script>
+    <script src="vaults_yield_old_syb_wbtc.js?v=7"></script>
     <script>
         // Store old syb_wbtc data immediately after loading
         const oldSybWbtcData = JSON.parse(JSON.stringify(yieldData_old_syb_wbtc));
         console.log('Loaded OLD syb-WBTC data:', oldSybWbtcData.metadata.contract, oldSybWbtcData.data.length, 'points');
     </script>
-    <script src="old_vaults_yield_syb_cbbtc.js?v=6"></script>
+    <script src="vaults_yield_old_syb_cbbtc.js?v=7"></script>
     <script>
         // Store old syb_cbbtc data immediately after loading
         const oldSybCbbtcData = JSON.parse(JSON.stringify(yieldData_old_syb_cbbtc));
         console.log('Loaded OLD syb-cbBTC data:', oldSybCbbtcData.metadata.contract, oldSybCbbtcData.data.length, 'points');
     </script>
-    <script src="old_vaults_yield_syb_tbtc.js?v=6"></script>
+    <script src="vaults_yield_old_syb_tbtc.js?v=7"></script>
     <script>
         // Store old syb_tbtc data immediately after loading
         const oldSybTbtcData = JSON.parse(JSON.stringify(yieldData_old_syb_tbtc));
