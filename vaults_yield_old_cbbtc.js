@@ -1,4 +1,4 @@
-// Last updated: 2025-12-04 00:35:17 UTC
+// Last updated: 2025-12-04 00:35:28 UTC
 const yieldData_old_cbbtc = {
   "metadata": {
     "contract": "0xD6a1147666f6E4d7161caf436d9923D44d901112",
