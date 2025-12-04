@@ -1,9 +1,9 @@
-// Last updated: 2025-12-04 20:34:29 UTC
+// Last updated: 2025-12-04 20:47:08 UTC
 const yieldData_wbtc = {
   "metadata": {
     "market": "WBTC",
     "contract": "0xfBF3C16676055776Ab9B286492D8f13e30e2E763",
-    "collected": "2025-12-05T00:32:48.382015",
+    "collected": "2025-12-05T00:45:16.254755",
     "points": 2440,
     "synchronized": true,
     "transaction_based": true,
@@ -19345,7 +19345,7 @@ const yieldData_wbtc = {
     },
     {
       "block": 23932596,
-      "timestamp": 0,
+      "timestamp": 1764761015,
       "total_withdrawable_btc": 494.81448784,
       "deposits_btc": 0.002,
       "withdrawals_btc": 0,
@@ -19372,7 +19372,7 @@ const yieldData_wbtc = {
     },
     {
       "block": 23932727,
-      "timestamp": 0,
+      "timestamp": 1764762599,
       "total_withdrawable_btc": 494.81515935,
       "deposits_btc": 0.0,
       "withdrawals_btc": 0.0,
@@ -19381,7 +19381,7 @@ const yieldData_wbtc = {
     },
     {
       "block": 23932800,
-      "timestamp": 0,
+      "timestamp": 1764763475,
       "total_withdrawable_btc": 494.81759608,
       "deposits_btc": 0.0034,
       "withdrawals_btc": 0,
@@ -19390,7 +19390,7 @@ const yieldData_wbtc = {
     },
     {
       "block": 23932813,
-      "timestamp": 0,
+      "timestamp": 1764763631,
       "total_withdrawable_btc": 494.8174114,
       "deposits_btc": 0.0,
       "withdrawals_btc": 0.0,
@@ -19417,7 +19417,7 @@ const yieldData_wbtc = {
     },
     {
       "block": 23932916,
-      "timestamp": 0,
+      "timestamp": 1764764867,
       "total_withdrawable_btc": 494.73740258,
       "deposits_btc": 0,
       "withdrawals_btc": 0.07805111,
@@ -19435,7 +19435,7 @@ const yieldData_wbtc = {
     },
     {
       "block": 23933189,
-      "timestamp": 0,
+      "timestamp": 1764768179,
       "total_withdrawable_btc": 494.81461237,
       "deposits_btc": 0.00202786,
       "withdrawals_btc": 0,
@@ -19453,7 +19453,7 @@ const yieldData_wbtc = {
     },
     {
       "block": 23933552,
-      "timestamp": 0,
+      "timestamp": 1764772571,
       "total_withdrawable_btc": 494.77857658,
       "deposits_btc": 0.0119,
       "withdrawals_btc": 0,

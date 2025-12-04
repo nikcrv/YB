@@ -1,9 +1,9 @@
-// Last updated: 2025-12-04 20:34:29 UTC
+// Last updated: 2025-12-04 20:47:08 UTC
 const yieldData_cbbtc = {
   "metadata": {
     "market": "cbBTC",
     "contract": "0xAC0cfa7742069a8af0c63e14FFD0fe6b3e1Bf8D2",
-    "collected": "2025-12-05T00:32:48.450548",
+    "collected": "2025-12-05T00:45:16.326072",
     "points": 2440,
     "synchronized": true,
     "transaction_based": true,
@@ -19345,7 +19345,7 @@ const yieldData_cbbtc = {
     },
     {
       "block": 23932596,
-      "timestamp": 0,
+      "timestamp": 1764761015,
       "total_withdrawable_btc": 470.6250825,
       "deposits_btc": 0.0,
       "withdrawals_btc": 0.0,
@@ -19372,7 +19372,7 @@ const yieldData_cbbtc = {
     },
     {
       "block": 23932727,
-      "timestamp": 0,
+      "timestamp": 1764762599,
       "total_withdrawable_btc": 470.62353123,
       "deposits_btc": 0.0,
       "withdrawals_btc": 0.0,
@@ -19381,7 +19381,7 @@ const yieldData_cbbtc = {
     },
     {
       "block": 23932800,
-      "timestamp": 0,
+      "timestamp": 1764763475,
       "total_withdrawable_btc": 470.6226725,
       "deposits_btc": 0.0,
       "withdrawals_btc": 0.0,
@@ -19390,7 +19390,7 @@ const yieldData_cbbtc = {
     },
     {
       "block": 23932813,
-      "timestamp": 0,
+      "timestamp": 1764763631,
       "total_withdrawable_btc": 470.62252014,
       "deposits_btc": 0.0,
       "withdrawals_btc": 0.0,
@@ -19417,7 +19417,7 @@ const yieldData_cbbtc = {
     },
     {
       "block": 23932916,
-      "timestamp": 0,
+      "timestamp": 1764764867,
       "total_withdrawable_btc": 470.62131052,
       "deposits_btc": 0.0,
       "withdrawals_btc": 0.0,
@@ -19435,7 +19435,7 @@ const yieldData_cbbtc = {
     },
     {
       "block": 23933189,
-      "timestamp": 0,
+      "timestamp": 1764768179,
       "total_withdrawable_btc": 470.61806948,
       "deposits_btc": 0.0,
       "withdrawals_btc": 0.0,
@@ -19453,7 +19453,7 @@ const yieldData_cbbtc = {
     },
     {
       "block": 23933552,
-      "timestamp": 0,
+      "timestamp": 1764772571,
       "total_withdrawable_btc": 470.62487474,
       "deposits_btc": 0.0,
       "withdrawals_btc": 0.0,
