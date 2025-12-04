@@ -1,14 +1,14 @@
-// Last updated: 2025-12-04 11:36:48 UTC
+// Last updated: 2025-12-04 11:40:30 UTC
 const ppsData_old_tbtc = {
   "metadata": {
     "market": "TBTC",
     "symbol": "yb-tBTC",
     "vault": "0x2B513eBe7070Cff91cf699a0BFe5075020C732FF",
     "staker": "0x2a4671fd269dF5B3DA03103c74063dA10D03E23C",
-    "collected": "2025-12-04T15:35:15.154466Z",
-    "points": 4151,
+    "collected": "2025-12-04T15:39:00.381546Z",
+    "points": 4153,
     "start_block": 23434043,
-    "end_block": 23939429,
+    "end_block": 23939447,
     "block_step": 300,
     "time_step": "1h",
     "contract_type": "old"
@@ -24919,6 +24919,18 @@ const ppsData_old_tbtc = {
       "timestamp": 1764848099,
       "pps_unstaked": 1.200875598521155,
       "pps_staked": 0.8865124364808412
+    },
+    {
+      "block": 23939430,
+      "timestamp": 1764848111,
+      "pps_unstaked": 1.2008755880707946,
+      "pps_staked": 0.8865124287661584
+    },
+    {
+      "block": 23939447,
+      "timestamp": 1764848315,
+      "pps_unstaked": 1.2008755066544272,
+      "pps_staked": 0.8865123686628285
     }
   ]
 };
