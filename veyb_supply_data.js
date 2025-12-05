@@ -1,4 +1,4 @@
-// Last updated: 2025-12-05 17:24:11 UTC
+// Last updated: 2025-12-05 17:37:20 UTC
 const veYBSupplyData = [
   {
     "block": 23370927,
@@ -22961,8 +22961,8 @@ const veYBSupplyData = [
   },
   {
     "block": 23941285,
-    "timestamp": 1764813179,
-    "datetime": "2025-12-04T01:52:59",
+    "timestamp": 1764870987,
+    "datetime": "2025-12-04T17:56:27",
     "supply_yb": 36069320.82321318,
     "yb_locked": 36069320.82321318,
     "total_votes": 34813916.080940254,
@@ -22979,8 +22979,8 @@ const veYBSupplyData = [
   },
   {
     "block": 23941348,
-    "timestamp": 1764813935,
-    "datetime": "2025-12-04T02:05:35",
+    "timestamp": 1764871770,
+    "datetime": "2025-12-04T18:09:30",
     "supply_yb": 36069533.423622504,
     "yb_locked": 36069533.423622504,
     "total_votes": 34814093.67416901,
@@ -23015,8 +23015,8 @@ const veYBSupplyData = [
   },
   {
     "block": 23941520,
-    "timestamp": 1764815999,
-    "datetime": "2025-12-04T02:39:59",
+    "timestamp": 1764873847,
+    "datetime": "2025-12-04T18:44:07",
     "supply_yb": 36069533.423622504,
     "yb_locked": 36069533.423622504,
     "total_votes": 34814309.42900445,
@@ -23051,8 +23051,8 @@ const veYBSupplyData = [
   },
   {
     "block": 23941622,
-    "timestamp": 1764817223,
-    "datetime": "2025-12-04T03:00:23",
+    "timestamp": 1764875099,
+    "datetime": "2025-12-04T19:04:59",
     "supply_yb": 36069533.423622504,
     "yb_locked": 36069533.423622504,
     "total_votes": 34814252.59549632,
@@ -23114,8 +23114,8 @@ const veYBSupplyData = [
   },
   {
     "block": 23941864,
-    "timestamp": 1764820127,
-    "datetime": "2025-12-04T03:48:47",
+    "timestamp": 1764878087,
+    "datetime": "2025-12-04T19:54:47",
     "supply_yb": 36074173.89272612,
     "yb_locked": 36074173.89272612,
     "total_votes": 34818760.631802686,
@@ -23132,8 +23132,8 @@ const veYBSupplyData = [
   },
   {
     "block": 23941929,
-    "timestamp": 1764820907,
-    "datetime": "2025-12-04T04:01:47",
+    "timestamp": 1764878867,
+    "datetime": "2025-12-04T20:07:47",
     "supply_yb": 36074173.89272612,
     "yb_locked": 36074173.89272612,
     "total_votes": 34818725.78106657,
@@ -23168,8 +23168,8 @@ const veYBSupplyData = [
   },
   {
     "block": 23942111,
-    "timestamp": 1764823091,
-    "datetime": "2025-12-04T04:38:11",
+    "timestamp": 1764881099,
+    "datetime": "2025-12-04T20:44:59",
     "supply_yb": 36096099.337095276,
     "yb_locked": 36096099.337095276,
     "total_votes": 34840550.96254873,
@@ -23222,8 +23222,8 @@ const veYBSupplyData = [
   },
   {
     "block": 23942355,
-    "timestamp": 1764826019,
-    "datetime": "2025-12-04T05:26:59",
+    "timestamp": 1764884108,
+    "datetime": "2025-12-04T21:35:08",
     "supply_yb": 36119604.40135569,
     "yb_locked": 36119604.40135569,
     "total_votes": 34863922.52168156,
@@ -23294,8 +23294,8 @@ const veYBSupplyData = [
   },
   {
     "block": 23942637,
-    "timestamp": 1764829403,
-    "datetime": "2025-12-04T06:23:23",
+    "timestamp": 1764887534,
+    "datetime": "2025-12-04T22:32:14",
     "supply_yb": 36124292.29586239,
     "yb_locked": 36124292.29586239,
     "total_votes": 34868457.07294934,
@@ -23438,8 +23438,8 @@ const veYBSupplyData = [
   },
   {
     "block": 23943210,
-    "timestamp": 1764836279,
-    "datetime": "2025-12-04T08:17:59",
+    "timestamp": 1764894515,
+    "datetime": "2025-12-05T00:28:35",
     "supply_yb": 36124306.14199528,
     "yb_locked": 36124306.14199528,
     "total_votes": 34868158.87095267,
@@ -23474,8 +23474,8 @@ const veYBSupplyData = [
   },
   {
     "block": 23943374,
-    "timestamp": 1764838247,
-    "datetime": "2025-12-04T08:50:47",
+    "timestamp": 1764896509,
+    "datetime": "2025-12-05T01:01:49",
     "supply_yb": 36146278.879798524,
     "yb_locked": 36146278.879798524,
     "total_votes": 34889966.73724167,
@@ -23555,8 +23555,8 @@ const veYBSupplyData = [
   },
   {
     "block": 23943685,
-    "timestamp": 1764841979,
-    "datetime": "2025-12-04T09:52:59",
+    "timestamp": 1764900338,
+    "datetime": "2025-12-05T02:05:38",
     "supply_yb": 36146456.334273644,
     "yb_locked": 36146456.334273644,
     "total_votes": 34889973.026726015,
@@ -23645,8 +23645,8 @@ const veYBSupplyData = [
   },
   {
     "block": 23944034,
-    "timestamp": 1764846167,
-    "datetime": "2025-12-04T11:02:47",
+    "timestamp": 1764904571,
+    "datetime": "2025-12-05T03:16:11",
     "supply_yb": 36146456.334273644,
     "yb_locked": 36146456.334273644,
     "total_votes": 34889782.484566465,
@@ -23735,8 +23735,8 @@ const veYBSupplyData = [
   },
   {
     "block": 23944352,
-    "timestamp": 1764849983,
-    "datetime": "2025-12-04T12:06:23",
+    "timestamp": 1764908428,
+    "datetime": "2025-12-05T04:20:28",
     "supply_yb": 36146456.334273644,
     "yb_locked": 36146456.334273644,
     "total_votes": 34889609.16655694,
@@ -23744,8 +23744,8 @@ const veYBSupplyData = [
   },
   {
     "block": 23944372,
-    "timestamp": 1764850223,
-    "datetime": "2025-12-04T12:10:23",
+    "timestamp": 1764908676,
+    "datetime": "2025-12-05T04:24:36",
     "supply_yb": 36146456.334273644,
     "yb_locked": 36146456.334273644,
     "total_votes": 34889598.40146318,
@@ -23978,8 +23978,8 @@ const veYBSupplyData = [
   },
   {
     "block": 23945375,
-    "timestamp": 1764862259,
-    "datetime": "2025-12-04T15:30:59",
+    "timestamp": 1764920903,
+    "datetime": "2025-12-05T07:48:23",
     "supply_yb": 36152787.34500446,
     "yb_locked": 36152787.34500446,
     "total_votes": 34894451.922885664,
@@ -23987,8 +23987,8 @@ const veYBSupplyData = [
   },
   {
     "block": 23945393,
-    "timestamp": 1764862475,
-    "datetime": "2025-12-04T15:34:35",
+    "timestamp": 1764921119,
+    "datetime": "2025-12-05T07:51:59",
     "supply_yb": 36152837.34500446,
     "yb_locked": 36152837.34500446,
     "total_votes": 34894492.04240139,
@@ -24077,8 +24077,8 @@ const veYBSupplyData = [
   },
   {
     "block": 23945764,
-    "timestamp": 1764866927,
-    "datetime": "2025-12-04T16:48:47",
+    "timestamp": 1764925706,
+    "datetime": "2025-12-05T09:08:26",
     "supply_yb": 36217857.44793625,
     "yb_locked": 36217857.44793625,
     "total_votes": 34957016.62151999,
@@ -24131,8 +24131,8 @@ const veYBSupplyData = [
   },
   {
     "block": 23945920,
-    "timestamp": 1764868799,
-    "datetime": "2025-12-04T17:19:59",
+    "timestamp": 1764927614,
+    "datetime": "2025-12-05T09:40:14",
     "supply_yb": 36217857.44793625,
     "yb_locked": 36217857.44793625,
     "total_votes": 34956929.9250248,
@@ -24167,8 +24167,8 @@ const veYBSupplyData = [
   },
   {
     "block": 23946115,
-    "timestamp": 1764871139,
-    "datetime": "2025-12-04T17:58:59",
+    "timestamp": 1764929999,
+    "datetime": "2025-12-05T10:19:59",
     "supply_yb": 36217893.59929875,
     "yb_locked": 36217893.59929875,
     "total_votes": 34956856.89985542,
@@ -24221,8 +24221,8 @@ const veYBSupplyData = [
   },
   {
     "block": 23946340,
-    "timestamp": 1764873839,
-    "datetime": "2025-12-04T18:43:59",
+    "timestamp": 1764932704,
+    "datetime": "2025-12-05T11:05:04",
     "supply_yb": 36217902.18109375,
     "yb_locked": 36217902.18109375,
     "total_votes": 34956742.98996881,
@@ -24230,8 +24230,8 @@ const veYBSupplyData = [
   },
   {
     "block": 23946385,
-    "timestamp": 1764874379,
-    "datetime": "2025-12-04T18:52:59",
+    "timestamp": 1764933256,
+    "datetime": "2025-12-05T11:14:16",
     "supply_yb": 36218858.46371171,
     "yb_locked": 36218858.46371171,
     "total_votes": 34957674.889006,
@@ -24266,8 +24266,8 @@ const veYBSupplyData = [
   },
   {
     "block": 23946569,
-    "timestamp": 1764876587,
-    "datetime": "2025-12-04T19:29:47",
+    "timestamp": 1764935500,
+    "datetime": "2025-12-05T11:51:40",
     "supply_yb": 36218858.46371171,
     "yb_locked": 36218858.46371171,
     "total_votes": 34957573.01982412,
@@ -24284,8 +24284,8 @@ const veYBSupplyData = [
   },
   {
     "block": 23946682,
-    "timestamp": 1764877943,
-    "datetime": "2025-12-04T19:52:23",
+    "timestamp": 1764936879,
+    "datetime": "2025-12-05T12:14:39",
     "supply_yb": 36218858.46371171,
     "yb_locked": 36218858.46371171,
     "total_votes": 34957511.24808617,
@@ -24311,8 +24311,8 @@ const veYBSupplyData = [
   },
   {
     "block": 23946784,
-    "timestamp": 1764879167,
-    "datetime": "2025-12-04T20:12:47",
+    "timestamp": 1764938147,
+    "datetime": "2025-12-05T12:35:47",
     "supply_yb": 36218858.46371171,
     "yb_locked": 36218858.46371171,
     "total_votes": 34957453.811207026,
@@ -24329,8 +24329,8 @@ const veYBSupplyData = [
   },
   {
     "block": 23946849,
-    "timestamp": 1764879947,
-    "datetime": "2025-12-04T20:25:47",
+    "timestamp": 1764938943,
+    "datetime": "2025-12-05T12:49:03",
     "supply_yb": 36381515.87244515,
     "yb_locked": 36381515.87244515,
     "total_votes": 35120075.99921269,
@@ -24383,8 +24383,8 @@ const veYBSupplyData = [
   },
   {
     "block": 23947041,
-    "timestamp": 1764882251,
-    "datetime": "2025-12-04T21:04:11",
+    "timestamp": 1764941283,
+    "datetime": "2025-12-05T13:28:03",
     "supply_yb": 36384604.4130802,
     "yb_locked": 36384604.4130802,
     "total_votes": 35120781.16890257,
@@ -24392,8 +24392,8 @@ const veYBSupplyData = [
   },
   {
     "block": 23947073,
-    "timestamp": 1764882635,
-    "datetime": "2025-12-04T21:10:35",
+    "timestamp": 1764941670,
+    "datetime": "2025-12-05T13:34:30",
     "supply_yb": 36384788.33696133,
     "yb_locked": 36384788.33696133,
     "total_votes": 35120947.74394654,
@@ -24509,8 +24509,8 @@ const veYBSupplyData = [
   },
   {
     "block": 23947793,
-    "timestamp": 1764891275,
-    "datetime": "2025-12-04T23:34:35",
+    "timestamp": 1764950425,
+    "datetime": "2025-12-05T16:00:25",
     "supply_yb": 36476477.67724194,
     "yb_locked": 36476477.67724194,
     "total_votes": 35198709.55416855,
@@ -24599,8 +24599,8 @@ const veYBSupplyData = [
   },
   {
     "block": 23948116,
-    "timestamp": 1764895151,
-    "datetime": "2025-12-05T00:39:11",
+    "timestamp": 1764954359,
+    "datetime": "2025-12-05T17:05:59",
     "supply_yb": 36495737.76211635,
     "yb_locked": 36495737.76211635,
     "total_votes": 35217791.92637205,
@@ -24617,11 +24617,29 @@ const veYBSupplyData = [
   },
   {
     "block": 23948180,
-    "timestamp": 1764895919,
-    "datetime": "2025-12-05T00:51:59",
+    "timestamp": 1764955127,
+    "datetime": "2025-12-05T17:18:47",
     "supply_yb": 36495737.76211635,
     "yb_locked": 36495737.76211635,
     "total_votes": 35217756.601223394,
     "lock_ratio": 0.9649827284154936
+  },
+  {
+    "block": 23948244,
+    "timestamp": 1764955919,
+    "datetime": "2025-12-05T17:31:59",
+    "supply_yb": 36495737.76211635,
+    "yb_locked": 36495737.76211635,
+    "total_votes": 35217721.276074745,
+    "lock_ratio": 0.9649817604901736
+  },
+  {
+    "block": 23948255,
+    "timestamp": 1764956063,
+    "datetime": "2025-12-05T17:34:23",
+    "supply_yb": 36495737.76211635,
+    "yb_locked": 36495737.76211635,
+    "total_votes": 35217714.75450884,
+    "lock_ratio": 0.9649815817962684
   }
 ];
