@@ -1,20 +1,20 @@
-// Last updated: 2025-12-05 14:34:58 UTC
+// Last updated: 2025-12-05 14:37:27 UTC
 const yieldData_old_cbbtc = {
   "metadata": {
     "contract": "0xD6a1147666f6E4d7161caf436d9923D44d901112",
     "start_date": "2025-10-22T00:30:23",
-    "end_date": "2025-12-05T18:34:47",
+    "end_date": "2025-12-05T18:36:59",
     "data_points": 1076,
     "step_seconds": 3600
   },
   "metrics": {
-    "total_return": 0.08801221695277907,
-    "total_return_pct": 8.801221695277906,
-    "apr": 0.9896660846353381,
-    "apr_pct": 98.96660846353382,
-    "days": 44.753055555555555,
+    "total_return": 0.08801190130780132,
+    "total_return_pct": 8.801190130780132,
+    "apr": 0.989614650422127,
+    "apr_pct": 98.96146504221271,
+    "days": 44.754583333333336,
     "start_pps": 1.04547838,
-    "end_pps": 1.13749325
+    "end_pps": 1.13749292
   },
   "data": [
     {
@@ -9693,10 +9693,10 @@ const yieldData_old_cbbtc = {
       "btc_price": 90495.89880179014
     },
     {
-      "block": 23947371,
-      "timestamp": 1764945287,
-      "datetime": "2025-12-05T18:34:47",
-      "pps_btc": 1.13749325,
+      "block": 23947382,
+      "timestamp": 1764945419,
+      "datetime": "2025-12-05T18:36:59",
+      "pps_btc": 1.13749292,
       "ret_step": null,
       "ret_step_pct": null,
       "btc_price": 90495.89880179014
