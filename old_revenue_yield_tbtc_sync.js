@@ -1,4 +1,4 @@
-// Last updated: 2025-12-06 23:17:25 UTC
+// Last updated: 2025-12-06 23:18:25 UTC
 const old_yieldData_tbtc = {
   "metadata": {
     "market": "tBTC (OLD)",
