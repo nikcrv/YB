@@ -1,4 +1,4 @@
-// Last updated: 2025-12-07 23:40:44 UTC
+// Last updated: 2025-12-07 23:41:25 UTC
 const yieldData_cbbtc = {
   "metadata": {
     "market": "cbBTC",
