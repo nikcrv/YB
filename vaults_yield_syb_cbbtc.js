@@ -1,20 +1,20 @@
-// Last updated: 2025-12-07 15:54:25 UTC
+// Last updated: 2025-12-07 16:14:25 UTC
 const yieldData_syb_cbbtc = {
   "metadata": {
     "contract": "0xf3081A2eB8927C0462864EC3FdbE927C842A0893",
     "start_date": "2025-11-12T20:09:47",
-    "end_date": "2025-12-07T19:54:11",
-    "data_points": 601,
+    "end_date": "2025-12-07T20:12:11",
+    "data_points": 602,
     "step_seconds": 3600
   },
   "metrics": {
-    "total_return": 0.00031084878778327846,
-    "total_return_pct": 0.031084878778327843,
-    "apr": 0.004549974095051194,
-    "apr_pct": 0.45499740950511947,
-    "days": 24.989166666666666,
+    "total_return": 0.0004757983537481017,
+    "total_return_pct": 0.04757983537481017,
+    "apr": 0.006968710155572403,
+    "apr_pct": 0.6968710155572404,
+    "days": 25.001666666666665,
     "start_pps": 0.99945701,
-    "end_pps": 0.99976769
+    "end_pps": 0.99993255
   },
   "data": [
     {
@@ -24,7 +24,7 @@ const yieldData_syb_cbbtc = {
       "pps_btc": 0.99945701,
       "ret_step": null,
       "ret_step_pct": null,
-      "btc_price": 101444.67817036604,
+      "btc_price": 102145.9531652112,
       "pps_yb": 1.0
     },
     {
@@ -6018,14 +6018,24 @@ const yieldData_syb_cbbtc = {
       "pps_yb": 0.9732955318548401
     },
     {
-      "block": 23961980,
-      "timestamp": 1765122851,
-      "datetime": "2025-12-07T19:54:11",
-      "pps_btc": 0.99976769,
+      "block": 23962062,
+      "timestamp": 1765123835,
+      "datetime": "2025-12-07T20:10:35",
+      "pps_btc": 0.99993284,
       "ret_step": null,
       "ret_step_pct": null,
-      "btc_price": 88202.39414470572,
-      "pps_yb": 0.9732955318548401
+      "btc_price": 89472.58036849847,
+      "pps_yb": 0.9732877559076815
+    },
+    {
+      "block": 23962070,
+      "timestamp": 1765123931,
+      "datetime": "2025-12-07T20:12:11",
+      "pps_btc": 0.99993255,
+      "ret_step": -2.900194777081229e-07,
+      "ret_step_pct": -2.9001947770812287e-05,
+      "btc_price": 89472.58036849847,
+      "pps_yb": 0.9732876939970452
     }
   ]
 };
