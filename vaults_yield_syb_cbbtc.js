@@ -1,20 +1,20 @@
-// Last updated: 2025-12-08 02:59:06 UTC
+// Last updated: 2025-12-08 03:12:18 UTC
 const yieldData_syb_cbbtc = {
   "metadata": {
     "contract": "0xf3081A2eB8927C0462864EC3FdbE927C842A0893",
     "start_date": "2025-11-12T20:09:47",
-    "end_date": "2025-12-08T06:58:23",
-    "data_points": 612,
+    "end_date": "2025-12-08T07:11:11",
+    "data_points": 613,
     "step_seconds": 3600
   },
   "metrics": {
-    "total_return": 0.000296781149196202,
-    "total_return_pct": 0.029678114919620205,
-    "apr": 0.0042647569074896535,
-    "apr_pct": 0.4264756907489654,
-    "days": 25.450416666666666,
+    "total_return": 0.00029667108943485224,
+    "total_return_pct": 0.02966710894348522,
+    "apr": 0.004261680597324183,
+    "apr_pct": 0.4261680597324183,
+    "days": 25.459305555555556,
     "start_pps": 0.99945701,
-    "end_pps": 0.99975363
+    "end_pps": 0.99975352
   },
   "data": [
     {
@@ -24,7 +24,7 @@ const yieldData_syb_cbbtc = {
       "pps_btc": 0.99945701,
       "ret_step": null,
       "ret_step_pct": null,
-      "btc_price": 102145.9531652112,
+      "btc_price": 101444.67817036604,
       "pps_yb": 1.0
     },
     {
@@ -6128,14 +6128,24 @@ const yieldData_syb_cbbtc = {
       "pps_yb": 0.971715835283876
     },
     {
-      "block": 23965266,
-      "timestamp": 1765162703,
-      "datetime": "2025-12-08T06:58:23",
-      "pps_btc": 0.99975363,
+      "block": 23965326,
+      "timestamp": 1765163435,
+      "datetime": "2025-12-08T07:10:35",
+      "pps_btc": 0.99975353,
       "ret_step": null,
       "ret_step_pct": null,
-      "btc_price": 91117.21836182859,
-      "pps_yb": 0.9717196874852224
+      "btc_price": 91393.1884031835,
+      "pps_yb": 0.9717216905510514
+    },
+    {
+      "block": 23965329,
+      "timestamp": 1765163471,
+      "datetime": "2025-12-08T07:11:11",
+      "pps_btc": 0.99975352,
+      "ret_step": -1.000246530762437e-08,
+      "ret_step_pct": -1.000246530762437e-06,
+      "btc_price": 91393.1884031835,
+      "pps_yb": 0.9717217921264792
     }
   ]
 };

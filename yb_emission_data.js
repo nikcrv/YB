@@ -1,4 +1,4 @@
-// Last updated: 2025-12-08 02:59:05 UTC
+// Last updated: 2025-12-08 03:12:18 UTC
 const ybEmissionData = [
   {
     "timestamp": 1762963200,
@@ -10704,20 +10704,40 @@ const ybEmissionData = [
     "timestamp": 1765159200,
     "datetime": "2025-12-08T02:00:00",
     "hourly_cbBTC": 1755.3171687305887,
-    "hourly_WBTC": 11735.768316099884,
+    "hourly_WBTC": 12212.247643652558,
     "hourly_tBTC": 3019.672861254781,
-    "hourly_total": 16510.758346085255,
+    "hourly_total": 16987.237673637926,
     "cumulative_cbBTC": 1143976.4355372689,
-    "cumulative_WBTC": 1432283.3573038501,
+    "cumulative_WBTC": 1432759.8366314028,
     "cumulative_tBTC": 1160044.4029360688,
-    "cumulative_total": 3736304.1957771876,
-    "cumulative_total_btc": 21.722246723381552,
+    "cumulative_total": 3736780.6751047405,
+    "cumulative_total_btc": 21.725016894376566,
     "cumulative_cbBTC_btc": 6.650887367939847,
-    "cumulative_WBTC_btc": 8.327055516601426,
+    "cumulative_WBTC_btc": 8.32982568759644,
     "cumulative_tBTC_btc": 6.744303838840279,
-    "hourly_total_btc": 0.09599078329573542,
+    "hourly_total_btc": 0.09876095429074915,
     "yb_usd_price": 0.5288171612665046,
     "btc_usd_price": 90958.44475020502,
     "yb_btc_price": 5.813832489317191e-06
+  },
+  {
+    "timestamp": 1765162800,
+    "datetime": "2025-12-08T03:00:00",
+    "hourly_cbBTC": 0,
+    "hourly_WBTC": 575.7436394610471,
+    "hourly_tBTC": 0,
+    "hourly_total": 575.7436394610471,
+    "cumulative_cbBTC": 1143976.4355372689,
+    "cumulative_WBTC": 1433335.5802708638,
+    "cumulative_tBTC": 1160044.4029360688,
+    "cumulative_total": 3737356.4187442013,
+    "cumulative_total_btc": 21.999831834276794,
+    "cumulative_cbBTC_btc": 6.733981559257286,
+    "cumulative_WBTC_btc": 8.43728512750199,
+    "cumulative_tBTC_btc": 6.828565147517519,
+    "hourly_total_btc": 0.003389096952132157,
+    "yb_usd_price": 0.5361634123083451,
+    "btc_usd_price": 91084.04944097427,
+    "yb_btc_price": 5.88646876812167e-06
   }
 ];
