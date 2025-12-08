@@ -1,20 +1,20 @@
-// Last updated: 2025-12-08 16:20:27 UTC
+// Last updated: 2025-12-08 17:47:51 UTC
 const yieldData_syb_cbbtc = {
   "metadata": {
     "contract": "0xf3081A2eB8927C0462864EC3FdbE927C842A0893",
     "start_date": "2025-11-12T20:09:47",
-    "end_date": "2025-12-08T20:18:59",
-    "data_points": 626,
+    "end_date": "2025-12-08T21:44:23",
+    "data_points": 627,
     "step_seconds": 3600
   },
   "metrics": {
-    "total_return": 0.00017162318967576206,
-    "total_return_pct": 0.017162318967576203,
-    "apr": 0.0024114298152244145,
-    "apr_pct": 0.24114298152244146,
-    "days": 26.00638888888889,
+    "total_return": 0.00017323406436460935,
+    "total_return_pct": 0.017323406436460933,
+    "apr": 0.0024285444879368983,
+    "apr_pct": 0.2428544487936898,
+    "days": 26.065694444444443,
     "start_pps": 0.99945701,
-    "end_pps": 0.99962854
+    "end_pps": 0.99963015
   },
   "data": [
     {
@@ -24,7 +24,7 @@ const yieldData_syb_cbbtc = {
       "pps_btc": 0.99945701,
       "ret_step": null,
       "ret_step_pct": null,
-      "btc_price": 102145.9531652112,
+      "btc_price": 101444.67817036604,
       "pps_yb": 1.0
     },
     {
@@ -6268,14 +6268,24 @@ const yieldData_syb_cbbtc = {
       "pps_yb": 0.971377663459276
     },
     {
-      "block": 23969229,
-      "timestamp": 1765210739,
-      "datetime": "2025-12-08T20:18:59",
-      "pps_btc": 0.99962854,
+      "block": 23969485,
+      "timestamp": 1765213835,
+      "datetime": "2025-12-08T21:10:35",
+      "pps_btc": 0.99963005,
       "ret_step": null,
       "ret_step_pct": null,
-      "btc_price": 90114.80515515296,
-      "pps_yb": 0.9713809776312885
+      "btc_price": 89841.06111713321,
+      "pps_yb": 0.971392320395943
+    },
+    {
+      "block": 23969653,
+      "timestamp": 1765215863,
+      "datetime": "2025-12-08T21:44:23",
+      "pps_btc": 0.99963015,
+      "ret_step": 1.0003700869136536e-07,
+      "ret_step_pct": 1.0003700869136537e-05,
+      "btc_price": 89841.06111713321,
+      "pps_yb": 0.9713985641231561
     }
   ]
 };
