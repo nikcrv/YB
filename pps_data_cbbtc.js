@@ -1,14 +1,14 @@
-// Last updated: 2025-12-08 15:19:25 UTC
+// Last updated: 2025-12-08 15:39:04 UTC
 const ppsData_cbbtc = {
   "metadata": {
     "market": "CBBTC",
     "symbol": "yb-cbBTC",
     "vault": "0xAC0cfa7742069a8af0c63e14FFD0fe6b3e1Bf8D2",
     "staker": "0xf3081A2eB8927C0462864EC3FdbE927C842A0893",
-    "collected": "2025-12-08T19:17:57.281438Z",
-    "points": 4528,
+    "collected": "2025-12-08T19:38:37.889561Z",
+    "points": 4537,
     "start_block": 23784065,
-    "end_block": 23968923,
+    "end_block": 23969026,
     "block_step": 300,
     "time_step": "1h",
     "contract_type": "new"
@@ -27180,6 +27180,60 @@ const ppsData_cbbtc = {
       "block": 23968923,
       "timestamp": 1765207055,
       "pps_unstaked": 1.0293877035808239,
+      "pps_staked": 1.0
+    },
+    {
+      "block": 23968924,
+      "timestamp": 1765207067,
+      "pps_unstaked": 1.0293873647610745,
+      "pps_staked": 1.0
+    },
+    {
+      "block": 23968933,
+      "timestamp": 1765207175,
+      "pps_unstaked": 1.0293845130072565,
+      "pps_staked": 0.9999999999999999
+    },
+    {
+      "block": 23968934,
+      "timestamp": 1765207187,
+      "pps_unstaked": 1.029384215991197,
+      "pps_staked": 0.9999999999999999
+    },
+    {
+      "block": 23969007,
+      "timestamp": 1765208063,
+      "pps_unstaked": 1.0295142594070248,
+      "pps_staked": 1.0000000000000002
+    },
+    {
+      "block": 23969008,
+      "timestamp": 1765208075,
+      "pps_unstaked": 1.0295138709678395,
+      "pps_staked": 0.9999999999999999
+    },
+    {
+      "block": 23969010,
+      "timestamp": 1765208099,
+      "pps_unstaked": 1.0295131086501932,
+      "pps_staked": 0.9999999999999999
+    },
+    {
+      "block": 23969013,
+      "timestamp": 1765208135,
+      "pps_unstaked": 1.0295119992849089,
+      "pps_staked": 1.0
+    },
+    {
+      "block": 23969014,
+      "timestamp": 1765208147,
+      "pps_unstaked": 1.029511637834838,
+      "pps_staked": 1.0
+    },
+    {
+      "block": 23969026,
+      "timestamp": 1765208291,
+      "pps_unstaked": 1.0294931352606556,
       "pps_staked": 1.0
     }
   ]

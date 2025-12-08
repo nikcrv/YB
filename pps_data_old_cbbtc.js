@@ -1,14 +1,14 @@
-// Last updated: 2025-12-08 15:19:25 UTC
+// Last updated: 2025-12-08 15:39:04 UTC
 const ppsData_old_cbbtc = {
   "metadata": {
     "market": "CBBTC",
     "symbol": "yb-cbBTC",
     "vault": "0xD6a1147666f6E4d7161caf436d9923D44d901112",
     "staker": "0x3dAe83d236b4Ec301A8d0553f8c13Cb9b7925B6a",
-    "collected": "2025-12-08T19:18:12.958940Z",
-    "points": 5690,
+    "collected": "2025-12-08T19:38:56.830402Z",
+    "points": 5698,
     "start_block": 23434043,
-    "end_block": 23968923,
+    "end_block": 23969026,
     "block_step": 300,
     "time_step": "1h",
     "contract_type": "old"
@@ -34153,6 +34153,54 @@ const ppsData_old_cbbtc = {
       "timestamp": 1765207055,
       "pps_unstaked": 1.142233548683696,
       "pps_staked": 0.9414214142075991
+    },
+    {
+      "block": 23968924,
+      "timestamp": 1765207067,
+      "pps_unstaked": 1.1422675877492228,
+      "pps_staked": 0.9414494689825996
+    },
+    {
+      "block": 23968933,
+      "timestamp": 1765207175,
+      "pps_unstaked": 1.142553692677783,
+      "pps_staked": 0.9416852747919872
+    },
+    {
+      "block": 23969007,
+      "timestamp": 1765208063,
+      "pps_unstaked": 1.1445671630503054,
+      "pps_staked": 0.9433447638936244
+    },
+    {
+      "block": 23969010,
+      "timestamp": 1765208099,
+      "pps_unstaked": 1.1446929303623963,
+      "pps_staked": 0.9434484204890258
+    },
+    {
+      "block": 23969011,
+      "timestamp": 1765208111,
+      "pps_unstaked": 1.1447337095393204,
+      "pps_staked": 0.943482030419722
+    },
+    {
+      "block": 23969013,
+      "timestamp": 1765208135,
+      "pps_unstaked": 1.144813598405922,
+      "pps_staked": 0.9435478743006535
+    },
+    {
+      "block": 23969014,
+      "timestamp": 1765208147,
+      "pps_unstaked": 1.144852723225768,
+      "pps_staked": 0.9435801207210746
+    },
+    {
+      "block": 23969026,
+      "timestamp": 1765208291,
+      "pps_unstaked": 1.1445770827693118,
+      "pps_staked": 0.9433529396610989
     }
   ]
 };
