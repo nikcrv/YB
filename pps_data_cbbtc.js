@@ -1,14 +1,14 @@
-// Last updated: 2025-12-09 14:25:13 UTC
+// Last updated: 2025-12-09 14:40:06 UTC
 const ppsData_cbbtc = {
   "metadata": {
     "market": "CBBTC",
     "symbol": "yb-cbBTC",
     "vault": "0xAC0cfa7742069a8af0c63e14FFD0fe6b3e1Bf8D2",
     "staker": "0xf3081A2eB8927C0462864EC3FdbE927C842A0893",
-    "collected": "2025-12-09T18:21:33.642379Z",
-    "points": 4723,
+    "collected": "2025-12-09T18:37:14.630417Z",
+    "points": 4725,
     "start_block": 23784065,
-    "end_block": 23975776,
+    "end_block": 23975852,
     "block_step": 300,
     "time_step": "1h",
     "contract_type": "new"
@@ -28351,6 +28351,18 @@ const ppsData_cbbtc = {
       "timestamp": 1765290047,
       "pps_unstaked": 1.0292899483001938,
       "pps_staked": 0.9998872521635082
+    },
+    {
+      "block": 23975777,
+      "timestamp": 1765290059,
+      "pps_unstaked": 1.0292899260358532,
+      "pps_staked": 0.9998872305351707
+    },
+    {
+      "block": 23975852,
+      "timestamp": 1765291007,
+      "pps_unstaked": 1.0292846265729598,
+      "pps_staked": 0.9998820824567316
     }
   ]
 };
