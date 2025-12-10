@@ -1,4 +1,4 @@
-// Last updated: 2025-12-10 12:03:59 UTC
+// Last updated: 2025-12-10 12:20:17 UTC
 const adminFeeWithdrawalsData = [
   {
     "block": 23784237,
@@ -186,5 +186,60 @@ const adminFeeWithdrawalsData = [
     "cumulative_cbbtc": 3.9764643080756334,
     "cumulative_tbtc": 3.2639828010584435,
     "cumulative_total": 10.618544654345333
+  },
+  {
+    "block": 23982123,
+    "timestamp": 1765367459,
+    "datetime": "2025-12-10T11:50:59",
+    "market": "cbBTC",
+    "withdrawal_btc": 0.2713430897258812,
+    "cumulative_wbtc": 3.3780975452112565,
+    "cumulative_cbbtc": 4.247807397801514,
+    "cumulative_tbtc": 3.2639828010584435,
+    "cumulative_total": 10.889887744071213
+  },
+  {
+    "block": 23982124,
+    "timestamp": 1765367471,
+    "datetime": "2025-12-10T11:51:11",
+    "market": "cbBTC",
+    "withdrawal_btc": 0.2713430897258812,
+    "cumulative_wbtc": 3.3780975452112565,
+    "cumulative_cbbtc": 4.519150487527395,
+    "cumulative_tbtc": 3.2639828010584435,
+    "cumulative_total": 11.161230833797095
+  },
+  {
+    "block": 23982125,
+    "timestamp": 1765367483,
+    "datetime": "2025-12-10T11:51:23",
+    "market": "cbBTC",
+    "withdrawal_btc": 0.2713430897258812,
+    "cumulative_wbtc": 3.3780975452112565,
+    "cumulative_cbbtc": 4.790493577253276,
+    "cumulative_tbtc": 3.2639828010584435,
+    "cumulative_total": 11.432573923522975
+  },
+  {
+    "block": 23982126,
+    "timestamp": 1765367495,
+    "datetime": "2025-12-10T11:51:35",
+    "market": "cbBTC",
+    "withdrawal_btc": 0.2713430897258812,
+    "cumulative_wbtc": 3.3780975452112565,
+    "cumulative_cbbtc": 5.061836666979157,
+    "cumulative_tbtc": 3.2639828010584435,
+    "cumulative_total": 11.703917013248857
+  },
+  {
+    "block": 23982127,
+    "timestamp": 1765367507,
+    "datetime": "2025-12-10T11:51:47",
+    "market": "cbBTC",
+    "withdrawal_btc": 0.2713430897258812,
+    "cumulative_wbtc": 3.3780975452112565,
+    "cumulative_cbbtc": 5.333179756705038,
+    "cumulative_tbtc": 3.2639828010584435,
+    "cumulative_total": 11.975260102974737
   }
 ];
