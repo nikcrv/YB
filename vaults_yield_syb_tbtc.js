@@ -1,20 +1,20 @@
-// Last updated: 2025-12-11 20:03:15 UTC
+// Last updated: 2025-12-11 20:23:44 UTC
 const yieldData_syb_tbtc = {
   "metadata": {
     "contract": "0x30ba8b27F2128c770B90C965FF671E08b9310D21",
     "start_date": "2025-11-12T20:19:11",
-    "end_date": "2025-12-12T00:02:11",
-    "data_points": 701,
+    "end_date": "2025-12-12T00:22:35",
+    "data_points": 702,
     "step_seconds": 3600
   },
   "metrics": {
-    "total_return": -0.017661728322400743,
-    "total_return_pct": -1.7661728322400743,
-    "apr": -0.19995662599114097,
-    "apr_pct": -19.995662599114098,
-    "days": 29.15486111111111,
+    "total_return": -0.017569777284433995,
+    "total_return_pct": -1.7569777284433994,
+    "apr": -0.19893224354746952,
+    "apr_pct": -19.893224354746952,
+    "days": 29.169027777777778,
     "start_pps": 0.9994484405610258,
-    "end_pps": 0.9817964537315899
+    "end_pps": 0.9818883540530937
   },
   "data": [
     {
@@ -24,7 +24,7 @@ const yieldData_syb_tbtc = {
       "pps_btc": 0.9994484405610258,
       "ret_step": null,
       "ret_step_pct": null,
-      "btc_price": 102145.9531652112,
+      "btc_price": 101444.67817036604,
       "pps_yb": 1.0
     },
     {
@@ -7018,13 +7018,23 @@ const yieldData_syb_tbtc = {
       "pps_yb": 0.9759551076065485
     },
     {
-      "block": 23991691,
-      "timestamp": 1765483331,
-      "datetime": "2025-12-12T00:02:11",
-      "pps_btc": 0.9817964537315899,
+      "block": 23991780,
+      "timestamp": 1765484411,
+      "datetime": "2025-12-12T00:20:11",
+      "pps_btc": 0.9818887014532147,
       "ret_step": null,
       "ret_step_pct": null,
-      "btc_price": 90606.41419222065,
+      "btc_price": 90856.50878419071,
+      "pps_yb": 0.9759551076065485
+    },
+    {
+      "block": 23991792,
+      "timestamp": 1765484555,
+      "datetime": "2025-12-12T00:22:35",
+      "pps_btc": 0.9818883540530937,
+      "ret_step": -3.5380804413864925e-07,
+      "ret_step_pct": -3.538080441386492e-05,
+      "btc_price": 90856.50878419071,
       "pps_yb": 0.9759551076065485
     }
   ]
