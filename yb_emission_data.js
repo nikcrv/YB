@@ -1,4 +1,4 @@
-// Last updated: 2025-12-11 16:56:56 UTC
+// Last updated: 2025-12-11 17:49:36 UTC
 const ybEmissionData = [
   {
     "timestamp": 1762963200,
@@ -12103,21 +12103,41 @@ const ybEmissionData = [
   {
     "timestamp": 1765468800,
     "datetime": "2025-12-11T16:00:00",
-    "hourly_cbBTC": 6567.370019844655,
+    "hourly_cbBTC": 7655.953768150858,
     "hourly_WBTC": 6970.168121418133,
     "hourly_tBTC": 1241.7575486088308,
-    "hourly_total": 14779.295689871618,
-    "cumulative_cbBTC": 1278188.081565402,
+    "hourly_total": 15867.87943817782,
+    "cumulative_cbBTC": 1279276.6653137081,
     "cumulative_WBTC": 1612905.854969044,
     "cumulative_tBTC": 1270462.3800140102,
-    "cumulative_total": 4161556.316548456,
-    "hourly_total_btc": 0.07521326664011709,
-    "cumulative_total_btc": 21.11028044442407,
-    "cumulative_cbBTC_btc": 6.477025619186335,
+    "cumulative_total": 4162644.900296762,
+    "hourly_total_btc": 0.08075317472772392,
+    "cumulative_total_btc": 21.11582035251168,
+    "cumulative_cbBTC_btc": 6.482565527273942,
     "cumulative_WBTC_btc": 8.216866566230008,
     "cumulative_tBTC_btc": 6.416388259007738,
     "yb_usd_price": 0.4566947246047389,
     "btc_usd_price": 89739.83814894994,
     "yb_btc_price": 5.089096816139987e-06
+  },
+  {
+    "timestamp": 1765472400,
+    "datetime": "2025-12-11T17:00:00",
+    "hourly_cbBTC": 1496.7880062221925,
+    "hourly_WBTC": 3151.3333195818877,
+    "hourly_tBTC": 636.6560422722737,
+    "hourly_total": 5284.777368076355,
+    "cumulative_cbBTC": 1280773.4533199302,
+    "cumulative_WBTC": 1616057.1882886258,
+    "cumulative_tBTC": 1271099.0360562825,
+    "cumulative_total": 4167929.6776648383,
+    "hourly_total_btc": 0.02699538989939278,
+    "cumulative_total_btc": 21.142815742411074,
+    "cumulative_cbBTC_btc": 6.490211332009026,
+    "cumulative_WBTC_btc": 8.232964022327014,
+    "cumulative_tBTC_btc": 6.419640388075041,
+    "yb_usd_price": 0.4580074112396157,
+    "btc_usd_price": 89662.24271444234,
+    "yb_btc_price": 5.108141368918069e-06
   }
 ];
