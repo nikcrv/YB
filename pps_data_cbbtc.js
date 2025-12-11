@@ -1,4 +1,4 @@
-// Last updated: 2025-12-11 17:49:36 UTC
+// Last updated: 2025-12-11 18:05:36 UTC
 const ppsData_cbbtc = {
   "metadata": {
     "market": "CBBTC",
