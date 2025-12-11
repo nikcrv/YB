@@ -1,14 +1,14 @@
-// Last updated: 2025-12-11 21:34:37 UTC
+// Last updated: 2025-12-11 21:49:10 UTC
 const yieldData_tbtc = {
   "metadata": {
     "market": "tBTC",
     "contract": "0xaC0a340C1644321D0BBc6404946d828c1EBfAC92",
-    "collected": "2025-12-12T01:30:44.831525",
-    "points": 3006,
+    "collected": "2025-12-12T01:46:03.945682",
+    "points": 3011,
     "synchronized": true,
     "transaction_based": true,
     "zero_loss": true,
-    "incremental_update": true
+    "incremental_update": false
   },
   "data": [
     {
@@ -27062,6 +27062,51 @@ const yieldData_tbtc = {
       "total_withdrawable_btc": 512.7969547201626,
       "deposits_btc": 0.01000843,
       "withdrawals_btc": 0,
+      "admin_fee_withdrawals_btc": 0.0,
+      "admin_fees_btc": 0.0
+    },
+    {
+      "block": 23991936,
+      "timestamp": 1765486295,
+      "total_withdrawable_btc": 512.7969547201626,
+      "deposits_btc": 0.0,
+      "withdrawals_btc": 0.0,
+      "admin_fee_withdrawals_btc": 0.0,
+      "admin_fees_btc": 0.0
+    },
+    {
+      "block": 23991937,
+      "timestamp": 1765486307,
+      "total_withdrawable_btc": 512.7969547201626,
+      "deposits_btc": 0.0,
+      "withdrawals_btc": 0.0,
+      "admin_fee_withdrawals_btc": 0.0,
+      "admin_fees_btc": 0.0
+    },
+    {
+      "block": 23991938,
+      "timestamp": 1765486319,
+      "total_withdrawable_btc": 512.7969547201626,
+      "deposits_btc": 0.0,
+      "withdrawals_btc": 0.0,
+      "admin_fee_withdrawals_btc": 0.0,
+      "admin_fees_btc": 0.0
+    },
+    {
+      "block": 23991939,
+      "timestamp": 1765486331,
+      "total_withdrawable_btc": 512.7969547201626,
+      "deposits_btc": 0.0,
+      "withdrawals_btc": 0.0,
+      "admin_fee_withdrawals_btc": 0.0,
+      "admin_fees_btc": 0.0
+    },
+    {
+      "block": 23991940,
+      "timestamp": 1765486343,
+      "total_withdrawable_btc": 512.7969547201626,
+      "deposits_btc": 0.0,
+      "withdrawals_btc": 0.0,
       "admin_fee_withdrawals_btc": 0.0,
       "admin_fees_btc": 0.0
     }
