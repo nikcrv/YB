@@ -1,6 +1,6 @@
-// Last updated: 2025-12-13 17:19:00 UTC
+// Last updated: 2025-12-13 17:34:33 UTC
 const POOLS_DATA = {
-  "generated": "2025-12-13T21:16:55.834888",
+  "generated": "2025-12-13T21:32:18.431066",
   "period": {
     "start": "2025-09-24",
     "end": "2025-12-13"
@@ -4335,6 +4335,18 @@ const POOLS_DATA = {
           "token0_ratio": 39.75,
           "token1_ratio": 60.25,
           "imbalance": 10.25
+        },
+        {
+          "timestamp": 1765646579000,
+          "date": "2025-12-13 21:22",
+          "block": 24005146,
+          "token0_bal": 40763618.11,
+          "token1_bal": 650.546043,
+          "price_scale": 94530.08,
+          "total_value": 102259787.42,
+          "token0_ratio": 39.86,
+          "token1_ratio": 60.14,
+          "imbalance": 10.14
         }
       ]
     }
