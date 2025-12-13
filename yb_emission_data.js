@@ -1,4 +1,4 @@
-// Last updated: 2025-12-13 03:54:02 UTC
+// Last updated: 2025-12-13 04:10:23 UTC
 const ybEmissionData = [
   {
     "timestamp": 1762963200,
@@ -12724,20 +12724,40 @@ const ybEmissionData = [
     "timestamp": 1765594800,
     "datetime": "2025-12-13T03:00:00",
     "hourly_cbBTC": 1630.9990246832244,
-    "hourly_WBTC": 751.4181246191264,
+    "hourly_WBTC": 2103.8656102810082,
     "hourly_tBTC": 687.1920671194064,
-    "hourly_total": 3069.609216421757,
+    "hourly_total": 4422.056702083639,
     "cumulative_cbBTC": 1361216.7602098105,
-    "cumulative_WBTC": 1690535.7584494017,
+    "cumulative_WBTC": 1691888.2059350635,
     "cumulative_tBTC": 1320070.4220514267,
-    "cumulative_total": 4371822.940710639,
-    "hourly_total_btc": 0.015837298274369742,
-    "cumulative_total_btc": 22.171193470230804,
+    "cumulative_total": 4373175.388196301,
+    "hourly_total_btc": 0.022815096658692052,
+    "cumulative_total_btc": 22.178171268615127,
     "cumulative_cbBTC_btc": 6.89686986175224,
-    "cumulative_WBTC_btc": 8.608387486926414,
+    "cumulative_WBTC_btc": 8.615365285310736,
     "cumulative_tBTC_btc": 6.6659361215521535,
     "yb_usd_price": 0.4642536851033571,
     "btc_usd_price": 89982.3546833932,
     "yb_btc_price": 5.159385823330071e-06
+  },
+  {
+    "timestamp": 1765598400,
+    "datetime": "2025-12-13T04:00:00",
+    "hourly_cbBTC": 1838.6305715651054,
+    "hourly_WBTC": 300.5593389437747,
+    "hourly_tBTC": 0,
+    "hourly_total": 2139.18991050888,
+    "cumulative_cbBTC": 1363055.3907813756,
+    "cumulative_WBTC": 1692188.7652740073,
+    "cumulative_tBTC": 1320070.4220514267,
+    "cumulative_total": 4375314.578106809,
+    "hourly_total_btc": 0.011035351173003204,
+    "cumulative_total_btc": 22.18920661978813,
+    "cumulative_cbBTC_btc": 6.9063547298020405,
+    "cumulative_WBTC_btc": 8.61691576843394,
+    "cumulative_tBTC_btc": 6.6659361215521535,
+    "yb_usd_price": 0.46505611807625086,
+    "btc_usd_price": 90150.5842462829,
+    "yb_btc_price": 5.158658947852865e-06
   }
 ];
