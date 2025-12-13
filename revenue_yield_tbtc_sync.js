@@ -1,14 +1,14 @@
-// Last updated: 2025-12-13 12:28:31 UTC
+// Last updated: 2025-12-13 12:45:10 UTC
 const yieldData_tbtc = {
   "metadata": {
     "market": "tBTC",
     "contract": "0xaC0a340C1644321D0BBc6404946d828c1EBfAC92",
-    "collected": "2025-12-13T16:25:18.748998",
-    "points": 3463,
+    "collected": "2025-12-13T16:41:32.977500",
+    "points": 3476,
     "synchronized": true,
     "transaction_based": true,
     "zero_loss": true,
-    "incremental_update": false
+    "incremental_update": true
   },
   "data": [
     {
@@ -31173,6 +31173,123 @@ const yieldData_tbtc = {
       "block": 24003570,
       "timestamp": 1765627535,
       "total_withdrawable_btc": 525.2399618805176,
+      "deposits_btc": 0.0,
+      "withdrawals_btc": 0.0,
+      "admin_fee_withdrawals_btc": 0.0,
+      "admin_fees_btc": 0.0
+    },
+    {
+      "block": 24003571,
+      "timestamp": 1765627547,
+      "total_withdrawable_btc": 525.2399618805176,
+      "deposits_btc": 0.0,
+      "withdrawals_btc": 0.0,
+      "admin_fee_withdrawals_btc": 0.0,
+      "admin_fees_btc": 0.0
+    },
+    {
+      "block": 24003572,
+      "timestamp": 1765627559,
+      "total_withdrawable_btc": 525.2399618805176,
+      "deposits_btc": 0.0,
+      "withdrawals_btc": 0.0,
+      "admin_fee_withdrawals_btc": 0.0,
+      "admin_fees_btc": 0.0
+    },
+    {
+      "block": 24003573,
+      "timestamp": 1765627571,
+      "total_withdrawable_btc": 525.2399618805176,
+      "deposits_btc": 0.0,
+      "withdrawals_btc": 0.0,
+      "admin_fee_withdrawals_btc": 0.0,
+      "admin_fees_btc": 0.0
+    },
+    {
+      "block": 24003574,
+      "timestamp": 1765627583,
+      "total_withdrawable_btc": 525.2399618805176,
+      "deposits_btc": 0.0,
+      "withdrawals_btc": 0.0,
+      "admin_fee_withdrawals_btc": 0.0,
+      "admin_fees_btc": 0.0
+    },
+    {
+      "block": 24003600,
+      "timestamp": 1765627895,
+      "total_withdrawable_btc": 525.2395079433222,
+      "deposits_btc": 0.0,
+      "withdrawals_btc": 0.0,
+      "admin_fee_withdrawals_btc": 0.0,
+      "admin_fees_btc": 0.0
+    },
+    {
+      "block": 24003619,
+      "timestamp": 1765628123,
+      "total_withdrawable_btc": 525.239220308173,
+      "deposits_btc": 0.0,
+      "withdrawals_btc": 0.0,
+      "admin_fee_withdrawals_btc": 0.0,
+      "admin_fees_btc": 0.0
+    },
+    {
+      "block": 24003637,
+      "timestamp": 1765628339,
+      "total_withdrawable_btc": 525.2389479894224,
+      "deposits_btc": 0.0,
+      "withdrawals_btc": 0.0,
+      "admin_fee_withdrawals_btc": 0.0,
+      "admin_fees_btc": 0.0
+    },
+    {
+      "block": 24003650,
+      "timestamp": 1765628495,
+      "total_withdrawable_btc": 525.2387512724125,
+      "deposits_btc": 0.0,
+      "withdrawals_btc": 0.0,
+      "admin_fee_withdrawals_btc": 0.0,
+      "admin_fees_btc": 0.0
+    },
+    {
+      "block": 24003686,
+      "timestamp": 1765628927,
+      "total_withdrawable_btc": 525.238206417077,
+      "deposits_btc": 0.0,
+      "withdrawals_btc": 0.0,
+      "admin_fee_withdrawals_btc": 0.0,
+      "admin_fees_btc": 0.0
+    },
+    {
+      "block": 24003704,
+      "timestamp": 1765629143,
+      "total_withdrawable_btc": 525.2379340983261,
+      "deposits_btc": 0.0,
+      "withdrawals_btc": 0.0,
+      "admin_fee_withdrawals_btc": 0.0,
+      "admin_fees_btc": 0.0
+    },
+    {
+      "block": 24003715,
+      "timestamp": 1765629275,
+      "total_withdrawable_btc": 525.2377675784456,
+      "deposits_btc": 0.0,
+      "withdrawals_btc": 0.0,
+      "admin_fee_withdrawals_btc": 0.0,
+      "admin_fees_btc": 0.0
+    },
+    {
+      "block": 24003729,
+      "timestamp": 1765629443,
+      "total_withdrawable_btc": 525.2375557628708,
+      "deposits_btc": 0.0,
+      "withdrawals_btc": 0.0,
+      "admin_fee_withdrawals_btc": 0.0,
+      "admin_fees_btc": 0.0
+    },
+    {
+      "block": 24003737,
+      "timestamp": 1765629539,
+      "total_withdrawable_btc": 525.2374346476016,
       "deposits_btc": 0.0,
       "withdrawals_btc": 0.0,
       "admin_fee_withdrawals_btc": 0.0,
