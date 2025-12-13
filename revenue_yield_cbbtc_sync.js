@@ -1,10 +1,10 @@
-// Last updated: 2025-12-13 18:51:07 UTC
+// Last updated: 2025-12-13 19:09:59 UTC
 const yieldData_cbbtc = {
   "metadata": {
     "market": "cbBTC",
     "contract": "0xAC0cfa7742069a8af0c63e14FFD0fe6b3e1Bf8D2",
-    "collected": "2025-12-13T22:48:04.379333",
-    "points": 3532,
+    "collected": "2025-12-13T23:03:35.697884",
+    "points": 3534,
     "synchronized": true,
     "transaction_based": true,
     "zero_loss": true,
@@ -31794,6 +31794,24 @@ const yieldData_cbbtc = {
       "block": 24005560,
       "timestamp": 1765651559,
       "total_withdrawable_btc": 1100.2659097,
+      "deposits_btc": 0.0,
+      "withdrawals_btc": 0.0,
+      "admin_fee_withdrawals_btc": 0.0,
+      "admin_fees_btc": 0.0
+    },
+    {
+      "block": 24005628,
+      "timestamp": 1765652375,
+      "total_withdrawable_btc": 1100.26631036,
+      "deposits_btc": 0.0024,
+      "withdrawals_btc": 0,
+      "admin_fee_withdrawals_btc": 0.0,
+      "admin_fees_btc": 0.0
+    },
+    {
+      "block": 24005631,
+      "timestamp": 1765652411,
+      "total_withdrawable_btc": 1100.2662142,
       "deposits_btc": 0.0,
       "withdrawals_btc": 0.0,
       "admin_fee_withdrawals_btc": 0.0,
