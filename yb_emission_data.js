@@ -1,4 +1,4 @@
-// Last updated: 2025-12-17 18:00:09 UTC
+// Last updated: 2025-12-17 18:15:49 UTC
 const ybEmissionData = [
   {
     "timestamp": 1762963200,
@@ -14703,21 +14703,41 @@ const ybEmissionData = [
   {
     "timestamp": 1765990800,
     "datetime": "2025-12-17T17:00:00",
-    "hourly_cbBTC": 3107.9230965628158,
+    "hourly_cbBTC": 4517.003049056635,
     "hourly_WBTC": 885.7462168043814,
     "hourly_tBTC": 714.0660495821646,
-    "hourly_total": 4707.735362949362,
-    "cumulative_cbBTC": 1754808.1347486053,
+    "hourly_total": 6116.815315443181,
+    "cumulative_cbBTC": 1756217.2147010993,
     "cumulative_WBTC": 1831016.81700881,
     "cumulative_tBTC": 1443253.5261140831,
-    "cumulative_total": 5029078.477871498,
-    "hourly_total_btc": 0.022405084414708468,
-    "cumulative_total_btc": 25.45878459321171,
-    "cumulative_cbBTC_btc": 8.8627234456119,
+    "cumulative_total": 5030487.557823992,
+    "hourly_total_btc": 0.02911118678638441,
+    "cumulative_total_btc": 25.465490695583387,
+    "cumulative_cbBTC_btc": 8.869429547983575,
     "cumulative_WBTC_btc": 9.314411732686969,
     "cumulative_tBTC_btc": 7.281649414912845,
     "yb_usd_price": 0.4116441059905814,
     "btc_usd_price": 86494.27419471524,
     "yb_btc_price": 4.759206430981678e-06
+  },
+  {
+    "timestamp": 1765994400,
+    "datetime": "2025-12-17T18:00:00",
+    "hourly_cbBTC": 184.36456317129978,
+    "hourly_WBTC": 532.8144003662352,
+    "hourly_tBTC": 455.6596777580999,
+    "hourly_total": 1172.838641295635,
+    "cumulative_cbBTC": 1756401.5792642706,
+    "cumulative_WBTC": 1831549.6314091762,
+    "cumulative_tBTC": 1443709.1857918412,
+    "cumulative_total": 5031660.3964652885,
+    "hourly_total_btc": 0.005620787463621459,
+    "cumulative_total_btc": 25.471111483047007,
+    "cumulative_cbBTC_btc": 8.870313108593638,
+    "cumulative_WBTC_btc": 9.316965226745372,
+    "cumulative_tBTC_btc": 7.283833147707998,
+    "yb_usd_price": 0.4136691259659398,
+    "btc_usd_price": 86316.57730948144,
+    "yb_btc_price": 4.792464424102001e-06
   }
 ];
