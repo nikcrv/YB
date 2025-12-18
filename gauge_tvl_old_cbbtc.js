@@ -1,4 +1,4 @@
-// Last updated: 2025-12-18 13:37:16 UTC
+// Last updated: 2025-12-18 13:59:21 UTC
 const gaugeTvlData_old_cbbtc = [
   {
     "block": 23434009,
@@ -41482,6 +41482,18 @@ const gaugeTvlData_old_cbbtc = [
     "block": 24039811,
     "timestamp": 1766064815,
     "datetime": "2025-12-18T13:33:35",
+    "tvl_btc": 69.35171287881018
+  },
+  {
+    "block": 24039812,
+    "timestamp": 1766064827,
+    "datetime": "2025-12-18T13:33:47",
+    "tvl_btc": 69.35171287881018
+  },
+  {
+    "block": 24039927,
+    "timestamp": 1766066219,
+    "datetime": "2025-12-18T13:56:59",
     "tvl_btc": 69.35171287881018
   }
 ];
