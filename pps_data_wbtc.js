@@ -1,4 +1,4 @@
-// Last updated: 2025-12-18 08:18:02 UTC
+// Last updated: 2025-12-18 08:51:09 UTC
 const ppsData_wbtc = {
   "metadata": {
     "market": "WBTC",
