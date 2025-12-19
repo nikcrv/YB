@@ -1,4 +1,4 @@
-// Last updated: 2025-12-19 00:45:49 UTC
+// Last updated: 2025-12-19 01:00:10 UTC
 const veYBSupplyData = [
   {
     "block": 23370927,
@@ -35810,5 +35810,14 @@ const veYBSupplyData = [
     "yb_locked": 55424311.40033809,
     "total_votes": 52338345.0462586,
     "lock_ratio": 0.9443210700122353
+  },
+  {
+    "block": 24043215,
+    "timestamp": 1766105891,
+    "datetime": "2025-12-19T00:58:11",
+    "supply_yb": 55424311.40033809,
+    "yb_locked": 55424311.40033809,
+    "total_votes": 52338249.14923715,
+    "lock_ratio": 0.9443193397783537
   }
 ];
