@@ -1,4 +1,4 @@
-// Last updated: 2025-12-19 08:50:26 UTC
+// Last updated: 2025-12-19 09:06:23 UTC
 const adminFeeWithdrawalsData = [
   {
     "block": 23784237,
@@ -274,5 +274,27 @@ const adminFeeWithdrawalsData = [
     "cumulative_cbbtc": 4.237145723659012,
     "cumulative_tbtc": 3.2639828010584435,
     "cumulative_total": 11.109605968259164
+  },
+  {
+    "block": 24045604,
+    "timestamp": 1766134811,
+    "datetime": "2025-12-19T09:00:11",
+    "market": "WBTC",
+    "withdrawal_btc": 0.01941703343707333,
+    "cumulative_wbtc": 3.6278944769787813,
+    "cumulative_cbbtc": 4.237145723659012,
+    "cumulative_tbtc": 3.2639828010584435,
+    "cumulative_total": 11.129023001696236
+  },
+  {
+    "block": 24045604,
+    "timestamp": 1766134811,
+    "datetime": "2025-12-19T09:00:11",
+    "market": "cbBTC",
+    "withdrawal_btc": 0.027558302026048108,
+    "cumulative_wbtc": 3.6278944769787813,
+    "cumulative_cbbtc": 4.2647040256850595,
+    "cumulative_tbtc": 3.2639828010584435,
+    "cumulative_total": 11.156581303722284
   }
 ];
