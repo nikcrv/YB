@@ -1,14 +1,14 @@
-// Last updated: 2025-12-19 03:44:24 UTC
+// Last updated: 2025-12-19 03:59:52 UTC
 const yieldData_tbtc = {
   "metadata": {
     "market": "tBTC",
     "contract": "0xaC0a340C1644321D0BBc6404946d828c1EBfAC92",
-    "collected": "2025-12-19T07:41:04.271543",
-    "points": 4431,
+    "collected": "2025-12-19T07:56:42.852988",
+    "points": 4434,
     "synchronized": true,
     "transaction_based": true,
     "zero_loss": true,
-    "incremental_update": true
+    "incremental_update": false
   },
   "data": [
     {
@@ -39884,6 +39884,33 @@ const yieldData_tbtc = {
     {
       "block": 24044022,
       "timestamp": 1766115611,
+      "total_withdrawable_btc": 526.67770497415,
+      "deposits_btc": 0.0,
+      "withdrawals_btc": 0.0,
+      "admin_fee_withdrawals_btc": 0.0,
+      "admin_fees_btc": 0.0
+    },
+    {
+      "block": 24044023,
+      "timestamp": 1766115623,
+      "total_withdrawable_btc": 526.67770497415,
+      "deposits_btc": 0.0,
+      "withdrawals_btc": 0.0,
+      "admin_fee_withdrawals_btc": 0.0,
+      "admin_fees_btc": 0.0
+    },
+    {
+      "block": 24044024,
+      "timestamp": 1766115635,
+      "total_withdrawable_btc": 526.67770497415,
+      "deposits_btc": 0.0,
+      "withdrawals_btc": 0.0,
+      "admin_fee_withdrawals_btc": 0.0,
+      "admin_fees_btc": 0.0
+    },
+    {
+      "block": 24044025,
+      "timestamp": 1766115647,
       "total_withdrawable_btc": 526.67770497415,
       "deposits_btc": 0.0,
       "withdrawals_btc": 0.0,
