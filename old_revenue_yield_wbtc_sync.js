@@ -1,14 +1,14 @@
-// Last updated: 2025-12-22 13:02:09 UTC
+// Last updated: 2025-12-22 13:24:17 UTC
 const old_yieldData_wbtc = {
   "metadata": {
     "market": "WBTC (OLD)",
     "contract": "0x6095a220C5567360d459462A25b1AD5aEAD45204",
-    "collected": "2025-12-22T12:58:05.236229Z",
-    "points": 7893,
+    "collected": "2025-12-22T13:20:11.402774Z",
+    "points": 7898,
     "synchronized": true,
     "transaction_based": true,
     "zero_loss": true,
-    "incremental_update": false,
+    "incremental_update": true,
     "old_contract": true
   },
   "data": [
@@ -71044,6 +71044,51 @@ const old_yieldData_wbtc = {
       "block": 24066911,
       "timestamp": 1766391539,
       "total_withdrawable_btc": 20.14094777,
+      "deposits_btc": 0.0,
+      "withdrawals_btc": 0.0,
+      "admin_fee_withdrawals_btc": 0.0,
+      "admin_fees_btc": 0.0
+    },
+    {
+      "block": 24068342,
+      "timestamp": 1766408819,
+      "total_withdrawable_btc": 20.13896308,
+      "deposits_btc": 0.0,
+      "withdrawals_btc": 0.0,
+      "admin_fee_withdrawals_btc": 0.0,
+      "admin_fees_btc": 0.0
+    },
+    {
+      "block": 24068344,
+      "timestamp": 1766408843,
+      "total_withdrawable_btc": 20.13896194,
+      "deposits_btc": 0.0,
+      "withdrawals_btc": 0.0,
+      "admin_fee_withdrawals_btc": 0.0,
+      "admin_fees_btc": 0.0
+    },
+    {
+      "block": 24068356,
+      "timestamp": 1766408987,
+      "total_withdrawable_btc": 20.13895567,
+      "deposits_btc": 0.0,
+      "withdrawals_btc": 0.0,
+      "admin_fee_withdrawals_btc": 0.0,
+      "admin_fees_btc": 0.0
+    },
+    {
+      "block": 24068375,
+      "timestamp": 1766409215,
+      "total_withdrawable_btc": 20.13894578,
+      "deposits_btc": 0.0,
+      "withdrawals_btc": 0.0,
+      "admin_fee_withdrawals_btc": 0.0,
+      "admin_fees_btc": 0.0
+    },
+    {
+      "block": 24068399,
+      "timestamp": 1766409503,
+      "total_withdrawable_btc": 20.13893322,
       "deposits_btc": 0.0,
       "withdrawals_btc": 0.0,
       "admin_fee_withdrawals_btc": 0.0,
