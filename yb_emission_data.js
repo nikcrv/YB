@@ -1,4 +1,4 @@
-// Last updated: 2025-12-24 21:18:13 UTC
+// Last updated: 2025-12-24 21:51:59 UTC
 const ybEmissionData = [
   {
     "timestamp": 1762963200,
@@ -17644,20 +17644,40 @@ const ybEmissionData = [
     "timestamp": 1766606400,
     "datetime": "2025-12-24T20:00:00",
     "hourly_cbBTC": 0,
-    "hourly_WBTC": 0,
+    "hourly_WBTC": 2041.9032491406354,
     "hourly_tBTC": 1087.4841077224628,
-    "hourly_total": 1087.4841077224628,
+    "hourly_total": 3129.387356863098,
     "cumulative_cbBTC": 2417283.0993200857,
-    "cumulative_WBTC": 2013715.4333061262,
+    "cumulative_WBTC": 2015757.3365552668,
     "cumulative_tBTC": 1637067.6902486468,
-    "cumulative_total": 6068066.222874858,
-    "hourly_total_btc": 0.004711652082802436,
-    "cumulative_total_btc": 30.110270896057045,
+    "cumulative_total": 6070108.126123999,
+    "hourly_total_btc": 0.013558436719355348,
+    "cumulative_total_btc": 30.119117680693595,
     "cumulative_cbBTC_btc": 11.828692938513036,
-    "cumulative_WBTC_btc": 10.133398017838491,
+    "cumulative_WBTC_btc": 10.142244802475044,
     "cumulative_tBTC_btc": 8.148179939705532,
     "yb_usd_price": 0.37862806707227165,
     "btc_usd_price": 87390.1549695632,
     "yb_btc_price": 4.3326169544400354e-06
+  },
+  {
+    "timestamp": 1766610000,
+    "datetime": "2025-12-24T21:00:00",
+    "hourly_cbBTC": 5869.4474864648,
+    "hourly_WBTC": 475.07131301336676,
+    "hourly_tBTC": 317.93091854161,
+    "hourly_total": 6662.449718019776,
+    "cumulative_cbBTC": 2423152.5468065506,
+    "cumulative_WBTC": 2016232.40786828,
+    "cumulative_tBTC": 1637385.6211671883,
+    "cumulative_total": 6076770.575842019,
+    "hourly_total_btc": 0.029016382964201722,
+    "cumulative_total_btc": 30.148134063657796,
+    "cumulative_cbBTC_btc": 11.854255628403948,
+    "cumulative_WBTC_btc": 10.144313838901153,
+    "cumulative_tBTC_btc": 8.149564596352713,
+    "yb_usd_price": 0.380696680469781,
+    "btc_usd_price": 87411.73889854386,
+    "yb_btc_price": 4.3552123006229635e-06
   }
 ];
