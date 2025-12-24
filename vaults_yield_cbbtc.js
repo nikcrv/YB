@@ -1,20 +1,20 @@
-// Last updated: 2025-12-24 16:50:25 UTC
+// Last updated: 2025-12-24 19:28:47 UTC
 const yieldData_cbbtc = {
   "metadata": {
     "contract": "0xAC0cfa7742069a8af0c63e14FFD0fe6b3e1Bf8D2",
     "start_date": "2025-11-12T20:09:47",
-    "end_date": "2025-12-24T20:48:23",
-    "data_points": 1010,
+    "end_date": "2025-12-24T23:23:23",
+    "data_points": 1013,
     "step_seconds": 3600
   },
   "metrics": {
-    "total_return": 0.034178321574244296,
-    "total_return_pct": 3.4178321574244297,
-    "apr": 0.3389375882006677,
-    "apr_pct": 33.89375882006677,
-    "days": 42.026805555555555,
+    "total_return": 0.03415691997650447,
+    "total_return_pct": 3.415691997650447,
+    "apr": 0.3376997580443212,
+    "apr_pct": 33.769975804432114,
+    "days": 42.13444444444445,
     "start_pps": 0.99945809,
-    "end_pps": 1.03361789
+    "end_pps": 1.0335965
   },
   "data": [
     {
@@ -9099,13 +9099,40 @@ const yieldData_cbbtc = {
       "btc_price": 86946.66326946592
     },
     {
-      "block": 24083774,
-      "timestamp": 1766594903,
-      "datetime": "2025-12-24T20:48:23",
-      "pps_btc": 1.03361789,
+      "block": 24083888,
+      "timestamp": 1766596271,
+      "datetime": "2025-12-24T21:11:11",
+      "pps_btc": 1.03361464,
       "ret_step": null,
       "ret_step_pct": null,
-      "btc_price": 86946.66326946592
+      "btc_price": 87210.88707453896
+    },
+    {
+      "block": 24084187,
+      "timestamp": 1766599871,
+      "datetime": "2025-12-24T22:11:11",
+      "pps_btc": 1.03360678,
+      "ret_step": null,
+      "ret_step_pct": null,
+      "btc_price": 87268.56056262016
+    },
+    {
+      "block": 24084485,
+      "timestamp": 1766603483,
+      "datetime": "2025-12-24T23:11:23",
+      "pps_btc": 1.03359821,
+      "ret_step": null,
+      "ret_step_pct": null,
+      "btc_price": 87423.4973806886
+    },
+    {
+      "block": 24084544,
+      "timestamp": 1766604203,
+      "datetime": "2025-12-24T23:23:23",
+      "pps_btc": 1.0335965,
+      "ret_step": -1.6544146298395776e-06,
+      "ret_step_pct": -0.00016544146298395776,
+      "btc_price": 87423.4973806886
     }
   ]
 };

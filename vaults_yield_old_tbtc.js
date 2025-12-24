@@ -1,20 +1,20 @@
-// Last updated: 2025-12-24 16:50:25 UTC
+// Last updated: 2025-12-24 19:28:47 UTC
 const yieldData_old_tbtc = {
   "metadata": {
     "contract": "0x2B513eBe7070Cff91cf699a0BFe5075020C732FF",
     "start_date": "2025-10-22T00:30:23",
-    "end_date": "2025-12-24T20:49:47",
-    "data_points": 1534,
+    "end_date": "2025-12-24T23:27:35",
+    "data_points": 1536,
     "step_seconds": 3600
   },
   "metrics": {
-    "total_return": 0.06683856987319524,
-    "total_return_pct": 6.6838569873195235,
-    "apr": 0.4475545977661867,
-    "apr_pct": 44.75545977661867,
-    "days": 63.846805555555555,
+    "total_return": 0.0668140136785385,
+    "total_return_pct": 6.68140136785385,
+    "apr": 0.4464474806073935,
+    "apr_pct": 44.644748060739346,
+    "days": 63.95638888888889,
     "start_pps": 1.0676840110546373,
-    "end_pps": 1.139046483430006
+    "end_pps": 1.1390202651735988
   },
   "data": [
     {
@@ -13812,16 +13812,34 @@ const yieldData_old_tbtc = {
       "pps_btc": 1.1390495739774265,
       "ret_step": null,
       "ret_step_pct": null,
-      "btc_price": 86946.66326946592
+      "btc_price": 87210.88707453896
     },
     {
-      "block": 24083781,
-      "timestamp": 1766594987,
-      "datetime": "2025-12-24T20:49:47",
-      "pps_btc": 1.139046483430006,
+      "block": 24083988,
+      "timestamp": 1766597471,
+      "datetime": "2025-12-24T21:31:11",
+      "pps_btc": 1.139039604891441,
       "ret_step": null,
       "ret_step_pct": null,
-      "btc_price": 86946.66326946592
+      "btc_price": 87268.56056262016
+    },
+    {
+      "block": 24084287,
+      "timestamp": 1766601071,
+      "datetime": "2025-12-24T22:31:11",
+      "pps_btc": 1.1390296360431755,
+      "ret_step": null,
+      "ret_step_pct": null,
+      "btc_price": 87268.56056262016
+    },
+    {
+      "block": 24084565,
+      "timestamp": 1766604455,
+      "datetime": "2025-12-24T23:27:35",
+      "pps_btc": 1.1390202651735988,
+      "ret_step": null,
+      "ret_step_pct": null,
+      "btc_price": 87423.4973806886
     }
   ]
 };

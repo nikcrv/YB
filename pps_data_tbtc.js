@@ -1,14 +1,14 @@
-// Last updated: 2025-12-24 16:50:25 UTC
+// Last updated: 2025-12-24 19:28:47 UTC
 const ppsData_tbtc = {
   "metadata": {
     "market": "TBTC",
     "symbol": "yb-tBTC",
     "vault": "0xaC0a340C1644321D0BBc6404946d828c1EBfAC92",
     "staker": "0x30ba8b27F2128c770B90C965FF671E08b9310D21",
-    "collected": "2025-12-24T20:47:19.758605Z",
-    "points": 6765,
+    "collected": "2025-12-24T23:18:56.840004Z",
+    "points": 6775,
     "start_block": 23784065,
-    "end_block": 24083767,
+    "end_block": 24084515,
     "block_step": 300,
     "time_step": "1h",
     "contract_type": "new"
@@ -40603,6 +40603,66 @@ const ppsData_tbtc = {
       "timestamp": 1766594819,
       "pps_unstaked": 1.0184123487782204,
       "pps_staked": 0.9939247334396859
+    },
+    {
+      "block": 24083768,
+      "timestamp": 1766594831,
+      "pps_unstaked": 1.0184123211680296,
+      "pps_staked": 0.9939247064933792
+    },
+    {
+      "block": 24083876,
+      "timestamp": 1766596127,
+      "pps_unstaked": 1.0184090855126897,
+      "pps_staked": 0.9939215486390237
+    },
+    {
+      "block": 24083877,
+      "timestamp": 1766596139,
+      "pps_unstaked": 1.018409055258551,
+      "pps_staked": 0.9939215191123425
+    },
+    {
+      "block": 24083878,
+      "timestamp": 1766596151,
+      "pps_unstaked": 1.0184090250149394,
+      "pps_staked": 0.9939214895959353
+    },
+    {
+      "block": 24084178,
+      "timestamp": 1766599763,
+      "pps_unstaked": 1.0183972040450322,
+      "pps_staked": 0.9939099528599775
+    },
+    {
+      "block": 24084199,
+      "timestamp": 1766600015,
+      "pps_unstaked": 1.0183962525859163,
+      "pps_staked": 0.9939090242785936
+    },
+    {
+      "block": 24084200,
+      "timestamp": 1766600027,
+      "pps_unstaked": 1.0183962089361995,
+      "pps_staked": 0.9939089816784297
+    },
+    {
+      "block": 24084344,
+      "timestamp": 1766601779,
+      "pps_unstaked": 1.0183899133910044,
+      "pps_staked": 0.9939028375089413
+    },
+    {
+      "block": 24084345,
+      "timestamp": 1766601791,
+      "pps_unstaked": 1.0183899035854722,
+      "pps_staked": 0.993902827939182
+    },
+    {
+      "block": 24084515,
+      "timestamp": 1766603855,
+      "pps_unstaked": 1.0183859042731302,
+      "pps_staked": 0.993898924789875
     }
   ]
 };
