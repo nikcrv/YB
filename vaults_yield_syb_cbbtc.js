@@ -1,20 +1,20 @@
-// Last updated: 2025-12-24 20:01:14 UTC
+// Last updated: 2025-12-24 21:18:13 UTC
 const yieldData_syb_cbbtc = {
   "metadata": {
     "contract": "0xf3081A2eB8927C0462864EC3FdbE927C842A0893",
     "start_date": "2025-11-12T20:09:47",
-    "end_date": "2025-12-24T23:57:23",
-    "data_points": 1013,
+    "end_date": "2025-12-25T01:16:47",
+    "data_points": 1015,
     "step_seconds": 3600
   },
   "metrics": {
-    "total_return": -0.0013246792876063773,
-    "total_return_pct": -0.13246792876063773,
-    "apr": -0.01141093240995914,
-    "apr_pct": -1.141093240995914,
-    "days": 42.158055555555556,
+    "total_return": -0.0013321633513781648,
+    "total_return_pct": -0.13321633513781647,
+    "apr": -0.011460169859952556,
+    "apr_pct": -1.1460169859952556,
+    "days": 42.21319444444445,
     "start_pps": 0.99945701,
-    "end_pps": 0.99813305
+    "end_pps": 0.99812557
   },
   "data": [
     {
@@ -10138,13 +10138,33 @@ const yieldData_syb_cbbtc = {
       "pps_yb": 0.9656927260809008
     },
     {
-      "block": 24084714,
-      "timestamp": 1766606243,
-      "datetime": "2025-12-24T23:57:23",
-      "pps_btc": 0.99813305,
+      "block": 24084784,
+      "timestamp": 1766607083,
+      "datetime": "2025-12-25T00:11:23",
+      "pps_btc": 0.99813136,
       "ret_step": null,
       "ret_step_pct": null,
-      "btc_price": 87423.4973806886,
+      "btc_price": 87498.39263017818,
+      "pps_yb": 0.9656927260809008
+    },
+    {
+      "block": 24085082,
+      "timestamp": 1766610683,
+      "datetime": "2025-12-25T01:11:23",
+      "pps_btc": 0.99812555,
+      "ret_step": null,
+      "ret_step_pct": null,
+      "btc_price": 87501.92307200629,
+      "pps_yb": 0.9656927260809008
+    },
+    {
+      "block": 24085109,
+      "timestamp": 1766611007,
+      "datetime": "2025-12-25T01:16:47",
+      "pps_btc": 0.99812557,
+      "ret_step": 2.0037559403223373e-08,
+      "ret_step_pct": 2.003755940322337e-06,
+      "btc_price": 87501.92307200629,
       "pps_yb": 0.9656927260809008
     }
   ]

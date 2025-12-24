@@ -1,20 +1,20 @@
-// Last updated: 2025-12-24 20:01:14 UTC
+// Last updated: 2025-12-24 21:18:13 UTC
 const yieldData_syb_wbtc = {
   "metadata": {
     "contract": "0xbc56e3edB67b56d598aCE07668b138815F45d7aa",
     "start_date": "2025-11-12T20:08:23",
-    "end_date": "2025-12-24T23:57:11",
-    "data_points": 1013,
+    "end_date": "2025-12-25T01:15:47",
+    "data_points": 1015,
     "step_seconds": 3600
   },
   "metrics": {
-    "total_return": -0.00011628398452231248,
-    "total_return_pct": -0.011628398452231247,
-    "apr": -0.001006306449995477,
-    "apr_pct": -0.1006306449995477,
-    "days": 42.15888888888889,
+    "total_return": -0.00012665058016512426,
+    "total_return_pct": -0.012665058016512427,
+    "apr": -0.0010945577657701445,
+    "apr_pct": -0.10945577657701444,
+    "days": 42.21347222222222,
     "start_pps": 0.99936376,
-    "end_pps": 0.99924755
+    "end_pps": 0.99923719
   },
   "data": [
     {
@@ -10138,13 +10138,33 @@ const yieldData_syb_wbtc = {
       "pps_yb": 0.9687696518697385
     },
     {
-      "block": 24084713,
-      "timestamp": 1766606231,
-      "datetime": "2025-12-24T23:57:11",
-      "pps_btc": 0.99924755,
+      "block": 24084784,
+      "timestamp": 1766607083,
+      "datetime": "2025-12-25T00:11:23",
+      "pps_btc": 0.99924568,
       "ret_step": null,
       "ret_step_pct": null,
-      "btc_price": 87423.4973806886,
+      "btc_price": 87498.39263017818,
+      "pps_yb": 0.9687696518697385
+    },
+    {
+      "block": 24085082,
+      "timestamp": 1766610683,
+      "datetime": "2025-12-25T01:11:23",
+      "pps_btc": 0.99923777,
+      "ret_step": null,
+      "ret_step_pct": null,
+      "btc_price": 87501.92307200629,
+      "pps_yb": 0.9687696518697385
+    },
+    {
+      "block": 24085104,
+      "timestamp": 1766610947,
+      "datetime": "2025-12-25T01:15:47",
+      "pps_btc": 0.99923719,
+      "ret_step": -5.80442430633902e-07,
+      "ret_step_pct": -5.804424306339021e-05,
+      "btc_price": 87501.92307200629,
       "pps_yb": 0.9687696518697385
     }
   ]
