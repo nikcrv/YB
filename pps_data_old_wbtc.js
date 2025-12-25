@@ -1,14 +1,14 @@
-// Last updated: 2025-12-25 15:12:30 UTC
+// Last updated: 2025-12-25 17:07:34 UTC
 const ppsData_old_wbtc = {
   "metadata": {
     "market": "WBTC",
     "symbol": "yb-WBTC",
     "vault": "0x6095a220C5567360d459462A25b1AD5aEAD45204",
     "staker": "0x37f45E64935e7B8383D2f034048B32770B04E8bd",
-    "collected": "2025-12-25T17:54:29.362469Z",
-    "points": 7995,
+    "collected": "2025-12-25T21:02:58.606567Z",
+    "points": 8006,
     "start_block": 23434043,
-    "end_block": 24090063,
+    "end_block": 24091003,
     "block_step": 300,
     "time_step": "1h",
     "contract_type": "old"
@@ -47983,6 +47983,72 @@ const ppsData_old_wbtc = {
       "timestamp": 1766670827,
       "pps_unstaked": 1.0585334915244724,
       "pps_staked": 0.843072961727509
+    },
+    {
+      "block": 24090064,
+      "timestamp": 1766670839,
+      "pps_unstaked": 1.0585334613269672,
+      "pps_staked": null
+    },
+    {
+      "block": 24090065,
+      "timestamp": 1766670851,
+      "pps_unstaked": 1.058533431155469,
+      "pps_staked": 0.8430729136463904
+    },
+    {
+      "block": 24090365,
+      "timestamp": 1766674487,
+      "pps_unstaked": 1.0585373408002763,
+      "pps_staked": 0.843076027497632
+    },
+    {
+      "block": 24090665,
+      "timestamp": 1766678087,
+      "pps_unstaked": 1.0586837024775708,
+      "pps_staked": 0.8431925978033882
+    },
+    {
+      "block": 24090708,
+      "timestamp": 1766678603,
+      "pps_unstaked": 1.058502302345911,
+      "pps_staked": 0.8430481209894936
+    },
+    {
+      "block": 24090709,
+      "timestamp": 1766678615,
+      "pps_unstaked": 1.0584992309637502,
+      "pps_staked": 0.8430456747756745
+    },
+    {
+      "block": 24090809,
+      "timestamp": 1766679815,
+      "pps_unstaked": 1.058332908446346,
+      "pps_staked": 0.8429132065840936
+    },
+    {
+      "block": 24090810,
+      "timestamp": 1766679827,
+      "pps_unstaked": 1.0583321295869128,
+      "pps_staked": 0.8429125862585827
+    },
+    {
+      "block": 24090913,
+      "timestamp": 1766681063,
+      "pps_unstaked": 1.0582883366006188,
+      "pps_staked": 0.8428777071707187
+    },
+    {
+      "block": 24090914,
+      "timestamp": 1766681075,
+      "pps_unstaked": 1.058288131074958,
+      "pps_staked": 0.8428775434790368
+    },
+    {
+      "block": 24091003,
+      "timestamp": 1766682143,
+      "pps_unstaked": 1.058320170932655,
+      "pps_staked": 0.8429030617436343
     }
   ]
 };
