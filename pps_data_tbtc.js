@@ -1,14 +1,14 @@
-// Last updated: 2025-12-26 00:03:29 UTC
+// Last updated: 2025-12-26 13:48:11 UTC
 const ppsData_tbtc = {
   "metadata": {
     "market": "TBTC",
     "symbol": "yb-tBTC",
     "vault": "0xaC0a340C1644321D0BBc6404946d828c1EBfAC92",
     "staker": "0x30ba8b27F2128c770B90C965FF671E08b9310D21",
-    "collected": "2025-12-26T03:59:25.705696Z",
-    "points": 6899,
+    "collected": "2025-12-26T17:40:24.596866Z",
+    "points": 6953,
     "start_block": 23784065,
-    "end_block": 24093076,
+    "end_block": 24097162,
     "block_step": 300,
     "time_step": "1h",
     "contract_type": "new"
@@ -41407,6 +41407,330 @@ const ppsData_tbtc = {
       "timestamp": 1766707127,
       "pps_unstaked": 1.0182608914250117,
       "pps_staked": 0.9937769178622373
+    },
+    {
+      "block": 24093077,
+      "timestamp": 1766707139,
+      "pps_unstaked": 1.018260805279215,
+      "pps_staked": 0.993776833787807
+    },
+    {
+      "block": 24093188,
+      "timestamp": 1766708471,
+      "pps_unstaked": 1.0182536712105033,
+      "pps_staked": 0.9937698712570098
+    },
+    {
+      "block": 24093189,
+      "timestamp": 1766708483,
+      "pps_unstaked": 1.0182536200837191,
+      "pps_staked": 0.9937698213595636
+    },
+    {
+      "block": 24093301,
+      "timestamp": 1766709851,
+      "pps_unstaked": 1.0182487061086134,
+      "pps_staked": 0.9937650255404605
+    },
+    {
+      "block": 24093302,
+      "timestamp": 1766709863,
+      "pps_unstaked": 1.0182486489247353,
+      "pps_staked": 0.9937649697315627
+    },
+    {
+      "block": 24093411,
+      "timestamp": 1766711171,
+      "pps_unstaked": 1.0182439059034951,
+      "pps_staked": 0.9937603407557578
+    },
+    {
+      "block": 24093412,
+      "timestamp": 1766711183,
+      "pps_unstaked": 1.0182438705705064,
+      "pps_staked": 0.9937603062723469
+    },
+    {
+      "block": 24093508,
+      "timestamp": 1766712335,
+      "pps_unstaked": 1.0182409634688492,
+      "pps_staked": 0.9937574690716363
+    },
+    {
+      "block": 24093509,
+      "timestamp": 1766712347,
+      "pps_unstaked": 1.0182409325300668,
+      "pps_staked": 0.9937574388767736
+    },
+    {
+      "block": 24093641,
+      "timestamp": 1766713955,
+      "pps_unstaked": 1.0182369047067465,
+      "pps_staked": 0.9937535079020317
+    },
+    {
+      "block": 24093642,
+      "timestamp": 1766713967,
+      "pps_unstaked": 1.0182368749105992,
+      "pps_staked": 0.9937534788223295
+    },
+    {
+      "block": 24093763,
+      "timestamp": 1766715419,
+      "pps_unstaked": 1.0182548414872754,
+      "pps_staked": 0.9937710133946028
+    },
+    {
+      "block": 24093764,
+      "timestamp": 1766715431,
+      "pps_unstaked": 1.01828238624923,
+      "pps_staked": 0.9937978958457203
+    },
+    {
+      "block": 24093897,
+      "timestamp": 1766717039,
+      "pps_unstaked": 1.0186532932628067,
+      "pps_staked": 0.9941598844400675
+    },
+    {
+      "block": 24093898,
+      "timestamp": 1766717051,
+      "pps_unstaked": 1.01865342162475,
+      "pps_staked": 0.9941600097155617
+    },
+    {
+      "block": 24094015,
+      "timestamp": 1766718467,
+      "pps_unstaked": 1.0180989453968317,
+      "pps_staked": 0.9936188658088784
+    },
+    {
+      "block": 24094016,
+      "timestamp": 1766718479,
+      "pps_unstaked": 1.0180991070234011,
+      "pps_staked": 0.9936190235491543
+    },
+    {
+      "block": 24094129,
+      "timestamp": 1766719835,
+      "pps_unstaked": 1.0181114311735313,
+      "pps_staked": 0.9936310513664208
+    },
+    {
+      "block": 24094130,
+      "timestamp": 1766719847,
+      "pps_unstaked": 1.0181114453630313,
+      "pps_staked": 0.9936310652147359
+    },
+    {
+      "block": 24094256,
+      "timestamp": 1766721359,
+      "pps_unstaked": 1.0181086112826725,
+      "pps_staked": 0.9936282992795342
+    },
+    {
+      "block": 24094257,
+      "timestamp": 1766721371,
+      "pps_unstaked": 1.0181085770237905,
+      "pps_staked": 0.9936282658444034
+    },
+    {
+      "block": 24094373,
+      "timestamp": 1766722799,
+      "pps_unstaked": 1.0181056291303474,
+      "pps_staked": 0.993625388832741
+    },
+    {
+      "block": 24094494,
+      "timestamp": 1766724251,
+      "pps_unstaked": 1.01810552475523,
+      "pps_staked": 0.993625286967312
+    },
+    {
+      "block": 24094495,
+      "timestamp": 1766724263,
+      "pps_unstaked": 1.0181055198020952,
+      "pps_staked": 0.9936252821332747
+    },
+    {
+      "block": 24094595,
+      "timestamp": 1766725475,
+      "pps_unstaked": 1.018104236893487,
+      "pps_staked": 0.993624030072066
+    },
+    {
+      "block": 24094596,
+      "timestamp": 1766725487,
+      "pps_unstaked": 1.0181042161677034,
+      "pps_staked": 0.9936240098446316
+    },
+    {
+      "block": 24094689,
+      "timestamp": 1766726603,
+      "pps_unstaked": 1.0181019654961287,
+      "pps_staked": 0.9936218132902128
+    },
+    {
+      "block": 24094690,
+      "timestamp": 1766726615,
+      "pps_unstaked": 1.0181019393399828,
+      "pps_staked": 0.9936217877629886
+    },
+    {
+      "block": 24094795,
+      "timestamp": 1766727875,
+      "pps_unstaked": 1.0181004546195995,
+      "pps_staked": 0.9936203387425472
+    },
+    {
+      "block": 24094796,
+      "timestamp": 1766727887,
+      "pps_unstaked": 1.0181004353101557,
+      "pps_staked": 0.9936203198973969
+    },
+    {
+      "block": 24094916,
+      "timestamp": 1766729339,
+      "pps_unstaked": 1.0180988085480023,
+      "pps_staked": 0.9936187322505643
+    },
+    {
+      "block": 24094917,
+      "timestamp": 1766729351,
+      "pps_unstaked": 1.0180987902183605,
+      "pps_staked": 0.9936187143616568
+    },
+    {
+      "block": 24095040,
+      "timestamp": 1766730827,
+      "pps_unstaked": 1.018096157665501,
+      "pps_staked": 0.9936161451082476
+    },
+    {
+      "block": 24095041,
+      "timestamp": 1766730839,
+      "pps_unstaked": 1.0180961337839562,
+      "pps_staked": 0.993616121800932
+    },
+    {
+      "block": 24095157,
+      "timestamp": 1766732243,
+      "pps_unstaked": 1.0181022200417023,
+      "pps_staked": 0.9936220617152655
+    },
+    {
+      "block": 24095158,
+      "timestamp": 1766732255,
+      "pps_unstaked": 1.0181022103628894,
+      "pps_staked": 0.9936220522691785
+    },
+    {
+      "block": 24095273,
+      "timestamp": 1766733647,
+      "pps_unstaked": 1.0181667534960606,
+      "pps_staked": 0.9936850434696579
+    },
+    {
+      "block": 24095274,
+      "timestamp": 1766733659,
+      "pps_unstaked": 1.018166778041585,
+      "pps_staked": 0.9936850674249879
+    },
+    {
+      "block": 24095384,
+      "timestamp": 1766734979,
+      "pps_unstaked": 1.0182440567402973,
+      "pps_staked": 0.9937604879657053
+    },
+    {
+      "block": 24095385,
+      "timestamp": 1766734991,
+      "pps_unstaked": 1.0182440736016782,
+      "pps_staked": null
+    },
+    {
+      "block": 24095386,
+      "timestamp": 1766735003,
+      "pps_unstaked": 1.0182440898367606,
+      "pps_staked": 0.9937605202663677
+    },
+    {
+      "block": 24095684,
+      "timestamp": 1766738591,
+      "pps_unstaked": 1.018240052005978,
+      "pps_staked": 0.9937565795247918
+    },
+    {
+      "block": 24095685,
+      "timestamp": 1766738603,
+      "pps_unstaked": 1.0182400203440272,
+      "pps_staked": 0.9937565486241491
+    },
+    {
+      "block": 24095985,
+      "timestamp": 1766742227,
+      "pps_unstaked": 1.0182326474496755,
+      "pps_staked": 0.9937493530102487
+    },
+    {
+      "block": 24096285,
+      "timestamp": 1766745851,
+      "pps_unstaked": 1.0182269371288692,
+      "pps_staked": 0.9937437799934918
+    },
+    {
+      "block": 24096447,
+      "timestamp": 1766747807,
+      "pps_unstaked": 1.0182208955315883,
+      "pps_staked": 0.9937378836657674
+    },
+    {
+      "block": 24096448,
+      "timestamp": 1766747819,
+      "pps_unstaked": 1.0182208669654806,
+      "pps_staked": 0.9937378557865287
+    },
+    {
+      "block": 24096548,
+      "timestamp": 1766749019,
+      "pps_unstaked": 1.0182175602292602,
+      "pps_staked": 0.9937346285604249
+    },
+    {
+      "block": 24096549,
+      "timestamp": 1766749031,
+      "pps_unstaked": 1.0182175297269527,
+      "pps_staked": 0.993734598791542
+    },
+    {
+      "block": 24096654,
+      "timestamp": 1766750303,
+      "pps_unstaked": 1.0182137438094472,
+      "pps_staked": 0.9937309039060156
+    },
+    {
+      "block": 24096655,
+      "timestamp": 1766750315,
+      "pps_unstaked": 1.0182137118056496,
+      "pps_staked": 0.9937308726717459
+    },
+    {
+      "block": 24096865,
+      "timestamp": 1766752835,
+      "pps_unstaked": 1.0182070598046693,
+      "pps_staked": 0.9937243806174133
+    },
+    {
+      "block": 24096866,
+      "timestamp": 1766752847,
+      "pps_unstaked": 1.0182070304257358,
+      "pps_staked": 0.9937243519448932
+    },
+    {
+      "block": 24097162,
+      "timestamp": 1766756399,
+      "pps_unstaked": 1.0181800416494768,
+      "pps_staked": 0.9936980121108552
     }
   ]
 };
