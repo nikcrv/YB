@@ -1,9 +1,9 @@
-// Last updated: 2025-12-26 19:57:16 UTC
+// Last updated: 2025-12-26 20:21:28 UTC
 const POOLS_DATA = {
-  "generated": "2025-12-26T23:52:08.979549",
+  "generated": "2025-12-27T00:13:43.863868",
   "period": {
     "start": "2025-09-24",
-    "end": "2025-12-26"
+    "end": "2025-12-27"
   },
   "pools": {
     "wbtc_crvusd": {
