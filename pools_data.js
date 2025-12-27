@@ -1,6 +1,6 @@
-// Last updated: 2025-12-27 21:31:13 UTC
+// Last updated: 2025-12-27 21:53:21 UTC
 const POOLS_DATA = {
-  "generated": "2025-12-28T01:24:10.311653",
+  "generated": "2025-12-28T01:49:06.874712",
   "period": {
     "start": "2025-09-24",
     "end": "2025-12-28"
@@ -1631,6 +1631,18 @@ const POOLS_DATA = {
           "token0_ratio": 46.82,
           "token1_ratio": 53.18,
           "imbalance": 3.18
+        },
+        {
+          "timestamp": 1766871071000,
+          "date": "2025-12-28 01:31",
+          "block": 24106665,
+          "token0_bal": 48415672.67,
+          "token1_bal": 623.185462,
+          "price_scale": 88037.42,
+          "total_value": 103279314.36,
+          "token0_ratio": 46.88,
+          "token1_ratio": 53.12,
+          "imbalance": 3.12
         }
       ]
     },
@@ -3259,6 +3271,18 @@ const POOLS_DATA = {
           "token0_ratio": 48.24,
           "token1_ratio": 51.76,
           "imbalance": 1.76
+        },
+        {
+          "timestamp": 1766871023000,
+          "date": "2025-12-28 01:30",
+          "block": 24106661,
+          "token0_bal": 101620365.46,
+          "token1_bal": 1167.513932,
+          "price_scale": 86627.41,
+          "total_value": 202759070.18,
+          "token0_ratio": 50.12,
+          "token1_ratio": 49.88,
+          "imbalance": 0.12
         }
       ]
     },
