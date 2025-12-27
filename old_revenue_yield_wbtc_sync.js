@@ -1,14 +1,14 @@
-// Last updated: 2025-12-27 18:43:30 UTC
+// Last updated: 2025-12-27 19:12:12 UTC
 const old_yieldData_wbtc = {
   "metadata": {
     "market": "WBTC (OLD)",
     "contract": "0x6095a220C5567360d459462A25b1AD5aEAD45204",
-    "collected": "2025-12-27T18:27:53.095505Z",
-    "points": 7930,
+    "collected": "2025-12-27T19:05:29.217157Z",
+    "points": 7943,
     "synchronized": true,
     "transaction_based": true,
     "zero_loss": true,
-    "incremental_update": false,
+    "incremental_update": true,
     "old_contract": true
   },
   "data": [
@@ -71379,6 +71379,123 @@ const old_yieldData_wbtc = {
       "total_withdrawable_btc": 11.01140768,
       "deposits_btc": 0.0,
       "withdrawals_btc": 0.0,
+      "admin_fee_withdrawals_btc": 0.0,
+      "admin_fees_btc": 0.0
+    },
+    {
+      "block": 24105797,
+      "timestamp": 1766860571,
+      "total_withdrawable_btc": 11.01013381,
+      "deposits_btc": 0,
+      "withdrawals_btc": 0.00118952,
+      "admin_fee_withdrawals_btc": 0.0,
+      "admin_fees_btc": 0.0
+    },
+    {
+      "block": 24105804,
+      "timestamp": 1766860655,
+      "total_withdrawable_btc": 11.00893049,
+      "deposits_btc": 0,
+      "withdrawals_btc": 0.00120114,
+      "admin_fee_withdrawals_btc": 0.0,
+      "admin_fees_btc": 0.0
+    },
+    {
+      "block": 24105810,
+      "timestamp": 1766860727,
+      "total_withdrawable_btc": 11.00797654,
+      "deposits_btc": 0,
+      "withdrawals_btc": 0.00095206,
+      "admin_fee_withdrawals_btc": 0.0,
+      "admin_fees_btc": 0.0
+    },
+    {
+      "block": 24105816,
+      "timestamp": 1766860799,
+      "total_withdrawable_btc": 11.00608109,
+      "deposits_btc": 0,
+      "withdrawals_btc": 0.00189368,
+      "admin_fee_withdrawals_btc": 0.0,
+      "admin_fees_btc": 0.0
+    },
+    {
+      "block": 24105825,
+      "timestamp": 1766860907,
+      "total_withdrawable_btc": 11.00478941,
+      "deposits_btc": 0,
+      "withdrawals_btc": 0.00128888,
+      "admin_fee_withdrawals_btc": 0.0,
+      "admin_fees_btc": 0.0
+    },
+    {
+      "block": 24105832,
+      "timestamp": 1766860991,
+      "total_withdrawable_btc": 11.00342324,
+      "deposits_btc": 0,
+      "withdrawals_btc": 0.00136398,
+      "admin_fee_withdrawals_btc": 0.0,
+      "admin_fees_btc": 0.0
+    },
+    {
+      "block": 24105833,
+      "timestamp": 1766861003,
+      "total_withdrawable_btc": 11.00232895,
+      "deposits_btc": 0,
+      "withdrawals_btc": 0.00109397,
+      "admin_fee_withdrawals_btc": 0.0,
+      "admin_fees_btc": 0.0
+    },
+    {
+      "block": 24105844,
+      "timestamp": 1766861135,
+      "total_withdrawable_btc": 11.00026055,
+      "deposits_btc": 0,
+      "withdrawals_btc": 0.00206507,
+      "admin_fee_withdrawals_btc": 0.0,
+      "admin_fees_btc": 0.0
+    },
+    {
+      "block": 24105853,
+      "timestamp": 1766861243,
+      "total_withdrawable_btc": 10.99908141,
+      "deposits_btc": 0,
+      "withdrawals_btc": 0.00117632,
+      "admin_fee_withdrawals_btc": 0.0,
+      "admin_fees_btc": 0.0
+    },
+    {
+      "block": 24105859,
+      "timestamp": 1766861315,
+      "total_withdrawable_btc": 10.99795855,
+      "deposits_btc": 0,
+      "withdrawals_btc": 0.00112109,
+      "admin_fee_withdrawals_btc": 0.0,
+      "admin_fees_btc": 0.0
+    },
+    {
+      "block": 24105867,
+      "timestamp": 1766861423,
+      "total_withdrawable_btc": 10.99672636,
+      "deposits_btc": 0,
+      "withdrawals_btc": 0.00122938,
+      "admin_fee_withdrawals_btc": 0.0,
+      "admin_fees_btc": 0.0
+    },
+    {
+      "block": 24105868,
+      "timestamp": 1766861435,
+      "total_withdrawable_btc": 10.9955685,
+      "deposits_btc": 0,
+      "withdrawals_btc": 0.00115755,
+      "admin_fee_withdrawals_btc": 0.0,
+      "admin_fees_btc": 0.0
+    },
+    {
+      "block": 24105876,
+      "timestamp": 1766861531,
+      "total_withdrawable_btc": 10.99433636,
+      "deposits_btc": 0,
+      "withdrawals_btc": 0.00122964,
       "admin_fee_withdrawals_btc": 0.0,
       "admin_fees_btc": 0.0
     }
