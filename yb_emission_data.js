@@ -1,4 +1,4 @@
-// Last updated: 2025-12-27 09:13:34 UTC
+// Last updated: 2025-12-27 09:38:26 UTC
 const ybEmissionData = [
   {
     "timestamp": 1762963200,
@@ -18763,21 +18763,41 @@ const ybEmissionData = [
   {
     "timestamp": 1766822400,
     "datetime": "2025-12-27T08:00:00",
-    "hourly_cbBTC": 0,
+    "hourly_cbBTC": 5253.514549277794,
     "hourly_WBTC": 437.1357404733306,
     "hourly_tBTC": 283.6236238659682,
-    "hourly_total": 720.7593643392988,
-    "cumulative_cbBTC": 2668915.5622972506,
+    "hourly_total": 5974.273913617093,
+    "cumulative_cbBTC": 2674169.0768465283,
     "cumulative_WBTC": 2068231.130122517,
     "cumulative_tBTC": 1699862.68921557,
-    "cumulative_total": 6437009.381635337,
-    "hourly_total_btc": 0.0033972609740618187,
-    "cumulative_total_btc": 31.779581347096723,
-    "cumulative_cbBTC_btc": 12.9676832730549,
+    "cumulative_total": 6442262.896184615,
+    "hourly_total_btc": 0.02815942271342098,
+    "cumulative_total_btc": 31.804343508836084,
+    "cumulative_cbBTC_btc": 12.99244543479426,
     "cumulative_WBTC_btc": 10.379389399710462,
     "cumulative_tBTC_btc": 8.43250867433136,
     "yb_usd_price": 0.41235760966368395,
     "btc_usd_price": 87485.36273512125,
     "yb_btc_price": 4.713446875818254e-06
+  },
+  {
+    "timestamp": 1766826000,
+    "datetime": "2025-12-27T09:00:00",
+    "hourly_cbBTC": 1150.4864929314617,
+    "hourly_WBTC": 1109.6294591566618,
+    "hourly_tBTC": 1184.7348857237532,
+    "hourly_total": 3444.8508378118768,
+    "cumulative_cbBTC": 2675319.5633394597,
+    "cumulative_WBTC": 2069340.7595816737,
+    "cumulative_tBTC": 1701047.4241012938,
+    "cumulative_total": 6445707.747022428,
+    "hourly_total_btc": 0.0159450949400461,
+    "cumulative_total_btc": 31.82028860377613,
+    "cumulative_cbBTC_btc": 12.997770662858034,
+    "cumulative_WBTC_btc": 10.384525513843567,
+    "cumulative_tBTC_btc": 8.437992427074528,
+    "yb_usd_price": 0.4043628200662422,
+    "btc_usd_price": 87360.38290914937,
+    "yb_btc_price": 4.628674996614429e-06
   }
 ];
