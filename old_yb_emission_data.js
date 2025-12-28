@@ -1,4 +1,4 @@
-// Last updated: 2025-12-28 08:48:48 UTC
+// Last updated: 2025-12-28 09:08:55 UTC
 const old_ybEmissionData = [
   {
     "timestamp": 1760508000,
