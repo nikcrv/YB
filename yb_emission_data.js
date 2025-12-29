@@ -1,4 +1,4 @@
-// Last updated: 2025-12-29 18:34:55 UTC
+// Last updated: 2025-12-29 18:53:53 UTC
 const ybEmissionData = [
   {
     "timestamp": 1762963200,
@@ -19724,20 +19724,40 @@ const ybEmissionData = [
     "timestamp": 1767027600,
     "datetime": "2025-12-29T17:00:00",
     "hourly_cbBTC": 4502.112009393511,
-    "hourly_WBTC": 3068.429749262203,
+    "hourly_WBTC": 3198.6027058390027,
     "hourly_tBTC": 2583.686753530701,
-    "hourly_total": 10154.228512186415,
+    "hourly_total": 10284.401468763215,
     "cumulative_cbBTC": 2904431.6340168286,
-    "cumulative_WBTC": 2126051.530748559,
+    "cumulative_WBTC": 2126181.703705136,
     "cumulative_tBTC": 1761942.9034595776,
-    "cumulative_total": 6792426.068224966,
-    "hourly_total_btc": 0.04827297429236119,
-    "cumulative_total_btc": 33.44080729683841,
+    "cumulative_total": 6792556.241181542,
+    "hourly_total_btc": 0.048891813604363184,
+    "cumulative_total_btc": 33.44142613615041,
     "cumulative_cbBTC_btc": 14.068591929567896,
-    "cumulative_WBTC_btc": 10.649395697402863,
+    "cumulative_WBTC_btc": 10.650014536714863,
     "cumulative_tBTC_btc": 8.722819669867654,
     "yb_usd_price": 0.4150271622586749,
     "btc_usd_price": 87301.03554041275,
     "yb_btc_price": 4.753977540925659e-06
+  },
+  {
+    "timestamp": 1767031200,
+    "datetime": "2025-12-29T18:00:00",
+    "hourly_cbBTC": 3528.2146896837694,
+    "hourly_WBTC": 129.62296589558835,
+    "hourly_tBTC": 0,
+    "hourly_total": 3657.837655579358,
+    "cumulative_cbBTC": 2907959.8487065122,
+    "cumulative_WBTC": 2126311.326671032,
+    "cumulative_tBTC": 1761942.9034595776,
+    "cumulative_total": 6796214.078837122,
+    "hourly_total_btc": 0.01764915997429716,
+    "cumulative_total_btc": 33.45907529612471,
+    "cumulative_cbBTC_btc": 14.085615655425961,
+    "cumulative_WBTC_btc": 10.650639970831094,
+    "cumulative_tBTC_btc": 8.722819669867654,
+    "yb_usd_price": 0.42124112499150834,
+    "btc_usd_price": 87303.39864993548,
+    "yb_btc_price": 4.82502550308011e-06
   }
 ];
