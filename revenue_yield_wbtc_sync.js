@@ -1,9 +1,9 @@
-// Last updated: 2025-12-30 17:46:26 UTC
+// Last updated: 2025-12-30 18:05:11 UTC
 const yieldData_wbtc = {
   "metadata": {
     "market": "WBTC",
     "contract": "0xfBF3C16676055776Ab9B286492D8f13e30e2E763",
-    "collected": "2025-12-30T20:38:19.222581",
+    "collected": "2025-12-30T20:59:07.612623",
     "points": 5162,
     "synchronized": true,
     "transaction_based": true,
