@@ -1,4 +1,4 @@
-// Last updated: 2025-12-30 09:16:04 UTC
+// Last updated: 2025-12-30 09:44:57 UTC
 const ybEmissionData = [
   {
     "timestamp": 1762963200,
@@ -19963,21 +19963,41 @@ const ybEmissionData = [
   {
     "timestamp": 1767081600,
     "datetime": "2025-12-30T08:00:00",
-    "hourly_cbBTC": 0,
+    "hourly_cbBTC": 6673.254125654877,
     "hourly_WBTC": 1704.5664888454403,
     "hourly_tBTC": 1519.6650764664982,
-    "hourly_total": 3224.2315653119385,
-    "cumulative_cbBTC": 2960860.9484731127,
+    "hourly_total": 9897.485690966816,
+    "cumulative_cbBTC": 2967534.2025987674,
     "cumulative_WBTC": 2141003.5103084473,
     "cumulative_tBTC": 1778401.9324204284,
-    "cumulative_total": 6880266.391201988,
-    "hourly_total_btc": 0.015065386046143051,
-    "cumulative_total_btc": 33.859965735574896,
-    "cumulative_cbBTC_btc": 14.338195325279646,
+    "cumulative_total": 6886939.645327643,
+    "hourly_total_btc": 0.04624650550065747,
+    "cumulative_total_btc": 33.891146855029405,
+    "cumulative_cbBTC_btc": 14.36937644473416,
     "cumulative_WBTC_btc": 10.720670106002373,
     "cumulative_tBTC_btc": 8.801100304292863,
     "yb_usd_price": 0.40703454538509487,
     "btc_usd_price": 87111.84866975271,
     "yb_btc_price": 4.6725508825807625e-06
+  },
+  {
+    "timestamp": 1767085200,
+    "datetime": "2025-12-30T09:00:00",
+    "hourly_cbBTC": 2131.3251065643326,
+    "hourly_WBTC": 494.6278444051486,
+    "hourly_tBTC": 361.64761579547485,
+    "hourly_total": 2987.600566764956,
+    "cumulative_cbBTC": 2969665.527705332,
+    "cumulative_WBTC": 2141498.1381528527,
+    "cumulative_tBTC": 1778763.5800362239,
+    "cumulative_total": 6889927.245894409,
+    "hourly_total_btc": 0.013895187800616653,
+    "cumulative_total_btc": 33.90504204283002,
+    "cumulative_cbBTC_btc": 14.37928913619276,
+    "cumulative_WBTC_btc": 10.722970596525062,
+    "cumulative_tBTC_btc": 8.80278231011219,
+    "yb_usd_price": 0.4067936668051191,
+    "btc_usd_price": 87464.59615676681,
+    "yb_btc_price": 4.650952324481143e-06
   }
 ];
