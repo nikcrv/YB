@@ -1,4 +1,4 @@
-// Last updated: 2025-12-31 11:14:58 UTC
+// Last updated: 2025-12-31 11:46:34 UTC
 const ybEmissionData = [
   {
     "timestamp": 1762963200,
@@ -20403,21 +20403,41 @@ const ybEmissionData = [
   {
     "timestamp": 1767175200,
     "datetime": "2025-12-31T10:00:00",
-    "hourly_cbBTC": 7167.436184892513,
+    "hourly_cbBTC": 7267.378074388608,
     "hourly_WBTC": 1567.693297165568,
     "hourly_tBTC": 0,
-    "hourly_total": 8735.12948205808,
-    "cumulative_cbBTC": 3070260.423760808,
+    "hourly_total": 8835.071371554177,
+    "cumulative_cbBTC": 3070360.365650304,
     "cumulative_WBTC": 2166811.002911579,
     "cumulative_tBTC": 1804149.2977540493,
-    "cumulative_total": 7041220.724426436,
-    "hourly_total_btc": 0.03972429580089498,
-    "cumulative_total_btc": 34.598866161075485,
-    "cumulative_cbBTC_btc": 14.840748042112208,
+    "cumulative_total": 7041320.666315932,
+    "hourly_total_btc": 0.04017879635402335,
+    "cumulative_total_btc": 34.59932066162861,
+    "cumulative_cbBTC_btc": 14.841202542665338,
     "cumulative_WBTC_btc": 10.838897728506197,
     "cumulative_tBTC_btc": 8.919220390457076,
     "yb_usd_price": 0.40199745602341835,
     "btc_usd_price": 88396.77983022659,
     "yb_btc_price": 4.5476481925641195e-06
+  },
+  {
+    "timestamp": 1767178800,
+    "datetime": "2025-12-31T11:00:00",
+    "hourly_cbBTC": 1672.333617586649,
+    "hourly_WBTC": 362.79745024402337,
+    "hourly_tBTC": 0,
+    "hourly_total": 2035.1310678306725,
+    "cumulative_cbBTC": 3072032.699267891,
+    "cumulative_WBTC": 2167173.800361823,
+    "cumulative_tBTC": 1804149.2977540493,
+    "cumulative_total": 7043355.797383763,
+    "hourly_total_btc": 0.00921350677830111,
+    "cumulative_total_btc": 34.60853416840691,
+    "cumulative_cbBTC_btc": 14.848773581879849,
+    "cumulative_WBTC_btc": 10.840540196069988,
+    "cumulative_tBTC_btc": 8.919220390457076,
+    "yb_usd_price": 0.40099035966900487,
+    "btc_usd_price": 88573.00032436325,
+    "yb_btc_price": 4.527230173986856e-06
   }
 ];
