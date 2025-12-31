@@ -1,14 +1,14 @@
-// Last updated: 2025-12-31 04:07:18 UTC
+// Last updated: 2025-12-31 04:23:34 UTC
 const old_yieldData_cbbtc = {
   "metadata": {
     "market": "cbBTC (OLD)",
     "contract": "0xD6a1147666f6E4d7161caf436d9923D44d901112",
-    "collected": "2025-12-31T04:03:02.323545Z",
+    "collected": "2025-12-31T04:19:02.817864Z",
     "points": 7990,
     "synchronized": true,
     "transaction_based": true,
     "zero_loss": true,
-    "incremental_update": true,
+    "incremental_update": false,
     "old_contract": true
   },
   "data": [
