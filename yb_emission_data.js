@@ -1,4 +1,4 @@
-// Last updated: 2026-01-02 00:12:54 UTC
+// Last updated: 2026-01-02 00:38:16 UTC
 const ybEmissionData = [
   {
     "timestamp": 1762963200,
@@ -21043,21 +21043,41 @@ const ybEmissionData = [
   {
     "timestamp": 1767308400,
     "datetime": "2026-01-01T23:00:00",
-    "hourly_cbBTC": 3883.1139157998723,
+    "hourly_cbBTC": 5482.013275786554,
     "hourly_WBTC": 918.9434955052253,
     "hourly_tBTC": 0,
-    "hourly_total": 4802.057411305098,
-    "cumulative_cbBTC": 3217763.2866290966,
+    "hourly_total": 6400.95677129178,
+    "cumulative_cbBTC": 3219362.1859890837,
     "cumulative_WBTC": 2203961.568409079,
     "cumulative_tBTC": 1839746.9322472878,
-    "cumulative_total": 7261471.787285463,
-    "hourly_total_btc": 0.022165112490989628,
-    "cumulative_total_btc": 35.61315083025364,
-    "cumulative_cbBTC_btc": 15.520045077586966,
+    "cumulative_total": 7263070.686645451,
+    "hourly_total_btc": 0.029545237537483886,
+    "cumulative_total_btc": 35.62053095530013,
+    "cumulative_cbBTC_btc": 15.52742520263346,
     "cumulative_WBTC_btc": 11.009979919579205,
     "cumulative_tBTC_btc": 9.083125833087472,
     "yb_usd_price": 0.40741897431333424,
     "btc_usd_price": 88267.05959209487,
     "yb_btc_price": 4.615753330813598e-06
+  },
+  {
+    "timestamp": 1767312000,
+    "datetime": "2026-01-02T00:00:00",
+    "hourly_cbBTC": 1042.130585495014,
+    "hourly_WBTC": 625.0119318855651,
+    "hourly_tBTC": 4872.232038943285,
+    "hourly_total": 6539.374556323864,
+    "cumulative_cbBTC": 3220404.3165745786,
+    "cumulative_WBTC": 2204586.5803409647,
+    "cumulative_tBTC": 1844619.1642862312,
+    "cumulative_total": 7269610.061201775,
+    "hourly_total_btc": 0.030081346090347825,
+    "cumulative_total_btc": 35.65061230139048,
+    "cumulative_cbBTC_btc": 15.532219038885474,
+    "cumulative_WBTC_btc": 11.012854995792031,
+    "cumulative_tBTC_btc": 9.105538266712978,
+    "yb_usd_price": 0.40668338838045875,
+    "btc_usd_price": 88408.77647121268,
+    "yb_btc_price": 4.600034121192497e-06
   }
 ];
