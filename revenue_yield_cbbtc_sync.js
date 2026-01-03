@@ -1,14 +1,14 @@
-// Last updated: 2026-01-03 11:32:50 UTC
+// Last updated: 2026-01-03 11:48:45 UTC
 const yieldData_cbbtc = {
   "metadata": {
     "market": "cbBTC",
     "contract": "0xAC0cfa7742069a8af0c63e14FFD0fe6b3e1Bf8D2",
-    "collected": "2026-01-03T14:27:21.607811",
+    "collected": "2026-01-03T14:44:33.704206",
     "points": 5322,
     "synchronized": true,
     "transaction_based": true,
     "zero_loss": true,
-    "incremental_update": true
+    "incremental_update": false
   },
   "data": [
     {
