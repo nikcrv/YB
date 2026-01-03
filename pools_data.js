@@ -1,9 +1,9 @@
-// Last updated: 2026-01-03 21:00:09 UTC
+// Last updated: 2026-01-03 21:17:18 UTC
 const POOLS_DATA = {
-  "generated": "2026-01-03T23:56:41.658918",
+  "generated": "2026-01-04T00:13:22.160332",
   "period": {
     "start": "2025-09-24",
-    "end": "2026-01-03"
+    "end": "2026-01-04"
   },
   "pools": {
     "wbtc_crvusd": {
@@ -5163,6 +5163,18 @@ const POOLS_DATA = {
           "token0_ratio": 50.82,
           "token1_ratio": 49.18,
           "imbalance": 0.82
+        },
+        {
+          "timestamp": 1767474215000,
+          "date": "2026-01-04 00:03",
+          "block": 24156689,
+          "token0_bal": 50625747.31,
+          "token1_bal": 575.877179,
+          "price_scale": 90374.96,
+          "total_value": 102670622.42,
+          "token0_ratio": 49.31,
+          "token1_ratio": 50.69,
+          "imbalance": 0.69
         }
       ]
     }
