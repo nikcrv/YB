@@ -1,9 +1,9 @@
-// Last updated: 2026-01-04 04:58:52 UTC
+// Last updated: 2026-01-04 05:15:07 UTC
 const old_yieldData_tbtc = {
   "metadata": {
     "market": "tBTC (OLD)",
     "contract": "0x2B513eBe7070Cff91cf699a0BFe5075020C732FF",
-    "collected": "2026-01-04T04:54:50.730573Z",
+    "collected": "2026-01-04T05:10:44.480999Z",
     "points": 8006,
     "synchronized": true,
     "transaction_based": true,
