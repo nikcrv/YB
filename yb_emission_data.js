@@ -1,4 +1,4 @@
-// Last updated: 2026-01-07 21:06:59 UTC
+// Last updated: 2026-01-07 21:27:52 UTC
 const ybEmissionData = [
   {
     "timestamp": 1762963200,
@@ -23403,21 +23403,41 @@ const ybEmissionData = [
   {
     "timestamp": 1767816000,
     "datetime": "2026-01-07T20:00:00",
-    "hourly_cbBTC": 5095.455797428442,
+    "hourly_cbBTC": 6458.351205215823,
     "hourly_WBTC": 1112.5289952205374,
     "hourly_tBTC": 2119.229957546331,
-    "hourly_total": 8327.214750195311,
-    "cumulative_cbBTC": 3841611.0546911284,
+    "hourly_total": 9690.110157982692,
+    "cumulative_cbBTC": 3842973.950098916,
     "cumulative_WBTC": 2344834.6062001935,
     "cumulative_tBTC": 1992404.968921506,
-    "cumulative_total": 8178850.629812828,
-    "hourly_total_btc": 0.040815075572465456,
-    "cumulative_total_btc": 39.97582326757271,
-    "cumulative_cbBTC_btc": 18.48702831249136,
+    "cumulative_total": 8180213.525220615,
+    "hourly_total_btc": 0.04749518179464537,
+    "cumulative_total_btc": 39.982503373794884,
+    "cumulative_cbBTC_btc": 18.493708418713542,
     "cumulative_WBTC_btc": 11.680814051643805,
     "cumulative_tBTC_btc": 9.807980903437544,
     "yb_usd_price": 0.445071393428058,
     "btc_usd_price": 90804.8072988103,
     "yb_btc_price": 4.90140782925145e-06
+  },
+  {
+    "timestamp": 1767819600,
+    "datetime": "2026-01-07T21:00:00",
+    "hourly_cbBTC": 30.974741789435985,
+    "hourly_WBTC": 300.03887358081823,
+    "hourly_tBTC": 425.84441607755025,
+    "hourly_total": 756.8580314478045,
+    "cumulative_cbBTC": 3843004.9248407055,
+    "cumulative_WBTC": 2345134.6450737743,
+    "cumulative_tBTC": 1992830.8133375836,
+    "cumulative_total": 8180970.383252064,
+    "hourly_total_btc": 0.0037207428725998313,
+    "cumulative_total_btc": 39.986224116667486,
+    "cumulative_cbBTC_btc": 18.49386069172242,
+    "cumulative_WBTC_btc": 11.68228905415946,
+    "cumulative_tBTC_btc": 9.810074370785609,
+    "yb_usd_price": 0.44571598746504165,
+    "btc_usd_price": 90665.6913440219,
+    "yb_btc_price": 4.916038038841141e-06
   }
 ];
