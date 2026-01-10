@@ -1,20 +1,20 @@
-// Last updated: 2026-01-10 09:10:16 UTC
+// Last updated: 2026-01-10 09:34:40 UTC
 const yieldData_syb_cbbtc = {
   "metadata": {
     "contract": "0xf3081A2eB8927C0462864EC3FdbE927C842A0893",
     "start_date": "2025-11-12T19:09:47",
-    "end_date": "2026-01-10T12:04:59",
-    "data_points": 1409,
+    "end_date": "2026-01-10T12:29:59",
+    "data_points": 1411,
     "step_seconds": 3600
   },
   "metrics": {
-    "total_return": 9658365601.59608,
-    "total_return_pct": 965836560159.6082,
-    "apr": 1.2062050866118646e+62,
-    "apr_pct": 1.2062050866118645e+64,
-    "days": 58.705,
+    "total_return": -1.4577915662425541e-05,
+    "total_return_pct": -0.001457791566242554,
+    "apr": -9.060836169387049e-05,
+    "apr_pct": -0.009060836169387049,
+    "days": 58.72236111111111,
     "start_pps": 0.99945701,
-    "end_pps": 9653121206.657528
+    "end_pps": 0.99944244
   },
   "data": [
     {
@@ -14098,13 +14098,34 @@ const yieldData_syb_cbbtc = {
       "pps_yb": 0.9653121206657528
     },
     {
-      "block": 24203284,
-      "timestamp": 1768035899,
-      "datetime": "2026-01-10T12:04:59",
-      "pps_btc": 9653121206.657528,
+      "block": 24203018,
+      "timestamp": 1768032695,
+      "datetime": "2026-01-10T11:11:35",
+      "pps_btc": 0.99945276,
       "ret_step": null,
       "ret_step_pct": null,
-      "btc_price": 90536.31233043248
+      "btc_price": 90550.1254728524,
+      "pps_yb": 0.9653121206657528
+    },
+    {
+      "block": 24203316,
+      "timestamp": 1768036295,
+      "datetime": "2026-01-10T12:11:35",
+      "pps_btc": 0.99944488,
+      "ret_step": -7.88431461232845e-06,
+      "ret_step_pct": -0.000788431461232845,
+      "btc_price": 90536.31233043248,
+      "pps_yb": 0.9653121206657528
+    },
+    {
+      "block": 24203408,
+      "timestamp": 1768037399,
+      "datetime": "2026-01-10T12:29:59",
+      "pps_btc": 0.99944244,
+      "ret_step": -2.441355245123673e-06,
+      "ret_step_pct": -0.0002441355245123673,
+      "btc_price": 90536.31233043248,
+      "pps_yb": 0.9653121206657528
     }
   ]
 };
