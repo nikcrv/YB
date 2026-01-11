@@ -1,0 +1,1797 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YieldBasis - Withdrawable Revenue Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns"></script>
+    <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #0f172a;
+            color: #e2e8f0;
+            padding: 20px 15px;
+        }
+        .container { max-width: 1400px; margin: 0 auto; }
+        .header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; }
+        h1 { font-size: 2em; color: #94a3b8; font-weight: 400; flex-grow: 1; text-align: center; margin: 0; }
+        .back-button {
+            background: #334155;
+            border: 1px solid #475569;
+            color: #e2e8f0;
+            padding: 10px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 0.9em;
+            font-weight: 500;
+            transition: all 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .back-button:hover {
+            background: #475569;
+            border-color: #667eea;
+            transform: translateX(-2px);
+        }
+        .back-button::before {
+            content: '←';
+            font-size: 1.2em;
+        }
+        .loading { text-align: center; font-size: 1.5em; color: #667eea; padding: 50px; }
+        .answer {
+            background: linear-gradient(135deg, #059669 0%, #047857 100%);
+            border-radius: 16px; padding: 30px; text-align: center; font-size: 2em;
+            font-weight: 700; border: 3px solid #10b981; margin-bottom: 30px;
+            box-shadow: 0 15px 40px rgba(16, 185, 129, 0.2);
+        }
+        .answer.negative {
+            background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
+            border-color: #ef4444; box-shadow: 0 20px 60px rgba(239, 68, 68, 0.2);
+        }
+        .main-metric {
+            background: #1e293b; border: 2px solid #334155; border-radius: 12px;
+            padding: 20px; margin-bottom: 25px;
+        }
+        .metric-row {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 12px 0; border-bottom: 1px solid #334155;
+        }
+        .metric-row:last-child { border-bottom: none; }
+        .metric-label { font-size: 0.95em; color: #94a3b8; }
+        .metric-value { font-size: 1.3em; font-weight: 600; color: #e2e8f0; }
+        .chart-container {
+            background: #1e293b; border: 2px solid #334155; border-radius: 16px;
+            padding: 20px; margin-bottom: 30px;
+        }
+        .chart-wrapper { position: relative; height: 450px; }
+        .footer { text-align: center; color: #64748b; padding: 20px; font-size: 0.9em; }
+        .chart-controls {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 15px;
+            padding: 10px;
+            background: #0f172a;
+            border-radius: 8px;
+            flex-wrap: wrap;
+        }
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            cursor: pointer;
+        }
+        .checkbox-group input[type="checkbox"] {
+            width: 14px;
+            height: 14px;
+            cursor: pointer;
+        }
+        .checkbox-group label {
+            cursor: pointer;
+            color: #94a3b8;
+            font-size: 0.9em;
+        }
+        .success-badge {
+            background: #10b981; color: white; padding: 10px 20px;
+            border-radius: 8px; display: inline-block; margin-bottom: 20px;
+            font-weight: 600;
+        }
+        .compact-range {
+            margin-top: 15px;
+            padding-top: 10px;
+            border-top: 1px solid #334155;
+        }
+        .period-buttons {
+            display: flex;
+            gap: 6px;
+            margin-bottom: 12px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        .period-label {
+            color: #64748b;
+            font-size: 0.85em;
+            margin-right: 8px;
+        }
+        .period-button {
+            background: #0f172a;
+            color: #94a3b8;
+            border: 1px solid #334155;
+            padding: 4px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.8em;
+            transition: all 0.2s;
+        }
+        .period-button:hover {
+            border-color: #667eea;
+            color: #e2e8f0;
+        }
+        .period-button.active {
+            background: #667eea;
+            border-color: #667eea;
+            color: white;
+            font-weight: 500;
+        }
+        .range-slider {
+            width: 100%;
+            height: 4px;
+            background: #334155;
+            border-radius: 2px;
+            position: relative;
+            margin: 15px 0 8px 0;
+        }
+        .range-slider input[type="range"] {
+            position: absolute;
+            width: 100%;
+            height: 4px;
+            background: transparent;
+            pointer-events: none;
+            -webkit-appearance: none;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        .range-slider input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 14px;
+            height: 14px;
+            background: #667eea;
+            border-radius: 50%;
+            cursor: pointer;
+            pointer-events: all;
+            border: 2px solid #0f172a;
+        }
+        .range-slider input[type="range"]::-moz-range-thumb {
+            width: 14px;
+            height: 14px;
+            background: #667eea;
+            border-radius: 50%;
+            cursor: pointer;
+            pointer-events: all;
+            border: 2px solid #0f172a;
+        }
+        .range-fill {
+            position: absolute;
+            height: 4px;
+            background: #667eea;
+            border-radius: 2px;
+            pointer-events: none;
+        }
+        .range-labels {
+            display: flex;
+            justify-content: space-between;
+            color: #64748b;
+            font-size: 0.75em;
+        }
+
+        /* Share buttons */
+        .share-buttons {
+            position: absolute;
+            top: 8px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 8px;
+            z-index: 10;
+        }
+        .share-button {
+            background: rgba(59, 130, 246, 0.2);
+            border: 1px solid rgba(59, 130, 246, 0.4);
+            color: #60a5fa;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.7em;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 4px;
+            transition: all 0.2s;
+            height: 22px;
+            box-sizing: border-box;
+        }
+        .share-button:hover {
+            background: rgba(59, 130, 246, 0.4);
+            border-color: rgba(59, 130, 246, 0.6);
+        }
+        .share-button svg {
+            width: 14px;
+            height: 14px;
+        }
+        .share-button.success {
+            background: rgba(16, 185, 129, 0.3);
+            border-color: rgba(16, 185, 129, 0.5);
+            color: #34d399;
+        }
+
+        /* BTC price toggle */
+        .btc-price-toggle {
+            position: absolute;
+            top: 35px;
+            right: 25px;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            background: rgba(15, 23, 42, 0.8);
+            padding: 4px 8px;
+            border-radius: 4px;
+            border: 1px solid #334155;
+        }
+        .btc-price-toggle input {
+            width: 14px;
+            height: 14px;
+            cursor: pointer;
+        }
+        .btc-price-toggle label {
+            color: #94a3b8;
+            font-size: 0.75em;
+            cursor: pointer;
+        }
+
+        /* Mobile responsive */
+        @media (max-width: 768px) {
+            body {
+                padding: 10px 8px;
+            }
+            .chart-container {
+                padding: 12px 8px;
+            }
+            .chart-wrapper {
+                height: 350px;
+            }
+            .share-buttons {
+                gap: 6px;
+                left: auto;
+                right: 10px;
+                transform: none;
+            }
+            .share-button {
+                padding: 3px 6px;
+                height: 20px;
+            }
+            .share-button svg {
+                width: 12px;
+                height: 12px;
+            }
+            .btc-price-toggle {
+                top: 25px;
+                right: 10px;
+                padding: 3px 6px;
+            }
+            .btc-price-toggle label {
+                font-size: 0.65em;
+            }
+            .chart-controls {
+                gap: 8px;
+                padding: 8px;
+            }
+            .checkbox-group {
+                gap: 3px;
+            }
+            .checkbox-group label {
+                font-size: 0.8em;
+            }
+            .answer {
+                padding: 20px;
+                font-size: 1.5em;
+            }
+            h1 {
+                font-size: 1.3em;
+            }
+            .main-metric {
+                padding: 12px;
+            }
+            .metric-row {
+                padding: 8px 0;
+            }
+            .metric-label {
+                font-size: 0.85em;
+            }
+            .metric-value {
+                font-size: 1.1em;
+            }
+        }
+
+        /* Contract Version Selector */
+        .contract-selector {
+            display: flex;
+            gap: 10px;
+            background: #1e1b4b;
+            padding: 6px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            justify-content: center;
+            max-width: 400px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .contract-btn {
+            padding: 10px 20px;
+            background: transparent;
+            border: none;
+            border-radius: 6px;
+            color: #94a3b8;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 0.95em;
+        }
+
+        .contract-btn:hover {
+            background: #312e81;
+            color: #e2e8f0;
+        }
+
+        .contract-btn.active {
+            background: #8b5cf6;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="contract-selector">
+            <button class="contract-btn active" data-version="new" onclick="switchContractVersion('new')">NEW Contracts</button>
+            <button class="contract-btn" data-version="old" onclick="switchContractVersion('old')">OLD Contracts</button>
+        </div>
+
+        <div class="loading" id="loading">Loading synchronized data...</div>
+        <div id="content" style="display:none;">
+            <div class="header">
+                <a href="index.html" class="back-button">Back to Vaults</a>
+                <h1>YieldBasis Withdrawable Revenue Dashboard</h1>
+                <div style="width: 140px;"></div> <!-- Spacer for centering -->
+            </div>
+
+            <div class="answer" id="answerBox">
+                <span id="finalProfit">0.00000000 BTC</span>
+            </div>
+
+            <div class="chart-container" id="profitChartContainer" style="position: relative;">
+                <div class="share-buttons">
+                    <button class="share-button copy" onclick="copyChartScreenshot('profitChartContainer')" title="Copy"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg></button>
+                    <button class="share-button telegram" onclick="shareChartToTelegram('profitChartContainer')" title="Telegram"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg></button>
+                    <button class="share-button twitter" onclick="shareChartToTwitter('profitChartContainer')" title="X"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></button>
+                </div>
+                <div class="btc-price-toggle">
+                    <input type="checkbox" id="toggleBtcPrice" checked onchange="toggleBtcPriceLine()">
+                    <label for="toggleBtcPrice">BTC $</label>
+                </div>
+                <h2 style="color: #94a3b8; font-size: 1.3em; margin-bottom: 20px;">Accumulated Revenue</h2>
+
+                <div class="chart-controls" style="justify-content: space-between;">
+                    <div style="display: flex; gap: 20px; flex-wrap: wrap;">
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="toggleWithdrawable" checked>
+                            <label for="toggleWithdrawable">TVL (Withdrawable)</label>
+                        </div>
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="toggleDeposits" checked>
+                            <label for="toggleDeposits">Deposits</label>
+                        </div>
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="toggleWithdrawals" checked>
+                            <label for="toggleWithdrawals">Withdrawals</label>
+                        </div>
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="toggleAdminFees" checked>
+                            <label for="toggleAdminFees">Admin Fees</label>
+                        </div>
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="toggleAdminFeeWithdrawals" checked>
+                            <label for="toggleAdminFeeWithdrawals">Include Admin Fee Withdrawals</label>
+                        </div>
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="toggleYbEmission" checked>
+                            <label for="toggleYbEmission">YB Emission</label>
+                        </div>
+                    </div>
+                    <div style="display: flex; gap: 20px; flex-wrap: wrap;">
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="toggleWbtc" checked>
+                            <label for="toggleWbtc">WBTC</label>
+                        </div>
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="toggleCbbtc" checked>
+                            <label for="toggleCbbtc">cbBTC</label>
+                        </div>
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="toggleTbtc" checked>
+                            <label for="toggleTbtc">tBTC</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="chart-wrapper">
+                    <canvas id="profitChart"></canvas>
+                </div>
+
+                <div class="compact-range">
+                    <div class="period-buttons">
+                        <span class="period-label">Period:</span>
+                        <button class="period-button" data-days="7">7d</button>
+                        <button class="period-button" data-days="14">14d</button>
+                        <button class="period-button" data-days="30">30d</button>
+                        <button class="period-button active" data-days="all">All</button>
+                    </div>
+                    <div class="range-slider">
+                        <div class="range-fill" id="rangeFill"></div>
+                        <input type="range" id="rangeStart" min="0" max="100" value="0">
+                        <input type="range" id="rangeEnd" min="0" max="100" value="100">
+                    </div>
+                    <div class="range-labels">
+                        <span id="startLabel">Start</span>
+                        <span id="endLabel">End</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="main-metric" id="metricsBox" style="position: relative;">
+                <div class="share-buttons">
+                    <button class="share-button copy" onclick="copyChartScreenshot('metricsBox')" title="Copy"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg></button>
+                    <button class="share-button telegram" onclick="shareChartToTelegram('metricsBox')" title="Telegram"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg></button>
+                    <button class="share-button twitter" onclick="shareChartToTwitter('metricsBox')" title="X"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></button>
+                </div>
+            </div>
+
+            <div class="chart-container" id="tvlChartContainer" style="position: relative;">
+                <div class="share-buttons">
+                    <button class="share-button copy" onclick="copyChartScreenshot('tvlChartContainer')" title="Copy"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg></button>
+                    <button class="share-button telegram" onclick="shareChartToTelegram('tvlChartContainer')" title="Telegram"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg></button>
+                    <button class="share-button twitter" onclick="shareChartToTwitter('tvlChartContainer')" title="X"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></button>
+                </div>
+                <h2 style="color: #94a3b8; font-size: 1.3em; margin-bottom: 20px;">TVL by Markets</h2>
+                <div class="chart-wrapper">
+                    <canvas id="tvlByMarketChart"></canvas>
+                </div>
+            </div>
+
+            <div class="footer" id="footer"></div>
+        </div>
+    </div>
+
+    <!-- UNIFIED DATA -->
+    <script src="unified_data.js?v=1"></script>
+    <script src="unified_data_adapter.js?v=1"></script>
+    <script>
+        // BTC price sources from unified data
+        var btcPriceSourceEarly = yieldData_old_wbtc.data || null;
+        var btcPriceSourceNew = yieldData_cbbtc.data || null;
+    </script>
+
+    <script>
+    // Загружаем настройку timezone из localStorage или используем local по умолчанию
+    let useUTC = localStorage.getItem('useUTC') === 'true';
+
+    // Функция переключения UTC/Local
+    function toggleTimezone() {
+        useUTC = !useUTC;
+        localStorage.setItem('useUTC', useUTC);
+        const btn = document.getElementById('timezone-toggle');
+        btn.textContent = useUTC ? '🕐 UTC' : '🕐 Local';
+        btn.style.background = useUTC ? '#2a4a3a' : '#333';
+        // Перезагружаем страницу для обновления графиков
+        location.reload();
+    }
+
+    // Обновляем кнопку при загрузке
+    document.addEventListener('DOMContentLoaded', function() {
+        const btn = document.getElementById('timezone-toggle');
+        if (btn) {
+            btn.textContent = useUTC ? '🕐 UTC' : '🕐 Local';
+            btn.style.background = useUTC ? '#2a4a3a' : '#333';
+        }
+    });
+
+    // Глобальная переменная для текущей версии контракта
+    // Загружаем из localStorage или используем 'new' по умолчанию
+    let currentContractVersion = localStorage.getItem('contractVersion') || 'new';
+
+    // Функция переключения между NEW и OLD контрактами
+    function switchContractVersion(version) {
+        // Сохраняем выбор в localStorage
+        localStorage.setItem('contractVersion', version);
+        currentContractVersion = version;
+
+        // Перезагружаем данные
+        location.reload();
+    }
+
+    // При загрузке страницы обновляем активную кнопку
+    document.addEventListener('DOMContentLoaded', function() {
+        document.querySelectorAll('.contract-btn').forEach(btn => {
+            btn.classList.remove('active');
+            if (btn.getAttribute('data-version') === currentContractVersion) {
+                btn.classList.add('active');
+            }
+        });
+    });
+
+    window.addEventListener('load', async function() {
+        try {
+            console.log('Loading synchronized data...');
+            console.log('Contract version:', currentContractVersion);
+
+            // Выбираем источник данных в зависимости от версии контракта
+            let yieldDataSource_wbtc, yieldDataSource_cbbtc, yieldDataSource_tbtc, ybEmissionDataSource;
+
+            if (currentContractVersion === 'old') {
+                // Проверяем что OLD данные загружены
+                if (typeof old_yieldData_wbtc === 'undefined' ||
+                    typeof old_yieldData_cbbtc === 'undefined' ||
+                    typeof old_yieldData_tbtc === 'undefined') {
+                    throw new Error('OLD contract data files not found.');
+                }
+                yieldDataSource_wbtc = old_yieldData_wbtc;
+                yieldDataSource_cbbtc = old_yieldData_cbbtc;
+                yieldDataSource_tbtc = old_yieldData_tbtc;
+                ybEmissionDataSource = typeof old_ybEmissionData !== 'undefined' ? old_ybEmissionData : null;
+            } else {
+                // NEW контракты (по умолчанию) - используем revenue yield данные
+                if (typeof revenueYieldData_wbtc === 'undefined' ||
+                    typeof revenueYieldData_cbbtc === 'undefined' ||
+                    typeof revenueYieldData_tbtc === 'undefined') {
+                    throw new Error('Synchronized data files not found. Run: python collect_sync.py');
+                }
+                yieldDataSource_wbtc = revenueYieldData_wbtc;
+                yieldDataSource_cbbtc = revenueYieldData_cbbtc;
+                yieldDataSource_tbtc = revenueYieldData_tbtc;
+                ybEmissionDataSource = typeof ybEmissionData !== 'undefined' ? ybEmissionData : null;
+            }
+
+            // Данные УЖЕ синхронизированы - просто складываем!
+            const wbtcData = yieldDataSource_wbtc.data;
+            const cbbtcData = yieldDataSource_cbbtc.data;
+            const tbtcData = yieldDataSource_tbtc.data;
+
+            console.log('WBTC points:', wbtcData.length);
+            console.log('cbBTC points:', cbbtcData.length);
+            console.log('tBTC points:', tbtcData.length);
+
+            // Проверяем синхронизацию
+            if (wbtcData.length !== cbbtcData.length || wbtcData.length !== tbtcData.length) {
+                throw new Error('Data is not synchronized! Re-run collect_sync.py');
+            }
+
+            // Функция для пересчета profit data
+            function recalculateProfitData() {
+                let cumulativeDeposits = 0;
+                let cumulativeWithdrawals = 0;
+                let cumulativeAdminFeeWithdrawals = 0;
+
+                return wbtcData.map((wbtc, i) => {
+                const cbbtc = cbbtcData[i];
+                const tbtc = tbtcData[i];
+
+                // Проверяем что timestamps совпадают
+                if (wbtc.timestamp !== cbbtc.timestamp || wbtc.timestamp !== tbtc.timestamp) {
+                    console.warn(`Timestamp mismatch at index ${i}`);
+                }
+
+                // Складываем данные всех рынков
+                const totalWithdrawable = (wbtc.total_withdrawable_btc || 0) +
+                                         (cbbtc.total_withdrawable_btc || 0) +
+                                         (tbtc.total_withdrawable_btc || 0);
+
+                const deposits = (wbtc.deposits_btc || 0) +
+                                (cbbtc.deposits_btc || 0) +
+                                (tbtc.deposits_btc || 0);
+
+                const withdrawals = (wbtc.withdrawals_btc || 0) +
+                                   (cbbtc.withdrawals_btc || 0) +
+                                   (tbtc.withdrawals_btc || 0);
+
+                // ИСПРАВЛЕНО: admin_fee_withdrawals_btc - это дельта выводов admin fees
+                // Для OLD контрактов это поле = 0 (нет отдельных выводов)
+                // Для NEW контрактов это поле содержит реальные дельты
+                // НЕ используем admin_fees_btc здесь, т.к. это кумулятивное значение!
+                const adminFeeWithdrawals = (wbtc.admin_fee_withdrawals_btc || 0) +
+                                           (cbbtc.admin_fee_withdrawals_btc || 0) +
+                                           (tbtc.admin_fee_withdrawals_btc || 0);
+
+                const adminFees = (wbtc.admin_fees_btc || 0) +
+                                 (cbbtc.admin_fees_btc || 0) +
+                                 (tbtc.admin_fees_btc || 0);
+
+                // Накапливаем
+                cumulativeDeposits += deposits;
+                cumulativeWithdrawals += withdrawals;
+                cumulativeAdminFeeWithdrawals += adminFeeWithdrawals;
+
+                // Вычисляем прибыль
+                // Формула: profit = TVL - deposits + withdrawals + adminFees
+                // Когда adminFees выводятся, adminFees уменьшается (становится отрицательным после вывода)
+                // Чтобы компенсировать это, добавляем cumulativeAdminFeeWithdrawals к adminFees
+                const includeAdminFeeWithdrawals = document.getElementById('toggleAdminFeeWithdrawals')?.checked ?? true;
+
+                // effectiveAdminFees - компенсируем уменьшение adminFees при выводе
+                const effectiveAdminFees = includeAdminFeeWithdrawals
+                    ? adminFees + cumulativeAdminFeeWithdrawals
+                    : adminFees;
+
+                const netDeposited = cumulativeDeposits - cumulativeWithdrawals;
+                const profit = totalWithdrawable - netDeposited + effectiveAdminFees;
+
+                return {
+                    timestamp: wbtc.timestamp,
+                    date: new Date(wbtc.timestamp * 1000).toLocaleDateString('en-US', useUTC ? { timeZone: 'UTC' } : {}),
+                    profit: profit,
+                    withdrawable: totalWithdrawable,
+                    deposits: cumulativeDeposits,
+                    withdrawals: cumulativeWithdrawals,
+                    admin_fees: adminFees,
+                    admin_fee_withdrawals: cumulativeAdminFeeWithdrawals
+                };
+                });
+            }
+
+            // Вызываем функцию для первоначального расчета
+            let profitData = recalculateProfitData();
+
+            console.log('Profit data points:', profitData.length);
+
+            // Обновляем метрики
+            const lastPoint = profitData[profitData.length - 1];
+            const finalProfit = lastPoint.profit;
+            const finalTVL = lastPoint.withdrawable;  // TVL для расчета процентов
+
+            document.getElementById('finalProfit').textContent = finalProfit.toFixed(8) + ' BTC';
+            document.getElementById('answerBox').className = 'answer';  // Всегда зеленый
+
+            // Вычисляем YB emission для метрик (будет обновлено после загрузки данных)
+            let totalYbEmissionBtc = 0;
+
+            const metricsHTML = `
+                <div class="metric-row">
+                    <div class="metric-label">TVL (Withdrawable)</div>
+                    <div class="metric-value">${lastPoint.withdrawable.toFixed(2)} BTC</div>
+                </div>
+                <div class="metric-row">
+                    <div class="metric-label">Total Deposits</div>
+                    <div class="metric-value">${lastPoint.deposits.toFixed(2)} BTC</div>
+                </div>
+                <div class="metric-row">
+                    <div class="metric-label">Total Withdrawals</div>
+                    <div class="metric-value">${lastPoint.withdrawals.toFixed(2)} BTC</div>
+                </div>
+                <div class="metric-row">
+                    <div class="metric-label">Net Deposited</div>
+                    <div class="metric-value">${(lastPoint.deposits - lastPoint.withdrawals).toFixed(2)} BTC</div>
+                </div>
+                <div class="metric-row">
+                    <div class="metric-label">Admin Fees</div>
+                    <div class="metric-value">${lastPoint.admin_fees.toFixed(4)} BTC</div>
+                </div>
+                <div class="metric-row">
+                    <div class="metric-label">Admin Fee Withdrawals</div>
+                    <div class="metric-value">${lastPoint.admin_fee_withdrawals.toFixed(4)} BTC</div>
+                </div>
+                <div class="metric-row" id="ybEmissionMetric" style="display:none;">
+                    <div class="metric-label">YB Emission</div>
+                    <div class="metric-value" id="ybEmissionValue">0.0000 BTC</div>
+                </div>
+            `;
+            document.getElementById('metricsBox').innerHTML = metricsHTML;
+
+            // Footer
+            const startDate = new Date(profitData[0].timestamp * 1000).toLocaleDateString('en-US', useUTC ? { timeZone: 'UTC' } : {});
+            const endDate = new Date(profitData[profitData.length - 1].timestamp * 1000).toLocaleDateString('en-US', useUTC ? { timeZone: 'UTC' } : {});
+            document.getElementById('footer').textContent =
+                `Synchronized data | Points: ${profitData.length} | Period: ${startDate} - ${endDate}`;
+
+            // Загрузка данных YB emission (из JS файла для решения CORS проблемы)
+            let ybEmissionDataArray = null;
+            try {
+                if (ybEmissionDataSource) {
+                    ybEmissionDataArray = ybEmissionDataSource;
+                    console.log('YB emission data loaded:', ybEmissionDataArray.length, 'points');
+                } else {
+                    console.log('YB emission data not available');
+                }
+            } catch (error) {
+                console.log('YB emission data not available:', error.message);
+            }
+
+            // Подготовка данных YB emission для суммирования с интерполяцией (по рынкам)
+            if (ybEmissionDataArray) {
+                // Фильтруем записи без BTC полей (неполные записи)
+                const validYbData = ybEmissionDataArray.filter(item => 
+                    item.cumulative_WBTC_btc !== undefined &&
+                    item.cumulative_cbBTC_btc !== undefined &&
+                    item.cumulative_tBTC_btc !== undefined
+                );
+
+                // Создаем массивы с данными для каждого рынка (hourly данные - используем timestamp напрямую)
+                const ybDatesWbtc = validYbData.map(item => ({
+                    timestamp: item.timestamp,  // Используем timestamp напрямую (hourly данные)
+                    value: item.cumulative_WBTC_btc || 0
+                })).sort((a, b) => a.timestamp - b.timestamp);
+
+                const ybDatesCbbtc = validYbData.map(item => ({
+                    timestamp: item.timestamp,
+                    value: item.cumulative_cbBTC_btc || 0
+                })).sort((a, b) => a.timestamp - b.timestamp);
+
+                const ybDatesTbtc = validYbData.map(item => ({
+                    timestamp: item.timestamp,
+                    value: item.cumulative_tBTC_btc || 0
+                })).sort((a, b) => a.timestamp - b.timestamp);
+
+                console.log('YB emission по рынкам будет интерполироваться и суммироваться');
+
+                // Функция линейной интерполяции для конкретного рынка
+                function interpolateYbEmission(timestamp, ybDates) {
+                    if (ybDates.length === 0) return 0;
+
+                    // Если раньше первой даты - возвращаем 0
+                    if (timestamp < ybDates[0].timestamp) return 0;
+
+                    // Если позже последней даты - возвращаем последнее значение
+                    if (timestamp >= ybDates[ybDates.length - 1].timestamp) {
+                        return ybDates[ybDates.length - 1].value;
+                    }
+
+                    // Находим ближайшие точки
+                    for (let i = 0; i < ybDates.length - 1; i++) {
+                        if (timestamp >= ybDates[i].timestamp && timestamp < ybDates[i + 1].timestamp) {
+                            const lower = ybDates[i];
+                            const upper = ybDates[i + 1];
+
+                            // Линейная интерполяция
+                            const ratio = (timestamp - lower.timestamp) / (upper.timestamp - lower.timestamp);
+                            return lower.value + ratio * (upper.value - lower.value);
+                        }
+                    }
+
+                    return 0;
+                }
+
+                // Добавляем YB emission к каждой точке profitData с интерполяцией (по рынкам)
+                profitData.forEach(point => {
+                    point.yb_emission_wbtc_btc = interpolateYbEmission(point.timestamp, ybDatesWbtc);
+                    point.yb_emission_cbbtc_btc = interpolateYbEmission(point.timestamp, ybDatesCbbtc);
+                    point.yb_emission_tbtc_btc = interpolateYbEmission(point.timestamp, ybDatesTbtc);
+                });
+
+                // Обновляем метрику YB emission
+                const lastPointIndex = profitData.length - 1;
+                const totalYbEmission = (profitData[lastPointIndex].yb_emission_wbtc_btc || 0) +
+                                       (profitData[lastPointIndex].yb_emission_cbbtc_btc || 0) +
+                                       (profitData[lastPointIndex].yb_emission_tbtc_btc || 0);
+
+                document.getElementById('ybEmissionMetric').style.display = 'flex';
+                document.getElementById('ybEmissionValue').textContent = totalYbEmission.toFixed(4) + ' BTC';
+            } else {
+                profitData.forEach(point => {
+                    point.yb_emission_wbtc_btc = 0;
+                    point.yb_emission_cbbtc_btc = 0;
+                    point.yb_emission_tbtc_btc = 0;
+                });
+            }
+
+            // Profit Chart
+            const isMobile = window.innerWidth <= 768;
+            let profitChart;  // Объявляем переменную заранее
+            const datasets = [{
+                label: 'in BTC',
+                data: profitData.map(d => ({x: d.timestamp * 1000, y: d.profit})),
+                borderColor: '#10b981',  // Всегда зеленый
+                backgroundColor: 'rgba(16, 185, 129, 0.1)',
+                borderWidth: 2,
+                fill: true,
+                tension: 0.4,
+                pointRadius: 0,
+                pointHoverRadius: 5,
+                stepped: false,
+                spanGaps: true
+            }];
+
+            profitChart = new Chart(document.getElementById('profitChart'), {
+                type: 'line',
+                data: {
+                    datasets: datasets
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    interaction: {
+                        mode: 'index',
+                        intersect: false
+                    },
+                    plugins: {
+                        legend: { display: true, labels: { color: '#94a3b8', font: { size: 14 } } },
+                        tooltip: {
+                            enabled: false,
+                            external: function(context) {
+                                // Получаем или создаём tooltip элемент
+                                let tooltipEl = document.getElementById('chartjs-tooltip-profit');
+                                if (!tooltipEl) {
+                                    tooltipEl = document.createElement('div');
+                                    tooltipEl.id = 'chartjs-tooltip-profit';
+                                    tooltipEl.style.cssText = `
+                                        position: fixed;
+                                        background: #1e293b;
+                                        border: 1px solid #334155;
+                                        border-radius: 8px;
+                                        padding: 12px;
+                                        pointer-events: none;
+                                        z-index: 99999;
+                                        font-family: monospace;
+                                        font-size: 12px;
+                                        color: #e2e8f0;
+                                        white-space: pre;
+                                        box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+                                        max-width: 400px;
+                                    `;
+                                    document.body.appendChild(tooltipEl);
+                                }
+
+                                // Линия от точки к tooltip
+                                let lineEl = document.getElementById('chartjs-tooltip-line');
+                                if (!lineEl) {
+                                    lineEl = document.createElement('div');
+                                    lineEl.id = 'chartjs-tooltip-line';
+                                    lineEl.style.cssText = `
+                                        position: fixed;
+                                        width: 1px;
+                                        background: #94a3b8;
+                                        pointer-events: none;
+                                        z-index: 99998;
+                                    `;
+                                    document.body.appendChild(lineEl);
+                                }
+
+                                const tooltipModel = context.tooltip;
+                                if (tooltipModel.opacity === 0) {
+                                    tooltipEl.style.opacity = 0;
+                                    lineEl.style.opacity = 0;
+                                    return;
+                                }
+
+                                // Формируем контент
+                                if (tooltipModel.body) {
+                                    const dataIndex = tooltipModel.dataPoints[0].dataIndex;
+                                    const point = profitData[dataIndex];
+                                    const wbtc = wbtcData[dataIndex];
+                                    const date = new Date(point.timestamp * 1000);
+                                    const dateStr = date.toLocaleDateString('en-US', useUTC ? { timeZone: 'UTC' } : {});
+                                    const timeStr = date.toLocaleTimeString('en-US', useUTC ? { timeZone: 'UTC' } : {});
+                                    const netDeposited = point.deposits - point.withdrawals;
+                                    const percentOfTVL = (point.profit / finalTVL * 100).toFixed(2);
+                                    const totalYbEmission = (point.yb_emission_wbtc_btc || 0) +
+                                                           (point.yb_emission_cbbtc_btc || 0) +
+                                                           (point.yb_emission_tbtc_btc || 0);
+
+                                    let html = `📅 ${dateStr} ${timeStr}\n🔗 Block: ${wbtc.block}\n\n`;
+                                    html += `📊 ACCUMULATED REVENUE CALCULATION:\n`;
+                                    html += `─────────────────────\n`;
+                                    html += `TVL (available):       +${point.withdrawable.toFixed(4)} BTC\n`;
+                                    html += `Net Deposited:        -${netDeposited.toFixed(4)} BTC\n`;
+                                    html += `  (Deposits: ${point.deposits.toFixed(2)} BTC)\n`;
+                                    html += `  (Withdrawals: ${point.withdrawals.toFixed(2)} BTC)\n`;
+                                    html += `Admin Fees:           +${point.admin_fees.toFixed(4)} BTC\n`;
+
+                                    if (totalYbEmission > 0) {
+                                        html += `\nYB Emission by Market:\n`;
+                                        if (point.yb_emission_wbtc_btc) html += `  WBTC:  +${point.yb_emission_wbtc_btc.toFixed(4)} BTC\n`;
+                                        if (point.yb_emission_cbbtc_btc) html += `  cbBTC: +${point.yb_emission_cbbtc_btc.toFixed(4)} BTC\n`;
+                                        if (point.yb_emission_tbtc_btc) html += `  tBTC:  +${point.yb_emission_tbtc_btc.toFixed(4)} BTC\n`;
+                                        html += `  TOTAL: +${totalYbEmission.toFixed(4)} BTC\n`;
+                                    }
+
+                                    const totalProfit = point.profit + totalYbEmission;
+                                    html += `─────────────────────\n`;
+                                    html += `💰 BALANCE (w/o YB):  ${point.profit.toFixed(4)} BTC (${percentOfTVL}% of TVL)\n`;
+                                    if (totalYbEmission > 0) {
+                                        html += `💰 BALANCE (w/ YB):   ${totalProfit.toFixed(4)} BTC\n`;
+                                    }
+                                    html += `\nFormula: TVL - (Deposits - Withdrawals) + Admin Fees + YB`;
+
+                                    tooltipEl.innerHTML = html;
+                                }
+
+                                // Позиционирование
+                                const chartRect = context.chart.canvas.getBoundingClientRect();
+                                const pointX = chartRect.left + tooltipModel.caretX;
+                                const pointY = chartRect.left + tooltipModel.caretY;
+
+                                // Tooltip справа от точки с отступом
+                                let tooltipX = pointX + 60;
+                                let tooltipY = chartRect.top + 20;
+
+                                // Если tooltip выходит за правый край экрана, показываем слева
+                                const tooltipWidth = tooltipEl.offsetWidth || 350;
+                                if (tooltipX + tooltipWidth > window.innerWidth - 20) {
+                                    tooltipX = pointX - tooltipWidth - 60;
+                                }
+
+                                tooltipEl.style.left = tooltipX + 'px';
+                                tooltipEl.style.top = tooltipY + 'px';
+                                tooltipEl.style.opacity = 1;
+
+                                // Вертикальная линия от верха графика до низа
+                                lineEl.style.left = pointX + 'px';
+                                lineEl.style.top = chartRect.top + 'px';
+                                lineEl.style.height = chartRect.height + 'px';
+                                lineEl.style.opacity = 0.5;
+                            }
+                        }
+                    },
+                    scales: {
+                        x: {
+                            type: 'time',
+                            time: {
+                                unit: 'day',
+                                displayFormats: {
+                                    day: 'MMM dd'
+                                }
+                            },
+                            min: profitData[0].timestamp * 1000,
+                            max: profitData[profitData.length - 1].timestamp * 1000,
+                            ticks: { color: '#64748b' },
+                            grid: { color: '#1e293b' }
+                        },
+                        y: {
+                            position: 'left',
+                            ticks: { color: '#64748b' },
+                            grid: { color: '#1e293b' },
+                            title: {
+                                display: !isMobile,
+                                text: 'BTC',
+                                color: '#94a3b8'
+                            }
+                        },
+                        y1: {
+                            position: 'right',
+                            ticks: {
+                                color: '#64748b',
+                                maxTicksLimit: isMobile ? 5 : 10,
+                                callback: function(value) {
+                                    return value.toFixed(1) + '%';
+                                }
+                            },
+                            grid: { display: false },
+                            title: {
+                                display: !isMobile,
+                                text: '% of TVL',
+                                color: '#94a3b8'
+                            },
+                            // Связываем с левой осью через afterDataLimits
+                            afterDataLimits: function(axis) {
+                                const leftAxis = axis.chart.scales.y;
+                                const percentPerBTC = 100 / finalTVL;
+
+                                // Синхронизируем min/max с левой осью
+                                axis.min = leftAxis.min * percentPerBTC;
+                                axis.max = leftAxis.max * percentPerBTC;
+                            }
+                        }
+                    }
+                }
+            });
+
+            // TVL by Market Chart
+            const tvlByMarketChart = new Chart(document.getElementById('tvlByMarketChart'), {
+                type: 'line',
+                data: {
+                    datasets: [
+                        {
+                            label: 'WBTC TVL',
+                            data: wbtcData.map((d, i) => ({x: profitData[i].timestamp * 1000, y: d.total_withdrawable_btc})),
+                            borderColor: '#f97316',
+                            backgroundColor: 'rgba(249, 115, 22, 0.1)',
+                            borderWidth: 2,
+                            fill: false,
+                            tension: 0.4,
+                            pointRadius: 0,
+                            pointHoverRadius: 5
+                        },
+                        {
+                            label: 'cbBTC TVL',
+                            data: cbbtcData.map((d, i) => ({x: profitData[i].timestamp * 1000, y: d.total_withdrawable_btc})),
+                            borderColor: '#3b82f6',
+                            backgroundColor: 'rgba(59, 130, 246, 0.1)',
+                            borderWidth: 2,
+                            fill: false,
+                            tension: 0.4,
+                            pointRadius: 0,
+                            pointHoverRadius: 5
+                        },
+                        {
+                            label: 'tBTC TVL',
+                            data: tbtcData.map((d, i) => ({x: profitData[i].timestamp * 1000, y: d.total_withdrawable_btc})),
+                            borderColor: '#8b5cf6',
+                            backgroundColor: 'rgba(139, 92, 246, 0.1)',
+                            borderWidth: 2,
+                            fill: false,
+                            tension: 0.4,
+                            pointRadius: 0,
+                            pointHoverRadius: 5
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: true, labels: { color: '#94a3b8', font: { size: 14 } } },
+                        tooltip: {
+                            backgroundColor: '#1e293b',
+                            titleColor: '#e2e8f0',
+                            bodyColor: '#e2e8f0',
+                            borderColor: '#334155',
+                            borderWidth: 1,
+                            padding: 12,
+                            callbacks: {
+                                title: ctx => {
+                                    const index = ctx[0].dataIndex;
+                                    const point = profitData[index];
+                                    const wbtc = wbtcData[index];
+
+                                    // Форматируем дату и время
+                                    const date = new Date(point.timestamp * 1000);
+                                    const dateStr = date.toLocaleDateString('en-US', useUTC ? { timeZone: 'UTC' } : {});
+                                    const timeStr = date.toLocaleTimeString('en-US', useUTC ? { timeZone: 'UTC' } : {});
+
+                                    return [
+                                        `📅 ${dateStr} ${timeStr}`,
+                                        `🔗 Block: ${wbtc.block}`
+                                    ];
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        x: {
+                            type: 'time',
+                            time: {
+                                unit: 'day',
+                                displayFormats: {
+                                    day: 'MMM dd'
+                                }
+                            },
+                            ticks: { color: '#64748b' },
+                            grid: { color: '#1e293b' }
+                        },
+                        y: { beginAtZero: true, ticks: { color: '#64748b' }, grid: { color: '#1e293b' } }
+                    }
+                }
+            });
+
+            // ====== RANGE SLIDER LOGIC ======
+
+            // Хранилище полных данных
+            const fullProfitData = [...profitData];
+            const fullWbtcData = [...wbtcData];
+            const fullCbbtcData = [...cbbtcData];
+            const fullTbtcData = [...tbtcData];
+
+            let currentRangeStart = 0;
+            let currentRangeEnd = fullProfitData.length - 1;
+
+            // Обновление визуального ползунка
+            function updateSliderUI() {
+                const rangeStart = document.getElementById('rangeStart');
+                const rangeEnd = document.getElementById('rangeEnd');
+                const rangeFill = document.getElementById('rangeFill');
+                const startLabel = document.getElementById('startLabel');
+                const endLabel = document.getElementById('endLabel');
+
+                const startPercent = (parseInt(rangeStart.value) / parseInt(rangeStart.max)) * 100;
+                const endPercent = (parseInt(rangeEnd.value) / parseInt(rangeEnd.max)) * 100;
+
+                rangeFill.style.left = startPercent + '%';
+                rangeFill.style.width = (endPercent - startPercent) + '%';
+
+                // Обновляем метки
+                const tzOpts = useUTC ? { month: 'short', day: 'numeric', timeZone: 'UTC' } : { month: 'short', day: 'numeric' };
+                const startDate = new Date(fullProfitData[currentRangeStart].timestamp * 1000).toLocaleDateString('en-US', tzOpts);
+                const endDate = new Date(fullProfitData[currentRangeEnd].timestamp * 1000).toLocaleDateString('en-US', tzOpts);
+
+                startLabel.textContent = startDate;
+                endLabel.textContent = endDate;
+            }
+
+            // Фильтрация данных по диапазону (без пересчета)
+            function filterDataByRange() {
+                profitData.length = 0;
+                wbtcData.length = 0;
+                cbbtcData.length = 0;
+                tbtcData.length = 0;
+
+                for (let i = currentRangeStart; i <= currentRangeEnd; i++) {
+                    profitData.push(fullProfitData[i]);
+                    wbtcData.push(fullWbtcData[i]);
+                    cbbtcData.push(fullCbbtcData[i]);
+                    tbtcData.push(fullTbtcData[i]);
+                }
+
+                // Обновляем графики БЕЗ пересчета (просто меняем диапазон)
+                updateChartsRange();
+            }
+
+            // Обработчики ползунков
+            document.getElementById('rangeStart').addEventListener('input', function() {
+                let startValue = parseInt(this.value);
+                let endValue = parseInt(document.getElementById('rangeEnd').value);
+
+                if (startValue >= endValue) {
+                    startValue = endValue - 1;
+                    this.value = startValue;
+                }
+
+                currentRangeStart = Math.floor((startValue / 100) * (fullProfitData.length - 1));
+                updateSliderUI();
+            });
+
+            document.getElementById('rangeEnd').addEventListener('input', function() {
+                let startValue = parseInt(document.getElementById('rangeStart').value);
+                let endValue = parseInt(this.value);
+
+                if (endValue <= startValue) {
+                    endValue = startValue + 1;
+                    this.value = endValue;
+                }
+
+                currentRangeEnd = Math.floor((endValue / 100) * (fullProfitData.length - 1));
+                updateSliderUI();
+            });
+
+            document.getElementById('rangeStart').addEventListener('change', filterDataByRange);
+            document.getElementById('rangeEnd').addEventListener('change', filterDataByRange);
+
+            // Обработчики кнопок периодов
+            document.querySelectorAll('.period-button').forEach(button => {
+                button.addEventListener('click', function() {
+                    // Убираем active со всех кнопок
+                    document.querySelectorAll('.period-button').forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+
+                    const days = this.getAttribute('data-days');
+
+                    if (days === 'all') {
+                        currentRangeStart = 0;
+                        currentRangeEnd = fullProfitData.length - 1;
+                    } else {
+                        const daysNum = parseInt(days);
+                        currentRangeEnd = fullProfitData.length - 1;
+
+                        // Ищем точку N дней назад
+                        const endTimestamp = fullProfitData[currentRangeEnd].timestamp;
+                        const targetTimestamp = endTimestamp - (daysNum * 86400);
+
+                        currentRangeStart = fullProfitData.findIndex(p => p.timestamp >= targetTimestamp);
+                        if (currentRangeStart === -1) currentRangeStart = 0;
+                    }
+
+                    // Обновляем ползунки
+                    const startPercent = (currentRangeStart / (fullProfitData.length - 1)) * 100;
+                    const endPercent = (currentRangeEnd / (fullProfitData.length - 1)) * 100;
+
+                    document.getElementById('rangeStart').value = startPercent;
+                    document.getElementById('rangeEnd').value = endPercent;
+
+                    updateSliderUI();
+                    filterDataByRange();
+                });
+            });
+
+            // Инициализация ползунка
+            updateSliderUI();
+
+            // Хранилище рассчитанных данных для ВСЕГО диапазона
+            let fullRecalculatedData = null;
+
+            // Функция обновления графиков БЕЗ пересчета (только изменение диапазона)
+            function updateChartsRange() {
+                // Берем нужный диапазон из уже рассчитанных данных
+                if (fullRecalculatedData) {
+                    const rangeData = fullRecalculatedData.slice(currentRangeStart, currentRangeEnd + 1);
+                    profitChart.data.datasets[0].data = profitData.map((d, i) => ({
+                        x: d.timestamp * 1000,
+                        y: rangeData[i]
+                    }));
+                } else {
+                    // Если еще не рассчитывали - используем исходные данные
+                    profitChart.data.datasets[0].data = profitData.map(d => ({
+                        x: d.timestamp * 1000,
+                        y: d.profit
+                    }));
+                }
+
+                // Обновляем X-ось min/max
+                if (profitData.length > 0) {
+                    profitChart.options.scales.x.min = profitData[0].timestamp * 1000;
+                    profitChart.options.scales.x.max = profitData[profitData.length - 1].timestamp * 1000;
+                }
+
+                // Обновляем финальное значение
+                const lastData = profitChart.data.datasets[0].data[profitChart.data.datasets[0].data.length - 1];
+                document.getElementById('finalProfit').textContent = lastData.y.toFixed(8) + ' BTC';
+
+                // Обновляем BTC price данные если checkbox включен
+                if (document.getElementById('toggleBtcPrice').checked && typeof window.getBtcPriceForTimestamp === 'function') {
+                    const btcPricePoints = profitData.map(d => ({
+                        x: d.timestamp * 1000,
+                        y: window.getBtcPriceForTimestamp(d.timestamp)
+                    }));
+
+                    // Пересчитываем min/max для нового диапазона
+                    const btcPrices = btcPricePoints.map(p => p.y).filter(v => v !== null);
+                    if (btcPrices.length > 0) {
+                        const minBtcPrice = Math.min(...btcPrices);
+                        const maxBtcPrice = Math.max(...btcPrices);
+                        const btcPricePadding = (maxBtcPrice - minBtcPrice) * 0.05;
+
+                        // Обновляем данные BTC price dataset
+                        const btcIndex = profitChart.data.datasets.findIndex(ds => ds.label === 'BTC Price');
+                        if (btcIndex !== -1) {
+                            profitChart.data.datasets[btcIndex].data = btcPricePoints;
+                        }
+
+                        // Обновляем границы оси
+                        if (profitChart.options.scales.yBtcPrice) {
+                            profitChart.options.scales.yBtcPrice.min = minBtcPrice - btcPricePadding;
+                            profitChart.options.scales.yBtcPrice.max = maxBtcPrice + btcPricePadding;
+                        }
+                    }
+                }
+
+                profitChart.update();
+
+                // Обновляем TVL график
+                tvlByMarketChart.data.datasets[0].data = wbtcData.map((d, i) => ({
+                    x: profitData[i].timestamp * 1000,
+                    y: d.total_withdrawable_btc
+                }));
+                tvlByMarketChart.data.datasets[1].data = cbbtcData.map((d, i) => ({
+                    x: profitData[i].timestamp * 1000,
+                    y: d.total_withdrawable_btc
+                }));
+                tvlByMarketChart.data.datasets[2].data = tbtcData.map((d, i) => ({
+                    x: profitData[i].timestamp * 1000,
+                    y: d.total_withdrawable_btc
+                }));
+                tvlByMarketChart.update();
+            }
+
+            // Функция обновления всех графиков С пересчетом (при изменении чекбоксов)
+            function updateAllCharts() {
+                // Вызываем updateChart для пересчета с чекбоксами
+                updateChart();
+            }
+
+            // ====== END RANGE SLIDER LOGIC ======
+
+            // Функция обновления графика на основе чекбоксов
+            function updateChart() {
+                const includeWithdrawable = document.getElementById('toggleWithdrawable').checked;
+                const includeDeposits = document.getElementById('toggleDeposits').checked;
+                const includeWithdrawals = document.getElementById('toggleWithdrawals').checked;
+                const includeAdminFees = document.getElementById('toggleAdminFees').checked;
+                const includeYbEmission = document.getElementById('toggleYbEmission').checked;
+
+                // Выбранные рынки
+                const includeWbtc = document.getElementById('toggleWbtc').checked;
+                const includeCbbtc = document.getElementById('toggleCbbtc').checked;
+                const includeTbtc = document.getElementById('toggleTbtc').checked;
+
+                // Пересчитываем профит для ВСЕХ данных (не только текущего диапазона)
+                let cumulativeDeposits = 0;
+                let cumulativeWithdrawals = 0;
+                let cumulativeAdminFeeWithdrawals = 0;
+
+                // Для OLD контрактов: отслеживаем предыдущие значения admin_fees чтобы детектировать выводы
+                let prevAdminFeesWbtc = 0;
+                let prevAdminFeesCbbtc = 0;
+                let prevAdminFeesTbtc = 0;
+
+                fullRecalculatedData = fullProfitData.map((point, i) => {
+                    const wbtc = fullWbtcData[i];
+                    const cbbtc = fullCbbtcData[i];
+                    const tbtc = fullTbtcData[i];
+
+                    // Суммируем только выбранные рынки
+                    let withdrawable = 0;
+                    let deposits = 0;
+                    let withdrawals = 0;
+                    let adminFees = 0;
+                    let adminFeeWithdrawals = 0;
+
+                    // Для OLD контрактов admin_fee_withdrawals_btc может быть 0
+                    // Нужно детектировать падение admin_fees_btc как вывод
+                    if (includeWbtc) {
+                        withdrawable += wbtc.total_withdrawable_btc || 0;
+                        deposits += wbtc.deposits_btc || 0;
+                        withdrawals += wbtc.withdrawals_btc || 0;
+                        const currAdminFees = wbtc.admin_fees_btc || 0;
+                        adminFees += currAdminFees;
+                        // Используем admin_fee_withdrawals_btc если есть, иначе детектируем падение
+                        let wbtcWithdrawal = wbtc.admin_fee_withdrawals_btc || 0;
+                        if (wbtcWithdrawal === 0 && i > 0 && prevAdminFeesWbtc > currAdminFees + 0.001) {
+                            // Падение admin_fees = вывод
+                            wbtcWithdrawal = prevAdminFeesWbtc - currAdminFees;
+                        }
+                        adminFeeWithdrawals += wbtcWithdrawal;
+                        prevAdminFeesWbtc = currAdminFees;
+                    }
+                    if (includeCbbtc) {
+                        withdrawable += cbbtc.total_withdrawable_btc || 0;
+                        deposits += cbbtc.deposits_btc || 0;
+                        withdrawals += cbbtc.withdrawals_btc || 0;
+                        const currAdminFees = cbbtc.admin_fees_btc || 0;
+                        adminFees += currAdminFees;
+                        let cbbtcWithdrawal = cbbtc.admin_fee_withdrawals_btc || 0;
+                        if (cbbtcWithdrawal === 0 && i > 0 && prevAdminFeesCbbtc > currAdminFees + 0.001) {
+                            cbbtcWithdrawal = prevAdminFeesCbbtc - currAdminFees;
+                        }
+                        adminFeeWithdrawals += cbbtcWithdrawal;
+                        prevAdminFeesCbbtc = currAdminFees;
+                    }
+                    if (includeTbtc) {
+                        withdrawable += tbtc.total_withdrawable_btc || 0;
+                        deposits += tbtc.deposits_btc || 0;
+                        withdrawals += tbtc.withdrawals_btc || 0;
+                        const currAdminFees = tbtc.admin_fees_btc || 0;
+                        adminFees += currAdminFees;
+                        let tbtcWithdrawal = tbtc.admin_fee_withdrawals_btc || 0;
+                        if (tbtcWithdrawal === 0 && i > 0 && prevAdminFeesTbtc > currAdminFees + 0.001) {
+                            tbtcWithdrawal = prevAdminFeesTbtc - currAdminFees;
+                        }
+                        adminFeeWithdrawals += tbtcWithdrawal;
+                        prevAdminFeesTbtc = currAdminFees;
+                    }
+
+                    // Накапливаем депозиты/выводы
+                    cumulativeDeposits += deposits;
+                    cumulativeWithdrawals += withdrawals;
+                    cumulativeAdminFeeWithdrawals += adminFeeWithdrawals;
+
+                    // Вычисляем баланс на основе выбранных компонентов
+                    let profit = 0;
+                    const includeAdminFeeWithdrawals = document.getElementById('toggleAdminFeeWithdrawals')?.checked ?? true;
+
+                    if (includeWithdrawable) {
+                        profit += withdrawable;
+                    }
+                    if (includeDeposits) {
+                        profit -= cumulativeDeposits;
+                    }
+                    if (includeWithdrawals) {
+                        // withdrawals_btc уже не включает admin fee withdrawals (исправлено в данных)
+                        profit += cumulativeWithdrawals;
+                    }
+                    if (includeAdminFees) {
+                        // Компенсируем уменьшение adminFees при выводе admin fee
+                        const effectiveAdminFees = includeAdminFeeWithdrawals
+                            ? adminFees + cumulativeAdminFeeWithdrawals
+                            : adminFees;
+                        profit += effectiveAdminFees;
+                    }
+
+                    // Добавляем YB эмиссию по рынкам если галочка активна
+                    if (includeYbEmission) {
+                        if (includeWbtc && point.yb_emission_wbtc_btc) {
+                            profit += point.yb_emission_wbtc_btc;
+                        }
+                        if (includeCbbtc && point.yb_emission_cbbtc_btc) {
+                            profit += point.yb_emission_cbbtc_btc;
+                        }
+                        if (includeTbtc && point.yb_emission_tbtc_btc) {
+                            profit += point.yb_emission_tbtc_btc;
+                        }
+                    }
+
+                    return profit;
+                });
+
+                // Применяем текущий диапазон к рассчитанным данным
+                const rangeData = fullRecalculatedData.slice(currentRangeStart, currentRangeEnd + 1);
+
+                // Обновляем данные графика с timestamps
+                profitChart.data.datasets[0].data = profitData.map((d, i) => ({
+                    x: d.timestamp * 1000,
+                    y: rangeData[i]
+                }));
+
+                // Цвет всегда зеленый - это баланс протокола, не профит/убыток
+                profitChart.data.datasets[0].borderColor = '#10b981';
+                profitChart.data.datasets[0].backgroundColor = 'rgba(16, 185, 129, 0.1)';
+
+                // Обновляем финальное значение в заголовке
+                const finalValue = rangeData[rangeData.length - 1];
+                document.getElementById('finalProfit').textContent = finalValue.toFixed(8) + ' BTC';
+                document.getElementById('answerBox').className = 'answer';  // Всегда зеленый
+
+                // Обновляем BTC price данные если checkbox включен
+                if (document.getElementById('toggleBtcPrice').checked && typeof window.getBtcPriceForTimestamp === 'function') {
+                    const btcPricePoints = profitData.map(d => ({
+                        x: d.timestamp * 1000,
+                        y: window.getBtcPriceForTimestamp(d.timestamp)
+                    }));
+
+                    // Пересчитываем min/max для текущего диапазона
+                    const btcPrices = btcPricePoints.map(p => p.y).filter(v => v !== null);
+                    if (btcPrices.length > 0) {
+                        const minBtcPrice = Math.min(...btcPrices);
+                        const maxBtcPrice = Math.max(...btcPrices);
+                        const btcPricePadding = (maxBtcPrice - minBtcPrice) * 0.05;
+
+                        // Обновляем данные BTC price dataset
+                        const btcIndex = profitChart.data.datasets.findIndex(ds => ds.label === 'BTC Price');
+                        if (btcIndex !== -1) {
+                            profitChart.data.datasets[btcIndex].data = btcPricePoints;
+                        }
+
+                        // Обновляем границы оси
+                        if (profitChart.options.scales.yBtcPrice) {
+                            profitChart.options.scales.yBtcPrice.min = minBtcPrice - btcPricePadding;
+                            profitChart.options.scales.yBtcPrice.max = maxBtcPrice + btcPricePadding;
+                        }
+                    }
+                }
+
+                profitChart.update();
+            }
+
+            // Функция для обновления метрик и графика при изменении Admin Fee Withdrawals checkbox
+            function updateMetricsAndChart() {
+                // Пересчитываем profitData
+                profitData = recalculateProfitData();
+
+                // Обновляем метрики
+                const lastPoint = profitData[profitData.length - 1];
+                document.getElementById('finalProfit').textContent = lastPoint.profit.toFixed(8) + ' BTC';
+
+                // Обновляем metrics box
+                document.querySelector('#metricsBox .metric-row:nth-child(2) .metric-value').textContent =
+                    lastPoint.deposits.toFixed(2) + ' BTC';
+                document.querySelector('#metricsBox .metric-row:nth-child(3) .metric-value').textContent =
+                    lastPoint.withdrawals.toFixed(2) + ' BTC';
+                document.querySelector('#metricsBox .metric-row:nth-child(4) .metric-value').textContent =
+                    (lastPoint.deposits - lastPoint.withdrawals).toFixed(2) + ' BTC';
+                document.querySelector('#metricsBox .metric-row:nth-child(6) .metric-value').textContent =
+                    lastPoint.admin_fee_withdrawals.toFixed(4) + ' BTC';
+                
+                // Обновляем YB Emission метрику
+                if (lastPoint.yb_emission_wbtc_btc !== undefined) {
+                    const totalYbEmission = (lastPoint.yb_emission_wbtc_btc || 0) +
+                                           (lastPoint.yb_emission_cbbtc_btc || 0) +
+                                           (lastPoint.yb_emission_tbtc_btc || 0);
+                    document.getElementById('ybEmissionValue').textContent = totalYbEmission.toFixed(4) + ' BTC';
+                }
+
+                // Обновляем график
+                updateChart();
+            }
+
+            // Подключаем чекбоксы к функции обновления
+            document.getElementById('toggleWithdrawable').addEventListener('change', updateChart);
+            document.getElementById('toggleDeposits').addEventListener('change', updateChart);
+            document.getElementById('toggleWithdrawals').addEventListener('change', updateChart);
+            document.getElementById('toggleAdminFees').addEventListener('change', updateChart);
+            document.getElementById('toggleAdminFeeWithdrawals').addEventListener('change', updateMetricsAndChart);
+
+            // Подключаем галочки рынков
+            document.getElementById('toggleWbtc').addEventListener('change', updateChart);
+            document.getElementById('toggleCbbtc').addEventListener('change', updateChart);
+            document.getElementById('toggleTbtc').addEventListener('change', updateChart);
+
+            // Обработчик для YB emission
+            if (ybEmissionDataArray && ybEmissionDataArray.length > 0) {
+                document.getElementById('toggleYbEmission').addEventListener('change', updateChart);
+                // Вызываем updateChart чтобы добавить YB emission с самого начала
+                updateChart();
+            } else {
+                // Если данных нет, отключаем галочку
+                document.getElementById('toggleYbEmission').disabled = true;
+                document.getElementById('toggleYbEmission').checked = false;
+            }
+
+            // Показываем контент
+            document.getElementById('loading').style.display = 'none';
+            document.getElementById('content').style.display = 'block';
+
+            // ====== BTC PRICE LINE ======
+            let showBtcPrice = true; // По умолчанию включён
+
+            // Объединяем источники BTC цен для покрытия всего периода
+            // btcPriceSourceEarly (old_vaults_yield_wbtc) - основной источник с Sep 24 по Nov 20
+            // btcPriceSourceNew (vaults_yield_syb_cbbtc) - дополняет последние дни
+            let btcPriceSource = [];
+            if (btcPriceSourceEarly && btcPriceSourceEarly.length > 0) {
+                btcPriceSource = btcPriceSource.concat(btcPriceSourceEarly.filter(d => d.btc_price));
+            }
+            if (btcPriceSourceNew && btcPriceSourceNew.length > 0) {
+                btcPriceSource = btcPriceSource.concat(btcPriceSourceNew.filter(d => d.btc_price));
+            }
+            // Сортируем по timestamp и убираем дубликаты
+            btcPriceSource.sort((a, b) => a.timestamp - b.timestamp);
+            btcPriceSource = btcPriceSource.filter((d, i, arr) => i === 0 || d.timestamp !== arr[i-1].timestamp);
+
+            const hasBtcPriceData = btcPriceSource && btcPriceSource.length > 0;
+            console.log('BTC price data available:', hasBtcPriceData, 'source points:', btcPriceSource?.length || 0);
+
+            // Функция интерполяции BTC цены по timestamp (глобальная для доступа из других функций)
+            window.getBtcPriceForTimestamp = function(timestamp) {
+                if (!btcPriceSource || btcPriceSource.length === 0) return null;
+
+                // Ищем ближайшие точки
+                for (let i = 0; i < btcPriceSource.length - 1; i++) {
+                    if (timestamp >= btcPriceSource[i].timestamp && timestamp <= btcPriceSource[i + 1].timestamp) {
+                        // Линейная интерполяция
+                        const t1 = btcPriceSource[i].timestamp;
+                        const t2 = btcPriceSource[i + 1].timestamp;
+                        const p1 = btcPriceSource[i].btc_price;
+                        const p2 = btcPriceSource[i + 1].btc_price;
+                        if (!p1 || !p2) return p1 || p2;
+                        const ratio = (timestamp - t1) / (t2 - t1);
+                        return p1 + ratio * (p2 - p1);
+                    }
+                }
+
+                // Если за пределами - возвращаем ближайшее значение
+                if (timestamp < btcPriceSource[0].timestamp) {
+                    return btcPriceSource[0].btc_price;
+                }
+                return btcPriceSource[btcPriceSource.length - 1].btc_price;
+            }
+
+            // Переключение линии BTC цены
+            window.toggleBtcPriceLine = function() {
+                showBtcPrice = document.getElementById('toggleBtcPrice').checked;
+
+                if (showBtcPrice && hasBtcPriceData) {
+                    // Вычисляем данные BTC для текущего диапазона
+                    const btcPricePoints = profitData.map(d => ({
+                        x: d.timestamp * 1000,
+                        y: window.getBtcPriceForTimestamp(d.timestamp)
+                    }));
+
+                    // Вычисляем min/max для оси BTC price
+                    const btcPrices = btcPricePoints.map(p => p.y).filter(v => v !== null);
+                    const minBtcPrice = Math.min(...btcPrices);
+                    const maxBtcPrice = Math.max(...btcPrices);
+                    // Добавляем 5% padding сверху и снизу
+                    const btcPricePadding = (maxBtcPrice - minBtcPrice) * 0.05;
+                    const btcPriceMin = minBtcPrice - btcPricePadding;
+                    const btcPriceMax = maxBtcPrice + btcPricePadding;
+
+                    // Добавляем dataset с ценой BTC
+                    const btcDataset = {
+                        label: 'BTC Price',
+                        data: btcPricePoints,
+                        borderColor: 'rgba(148, 163, 184, 0.4)',
+                        backgroundColor: 'transparent',
+                        borderWidth: 1,
+                        borderDash: [5, 5],
+                        fill: false,
+                        tension: 0.4,
+                        pointRadius: 0,
+                        pointHoverRadius: 0,
+                        yAxisID: 'yBtcPrice'
+                    };
+
+                    // Проверяем есть ли уже dataset
+                    const existingIndex = profitChart.data.datasets.findIndex(ds => ds.label === 'BTC Price');
+                    if (existingIndex === -1) {
+                        profitChart.data.datasets.push(btcDataset);
+                    } else {
+                        // Обновляем данные существующего dataset
+                        profitChart.data.datasets[existingIndex].data = btcPricePoints;
+                    }
+
+                    // Добавляем ось для BTC price с долларовыми значениями
+                    profitChart.options.scales.yBtcPrice = {
+                        display: true,
+                        position: 'right',
+                        min: btcPriceMin,
+                        max: btcPriceMax,
+                        grid: { display: false, drawOnChartArea: false },
+                        ticks: {
+                            color: '#94a3b8',
+                            callback: function(value) {
+                                return '$' + (value / 1000).toFixed(0) + 'k';
+                            }
+                        },
+                        title: {
+                            display: true,
+                            text: 'BTC Price',
+                            color: '#94a3b8'
+                        }
+                    };
+                    // Скрываем % of TVL ось когда показываем BTC price
+                    profitChart.options.scales.y1.display = false;
+                } else {
+                    // Удаляем dataset BTC Price
+                    const index = profitChart.data.datasets.findIndex(ds => ds.label === 'BTC Price');
+                    if (index !== -1) {
+                        profitChart.data.datasets.splice(index, 1);
+                    }
+                    // Удаляем ось BTC price
+                    delete profitChart.options.scales.yBtcPrice;
+                    // Возвращаем % of TVL ось
+                    profitChart.options.scales.y1.display = true;
+                }
+
+                profitChart.update();
+            };
+
+            // ====== SHARE FUNCTIONS ======
+            window.copyChartScreenshot = async function(containerId) {
+                const container = document.getElementById(containerId);
+                const shareBtn = container.querySelector('.share-button.copy');
+                const shareBtns = container.querySelector('.share-buttons');
+
+                try {
+                    if (shareBtns) shareBtns.style.display = 'none';
+
+                    const canvas = await html2canvas(container, {
+                        backgroundColor: '#0f172a',
+                        scale: 2
+                    });
+
+                    if (shareBtns) shareBtns.style.display = 'flex';
+
+                    canvas.toBlob(async (blob) => {
+                        try {
+                            await navigator.clipboard.write([
+                                new ClipboardItem({ 'image/png': blob })
+                            ]);
+                            shareBtn.classList.add('success');
+                            shareBtn.innerHTML = '✓';
+                            setTimeout(() => {
+                                shareBtn.classList.remove('success');
+                                shareBtn.innerHTML = '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>';
+                            }, 2000);
+                        } catch (err) {
+                            console.error('Failed to copy:', err);
+                            alert('Failed to copy. Try using Share instead.');
+                        }
+                    }, 'image/png');
+                } catch (err) {
+                    if (shareBtns) shareBtns.style.display = 'flex';
+                    console.error('Screenshot failed:', err);
+                }
+            };
+
+            window.shareChartToTelegram = async function(containerId) {
+                const container = document.getElementById(containerId);
+                const shareBtns = container.querySelector('.share-buttons');
+
+                try {
+                    if (shareBtns) shareBtns.style.display = 'none';
+
+                    const canvas = await html2canvas(container, {
+                        backgroundColor: '#0f172a',
+                        scale: 2
+                    });
+
+                    if (shareBtns) shareBtns.style.display = 'flex';
+
+                    canvas.toBlob(async (blob) => {
+                        const file = new File([blob], 'yieldbasis-chart.png', { type: 'image/png' });
+
+                        if (navigator.share && navigator.canShare && navigator.canShare({ files: [file] })) {
+                            try {
+                                await navigator.share({
+                                    files: [file],
+                                    title: 'YieldBasis Chart',
+                                    text: 'YieldBasis Withdrawable Revenue Dashboard'
+                                });
+                            } catch (err) {
+                                if (err.name !== 'AbortError') {
+                                    window.open('https://t.me/share/url?url=' + encodeURIComponent(window.location.href), '_blank');
+                                }
+                            }
+                        } else {
+                            window.open('https://t.me/share/url?url=' + encodeURIComponent(window.location.href), '_blank');
+                        }
+                    }, 'image/png');
+                } catch (err) {
+                    if (shareBtns) shareBtns.style.display = 'flex';
+                    console.error('Share failed:', err);
+                }
+            };
+
+            window.shareChartToTwitter = async function(containerId) {
+                const container = document.getElementById(containerId);
+                const shareBtns = container.querySelector('.share-buttons');
+
+                try {
+                    if (shareBtns) shareBtns.style.display = 'none';
+
+                    const canvas = await html2canvas(container, {
+                        backgroundColor: '#0f172a',
+                        scale: 2
+                    });
+
+                    if (shareBtns) shareBtns.style.display = 'flex';
+
+                    canvas.toBlob(async (blob) => {
+                        const file = new File([blob], 'yieldbasis-chart.png', { type: 'image/png' });
+
+                        if (navigator.share && navigator.canShare && navigator.canShare({ files: [file] })) {
+                            try {
+                                await navigator.share({
+                                    files: [file],
+                                    title: 'YieldBasis Chart',
+                                    text: 'YieldBasis Withdrawable Revenue Dashboard'
+                                });
+                            } catch (err) {
+                                if (err.name !== 'AbortError') {
+                                    const text = encodeURIComponent('YieldBasis Withdrawable Revenue Dashboard');
+                                    const url = encodeURIComponent(window.location.href);
+                                    window.open(`https://twitter.com/intent/tweet?text=${text}&url=${url}`, '_blank');
+                                }
+                            }
+                        } else {
+                            const text = encodeURIComponent('YieldBasis Withdrawable Revenue Dashboard');
+                            const url = encodeURIComponent(window.location.href);
+                            window.open(`https://twitter.com/intent/tweet?text=${text}&url=${url}`, '_blank');
+                        }
+                    }, 'image/png');
+                } catch (err) {
+                    if (shareBtns) shareBtns.style.display = 'flex';
+                    console.error('Share failed:', err);
+                }
+            };
+
+            // Вызываем toggleBtcPriceLine чтобы отобразить график BTC при загрузке (если чекбокс включён)
+            if (document.getElementById('toggleBtcPrice').checked && hasBtcPriceData) {
+                toggleBtcPriceLine();
+            }
+
+        } catch (error) {
+            document.getElementById('loading').innerHTML = `
+                <div style="color: #ef4444;">
+                    <h2>Error: ${error.message}</h2>
+                    <p style="margin-top: 20px; color: #94a3b8;">
+                        Run: <code style="background: #1e293b; padding: 5px 10px; border-radius: 4px;">python collect_sync.py</code>
+                    </p>
+                </div>
+            `;
+            console.error('Error:', error);
+        }
+    });
+    </script>
+
+    <!-- Timezone Toggle -->
+    <div id="timezone-panel" style="position: fixed; bottom: 8px; right: 10px; font-size: 11px; color: #888; z-index: 100; display: flex; align-items: center; gap: 8px;">
+        <span id="timezone-toggle" onclick="toggleTimezone()" style="cursor: pointer; padding: 2px 6px; border: 1px solid #555; border-radius: 3px; background: #333;" title="Click to toggle UTC/Local time">🕐 Local</span>
+    </div>
+</body>
+</html>
+
+
+
+
+
+
+

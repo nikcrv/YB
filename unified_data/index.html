@@ -1,0 +1,3335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <title>Yield Basis BTC Vaults - Yield Analytics</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            background: #0f172a;
+            color: #e2e8f0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        header {
+            margin-bottom: 40px;
+            padding: 30px;
+            background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+            border-radius: 12px;
+            border: 1px solid #334155;
+        }
+
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .header-title {
+            flex: 1;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 5px;
+            background: linear-gradient(135deg, #f59e0b 0%, #f97316 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .subtitle {
+            color: #94a3b8;
+            font-size: 1.1em;
+        }
+
+        .market-selector {
+            display: flex;
+            gap: 10px;
+            background: #0f172a;
+            padding: 6px;
+            border-radius: 8px;
+        }
+
+        .market-btn {
+            padding: 10px 20px;
+            background: transparent;
+            border: none;
+            border-radius: 6px;
+            color: #94a3b8;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 0.95em;
+        }
+
+        .market-btn:hover {
+            background: #1e293b;
+            color: #e2e8f0;
+        }
+
+        .market-btn.active {
+            background: #f59e0b;
+            color: #0f172a;
+        }
+
+        .date-filters {
+            display: flex;
+            gap: 15px;
+            align-items: flex-end;
+            flex-wrap: wrap;
+        }
+
+        .date-input-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .date-input-group label {
+            color: #94a3b8;
+            margin-bottom: 5px;
+            font-size: 0.9em;
+        }
+
+        .date-input-group input {
+            padding: 8px;
+            background: #0f172a;
+            border: 1px solid #334155;
+            border-radius: 6px;
+            color: #e2e8f0;
+        }
+
+        .btn-primary {
+            padding: 10px 20px;
+            background: #f59e0b;
+            border: none;
+            border-radius: 6px;
+            color: #0f172a;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .btn-secondary {
+            padding: 10px 20px;
+            background: #334155;
+            border: none;
+            border-radius: 6px;
+            color: #e2e8f0;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .checkbox-label {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #94a3b8;
+            cursor: pointer;
+            padding: 10px 15px;
+            background: #1e293b;
+            border-radius: 6px;
+            transition: all 0.2s;
+        }
+
+        .checkbox-label:hover {
+            background: #334155;
+            color: #e2e8f0;
+        }
+
+        .checkbox-label input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+        }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .metric-card {
+            background: #1e293b;
+            padding: 12px 16px;
+            border-radius: 8px;
+            border: 1px solid #334155;
+        }
+
+        .metric-label {
+            color: #94a3b8;
+            font-size: 0.78em;
+            margin-bottom: 4px;
+            white-space: nowrap;
+        }
+
+        .metric-value {
+            font-size: 1.4em;
+            font-weight: 700;
+            color: #e2e8f0;
+        }
+
+        .metric-value.positive {
+            color: #10b981;
+        }
+
+        .metric-value.negative {
+            color: #f1f5f9;
+        }
+
+        .chart-container {
+            background: #1e293b;
+            padding: 30px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            border: 1px solid #334155;
+        }
+
+        .chart-title {
+            font-size: 1.3em;
+            margin-bottom: 20px;
+            color: #f59e0b;
+        }
+
+        canvas {
+            max-height: 400px;
+        }
+
+        .info {
+            background: #1e293b;
+            padding: 20px;
+            border-radius: 12px;
+            margin-top: 30px;
+            border-left: 4px solid #f59e0b;
+        }
+
+        .info-title {
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #f59e0b;
+        }
+
+        .info-content {
+            color: #94a3b8;
+            line-height: 1.6;
+        }
+
+        code {
+            background: #0f172a;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: #94a3b8;
+        }
+
+        .error {
+            background: #7f1d1d;
+            color: #fca5a5;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        .contract-selector {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            background: #0f172a;
+            padding: 6px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            align-items: center;
+        }
+
+        .contract-btn {
+            padding: 10px 20px;
+            background: transparent;
+            border: none;
+            border-radius: 6px;
+            color: #94a3b8;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 0.95em;
+        }
+
+        .contract-btn:hover {
+            background: #1e293b;
+            color: #e2e8f0;
+        }
+
+        .contract-btn.active {
+            background: #8b5cf6;
+            color: #ffffff;
+        }
+
+        /* Range Slider Styles */
+        .compact-range {
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 1px solid #334155;
+        }
+        .period-buttons {
+            display: flex;
+            gap: 6px;
+            margin-bottom: 12px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        .period-label {
+            color: #64748b;
+            font-size: 0.85em;
+            margin-right: 8px;
+        }
+        .period-button {
+            background: #0f172a;
+            color: #94a3b8;
+            border: 1px solid #334155;
+            padding: 4px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.8em;
+            transition: all 0.2s;
+        }
+        .period-button:hover {
+            border-color: #f59e0b;
+            color: #e2e8f0;
+        }
+        .period-button.active {
+            background: #f59e0b;
+            border-color: #f59e0b;
+            color: #0f172a;
+            font-weight: 500;
+        }
+        .range-slider {
+            width: 100%;
+            height: 4px;
+            background: #334155;
+            border-radius: 2px;
+            position: relative;
+            margin: 15px 0 8px 0;
+        }
+        .range-slider input[type="range"] {
+            position: absolute;
+            width: 100%;
+            height: 4px;
+            background: transparent;
+            pointer-events: none;
+            -webkit-appearance: none;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        .range-slider input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 14px;
+            height: 14px;
+            background: #f59e0b;
+            border-radius: 50%;
+            cursor: pointer;
+            pointer-events: all;
+            border: 2px solid #0f172a;
+        }
+        .range-slider input[type="range"]::-moz-range-thumb {
+            width: 14px;
+            height: 14px;
+            background: #f59e0b;
+            border-radius: 50%;
+            cursor: pointer;
+            pointer-events: all;
+            border: 2px solid #0f172a;
+        }
+        .range-fill {
+            position: absolute;
+            height: 4px;
+            background: #f59e0b;
+            border-radius: 2px;
+            pointer-events: none;
+        }
+        .range-labels {
+            display: flex;
+            justify-content: space-between;
+            color: #64748b;
+            font-size: 0.75em;
+        }
+
+        .btc-price-toggle {
+            position: absolute;
+            top: 35px;
+            right: 25px;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 0.75em;
+            color: rgba(148, 163, 184, 0.6);
+            cursor: pointer;
+            z-index: 10;
+        }
+        .btc-price-toggle input {
+            width: 12px;
+            height: 12px;
+            cursor: pointer;
+        }
+        .btc-price-toggle span {
+            user-select: none;
+        }
+
+        .share-buttons {
+            position: absolute;
+            top: 8px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 8px;
+            z-index: 10;
+        }
+        .share-button {
+            background: rgba(59, 130, 246, 0.2);
+            border: 1px solid rgba(59, 130, 246, 0.4);
+            color: #60a5fa;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.7em;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 4px;
+            transition: all 0.2s;
+            height: 22px;
+            box-sizing: border-box;
+        }
+        .share-button:hover {
+            background: rgba(59, 130, 246, 0.3);
+            border-color: rgba(59, 130, 246, 0.6);
+        }
+        .share-button.twitter {
+            background: rgba(0, 0, 0, 0.3);
+            border-color: rgba(255, 255, 255, 0.2);
+            color: #fff;
+        }
+        .share-button.twitter:hover {
+            background: rgba(0, 0, 0, 0.5);
+            border-color: rgba(255, 255, 255, 0.4);
+        }
+        .share-button.copy {
+            background: rgba(34, 197, 94, 0.2);
+            border-color: rgba(34, 197, 94, 0.4);
+            color: #4ade80;
+        }
+        .share-button.copy:hover {
+            background: rgba(34, 197, 94, 0.3);
+            border-color: rgba(34, 197, 94, 0.6);
+        }
+        .share-button svg {
+            width: 14px;
+            height: 14px;
+        }
+
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+
+            h1 {
+                font-size: 1.8em;
+            }
+
+            .subtitle {
+                font-size: 0.95em;
+            }
+
+            header {
+                padding: 15px;
+                margin-bottom: 20px;
+            }
+
+            .header-top {
+                gap: 15px;
+            }
+
+            .contract-selector {
+                flex-wrap: wrap;
+                gap: 6px;
+            }
+
+            .contract-selector a {
+                padding: 8px 12px !important;
+                font-size: 0.8em !important;
+                margin-left: 0 !important;
+            }
+
+            .contract-selector .contract-btn {
+                order: 0;
+            }
+
+            .contract-selector::after {
+                content: '';
+                flex-basis: 100%;
+                order: 1;
+            }
+
+            .contract-selector a {
+                order: 2;
+            }
+
+            .hide-mobile {
+                display: none;
+            }
+
+            .market-selector {
+                flex-wrap: wrap;
+                gap: 4px;
+            }
+
+            .date-filters {
+                gap: 10px;
+            }
+
+            .date-input-group label {
+                font-size: 0.8em;
+            }
+
+            .date-input-group input {
+                padding: 6px;
+                font-size: 0.9em;
+            }
+
+            .chart-container {
+                padding: 10px;
+                margin-bottom: 15px;
+            }
+
+            .chart-title {
+                font-size: 0.95em;
+                margin-bottom: 8px;
+            }
+
+            .share-buttons {
+                gap: 6px;
+                left: auto;
+                right: 10px;
+                transform: none;
+            }
+
+            .share-button {
+                padding: 3px 6px;
+                height: 20px;
+            }
+
+            .share-button svg {
+                width: 12px;
+                height: 12px;
+            }
+
+            .btc-price-toggle {
+                display: none;
+            }
+
+            canvas {
+                max-height: 400px !important;
+                min-height: 320px;
+            }
+
+            .info {
+                padding: 12px;
+                margin-top: 20px;
+            }
+
+            .info-title {
+                font-size: 0.9em;
+                margin-bottom: 8px;
+            }
+
+            .info-content {
+                font-size: 0.75em;
+                line-height: 1.4;
+            }
+
+            .info-content br {
+                display: block;
+                content: "";
+                margin-top: 3px;
+            }
+
+            .info-content code {
+                font-size: 0.85em;
+                padding: 1px 4px;
+                word-break: break-all;
+            }
+
+            .metric-card {
+                padding: 10px 12px;
+            }
+
+            .metric-label {
+                font-size: 0.7em;
+            }
+
+            .metric-value {
+                font-size: 1.2em;
+            }
+
+            .metrics-grid {
+                grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+                gap: 8px;
+            }
+
+            .market-btn, .contract-btn {
+                padding: 8px 10px;
+                font-size: 0.75em;
+                white-space: nowrap;
+            }
+
+            .btn-primary, .btn-secondary {
+                padding: 8px 15px;
+                font-size: 0.9em;
+            }
+
+            .checkbox-label {
+                padding: 8px 10px;
+                font-size: 0.85em;
+            }
+
+            .checkbox-label span {
+                font-size: 0.95em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 8px;
+            }
+
+            h1 {
+                font-size: 1.4em;
+            }
+
+            .subtitle {
+                font-size: 0.8em;
+            }
+
+            header {
+                padding: 12px;
+            }
+
+            .contract-selector {
+                gap: 4px;
+                padding: 4px;
+            }
+
+            .contract-selector a {
+                padding: 6px 8px !important;
+                font-size: 0.7em !important;
+                white-space: nowrap;
+                margin-left: 0 !important;
+            }
+
+            .market-selector {
+                gap: 1px;
+                padding: 2px;
+            }
+
+            .date-filters {
+                gap: 8px;
+            }
+
+            .chart-container {
+                padding: 8px;
+            }
+
+            .chart-title {
+                font-size: 0.8em;
+                margin-bottom: 6px;
+            }
+
+            canvas {
+                max-height: 350px !important;
+                min-height: 280px;
+            }
+
+            .info {
+                padding: 10px;
+                margin-top: 15px;
+            }
+
+            .info-title {
+                font-size: 0.8em;
+                margin-bottom: 6px;
+            }
+
+            .info-content {
+                font-size: 0.65em;
+                line-height: 1.3;
+            }
+
+            .info-content br {
+                display: block;
+                content: "";
+                margin-top: 2px;
+            }
+
+            .info-content code {
+                font-size: 0.8em;
+                padding: 1px 3px;
+                word-break: break-all;
+            }
+
+            .metrics-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 6px;
+            }
+
+            .metric-label {
+                font-size: 0.6em;
+            }
+
+            .metric-value {
+                font-size: 1em;
+            }
+
+            .market-btn, .contract-btn {
+                padding: 4px 5px;
+                font-size: 0.65em;
+            }
+
+            .btn-primary, .btn-secondary {
+                padding: 6px 12px;
+                font-size: 0.85em;
+            }
+
+            .checkbox-label {
+                padding: 6px 8px;
+                font-size: 0.75em;
+            }
+
+            .checkbox-label span {
+                font-size: 0.9em;
+            }
+
+            .checkbox-label input[type="checkbox"] {
+                width: 16px;
+                height: 16px;
+            }
+        }
+
+        /* Глобальное переопределение для Chart.js легенды на мобильных */
+        @media (max-width: 768px) {
+            canvas {
+                font-size: 6px !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="header-top">
+                <div class="header-title">
+                    <h1 id="page-title">Yield Basis BTC Vaults - Yield Analytics</h1>
+                    <p class="subtitle">BTC-Denominated Performance Analysis</p>
+                </div>
+                <div>
+                    <div class="contract-selector">
+                        <button class="contract-btn active" data-version="new" onclick="switchContractVersion('new')">NEW</button>
+                        <button class="contract-btn" data-version="old" onclick="switchContractVersion('old')">OLD</button>
+                        <a href="pps_dashboard.html" style="padding: 10px 20px; background: #3b82f6; border: none; border-radius: 6px; color: #f1f5f9; font-weight: 600; cursor: pointer; text-decoration: none; display: inline-block; transition: all 0.2s; margin-left: auto;" onmouseover="this.style.background='#2563eb'" onmouseout="this.style.background='#3b82f6'">📈 F.PnL</a>
+                        <a href="dashboard.html" style="padding: 10px 20px; background: #10b981; border: none; border-radius: 6px; color: #0f172a; font-weight: 600; cursor: pointer; text-decoration: none; display: inline-block; transition: all 0.2s; margin-left: 10px;" onmouseover="this.style.background='#059669'" onmouseout="this.style.background='#10b981'">📊 Summary</a>
+                        <a href="veyb_dashboard.html" style="padding: 10px 20px; background: #8b5cf6; border: none; border-radius: 6px; color: #f1f5f9; font-weight: 600; cursor: pointer; text-decoration: none; display: inline-block; transition: all 0.2s; margin-left: 10px;" onmouseover="this.style.background='#7c3aed'" onmouseout="this.style.background='#8b5cf6'">🔒 veYB</a>
+                        <a href="ybpools.html" style="padding: 10px 20px; background: #f59e0b; border: none; border-radius: 6px; color: #0f172a; font-weight: 600; cursor: pointer; text-decoration: none; display: inline-block; transition: all 0.2s; margin-left: 10px;" onmouseover="this.style.background='#d97706'" onmouseout="this.style.background='#f59e0b'">⚖️ Pools</a>
+                    </div>
+                    <div class="market-selector">
+                        <button class="market-btn active" data-market="cbbtc" onclick="switchMarket('cbbtc')">yb-cbBTC</button>
+                        <button class="market-btn" data-market="wbtc" onclick="switchMarket('wbtc')">yb-WBTC</button>
+                        <button class="market-btn" data-market="tbtc" onclick="switchMarket('tbtc')">yb-tBTC</button>
+                        <button class="market-btn" data-market="syb_cbbtc" onclick="switchMarket('syb_cbbtc')">syb-cbBTC</button>
+                        <button class="market-btn" data-market="syb_wbtc" onclick="switchMarket('syb_wbtc')">syb-WBTC</button>
+                        <button class="market-btn" data-market="syb_tbtc" onclick="switchMarket('syb_tbtc')">syb-tBTC</button>
+                    </div>
+                </div>
+            </div>
+            <div class="date-filters">
+                <div class="date-input-group">
+                    <label for="startDate">Start Date</label>
+                    <input type="datetime-local" id="startDate">
+                </div>
+                <div class="date-input-group">
+                    <label for="endDate">End Date</label>
+                    <input type="datetime-local" id="endDate">
+                </div>
+                <div>
+                    <button class="btn-primary" onclick="applyDateFilter()">Apply</button>
+                    <button class="btn-secondary" onclick="resetDateFilter()" style="margin-left: 10px;">Reset</button>
+                </div>
+                <label class="checkbox-label">
+                    <input type="checkbox" id="withdrawable-yield-toggle" onchange="toggleWithdrawableYield()" checked>
+                    <span>Show Withdrawable Yield (PPS)</span>
+                </label>
+                <label class="checkbox-label">
+                    <input type="checkbox" id="fundamental-yield-toggle" onchange="toggleFundamentalYield()" checked>
+                    <span>Show Fundamental Yield (PPS)</span>
+                </label>
+                <label class="checkbox-label" id="emission-toggle-label">
+                    <input type="checkbox" id="emission-toggle" onchange="toggleEmission()" checked>
+                    <span>Add YB Emission</span>
+                </label>
+            </div>
+        </header>
+
+        <div id="content-area">
+            <div class="loading">Loading market data...</div>
+        </div>
+
+        <!-- Fixed bottom-right timezone toggle -->
+        <div id="timezone-panel" style="position: fixed; bottom: 8px; right: 10px; font-size: 11px; color: #888; z-index: 100; display: flex; align-items: center; gap: 8px;">
+            <span id="timezone-toggle" onclick="toggleTimezone()" style="cursor: pointer; padding: 2px 6px; border: 1px solid #555; border-radius: 3px; background: #333;" title="Click to toggle UTC/Local time">🕐 Local</span>
+        </div>
+    </div>
+
+    <!-- UNIFIED DATA - Single file with all data -->
+    <script src="unified_data.js?v=1"></script>
+    <script src="unified_data_adapter.js?v=1"></script>
+    <script>
+        // Create copies for compatibility with existing code
+        const wbtcData = JSON.parse(JSON.stringify(yieldData_wbtc));
+        const cbbtcData = JSON.parse(JSON.stringify(yieldData_cbbtc));
+        const tbtcData = JSON.parse(JSON.stringify(yieldData_tbtc));
+        const sybWbtcData = JSON.parse(JSON.stringify(yieldData_syb_wbtc));
+        const sybCbbtcData = JSON.parse(JSON.stringify(yieldData_syb_cbbtc));
+        const sybTbtcData = JSON.parse(JSON.stringify(yieldData_syb_tbtc));
+
+        const oldWbtcData = JSON.parse(JSON.stringify(yieldData_old_wbtc));
+        const oldCbbtcData = JSON.parse(JSON.stringify(yieldData_old_cbbtc));
+        const oldTbtcData = JSON.parse(JSON.stringify(yieldData_old_tbtc));
+        const oldSybWbtcData = JSON.parse(JSON.stringify(yieldData_old_syb_wbtc));
+        const oldSybCbbtcData = JSON.parse(JSON.stringify(yieldData_old_syb_cbbtc));
+        const oldSybTbtcData = JSON.parse(JSON.stringify(yieldData_old_syb_tbtc));
+
+        var emissionData_new = ybEmissionData ? JSON.parse(JSON.stringify(ybEmissionData)) : null;
+        var emissionData_old = oldYbEmissionData ? JSON.parse(JSON.stringify(oldYbEmissionData)) : null;
+
+        console.log('Unified data loaded from:', unifiedData.metadata?.source);
+        console.log('NEW WBTC:', wbtcData.data?.length || 0, 'points');
+        console.log('OLD WBTC:', oldWbtcData.data?.length || 0, 'points');
+    </script>
+
+    <script>
+        // Market configurations for NEW and OLD contracts
+        const MARKETS = {
+            new: {
+                wbtc: {
+                    name: 'yb-WBTC',
+                    data: wbtcData,
+                    contract: '0x6095a220C5567360d459462A25b1AD5aEAD45204',
+                    ppsData: ppsData_wbtc
+                },
+                cbbtc: {
+                    name: 'yb-cbBTC',
+                    data: cbbtcData,
+                    contract: '0xD6a1147666f6E4d7161caf436d9923D44d901112',
+                    ppsData: ppsData_cbbtc
+                },
+                tbtc: {
+                    name: 'yb-tBTC',
+                    data: tbtcData,
+                    contract: '0x2B513eBe7070Cff91cf699a0BFe5075020C732FF',
+                    ppsData: ppsData_tbtc
+                },
+                syb_wbtc: {
+                    name: 'syb-WBTC',
+                    data: sybWbtcData,
+                    contract: '0x37f45E64935e7B8383D2f034048B32770B04E8bd',
+                    ppsData: ppsData_wbtc,
+                    emissionData: emissionData_new,
+                    emissionField: 'cumulative_WBTC_btc',
+                    baseMarket: 'wbtc'
+                },
+                syb_cbbtc: {
+                    name: 'syb-cbBTC',
+                    data: sybCbbtcData,
+                    contract: '0x3dAe83d236b4Ec301A8d0553f8c13Cb9b7925B6a',
+                    ppsData: ppsData_cbbtc,
+                    emissionData: emissionData_new,
+                    emissionField: 'cumulative_cbBTC_btc',
+                    baseMarket: 'cbbtc'
+                },
+                syb_tbtc: {
+                    name: 'syb-tBTC',
+                    data: sybTbtcData,
+                    contract: '0x2a4671fd269dF5B3DA03103c74063dA10D03E23C',
+                    ppsData: ppsData_tbtc,
+                    emissionData: emissionData_new,
+                    emissionField: 'cumulative_tBTC_btc',
+                    baseMarket: 'tbtc'
+                }
+            },
+            old: {
+                wbtc: {
+                    name: 'yb-WBTC',
+                    data: oldWbtcData,
+                    contract: oldWbtcData.metadata.contract,
+                    ppsData: ppsData_old_wbtc
+                },
+                cbbtc: {
+                    name: 'yb-cbBTC',
+                    data: oldCbbtcData,
+                    contract: oldCbbtcData.metadata.contract,
+                    ppsData: ppsData_old_cbbtc
+                },
+                tbtc: {
+                    name: 'yb-tBTC',
+                    data: oldTbtcData,
+                    contract: oldTbtcData.metadata.contract,
+                    ppsData: ppsData_old_tbtc
+                },
+                syb_wbtc: {
+                    name: 'syb-WBTC',
+                    data: oldSybWbtcData,
+                    contract: oldSybWbtcData.metadata.contract,
+                    ppsData: ppsData_old_wbtc,
+                    emissionData: emissionData_old,
+                    emissionField: 'cumulative_WBTC_btc',
+                    baseMarket: 'wbtc'
+                },
+                syb_cbbtc: {
+                    name: 'syb-cbBTC',
+                    data: oldSybCbbtcData,
+                    contract: oldSybCbbtcData.metadata.contract,
+                    ppsData: ppsData_old_cbbtc,
+                    emissionData: emissionData_old,
+                    emissionField: 'cumulative_cbBTC_btc',
+                    baseMarket: 'cbbtc'
+                },
+                syb_tbtc: {
+                    name: 'syb-tBTC',
+                    data: oldSybTbtcData,
+                    contract: oldSybTbtcData.metadata.contract,
+                    ppsData: ppsData_old_tbtc,
+                    emissionData: emissionData_old,
+                    emissionField: 'cumulative_tBTC_btc',
+                    baseMarket: 'tbtc'
+                }
+            }
+        };
+
+        let currentContractVersion = 'new';
+        let currentMarket = 'cbbtc';
+        let currentYieldData = null;
+        let originalData = null;
+        let charts = {};
+        let showFundamentalYield = true;
+        let showWithdrawableYield = true;
+        let showEmission = true; // Enable/disable YB Emission functionality
+        let showEmissionFundamental = true; // Show emission for Fundamental
+        let showEmissionWithdrawable = true; // Show emission for Withdrawable
+        let showBtcPrice = true; // Show BTC price overlay on PPS chart
+        let useUTC = false; // false = local time (default), true = UTC
+
+        // Parse datetime string - treat strings without timezone as local time
+        // (server generates timestamps in local time without timezone indicator)
+        function parseAsUTC(dateString) {
+            if (!dateString) return new Date();
+            // Parse as-is - don't add 'Z' since data is in local server time
+            return new Date(dateString);
+        }
+
+        // Функция переключения UTC/Local
+        function toggleTimezone() {
+            useUTC = !useUTC;
+            const btn = document.getElementById('timezone-toggle');
+            btn.textContent = useUTC ? '🕐 UTC' : '🕐 Local';
+            btn.style.background = useUTC ? '#2a4a3a' : '#333';
+            // Перерисовываем всё с новым форматом времени
+            initializeDateInputs();
+            destroyCharts();
+            createCharts();
+            updateRangeSliderLabels();
+        }
+
+        // Обновление меток слайдера при смене timezone
+        function updateRangeSliderLabels() {
+            if (!originalData || !originalData.data || originalData.data.length === 0) return;
+            const sliderLabel = document.getElementById('slider-label');
+            if (!sliderLabel) return;
+
+            const startDate = parseAsUTC(originalData.data[currentRangeStart].datetime);
+            const endDate = parseAsUTC(originalData.data[currentRangeEnd].datetime);
+            const tzOpts = useUTC ? { month: 'short', day: 'numeric', timeZone: 'UTC' } : { month: 'short', day: 'numeric' };
+            sliderLabel.textContent = `${startDate.toLocaleDateString('en-US', tzOpts)} - ${endDate.toLocaleDateString('en-US', tzOpts)}`;
+        }
+
+        // TVL interpolation function
+        function getTVLAt(timestamp, market) {
+            // Select correct TVL dataset based on contract version
+            const isOld = currentContractVersion === 'old';
+
+            const tvlDataMap = isOld ? {
+                'wbtc': typeof gaugeTvlData_old_wbtc !== 'undefined' ? gaugeTvlData_old_wbtc : null,
+                'cbbtc': typeof gaugeTvlData_old_cbbtc !== 'undefined' ? gaugeTvlData_old_cbbtc : null,
+                'tbtc': typeof gaugeTvlData_old_tbtc !== 'undefined' ? gaugeTvlData_old_tbtc : null
+            } : {
+                'wbtc': typeof gaugeTvlData_new_wbtc !== 'undefined' ? gaugeTvlData_new_wbtc : null,
+                'cbbtc': typeof gaugeTvlData_new_cbbtc !== 'undefined' ? gaugeTvlData_new_cbbtc : null,
+                'tbtc': typeof gaugeTvlData_new_tbtc !== 'undefined' ? gaugeTvlData_new_tbtc : null
+            };
+
+            const baseMarket = market || 'wbtc';
+            const tvlData = tvlDataMap[baseMarket];
+
+            // Fallback to fixed values if no data available
+            if (!tvlData || tvlData.length === 0) {
+                const fallbackTVL = {
+                    'wbtc': 339.31,
+                    'cbbtc': 268.20,
+                    'tbtc': 311.98
+                };
+                return fallbackTVL[baseMarket] || 300.0;
+            }
+
+            // Find closest TVL values before and after timestamp
+            let closestBefore = null;
+            let closestAfter = null;
+
+            for (let i = 0; i < tvlData.length; i++) {
+                if (tvlData[i].timestamp <= timestamp) {
+                    closestBefore = tvlData[i];
+                } else {
+                    closestAfter = tvlData[i];
+                    break;
+                }
+            }
+
+            // Exact match
+            if (closestBefore && closestBefore.timestamp === timestamp) {
+                return closestBefore.tvl_btc;
+            }
+
+            // Interpolate between two points
+            if (closestBefore && closestAfter) {
+                const t = (timestamp - closestBefore.timestamp) / (closestAfter.timestamp - closestBefore.timestamp);
+                return closestBefore.tvl_btc + t * (closestAfter.tvl_btc - closestBefore.tvl_btc);
+            }
+
+            // Use closest available value
+            if (closestBefore) return closestBefore.tvl_btc;
+            if (closestAfter) return closestAfter.tvl_btc;
+
+            // Last resort fallback
+            return 300.0;
+        }
+
+        // Load market data
+        function loadMarketData(market) {
+            const config = MARKETS[currentContractVersion][market];
+            currentYieldData = JSON.parse(JSON.stringify(config.data));
+            originalData = JSON.parse(JSON.stringify(config.data));
+        }
+
+        // Switch contract version
+        function switchContractVersion(version) {
+            if (version === currentContractVersion) return;
+
+            console.log('Switching to contract version:', version);
+
+            // Update active button
+            document.querySelectorAll('.contract-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            document.querySelector(`[data-version="${version}"]`).classList.add('active');
+
+            currentContractVersion = version;
+
+            // Reload market data with new contract version
+            loadMarketData(currentMarket);
+            console.log('Loaded data for', version, 'contract:', currentYieldData);
+
+            renderContent();
+            initializeDateInputs();
+            updateMetrics();
+            destroyCharts();
+            createCharts();
+
+            // Reset range slider
+            document.querySelectorAll('.period-button').forEach(b => b.classList.remove('active'));
+            document.querySelector('.period-button[data-days="all"]').classList.add('active');
+            initRangeSlider();
+        }
+
+        // Switch market
+        function switchMarket(market) {
+            if (market === currentMarket) return;
+
+            console.log('Switching to market:', market);
+
+            // Update active button
+            document.querySelectorAll('.market-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            document.querySelector(`[data-market="${market}"]`).classList.add('active');
+
+            currentMarket = market;
+
+            // Load market data
+            loadMarketData(market);
+            console.log('Loaded data:', currentYieldData);
+
+            // Показываем/скрываем чекбокс "Add YB Emission" в зависимости от типа маркета
+            const emissionToggleLabel = document.getElementById('emission-toggle-label');
+            if (emissionToggleLabel) {
+                emissionToggleLabel.style.display = market.startsWith('syb_') ? 'flex' : 'none';
+            }
+
+            renderContent();
+            initializeDateInputs();
+            updateMetrics();
+            destroyCharts();
+            createCharts();
+
+            // Reset range slider
+            document.querySelectorAll('.period-button').forEach(b => b.classList.remove('active'));
+            document.querySelector('.period-button[data-days="all"]').classList.add('active');
+            initRangeSlider();
+        }
+
+        function showError(message) {
+            document.getElementById('content-area').innerHTML = `<div class="error">${message}</div>`;
+        }
+
+        function renderContent() {
+            document.getElementById('content-area').innerHTML = `
+                <div id="metricsContainer" style="position: relative; background: #1e293b; border-radius: 12px; padding: 20px; margin-bottom: 20px;">
+                    <div class="share-buttons" style="top: 12px;">
+                        <button class="share-button copy" onclick="copyMetricsScreenshot()" title="Copy to clipboard">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
+                        </button>
+                        <button class="share-button telegram" onclick="shareMetricsToTelegram()" title="Share to Telegram">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+                        </button>
+                        <button class="share-button twitter" onclick="shareMetricsToTwitter()" title="Share to X/Twitter">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                        </button>
+                    </div>
+
+                    <div id="fundamental-metrics" style="margin-bottom: 16px;">
+                        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 8px;">
+                            <h3 style="color: #94a3b8; font-size: 14px; font-weight: 600; margin: 0;">Fundamental (PPS-based)</h3>
+                            <label id="emission-fundamental-label" style="display: flex; align-items: center; gap: 6px; cursor: pointer; margin-left: auto;">
+                                <input type="checkbox" id="emission-fundamental-toggle" onchange="toggleEmissionFundamental()" checked style="cursor: pointer;">
+                                <span style="color: #cbd5e1; font-size: 12px;">+ YB Emission</span>
+                            </label>
+                            <div id="emission-metrics-fund" style="display: none; gap: 8px; align-items: center;">
+                                <div style="display: flex; align-items: center; gap: 4px;">
+                                    <span style="color: #64748b; font-size: 11px;">Yield:</span>
+                                    <span id="emission-boost-fund" style="color: #10b981; font-size: 11px; font-weight: 600;">-</span>
+                                </div>
+                                <div style="display: flex; align-items: center; gap: 4px;">
+                                    <span style="color: #64748b; font-size: 11px;">APR:</span>
+                                    <span id="emission-apr-fund" style="color: #10b981; font-size: 11px; font-weight: 600;">-</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="metrics-grid">
+                            <div class="metric-card">
+                                <div class="metric-label">Total Return</div>
+                                <div class="metric-value" id="total-return-fund"></div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-label">Annualized APR</div>
+                                <div class="metric-value" id="apr-fund"></div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-label">Start PPS</div>
+                                <div class="metric-value" id="start-pps-fund"></div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-label">End PPS</div>
+                                <div class="metric-value" id="end-pps-fund"></div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-label">Yield Delta</div>
+                                <div class="metric-value" id="yield-delta"></div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-label">APR Delta</div>
+                                <div class="metric-value" id="apr-delta"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="withdrawable-metrics" style="display: block;">
+                        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 8px;">
+                            <h3 style="color: #94a3b8; font-size: 14px; font-weight: 600; margin: 0;">Withdrawable (Trading)</h3>
+                            <label id="emission-withdrawable-label" style="display: flex; align-items: center; gap: 6px; cursor: pointer; margin-left: auto;">
+                                <input type="checkbox" id="emission-withdrawable-toggle" onchange="toggleEmissionWithdrawable()" checked style="cursor: pointer;">
+                                <span style="color: #cbd5e1; font-size: 12px;">+ YB Emission</span>
+                            </label>
+                            <div id="emission-metrics-withdrawable" style="display: none; gap: 8px; align-items: center;">
+                                <div style="display: flex; align-items: center; gap: 4px;">
+                                    <span style="color: #64748b; font-size: 11px;">Yield:</span>
+                                    <span id="emission-boost-withdrawable" style="color: #10b981; font-size: 11px; font-weight: 600;">-</span>
+                                </div>
+                                <div style="display: flex; align-items: center; gap: 4px;">
+                                    <span style="color: #64748b; font-size: 11px;">APR:</span>
+                                    <span id="emission-apr-withdrawable" style="color: #10b981; font-size: 11px; font-weight: 600;">-</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="metrics-grid">
+                            <div class="metric-card">
+                                <div class="metric-label">Total Return</div>
+                                <div class="metric-value" id="total-return"></div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-label">Annualized APR</div>
+                                <div class="metric-value" id="apr"></div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-label">Start PPS</div>
+                                <div class="metric-value" id="start-pps"></div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-label">End PPS</div>
+                                <div class="metric-value" id="end-pps"></div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-label">Period</div>
+                                <div class="metric-value" id="period"></div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-label">Data Points</div>
+                                <div class="metric-value" id="data-points"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="chart-container" id="ppsChartContainer" style="position: relative;">
+                    <h2 class="chart-title" id="ppsChartTitle">Price Per Share (BTC)</h2>
+                    <div class="share-buttons">
+                        <button class="share-button copy" onclick="copyScreenshot()" title="Copy to clipboard">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
+                        </button>
+                        <button class="share-button telegram" onclick="shareToTelegram()" title="Share to Telegram">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+                        </button>
+                        <button class="share-button twitter" onclick="shareToTwitter()" title="Share to X/Twitter">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                        </button>
+                    </div>
+                    <label class="btc-price-toggle">
+                        <input type="checkbox" id="btc-price-toggle" onchange="toggleBtcPrice()" checked>
+                        <span>BTC $</span>
+                    </label>
+                    <canvas id="ppsChart"></canvas>
+
+                    <div class="compact-range">
+                        <div class="period-buttons">
+                            <span class="period-label">Period:</span>
+                            <button class="period-button" data-days="7">7d</button>
+                            <button class="period-button" data-days="14">14d</button>
+                            <button class="period-button" data-days="30">30d</button>
+                            <button class="period-button active" data-days="all">All</button>
+                        </div>
+                        <div class="range-slider">
+                            <div class="range-fill" id="rangeFill"></div>
+                            <input type="range" id="rangeStart" min="0" max="100" value="0">
+                            <input type="range" id="rangeEnd" min="0" max="100" value="100">
+                        </div>
+                        <div class="range-labels">
+                            <span id="rangeStartLabel">Start</span>
+                            <span id="rangeEndLabel">End</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="chart-container" id="gaugeChart" style="display: none; position: relative;">
+                    <h2 class="chart-title">Gauge Token Conversion (yb → syb)</h2>
+                    <div class="share-buttons">
+                        <button class="share-button copy" onclick="copyChartScreenshot('gaugeChart')" title="Copy"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg></button>
+                        <button class="share-button telegram" onclick="shareChartToTelegram('gaugeChart')" title="Telegram"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg></button>
+                        <button class="share-button twitter" onclick="shareChartToTwitter('gaugeChart')" title="X"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></button>
+                    </div>
+                    <canvas id="gaugeConversionChart"></canvas>
+                </div>
+
+                <div class="chart-container" id="priceChartContainer" style="position: relative;">
+                    <h2 class="chart-title">BTC vs ${MARKETS[currentContractVersion][currentMarket].name} Price (USD)</h2>
+                    <div class="share-buttons">
+                        <button class="share-button copy" onclick="copyChartScreenshot('priceChartContainer')" title="Copy"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg></button>
+                        <button class="share-button telegram" onclick="shareChartToTelegram('priceChartContainer')" title="Telegram"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg></button>
+                        <button class="share-button twitter" onclick="shareChartToTwitter('priceChartContainer')" title="X"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></button>
+                    </div>
+                    <canvas id="priceComparisonChart"></canvas>
+                </div>
+
+                <div class="chart-container" id="returnsChartContainer" style="position: relative;">
+                    <h2 class="chart-title">Step Returns (%)</h2>
+                    <div class="share-buttons">
+                        <button class="share-button copy" onclick="copyChartScreenshot('returnsChartContainer')" title="Copy"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg></button>
+                        <button class="share-button telegram" onclick="shareChartToTelegram('returnsChartContainer')" title="Telegram"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg></button>
+                        <button class="share-button twitter" onclick="shareChartToTwitter('returnsChartContainer')" title="X"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></button>
+                    </div>
+                    <canvas id="returnsChart"></canvas>
+                </div>
+
+                <div class="info">
+                    <div class="info-title">Contract Information</div>
+                    <div class="info-content" id="contract-info"></div>
+                </div>
+            `;
+
+            // Скрываем чекбоксы эмиссии для нестейкнутых токенов
+            const isSybMarket = currentMarket.startsWith('syb_');
+            const emissionFundLabel = document.getElementById('emission-fundamental-label');
+            const emissionWithdrawableLabel = document.getElementById('emission-withdrawable-label');
+
+            if (emissionFundLabel) {
+                emissionFundLabel.style.display = isSybMarket ? 'flex' : 'none';
+            }
+            if (emissionWithdrawableLabel) {
+                emissionWithdrawableLabel.style.display = isSybMarket ? 'flex' : 'none';
+            }
+        }
+
+        function initializeDateInputs() {
+            if (!currentYieldData || !currentYieldData.data || currentYieldData.data.length === 0) return;
+
+            const startDate = parseAsUTC(currentYieldData.data[0].datetime);
+            const endDate = parseAsUTC(currentYieldData.data[currentYieldData.data.length - 1].datetime);
+
+            document.getElementById('startDate').value = formatDateForInput(startDate);
+            document.getElementById('endDate').value = formatDateForInput(endDate);
+        }
+
+        function formatDateForInput(date) {
+            if (useUTC) {
+                const year = date.getUTCFullYear();
+                const month = String(date.getUTCMonth() + 1).padStart(2, '0');
+                const day = String(date.getUTCDate()).padStart(2, '0');
+                const hours = String(date.getUTCHours()).padStart(2, '0');
+                const minutes = String(date.getUTCMinutes()).padStart(2, '0');
+                return `${year}-${month}-${day}T${hours}:${minutes}`;
+            } else {
+                const year = date.getFullYear();
+                const month = String(date.getMonth() + 1).padStart(2, '0');
+                const day = String(date.getDate()).padStart(2, '0');
+                const hours = String(date.getHours()).padStart(2, '0');
+                const minutes = String(date.getMinutes()).padStart(2, '0');
+                return `${year}-${month}-${day}T${hours}:${minutes}`;
+            }
+        }
+
+        function applyDateFilter() {
+            const startInput = document.getElementById('startDate').value;
+            const endInput = document.getElementById('endDate').value;
+
+            if (!startInput || !endInput) {
+                alert('Please select both start and end dates');
+                return;
+            }
+
+            // Интерпретируем ввод даты как UTC (добавляем 'Z')
+            const startTime = parseAsUTC(startInput).getTime();
+            const endTime = parseAsUTC(endInput).getTime();
+
+            const filteredData = originalData.data.filter(d => {
+                const timestamp = d.timestamp * 1000;
+                return timestamp >= startTime && timestamp <= endTime;
+            });
+
+            if (filteredData.length === 0) {
+                alert('No data points in selected range');
+                return;
+            }
+
+            currentYieldData.data = filteredData;
+            currentYieldData.metadata.data_points = filteredData.length;
+            currentYieldData.metadata.start_date = filteredData[0].datetime;
+            currentYieldData.metadata.end_date = filteredData[filteredData.length - 1].datetime;
+
+            const startPps = filteredData[0].pps_btc;
+            const endPps = filteredData[filteredData.length - 1].pps_btc;
+            const totalReturn = (endPps - startPps) / startPps;
+            const days = (filteredData[filteredData.length - 1].timestamp - filteredData[0].timestamp) / 86400;
+            const apr = Math.pow(1 + totalReturn, 365 / days) - 1;  // Compound APR
+
+            console.log('Calculated base metrics for Withdrawable:', {
+                startPps,
+                endPps,
+                totalReturn,
+                days,
+                apr,
+                startTimestamp: filteredData[0].timestamp,
+                endTimestamp: filteredData[filteredData.length - 1].timestamp
+            });
+
+            currentYieldData.metrics.start_pps = startPps;
+            currentYieldData.metrics.end_pps = endPps;
+            currentYieldData.metrics.total_return = totalReturn;
+            currentYieldData.metrics.total_return_pct = totalReturn * 100;
+            currentYieldData.metrics.apr = apr;
+            currentYieldData.metrics.apr_pct = apr * 100;
+            currentYieldData.metrics.days = days;
+
+            updateMetrics();
+            destroyCharts();
+            createCharts();
+        }
+
+        function resetDateFilter() {
+            currentYieldData.data = JSON.parse(JSON.stringify(originalData.data));
+            currentYieldData.metadata = JSON.parse(JSON.stringify(originalData.metadata));
+            currentYieldData.metrics = JSON.parse(JSON.stringify(originalData.metrics));
+
+            initializeDateInputs();
+
+            // Reset range slider
+            if (originalData && originalData.data && originalData.data.length > 0) {
+                currentRangeStart = 0;
+                currentRangeEnd = originalData.data.length - 1;
+                document.getElementById('rangeStart').value = 0;
+                document.getElementById('rangeEnd').value = 100;
+                updateSliderUI();
+
+                // Reset period buttons - activate "All"
+                document.querySelectorAll('.period-button').forEach(btn => {
+                    btn.classList.remove('active');
+                    if (btn.dataset.days === 'all') {
+                        btn.classList.add('active');
+                    }
+                });
+            }
+
+            updateMetrics();
+            destroyCharts();
+            createCharts();
+        }
+
+        function destroyCharts() {
+            console.log('Destroying charts:', Object.keys(charts));
+            Object.values(charts).forEach(chart => {
+                if (chart) chart.destroy();
+            });
+            charts = {};
+        }
+
+        // Глобальная функция для корректного расчёта emission per token
+        // Интегрирует emission_delta / TVL(t) для каждого периода
+        function calculateEmissionPerToken(startTimestamp, endTimestamp, emissionDataSource, emissionField, baseMarket) {
+            if (!emissionDataSource || !currentYieldData.data) return 0;
+
+            const emissionSorted = emissionDataSource
+                .filter(e => e[emissionField] !== null && e[emissionField] !== undefined)
+                .sort((a, b) => a.timestamp - b.timestamp);
+
+            if (emissionSorted.length === 0) return 0;
+
+            // Функция для интерполяции emission
+            function getCumulativeEmission(targetTimestamp) {
+                let closestBefore = null;
+                let closestAfter = null;
+
+                for (let i = 0; i < emissionSorted.length; i++) {
+                    if (emissionSorted[i].timestamp <= targetTimestamp) {
+                        closestBefore = emissionSorted[i];
+                    } else {
+                        closestAfter = emissionSorted[i];
+                        break;
+                    }
+                }
+
+                if (closestBefore && closestBefore.timestamp === targetTimestamp) {
+                    return closestBefore[emissionField];
+                }
+
+                if (closestBefore && closestAfter) {
+                    const valBefore = closestBefore[emissionField];
+                    const valAfter = closestAfter[emissionField];
+                    const t = (targetTimestamp - closestBefore.timestamp) / (closestAfter.timestamp - closestBefore.timestamp);
+                    return valBefore + t * (valAfter - valBefore);
+                }
+
+                if (closestBefore) return closestBefore[emissionField];
+                if (closestAfter) return closestAfter[emissionField];
+                return 0;
+            }
+
+            // Интегрируем emission_delta / TVL(t) для каждой точки данных
+            let accumulatedEmission = 0;
+            const startEmissionTotal = getCumulativeEmission(startTimestamp);
+            let prevEmission = startEmissionTotal;
+
+            for (let i = 0; i < currentYieldData.data.length; i++) {
+                const pointTimestamp = Math.floor(parseAsUTC(currentYieldData.data[i].datetime).getTime() / 1000);
+                if (pointTimestamp <= startTimestamp) continue;
+                if (pointTimestamp > endTimestamp) break;
+
+                const currentEmission = getCumulativeEmission(pointTimestamp);
+                const emissionDelta = currentEmission - prevEmission;
+
+                if (emissionDelta > 0) {
+                    const tvlCurrent = getTVLAt(pointTimestamp, baseMarket);
+                    // Защита от деления на маленький TVL
+                    const effectiveTVL = Math.max(tvlCurrent, 1.0);
+                    accumulatedEmission += emissionDelta / effectiveTVL;
+                }
+
+                prevEmission = currentEmission;
+            }
+
+            return accumulatedEmission;
+        }
+
+        function updateMetrics() {
+            // Trading metrics
+            let totalReturnWithdrawable = currentYieldData.metrics.total_return;
+            let aprWithdrawable = currentYieldData.metrics.apr;
+
+            console.log('Base Withdrawable metrics:', {
+                totalReturn: totalReturnWithdrawable,
+                apr: aprWithdrawable,
+                days: currentYieldData.metrics.days,
+                expectedApr: (totalReturnWithdrawable / currentYieldData.metrics.days) * 365
+            });
+
+            // Если emission включен для Withdrawable, добавляем emission к доходности
+            console.log('Withdrawable emission check:', {showEmission, showEmissionWithdrawable, isSyb: currentMarket.startsWith('syb_')});
+            if (showEmission && showEmissionWithdrawable && currentMarket.startsWith('syb_')) {
+                const config = MARKETS[currentContractVersion][currentMarket];
+                const emissionDataSource = config.emissionData;
+                const emissionField = config.emissionField;
+
+                console.log('Withdrawable emission data:', {hasData: !!emissionDataSource, length: emissionDataSource?.length, field: emissionField});
+                if (emissionDataSource && emissionDataSource.length > 0 && emissionField) {
+                    const startTimestamp = Math.floor(parseAsUTC(currentYieldData.data[0].datetime).getTime() / 1000);
+                    const endTimestamp = Math.floor(parseAsUTC(currentYieldData.data[currentYieldData.data.length - 1].datetime).getTime() / 1000);
+
+                    const emissionSorted = emissionDataSource
+                        .filter(e => e[emissionField] !== null && e[emissionField] !== undefined)
+                        .sort((a, b) => a.timestamp - b.timestamp);
+
+                    function getCumulativeEmissionWithdrawable(targetTimestamp) {
+                        let closestBefore = null;
+                        let closestAfter = null;
+
+                        for (let i = 0; i < emissionSorted.length; i++) {
+                            if (emissionSorted[i].timestamp <= targetTimestamp) {
+                                closestBefore = emissionSorted[i];
+                            } else {
+                                closestAfter = emissionSorted[i];
+                                break;
+                            }
+                        }
+
+                        if (closestBefore && closestBefore.timestamp === targetTimestamp) {
+                            return closestBefore[emissionField];
+                        }
+
+                        if (closestBefore && closestAfter) {
+                            const valBefore = closestBefore[emissionField];
+                            const valAfter = closestAfter[emissionField];
+                            const t = (targetTimestamp - closestBefore.timestamp) / (closestAfter.timestamp - closestBefore.timestamp);
+                            return valBefore + t * (valAfter - valBefore);
+                        }
+
+                        if (closestBefore) return closestBefore[emissionField];
+                        if (closestAfter) return closestAfter[emissionField];
+                        return 0;
+                    }
+
+                    // Используем корректную формулу: интегрирование emission_delta / TVL(t)
+                    const baseMarket = config.baseMarket || 'wbtc';
+                    const emissionBoost = calculateEmissionPerToken(startTimestamp, endTimestamp, emissionDataSource, emissionField, baseMarket);
+
+                    totalReturnWithdrawable += emissionBoost;
+                    aprWithdrawable = Math.pow(1 + totalReturnWithdrawable, 365 / currentYieldData.metrics.days) - 1;  // Compound APR
+
+                    const startTVL = getTVLAt(startTimestamp, baseMarket);
+                    const endTVL = getTVLAt(endTimestamp, baseMarket);
+                    console.log('Withdrawable emission added:', {emissionBoost, startTVL, endTVL, totalReturnWithdrawable, aprWithdrawable});
+                }
+            }
+
+            document.getElementById('total-return').textContent = (totalReturnWithdrawable * 100).toFixed(4) + '%';
+            document.getElementById('total-return').className = 'metric-value ' + (totalReturnWithdrawable >= 0 ? 'positive' : 'negative');
+
+            document.getElementById('apr').textContent = (aprWithdrawable * 100).toFixed(2) + '%';
+            document.getElementById('apr').className = 'metric-value ' + (aprWithdrawable >= 0 ? 'positive' : 'negative');
+
+            document.getElementById('period').textContent = currentYieldData.metrics.days.toFixed(2) + ' days';
+            document.getElementById('data-points').textContent = currentYieldData.metadata.data_points;
+            document.getElementById('start-pps').textContent = currentYieldData.metrics.start_pps.toFixed(8) + ' BTC';
+            document.getElementById('end-pps').textContent = currentYieldData.metrics.end_pps.toFixed(8) + ' BTC';
+
+            // Fundamental metrics (если включено)
+            if (showFundamentalYield) {
+                const config = MARKETS[currentContractVersion][currentMarket];
+                const ppsDataSource = config.ppsData;
+
+                if (ppsDataSource && ppsDataSource.data) {
+                    // Получаем start и end timestamps из текущих данных
+                    const startTimestamp = Math.floor(parseAsUTC(currentYieldData.data[0].datetime).getTime() / 1000);
+                    const endTimestamp = Math.floor(parseAsUTC(currentYieldData.data[currentYieldData.data.length - 1].datetime).getTime() / 1000);
+
+                    // Для syb токенов используем pps_staked, для обычных - pps_unstaked
+                    const ppsField = currentMarket.startsWith('syb_') ? 'pps_staked' : 'pps_unstaked';
+
+                    // Находим ближайшие PPS точки для start и end
+                    const ppsSorted = ppsDataSource.data
+                        .filter(p => p[ppsField] !== null)
+                        .sort((a, b) => a.timestamp - b.timestamp);
+
+                    function findClosestPps(targetTs) {
+                        let closest = null;
+                        let minDiff = Infinity;
+                        for (const point of ppsSorted) {
+                            const diff = Math.abs(point.timestamp - targetTs);
+                            if (diff < minDiff) {
+                                minDiff = diff;
+                                closest = point;
+                            }
+                        }
+                        return closest;
+                    }
+
+                    const startPpsPoint = findClosestPps(startTimestamp);
+                    const endPpsPoint = findClosestPps(endTimestamp);
+
+                    if (startPpsPoint && endPpsPoint) {
+                        // Вычисляем период для Fundamental из PPS точек
+                        const daysFund = (endPpsPoint.timestamp - startPpsPoint.timestamp) / 86400;
+
+                        console.log('Fundamental period calculation:', {
+                            startTimestamp,
+                            endTimestamp,
+                            startPpsTimestamp: startPpsPoint.timestamp,
+                            endPpsTimestamp: endPpsPoint.timestamp,
+                            daysFund,
+                            daysWithdrawable: currentYieldData.metrics.days
+                        });
+
+                        // ppsField уже определен выше
+                        const startPpsFund = startPpsPoint[ppsField];
+                        const endPpsFund = endPpsPoint[ppsField];
+                        let totalReturnFund = (endPpsFund - startPpsFund) / startPpsFund;
+                        let aprFund = Math.pow(1 + totalReturnFund, 365 / daysFund) - 1;  // Compound APR
+
+                        console.log('Fundamental APR calculation:', {
+                            startPpsFund,
+                            endPpsFund,
+                            totalReturnFund,
+                            daysFund,
+                            aprFund
+                        });
+
+                        // Если emission включен для Fundamental, добавляем emission к доходности
+                        let emissionBoostForFund = 0;
+                        console.log('Fundamental emission check:', {showEmission, showEmissionFundamental, isSyb: currentMarket.startsWith('syb_')});
+                        if (showEmission && showEmissionFundamental && currentMarket.startsWith('syb_')) {
+                            const emissionDataSource = config.emissionData;
+                            const emissionField = config.emissionField;
+
+                            console.log('Fundamental emission data:', {hasData: !!emissionDataSource, length: emissionDataSource?.length, field: emissionField});
+                            if (emissionDataSource && emissionDataSource.length > 0 && emissionField) {
+                                const emissionSorted = emissionDataSource
+                                    .filter(e => e[emissionField] !== null && e[emissionField] !== undefined)
+                                    .sort((a, b) => a.timestamp - b.timestamp);
+
+                                function getCumulativeEmissionTemp(targetTimestamp) {
+                                    let closestBefore = null;
+                                    let closestAfter = null;
+
+                                    for (let i = 0; i < emissionSorted.length; i++) {
+                                        if (emissionSorted[i].timestamp <= targetTimestamp) {
+                                            closestBefore = emissionSorted[i];
+                                        } else {
+                                            closestAfter = emissionSorted[i];
+                                            break;
+                                        }
+                                    }
+
+                                    if (closestBefore && closestBefore.timestamp === targetTimestamp) {
+                                        return closestBefore[emissionField];
+                                    }
+
+                                    if (closestBefore && closestAfter) {
+                                        const valBefore = closestBefore[emissionField];
+                                        const valAfter = closestAfter[emissionField];
+                                        const t = (targetTimestamp - closestBefore.timestamp) / (closestAfter.timestamp - closestBefore.timestamp);
+                                        return valBefore + t * (valAfter - valBefore);
+                                    }
+
+                                    if (closestBefore) return closestBefore[emissionField];
+                                    if (closestAfter) return closestAfter[emissionField];
+                                    return 0;
+                                }
+
+                                // Используем корректную формулу: интегрирование emission_delta / TVL(t)
+                                const baseMarket = config.baseMarket || 'wbtc';
+                                emissionBoostForFund = calculateEmissionPerToken(startTimestamp, endTimestamp, emissionDataSource, emissionField, baseMarket);
+
+                                totalReturnFund += emissionBoostForFund;
+                                aprFund = Math.pow(1 + totalReturnFund, 365 / daysFund) - 1;  // Compound APR
+
+                                const startTVL = getTVLAt(startTimestamp, baseMarket);
+                                const endTVL = getTVLAt(endTimestamp, baseMarket);
+                                console.log('Fundamental emission added:', {emissionBoostForFund, startTVL, endTVL, totalReturnFund, aprFund, daysFund});
+                            }
+                        }
+
+                        // Deltas (Trading - Fundamental)
+                        // Используем totalReturnWithdrawable/aprWithdrawable которые уже включают emission для syb маркетов
+                        const yieldDelta = totalReturnWithdrawable - totalReturnFund;
+                        const aprDelta = aprWithdrawable - aprFund;
+
+                        document.getElementById('total-return-fund').textContent = (totalReturnFund * 100).toFixed(4) + '%';
+                        document.getElementById('total-return-fund').className = 'metric-value ' + (totalReturnFund >= 0 ? 'positive' : 'negative');
+
+                        document.getElementById('apr-fund').textContent = (aprFund * 100).toFixed(2) + '%';
+                        document.getElementById('apr-fund').className = 'metric-value ' + (aprFund >= 0 ? 'positive' : 'negative');
+
+                        document.getElementById('yield-delta').textContent = (yieldDelta * 100).toFixed(4) + '%';
+                        document.getElementById('yield-delta').className = 'metric-value ' + (yieldDelta >= 0 ? 'positive' : 'negative');
+
+                        document.getElementById('apr-delta').textContent = (aprDelta * 100).toFixed(2) + '%';
+                        document.getElementById('apr-delta').className = 'metric-value ' + (aprDelta >= 0 ? 'positive' : 'negative');
+
+                        document.getElementById('start-pps-fund').textContent = startPpsFund.toFixed(8) + ' BTC';
+                        document.getElementById('end-pps-fund').textContent = endPpsFund.toFixed(8) + ' BTC';
+                    }
+                }
+
+                // Emission metrics (только для syb токенов и если showEmission = true)
+                if (showEmission && currentMarket.startsWith('syb_')) {
+                    const emissionDataSource = config.emissionData;
+                    const emissionField = config.emissionField;
+
+                    if (emissionDataSource && emissionDataSource.length > 0 && emissionField) {
+                        // Получаем start и end timestamps из текущих данных
+                        const startTimestamp = Math.floor(parseAsUTC(currentYieldData.data[0].datetime).getTime() / 1000);
+                        const endTimestamp = Math.floor(parseAsUTC(currentYieldData.data[currentYieldData.data.length - 1].datetime).getTime() / 1000);
+
+                        // Сортируем эмиссию по timestamp
+                        const emissionSorted = emissionDataSource
+                            .filter(e => e[emissionField] !== null && e[emissionField] !== undefined)
+                            .sort((a, b) => a.timestamp - b.timestamp);
+
+
+                        // Функция для получения кумулятивной эмиссии в конкретный момент времени
+                        function getCumulativeEmissionForMetrics(targetTimestamp) {
+                            let closestBefore = null;
+                            let closestAfter = null;
+
+                            for (let i = 0; i < emissionSorted.length; i++) {
+                                if (emissionSorted[i].timestamp <= targetTimestamp) {
+                                    closestBefore = emissionSorted[i];
+                                } else {
+                                    closestAfter = emissionSorted[i];
+                                    break;
+                                }
+                            }
+
+                            // Точное совпадение
+                            if (closestBefore && closestBefore.timestamp === targetTimestamp) {
+                                return closestBefore[emissionField];
+                            }
+
+                            // Интерполяция
+                            if (closestBefore && closestAfter) {
+                                const valBefore = closestBefore[emissionField];
+                                const valAfter = closestAfter[emissionField];
+                                const t = (targetTimestamp - closestBefore.timestamp) / (closestAfter.timestamp - closestBefore.timestamp);
+                                return valBefore + t * (valAfter - valBefore);
+                            }
+
+                            // Экстраполяция
+                            if (closestBefore) {
+                                return closestBefore[emissionField];
+                            }
+                            if (closestAfter) {
+                                return closestAfter[emissionField];
+                            }
+
+                            return 0;
+                        }
+
+                        // Используем корректную формулу: интегрирование emission_delta / TVL(t)
+                        const baseMarket = config.baseMarket || 'wbtc';
+                        const emissionBoost = calculateEmissionPerToken(startTimestamp, endTimestamp, emissionDataSource, emissionField, baseMarket);
+
+                        // Вычисляем период для Fundamental из PPS точек
+                        const ppsDataSource = config.ppsData;
+                        let daysFundForEmission = currentYieldData.metrics.days; // fallback
+
+                        if (ppsDataSource && ppsDataSource.data) {
+                            function findClosestPpsForEmission(targetTimestamp) {
+                                let closest = null;
+                                let minDiff = Infinity;
+
+                                for (let i = 0; i < ppsDataSource.data.length; i++) {
+                                    const point = ppsDataSource.data[i];
+                                    const diff = Math.abs(point.timestamp - targetTimestamp);
+                                    if (diff < minDiff) {
+                                        minDiff = diff;
+                                        closest = point;
+                                    }
+                                }
+                                return closest;
+                            }
+
+                            const startPpsPoint = findClosestPpsForEmission(startTimestamp);
+                            const endPpsPoint = findClosestPpsForEmission(endTimestamp);
+
+                            if (startPpsPoint && endPpsPoint) {
+                                daysFundForEmission = (endPpsPoint.timestamp - startPpsPoint.timestamp) / 86400;
+                            }
+                        }
+
+                        // Вычисляем APR отдельно для каждого метода (Simple APR - emission не компаундится)
+                        const emissionAprWithdrawable = emissionBoost * (365 / currentYieldData.metrics.days);
+                        const emissionAprFund = emissionBoost * (365 / daysFundForEmission);
+
+                        // Показываем emission metrics рядом с обоими чекбоксами
+                        document.getElementById('emission-metrics-fund').style.display = 'flex';
+                        document.getElementById('emission-boost-fund').textContent = (emissionBoost * 100).toFixed(4) + '%';
+                        document.getElementById('emission-apr-fund').textContent = (emissionAprFund * 100).toFixed(2) + '%';
+
+                        document.getElementById('emission-metrics-withdrawable').style.display = 'flex';
+                        document.getElementById('emission-boost-withdrawable').textContent = (emissionBoost * 100).toFixed(4) + '%';
+                        document.getElementById('emission-apr-withdrawable').textContent = (emissionAprWithdrawable * 100).toFixed(2) + '%';
+                    } else {
+                        // Нет данных эмиссии - скрываем блоки
+                        document.getElementById('emission-metrics-fund').style.display = 'none';
+                        document.getElementById('emission-metrics-withdrawable').style.display = 'none';
+                    }
+                } else {
+                    // Не syb токен - скрываем блоки
+                    document.getElementById('emission-metrics-fund').style.display = 'none';
+                    document.getElementById('emission-metrics-withdrawable').style.display = 'none';
+                }
+            }
+
+            const firstBlock = currentYieldData.data[0].block;
+            const lastBlock = currentYieldData.data[currentYieldData.data.length - 1].block;
+
+            document.getElementById('contract-info').innerHTML = `
+                Contract: <code>${currentYieldData.metadata.contract}</code><br>
+                Period: ${currentYieldData.metadata.start_date} to ${currentYieldData.metadata.end_date}<br>
+                Blocks: ${firstBlock} to ${lastBlock}
+            `;
+        }
+
+
+        function toggleWithdrawableYield() {
+            showWithdrawableYield = document.getElementById('withdrawable-yield-toggle')?.checked || false;
+            console.log('Withdrawable yield:', showWithdrawableYield);
+
+            // Показать/скрыть секцию withdrawable metrics
+            const withdrawMetrics = document.getElementById('withdrawable-metrics');
+            if (withdrawMetrics) {
+                withdrawMetrics.style.display = showWithdrawableYield ? 'grid' : 'none';
+            }
+
+            updateMetrics();
+            destroyCharts();
+            createCharts();
+        }
+
+        function toggleFundamentalYield() {
+            showFundamentalYield = document.getElementById('fundamental-yield-toggle')?.checked || false;
+            console.log('Fundamental yield:', showFundamentalYield);
+
+            // Показать/скрыть секцию fundamental metrics
+            const fundMetrics = document.getElementById('fundamental-metrics');
+            if (fundMetrics) {
+                fundMetrics.style.display = showFundamentalYield ? 'grid' : 'none';
+            }
+
+            updateMetrics();
+            destroyCharts();
+            createCharts();
+        }
+
+        function toggleEmissionFundamental() {
+            showEmissionFundamental = document.getElementById('emission-fundamental-toggle').checked;
+            console.log('Fundamental emission toggled:', showEmissionFundamental);
+
+            // Обновляем метрики и пересоздаём графики
+            updateMetrics();
+            destroyCharts();
+            createCharts();
+        }
+
+        function toggleEmissionWithdrawable() {
+            showEmissionWithdrawable = document.getElementById('emission-withdrawable-toggle').checked;
+            console.log('Withdrawable emission toggled:', showEmissionWithdrawable);
+
+            // Обновляем метрики и пересоздаём графики
+            updateMetrics();
+            destroyCharts();
+            createCharts();
+        }
+
+        function toggleBtcPrice() {
+            showBtcPrice = document.getElementById('btc-price-toggle').checked;
+            console.log('BTC Price toggled:', showBtcPrice);
+            destroyCharts();
+            createCharts();
+        }
+
+        async function shareToTelegram() {
+            const container = document.getElementById('ppsChartContainer');
+            const shareBtn = container.querySelector('.share-button.telegram');
+            const shareBtns = container.querySelector('.share-buttons');
+            const originalText = shareBtn.innerHTML;
+
+            try {
+                shareBtn.innerHTML = '<svg viewBox="0 0 24 24" fill="currentColor" style="animation: spin 1s linear infinite;"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8z" opacity=".3"/><path d="M20 12h2A10 10 0 0 0 12 2v2a8 8 0 0 1 8 8z"/></svg>';
+
+                // Скрываем кнопки для скриншота
+                const btcToggle = container.querySelector('.btc-price-toggle');
+                if (shareBtns) shareBtns.style.display = 'none';
+                if (btcToggle) btcToggle.style.display = 'none';
+
+                const canvas = await html2canvas(container, {
+                    backgroundColor: '#0f172a',
+                    scale: 2,
+                    logging: false
+                });
+
+                // Возвращаем кнопки
+                if (shareBtns) shareBtns.style.display = 'flex';
+                if (btcToggle) btcToggle.style.display = 'flex';
+
+                const blob = await new Promise(resolve => canvas.toBlob(resolve, 'image/png'));
+                const file = new File([blob], 'yield-basis-chart.png', { type: 'image/png' });
+
+                if (navigator.canShare && navigator.canShare({ files: [file] })) {
+                    await navigator.share({
+                        files: [file],
+                        title: 'Yield Basis BTC Vault',
+                        text: `${currentMarket.toUpperCase()} (${currentContractVersion.toUpperCase()}) - APR: ${document.getElementById('apr').textContent}`
+                    });
+                } else {
+                    // Скачиваем файл и открываем Telegram
+                    const url = URL.createObjectURL(blob);
+                    const a = document.createElement('a');
+                    a.href = url;
+                    a.download = `yield-basis-${currentMarket}-${new Date().toISOString().slice(0,10)}.png`;
+                    a.click();
+                    URL.revokeObjectURL(url);
+
+                    const shareText = encodeURIComponent(`Yield Basis ${currentMarket.toUpperCase()} (${currentContractVersion.toUpperCase()})\nAPR: ${document.getElementById('apr').textContent}\n\nhttps://nikcrv.github.io/yb-vaults-apr/`);
+                    window.open(`https://t.me/share/url?url=${encodeURIComponent('https://nikcrv.github.io/yb-vaults-apr/')}&text=${shareText}`, '_blank');
+                }
+                shareBtn.innerHTML = originalText;
+            } catch (err) {
+                console.error('Share error:', err);
+                shareBtn.innerHTML = originalText;
+            }
+        }
+
+        // Universal chart share functions
+        async function copyChartScreenshot(containerId) {
+            const container = document.getElementById(containerId);
+            const shareBtn = container.querySelector('.share-button.copy');
+            const shareBtns = container.querySelector('.share-buttons');
+            const originalText = shareBtn.innerHTML;
+
+            try {
+                shareBtn.innerHTML = '<svg viewBox="0 0 24 24" fill="currentColor" style="animation: spin 1s linear infinite;"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8z" opacity=".3"/><path d="M20 12h2A10 10 0 0 0 12 2v2a8 8 0 0 1 8 8z"/></svg>';
+                if (shareBtns) shareBtns.style.display = 'none';
+
+                const canvas = await html2canvas(container, { backgroundColor: '#0f172a', scale: 2, logging: false });
+                if (shareBtns) shareBtns.style.display = 'flex';
+
+                const blob = await new Promise(resolve => canvas.toBlob(resolve, 'image/png'));
+                await navigator.clipboard.write([new ClipboardItem({ 'image/png': blob })]);
+
+                shareBtn.innerHTML = '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>';
+                setTimeout(() => { shareBtn.innerHTML = originalText; }, 1500);
+            } catch (err) {
+                console.error('Copy error:', err);
+                shareBtn.innerHTML = originalText;
+            }
+        }
+
+        async function shareChartToTelegram(containerId) {
+            const container = document.getElementById(containerId);
+            const shareBtn = container.querySelector('.share-button.telegram');
+            const shareBtns = container.querySelector('.share-buttons');
+            const originalText = shareBtn.innerHTML;
+
+            try {
+                shareBtn.innerHTML = '<svg viewBox="0 0 24 24" fill="currentColor" style="animation: spin 1s linear infinite;"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8z" opacity=".3"/><path d="M20 12h2A10 10 0 0 0 12 2v2a8 8 0 0 1 8 8z"/></svg>';
+                if (shareBtns) shareBtns.style.display = 'none';
+
+                const canvas = await html2canvas(container, { backgroundColor: '#0f172a', scale: 2, logging: false });
+                if (shareBtns) shareBtns.style.display = 'flex';
+
+                const blob = await new Promise(resolve => canvas.toBlob(resolve, 'image/png'));
+                const file = new File([blob], 'yield-basis-chart.png', { type: 'image/png' });
+
+                if (navigator.canShare && navigator.canShare({ files: [file] })) {
+                    await navigator.share({ files: [file], title: 'Yield Basis Chart' });
+                } else {
+                    const url = URL.createObjectURL(blob);
+                    const a = document.createElement('a');
+                    a.href = url;
+                    a.download = `yield-basis-${containerId}-${new Date().toISOString().slice(0,10)}.png`;
+                    a.click();
+                    URL.revokeObjectURL(url);
+
+                    const shareText = encodeURIComponent(`Yield Basis ${currentMarket.toUpperCase()}\nhttps://nikcrv.github.io/yb-vaults-apr/`);
+                    window.open(`https://t.me/share/url?url=${encodeURIComponent('https://nikcrv.github.io/yb-vaults-apr/')}&text=${shareText}`, '_blank');
+                }
+                shareBtn.innerHTML = originalText;
+            } catch (err) {
+                console.error('Share error:', err);
+                shareBtn.innerHTML = originalText;
+            }
+        }
+
+        async function shareChartToTwitter(containerId) {
+            const container = document.getElementById(containerId);
+            const shareBtn = container.querySelector('.share-button.twitter');
+            const shareBtns = container.querySelector('.share-buttons');
+            const originalText = shareBtn.innerHTML;
+
+            try {
+                shareBtn.innerHTML = '<svg viewBox="0 0 24 24" fill="currentColor" style="animation: spin 1s linear infinite;"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8z" opacity=".3"/><path d="M20 12h2A10 10 0 0 0 12 2v2a8 8 0 0 1 8 8z"/></svg>';
+                if (shareBtns) shareBtns.style.display = 'none';
+
+                const canvas = await html2canvas(container, { backgroundColor: '#0f172a', scale: 2, logging: false });
+                if (shareBtns) shareBtns.style.display = 'flex';
+
+                const blob = await new Promise(resolve => canvas.toBlob(resolve, 'image/png'));
+                const file = new File([blob], 'yield-basis-chart.png', { type: 'image/png' });
+
+                if (navigator.canShare && navigator.canShare({ files: [file] })) {
+                    await navigator.share({ files: [file], title: 'Yield Basis Chart' });
+                } else {
+                    const url = URL.createObjectURL(blob);
+                    const a = document.createElement('a');
+                    a.href = url;
+                    a.download = `yield-basis-${containerId}-${new Date().toISOString().slice(0,10)}.png`;
+                    a.click();
+                    URL.revokeObjectURL(url);
+
+                    const tweetText = encodeURIComponent(`Yield Basis ${currentMarket.toUpperCase()}\nhttps://nikcrv.github.io/yb-vaults-apr/`);
+                    window.open(`https://twitter.com/intent/tweet?text=${tweetText}`, '_blank');
+                }
+                shareBtn.innerHTML = originalText;
+            } catch (err) {
+                console.error('Share error:', err);
+                shareBtn.innerHTML = originalText;
+            }
+        }
+
+        // Metrics share functions
+        async function copyMetricsScreenshot() {
+            const container = document.getElementById('metricsContainer');
+            const shareBtn = container.querySelector('.share-button.copy');
+            const shareBtns = container.querySelector('.share-buttons');
+            const originalText = shareBtn.innerHTML;
+
+            try {
+                shareBtn.innerHTML = '<svg viewBox="0 0 24 24" fill="currentColor" style="animation: spin 1s linear infinite;"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8z" opacity=".3"/><path d="M20 12h2A10 10 0 0 0 12 2v2a8 8 0 0 1 8 8z"/></svg>';
+                if (shareBtns) shareBtns.style.display = 'none';
+
+                const canvas = await html2canvas(container, { backgroundColor: '#0f172a', scale: 2, logging: false });
+                if (shareBtns) shareBtns.style.display = 'flex';
+
+                const blob = await new Promise(resolve => canvas.toBlob(resolve, 'image/png'));
+                await navigator.clipboard.write([new ClipboardItem({ 'image/png': blob })]);
+
+                shareBtn.innerHTML = '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>';
+                setTimeout(() => { shareBtn.innerHTML = originalText; }, 1500);
+            } catch (err) {
+                console.error('Copy error:', err);
+                shareBtn.innerHTML = originalText;
+            }
+        }
+
+        async function shareMetricsToTelegram() {
+            const container = document.getElementById('metricsContainer');
+            const shareBtn = container.querySelector('.share-button.telegram');
+            const shareBtns = container.querySelector('.share-buttons');
+            const originalText = shareBtn.innerHTML;
+
+            try {
+                shareBtn.innerHTML = '<svg viewBox="0 0 24 24" fill="currentColor" style="animation: spin 1s linear infinite;"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8z" opacity=".3"/><path d="M20 12h2A10 10 0 0 0 12 2v2a8 8 0 0 1 8 8z"/></svg>';
+                if (shareBtns) shareBtns.style.display = 'none';
+
+                const canvas = await html2canvas(container, { backgroundColor: '#0f172a', scale: 2, logging: false });
+                if (shareBtns) shareBtns.style.display = 'flex';
+
+                const blob = await new Promise(resolve => canvas.toBlob(resolve, 'image/png'));
+                const file = new File([blob], 'yield-basis-metrics.png', { type: 'image/png' });
+
+                if (navigator.canShare && navigator.canShare({ files: [file] })) {
+                    await navigator.share({ files: [file], title: 'Yield Basis Metrics' });
+                } else {
+                    const url = URL.createObjectURL(blob);
+                    const a = document.createElement('a');
+                    a.href = url;
+                    a.download = `yield-basis-metrics-${currentMarket}-${new Date().toISOString().slice(0,10)}.png`;
+                    a.click();
+                    URL.revokeObjectURL(url);
+
+                    const shareText = encodeURIComponent(`Yield Basis ${currentMarket.toUpperCase()} (${currentContractVersion.toUpperCase()})\nAPR: ${document.getElementById('apr').textContent}\n\nhttps://nikcrv.github.io/yb-vaults-apr/`);
+                    window.open(`https://t.me/share/url?url=${encodeURIComponent('https://nikcrv.github.io/yb-vaults-apr/')}&text=${shareText}`, '_blank');
+                }
+                shareBtn.innerHTML = originalText;
+            } catch (err) {
+                console.error('Share error:', err);
+                shareBtn.innerHTML = originalText;
+            }
+        }
+
+        async function shareMetricsToTwitter() {
+            const container = document.getElementById('metricsContainer');
+            const shareBtn = container.querySelector('.share-button.twitter');
+            const shareBtns = container.querySelector('.share-buttons');
+            const originalText = shareBtn.innerHTML;
+
+            try {
+                shareBtn.innerHTML = '<svg viewBox="0 0 24 24" fill="currentColor" style="animation: spin 1s linear infinite;"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8z" opacity=".3"/><path d="M20 12h2A10 10 0 0 0 12 2v2a8 8 0 0 1 8 8z"/></svg>';
+                if (shareBtns) shareBtns.style.display = 'none';
+
+                const canvas = await html2canvas(container, { backgroundColor: '#0f172a', scale: 2, logging: false });
+                if (shareBtns) shareBtns.style.display = 'flex';
+
+                const blob = await new Promise(resolve => canvas.toBlob(resolve, 'image/png'));
+                const file = new File([blob], 'yield-basis-metrics.png', { type: 'image/png' });
+
+                if (navigator.canShare && navigator.canShare({ files: [file] })) {
+                    await navigator.share({ files: [file], title: 'Yield Basis Metrics' });
+                } else {
+                    const url = URL.createObjectURL(blob);
+                    const a = document.createElement('a');
+                    a.href = url;
+                    a.download = `yield-basis-metrics-${currentMarket}-${new Date().toISOString().slice(0,10)}.png`;
+                    a.click();
+                    URL.revokeObjectURL(url);
+
+                    const tweetText = encodeURIComponent(`Yield Basis ${currentMarket.toUpperCase()} (${currentContractVersion.toUpperCase()})\nAPR: ${document.getElementById('apr').textContent}\n\nhttps://nikcrv.github.io/yb-vaults-apr/`);
+                    window.open(`https://twitter.com/intent/tweet?text=${tweetText}`, '_blank');
+                }
+                shareBtn.innerHTML = originalText;
+            } catch (err) {
+                console.error('Share error:', err);
+                shareBtn.innerHTML = originalText;
+            }
+        }
+
+        // Chart share functions
+        async function copyScreenshot() {
+            const container = document.getElementById('ppsChartContainer');
+            const shareBtn = container.querySelector('.share-button.copy');
+            const shareBtns = container.querySelector('.share-buttons');
+            const originalText = shareBtn.innerHTML;
+
+            try {
+                shareBtn.innerHTML = '<svg viewBox="0 0 24 24" fill="currentColor" style="animation: spin 1s linear infinite;"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8z" opacity=".3"/><path d="M20 12h2A10 10 0 0 0 12 2v2a8 8 0 0 1 8 8z"/></svg>';
+
+                // Скрываем кнопки для скриншота
+                const btcToggle = container.querySelector('.btc-price-toggle');
+                if (shareBtns) shareBtns.style.display = 'none';
+                if (btcToggle) btcToggle.style.display = 'none';
+
+                const canvas = await html2canvas(container, {
+                    backgroundColor: '#0f172a',
+                    scale: 2,
+                    logging: false
+                });
+
+                // Возвращаем кнопки
+                if (shareBtns) shareBtns.style.display = 'flex';
+                if (btcToggle) btcToggle.style.display = 'flex';
+
+                const blob = await new Promise(resolve => canvas.toBlob(resolve, 'image/png'));
+
+                // Копируем в буфер обмена
+                await navigator.clipboard.write([
+                    new ClipboardItem({ 'image/png': blob })
+                ]);
+
+                // Показываем галочку
+                shareBtn.innerHTML = '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>';
+                setTimeout(() => {
+                    shareBtn.innerHTML = originalText;
+                }, 1500);
+
+            } catch (err) {
+                console.error('Copy error:', err);
+                shareBtn.innerHTML = originalText;
+                alert('Could not copy to clipboard');
+            }
+        }
+
+        async function shareToTwitter() {
+            const container = document.getElementById('ppsChartContainer');
+            const shareBtn = container.querySelector('.share-button.twitter');
+            const shareBtns = container.querySelector('.share-buttons');
+            const originalText = shareBtn.innerHTML;
+
+            try {
+                shareBtn.innerHTML = '<svg viewBox="0 0 24 24" fill="currentColor" style="animation: spin 1s linear infinite;"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8z" opacity=".3"/><path d="M20 12h2A10 10 0 0 0 12 2v2a8 8 0 0 1 8 8z"/></svg>';
+
+                // Скрываем кнопки для скриншота
+                const btcToggle = container.querySelector('.btc-price-toggle');
+                if (shareBtns) shareBtns.style.display = 'none';
+                if (btcToggle) btcToggle.style.display = 'none';
+
+                const canvas = await html2canvas(container, {
+                    backgroundColor: '#0f172a',
+                    scale: 2,
+                    logging: false
+                });
+
+                // Возвращаем кнопки
+                if (shareBtns) shareBtns.style.display = 'flex';
+                if (btcToggle) btcToggle.style.display = 'flex';
+
+                const blob = await new Promise(resolve => canvas.toBlob(resolve, 'image/png'));
+                const file = new File([blob], 'yield-basis-chart.png', { type: 'image/png' });
+
+                if (navigator.canShare && navigator.canShare({ files: [file] })) {
+                    await navigator.share({
+                        files: [file],
+                        title: 'Yield Basis BTC Vault',
+                        text: `${currentMarket.toUpperCase()} (${currentContractVersion.toUpperCase()}) - APR: ${document.getElementById('apr').textContent}`
+                    });
+                } else {
+                    // Скачиваем файл и открываем Twitter
+                    const url = URL.createObjectURL(blob);
+                    const a = document.createElement('a');
+                    a.href = url;
+                    a.download = `yield-basis-${currentMarket}-${new Date().toISOString().slice(0,10)}.png`;
+                    a.click();
+                    URL.revokeObjectURL(url);
+
+                    const tweetText = encodeURIComponent(`Yield Basis ${currentMarket.toUpperCase()} (${currentContractVersion.toUpperCase()})\nAPR: ${document.getElementById('apr').textContent}\n\nhttps://nikcrv.github.io/yb-vaults-apr/`);
+                    window.open(`https://twitter.com/intent/tweet?text=${tweetText}`, '_blank');
+                }
+                shareBtn.innerHTML = originalText;
+            } catch (err) {
+                console.error('Share error:', err);
+                shareBtn.innerHTML = originalText;
+            }
+        }
+
+        function toggleEmission() {
+            showEmission = document.getElementById('emission-toggle').checked;
+            console.log('YB Emission toggled:', showEmission);
+
+            // Скрываем/показываем радиокнопки emission base
+            const fundLabel = document.querySelector('#fundamental-metrics label');
+            const withdrawableLabel = document.querySelector('#withdrawable-metrics label');
+
+            if (fundLabel) {
+                fundLabel.style.display = showEmission ? 'flex' : 'none';
+            }
+            if (withdrawableLabel) {
+                withdrawableLabel.style.display = showEmission ? 'flex' : 'none';
+            }
+
+            // Обновляем метрики и графики
+            updateMetrics();
+            destroyCharts();
+            createCharts();
+        }
+
+        function createCharts() {
+            console.log('Creating charts for', currentYieldData.data.length, 'data points');
+
+            // Обновляем заголовок графика PPS с названием текущего маркета
+            const activeBtn = document.querySelector('.market-btn.active');
+            const marketName = activeBtn ? activeBtn.textContent : currentMarket;
+            document.getElementById('ppsChartTitle').textContent = `Price Per Share ${marketName} (BTC)`;
+
+            // Определяем размер экрана для адаптивных настроек
+            const isMobile = window.innerWidth <= 768;
+
+            // Адаптивные размеры шрифтов
+            const legendFontSize = isMobile ? 6 : 12;
+            const titleFontSize = isMobile ? 10 : 13;
+            const ticksFontSize = isMobile ? 7 : 11;
+            const legendPadding = isMobile ? 2 : 10;
+            const legendBoxWidth = isMobile ? 12 : 40;
+
+            // Функция форматирования даты (поддерживает переключение UTC/Local)
+            function formatDateLabel(dateString) {
+                const date = parseAsUTC(dateString);
+                if (useUTC) {
+                    if (isMobile) {
+                        const day = String(date.getUTCDate()).padStart(2, '0');
+                        const month = String(date.getUTCMonth() + 1).padStart(2, '0');
+                        const hours = String(date.getUTCHours()).padStart(2, '0');
+                        const minutes = String(date.getUTCMinutes()).padStart(2, '0');
+                        return `${day}.${month} ${hours}:${minutes}`;
+                    } else {
+                        return date.toLocaleString('en-GB', { timeZone: 'UTC' }) + ' UTC';
+                    }
+                } else {
+                    if (isMobile) {
+                        const day = String(date.getDate()).padStart(2, '0');
+                        const month = String(date.getMonth() + 1).padStart(2, '0');
+                        const hours = String(date.getHours()).padStart(2, '0');
+                        const minutes = String(date.getMinutes()).padStart(2, '0');
+                        return `${day}.${month} ${hours}:${minutes}`;
+                    } else {
+                        return date.toLocaleString();
+                    }
+                }
+            }
+
+            const hasBtcPrices = currentYieldData.data.some(d => d.btc_price !== null);
+
+            if (hasBtcPrices) {
+                // Фильтруем данные - оставляем только валидные записи с ценами > 0
+                const validData = currentYieldData.data.filter(d =>
+                    d.btc_price && d.btc_price > 0 &&
+                    d.pps_btc && d.pps_btc > 0 &&
+                    !isNaN(d.btc_price) && !isNaN(d.pps_btc)
+                );
+
+                if (validData.length === 0) {
+                    console.warn('No valid price data found');
+                    return;
+                }
+
+                const btcPrices = validData.map(d => d.btc_price);
+                const ybPrices = validData.map(d => d.btc_price * d.pps_btc);
+                console.log('BTC price range:', Math.min(...btcPrices), '-', Math.max(...btcPrices));
+
+                const btc0 = btcPrices[0];
+                const yb0 = ybPrices[0];
+
+                const btcMin = Math.min(...btcPrices);
+                const btcMax = Math.max(...btcPrices);
+                const ybMin = Math.min(...ybPrices);
+                const ybMax = Math.max(...ybPrices);
+
+                const btcRange = btcMax - btcMin;
+                const ybRange = ybMax - ybMin;
+
+                const btcInitialPos = btcRange > 0 ? (btc0 - btcMin) / btcRange : 0.5;
+                const ybAxisMin = yb0 - btcInitialPos * ybRange;
+                const ybAxisMax = ybAxisMin + ybRange;
+
+                const padding = 0.15;
+                const btcAxisMin = btcMin - btcRange * padding;
+                const btcAxisMax = btcMax + btcRange * padding;
+                const ybAxisMinPadded = ybAxisMin - ybRange * padding;
+                const ybAxisMaxPadded = ybAxisMax + ybRange * padding;
+
+                const priceCompCtx = document.getElementById('priceComparisonChart').getContext('2d');
+                charts.priceComparison = new Chart(priceCompCtx, {
+                    type: 'line',
+                    data: {
+                        labels: validData.map(d => formatDateLabel(d.datetime)),
+                        datasets: [
+                            {
+                                label: 'BTC Price (USD)',
+                                data: btcPrices,
+                                borderColor: '#3b82f6',
+                                backgroundColor: 'rgba(59, 130, 246, 0.1)',
+                                borderWidth: 2,
+                                tension: 0.4,
+                                fill: false,
+                                yAxisID: 'y',
+                                pointRadius: 0,
+                                pointHoverRadius: 4
+                            },
+                            {
+                                label: `${MARKETS[currentContractVersion][currentMarket].name} Price (USD)`,
+                                data: ybPrices,
+                                borderColor: '#f59e0b',
+                                backgroundColor: 'rgba(245, 158, 11, 0.1)',
+                                borderWidth: 2,
+                                tension: 0.4,
+                                fill: false,
+                                yAxisID: 'y1',
+                                pointRadius: 0,
+                                pointHoverRadius: 4
+                            }
+                        ]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: true,
+                        interaction: {
+                            mode: 'index',
+                            intersect: false,
+                        },
+                        plugins: {
+                            legend: {
+                                labels: {
+                                    color: '#e2e8f0',
+                                    font: { size: legendFontSize },
+                                    padding: legendPadding,
+                                    boxWidth: legendBoxWidth
+                                }
+                            },
+                            tooltip: {
+                                backgroundColor: '#1e293b',
+                                titleColor: '#f59e0b',
+                                bodyColor: '#e2e8f0',
+                                borderColor: '#334155',
+                                borderWidth: 1,
+                                callbacks: {
+                                    label: function(context) {
+                                        let label = context.dataset.label || '';
+                                        if (label) {
+                                            label += ': ';
+                                        }
+                                        if (context.parsed.y !== null) {
+                                            label += '$' + context.parsed.y.toFixed(2);
+                                        }
+                                        return label;
+                                    }
+                                }
+                            }
+                        },
+                        scales: {
+                            y: {
+                                type: 'linear',
+                                display: true,
+                                position: 'left',
+                                min: btcAxisMin,
+                                max: btcAxisMax,
+                                title: {
+                                    display: !isMobile,
+                                    text: 'BTC Price (USD)',
+                                    color: '#3b82f6',
+                                    font: { size: titleFontSize }
+                                },
+                                ticks: {
+                                    color: '#94a3b8',
+                                    font: { size: ticksFontSize },
+                                    callback: function(value) {
+                                        return '$' + value.toFixed(0);
+                                    }
+                                },
+                                grid: { color: '#334155' }
+                            },
+                            y1: {
+                                type: 'linear',
+                                display: true,
+                                position: 'right',
+                                min: ybAxisMinPadded,
+                                max: ybAxisMaxPadded,
+                                title: {
+                                    display: !isMobile,
+                                    text: `${MARKETS[currentContractVersion][currentMarket].name} Price (USD)`,
+                                    color: '#f59e0b',
+                                    font: { size: titleFontSize }
+                                },
+                                ticks: {
+                                    color: '#94a3b8',
+                                    font: { size: ticksFontSize },
+                                    callback: function(value) {
+                                        return '$' + value.toFixed(0);
+                                    }
+                                },
+                                grid: {
+                                    drawOnChartArea: false,
+                                }
+                            },
+                            x: {
+                                ticks: {
+                                    color: '#94a3b8',
+                                    font: { size: ticksFontSize }
+                                },
+                                grid: { color: '#334155' }
+                            }
+                        }
+                    }
+                });
+            }
+
+            // PPS Chart
+            const ppsCtx = document.getElementById('ppsChart').getContext('2d');
+            // Фильтруем данные для PPS - убираем null/undefined/NaN
+            const validPpsData = currentYieldData.data.filter(d =>
+                d.pps_btc !== null && d.pps_btc !== undefined && !isNaN(d.pps_btc)
+            );
+            const ppsValues = validPpsData.map(d => d.pps_btc);
+
+            // Подготовка PPS фундаментальных данных
+            let fundamentalPpsValues = null;
+            if (showFundamentalYield) {
+                const config = MARKETS[currentContractVersion][currentMarket];
+                const ppsDataSource = config.ppsData;
+
+                if (ppsDataSource && ppsDataSource.data) {
+                    console.log('Loading fundamental PPS data:', ppsDataSource.data.length, 'points');
+
+                    // Определяем какое поле PPS использовать (staked для syb, unstaked для yb)
+                    const ppsField = currentMarket.startsWith('syb_') ? 'pps_staked' : 'pps_unstaked';
+                    console.log('Using PPS field:', ppsField, 'for market:', currentMarket);
+
+                    // Сортируем PPS данные по timestamp для бинарного поиска
+                    const ppsSorted = ppsDataSource.data
+                        .filter(p => p[ppsField] !== null)
+                        .sort((a, b) => a.timestamp - b.timestamp);
+
+                    // Функция линейной интерполяции между двумя точками
+                    function interpolate(x, x0, y0, x1, y1) {
+                        if (x1 === x0) return y0;
+                        return y0 + (y1 - y0) * (x - x0) / (x1 - x0);
+                    }
+
+                    // Сопоставляем с данными yield по времени с интерполяцией
+                    fundamentalPpsValues = validPpsData.map(d => {
+                        const targetTimestamp = Math.floor(parseAsUTC(d.datetime).getTime() / 1000);
+
+                        // Находим ближайшие точки PPS данных
+                        let closestBefore = null;
+                        let closestAfter = null;
+
+                        for (let i = 0; i < ppsSorted.length; i++) {
+                            if (ppsSorted[i].timestamp <= targetTimestamp) {
+                                closestBefore = ppsSorted[i];
+                            } else {
+                                closestAfter = ppsSorted[i];
+                                break;
+                            }
+                        }
+
+                        // Если нашли точку точно - возвращаем её
+                        if (closestBefore && closestBefore.timestamp === targetTimestamp) {
+                            return closestBefore[ppsField];
+                        }
+
+                        // Интерполяция между двумя точками
+                        if (closestBefore && closestAfter) {
+                            return interpolate(
+                                targetTimestamp,
+                                closestBefore.timestamp,
+                                closestBefore[ppsField],
+                                closestAfter.timestamp,
+                                closestAfter[ppsField]
+                            );
+                        }
+
+                        // Если есть только точка до - используем её (если разница < 7 дней)
+                        if (closestBefore && (targetTimestamp - closestBefore.timestamp) < 604800) {
+                            return closestBefore[ppsField];
+                        }
+
+                        // Если есть только точка после - используем её (если разница < 7 дней)
+                        if (closestAfter && (closestAfter.timestamp - targetTimestamp) < 604800) {
+                            return closestAfter[ppsField];
+                        }
+
+                        return null;
+                    });
+
+                    const matchedCount = fundamentalPpsValues.filter(v => v !== null).length;
+                    console.log('Fundamental PPS values matched:', matchedCount, '/', currentYieldData.data.length,
+                                `(${(matchedCount/currentYieldData.data.length*100).toFixed(1)}%)`);
+                }
+            }
+
+            // Подготовка PPS + Emission данных для syb токенов
+            let ppsWithEmissionValues = null;
+            let ppsWithEmissionFundamental = null;
+            let ppsWithEmissionWithdrawable = null;
+            const config = MARKETS[currentContractVersion][currentMarket];
+
+            // Проверяем что это syb токен и есть emission данные
+            if (currentMarket.startsWith('syb_') && config.emissionData && config.emissionField) {
+                console.log('Loading emission data for', currentMarket);
+
+                const emissionDataSource = config.emissionData;
+                const emissionField = config.emissionField;
+
+                if (emissionDataSource && emissionDataSource.length > 0) {
+                    console.log('Emission data points:', emissionDataSource.length);
+
+                    // Сортируем emission данные по timestamp
+                    const emissionSorted = emissionDataSource
+                        .filter(e => e[emissionField] !== undefined && e[emissionField] !== null)
+                        .sort((a, b) => a.timestamp - b.timestamp);
+
+                    console.log('Emission sorted points:', emissionSorted.length);
+
+                    // Функция линейной интерполяции (повторно используем)
+                    function interpolateEmission(x, x0, y0, x1, y1) {
+                        if (x1 === x0) return y0;
+                        return y0 + (y1 - y0) * (x - x0) / (x1 - x0);
+                    }
+
+                    // Функция для получения кумулятивной эмиссии на timestamp
+                    function getCumulativeEmission(targetTimestamp) {
+                        // Если раньше первой даты - возвращаем 0
+                        if (targetTimestamp < emissionSorted[0].timestamp) return 0;
+
+                        // Если позже последней даты - возвращаем последнее значение
+                        if (targetTimestamp >= emissionSorted[emissionSorted.length - 1].timestamp) {
+                            return emissionSorted[emissionSorted.length - 1][emissionField];
+                        }
+
+                        // Находим ближайшие точки
+                        for (let i = 0; i < emissionSorted.length - 1; i++) {
+                            if (targetTimestamp >= emissionSorted[i].timestamp && targetTimestamp < emissionSorted[i + 1].timestamp) {
+                                const lower = emissionSorted[i];
+                                const upper = emissionSorted[i + 1];
+
+                                // Линейная интерполяция
+                                return interpolateEmission(
+                                    targetTimestamp,
+                                    lower.timestamp,
+                                    lower[emissionField],
+                                    upper.timestamp,
+                                    upper[emissionField]
+                                );
+                            }
+                        }
+
+                        return 0;
+                    }
+
+                    // Get base market for TVL lookup
+                    const baseMarket = config.baseMarket || 'wbtc';
+
+                    // Get start emission to calculate relative emission from start point
+                    const startTimestamp = Math.floor(parseAsUTC(currentYieldData.data[0].datetime).getTime() / 1000);
+                    const startEmissionTotal = getCumulativeEmission(startTimestamp);
+
+                    // Calculate accumulated emission per token over time (relative to start)
+                    // We need to integrate emission_delta / TVL(t) for each period
+                    const calculateAccumulatedEmissionPerToken = (targetTimestamp) => {
+                        let accumulatedEmission = 0;
+                        let prevEmission = startEmissionTotal; // Start from initial emission
+                        let prevTimestamp = startTimestamp;
+
+                        // Iterate through data points up to target
+                        for (let i = 0; i < currentYieldData.data.length; i++) {
+                            const pointTimestamp = Math.floor(parseAsUTC(currentYieldData.data[i].datetime).getTime() / 1000);
+                            if (pointTimestamp > targetTimestamp) break;
+
+                            const currentEmission = getCumulativeEmission(pointTimestamp);
+                            const emissionDelta = currentEmission - prevEmission;
+
+                            if (emissionDelta > 0) {
+                                // Use TVL at the current point (when emission is measured)
+                                // This is the most honest approach that doesn't make assumptions
+                                // about emission rate changes between points
+                                const tvlCurrent = getTVLAt(pointTimestamp, baseMarket);
+
+                                // Avoid division by very small TVL (less than 1 BTC)
+                                const effectiveTVL = Math.max(tvlCurrent, 1.0);
+
+                                accumulatedEmission += emissionDelta / effectiveTVL;
+                            }
+
+                            prevEmission = currentEmission;
+                            prevTimestamp = pointTimestamp;
+                        }
+
+                        return accumulatedEmission;
+                    };
+
+                    // Вычисляем PPS + Emission для Fundamental (если включено)
+                    if (showEmissionFundamental && fundamentalPpsValues) {
+                        ppsWithEmissionFundamental = validPpsData.map((d, index) => {
+                            const targetTimestamp = Math.floor(parseAsUTC(d.datetime).getTime() / 1000);
+                            const basePps = fundamentalPpsValues[index];
+                            if (basePps === null) return null;
+
+                            const emissionPerToken = calculateAccumulatedEmissionPerToken(targetTimestamp);
+                            return basePps + emissionPerToken;
+                        });
+                    }
+
+                    // Вычисляем PPS + Emission для Withdrawable (если включено)
+                    if (showEmissionWithdrawable) {
+                        ppsWithEmissionWithdrawable = validPpsData.map((d, index) => {
+                            const targetTimestamp = Math.floor(parseAsUTC(d.datetime).getTime() / 1000);
+                            const basePps = ppsValues[index];
+                            if (basePps === null) return null;
+
+                            const emissionPerToken = calculateAccumulatedEmissionPerToken(targetTimestamp);
+                            return basePps + emissionPerToken;
+                        });
+                    }
+
+                    // Для совместимости со старым кодом сохраняем ppsWithEmissionValues
+                    ppsWithEmissionValues = ppsWithEmissionFundamental || ppsWithEmissionWithdrawable;
+
+                    // Логируем результаты
+                    if (ppsWithEmissionFundamental) {
+                        const matchedCount = ppsWithEmissionFundamental.filter(v => v !== null).length;
+                        console.log('Fundamental PPS+Emission values calculated:', matchedCount, '/', currentYieldData.data.length);
+                    }
+                    if (ppsWithEmissionWithdrawable) {
+                        const matchedCount = ppsWithEmissionWithdrawable.filter(v => v !== null).length;
+                        console.log('Withdrawable PPS+Emission values calculated:', matchedCount, '/', currentYieldData.data.length);
+                    }
+
+                    // Логируем несколько примеров для отладки
+                    const debugFirstTimestamp = Math.floor(parseAsUTC(currentYieldData.data[0].datetime).getTime() / 1000);
+                    const debugLastTimestamp = Math.floor(parseAsUTC(currentYieldData.data[currentYieldData.data.length - 1].datetime).getTime() / 1000);
+
+                    const firstEmission = getCumulativeEmission(debugFirstTimestamp);
+                    const lastEmission = getCumulativeEmission(debugLastTimestamp);
+                    const firstEmissionPerToken = calculateAccumulatedEmissionPerToken(debugFirstTimestamp);
+                    const lastEmissionPerToken = calculateAccumulatedEmissionPerToken(debugLastTimestamp);
+                    const lastTVL = getTVLAt(debugLastTimestamp, baseMarket);
+
+                    console.log(`Using point-in-time TVL for emission calculation (no assumptions about emission rate) for ${baseMarket.toUpperCase()}`);
+                    console.log('Start emission total:', firstEmission.toFixed(10), 'BTC');
+                    console.log('End emission total:', lastEmission.toFixed(10), 'BTC');
+                    console.log('Delta emission:', (lastEmission - firstEmission).toFixed(10), 'BTC');
+                    console.log('TVL at start:', getTVLAt(debugFirstTimestamp, baseMarket).toFixed(2), 'BTC');
+                    console.log('TVL at end:', lastTVL.toFixed(2), 'BTC');
+                    console.log('First emission per token:', firstEmissionPerToken.toFixed(10), 'BTC (should be ~0)');
+                    console.log('Last emission per token:', lastEmissionPerToken.toFixed(10), 'BTC');
+                    console.log('Emission boost %:', (lastEmissionPerToken / ppsValues[currentYieldData.data.length - 1] * 100).toFixed(4), '%');
+                }
+            }
+
+            // Вычисляем min/max для всех линий
+            const allPpsValues = [...ppsValues];
+            if (fundamentalPpsValues) {
+                allPpsValues.push(...fundamentalPpsValues.filter(v => v !== null));
+            }
+            if (ppsWithEmissionFundamental) {
+                allPpsValues.push(...ppsWithEmissionFundamental.filter(v => v !== null));
+            }
+            if (ppsWithEmissionWithdrawable) {
+                allPpsValues.push(...ppsWithEmissionWithdrawable.filter(v => v !== null));
+            }
+            const ppsMin = Math.min(...allPpsValues);
+            const ppsMax = Math.max(...allPpsValues);
+            console.log('PPS range:', ppsMin, '-', ppsMax);
+            const ppsRange = ppsMax - ppsMin;
+            const ppsPadding = 0.15;
+            const ppsAxisMin = ppsMin - ppsRange * ppsPadding;
+            const ppsAxisMax = ppsMax + ppsRange * ppsPadding;
+
+            // Datasets array
+            const ppsDatasets = [];
+
+            // Добавляем withdrawable yield линию если включено
+            if (showWithdrawableYield) {
+                ppsDatasets.push({
+                    label: 'PPS (BTC) - Withdrawable',
+                    data: ppsValues,
+                    borderColor: '#f59e0b',
+                    backgroundColor: 'rgba(245, 158, 11, 0.1)',
+                    borderWidth: 2,
+                    tension: 0.4,
+                    fill: true,
+                    pointRadius: 0,
+                    pointHoverRadius: 4
+                });
+                console.log('Added Withdrawable line to chart');
+            }
+
+            // Добавляем fundamental yield линию если включено
+            if (showFundamentalYield && fundamentalPpsValues) {
+                ppsDatasets.push({
+                    label: 'PPS (BTC) - Fundamental',
+                    data: fundamentalPpsValues,
+                    borderColor: '#10b981',
+                    backgroundColor: 'rgba(16, 185, 129, 0.1)',
+                    borderWidth: 2,
+                    borderDash: [5, 5],
+                    fill: false,
+                    tension: 0.4,
+                    pointRadius: 0,
+                    pointHoverRadius: 4
+                });
+                console.log('Added Fundamental line to chart');
+            }
+
+            // Добавляем PPS + Emission линии для syb токенов
+            if (showEmission && currentMarket.startsWith('syb_')) {
+                // Fundamental + Emission
+                if (showEmissionFundamental && ppsWithEmissionFundamental) {
+                    ppsDatasets.push({
+                        label: 'PPS (BTC) - Fundamental + Emission',
+                        data: ppsWithEmissionFundamental,
+                        borderColor: '#8b5cf6',
+                        backgroundColor: 'rgba(139, 92, 246, 0.2)',
+                        borderWidth: 3,
+                        borderDash: [5, 5],
+                        fill: false,
+                        tension: 0.4,
+                        pointRadius: 0,
+                        pointHoverRadius: 5
+                    });
+                    console.log('Added Fundamental + Emission line to chart with', ppsWithEmissionFundamental.length, 'points');
+                }
+
+                // Withdrawable + Emission
+                if (showEmissionWithdrawable && ppsWithEmissionWithdrawable) {
+                    ppsDatasets.push({
+                        label: 'PPS (BTC) - Withdrawable + Emission',
+                        data: ppsWithEmissionWithdrawable,
+                        borderColor: '#8b5cf6',
+                        backgroundColor: 'rgba(139, 92, 246, 0.2)',
+                        borderWidth: 3,
+                        fill: false,
+                        tension: 0.4,
+                        pointRadius: 0,
+                        pointHoverRadius: 5
+                    });
+                    console.log('Added Withdrawable + Emission line to chart with', ppsWithEmissionWithdrawable.length, 'points');
+                }
+            }
+
+            // Добавляем BTC Price на отдельной оси Y (справа)
+            let btcPriceData = validPpsData.map(d => d.btc_price);
+            let hasBtcPriceData = btcPriceData.some(p => p !== null && p !== undefined && !isNaN(p));
+
+            // Если у текущего маркета нет BTC price, берём из cbBTC или WBTC
+            if (!hasBtcPriceData) {
+                // Выбираем fallback источник в зависимости от версии контракта
+                let fallbackSource = null;
+                if (currentContractVersion === 'old') {
+                    fallbackSource = (typeof yieldData_yb_cbbtc !== 'undefined' ? yieldData_yb_cbbtc.data : null) ||
+                                    (typeof yieldData_yb_wbtc !== 'undefined' ? yieldData_yb_wbtc.data : null);
+                } else {
+                    fallbackSource = (typeof yieldData_cbbtc !== 'undefined' ? yieldData_cbbtc.data : null) ||
+                                    (typeof yieldData_wbtc !== 'undefined' ? yieldData_wbtc.data : null);
+                }
+                if (fallbackSource) {
+                    // Интерполируем BTC price по timestamp
+                    btcPriceData = validPpsData.map(d => {
+                        const ts = parseAsUTC(d.datetime).getTime() / 1000;
+                        for (let i = 0; i < fallbackSource.length - 1; i++) {
+                            const t1 = fallbackSource[i].timestamp;
+                            const t2 = fallbackSource[i + 1].timestamp;
+                            if (ts >= t1 && ts <= t2) {
+                                const p1 = fallbackSource[i].btc_price;
+                                const p2 = fallbackSource[i + 1].btc_price;
+                                if (!p1 || !p2) return p1 || p2;
+                                const ratio = (ts - t1) / (t2 - t1);
+                                return p1 + ratio * (p2 - p1);
+                            }
+                        }
+                        // За пределами - ближайшее значение
+                        if (ts < fallbackSource[0]?.timestamp) return fallbackSource[0]?.btc_price;
+                        return fallbackSource[fallbackSource.length - 1]?.btc_price;
+                    });
+                    hasBtcPriceData = btcPriceData.some(p => p !== null && p !== undefined && !isNaN(p));
+                    if (hasBtcPriceData) {
+                        console.log('Using fallback BTC price from cbBTC/WBTC');
+                    }
+                }
+            }
+
+            if (hasBtcPriceData && showBtcPrice) {
+                ppsDatasets.push({
+                    label: 'BTC Price (USD)',
+                    data: btcPriceData,
+                    borderColor: 'rgba(148, 163, 184, 0.4)',
+                    backgroundColor: 'transparent',
+                    borderWidth: 1.5,
+                    tension: 0.4,
+                    fill: false,
+                    pointRadius: 0,
+                    pointHoverRadius: 3,
+                    yAxisID: 'yBtcPrice',
+                    order: 10  // Рисуем на заднем плане
+                });
+                console.log('Added BTC Price line to chart');
+            }
+
+            console.log('Total datasets in PPS chart:', ppsDatasets.length);
+
+            // Вычисляем диапазон BTC price для оси
+            const validBtcPrices = btcPriceData.filter(p => p !== null && p !== undefined && !isNaN(p));
+            const btcPriceMin = validBtcPrices.length > 0 ? Math.min(...validBtcPrices) : 0;
+            const btcPriceMax = validBtcPrices.length > 0 ? Math.max(...validBtcPrices) : 100000;
+            const btcPriceRange = btcPriceMax - btcPriceMin;
+            const btcPricePadding = 0.15;
+            const btcPriceAxisMin = btcPriceMin - btcPriceRange * btcPricePadding;
+            const btcPriceAxisMax = btcPriceMax + btcPriceRange * btcPricePadding;
+
+            charts.pps = new Chart(ppsCtx, {
+                type: 'line',
+                data: {
+                    labels: validPpsData.map(d => formatDateLabel(d.datetime)),
+                    datasets: ppsDatasets
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: true,
+                    interaction: {
+                        mode: 'index',
+                        intersect: false,
+                    },
+                    plugins: {
+                        legend: {
+                            labels: {
+                                color: '#e2e8f0',
+                                font: { size: legendFontSize },
+                                padding: legendPadding,
+                                boxWidth: legendBoxWidth
+                            }
+                        },
+                        tooltip: {
+                            backgroundColor: '#1e293b',
+                            titleColor: '#f59e0b',
+                            bodyColor: '#e2e8f0',
+                            borderColor: '#334155',
+                            borderWidth: 1,
+                            callbacks: {
+                                label: function(context) {
+                                    let label = context.dataset.label || '';
+                                    if (label) {
+                                        label += ': ';
+                                    }
+                                    if (context.parsed.y !== null) {
+                                        // BTC Price показываем в USD, остальные в BTC
+                                        if (context.dataset.label === 'BTC Price (USD)') {
+                                            label += '$' + context.parsed.y.toLocaleString(undefined, {minimumFractionDigits: 0, maximumFractionDigits: 0});
+                                        } else {
+                                            label += context.parsed.y.toFixed(10) + ' BTC';
+                                        }
+                                    }
+                                    return label;
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            min: ppsAxisMin,
+                            max: ppsAxisMax,
+                            position: 'left',
+                            title: {
+                                display: !isMobile,
+                                text: 'PPS (BTC)',
+                                color: '#f59e0b',
+                                font: { size: titleFontSize }
+                            },
+                            ticks: {
+                                color: '#94a3b8',
+                                font: { size: ticksFontSize }
+                            },
+                            grid: { color: '#334155' }
+                        },
+                        yBtcPrice: {
+                            min: btcPriceAxisMin,
+                            max: btcPriceAxisMax,
+                            position: 'right',
+                            display: hasBtcPriceData && showBtcPrice,
+                            title: {
+                                display: false
+                            },
+                            ticks: {
+                                color: 'rgba(148, 163, 184, 0.5)',
+                                font: { size: ticksFontSize },
+                                callback: function(value) {
+                                    return '$' + (value / 1000).toFixed(0) + 'k';
+                                }
+                            },
+                            grid: {
+                                drawOnChartArea: false
+                            }
+                        },
+                        x: {
+                            ticks: {
+                                color: '#94a3b8',
+                                font: { size: ticksFontSize },
+                                maxRotation: 45,
+                                minRotation: 45
+                            },
+                            grid: { color: '#334155' }
+                        }
+                    }
+                }
+            });
+
+            // Gauge Token Conversion Chart (yb → syb)
+            const hasGaugeData = currentYieldData.data.some(d => d.pps_yb !== undefined && d.pps_yb !== null);
+            const gaugeChartContainer = document.getElementById('gaugeChart');
+
+            if (hasGaugeData) {
+                console.log('Creating gauge conversion chart');
+                gaugeChartContainer.style.display = 'block';
+
+                const gaugeCtx = document.getElementById('gaugeConversionChart').getContext('2d');
+                // Фильтруем данные для gauge - убираем null/undefined/NaN
+                const validGaugeData = currentYieldData.data.filter(d =>
+                    d.pps_yb !== null && d.pps_yb !== undefined && !isNaN(d.pps_yb)
+                );
+                // Инвертируем: yb → syb означает сколько syb за 1 yb (т.е. 1/pps_yb)
+                const gaugeValues = validGaugeData.map(d => 1 / d.pps_yb);
+                const gaugeMin = Math.min(...gaugeValues);
+                const gaugeMax = Math.max(...gaugeValues);
+                const gaugeRange = gaugeMax - gaugeMin;
+                const gaugePadding = 0.15;
+                const gaugeAxisMin = gaugeMin - gaugeRange * gaugePadding;
+                const gaugeAxisMax = gaugeMax + gaugeRange * gaugePadding;
+
+                charts.gauge = new Chart(gaugeCtx, {
+                    type: 'line',
+                    data: {
+                        labels: validGaugeData.map(d => formatDateLabel(d.datetime)),
+                        datasets: [{
+                            label: 'yb → syb Conversion Rate',
+                            data: gaugeValues,
+                            borderColor: '#8b5cf6',
+                            backgroundColor: 'rgba(139, 92, 246, 0.1)',
+                            borderWidth: 2,
+                            tension: 0.4,
+                            fill: true,
+                            pointRadius: 0,
+                            pointHoverRadius: 4
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: true,
+                        interaction: {
+                            mode: 'index',
+                            intersect: false,
+                        },
+                        plugins: {
+                            legend: {
+                                labels: {
+                                    color: '#e2e8f0',
+                                    font: { size: legendFontSize },
+                                    padding: legendPadding,
+                                    boxWidth: legendBoxWidth
+                                }
+                            },
+                            tooltip: {
+                                backgroundColor: '#1e293b',
+                                titleColor: '#f59e0b',
+                                bodyColor: '#e2e8f0',
+                                borderColor: '#334155',
+                                borderWidth: 1,
+                                callbacks: {
+                                    label: function(context) {
+                                        let label = context.dataset.label || '';
+                                        if (label) {
+                                            label += ': ';
+                                        }
+                                        if (context.parsed.y !== null) {
+                                            label += context.parsed.y.toFixed(10) + ' syb';
+                                        }
+                                        return label;
+                                    }
+                                }
+                            }
+                        },
+                        scales: {
+                            y: {
+                                min: gaugeAxisMin,
+                                max: gaugeAxisMax,
+                                title: {
+                                    display: !isMobile,
+                                    text: 'Conversion Rate (syb per yb)',
+                                    color: '#8b5cf6',
+                                    font: { size: titleFontSize }
+                                },
+                                ticks: {
+                                    color: '#94a3b8',
+                                    font: { size: ticksFontSize }
+                                },
+                                grid: { color: '#334155' }
+                            },
+                            x: {
+                                ticks: {
+                                    color: '#94a3b8',
+                                    maxRotation: 45,
+                                    minRotation: 45
+                                },
+                                grid: { color: '#334155' }
+                            }
+                        }
+                    }
+                });
+            } else {
+                console.log('No gauge data, hiding gauge chart');
+                gaugeChartContainer.style.display = 'none';
+            }
+
+            // Returns Chart
+            const returnsCtx = document.getElementById('returnsChart').getContext('2d');
+            // Фильтруем данные для return - убираем null/undefined/NaN
+            const validReturnData = currentYieldData.data.filter(d =>
+                d.ret_step_pct !== null && d.ret_step_pct !== undefined && !isNaN(d.ret_step_pct)
+            );
+            const returnValues = validReturnData.map(d => d.ret_step_pct);
+            const returnMin = Math.min(...returnValues);
+            const returnMax = Math.max(...returnValues);
+            const returnRange = returnMax - returnMin;
+            const returnPadding = 0.15;
+            const returnAxisMin = returnMin - returnRange * returnPadding;
+            const returnAxisMax = returnMax + returnRange * returnPadding;
+
+            charts.returns = new Chart(returnsCtx, {
+                type: 'bar',
+                data: {
+                    labels: validReturnData.map(d => formatDateLabel(d.datetime)),
+                    datasets: [{
+                        label: 'Step Return (%)',
+                        data: returnValues,
+                        backgroundColor: returnValues.map(v => v >= 0 ? 'rgba(16, 185, 129, 0.8)' : 'rgba(239, 68, 68, 0.8)'),
+                        borderColor: returnValues.map(v => v >= 0 ? '#10b981' : '#ef4444'),
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: true,
+                    plugins: {
+                        legend: {
+                            labels: {
+                                color: '#e2e8f0',
+                                font: { size: legendFontSize },
+                                padding: legendPadding,
+                                boxWidth: legendBoxWidth
+                            }
+                        },
+                        tooltip: {
+                            backgroundColor: '#1e293b',
+                            titleColor: '#f59e0b',
+                            bodyColor: '#e2e8f0',
+                            borderColor: '#334155',
+                            borderWidth: 1
+                        }
+                    },
+                    scales: {
+                        y: {
+                            min: returnAxisMin,
+                            max: returnAxisMax,
+                            title: {
+                                display: !isMobile,
+                                text: 'Return (%)',
+                                color: '#f59e0b',
+                                font: { size: titleFontSize }
+                            },
+                            ticks: {
+                                color: '#94a3b8',
+                                font: { size: ticksFontSize }
+                            },
+                            grid: { color: '#334155' }
+                        },
+                        x: {
+                            ticks: {
+                                color: '#94a3b8',
+                                font: { size: ticksFontSize }
+                            },
+                            grid: { color: '#334155' }
+                        }
+                    }
+                }
+            });
+        }
+
+        // ====== RANGE SLIDER LOGIC ======
+        let currentRangeStart = 0;
+        let currentRangeEnd = 0;
+
+        function updateSliderUI() {
+            if (!originalData || !originalData.data || originalData.data.length === 0) return;
+
+            const rangeStart = document.getElementById('rangeStart');
+            const rangeEnd = document.getElementById('rangeEnd');
+            const rangeFill = document.getElementById('rangeFill');
+
+            const startPercent = (parseInt(rangeStart.value) / parseInt(rangeStart.max)) * 100;
+            const endPercent = (parseInt(rangeEnd.value) / parseInt(rangeEnd.max)) * 100;
+
+            rangeFill.style.left = startPercent + '%';
+            rangeFill.style.width = (endPercent - startPercent) + '%';
+
+            // Update labels - use originalData since currentRangeStart/End are indices in original array
+            const tzOpts = useUTC ? { month: 'short', day: 'numeric', timeZone: 'UTC' } : { month: 'short', day: 'numeric' };
+            const startDate = new Date(originalData.data[currentRangeStart].timestamp * 1000).toLocaleDateString('en-US', tzOpts);
+            const endDate = new Date(originalData.data[currentRangeEnd].timestamp * 1000).toLocaleDateString('en-US', tzOpts);
+
+            document.getElementById('rangeStartLabel').textContent = startDate;
+            document.getElementById('rangeEndLabel').textContent = endDate;
+        }
+
+        function filterDataByRange() {
+            if (!originalData || !originalData.data || originalData.data.length === 0) return;
+
+            // Filter data based on current range
+            const filteredData = originalData.data.slice(currentRangeStart, currentRangeEnd + 1);
+
+            if (filteredData.length === 0) return;
+
+            currentYieldData.data = filteredData;
+            currentYieldData.metadata.data_points = filteredData.length;
+            currentYieldData.metadata.start_date = filteredData[0].datetime;
+            currentYieldData.metadata.end_date = filteredData[filteredData.length - 1].datetime;
+
+            const startPps = filteredData[0].pps_btc;
+            const endPps = filteredData[filteredData.length - 1].pps_btc;
+            const totalReturn = (endPps - startPps) / startPps;
+            const days = (filteredData[filteredData.length - 1].timestamp - filteredData[0].timestamp) / 86400;
+            const apr = days > 0 ? Math.pow(1 + totalReturn, 365 / days) - 1 : 0;
+
+            currentYieldData.metrics.start_pps = startPps;
+            currentYieldData.metrics.end_pps = endPps;
+            currentYieldData.metrics.total_return = totalReturn;
+            currentYieldData.metrics.apr = apr;
+            currentYieldData.metrics.days = days;
+
+            // Update date inputs to match
+            document.getElementById('startDate').value = filteredData[0].datetime.replace(' ', 'T').slice(0, 16);
+            document.getElementById('endDate').value = filteredData[filteredData.length - 1].datetime.replace(' ', 'T').slice(0, 16);
+
+            updateMetrics();
+            destroyCharts();
+            createCharts();
+        }
+
+        function initRangeSlider() {
+            if (!originalData || !originalData.data || originalData.data.length === 0) return;
+
+            currentRangeStart = 0;
+            currentRangeEnd = originalData.data.length - 1;
+
+            const rangeStart = document.getElementById('rangeStart');
+            const rangeEnd = document.getElementById('rangeEnd');
+
+            rangeStart.value = 0;
+            rangeEnd.value = 100;
+
+            // Event handlers for sliders
+            rangeStart.addEventListener('input', function() {
+                let startValue = parseInt(this.value);
+                let endValue = parseInt(rangeEnd.value);
+
+                // Don't let start pass end
+                if (startValue >= endValue - 2) {
+                    startValue = endValue - 2;
+                    this.value = startValue;
+                }
+
+                currentRangeStart = Math.floor((startValue / 100) * (originalData.data.length - 1));
+                updateSliderUI();
+            });
+
+            rangeEnd.addEventListener('input', function() {
+                let startValue = parseInt(rangeStart.value);
+                let endValue = parseInt(this.value);
+
+                // Don't let end pass start
+                if (endValue <= startValue + 2) {
+                    endValue = startValue + 2;
+                    this.value = endValue;
+                }
+
+                currentRangeEnd = Math.floor((endValue / 100) * (originalData.data.length - 1));
+                updateSliderUI();
+            });
+
+            // Apply filter on release
+            rangeStart.addEventListener('change', filterDataByRange);
+            rangeEnd.addEventListener('change', filterDataByRange);
+
+            // Period buttons
+            document.querySelectorAll('.period-button').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    document.querySelectorAll('.period-button').forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+
+                    const days = this.dataset.days;
+
+                    if (days === 'all') {
+                        currentRangeStart = 0;
+                        currentRangeEnd = originalData.data.length - 1;
+                    } else {
+                        currentRangeEnd = originalData.data.length - 1;
+                        const endTimestamp = originalData.data[currentRangeEnd].timestamp;
+                        const targetTimestamp = endTimestamp - (parseInt(days) * 86400);
+                        currentRangeStart = originalData.data.findIndex(p => p.timestamp >= targetTimestamp);
+                        if (currentRangeStart === -1) currentRangeStart = 0;
+                    }
+
+                    const startPercent = (currentRangeStart / (originalData.data.length - 1)) * 100;
+                    const endPercent = (currentRangeEnd / (originalData.data.length - 1)) * 100;
+
+                    document.getElementById('rangeStart').value = startPercent;
+                    document.getElementById('rangeEnd').value = endPercent;
+
+                    updateSliderUI();
+                    filterDataByRange();
+                });
+            });
+
+            updateSliderUI();
+        }
+        // ====== END RANGE SLIDER LOGIC ======
+
+        // Initialize on page load
+        window.addEventListener('DOMContentLoaded', () => {
+            loadMarketData('cbbtc');
+
+            // Скрываем чекбокс эмиссии для нестекнутых токенов
+            const emissionToggleLabel = document.getElementById('emission-toggle-label');
+            if (emissionToggleLabel) {
+                emissionToggleLabel.style.display = currentMarket.startsWith('syb_') ? 'flex' : 'none';
+            }
+
+            renderContent();
+            initializeDateInputs();
+            updateMetrics();
+            createCharts();
+            initRangeSlider();
+        });
+
+        // Перерисовка графиков при изменении размера окна
+        let resizeTimer;
+        window.addEventListener('resize', () => {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(() => {
+                destroyCharts();
+                createCharts();
+            }, 250);
+        });
+    </script>
+
+    <!-- TVL Data loaded from unified_data.js -->
+</body>
+
+</html>
+
+
+
