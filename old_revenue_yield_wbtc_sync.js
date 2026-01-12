@@ -1,9 +1,9 @@
-// Last updated: 2026-01-12 21:36:52 UTC
+// Last updated: 2026-01-12 21:56:21 UTC
 const old_yieldData_wbtc = {
   "metadata": {
     "market": "WBTC (OLD)",
     "contract": "0x6095a220C5567360d459462A25b1AD5aEAD45204",
-    "collected": "2026-01-12T21:24:00.686776Z",
+    "collected": "2026-01-12T21:50:14.677121Z",
     "points": 8035,
     "synchronized": true,
     "transaction_based": true,
