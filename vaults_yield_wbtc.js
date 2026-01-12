@@ -1,20 +1,20 @@
-// Last updated: 2026-01-12 16:17:45 UTC
+// Last updated: 2026-01-12 17:57:06 UTC
 const yieldData_wbtc = {
   "metadata": {
     "contract": "0xfBF3C16676055776Ab9B286492D8f13e30e2E763",
     "start_date": "2025-11-12T19:07:11",
-    "end_date": "2026-01-12T18:33:35",
-    "data_points": 1465,
+    "end_date": "2026-01-12T20:21:23",
+    "data_points": 1467,
     "step_seconds": 3600
   },
   "metrics": {
-    "total_return": 0.03436850782903374,
-    "total_return_pct": 3.436850782903374,
-    "apr": 0.22417853748235197,
-    "apr_pct": 22.4178537482352,
-    "days": 60.97666666666667,
+    "total_return": 0.03454830815091524,
+    "total_return_pct": 3.454830815091524,
+    "apr": 0.22514738870300754,
+    "apr_pct": 22.514738870300754,
+    "days": 61.05152777777778,
     "start_pps": 0.99938642,
-    "end_pps": 1.03373384
+    "end_pps": 1.03391353
   },
   "data": [
     {
@@ -13194,13 +13194,31 @@ const yieldData_wbtc = {
       "btc_price": 90777.48046560411
     },
     {
-      "block": 24219553,
-      "timestamp": 1768232015,
-      "datetime": "2026-01-12T18:33:35",
-      "pps_btc": 1.03373384,
-      "ret_step": -3.3954466286818406e-06,
-      "ret_step_pct": -0.00033954466286818406,
-      "btc_price": 90777.48046560411
+      "block": 24219728,
+      "timestamp": 1768234115,
+      "datetime": "2026-01-12T19:08:35",
+      "pps_btc": 1.03372901,
+      "ret_step": null,
+      "ret_step_pct": null,
+      "btc_price": 91573.11268450855
+    },
+    {
+      "block": 24220026,
+      "timestamp": 1768237715,
+      "datetime": "2026-01-12T20:08:35",
+      "pps_btc": 1.03391528,
+      "ret_step": 0.0001801922923687708,
+      "ret_step_pct": 0.01801922923687708,
+      "btc_price": 92067.65251681308
+    },
+    {
+      "block": 24220090,
+      "timestamp": 1768238483,
+      "datetime": "2026-01-12T20:21:23",
+      "pps_btc": 1.03391353,
+      "ret_step": -1.6925951611818718e-06,
+      "ret_step_pct": -0.00016925951611818717,
+      "btc_price": 92067.65251681308
     }
   ]
 };

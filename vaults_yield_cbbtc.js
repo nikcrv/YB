@@ -1,20 +1,20 @@
-// Last updated: 2026-01-12 16:17:45 UTC
+// Last updated: 2026-01-12 17:57:06 UTC
 const yieldData_cbbtc = {
   "metadata": {
     "contract": "0xAC0cfa7742069a8af0c63e14FFD0fe6b3e1Bf8D2",
     "start_date": "2025-11-12T19:09:47",
-    "end_date": "2026-01-12T18:37:11",
-    "data_points": 1465,
+    "end_date": "2026-01-12T20:23:35",
+    "data_points": 1467,
     "step_seconds": 3600
   },
   "metrics": {
-    "total_return": 0.035853249234292554,
-    "total_return_pct": 3.5853249234292557,
-    "apr": 0.23473167833950556,
-    "apr_pct": 23.473167833950555,
-    "days": 60.97736111111111,
+    "total_return": 0.03601593739663461,
+    "total_return_pct": 3.601593739663461,
+    "apr": 0.23557617076201495,
+    "apr_pct": 23.557617076201495,
+    "days": 61.05125,
     "start_pps": 0.99945809,
-    "end_pps": 1.03529191
+    "end_pps": 1.03545451
   },
   "data": [
     {
@@ -13194,13 +13194,31 @@ const yieldData_cbbtc = {
       "btc_price": 90777.48046560411
     },
     {
-      "block": 24219571,
-      "timestamp": 1768232231,
-      "datetime": "2026-01-12T18:37:11",
-      "pps_btc": 1.03529191,
-      "ret_step": -3.46760900631752e-06,
-      "ret_step_pct": -0.000346760900631752,
-      "btc_price": 90777.48046560411
+      "block": 24219743,
+      "timestamp": 1768234295,
+      "datetime": "2026-01-12T19:11:35",
+      "pps_btc": 1.03528715,
+      "ret_step": null,
+      "ret_step_pct": null,
+      "btc_price": 91573.11268450855
+    },
+    {
+      "block": 24220041,
+      "timestamp": 1768237895,
+      "datetime": "2026-01-12T20:11:35",
+      "pps_btc": 1.03545615,
+      "ret_step": 0.0001632397349856028,
+      "ret_step_pct": 0.01632397349856028,
+      "btc_price": 92067.65251681308
+    },
+    {
+      "block": 24220101,
+      "timestamp": 1768238615,
+      "datetime": "2026-01-12T20:23:35",
+      "pps_btc": 1.03545451,
+      "ret_step": -1.583843024158966e-06,
+      "ret_step_pct": -0.0001583843024158966,
+      "btc_price": 92067.65251681308
     }
   ]
 };
