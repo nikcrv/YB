@@ -1,14 +1,14 @@
-// Last updated: 2026-01-13 19:13:06 UTC
+// Last updated: 2026-01-13 19:38:42 UTC
 const old_yieldData_tbtc = {
   "metadata": {
     "market": "tBTC (OLD)",
     "contract": "0x2B513eBe7070Cff91cf699a0BFe5075020C732FF",
-    "collected": "2026-01-13T19:01:39.086419Z",
-    "points": 8036,
+    "collected": "2026-01-13T19:26:31.182599Z",
+    "points": 8041,
     "synchronized": true,
     "transaction_based": true,
     "zero_loss": true,
-    "incremental_update": true,
+    "incremental_update": false,
     "old_contract": true
   },
   "data": [
@@ -72333,6 +72333,51 @@ const old_yieldData_tbtc = {
       "total_withdrawable_btc": 5.029042344745971,
       "deposits_btc": 0,
       "withdrawals_btc": 0.001130402471206419,
+      "admin_fee_withdrawals_btc": 0.0,
+      "admin_fees_btc": 0.0
+    },
+    {
+      "block": 24227634,
+      "timestamp": 1768329695,
+      "total_withdrawable_btc": 5.029042344745971,
+      "deposits_btc": 0.0,
+      "withdrawals_btc": 0.0,
+      "admin_fee_withdrawals_btc": 0.0,
+      "admin_fees_btc": 0.0
+    },
+    {
+      "block": 24227635,
+      "timestamp": 1768329707,
+      "total_withdrawable_btc": 5.029042344745971,
+      "deposits_btc": 0.0,
+      "withdrawals_btc": 0.0,
+      "admin_fee_withdrawals_btc": 0.0,
+      "admin_fees_btc": 0.0
+    },
+    {
+      "block": 24227636,
+      "timestamp": 1768329719,
+      "total_withdrawable_btc": 5.029042344745971,
+      "deposits_btc": 0.0,
+      "withdrawals_btc": 0.0,
+      "admin_fee_withdrawals_btc": 0.0,
+      "admin_fees_btc": 0.0
+    },
+    {
+      "block": 24227637,
+      "timestamp": 1768329731,
+      "total_withdrawable_btc": 5.029042344745971,
+      "deposits_btc": 0.0,
+      "withdrawals_btc": 0.0,
+      "admin_fee_withdrawals_btc": 0.0,
+      "admin_fees_btc": 0.0
+    },
+    {
+      "block": 24227638,
+      "timestamp": 1768329743,
+      "total_withdrawable_btc": 5.029042344745971,
+      "deposits_btc": 0.0,
+      "withdrawals_btc": 0.0,
       "admin_fee_withdrawals_btc": 0.0,
       "admin_fees_btc": 0.0
     }
