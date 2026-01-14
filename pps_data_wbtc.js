@@ -1,14 +1,14 @@
-// Last updated: 2026-01-14 01:29:41 UTC
+// Last updated: 2026-01-14 01:45:17 UTC
 const ppsData_wbtc = {
   "metadata": {
     "market": "WBTC",
     "symbol": "yb-WBTC",
     "vault": "0xfBF3C16676055776Ab9B286492D8f13e30e2E763",
     "staker": "0xbc56e3edB67b56d598aCE07668b138815F45d7aa",
-    "collected": "2026-01-14T04:25:26.866102Z",
-    "points": 9219,
+    "collected": "2026-01-14T04:41:47.067927Z",
+    "points": 9221,
     "start_block": 23784065,
-    "end_block": 24229644,
+    "end_block": 24229726,
     "block_step": 300,
     "time_step": "1h",
     "contract_type": "new"
@@ -55327,6 +55327,18 @@ const ppsData_wbtc = {
       "timestamp": 1768353899,
       "pps_unstaked": 1.0339377291603506,
       "pps_staked": 0.999851710324516
+    },
+    {
+      "block": 24229645,
+      "timestamp": 1768353911,
+      "pps_unstaked": 1.0339377028209953,
+      "pps_staked": 0.9998516848534951
+    },
+    {
+      "block": 24229726,
+      "timestamp": 1768354883,
+      "pps_unstaked": 1.0339349960032724,
+      "pps_staked": 0.9998490672719393
     }
   ]
 };
