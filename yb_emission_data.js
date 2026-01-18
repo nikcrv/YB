@@ -1,4 +1,4 @@
-// Last updated: 2026-01-18 11:27:40 UTC
+// Last updated: 2026-01-18 11:59:31 UTC
 const ybEmissionData = [
   {
     "timestamp": 1762963200,
@@ -27603,21 +27603,35 @@ const ybEmissionData = [
   {
     "timestamp": 1768730400,
     "datetime": "2026-01-18T10:00:00",
-    "hourly_cbBTC": 5372.548303800438,
-    "hourly_WBTC": 529.5157857386273,
+    "hourly_cbBTC": 0,
+    "hourly_WBTC": 0,
     "hourly_tBTC": 525.6781982687319,
-    "hourly_total": 6427.742287807797,
-    "cumulative_cbBTC": 4955496.667326244,
-    "cumulative_WBTC": 2590102.2023816286,
+    "hourly_total": 525.6781982687319,
+    "cumulative_cbBTC": 4950124.119022443,
+    "cumulative_WBTC": 2589572.6865958897,
     "cumulative_tBTC": 2232609.996972635,
-    "cumulative_total": 9778208.866680507,
-    "hourly_total_btc": 0.02107772159001046,
-    "cumulative_total_btc": 46.922952535477286,
-    "cumulative_cbBTC_btc": 23.32971197322321,
-    "cumulative_WBTC_btc": 12.744998784655417,
-    "cumulative_tBTC_btc": 10.848241777598666,
-    "yb_usd_price": 0.31147965826494967,
-    "btc_usd_price": 94987.06787029654,
-    "yb_btc_price": 3.2791796320133875e-06
+    "cumulative_total": 9772306.802590968,
+    "hourly_total_btc": 0.0017348139594264669,
+    "cumulative_total_btc": 46.9036096278467,
+    "cumulative_cbBTC_btc": 23.312094422253377,
+    "cumulative_WBTC_btc": 12.743262407275994,
+    "cumulative_tBTC_btc": 10.848252798317336
+  },
+  {
+    "timestamp": 1768734000,
+    "datetime": "2026-01-18T11:00:00",
+    "hourly_cbBTC": 2949.5482958653884,
+    "hourly_WBTC": 1289.2370231257448,
+    "hourly_tBTC": 1279.8934220089602,
+    "hourly_total": 5518.678741000093,
+    "cumulative_cbBTC": 4953073.667318309,
+    "cumulative_WBTC": 2590861.9236190156,
+    "cumulative_tBTC": 2233889.890394644,
+    "cumulative_total": 9777825.481331967,
+    "hourly_total_btc": 0.018214935754597917,
+    "cumulative_total_btc": 46.9218245636013,
+    "cumulative_cbBTC_btc": 23.321829693182472,
+    "cumulative_WBTC_btc": 12.747517659420717,
+    "cumulative_tBTC_btc": 10.852477210998115
   }
 ];
