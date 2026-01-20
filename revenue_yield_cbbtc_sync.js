@@ -1,14 +1,14 @@
-// Last updated: 2026-01-19 23:47:14 UTC
+// Last updated: 2026-01-20 00:05:12 UTC
 const yieldData_cbbtc = {
   "metadata": {
     "market": "cbBTC",
     "contract": "0xAC0cfa7742069a8af0c63e14FFD0fe6b3e1Bf8D2",
-    "collected": "2026-01-20T02:39:45.885587",
-    "points": 6017,
+    "collected": "2026-01-20T02:59:58.518917",
+    "points": 6022,
     "synchronized": true,
     "transaction_based": true,
     "zero_loss": true,
-    "incremental_update": false
+    "incremental_update": true
   },
   "data": [
     {
@@ -54159,6 +54159,51 @@ const yieldData_cbbtc = {
       "block": 24272015,
       "timestamp": 1768864199,
       "total_withdrawable_btc": 1132.58153688,
+      "deposits_btc": 0.0,
+      "withdrawals_btc": 0.0,
+      "admin_fee_withdrawals_btc": 0.0,
+      "admin_fees_btc": 0.0
+    },
+    {
+      "block": 24272070,
+      "timestamp": 1768864859,
+      "total_withdrawable_btc": 1132.57975361,
+      "deposits_btc": 0.0,
+      "withdrawals_btc": 0.0,
+      "admin_fee_withdrawals_btc": 0.0,
+      "admin_fees_btc": 0.0
+    },
+    {
+      "block": 24272080,
+      "timestamp": 1768864979,
+      "total_withdrawable_btc": 1132.55324065,
+      "deposits_btc": 0,
+      "withdrawals_btc": 0.02585655,
+      "admin_fee_withdrawals_btc": 0.0,
+      "admin_fees_btc": 0.0
+    },
+    {
+      "block": 24272112,
+      "timestamp": 1768865363,
+      "total_withdrawable_btc": 1132.55228886,
+      "deposits_btc": 0.0,
+      "withdrawals_btc": 0.0,
+      "admin_fee_withdrawals_btc": 0.0,
+      "admin_fees_btc": 0.0
+    },
+    {
+      "block": 24272121,
+      "timestamp": 1768865471,
+      "total_withdrawable_btc": 1132.54890205,
+      "deposits_btc": 0,
+      "withdrawals_btc": 0.00309142,
+      "admin_fee_withdrawals_btc": 0.0,
+      "admin_fees_btc": 0.0
+    },
+    {
+      "block": 24272137,
+      "timestamp": 1768865663,
+      "total_withdrawable_btc": 1132.54843163,
       "deposits_btc": 0.0,
       "withdrawals_btc": 0.0,
       "admin_fee_withdrawals_btc": 0.0,
