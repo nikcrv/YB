@@ -1,10 +1,10 @@
-// Last updated: 2026-01-20 00:26:33 UTC
+// Last updated: 2026-01-20 00:44:20 UTC
 const yieldData_wbtc = {
   "metadata": {
     "market": "WBTC",
     "contract": "0xfBF3C16676055776Ab9B286492D8f13e30e2E763",
-    "collected": "2026-01-20T03:21:42.429751",
-    "points": 6023,
+    "collected": "2026-01-20T03:39:31.653626",
+    "points": 6024,
     "synchronized": true,
     "transaction_based": true,
     "zero_loss": true,
@@ -54213,6 +54213,15 @@ const yieldData_wbtc = {
       "block": 24272266,
       "timestamp": 1768867211,
       "total_withdrawable_btc": 570.82138214,
+      "deposits_btc": 0.0,
+      "withdrawals_btc": 0.0,
+      "admin_fee_withdrawals_btc": 0.0,
+      "admin_fees_btc": 0.0
+    },
+    {
+      "block": 24272399,
+      "timestamp": 1768868819,
+      "total_withdrawable_btc": 570.81936875,
       "deposits_btc": 0.0,
       "withdrawals_btc": 0.0,
       "admin_fee_withdrawals_btc": 0.0,
