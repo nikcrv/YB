@@ -1,14 +1,14 @@
-// Last updated: 2026-01-20 16:47:00 UTC
+// Last updated: 2026-01-20 17:30:32 UTC
 const yieldData_tbtc = {
   "metadata": {
     "market": "tBTC",
     "contract": "0xaC0a340C1644321D0BBc6404946d828c1EBfAC92",
-    "collected": "2026-01-20T19:18:03.308626",
-    "points": 6086,
+    "collected": "2026-01-20T20:11:40.410870",
+    "points": 6091,
     "synchronized": true,
     "transaction_based": true,
     "zero_loss": true,
-    "incremental_update": false
+    "incremental_update": true
   },
   "data": [
     {
@@ -54782,6 +54782,51 @@ const yieldData_tbtc = {
       "total_withdrawable_btc": 555.2400928170318,
       "deposits_btc": 0.0,
       "withdrawals_btc": 0.0,
+      "admin_fee_withdrawals_btc": 0.0,
+      "admin_fees_btc": 0.0
+    },
+    {
+      "block": 24277045,
+      "timestamp": 1768924811,
+      "total_withdrawable_btc": 555.2357051176218,
+      "deposits_btc": 0.0,
+      "withdrawals_btc": 0.0,
+      "admin_fee_withdrawals_btc": 0.0,
+      "admin_fees_btc": 0.0
+    },
+    {
+      "block": 24277284,
+      "timestamp": 1768927679,
+      "total_withdrawable_btc": 555.2322095097509,
+      "deposits_btc": 0.0,
+      "withdrawals_btc": 0.0,
+      "admin_fee_withdrawals_btc": 0.0,
+      "admin_fees_btc": 0.0
+    },
+    {
+      "block": 24277285,
+      "timestamp": 1768927691,
+      "total_withdrawable_btc": 555.2321949580846,
+      "deposits_btc": 0.0,
+      "withdrawals_btc": 0.0,
+      "admin_fee_withdrawals_btc": 0.0,
+      "admin_fees_btc": 0.0
+    },
+    {
+      "block": 24277344,
+      "timestamp": 1768928411,
+      "total_withdrawable_btc": 555.2313174181991,
+      "deposits_btc": 0.0,
+      "withdrawals_btc": 0.0,
+      "admin_fee_withdrawals_btc": 0.0,
+      "admin_fees_btc": 0.0
+    },
+    {
+      "block": 24277381,
+      "timestamp": 1768928855,
+      "total_withdrawable_btc": 548.1028193106853,
+      "deposits_btc": 0,
+      "withdrawals_btc": 7.127871219788802,
       "admin_fee_withdrawals_btc": 0.0,
       "admin_fees_btc": 0.0
     }
