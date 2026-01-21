@@ -1,14 +1,14 @@
-// Last updated: 2026-01-21 08:28:52 UTC
+// Last updated: 2026-01-21 08:45:32 UTC
 const yieldData_cbbtc = {
   "metadata": {
     "market": "cbBTC",
     "contract": "0xAC0cfa7742069a8af0c63e14FFD0fe6b3e1Bf8D2",
-    "collected": "2026-01-21T11:23:37.115208",
-    "points": 6143,
+    "collected": "2026-01-21T11:41:51.230031",
+    "points": 6148,
     "synchronized": true,
     "transaction_based": true,
     "zero_loss": true,
-    "incremental_update": false
+    "incremental_update": true
   },
   "data": [
     {
@@ -55293,6 +55293,51 @@ const yieldData_cbbtc = {
       "block": 24281395,
       "timestamp": 1768977239,
       "total_withdrawable_btc": 1128.67159702,
+      "deposits_btc": 0.0,
+      "withdrawals_btc": 0.0,
+      "admin_fee_withdrawals_btc": 0.0,
+      "admin_fees_btc": 0.0
+    },
+    {
+      "block": 24281561,
+      "timestamp": 1768979231,
+      "total_withdrawable_btc": 1128.66659068,
+      "deposits_btc": 0.0,
+      "withdrawals_btc": 0.0,
+      "admin_fee_withdrawals_btc": 0.0,
+      "admin_fees_btc": 0.0
+    },
+    {
+      "block": 24281698,
+      "timestamp": 1768980875,
+      "total_withdrawable_btc": 1128.64744513,
+      "deposits_btc": 0,
+      "withdrawals_btc": 0.01528445,
+      "admin_fee_withdrawals_btc": 0.0,
+      "admin_fees_btc": 0.0
+    },
+    {
+      "block": 24281826,
+      "timestamp": 1768982411,
+      "total_withdrawable_btc": 1128.64362771,
+      "deposits_btc": 0.0,
+      "withdrawals_btc": 0.0,
+      "admin_fee_withdrawals_btc": 0.0,
+      "admin_fees_btc": 0.0
+    },
+    {
+      "block": 24281827,
+      "timestamp": 1768982423,
+      "total_withdrawable_btc": 1128.64362771,
+      "deposits_btc": 0.0,
+      "withdrawals_btc": 0.0,
+      "admin_fee_withdrawals_btc": 0.0,
+      "admin_fees_btc": 0.0
+    },
+    {
+      "block": 24281828,
+      "timestamp": 1768982435,
+      "total_withdrawable_btc": 1128.64362771,
       "deposits_btc": 0.0,
       "withdrawals_btc": 0.0,
       "admin_fee_withdrawals_btc": 0.0,
