@@ -1,20 +1,20 @@
-// Last updated: 2026-01-21 17:48:14 UTC
+// Last updated: 2026-01-21 20:14:39 UTC
 const yieldData_syb_cbbtc = {
   "metadata": {
     "contract": "0xf3081A2eB8927C0462864EC3FdbE927C842A0893",
     "start_date": "2025-11-12T19:09:47",
-    "end_date": "2026-01-21T20:45:47",
-    "data_points": 1683,
+    "end_date": "2026-01-21T23:11:11",
+    "data_points": 1685,
     "step_seconds": 3600
   },
   "metrics": {
-    "total_return": -0.0005385324177174964,
-    "total_return_pct": -0.05385324177174964,
-    "apr": -0.0028022122135786397,
-    "apr_pct": -0.280221221357864,
-    "days": 70.06666666666666,
+    "total_return": -0.00017351421648440887,
+    "total_return_pct": -0.017351421648440887,
+    "apr": -0.0009022621694760663,
+    "apr_pct": -0.09022621694760664,
+    "days": 70.16763888888889,
     "start_pps": 0.99945701,
-    "end_pps": 0.99891877
+    "end_pps": 0.99928359
   },
   "data": [
     {
@@ -16838,14 +16838,34 @@ const yieldData_syb_cbbtc = {
       "pps_yb": 0.9653121206657528
     },
     {
-      "block": 24284746,
-      "timestamp": 1769017547,
-      "datetime": "2026-01-21T20:45:47",
-      "pps_btc": 0.99891877,
+      "block": 24284875,
+      "timestamp": 1769019107,
+      "datetime": "2026-01-21T21:11:47",
+      "pps_btc": 0.99891523,
       "ret_step": null,
       "ret_step_pct": null,
-      "btc_price": 87653.05294494564,
+      "btc_price": 87842.96959431098,
       "pps_yb": 0.9653121206657528
+    },
+    {
+      "block": 24285172,
+      "timestamp": 1769022707,
+      "datetime": "2026-01-21T22:11:47",
+      "pps_btc": 0.99890705,
+      "ret_step": null,
+      "ret_step_pct": null,
+      "btc_price": 88466.44682981329,
+      "pps_yb": 0.9653121206657528
+    },
+    {
+      "block": 24285468,
+      "timestamp": 1769026271,
+      "datetime": "2026-01-21T23:11:11",
+      "pps_btc": 0.99928359,
+      "ret_step": 0.0003769519896771176,
+      "ret_step_pct": 0.03769519896771176,
+      "btc_price": 90203.59760452656,
+      "pps_yb": 0.9648809018868838
     }
   ]
 };

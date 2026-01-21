@@ -1,20 +1,20 @@
-// Last updated: 2026-01-21 17:48:14 UTC
+// Last updated: 2026-01-21 20:14:39 UTC
 const yieldData_syb_tbtc = {
   "metadata": {
     "contract": "0x30ba8b27F2128c770B90C965FF671E08b9310D21",
     "start_date": "2025-11-12T19:19:11",
-    "end_date": "2026-01-21T20:45:47",
-    "data_points": 1683,
+    "end_date": "2026-01-21T23:11:23",
+    "data_points": 1685,
     "step_seconds": 3600
   },
   "metrics": {
-    "total_return": -0.005148184858963722,
-    "total_return_pct": -0.5148184858963722,
-    "apr": -0.02653201561534234,
-    "apr_pct": -2.653201561534234,
-    "days": 70.06013888888889,
+    "total_return": -0.005408385316293722,
+    "total_return_pct": -0.5408385316293722,
+    "apr": -0.027818159818118048,
+    "apr_pct": -2.7818159818118047,
+    "days": 70.16125,
     "start_pps": 0.9994484405610258,
-    "end_pps": 0.9943030952320147
+    "end_pps": 0.9940430382907028
   },
   "data": [
     {
@@ -16838,13 +16838,33 @@ const yieldData_syb_tbtc = {
       "pps_yb": 0.9759551076065485
     },
     {
-      "block": 24284746,
-      "timestamp": 1769017547,
-      "datetime": "2026-01-21T20:45:47",
-      "pps_btc": 0.9943030952320147,
+      "block": 24284921,
+      "timestamp": 1769019659,
+      "datetime": "2026-01-21T21:20:59",
+      "pps_btc": 1.0438010150441168,
       "ret_step": null,
       "ret_step_pct": null,
-      "btc_price": 87653.05294494564,
+      "btc_price": 87842.96959431098,
+      "pps_yb": 1.024637293463651
+    },
+    {
+      "block": 24285218,
+      "timestamp": 1769023259,
+      "datetime": "2026-01-21T22:20:59",
+      "pps_btc": 0.9945812068592423,
+      "ret_step": null,
+      "ret_step_pct": null,
+      "btc_price": 88466.44682981329,
+      "pps_yb": 0.9759551076065485
+    },
+    {
+      "block": 24285469,
+      "timestamp": 1769026283,
+      "datetime": "2026-01-21T23:11:23",
+      "pps_btc": 0.9940430382907028,
+      "ret_step": -0.0005411006811991462,
+      "ret_step_pct": -0.054110068119914624,
+      "btc_price": 90203.59760452656,
       "pps_yb": 0.9759551076065485
     }
   ]
