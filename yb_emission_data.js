@@ -1,4 +1,4 @@
-// Last updated: 2026-01-21 00:37:15 UTC
+// Last updated: 2026-01-21 00:54:30 UTC
 const ybEmissionData = [
   {
     "timestamp": 1762963200,
@@ -28744,17 +28744,17 @@ const ybEmissionData = [
     "timestamp": 1768950000,
     "datetime": "2026-01-20T23:00:00",
     "hourly_cbBTC": 4041.876376003496,
-    "hourly_WBTC": 848.7457425672867,
+    "hourly_WBTC": 893.8354441103329,
     "hourly_tBTC": 2033.5287552114614,
-    "hourly_total": 6924.150873782244,
+    "hourly_total": 6969.240575325291,
     "cumulative_cbBTC": 5218791.751654546,
-    "cumulative_WBTC": 2648354.3711046814,
+    "cumulative_WBTC": 2648399.4608062245,
     "cumulative_tBTC": 2293700.703117673,
-    "cumulative_total": 10160846.825876899,
-    "hourly_total_btc": 0.01894771411945513,
-    "cumulative_total_btc": 48.05527726381807,
+    "cumulative_total": 10160891.915578444,
+    "hourly_total_btc": 0.019071100624189468,
+    "cumulative_total_btc": 48.0554006503228,
     "cumulative_cbBTC_btc": 24.108915573804293,
-    "cumulative_WBTC_btc": 12.91747601871345,
+    "cumulative_WBTC_btc": 12.917599405218184,
     "cumulative_tBTC_btc": 11.02888567130031,
     "yb_usd_price": 0.24110891668496595,
     "btc_usd_price": 88109.54744280814,
