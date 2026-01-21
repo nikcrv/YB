@@ -1,20 +1,20 @@
-// Last updated: 2026-01-21 02:35:49 UTC
+// Last updated: 2026-01-21 03:23:56 UTC
 const yieldData_syb_wbtc = {
   "metadata": {
     "contract": "0xbc56e3edB67b56d598aCE07668b138815F45d7aa",
     "start_date": "2025-11-12T19:08:23",
-    "end_date": "2026-01-21T05:33:59",
-    "data_points": 1668,
+    "end_date": "2026-01-21T06:22:11",
+    "data_points": 1669,
     "step_seconds": 3600
   },
   "metrics": {
-    "total_return": -0.0008604974829185321,
-    "total_return_pct": -0.0860497482918532,
-    "apr": -0.004515149385103061,
-    "apr_pct": -0.4515149385103061,
-    "days": 69.43444444444444,
+    "total_return": -0.0008668115001488547,
+    "total_return_pct": -0.08668115001488547,
+    "apr": -0.004546032275618803,
+    "apr_pct": -0.4546032275618803,
+    "days": 69.46791666666667,
     "start_pps": 0.99936376,
-    "end_pps": 0.99850381
+    "end_pps": 0.9984975
   },
   "data": [
     {
@@ -16688,13 +16688,23 @@ const yieldData_syb_wbtc = {
       "pps_yb": 0.9659585281771504
     },
     {
-      "block": 24280202,
-      "timestamp": 1768962839,
-      "datetime": "2026-01-21T05:33:59",
-      "pps_btc": 0.99850381,
+      "block": 24280390,
+      "timestamp": 1768965107,
+      "datetime": "2026-01-21T06:11:47",
+      "pps_btc": 0.99849886,
       "ret_step": null,
       "ret_step_pct": null,
-      "btc_price": 88916.22374403215,
+      "btc_price": 88946.87566870019,
+      "pps_yb": 0.9659585281771504
+    },
+    {
+      "block": 24280442,
+      "timestamp": 1768965731,
+      "datetime": "2026-01-21T06:22:11",
+      "pps_btc": 0.9984975,
+      "ret_step": -1.3620446196603569e-06,
+      "ret_step_pct": -0.0001362044619660357,
+      "btc_price": 88946.87566870019,
       "pps_yb": 0.9659585281771504
     }
   ]
