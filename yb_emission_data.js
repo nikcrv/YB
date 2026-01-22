@@ -1,4 +1,4 @@
-// Last updated: 2026-01-22 09:03:31 UTC
+// Last updated: 2026-01-22 09:18:42 UTC
 const ybEmissionData = [
   {
     "timestamp": 1762963200,
@@ -29223,21 +29223,41 @@ const ybEmissionData = [
   {
     "timestamp": 1769068800,
     "datetime": "2026-01-22T08:00:00",
-    "hourly_cbBTC": 0,
+    "hourly_cbBTC": 6176.149463315275,
     "hourly_WBTC": 0,
     "hourly_tBTC": 5360.762566743786,
-    "hourly_total": 5360.762566743786,
-    "cumulative_cbBTC": 5364857.049008597,
+    "hourly_total": 11536.912030059062,
+    "cumulative_cbBTC": 5371033.198471912,
     "cumulative_WBTC": 2679135.7123279837,
     "cumulative_tBTC": 2324800.19525298,
-    "cumulative_total": 10368792.956589561,
-    "hourly_total_btc": 0.01477098467304912,
-    "cumulative_total_btc": 48.634267747082184,
-    "cumulative_cbBTC_btc": 24.515800866074567,
+    "cumulative_total": 10374969.106052876,
+    "hourly_total_btc": 0.031788677198182486,
+    "cumulative_total_btc": 48.651285439607314,
+    "cumulative_cbBTC_btc": 24.5328185585997,
     "cumulative_WBTC_btc": 13.003083965002006,
     "cumulative_tBTC_btc": 11.115382916005593,
     "yb_usd_price": 0.24646406536091414,
     "btc_usd_price": 89448.02021526602,
     "yb_btc_price": 2.7553887136660215e-06
+  },
+  {
+    "timestamp": 1769072400,
+    "datetime": "2026-01-22T09:00:00",
+    "hourly_cbBTC": 1287.2993083686117,
+    "hourly_WBTC": 1433.8344958793896,
+    "hourly_tBTC": 1054.538115338064,
+    "hourly_total": 3775.671919586065,
+    "cumulative_cbBTC": 5372320.497780281,
+    "cumulative_WBTC": 2680569.546823863,
+    "cumulative_tBTC": 2325854.733368318,
+    "cumulative_total": 10378744.777972462,
+    "hourly_total_btc": 0.010428436089074553,
+    "cumulative_total_btc": 48.661713875696385,
+    "cumulative_cbBTC_btc": 24.536374089602063,
+    "cumulative_WBTC_btc": 13.007044227366174,
+    "cumulative_tBTC_btc": 11.118295558728137,
+    "yb_usd_price": 0.24729607930568354,
+    "btc_usd_price": 89534.88849937975,
+    "yb_btc_price": 2.7620080110715352e-06
   }
 ];
