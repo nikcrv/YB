@@ -1,4 +1,4 @@
-// Last updated: 2026-01-25 02:02:19 UTC
+// Last updated: 2026-01-25 02:36:05 UTC
 const veYBSupplyData = [
   {
     "block": 23370927,
@@ -58526,5 +58526,23 @@ const veYBSupplyData = [
     "yb_locked": 61191135.465998,
     "total_votes": 57144167.15708554,
     "lock_ratio": 0.9338634872830357
+  },
+  {
+    "block": 24308773,
+    "timestamp": 1769307335,
+    "datetime": "2026-01-25T02:15:35",
+    "supply_yb": 61191135.465998,
+    "yb_locked": 61191135.465998,
+    "total_votes": 57144045.83918009,
+    "lock_ratio": 0.933861504677148
+  },
+  {
+    "block": 24308856,
+    "timestamp": 1769308331,
+    "datetime": "2026-01-25T02:32:11",
+    "supply_yb": 61191135.465998,
+    "yb_locked": 61191135.465998,
+    "total_votes": 57143921.5257708,
+    "lock_ratio": 0.9338594731180284
   }
 ];
