@@ -1,14 +1,14 @@
-// Last updated: 2026-01-25 08:51:27 UTC
+// Last updated: 2026-01-25 09:09:18 UTC
 const yieldData_cbbtc = {
   "metadata": {
     "market": "cbBTC",
     "contract": "0xAC0cfa7742069a8af0c63e14FFD0fe6b3e1Bf8D2",
-    "collected": "2026-01-25T11:45:34.004708",
-    "points": 6357,
+    "collected": "2026-01-25T12:03:55.389089",
+    "points": 6362,
     "synchronized": true,
     "transaction_based": true,
     "zero_loss": true,
-    "incremental_update": false
+    "incremental_update": true
   },
   "data": [
     {
@@ -57219,6 +57219,51 @@ const yieldData_cbbtc = {
       "block": 24310489,
       "timestamp": 1769328011,
       "total_withdrawable_btc": 1131.39393979,
+      "deposits_btc": 0.0,
+      "withdrawals_btc": 0.0,
+      "admin_fee_withdrawals_btc": 0.0,
+      "admin_fees_btc": 0.0
+    },
+    {
+      "block": 24310788,
+      "timestamp": 1769331599,
+      "total_withdrawable_btc": 1131.28657706,
+      "deposits_btc": 0.0,
+      "withdrawals_btc": 0.0,
+      "admin_fee_withdrawals_btc": 0.0,
+      "admin_fees_btc": 0.0
+    },
+    {
+      "block": 24310789,
+      "timestamp": 1769331611,
+      "total_withdrawable_btc": 1131.28654431,
+      "deposits_btc": 0.0,
+      "withdrawals_btc": 0.0,
+      "admin_fee_withdrawals_btc": 0.0,
+      "admin_fees_btc": 0.0
+    },
+    {
+      "block": 24310792,
+      "timestamp": 1769331647,
+      "total_withdrawable_btc": 1131.28645698,
+      "deposits_btc": 0.0,
+      "withdrawals_btc": 0.0,
+      "admin_fee_withdrawals_btc": 0.0,
+      "admin_fees_btc": 0.0
+    },
+    {
+      "block": 24310796,
+      "timestamp": 1769331707,
+      "total_withdrawable_btc": 1131.28629324,
+      "deposits_btc": 0.0,
+      "withdrawals_btc": 0.0,
+      "admin_fee_withdrawals_btc": 0.0,
+      "admin_fees_btc": 0.0
+    },
+    {
+      "block": 24310799,
+      "timestamp": 1769331743,
+      "total_withdrawable_btc": 1131.2862059,
       "deposits_btc": 0.0,
       "withdrawals_btc": 0.0,
       "admin_fee_withdrawals_btc": 0.0,

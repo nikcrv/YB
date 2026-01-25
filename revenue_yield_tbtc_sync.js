@@ -1,14 +1,14 @@
-// Last updated: 2026-01-25 08:51:27 UTC
+// Last updated: 2026-01-25 09:09:18 UTC
 const yieldData_tbtc = {
   "metadata": {
     "market": "tBTC",
     "contract": "0xaC0a340C1644321D0BBc6404946d828c1EBfAC92",
-    "collected": "2026-01-25T11:45:34.276725",
-    "points": 6357,
+    "collected": "2026-01-25T12:03:55.566615",
+    "points": 6362,
     "synchronized": true,
     "transaction_based": true,
     "zero_loss": true,
-    "incremental_update": false
+    "incremental_update": true
   },
   "data": [
     {
@@ -57221,6 +57221,51 @@ const yieldData_tbtc = {
       "total_withdrawable_btc": 559.3648481880609,
       "deposits_btc": 0.0,
       "withdrawals_btc": 0.0,
+      "admin_fee_withdrawals_btc": 0.0,
+      "admin_fees_btc": 0.0
+    },
+    {
+      "block": 24310788,
+      "timestamp": 1769331599,
+      "total_withdrawable_btc": 559.5330748326903,
+      "deposits_btc": 0.19,
+      "withdrawals_btc": 0,
+      "admin_fee_withdrawals_btc": 0.0,
+      "admin_fees_btc": 0.0
+    },
+    {
+      "block": 24310789,
+      "timestamp": 1769331611,
+      "total_withdrawable_btc": 559.5330596381799,
+      "deposits_btc": 0.0,
+      "withdrawals_btc": 0.0,
+      "admin_fee_withdrawals_btc": 0.0,
+      "admin_fees_btc": 0.0
+    },
+    {
+      "block": 24310792,
+      "timestamp": 1769331647,
+      "total_withdrawable_btc": 559.7622134150124,
+      "deposits_btc": 0.23,
+      "withdrawals_btc": 0,
+      "admin_fee_withdrawals_btc": 0.0,
+      "admin_fees_btc": 0.0
+    },
+    {
+      "block": 24310796,
+      "timestamp": 1769331707,
+      "total_withdrawable_btc": 559.9913978459217,
+      "deposits_btc": 0.23,
+      "withdrawals_btc": 0,
+      "admin_fee_withdrawals_btc": 0.0,
+      "admin_fees_btc": 0.0
+    },
+    {
+      "block": 24310799,
+      "timestamp": 1769331743,
+      "total_withdrawable_btc": 560.0732443389185,
+      "deposits_btc": 0.0825636672844407,
+      "withdrawals_btc": 0,
       "admin_fee_withdrawals_btc": 0.0,
       "admin_fees_btc": 0.0
     }
