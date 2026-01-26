@@ -1,10 +1,10 @@
-// Last updated: 2026-01-26 07:58:44 UTC
+// Last updated: 2026-01-26 12:44:26 UTC
 const yieldData_tbtc = {
   "metadata": {
     "market": "tBTC",
     "contract": "0xaC0a340C1644321D0BBc6404946d828c1EBfAC92",
-    "collected": "2026-01-26T10:02:36.795236",
-    "points": 6518,
+    "collected": "2026-01-26T15:39:44.465369",
+    "points": 6579,
     "synchronized": true,
     "transaction_based": true,
     "zero_loss": true,
@@ -58670,6 +58670,555 @@ const yieldData_tbtc = {
       "total_withdrawable_btc": 548.1753804458465,
       "deposits_btc": 0.0,
       "withdrawals_btc": 0.0,
+      "admin_fee_withdrawals_btc": 0.0,
+      "admin_fees_btc": 0.0
+    },
+    {
+      "block": 24317336,
+      "timestamp": 1769410403,
+      "total_withdrawable_btc": 548.1693242505061,
+      "deposits_btc": 1e-18,
+      "withdrawals_btc": 0,
+      "admin_fee_withdrawals_btc": 0.0,
+      "admin_fees_btc": 0.0
+    },
+    {
+      "block": 24317338,
+      "timestamp": 1769410427,
+      "total_withdrawable_btc": 548.1642544232211,
+      "deposits_btc": 1e-18,
+      "withdrawals_btc": 0,
+      "admin_fee_withdrawals_btc": 0.0,
+      "admin_fees_btc": 0.0
+    },
+    {
+      "block": 24317339,
+      "timestamp": 1769410439,
+      "total_withdrawable_btc": 548.1600232133319,
+      "deposits_btc": 1e-18,
+      "withdrawals_btc": 0,
+      "admin_fee_withdrawals_btc": 0.0,
+      "admin_fees_btc": 0.0
+    },
+    {
+      "block": 24317350,
+      "timestamp": 1769410571,
+      "total_withdrawable_btc": 548.1555904898293,
+      "deposits_btc": 1e-18,
+      "withdrawals_btc": 0,
+      "admin_fee_withdrawals_btc": 0.0,
+      "admin_fees_btc": 0.0
+    },
+    {
+      "block": 24317370,
+      "timestamp": 1769410811,
+      "total_withdrawable_btc": 548.1553042077312,
+      "deposits_btc": 0.0,
+      "withdrawals_btc": 0.0,
+      "admin_fee_withdrawals_btc": 0.0,
+      "admin_fees_btc": 0.0
+    },
+    {
+      "block": 24317383,
+      "timestamp": 1769410967,
+      "total_withdrawable_btc": 548.1495320342632,
+      "deposits_btc": 0.0,
+      "withdrawals_btc": 0,
+      "admin_fee_withdrawals_btc": 0.0,
+      "admin_fees_btc": 0.0
+    },
+    {
+      "block": 24317384,
+      "timestamp": 1769410979,
+      "total_withdrawable_btc": 548.144532321612,
+      "deposits_btc": 0.0,
+      "withdrawals_btc": 0,
+      "admin_fee_withdrawals_btc": 0.0,
+      "admin_fees_btc": 0.0
+    },
+    {
+      "block": 24317386,
+      "timestamp": 1769411003,
+      "total_withdrawable_btc": 548.1402739902957,
+      "deposits_btc": 0.0,
+      "withdrawals_btc": 0,
+      "admin_fee_withdrawals_btc": 0.0,
+      "admin_fees_btc": 0.0
+    },
+    {
+      "block": 24317398,
+      "timestamp": 1769411147,
+      "total_withdrawable_btc": 548.1357487649092,
+      "deposits_btc": 0.0,
+      "withdrawals_btc": 0,
+      "admin_fee_withdrawals_btc": 0.0,
+      "admin_fees_btc": 0.0
+    },
+    {
+      "block": 24317413,
+      "timestamp": 1769411327,
+      "total_withdrawable_btc": 548.1273142508724,
+      "deposits_btc": 0.0,
+      "withdrawals_btc": 0,
+      "admin_fee_withdrawals_btc": 0.0,
+      "admin_fees_btc": 0.0
+    },
+    {
+      "block": 24317415,
+      "timestamp": 1769411351,
+      "total_withdrawable_btc": 548.1213494753006,
+      "deposits_btc": 0.0,
+      "withdrawals_btc": 0,
+      "admin_fee_withdrawals_btc": 0.0,
+      "admin_fees_btc": 0.0
+    },
+    {
+      "block": 24317416,
+      "timestamp": 1769411363,
+      "total_withdrawable_btc": 548.1187981435247,
+      "deposits_btc": 0.0,
+      "withdrawals_btc": 0,
+      "admin_fee_withdrawals_btc": 0.0,
+      "admin_fees_btc": 0.0
+    },
+    {
+      "block": 24317430,
+      "timestamp": 1769411531,
+      "total_withdrawable_btc": 548.1152493005593,
+      "deposits_btc": 0.0,
+      "withdrawals_btc": 0,
+      "admin_fee_withdrawals_btc": 0.0,
+      "admin_fees_btc": 0.0
+    },
+    {
+      "block": 24317447,
+      "timestamp": 1769411735,
+      "total_withdrawable_btc": 548.1108008028211,
+      "deposits_btc": 0.0,
+      "withdrawals_btc": 0,
+      "admin_fee_withdrawals_btc": 0.0,
+      "admin_fees_btc": 0.0
+    },
+    {
+      "block": 24317468,
+      "timestamp": 1769411987,
+      "total_withdrawable_btc": 548.1055067189676,
+      "deposits_btc": 0.0,
+      "withdrawals_btc": 0,
+      "admin_fee_withdrawals_btc": 0.0,
+      "admin_fees_btc": 0.0
+    },
+    {
+      "block": 24317472,
+      "timestamp": 1769412035,
+      "total_withdrawable_btc": 548.1008724992334,
+      "deposits_btc": 0.0,
+      "withdrawals_btc": 0,
+      "admin_fee_withdrawals_btc": 0.0,
+      "admin_fees_btc": 0.0
+    },
+    {
+      "block": 24317488,
+      "timestamp": 1769412227,
+      "total_withdrawable_btc": 548.095810270923,
+      "deposits_btc": 0.0,
+      "withdrawals_btc": 0,
+      "admin_fee_withdrawals_btc": 0.0,
+      "admin_fees_btc": 0.0
+    },
+    {
+      "block": 24317497,
+      "timestamp": 1769412335,
+      "total_withdrawable_btc": 548.0909703045029,
+      "deposits_btc": 0.0,
+      "withdrawals_btc": 0,
+      "admin_fee_withdrawals_btc": 0.0,
+      "admin_fees_btc": 0.0
+    },
+    {
+      "block": 24317509,
+      "timestamp": 1769412479,
+      "total_withdrawable_btc": 548.0860638299445,
+      "deposits_btc": 0.0,
+      "withdrawals_btc": 0,
+      "admin_fee_withdrawals_btc": 0.0,
+      "admin_fees_btc": 0.0
+    },
+    {
+      "block": 24317521,
+      "timestamp": 1769412623,
+      "total_withdrawable_btc": 548.0811146595008,
+      "deposits_btc": 0.0,
+      "withdrawals_btc": 0,
+      "admin_fee_withdrawals_btc": 0.0,
+      "admin_fees_btc": 0.0
+    },
+    {
+      "block": 24317533,
+      "timestamp": 1769412767,
+      "total_withdrawable_btc": 548.0761381371842,
+      "deposits_btc": 0.0,
+      "withdrawals_btc": 0,
+      "admin_fee_withdrawals_btc": 0.0,
+      "admin_fees_btc": 0.0
+    },
+    {
+      "block": 24317535,
+      "timestamp": 1769412791,
+      "total_withdrawable_btc": 548.0689536420475,
+      "deposits_btc": 0.0,
+      "withdrawals_btc": 0,
+      "admin_fee_withdrawals_btc": 0.0,
+      "admin_fees_btc": 0.0
+    },
+    {
+      "block": 24317539,
+      "timestamp": 1769412839,
+      "total_withdrawable_btc": 548.0656720444888,
+      "deposits_btc": 0.0,
+      "withdrawals_btc": 0,
+      "admin_fee_withdrawals_btc": 0.0,
+      "admin_fees_btc": 0.0
+    },
+    {
+      "block": 24317545,
+      "timestamp": 1769412911,
+      "total_withdrawable_btc": 548.0604635412474,
+      "deposits_btc": 0.0,
+      "withdrawals_btc": 0,
+      "admin_fee_withdrawals_btc": 0.0,
+      "admin_fees_btc": 0.0
+    },
+    {
+      "block": 24317567,
+      "timestamp": 1769413175,
+      "total_withdrawable_btc": 548.0560643314458,
+      "deposits_btc": 0.0,
+      "withdrawals_btc": 0,
+      "admin_fee_withdrawals_btc": 0.0,
+      "admin_fees_btc": 0.0
+    },
+    {
+      "block": 24317581,
+      "timestamp": 1769413343,
+      "total_withdrawable_btc": 548.0513221202929,
+      "deposits_btc": 0.0,
+      "withdrawals_btc": 0,
+      "admin_fee_withdrawals_btc": 0.0,
+      "admin_fees_btc": 0.0
+    },
+    {
+      "block": 24317583,
+      "timestamp": 1769413367,
+      "total_withdrawable_btc": 548.0444703169516,
+      "deposits_btc": 0.0,
+      "withdrawals_btc": 0,
+      "admin_fee_withdrawals_btc": 0.0,
+      "admin_fees_btc": 0.0
+    },
+    {
+      "block": 24317591,
+      "timestamp": 1769413463,
+      "total_withdrawable_btc": 548.0409346150574,
+      "deposits_btc": 0.0,
+      "withdrawals_btc": 0,
+      "admin_fee_withdrawals_btc": 0.0,
+      "admin_fees_btc": 0.0
+    },
+    {
+      "block": 24317594,
+      "timestamp": 1769413499,
+      "total_withdrawable_btc": 548.0356786393658,
+      "deposits_btc": 0.0,
+      "withdrawals_btc": 0,
+      "admin_fee_withdrawals_btc": 0.0,
+      "admin_fees_btc": 0.0
+    },
+    {
+      "block": 24317614,
+      "timestamp": 1769413739,
+      "total_withdrawable_btc": 548.0315427288102,
+      "deposits_btc": 0.0,
+      "withdrawals_btc": 0,
+      "admin_fee_withdrawals_btc": 0.0,
+      "admin_fees_btc": 0.0
+    },
+    {
+      "block": 24317616,
+      "timestamp": 1769413763,
+      "total_withdrawable_btc": 548.0255502652731,
+      "deposits_btc": 0.0,
+      "withdrawals_btc": 0,
+      "admin_fee_withdrawals_btc": 0.0,
+      "admin_fees_btc": 0.0
+    },
+    {
+      "block": 24317631,
+      "timestamp": 1769413943,
+      "total_withdrawable_btc": 548.0216671423655,
+      "deposits_btc": 0.0,
+      "withdrawals_btc": 0,
+      "admin_fee_withdrawals_btc": 0.0,
+      "admin_fees_btc": 0.0
+    },
+    {
+      "block": 24317634,
+      "timestamp": 1769413979,
+      "total_withdrawable_btc": 548.0159301679172,
+      "deposits_btc": 0.0,
+      "withdrawals_btc": 0,
+      "admin_fee_withdrawals_btc": 0.0,
+      "admin_fees_btc": 0.0
+    },
+    {
+      "block": 24317651,
+      "timestamp": 1769414183,
+      "total_withdrawable_btc": 548.0119207293651,
+      "deposits_btc": 0.0,
+      "withdrawals_btc": 0,
+      "admin_fee_withdrawals_btc": 0.0,
+      "admin_fees_btc": 0.0
+    },
+    {
+      "block": 24317655,
+      "timestamp": 1769414231,
+      "total_withdrawable_btc": 548.0058479595388,
+      "deposits_btc": 0.0,
+      "withdrawals_btc": 0,
+      "admin_fee_withdrawals_btc": 0.0,
+      "admin_fees_btc": 0.0
+    },
+    {
+      "block": 24317670,
+      "timestamp": 1769414411,
+      "total_withdrawable_btc": 548.0019161510811,
+      "deposits_btc": 0.0,
+      "withdrawals_btc": 0,
+      "admin_fee_withdrawals_btc": 0.0,
+      "admin_fees_btc": 0.0
+    },
+    {
+      "block": 24317675,
+      "timestamp": 1769414471,
+      "total_withdrawable_btc": 547.9957281351617,
+      "deposits_btc": 0.0,
+      "withdrawals_btc": 0,
+      "admin_fee_withdrawals_btc": 0.0,
+      "admin_fees_btc": 0.0
+    },
+    {
+      "block": 24317686,
+      "timestamp": 1769414603,
+      "total_withdrawable_btc": 547.9921452715205,
+      "deposits_btc": 0.0,
+      "withdrawals_btc": 0,
+      "admin_fee_withdrawals_btc": 0.0,
+      "admin_fees_btc": 0.0
+    },
+    {
+      "block": 24317692,
+      "timestamp": 1769414687,
+      "total_withdrawable_btc": 547.9862362152426,
+      "deposits_btc": 0.0,
+      "withdrawals_btc": 0,
+      "admin_fee_withdrawals_btc": 0.0,
+      "admin_fees_btc": 0.0
+    },
+    {
+      "block": 24317705,
+      "timestamp": 1769414843,
+      "total_withdrawable_btc": 547.9824938804861,
+      "deposits_btc": 0.0,
+      "withdrawals_btc": 0,
+      "admin_fee_withdrawals_btc": 0.0,
+      "admin_fees_btc": 0.0
+    },
+    {
+      "block": 24317710,
+      "timestamp": 1769414903,
+      "total_withdrawable_btc": 547.9765641537264,
+      "deposits_btc": 0.0,
+      "withdrawals_btc": 0,
+      "admin_fee_withdrawals_btc": 0.0,
+      "admin_fees_btc": 0.0
+    },
+    {
+      "block": 24317725,
+      "timestamp": 1769415083,
+      "total_withdrawable_btc": 547.9727201575104,
+      "deposits_btc": 0.0,
+      "withdrawals_btc": 0,
+      "admin_fee_withdrawals_btc": 0.0,
+      "admin_fees_btc": 0.0
+    },
+    {
+      "block": 24317727,
+      "timestamp": 1769415107,
+      "total_withdrawable_btc": 547.9671388664133,
+      "deposits_btc": 0.0,
+      "withdrawals_btc": 0,
+      "admin_fee_withdrawals_btc": 0.0,
+      "admin_fees_btc": 0.0
+    },
+    {
+      "block": 24317772,
+      "timestamp": 1769415647,
+      "total_withdrawable_btc": 551.5958710818473,
+      "deposits_btc": 3.5,
+      "withdrawals_btc": 0,
+      "admin_fee_withdrawals_btc": 0.0,
+      "admin_fees_btc": 0.0
+    },
+    {
+      "block": 24317926,
+      "timestamp": 1769417495,
+      "total_withdrawable_btc": 551.891442752996,
+      "deposits_btc": 0.2981968799815813,
+      "withdrawals_btc": 0,
+      "admin_fee_withdrawals_btc": 0.0,
+      "admin_fees_btc": 0.0
+    },
+    {
+      "block": 24317931,
+      "timestamp": 1769417555,
+      "total_withdrawable_btc": 551.8910588223915,
+      "deposits_btc": 0.000530565826795078,
+      "withdrawals_btc": 0,
+      "admin_fee_withdrawals_btc": 0.0,
+      "admin_fees_btc": 0.0
+    },
+    {
+      "block": 24317969,
+      "timestamp": 1769418011,
+      "total_withdrawable_btc": 551.9269854256395,
+      "deposits_btc": 0.0,
+      "withdrawals_btc": 0.0,
+      "admin_fee_withdrawals_btc": 0.0,
+      "admin_fees_btc": 0.0
+    },
+    {
+      "block": 24318026,
+      "timestamp": 1769418695,
+      "total_withdrawable_btc": 552.0154398990301,
+      "deposits_btc": 0.00013,
+      "withdrawals_btc": 0,
+      "admin_fee_withdrawals_btc": 0.0,
+      "admin_fees_btc": 0.0
+    },
+    {
+      "block": 24318027,
+      "timestamp": 1769418707,
+      "total_withdrawable_btc": 552.0154708380056,
+      "deposits_btc": 2.8356109803082e-05,
+      "withdrawals_btc": 0,
+      "admin_fee_withdrawals_btc": 0.0,
+      "admin_fees_btc": 0.0
+    },
+    {
+      "block": 24318117,
+      "timestamp": 1769419799,
+      "total_withdrawable_btc": 552.985570610451,
+      "deposits_btc": 0.9731608879624472,
+      "withdrawals_btc": 0,
+      "admin_fee_withdrawals_btc": 0.0,
+      "admin_fees_btc": 0.0
+    },
+    {
+      "block": 24318126,
+      "timestamp": 1769419907,
+      "total_withdrawable_btc": 552.9854497947268,
+      "deposits_btc": 0.000102,
+      "withdrawals_btc": 0,
+      "admin_fee_withdrawals_btc": 0.0,
+      "admin_fees_btc": 0.0
+    },
+    {
+      "block": 24318180,
+      "timestamp": 1769420567,
+      "total_withdrawable_btc": 553.0031733784774,
+      "deposits_btc": 0.018555729355103905,
+      "withdrawals_btc": 0,
+      "admin_fee_withdrawals_btc": 0.0,
+      "admin_fees_btc": 0.0
+    },
+    {
+      "block": 24318267,
+      "timestamp": 1769421611,
+      "total_withdrawable_btc": 553.0001080077907,
+      "deposits_btc": 0.0,
+      "withdrawals_btc": 0.0,
+      "admin_fee_withdrawals_btc": 0.0,
+      "admin_fees_btc": 0.0
+    },
+    {
+      "block": 24318567,
+      "timestamp": 1769425211,
+      "total_withdrawable_btc": 552.9957121534162,
+      "deposits_btc": 0.0,
+      "withdrawals_btc": 0.0,
+      "admin_fee_withdrawals_btc": 0.0,
+      "admin_fees_btc": 0.0
+    },
+    {
+      "block": 24318589,
+      "timestamp": 1769425475,
+      "total_withdrawable_btc": 553.0086516019294,
+      "deposits_btc": 0.013188416815729437,
+      "withdrawals_btc": 0,
+      "admin_fee_withdrawals_btc": 0.0,
+      "admin_fees_btc": 0.0
+    },
+    {
+      "block": 24318656,
+      "timestamp": 1769426291,
+      "total_withdrawable_btc": 553.0189746307873,
+      "deposits_btc": 0.01130362532350907,
+      "withdrawals_btc": 0,
+      "admin_fee_withdrawals_btc": 0.0,
+      "admin_fees_btc": 0.0
+    },
+    {
+      "block": 24318668,
+      "timestamp": 1769426435,
+      "total_withdrawable_btc": 553.228963195,
+      "deposits_btc": 0.21015893027868385,
+      "withdrawals_btc": 0,
+      "admin_fee_withdrawals_btc": 0.0,
+      "admin_fees_btc": 0.0
+    },
+    {
+      "block": 24318865,
+      "timestamp": 1769428811,
+      "total_withdrawable_btc": 553.2260125632487,
+      "deposits_btc": 0.0,
+      "withdrawals_btc": 0.0,
+      "admin_fee_withdrawals_btc": 0.0,
+      "admin_fees_btc": 0.0
+    },
+    {
+      "block": 24318947,
+      "timestamp": 1769429807,
+      "total_withdrawable_btc": 553.2247756453535,
+      "deposits_btc": 0.0,
+      "withdrawals_btc": 0.0,
+      "admin_fee_withdrawals_btc": 0.0,
+      "admin_fees_btc": 0.0
+    },
+    {
+      "block": 24319006,
+      "timestamp": 1769430515,
+      "total_withdrawable_btc": 553.2138699629542,
+      "deposits_btc": 0,
+      "withdrawals_btc": 0.010050465024411235,
+      "admin_fee_withdrawals_btc": 0.0,
+      "admin_fees_btc": 0.0
+    },
+    {
+      "block": 24319020,
+      "timestamp": 1769430683,
+      "total_withdrawable_btc": 553.2136279173435,
+      "deposits_btc": 0,
+      "withdrawals_btc": 1.6991395471788e-05,
       "admin_fee_withdrawals_btc": 0.0,
       "admin_fees_btc": 0.0
     }

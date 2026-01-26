@@ -1,14 +1,14 @@
-// Last updated: 2026-01-26 07:58:44 UTC
+// Last updated: 2026-01-26 12:44:27 UTC
 const ppsData_tbtc = {
   "metadata": {
     "market": "TBTC",
     "symbol": "yb-tBTC",
     "vault": "0xaC0a340C1644321D0BBc6404946d828c1EBfAC92",
     "staker": "0x30ba8b27F2128c770B90C965FF671E08b9310D21",
-    "collected": "2026-01-26T10:05:19.475150Z",
-    "points": 9988,
+    "collected": "2026-01-26T15:40:33.436352Z",
+    "points": 9997,
     "start_block": 23784065,
-    "end_block": 24317385,
+    "end_block": 24319063,
     "block_step": 300,
     "time_step": "1h",
     "contract_type": "new"
@@ -59941,6 +59941,60 @@ const ppsData_tbtc = {
       "timestamp": 1769410991,
       "pps_unstaked": 1.0192042526567544,
       "pps_staked": null
+    },
+    {
+      "block": 24317386,
+      "timestamp": 1769411003,
+      "pps_unstaked": 1.0191966467256373,
+      "pps_staked": 0.9946901730273526
+    },
+    {
+      "block": 24317986,
+      "timestamp": 1769418215,
+      "pps_unstaked": 1.0190198011859415,
+      "pps_staked": 0.9945175797196292
+    },
+    {
+      "block": 24318145,
+      "timestamp": 1769420147,
+      "pps_unstaked": 1.0190552015033332,
+      "pps_staked": 0.9945521288401985
+    },
+    {
+      "block": 24318146,
+      "timestamp": 1769420159,
+      "pps_unstaked": 1.0190551412119846,
+      "pps_staked": 0.9945520699985488
+    },
+    {
+      "block": 24318446,
+      "timestamp": 1769423759,
+      "pps_unstaked": 1.0190578103325916,
+      "pps_staked": 0.994554674940438
+    },
+    {
+      "block": 24318746,
+      "timestamp": 1769427371,
+      "pps_unstaked": 1.0190492738136863,
+      "pps_staked": null
+    },
+    {
+      "block": 24318809,
+      "timestamp": 1769428139,
+      "pps_unstaked": 1.0190510224254379,
+      "pps_staked": null
+    },
+    {
+      "block": 24318810,
+      "timestamp": 1769428151,
+      "pps_unstaked": 1.019051034760984,
+      "pps_staked": 0.9945480622867208
+    },
+    {
+      "block": 24319063,
+      "timestamp": 1769431211,
+      "pps_unstaked": 1.0190468436917128,
+      "pps_staked": 0.9945439719912592
     }
   ]
 };
