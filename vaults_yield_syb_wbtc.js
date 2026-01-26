@@ -1,20 +1,20 @@
-// Last updated: 2026-01-26 01:10:48 UTC
+// Last updated: 2026-01-26 01:27:23 UTC
 const yieldData_syb_wbtc = {
   "metadata": {
     "contract": "0xbc56e3edB67b56d598aCE07668b138815F45d7aa",
     "start_date": "2025-11-12T19:08:23",
-    "end_date": "2026-01-26T04:08:47",
-    "data_points": 1786,
+    "end_date": "2026-01-26T04:24:59",
+    "data_points": 1787,
     "step_seconds": 3600
   },
   "metrics": {
-    "total_return": -0.000552691644531917,
-    "total_return_pct": -0.0552691644531917,
-    "apr": -0.0027094316208604963,
-    "apr_pct": -0.2709431620860496,
-    "days": 74.37527777777778,
+    "total_return": -0.0006241571137220345,
+    "total_return_pct": -0.06241571137220345,
+    "apr": -0.0030588839089127954,
+    "apr_pct": -0.3058883908912795,
+    "days": 74.38652777777777,
     "start_pps": 0.99936376,
-    "end_pps": 0.99881142
+    "end_pps": 0.99874
   },
   "data": [
     {
@@ -17863,17 +17863,27 @@ const yieldData_syb_wbtc = {
       "datetime": "2026-01-26T03:11:59",
       "pps_btc": 0.99882957,
       "ret_step": -7.92921779497884e-06,
-      "ret_step_pct": -0.0007929217794978841,
+      "ret_step_pct": -0.000792921779497884,
       "btc_price": 86563.18760836108,
       "pps_yb": 0.9656960387210001
     },
     {
-      "block": 24315617,
-      "timestamp": 1769389727,
-      "datetime": "2026-01-26T04:08:47",
-      "pps_btc": 0.99881142,
-      "ret_step": -1.8171268197436325e-05,
-      "ret_step_pct": -0.0018171268197436326,
+      "block": 24315633,
+      "timestamp": 1769389919,
+      "datetime": "2026-01-26T04:11:59",
+      "pps_btc": 0.99880602,
+      "ret_step": null,
+      "ret_step_pct": null,
+      "btc_price": 86745.84170386847,
+      "pps_yb": 0.9656960387210001
+    },
+    {
+      "block": 24315698,
+      "timestamp": 1769390699,
+      "datetime": "2026-01-26T04:24:59",
+      "pps_btc": 0.99874,
+      "ret_step": -6.609892078944418e-05,
+      "ret_step_pct": -0.006609892078944418,
       "btc_price": 86745.84170386847,
       "pps_yb": 0.9656960387210001
     }
