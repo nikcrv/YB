@@ -1,4 +1,4 @@
-// Last updated: 2026-01-27 01:20:18 UTC
+// Last updated: 2026-01-27 01:38:08 UTC
 const ybEmissionData = [
   {
     "timestamp": 1762963200,
@@ -31144,20 +31144,40 @@ const ybEmissionData = [
     "timestamp": 1769472000,
     "datetime": "2026-01-27T00:00:00",
     "hourly_cbBTC": 3812.0488352942502,
-    "hourly_WBTC": 0,
+    "hourly_WBTC": 954.1666688352997,
     "hourly_tBTC": 5932.113593103642,
-    "hourly_total": 9744.162428397893,
+    "hourly_total": 10698.329097233192,
     "cumulative_cbBTC": 5859101.705516022,
-    "cumulative_WBTC": 2784954.177723292,
+    "cumulative_WBTC": 2785908.344392127,
     "cumulative_tBTC": 2433039.9999205573,
-    "cumulative_total": 11077095.883159872,
-    "hourly_total_btc": 0.02711563281287983,
-    "cumulative_total_btc": 50.685102725758775,
+    "cumulative_total": 11078050.049828704,
+    "hourly_total_btc": 0.029770846457412705,
+    "cumulative_total_btc": 50.687757939403305,
     "cumulative_cbBTC_btc": 25.945842328511592,
-    "cumulative_WBTC_btc": 13.310062476596592,
+    "cumulative_WBTC_btc": 13.312717690241124,
     "cumulative_tBTC_btc": 11.429197920650601,
     "yb_usd_price": 0.24533932568979572,
     "btc_usd_price": 88164.13233252821,
     "yb_btc_price": 2.782756651701064e-06
+  },
+  {
+    "timestamp": 1769475600,
+    "datetime": "2026-01-27T01:00:00",
+    "hourly_cbBTC": 2021.5680599258067,
+    "hourly_WBTC": 424.05879614861766,
+    "hourly_tBTC": 424.75265635176214,
+    "hourly_total": 2870.3795124261865,
+    "cumulative_cbBTC": 5861123.273575948,
+    "cumulative_WBTC": 2786332.4031882756,
+    "cumulative_tBTC": 2433464.752576909,
+    "cumulative_total": 11080920.429341134,
+    "hourly_total_btc": 0.007907093669168983,
+    "cumulative_total_btc": 50.69566503307247,
+    "cumulative_cbBTC_btc": 25.951411183758516,
+    "cumulative_WBTC_btc": 13.313885853756737,
+    "cumulative_tBTC_btc": 11.430367995557233,
+    "yb_usd_price": 0.24299745592574631,
+    "btc_usd_price": 88211.28827404577,
+    "yb_btc_price": 2.754720633609009e-06
   }
 ];
