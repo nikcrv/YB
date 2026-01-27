@@ -1,4 +1,4 @@
-// Last updated: 2026-01-27 13:06:15 UTC
+// Last updated: 2026-01-27 13:45:14 UTC
 const ybEmissionData = [
   {
     "timestamp": 1762963200,
@@ -31383,21 +31383,41 @@ const ybEmissionData = [
   {
     "timestamp": 1769515200,
     "datetime": "2026-01-27T12:00:00",
-    "hourly_cbBTC": 4638.771000061465,
+    "hourly_cbBTC": 7042.295752627677,
     "hourly_WBTC": 973.5116345250111,
     "hourly_tBTC": 502.72360634033856,
-    "hourly_total": 6115.006240926815,
-    "cumulative_cbBTC": 5913367.944130686,
+    "hourly_total": 8518.530993493026,
+    "cumulative_cbBTC": 5915771.468883253,
     "cumulative_WBTC": 2796599.4200922195,
     "cumulative_tBTC": 2444269.4778764155,
-    "cumulative_total": 11154236.842099322,
-    "hourly_total_btc": 0.016999503970114477,
-    "cumulative_total_btc": 50.89683244260061,
-    "cumulative_cbBTC_btc": 26.09474400720291,
+    "cumulative_total": 11156640.366851887,
+    "hourly_total_btc": 0.02368121891262041,
+    "cumulative_total_btc": 50.90351415754312,
+    "cumulative_cbBTC_btc": 26.101425722145414,
     "cumulative_WBTC_btc": 13.34206495169763,
     "cumulative_tBTC_btc": 11.460023483700065,
     "yb_usd_price": 0.2437050749788628,
     "btc_usd_price": 87664.79640001211,
     "yb_btc_price": 2.779965105569208e-06
+  },
+  {
+    "timestamp": 1769518800,
+    "datetime": "2026-01-27T13:00:00",
+    "hourly_cbBTC": 566.4290142500988,
+    "hourly_WBTC": 623.2973184916052,
+    "hourly_tBTC": 1027.5722168824261,
+    "hourly_total": 2217.29854962413,
+    "cumulative_cbBTC": 5916337.897897502,
+    "cumulative_WBTC": 2797222.717410711,
+    "cumulative_tBTC": 2445297.050093298,
+    "cumulative_total": 11158857.66540151,
+    "hourly_total_btc": 0.006119595057295906,
+    "cumulative_total_btc": 50.90963375260042,
+    "cumulative_cbBTC_btc": 26.102989028176758,
+    "cumulative_WBTC_btc": 13.34378521042874,
+    "cumulative_tBTC_btc": 11.462859513994909,
+    "yb_usd_price": 0.24198134327344797,
+    "btc_usd_price": 87676.5335700824,
+    "yb_btc_price": 2.7599328283208782e-06
   }
 ];
