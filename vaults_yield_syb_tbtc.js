@@ -1,20 +1,20 @@
-// Last updated: 2026-01-27 18:20:50 UTC
+// Last updated: 2026-01-27 19:28:39 UTC
 const yieldData_syb_tbtc = {
   "metadata": {
     "contract": "0x30ba8b27F2128c770B90C965FF671E08b9310D21",
     "start_date": "2025-11-12T19:19:11",
-    "end_date": "2026-01-27T21:17:47",
-    "data_points": 1827,
+    "end_date": "2026-01-27T22:26:47",
+    "data_points": 1829,
     "step_seconds": 3600
   },
   "metrics": {
-    "total_return": -0.005248042472037655,
-    "total_return_pct": -0.5248042472037655,
-    "apr": -0.02492747628920827,
-    "apr_pct": -2.492747628920827,
-    "days": 76.08236111111111,
+    "total_return": -0.0052573509823363165,
+    "total_return_pct": -0.5257350982336317,
+    "apr": -0.024955729776816725,
+    "apr_pct": -2.495572977681672,
+    "days": 76.13027777777778,
     "start_pps": 0.9994484405610258,
-    "end_pps": 0.9942032926963498
+    "end_pps": 0.9941939893202478
   },
   "data": [
     {
@@ -18278,13 +18278,33 @@ const yieldData_syb_tbtc = {
       "pps_yb": 0.9759551076065485
     },
     {
-      "block": 24327910,
-      "timestamp": 1769537867,
-      "datetime": "2026-01-27T21:17:47",
-      "pps_btc": 0.9942032926963498,
+      "block": 24327927,
+      "timestamp": 1769538071,
+      "datetime": "2026-01-27T21:21:11",
+      "pps_btc": 0.9942028357674739,
       "ret_step": null,
       "ret_step_pct": null,
       "btc_price": 87435.12026106454,
+      "pps_yb": 0.9759551076065485
+    },
+    {
+      "block": 24328226,
+      "timestamp": 1769541671,
+      "datetime": "2026-01-27T22:21:11",
+      "pps_btc": 0.9941947419779984,
+      "ret_step": null,
+      "ret_step_pct": null,
+      "btc_price": 88153.60150288578,
+      "pps_yb": 0.9759551076065485
+    },
+    {
+      "block": 24328254,
+      "timestamp": 1769542007,
+      "datetime": "2026-01-27T22:26:47",
+      "pps_btc": 0.9941939893202478,
+      "ret_step": -7.57052636486038e-07,
+      "ret_step_pct": -7.570526364860381e-05,
+      "btc_price": 88153.60150288578,
       "pps_yb": 0.9759551076065485
     }
   ]
