@@ -1,4 +1,4 @@
-// Last updated: 2026-01-28 19:07:14 UTC
+// Last updated: 2026-01-28 19:28:56 UTC
 const gaugeTvlData_old_cbbtc = [
   {
     "block": 23434009,
