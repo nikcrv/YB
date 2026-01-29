@@ -1,20 +1,20 @@
-// Last updated: 2026-01-28 23:57:27 UTC
+// Last updated: 2026-01-29 01:22:03 UTC
 const yieldData_syb_cbbtc = {
   "metadata": {
     "contract": "0xf3081A2eB8927C0462864EC3FdbE927C842A0893",
     "start_date": "2025-11-12T19:09:47",
-    "end_date": "2026-01-29T02:56:11",
-    "data_points": 1857,
+    "end_date": "2026-01-29T04:20:47",
+    "data_points": 1859,
     "step_seconds": 3600
   },
   "metrics": {
-    "total_return": -0.0003534919425899069,
-    "total_return_pct": -0.03534919425899069,
-    "apr": -0.0016675279253417744,
-    "apr_pct": -0.16675279253417744,
-    "days": 77.32388888888889,
+    "total_return": -0.0003850690886644539,
+    "total_return_pct": -0.038506908866445394,
+    "apr": -0.0018150023625656145,
+    "apr_pct": -0.18150023625656145,
+    "days": 77.38263888888889,
     "start_pps": 0.99945701,
-    "end_pps": 0.99910371
+    "end_pps": 0.99907215
   },
   "data": [
     {
@@ -18578,13 +18578,33 @@ const yieldData_syb_cbbtc = {
       "pps_yb": 0.9643931718876587
     },
     {
-      "block": 24336766,
-      "timestamp": 1769644571,
-      "datetime": "2026-01-29T02:56:11",
-      "pps_btc": 0.99910371,
+      "block": 24336845,
+      "timestamp": 1769645519,
+      "datetime": "2026-01-29T03:11:59",
+      "pps_btc": 0.99910157,
       "ret_step": null,
       "ret_step_pct": null,
-      "btc_price": 89259.32071465063,
+      "btc_price": 89173.2129545617,
+      "pps_yb": 0.9643931718876587
+    },
+    {
+      "block": 24337144,
+      "timestamp": 1769649119,
+      "datetime": "2026-01-29T04:11:59",
+      "pps_btc": 0.99907334,
+      "ret_step": null,
+      "ret_step_pct": null,
+      "btc_price": 89003.36082308379,
+      "pps_yb": 0.9643931718876587
+    },
+    {
+      "block": 24337188,
+      "timestamp": 1769649647,
+      "datetime": "2026-01-29T04:20:47",
+      "pps_btc": 0.99907215,
+      "ret_step": -1.1911037481993064e-06,
+      "ret_step_pct": -0.00011911037481993064,
+      "btc_price": 89003.36082308379,
       "pps_yb": 0.9643931718876587
     }
   ]

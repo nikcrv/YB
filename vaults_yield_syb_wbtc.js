@@ -1,20 +1,20 @@
-// Last updated: 2026-01-28 23:57:27 UTC
+// Last updated: 2026-01-29 01:22:03 UTC
 const yieldData_syb_wbtc = {
   "metadata": {
     "contract": "0xbc56e3edB67b56d598aCE07668b138815F45d7aa",
     "start_date": "2025-11-12T19:08:23",
-    "end_date": "2026-01-29T02:55:59",
-    "data_points": 1857,
+    "end_date": "2026-01-29T04:20:35",
+    "data_points": 1859,
     "step_seconds": 3600
   },
   "metrics": {
-    "total_return": -0.0010393612832228377,
-    "total_return_pct": -0.10393612832228377,
-    "apr": -0.004896675762291486,
-    "apr_pct": -0.4896675762291485,
-    "days": 77.32472222222222,
+    "total_return": -0.0010516390948577122,
+    "total_return_pct": -0.10516390948577123,
+    "apr": -0.004950654175197739,
+    "apr_pct": -0.49506541751977384,
+    "days": 77.38347222222222,
     "start_pps": 0.99936376,
-    "end_pps": 0.99832506
+    "end_pps": 0.99831279
   },
   "data": [
     {
@@ -18578,13 +18578,33 @@ const yieldData_syb_wbtc = {
       "pps_yb": 0.9656960387210001
     },
     {
-      "block": 24336765,
-      "timestamp": 1769644559,
-      "datetime": "2026-01-29T02:55:59",
-      "pps_btc": 0.99832506,
+      "block": 24336845,
+      "timestamp": 1769645519,
+      "datetime": "2026-01-29T03:11:59",
+      "pps_btc": 0.99832289,
       "ret_step": null,
       "ret_step_pct": null,
-      "btc_price": 89259.32071465063,
+      "btc_price": 89173.2129545617,
+      "pps_yb": 0.9656960387210001
+    },
+    {
+      "block": 24337144,
+      "timestamp": 1769649119,
+      "datetime": "2026-01-29T04:11:59",
+      "pps_btc": 0.99831396,
+      "ret_step": null,
+      "ret_step_pct": null,
+      "btc_price": 89003.36082308379,
+      "pps_yb": 0.9656960387210001
+    },
+    {
+      "block": 24337187,
+      "timestamp": 1769649635,
+      "datetime": "2026-01-29T04:20:35",
+      "pps_btc": 0.99831279,
+      "ret_step": -1.171975998412363e-06,
+      "ret_step_pct": -0.00011719759984123632,
+      "btc_price": 89003.36082308379,
       "pps_yb": 0.9656960387210001
     }
   ]
