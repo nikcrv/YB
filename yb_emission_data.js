@@ -1,4 +1,4 @@
-// Last updated: 2026-01-29 20:42:43 UTC
+// Last updated: 2026-01-29 21:23:36 UTC
 const ybEmissionData = [
   {
     "timestamp": 1762963200,
@@ -32343,21 +32343,41 @@ const ybEmissionData = [
   {
     "timestamp": 1769713200,
     "datetime": "2026-01-29T19:00:00",
-    "hourly_cbBTC": 2754.7961672829024,
+    "hourly_cbBTC": 5616.664963880962,
     "hourly_WBTC": 0,
-    "hourly_tBTC": 0,
-    "hourly_total": 2754.7961672829024,
-    "cumulative_cbBTC": 6145562.242124001,
+    "hourly_tBTC": 1179.3129927054656,
+    "hourly_total": 6795.977956586428,
+    "cumulative_cbBTC": 6148424.110920598,
     "cumulative_WBTC": 2839788.8300421163,
-    "cumulative_tBTC": 2479581.1609431957,
-    "cumulative_total": 11464932.233109312,
-    "hourly_total_btc": 0.00748932671421553,
-    "cumulative_total_btc": 51.761075458565465,
-    "cumulative_cbBTC_btc": 26.74030876092097,
+    "cumulative_tBTC": 2480760.473935901,
+    "cumulative_total": 11468973.414898615,
+    "hourly_total_btc": 0.018475885752985997,
+    "cumulative_total_btc": 51.772062017604235,
+    "cumulative_cbBTC_btc": 26.74808918064331,
     "cumulative_WBTC_btc": 13.462599779258523,
-    "cumulative_tBTC_btc": 11.558166918385938,
+    "cumulative_tBTC_btc": 11.561373057702372,
     "yb_usd_price": 0.22558928885175858,
     "btc_usd_price": 82978.42142863362,
     "yb_btc_price": 2.71865004139394e-06
+  },
+  {
+    "timestamp": 1769716800,
+    "datetime": "2026-01-29T20:00:00",
+    "hourly_cbBTC": 3609.4805921767993,
+    "hourly_WBTC": 4367.841812246438,
+    "hourly_tBTC": 0,
+    "hourly_total": 7977.3224044232375,
+    "cumulative_cbBTC": 6152033.591512775,
+    "cumulative_WBTC": 2844156.671854363,
+    "cumulative_tBTC": 2480760.473935901,
+    "cumulative_total": 11476950.73730304,
+    "hourly_total_btc": 0.021680597946472407,
+    "cumulative_total_btc": 51.793742615550705,
+    "cumulative_cbBTC_btc": 26.757898950582053,
+    "cumulative_WBTC_btc": 13.474470607266252,
+    "cumulative_tBTC_btc": 11.561373057702372,
+    "yb_usd_price": 0.22727928721075877,
+    "btc_usd_price": 83626.85173186062,
+    "yb_btc_price": 2.7177788294542322e-06
   }
 ];
