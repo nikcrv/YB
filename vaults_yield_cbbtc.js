@@ -1,20 +1,20 @@
-// Last updated: 2026-01-30 17:03:37 UTC
+// Last updated: 2026-01-30 19:43:04 UTC
 const yieldData_cbbtc = {
   "metadata": {
     "contract": "0xAC0cfa7742069a8af0c63e14FFD0fe6b3e1Bf8D2",
     "start_date": "2025-11-12T19:09:47",
-    "end_date": "2026-01-30T20:01:59",
-    "data_points": 1898,
+    "end_date": "2026-01-30T22:40:47",
+    "data_points": 1901,
     "step_seconds": 3600
   },
   "metrics": {
-    "total_return": 0.026768165936802812,
-    "total_return_pct": 2.6768165936802815,
-    "apr": 0.12974664341622555,
-    "apr_pct": 12.974664341622555,
-    "days": 79.03625,
+    "total_return": 0.03150114078320183,
+    "total_return_pct": 3.1501140783201826,
+    "apr": 0.1537674074441013,
+    "apr_pct": 15.376740744410132,
+    "days": 79.14652777777778,
     "start_pps": 0.99945809,
-    "end_pps": 1.02621175
+    "end_pps": 1.03094216
   },
   "data": [
     {
@@ -17091,13 +17091,40 @@ const yieldData_cbbtc = {
       "btc_price": 82762.54275899222
     },
     {
-      "block": 24349049,
-      "timestamp": 1769792519,
-      "datetime": "2026-01-30T20:01:59",
-      "pps_btc": 1.02621175,
+      "block": 24349099,
+      "timestamp": 1769793131,
+      "datetime": "2026-01-30T20:12:11",
+      "pps_btc": 1.02621018,
       "ret_step": null,
       "ret_step_pct": null,
       "btc_price": 82970.0078878883
+    },
+    {
+      "block": 24349397,
+      "timestamp": 1769796731,
+      "datetime": "2026-01-30T21:12:11",
+      "pps_btc": 1.02620095,
+      "ret_step": null,
+      "ret_step_pct": null,
+      "btc_price": 82877.03317026947
+    },
+    {
+      "block": 24349695,
+      "timestamp": 1769800331,
+      "datetime": "2026-01-30T22:12:11",
+      "pps_btc": 1.02953811,
+      "ret_step": null,
+      "ret_step_pct": null,
+      "btc_price": 83826.73026415915
+    },
+    {
+      "block": 24349837,
+      "timestamp": 1769802047,
+      "datetime": "2026-01-30T22:40:47",
+      "pps_btc": 1.03094216,
+      "ret_step": null,
+      "ret_step_pct": null,
+      "btc_price": 83826.73026415915
     }
   ]
 };
