@@ -1,14 +1,14 @@
-// Last updated: 2026-01-31 00:08:37 UTC
+// Last updated: 2026-01-31 09:04:40 UTC
 const ppsData_old_cbbtc = {
   "metadata": {
     "market": "CBBTC",
     "symbol": "yb-cbBTC",
     "vault": "0xD6a1147666f6E4d7161caf436d9923D44d901112",
     "staker": "0x3dAe83d236b4Ec301A8d0553f8c13Cb9b7925B6a",
-    "collected": "2026-01-31T01:20:34.839760Z",
-    "points": 10953,
+    "collected": "2026-01-31T11:26:52.899868Z",
+    "points": 10961,
     "start_block": 23434043,
-    "end_block": 24350624,
+    "end_block": 24353642,
     "block_step": 300,
     "time_step": "1h",
     "contract_type": "old"
@@ -65731,6 +65731,54 @@ const ppsData_old_cbbtc = {
       "timestamp": 1769809763,
       "pps_unstaked": 1.2133794343323994,
       "pps_staked": 1.0000593874659047
+    },
+    {
+      "block": 24350478,
+      "timestamp": 1769809775,
+      "pps_unstaked": 1.2133793811887845,
+      "pps_staked": 1.0000593436652851
+    },
+    {
+      "block": 24350778,
+      "timestamp": 1769813387,
+      "pps_unstaked": 1.2134061205976505,
+      "pps_staked": 1.0000813821110468
+    },
+    {
+      "block": 24351078,
+      "timestamp": 1769817011,
+      "pps_unstaked": 1.213416961441536,
+      "pps_staked": 1.0000903170636173
+    },
+    {
+      "block": 24351236,
+      "timestamp": 1769818919,
+      "pps_unstaked": 1.2134137722423182,
+      "pps_staked": 1.000087688546497
+    },
+    {
+      "block": 24351237,
+      "timestamp": 1769818931,
+      "pps_unstaked": 1.2134137521285289,
+      "pps_staked": 1.0000876719688436
+    },
+    {
+      "block": 24351537,
+      "timestamp": 1769822531,
+      "pps_unstaked": 1.2134016413455262,
+      "pps_staked": 1.0000776903407653
+    },
+    {
+      "block": 24351837,
+      "timestamp": 1769826143,
+      "pps_unstaked": 1.2133865759778149,
+      "pps_staked": 1.0000652735633098
+    },
+    {
+      "block": 24352040,
+      "timestamp": 1769828615,
+      "pps_unstaked": 1.2133791587795926,
+      "pps_staked": 1.000059160357085
     }
   ]
 };
