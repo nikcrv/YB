@@ -1,20 +1,20 @@
-// Last updated: 2026-01-30 21:10:06 UTC
+// Last updated: 2026-01-31 00:08:37 UTC
 const yieldData_cbbtc = {
   "metadata": {
     "contract": "0xAC0cfa7742069a8af0c63e14FFD0fe6b3e1Bf8D2",
     "start_date": "2025-11-12T19:09:47",
-    "end_date": "2026-01-31T00:04:59",
-    "data_points": 1902,
+    "end_date": "2026-01-31T03:07:11",
+    "data_points": 1905,
     "step_seconds": 3600
   },
   "metrics": {
-    "total_return": 0.031771537313785715,
-    "total_return_pct": 3.177153731378571,
-    "apr": 0.1550398632896541,
-    "apr_pct": 15.50398632896541,
-    "days": 79.205,
+    "total_return": 0.03174826470212473,
+    "total_return_pct": 3.174826470212473,
+    "apr": 0.1546545321899776,
+    "apr_pct": 15.465453218997759,
+    "days": 79.33152777777778,
     "start_pps": 0.99945809,
-    "end_pps": 1.03121241
+    "end_pps": 1.03118915
   },
   "data": [
     {
@@ -17127,13 +17127,40 @@ const yieldData_cbbtc = {
       "btc_price": 84128.56059667813
     },
     {
-      "block": 24350255,
-      "timestamp": 1769807099,
-      "datetime": "2026-01-31T00:04:59",
-      "pps_btc": 1.03121241,
+      "block": 24350291,
+      "timestamp": 1769807531,
+      "datetime": "2026-01-31T00:12:11",
+      "pps_btc": 1.03121131,
       "ret_step": null,
       "ret_step_pct": null,
       "btc_price": 83788.09301797596
+    },
+    {
+      "block": 24350590,
+      "timestamp": 1769811131,
+      "datetime": "2026-01-31T01:12:11",
+      "pps_btc": 1.03120215,
+      "ret_step": null,
+      "ret_step_pct": null,
+      "btc_price": 84177.3266378665
+    },
+    {
+      "block": 24350889,
+      "timestamp": 1769814731,
+      "datetime": "2026-01-31T02:12:11",
+      "pps_btc": 1.03120359,
+      "ret_step": null,
+      "ret_step_pct": null,
+      "btc_price": 84022.41738125011
+    },
+    {
+      "block": 24351163,
+      "timestamp": 1769818031,
+      "datetime": "2026-01-31T03:07:11",
+      "pps_btc": 1.03118915,
+      "ret_step": null,
+      "ret_step_pct": null,
+      "btc_price": 84121.72844914203
     }
   ]
 };
