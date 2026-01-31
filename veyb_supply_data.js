@@ -1,4 +1,4 @@
-// Last updated: 2026-01-31 20:56:56 UTC
+// Last updated: 2026-01-31 22:11:37 UTC
 const veYBSupplyData = [
   {
     "block": 23370927,
@@ -62873,5 +62873,41 @@ const veYBSupplyData = [
     "yb_locked": 61906593.54891497,
     "total_votes": 57788547.17045844,
     "lock_ratio": 0.9334796805577311
+  },
+  {
+    "block": 24357464,
+    "timestamp": 1769894003,
+    "datetime": "2026-01-31T21:13:23",
+    "supply_yb": 61906593.54891497,
+    "yb_locked": 61906593.54891497,
+    "total_votes": 57788394.28582332,
+    "lock_ratio": 0.933477210955927
+  },
+  {
+    "block": 24357555,
+    "timestamp": 1769895095,
+    "datetime": "2026-01-31T21:31:35",
+    "supply_yb": 61906593.54891497,
+    "yb_locked": 61906593.54891497,
+    "total_votes": 57788257.888746895,
+    "lock_ratio": 0.9334750076837292
+  },
+  {
+    "block": 24357637,
+    "timestamp": 1769896091,
+    "datetime": "2026-01-31T21:48:11",
+    "supply_yb": 61906593.54891497,
+    "yb_locked": 61906593.54891497,
+    "total_votes": 57788133.482622236,
+    "lock_ratio": 0.9334729981057903
+  },
+  {
+    "block": 24357741,
+    "timestamp": 1769897339,
+    "datetime": "2026-01-31T22:08:59",
+    "supply_yb": 61908458.1211174,
+    "yb_locked": 61908458.1211174,
+    "total_votes": 57789243.41555056,
+    "lock_ratio": 0.9334628121813658
   }
 ];
