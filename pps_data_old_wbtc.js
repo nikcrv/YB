@@ -1,14 +1,14 @@
-// Last updated: 2026-01-31 10:26:01 UTC
+// Last updated: 2026-01-31 13:20:57 UTC
 const ppsData_old_wbtc = {
   "metadata": {
     "market": "WBTC",
     "symbol": "yb-WBTC",
     "vault": "0x6095a220C5567360d459462A25b1AD5aEAD45204",
     "staker": "0x37f45E64935e7B8383D2f034048B32770B04E8bd",
-    "collected": "2026-01-31T11:26:52.718883Z",
-    "points": 11119,
+    "collected": "2026-01-31T14:50:17.791290Z",
+    "points": 11128,
     "start_block": 23434043,
-    "end_block": 24353642,
+    "end_block": 24354652,
     "block_step": 300,
     "time_step": "1h",
     "contract_type": "old"
@@ -66727,6 +66727,60 @@ const ppsData_old_wbtc = {
       "timestamp": 1769828627,
       "pps_unstaked": 1.129871105997728,
       "pps_staked": null
+    },
+    {
+      "block": 24352042,
+      "timestamp": 1769828639,
+      "pps_unstaked": 1.1298710648737997,
+      "pps_staked": 0.8998900390591433
+    },
+    {
+      "block": 24352342,
+      "timestamp": 1769832251,
+      "pps_unstaked": 1.129858184146099,
+      "pps_staked": 0.8998797801553498
+    },
+    {
+      "block": 24352642,
+      "timestamp": 1769835851,
+      "pps_unstaked": 1.129844719920647,
+      "pps_staked": 0.8998690565225879
+    },
+    {
+      "block": 24352942,
+      "timestamp": 1769839475,
+      "pps_unstaked": 1.1298313246592195,
+      "pps_staked": 0.8998583878164816
+    },
+    {
+      "block": 24353242,
+      "timestamp": 1769843075,
+      "pps_unstaked": 1.1298084637438173,
+      "pps_staked": 0.8998401801548344
+    },
+    {
+      "block": 24353542,
+      "timestamp": 1769846687,
+      "pps_unstaked": 1.1297871065729967,
+      "pps_staked": 0.8998231701561882
+    },
+    {
+      "block": 24354142,
+      "timestamp": 1769853887,
+      "pps_unstaked": 1.1327440347201945,
+      "pps_staked": 0.9021782266476773
+    },
+    {
+      "block": 24354442,
+      "timestamp": 1769857499,
+      "pps_unstaked": 1.1328920216405978,
+      "pps_staked": 0.9022960913843912
+    },
+    {
+      "block": 24354652,
+      "timestamp": 1769860043,
+      "pps_unstaked": 1.1329019071313786,
+      "pps_staked": 0.9023039647205279
     }
   ]
 };

@@ -1,20 +1,20 @@
-// Last updated: 2026-01-31 10:26:02 UTC
+// Last updated: 2026-01-31 13:20:57 UTC
 const yieldData_old_tbtc = {
   "metadata": {
     "contract": "0x2B513eBe7070Cff91cf699a0BFe5075020C732FF",
     "start_date": "2025-10-21T23:30:23",
-    "end_date": "2026-01-31T13:25:23",
-    "data_points": 2439,
+    "end_date": "2026-01-31T16:20:11",
+    "data_points": 2442,
     "step_seconds": 3600
   },
   "metrics": {
-    "total_return": 0.06971325888473522,
-    "total_return_pct": 6.971325888473522,
-    "apr": 0.2739854852006309,
-    "apr_pct": 27.398548520063088,
-    "days": 101.57986111111111,
+    "total_return": 0.06969797198303147,
+    "total_return_pct": 6.969797198303148,
+    "apr": 0.27355200254068285,
+    "apr_pct": 27.355200254068283,
+    "days": 101.70125,
     "start_pps": 1.0676840110546373,
-    "end_pps": 1.1421157429243818
+    "end_pps": 1.142099421343854
   },
   "data": [
     {
@@ -21960,10 +21960,37 @@ const yieldData_old_tbtc = {
       "btc_price": null
     },
     {
-      "block": 24354245,
-      "timestamp": 1769855123,
-      "datetime": "2026-01-31T13:25:23",
-      "pps_btc": 1.1421157429243818,
+      "block": 24354278,
+      "timestamp": 1769855519,
+      "datetime": "2026-01-31T13:31:59",
+      "pps_btc": 1.1421146558056274,
+      "ret_step": null,
+      "ret_step_pct": null,
+      "btc_price": null
+    },
+    {
+      "block": 24354575,
+      "timestamp": 1769859119,
+      "datetime": "2026-01-31T14:31:59",
+      "pps_btc": 1.1421172785788165,
+      "ret_step": null,
+      "ret_step_pct": null,
+      "btc_price": null
+    },
+    {
+      "block": 24354874,
+      "timestamp": 1769862719,
+      "datetime": "2026-01-31T15:31:59",
+      "pps_btc": 1.1421073945992528,
+      "ret_step": null,
+      "ret_step_pct": null,
+      "btc_price": null
+    },
+    {
+      "block": 24355114,
+      "timestamp": 1769865611,
+      "datetime": "2026-01-31T16:20:11",
+      "pps_btc": 1.142099421343854,
       "ret_step": null,
       "ret_step_pct": null,
       "btc_price": null
