@@ -1,20 +1,20 @@
-// Last updated: 2026-02-02 04:12:31 UTC
+// Last updated: 2026-02-02 05:52:23 UTC
 const yieldData_syb_tbtc = {
   "metadata": {
     "contract": "0x30ba8b27F2128c770B90C965FF671E08b9310D21",
     "start_date": "2025-11-12T19:19:11",
-    "end_date": "2026-02-02T07:11:23",
-    "data_points": 1957,
+    "end_date": "2026-02-02T08:50:59",
+    "data_points": 1959,
     "step_seconds": 3600
   },
   "metrics": {
-    "total_return": -0.044681896413173036,
-    "total_return_pct": -4.468189641317304,
-    "apr": -0.18513362796065133,
-    "apr_pct": -18.51336279606513,
-    "days": 81.49458333333334,
+    "total_return": -0.04307145796569983,
+    "total_return_pct": -4.3071457965699835,
+    "apr": -0.17882583084658957,
+    "apr_pct": -17.882583084658958,
+    "days": 81.56375,
     "start_pps": 0.9994484405610258,
-    "end_pps": 0.9547911888695707
+    "end_pps": 0.9564007390645173
   },
   "data": [
     {
@@ -19578,13 +19578,33 @@ const yieldData_syb_tbtc = {
       "pps_yb": 0.9759551076065485
     },
     {
-      "block": 24366703,
-      "timestamp": 1770005483,
-      "datetime": "2026-02-02T07:11:23",
-      "pps_btc": 0.9547911888695707,
+      "block": 24366752,
+      "timestamp": 1770006071,
+      "datetime": "2026-02-02T07:21:11",
+      "pps_btc": 0.9547896196972092,
       "ret_step": null,
       "ret_step_pct": null,
       "btc_price": 76187.07154557863,
+      "pps_yb": 0.9759551076065485
+    },
+    {
+      "block": 24367050,
+      "timestamp": 1770009671,
+      "datetime": "2026-02-02T08:21:11",
+      "pps_btc": 0.9566628349902266,
+      "ret_step": null,
+      "ret_step_pct": null,
+      "btc_price": 75825.18353347215,
+      "pps_yb": 0.9759551076065485
+    },
+    {
+      "block": 24367197,
+      "timestamp": 1770011459,
+      "datetime": "2026-02-02T08:50:59",
+      "pps_btc": 0.9564007390645173,
+      "ret_step": -0.00027396896390563205,
+      "ret_step_pct": -0.027396896390563204,
+      "btc_price": 75825.18353347215,
       "pps_yb": 0.9759551076065485
     }
   ]
