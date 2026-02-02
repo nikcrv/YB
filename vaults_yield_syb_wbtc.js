@@ -1,20 +1,20 @@
-// Last updated: 2026-02-02 12:57:26 UTC
+// Last updated: 2026-02-02 14:27:14 UTC
 const yieldData_syb_wbtc = {
   "metadata": {
     "contract": "0xbc56e3edB67b56d598aCE07668b138815F45d7aa",
     "start_date": "2025-11-12T19:08:23",
-    "end_date": "2026-02-02T15:55:47",
-    "data_points": 1966,
+    "end_date": "2026-02-02T17:25:23",
+    "data_points": 1968,
     "step_seconds": 3600
   },
   "metrics": {
-    "total_return": -0.04613443257137922,
-    "total_return_pct": -4.613443257137922,
-    "apr": -0.1898904994633217,
-    "apr_pct": -18.98904994633217,
-    "days": 81.86625,
+    "total_return": -0.04610818587217932,
+    "total_return_pct": -4.610818587217931,
+    "apr": -0.18966159557662565,
+    "apr_pct": -18.966159557662564,
+    "days": 81.92847222222223,
     "start_pps": 0.99936376,
-    "end_pps": 0.95325868
+    "end_pps": 0.95328491
   },
   "data": [
     {
@@ -19668,14 +19668,34 @@ const yieldData_syb_wbtc = {
       "pps_yb": 0.9549928856186998
     },
     {
-      "block": 24369310,
-      "timestamp": 1770036947,
-      "datetime": "2026-02-02T15:55:47",
-      "pps_btc": 0.95325868,
+      "block": 24369391,
+      "timestamp": 1770037931,
+      "datetime": "2026-02-02T16:12:11",
+      "pps_btc": 0.95315319,
       "ret_step": null,
       "ret_step_pct": null,
-      "btc_price": 77690.21964421745,
-      "pps_yb": 0.9536996462471916
+      "btc_price": 77918.29429108377,
+      "pps_yb": 0.9535306169418962
+    },
+    {
+      "block": 24369690,
+      "timestamp": 1770041531,
+      "datetime": "2026-02-02T17:12:11",
+      "pps_btc": 0.95328708,
+      "ret_step": null,
+      "ret_step_pct": null,
+      "btc_price": 78175.7417786635,
+      "pps_yb": 0.9537670669511727
+    },
+    {
+      "block": 24369756,
+      "timestamp": 1770042323,
+      "datetime": "2026-02-02T17:25:23",
+      "pps_btc": 0.95328491,
+      "ret_step": -2.2763342182294133e-06,
+      "ret_step_pct": -0.0002276334218229413,
+      "btc_price": 78175.7417786635,
+      "pps_yb": 0.9537670669511727
     }
   ]
 };
