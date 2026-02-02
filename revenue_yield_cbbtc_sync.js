@@ -1,14 +1,14 @@
-// Last updated: 2026-02-02 12:27:45 UTC
+// Last updated: 2026-02-02 12:57:26 UTC
 const yieldData_cbbtc = {
   "metadata": {
     "market": "cbBTC",
     "contract": "0xAC0cfa7742069a8af0c63e14FFD0fe6b3e1Bf8D2",
-    "collected": "2026-02-02T14:52:46.370018",
-    "points": 7019,
+    "collected": "2026-02-02T15:50:51.384565",
+    "points": 7024,
     "synchronized": true,
     "transaction_based": true,
     "zero_loss": true,
-    "incremental_update": false
+    "incremental_update": true
   },
   "data": [
     {
@@ -63181,6 +63181,51 @@ const yieldData_cbbtc = {
       "withdrawals_btc": 0.0,
       "admin_fee_withdrawals_btc": 0.0,
       "admin_fees_btc": 0.003052555921758161
+    },
+    {
+      "block": 24369034,
+      "timestamp": 1770033611,
+      "total_withdrawable_btc": 1102.62163855,
+      "deposits_btc": 0.0,
+      "withdrawals_btc": 0.0,
+      "admin_fee_withdrawals_btc": 0.003052555921758161,
+      "admin_fees_btc": 0.0
+    },
+    {
+      "block": 24369230,
+      "timestamp": 1770035987,
+      "total_withdrawable_btc": 1104.85883119,
+      "deposits_btc": 0,
+      "withdrawals_btc": 0.00038697,
+      "admin_fee_withdrawals_btc": 0.0,
+      "admin_fees_btc": 0.6546299899504348
+    },
+    {
+      "block": 24369231,
+      "timestamp": 1770035999,
+      "total_withdrawable_btc": 1104.86371569,
+      "deposits_btc": 0.0,
+      "withdrawals_btc": 0.0,
+      "admin_fee_withdrawals_btc": 0.0,
+      "admin_fees_btc": 0.6546299899504348
+    },
+    {
+      "block": 24369274,
+      "timestamp": 1770036515,
+      "total_withdrawable_btc": 1105.01111969,
+      "deposits_btc": 0.0,
+      "withdrawals_btc": 0.0,
+      "admin_fee_withdrawals_btc": 0.0,
+      "admin_fees_btc": 0.6546299899504348
+    },
+    {
+      "block": 24369275,
+      "timestamp": 1770036527,
+      "total_withdrawable_btc": 1104.77180056,
+      "deposits_btc": 0,
+      "withdrawals_btc": 0.00153609,
+      "admin_fee_withdrawals_btc": 0.0,
+      "admin_fees_btc": 0.742256214981867
     }
   ]
 };
