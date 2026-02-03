@@ -1,20 +1,20 @@
-// Last updated: 2026-02-03 10:07:42 UTC
+// Last updated: 2026-02-03 13:11:41 UTC
 const yieldData_cbbtc = {
   "metadata": {
     "contract": "0xAC0cfa7742069a8af0c63e14FFD0fe6b3e1Bf8D2",
     "start_date": "2025-11-12T19:09:47",
-    "end_date": "2026-02-03T13:05:47",
-    "data_points": 1987,
+    "end_date": "2026-02-03T16:09:47",
+    "data_points": 1990,
     "step_seconds": 3600
   },
   "metrics": {
-    "total_return": 0.014086773763570216,
-    "total_return_pct": 1.4086773763570217,
-    "apr": 0.06364693894113474,
-    "apr_pct": 6.364693894113475,
-    "days": 82.74722222222222,
+    "total_return": 0.014055506819700664,
+    "total_return_pct": 1.4055506819700665,
+    "apr": 0.06340133814952917,
+    "apr_pct": 6.3401338149529165,
+    "days": 82.875,
     "start_pps": 0.99945809,
-    "end_pps": 1.01353723
+    "end_pps": 1.01350598
   },
   "data": [
     {
@@ -17892,13 +17892,40 @@ const yieldData_cbbtc = {
       "btc_price": 78650.12759838546
     },
     {
-      "block": 24375624,
-      "timestamp": 1770113147,
-      "datetime": "2026-02-03T13:05:47",
-      "pps_btc": 1.01353723,
+      "block": 24375656,
+      "timestamp": 1770113531,
+      "datetime": "2026-02-03T13:12:11",
+      "pps_btc": 1.01353615,
       "ret_step": null,
       "ret_step_pct": null,
       "btc_price": 78350.90228836305
+    },
+    {
+      "block": 24375949,
+      "timestamp": 1770117131,
+      "datetime": "2026-02-03T14:12:11",
+      "pps_btc": 1.013526,
+      "ret_step": null,
+      "ret_step_pct": null,
+      "btc_price": 78062.94594934044
+    },
+    {
+      "block": 24376248,
+      "timestamp": 1770120731,
+      "datetime": "2026-02-03T15:12:11",
+      "pps_btc": 1.01351584,
+      "ret_step": null,
+      "ret_step_pct": null,
+      "btc_price": 78016.08427375196
+    },
+    {
+      "block": 24376535,
+      "timestamp": 1770124187,
+      "datetime": "2026-02-03T16:09:47",
+      "pps_btc": 1.01350598,
+      "ret_step": null,
+      "ret_step_pct": null,
+      "btc_price": 78252.0181420846
     }
   ]
 };

@@ -1,20 +1,20 @@
-// Last updated: 2026-02-03 10:07:42 UTC
+// Last updated: 2026-02-03 13:11:41 UTC
 const yieldData_old_cbbtc = {
   "metadata": {
     "contract": "0xD6a1147666f6E4d7161caf436d9923D44d901112",
     "start_date": "2025-12-25T16:14:59",
-    "end_date": "2026-02-03T13:06:47",
-    "data_points": 958,
+    "end_date": "2026-02-03T16:10:47",
+    "data_points": 961,
     "step_seconds": 3600
   },
   "metrics": {
-    "total_return": -0.02775875032099548,
-    "total_return_pct": -2.775875032099548,
-    "apr": -0.2271905292574534,
-    "apr_pct": -22.71905292574534,
-    "days": 39.869305555555556,
+    "total_return": -0.02778854268647329,
+    "total_return_pct": -2.778854268647329,
+    "apr": -0.22677023913578565,
+    "apr_pct": -22.677023913578562,
+    "days": 39.997083333333336,
     "start_pps": 1.14425288,
-    "end_pps": 1.11248985
+    "end_pps": 1.11245576
   },
   "data": [
     {
@@ -8631,13 +8631,40 @@ const yieldData_old_cbbtc = {
       "btc_price": 78650.12759838546
     },
     {
-      "block": 24375629,
-      "timestamp": 1770113207,
-      "datetime": "2026-02-03T13:06:47",
-      "pps_btc": 1.11248985,
+      "block": 24375670,
+      "timestamp": 1770113699,
+      "datetime": "2026-02-03T13:14:59",
+      "pps_btc": 1.11248823,
       "ret_step": null,
       "ret_step_pct": null,
       "btc_price": 78350.90228836305
+    },
+    {
+      "block": 24375963,
+      "timestamp": 1770117299,
+      "datetime": "2026-02-03T14:14:59",
+      "pps_btc": 1.11247781,
+      "ret_step": null,
+      "ret_step_pct": null,
+      "btc_price": 78062.94594934044
+    },
+    {
+      "block": 24376262,
+      "timestamp": 1770120899,
+      "datetime": "2026-02-03T15:14:59",
+      "pps_btc": 1.11246642,
+      "ret_step": null,
+      "ret_step_pct": null,
+      "btc_price": 78016.08427375196
+    },
+    {
+      "block": 24376540,
+      "timestamp": 1770124247,
+      "datetime": "2026-02-03T16:10:47",
+      "pps_btc": 1.11245576,
+      "ret_step": null,
+      "ret_step_pct": null,
+      "btc_price": 78252.0181420846
     }
   ]
 };
