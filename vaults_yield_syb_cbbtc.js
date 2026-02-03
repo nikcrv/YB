@@ -1,20 +1,20 @@
-// Last updated: 2026-02-03 07:40:30 UTC
+// Last updated: 2026-02-03 10:07:42 UTC
 const yieldData_syb_cbbtc = {
   "metadata": {
     "contract": "0xf3081A2eB8927C0462864EC3FdbE927C842A0893",
     "start_date": "2025-11-12T19:09:47",
-    "end_date": "2026-02-03T10:38:59",
-    "data_points": 1985,
+    "end_date": "2026-02-03T13:06:23",
+    "data_points": 1987,
     "step_seconds": 3600
   },
   "metrics": {
-    "total_return": -0.03705042801190619,
-    "total_return_pct": -3.7050428011906185,
-    "apr": -0.1535805717018934,
-    "apr_pct": -15.35805717018934,
-    "days": 82.64527777777778,
+    "total_return": -0.0371877125560408,
+    "total_return_pct": -3.7187712556040804,
+    "apr": -0.1539382306576737,
+    "apr_pct": -15.39382306576737,
+    "days": 82.74763888888889,
     "start_pps": 0.99945701,
-    "end_pps": 0.9624267
+    "end_pps": 0.96228949
   },
   "data": [
     {
@@ -19858,14 +19858,34 @@ const yieldData_syb_cbbtc = {
       "pps_yb": 0.949829247727518
     },
     {
-      "block": 24374892,
-      "timestamp": 1770104339,
-      "datetime": "2026-02-03T10:38:59",
-      "pps_btc": 0.9624267,
-      "ret_step": -5.822442073091098e-05,
-      "ret_step_pct": -0.005822442073091098,
-      "btc_price": 78514.4059710872,
-      "pps_yb": 0.9497254656222975
+      "block": 24375057,
+      "timestamp": 1770106331,
+      "datetime": "2026-02-03T11:12:11",
+      "pps_btc": 0.96240528,
+      "ret_step": null,
+      "ret_step_pct": null,
+      "btc_price": 78696.79606095653,
+      "pps_yb": 0.9496818045792635
+    },
+    {
+      "block": 24375356,
+      "timestamp": 1770109931,
+      "datetime": "2026-02-03T12:12:11",
+      "pps_btc": 0.96229821,
+      "ret_step": null,
+      "ret_step_pct": null,
+      "btc_price": 78650.12759838546,
+      "pps_yb": 0.9494870034143398
+    },
+    {
+      "block": 24375627,
+      "timestamp": 1770113183,
+      "datetime": "2026-02-03T13:06:23",
+      "pps_btc": 0.96228949,
+      "ret_step": null,
+      "ret_step_pct": null,
+      "btc_price": 78350.90228836305,
+      "pps_yb": 0.9494870034143398
     }
   ]
 };
