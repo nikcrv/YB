@@ -1,20 +1,20 @@
-// Last updated: 2026-02-03 20:43:26 UTC
+// Last updated: 2026-02-03 22:27:52 UTC
 const yieldData_syb_cbbtc = {
   "metadata": {
     "contract": "0xf3081A2eB8927C0462864EC3FdbE927C842A0893",
     "start_date": "2025-11-12T19:09:47",
-    "end_date": "2026-02-03T23:39:59",
-    "data_points": 1998,
+    "end_date": "2026-02-04T01:26:11",
+    "data_points": 2000,
     "step_seconds": 3600
   },
   "metrics": {
-    "total_return": -0.056130688402495674,
-    "total_return_pct": -5.613068840249567,
-    "apr": -0.2238931458789412,
-    "apr_pct": -22.389314587894123,
-    "days": 83.18763888888888,
+    "total_return": -0.05340836020550799,
+    "total_return_pct": -5.340836020550799,
+    "apr": -0.21385572851307713,
+    "apr_pct": -21.385572851307714,
+    "days": 83.26138888888889,
     "start_pps": 0.99945701,
-    "end_pps": 0.9433568
+    "end_pps": 0.94607765
   },
   "data": [
     {
@@ -19988,13 +19988,33 @@ const yieldData_syb_cbbtc = {
       "pps_yb": 0.9494870034143398
     },
     {
-      "block": 24378768,
-      "timestamp": 1770151199,
-      "datetime": "2026-02-03T23:39:59",
-      "pps_btc": 0.9433568,
+      "block": 24378929,
+      "timestamp": 1770153131,
+      "datetime": "2026-02-04T00:12:11",
+      "pps_btc": 0.94609015,
       "ret_step": null,
       "ret_step_pct": null,
-      "btc_price": 74635.94438230092,
+      "btc_price": 76411.91826405193,
+      "pps_yb": 0.9494870034143398
+    },
+    {
+      "block": 24379226,
+      "timestamp": 1770156731,
+      "datetime": "2026-02-04T01:12:11",
+      "pps_btc": 0.94608001,
+      "ret_step": null,
+      "ret_step_pct": null,
+      "btc_price": 76152.05321817116,
+      "pps_yb": 0.9494870034143398
+    },
+    {
+      "block": 24379296,
+      "timestamp": 1770157571,
+      "datetime": "2026-02-04T01:26:11",
+      "pps_btc": 0.94607765,
+      "ret_step": -2.4945036096894173e-06,
+      "ret_step_pct": -0.0002494503609689417,
+      "btc_price": 76152.05321817116,
       "pps_yb": 0.9494870034143398
     }
   ]
