@@ -1,4 +1,4 @@
-// Last updated: 2026-02-03 13:11:41 UTC
+// Last updated: 2026-02-03 14:45:34 UTC
 const veYBSupplyData = [
   {
     "block": 23370927,
@@ -64151,5 +64151,41 @@ const veYBSupplyData = [
     "yb_locked": 62781054.73850374,
     "total_votes": 58595657.38510883,
     "lock_ratio": 0.9333334336157944
+  },
+  {
+    "block": 24376732,
+    "timestamp": 1770126551,
+    "datetime": "2026-02-03T13:49:11",
+    "supply_yb": 63098478.30351267,
+    "yb_locked": 63098478.30351267,
+    "total_votes": 58912779.83700393,
+    "lock_ratio": 0.9336640347113454
+  },
+  {
+    "block": 24376832,
+    "timestamp": 1770127751,
+    "datetime": "2026-02-03T14:09:11",
+    "supply_yb": 63098478.30351267,
+    "yb_locked": 63098478.30351267,
+    "total_votes": 58912628.523881406,
+    "lock_ratio": 0.9336616366642515
+  },
+  {
+    "block": 24376917,
+    "timestamp": 1770128771,
+    "datetime": "2026-02-03T14:26:11",
+    "supply_yb": 63098478.30351267,
+    "yb_locked": 63098478.30351267,
+    "total_votes": 58912499.90772726,
+    "lock_ratio": 0.9336595983242216
+  },
+  {
+    "block": 24377000,
+    "timestamp": 1770129779,
+    "datetime": "2026-02-03T14:42:59",
+    "supply_yb": 63098478.30351267,
+    "yb_locked": 63098478.30351267,
+    "total_votes": 58912372.80470434,
+    "lock_ratio": 0.9336575839646628
   }
 ];
