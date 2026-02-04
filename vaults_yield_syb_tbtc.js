@@ -1,20 +1,20 @@
-// Last updated: 2026-02-04 21:58:31 UTC
+// Last updated: 2026-02-04 23:56:21 UTC
 const yieldData_syb_tbtc = {
   "metadata": {
     "contract": "0x30ba8b27F2128c770B90C965FF671E08b9310D21",
     "start_date": "2025-11-12T19:19:11",
-    "end_date": "2026-02-05T00:57:23",
-    "data_points": 2023,
+    "end_date": "2026-02-05T02:55:11",
+    "data_points": 2025,
     "step_seconds": 3600
   },
   "metrics": {
-    "total_return": -0.06890485989796766,
-    "total_return_pct": -6.890485989796766,
-    "apr": -0.26608214632454935,
-    "apr_pct": -26.608214632454935,
-    "days": 84.23486111111112,
+    "total_return": -0.06999356074702359,
+    "total_return_pct": -6.999356074702359,
+    "apr": -0.26957057219134656,
+    "apr_pct": -26.957057219134654,
+    "days": 84.31666666666666,
     "start_pps": 0.9994484405610258,
-    "end_pps": 0.930581585788926
+    "end_pps": 0.9294934854230996
   },
   "data": [
     {
@@ -20238,13 +20238,33 @@ const yieldData_syb_tbtc = {
       "pps_yb": 0.9750686984898848
     },
     {
-      "block": 24386305,
-      "timestamp": 1770242243,
-      "datetime": "2026-02-05T00:57:23",
-      "pps_btc": 0.930581585788926,
+      "block": 24386425,
+      "timestamp": 1770243683,
+      "datetime": "2026-02-05T01:21:23",
+      "pps_btc": 0.9283475365252066,
       "ret_step": null,
       "ret_step_pct": null,
-      "btc_price": 73384.77194810667,
+      "btc_price": 72629.98658000518,
+      "pps_yb": 0.9750686984898848
+    },
+    {
+      "block": 24386722,
+      "timestamp": 1770247283,
+      "datetime": "2026-02-05T02:21:23",
+      "pps_btc": 0.9294993719288823,
+      "ret_step": null,
+      "ret_step_pct": null,
+      "btc_price": 72402.78419025433,
+      "pps_yb": 0.9750686984898848
+    },
+    {
+      "block": 24386890,
+      "timestamp": 1770249311,
+      "datetime": "2026-02-05T02:55:11",
+      "pps_btc": 0.9294934854230996,
+      "ret_step": null,
+      "ret_step_pct": null,
+      "btc_price": 72402.78419025433,
       "pps_yb": 0.9750686984898848
     }
   ]
