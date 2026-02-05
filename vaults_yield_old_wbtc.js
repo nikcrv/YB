@@ -1,20 +1,20 @@
-// Last updated: 2026-02-05 09:56:18 UTC
+// Last updated: 2026-02-05 12:09:29 UTC
 const yieldData_old_wbtc = {
   "metadata": {
     "contract": "0x6095a220C5567360d459462A25b1AD5aEAD45204",
     "start_date": "2025-11-03T20:04:23",
-    "end_date": "2026-02-05T12:55:23",
-    "data_points": 2250,
+    "end_date": "2026-02-05T15:08:23",
+    "data_points": 2253,
     "step_seconds": 3600
   },
   "metrics": {
-    "total_return": -0.04921322968632826,
-    "total_return_pct": -4.921322968632826,
-    "apr": -0.17846383812509226,
-    "apr_pct": -17.846383812509224,
-    "days": 93.70208333333333,
+    "total_return": -0.05612164017510629,
+    "total_return_pct": -5.612164017510629,
+    "apr": -0.20129571099990565,
+    "apr_pct": -20.129571099990564,
+    "days": 93.79444444444445,
     "start_pps": 1.00570457,
-    "end_pps": 0.9562106
+    "end_pps": 0.94926278
   },
   "data": [
     {
@@ -20259,12 +20259,39 @@ const yieldData_old_wbtc = {
       "btc_price": null
     },
     {
-      "block": 24389869,
-      "timestamp": 1770285323,
-      "datetime": "2026-02-05T12:55:23",
-      "pps_btc": 0.9562106,
+      "block": 24389917,
+      "timestamp": 1770285899,
+      "datetime": "2026-02-05T13:04:59",
+      "pps_btc": 0.95620917,
       "ret_step": null,
       "ret_step_pct": null,
+      "btc_price": null
+    },
+    {
+      "block": 24390216,
+      "timestamp": 1770289499,
+      "datetime": "2026-02-05T14:04:59",
+      "pps_btc": 0.95615274,
+      "ret_step": null,
+      "ret_step_pct": null,
+      "btc_price": null
+    },
+    {
+      "block": 24390515,
+      "timestamp": 1770293099,
+      "datetime": "2026-02-05T15:04:59",
+      "pps_btc": 0.9492651,
+      "ret_step": null,
+      "ret_step_pct": null,
+      "btc_price": null
+    },
+    {
+      "block": 24390532,
+      "timestamp": 1770293303,
+      "datetime": "2026-02-05T15:08:23",
+      "pps_btc": 0.94926278,
+      "ret_step": -2.4439958869234738e-06,
+      "ret_step_pct": -0.0002443995886923474,
       "btc_price": null
     }
   ]

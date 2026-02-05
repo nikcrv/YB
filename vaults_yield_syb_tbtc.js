@@ -1,20 +1,20 @@
-// Last updated: 2026-02-05 09:56:18 UTC
+// Last updated: 2026-02-05 12:09:29 UTC
 const yieldData_syb_tbtc = {
   "metadata": {
     "contract": "0x30ba8b27F2128c770B90C965FF671E08b9310D21",
     "start_date": "2025-11-12T19:19:11",
-    "end_date": "2026-02-05T12:55:11",
-    "data_points": 2035,
+    "end_date": "2026-02-05T15:08:11",
+    "data_points": 2037,
     "step_seconds": 3600
   },
   "metrics": {
-    "total_return": -0.08715581800795849,
-    "total_return_pct": -8.71558180079585,
-    "apr": -0.3248452009161326,
-    "apr_pct": -32.48452009161326,
-    "days": 84.73333333333333,
+    "total_return": -0.0910442612612383,
+    "total_return_pct": -9.10442612612383,
+    "apr": -0.33684993216411085,
+    "apr_pct": -33.68499321641109,
+    "days": 84.82569444444445,
     "start_pps": 0.9994484405610258,
-    "end_pps": 0.9123406941671511
+    "end_pps": 0.9084543956214506
   },
   "data": [
     {
@@ -20358,13 +20358,33 @@ const yieldData_syb_tbtc = {
       "pps_yb": 0.9750686984898848
     },
     {
-      "block": 24389868,
-      "timestamp": 1770285311,
-      "datetime": "2026-02-05T12:55:11",
-      "pps_btc": 0.9123406941671511,
+      "block": 24389999,
+      "timestamp": 1770286883,
+      "datetime": "2026-02-05T13:21:23",
+      "pps_btc": 0.912345252936215,
       "ret_step": null,
       "ret_step_pct": null,
-      "btc_price": 71011.65125538754,
+      "btc_price": 71426.18011366547,
+      "pps_yb": 0.9750686984898848
+    },
+    {
+      "block": 24390298,
+      "timestamp": 1770290483,
+      "datetime": "2026-02-05T14:21:23",
+      "pps_btc": 0.9123334563304963,
+      "ret_step": null,
+      "ret_step_pct": null,
+      "btc_price": 70712.55259981466,
+      "pps_yb": 0.9750686984898848
+    },
+    {
+      "block": 24390531,
+      "timestamp": 1770293291,
+      "datetime": "2026-02-05T15:08:11",
+      "pps_btc": 0.9084543956214506,
+      "ret_step": null,
+      "ret_step_pct": null,
+      "btc_price": 70198.49300968244,
       "pps_yb": 0.9750686984898848
     }
   ]
