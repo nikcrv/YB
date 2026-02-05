@@ -1,18 +1,18 @@
-// Last updated: 2026-02-05 13:58:40 UTC
+// Last updated: 2026-02-05 15:07:50 UTC
 const yieldData_old_syb_wbtc = {
   "metadata": {
     "contract": "0x37f45E64935e7B8383D2f034048B32770B04E8bd",
     "start_date": "2025-10-21T23:30:23",
-    "end_date": "2026-02-05T16:58:11",
-    "data_points": 2563,
+    "end_date": "2026-02-05T18:07:23",
+    "data_points": 2564,
     "step_seconds": 3600
   },
   "metrics": {
     "total_return": -0.15289972068082786,
     "total_return_pct": -15.289972068082786,
-    "apr": -0.4330524830011421,
-    "apr_pct": -43.30524830011421,
-    "days": 106.72763888888889,
+    "apr": -0.4329076636443717,
+    "apr_pct": -43.29076636443717,
+    "days": 106.77569444444444,
     "start_pps": 0.9402118766090538,
     "end_pps": 0.7964537432947325
   },
@@ -51,7 +51,7 @@ const yieldData_old_syb_wbtc = {
       "pps_btc": 0.9402118766090538,
       "ret_step": null,
       "ret_step_pct": null,
-      "btc_price": null
+      "btc_price": 108486.10262716639
     },
     {
       "block": 23629512,
@@ -60,7 +60,7 @@ const yieldData_old_syb_wbtc = {
       "pps_btc": 0.9402118766090538,
       "ret_step": null,
       "ret_step_pct": null,
-      "btc_price": null
+      "btc_price": 108486.10262716639
     },
     {
       "block": 23629810,
@@ -267,7 +267,7 @@ const yieldData_old_syb_wbtc = {
       "pps_btc": 0.9402118766090538,
       "ret_step": null,
       "ret_step_pct": null,
-      "btc_price": null
+      "btc_price": 107618.4266715404
     },
     {
       "block": 23636643,
@@ -276,7 +276,7 @@ const yieldData_old_syb_wbtc = {
       "pps_btc": 0.9402118766090538,
       "ret_step": null,
       "ret_step_pct": null,
-      "btc_price": null
+      "btc_price": 107618.4266715404
     },
     {
       "block": 23636941,
@@ -483,7 +483,7 @@ const yieldData_old_syb_wbtc = {
       "pps_btc": 0.9402118766090538,
       "ret_step": null,
       "ret_step_pct": null,
-      "btc_price": null
+      "btc_price": 110048.51827291629
     },
     {
       "block": 23643787,
@@ -492,7 +492,7 @@ const yieldData_old_syb_wbtc = {
       "pps_btc": 0.9402118766090538,
       "ret_step": null,
       "ret_step_pct": null,
-      "btc_price": null
+      "btc_price": 110048.51827291629
     },
     {
       "block": 23644085,
@@ -699,7 +699,7 @@ const yieldData_old_syb_wbtc = {
       "pps_btc": 0.9402118766090538,
       "ret_step": null,
       "ret_step_pct": null,
-      "btc_price": null
+      "btc_price": 110997.80437129698
     },
     {
       "block": 23650931,
@@ -708,7 +708,7 @@ const yieldData_old_syb_wbtc = {
       "pps_btc": 0.9402118766090538,
       "ret_step": null,
       "ret_step_pct": null,
-      "btc_price": null
+      "btc_price": 110997.80437129698
     },
     {
       "block": 23651229,
@@ -915,7 +915,7 @@ const yieldData_old_syb_wbtc = {
       "pps_btc": 0.9402118766090538,
       "ret_step": null,
       "ret_step_pct": null,
-      "btc_price": null
+      "btc_price": 111620.3093731354
     },
     {
       "block": 23658075,
@@ -924,7 +924,7 @@ const yieldData_old_syb_wbtc = {
       "pps_btc": 0.9402118766090538,
       "ret_step": null,
       "ret_step_pct": null,
-      "btc_price": null
+      "btc_price": 111620.3093731354
     },
     {
       "block": 23658373,
@@ -1131,7 +1131,7 @@ const yieldData_old_syb_wbtc = {
       "pps_btc": 0.9402118766090538,
       "ret_step": null,
       "ret_step_pct": null,
-      "btc_price": null
+      "btc_price": 114476.01227508577
     },
     {
       "block": 23665221,
@@ -1140,7 +1140,7 @@ const yieldData_old_syb_wbtc = {
       "pps_btc": 0.9402118766090538,
       "ret_step": null,
       "ret_step_pct": null,
-      "btc_price": null
+      "btc_price": 114476.01227508577
     },
     {
       "block": 23665518,
@@ -1347,7 +1347,7 @@ const yieldData_old_syb_wbtc = {
       "pps_btc": 0.9402118766090538,
       "ret_step": null,
       "ret_step_pct": null,
-      "btc_price": null
+      "btc_price": 114182.79442806762
     },
     {
       "block": 23672363,
@@ -1356,7 +1356,7 @@ const yieldData_old_syb_wbtc = {
       "pps_btc": 0.9402118766090538,
       "ret_step": null,
       "ret_step_pct": null,
-      "btc_price": null
+      "btc_price": 114182.79442806762
     },
     {
       "block": 23672661,
@@ -1563,7 +1563,7 @@ const yieldData_old_syb_wbtc = {
       "pps_btc": 0.9402118766090538,
       "ret_step": null,
       "ret_step_pct": null,
-      "btc_price": null
+      "btc_price": 112950.34863259472
     },
     {
       "block": 23679507,
@@ -1572,7 +1572,7 @@ const yieldData_old_syb_wbtc = {
       "pps_btc": 0.9402118766090538,
       "ret_step": null,
       "ret_step_pct": null,
-      "btc_price": null
+      "btc_price": 112950.34863259472
     },
     {
       "block": 23679805,
@@ -1779,7 +1779,7 @@ const yieldData_old_syb_wbtc = {
       "pps_btc": 0.9402118766090538,
       "ret_step": null,
       "ret_step_pct": null,
-      "btc_price": null
+      "btc_price": 110046.66925837283
     },
     {
       "block": 23686651,
@@ -1788,7 +1788,7 @@ const yieldData_old_syb_wbtc = {
       "pps_btc": 0.9402118766090538,
       "ret_step": null,
       "ret_step_pct": null,
-      "btc_price": null
+      "btc_price": 110046.66925837283
     },
     {
       "block": 23686949,
@@ -1995,7 +1995,7 @@ const yieldData_old_syb_wbtc = {
       "pps_btc": 0.9402118766090538,
       "ret_step": null,
       "ret_step_pct": null,
-      "btc_price": null
+      "btc_price": 108240.76528725718
     },
     {
       "block": 23693795,
@@ -2004,7 +2004,7 @@ const yieldData_old_syb_wbtc = {
       "pps_btc": 0.9402118766090538,
       "ret_step": null,
       "ret_step_pct": null,
-      "btc_price": null
+      "btc_price": 108240.76528725718
     },
     {
       "block": 23694093,
@@ -2211,7 +2211,7 @@ const yieldData_old_syb_wbtc = {
       "pps_btc": 0.9402118766090538,
       "ret_step": null,
       "ret_step_pct": null,
-      "btc_price": null
+      "btc_price": 109573.90555629115
     },
     {
       "block": 23700940,
@@ -2220,7 +2220,7 @@ const yieldData_old_syb_wbtc = {
       "pps_btc": 0.9402118766090538,
       "ret_step": null,
       "ret_step_pct": null,
-      "btc_price": null
+      "btc_price": 109573.90555629115
     },
     {
       "block": 23701237,
@@ -2427,7 +2427,7 @@ const yieldData_old_syb_wbtc = {
       "pps_btc": 0.9402118766090538,
       "ret_step": null,
       "ret_step_pct": null,
-      "btc_price": null
+      "btc_price": 110014.13556776087
     },
     {
       "block": 23708084,
@@ -2436,7 +2436,7 @@ const yieldData_old_syb_wbtc = {
       "pps_btc": 0.9402118766090538,
       "ret_step": null,
       "ret_step_pct": null,
-      "btc_price": null
+      "btc_price": 110014.13556776087
     },
     {
       "block": 23708381,
@@ -2643,7 +2643,7 @@ const yieldData_old_syb_wbtc = {
       "pps_btc": 0.9402118766090538,
       "ret_step": null,
       "ret_step_pct": null,
-      "btc_price": null
+      "btc_price": 110650.2092823146
     },
     {
       "block": 23715229,
@@ -2652,7 +2652,7 @@ const yieldData_old_syb_wbtc = {
       "pps_btc": 0.9402118766090538,
       "ret_step": null,
       "ret_step_pct": null,
-      "btc_price": null
+      "btc_price": 110650.2092823146
     },
     {
       "block": 23715528,
@@ -23076,9 +23076,18 @@ const yieldData_old_syb_wbtc = {
       "btc_price": null
     },
     {
-      "block": 24391073,
-      "timestamp": 1770299891,
-      "datetime": "2026-02-05T16:58:11",
+      "block": 24391243,
+      "timestamp": 1770301931,
+      "datetime": "2026-02-05T17:32:11",
+      "pps_btc": 0.7964537432947325,
+      "ret_step": null,
+      "ret_step_pct": null,
+      "btc_price": null
+    },
+    {
+      "block": 24391417,
+      "timestamp": 1770304043,
+      "datetime": "2026-02-05T18:07:23",
       "pps_btc": 0.7964537432947325,
       "ret_step": null,
       "ret_step_pct": null,
