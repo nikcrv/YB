@@ -1,20 +1,20 @@
-// Last updated: 2026-02-05 16:50:08 UTC
+// Last updated: 2026-02-06 20:45:53 UTC
 const yieldData_tbtc = {
   "metadata": {
     "contract": "0xaC0a340C1644321D0BBc6404946d828c1EBfAC92",
     "start_date": "2025-11-12T19:14:11",
-    "end_date": "2026-02-05T19:48:11",
-    "data_points": 2042,
+    "end_date": "2026-02-06T23:43:11",
+    "data_points": 2070,
     "step_seconds": 3600
   },
   "metrics": {
-    "total_return": -0.10366837538227971,
-    "total_return_pct": -10.366837538227973,
-    "apr": -0.37489673099821563,
-    "apr_pct": -37.489673099821566,
-    "days": 85.02361111111111,
+    "total_return": -0.06672195914727824,
+    "total_return_pct": -6.672195914727824,
+    "apr": -0.2535560953134681,
+    "apr_pct": -25.35560953134681,
+    "days": 86.18680555555555,
     "start_pps": 0.9995132006214766,
-    "end_pps": 0.8958952909399055
+    "end_pps": 0.9328237216824451
   },
   "data": [
     {
@@ -18387,13 +18387,265 @@ const yieldData_tbtc = {
       "btc_price": 67375.62427275744
     },
     {
-      "block": 24391919,
-      "timestamp": 1770310091,
-      "datetime": "2026-02-05T19:48:11",
-      "pps_btc": 0.8958952909399055,
+      "block": 24392054,
+      "timestamp": 1770311711,
+      "datetime": "2026-02-05T20:15:11",
+      "pps_btc": 0.8984293847361643,
       "ret_step": null,
       "ret_step_pct": null,
-      "btc_price": 67375.62427275744
+      "btc_price": 68153.73192299498
+    },
+    {
+      "block": 24392353,
+      "timestamp": 1770315311,
+      "datetime": "2026-02-05T21:15:11",
+      "pps_btc": 0.8882313125563359,
+      "ret_step": null,
+      "ret_step_pct": null,
+      "btc_price": 66086.43132742122
+    },
+    {
+      "block": 24392652,
+      "timestamp": 1770318911,
+      "datetime": "2026-02-05T22:15:11",
+      "pps_btc": 0.8775400609628604,
+      "ret_step": null,
+      "ret_step_pct": null,
+      "btc_price": 66223.31451175398
+    },
+    {
+      "block": 24392951,
+      "timestamp": 1770322511,
+      "datetime": "2026-02-05T23:15:11",
+      "pps_btc": 0.8660675065799146,
+      "ret_step": null,
+      "ret_step_pct": null,
+      "btc_price": 65141.50387868692
+    },
+    {
+      "block": 24393245,
+      "timestamp": 1770326111,
+      "datetime": "2026-02-06T00:15:11",
+      "pps_btc": 0.844185505882729,
+      "ret_step": null,
+      "ret_step_pct": null,
+      "btc_price": 63880.77153870422
+    },
+    {
+      "block": 24393543,
+      "timestamp": 1770329711,
+      "datetime": "2026-02-06T01:15:11",
+      "pps_btc": 0.8361518773926175,
+      "ret_step": null,
+      "ret_step_pct": null,
+      "btc_price": 63151.480794216
+    },
+    {
+      "block": 24393842,
+      "timestamp": 1770333311,
+      "datetime": "2026-02-06T02:15:11",
+      "pps_btc": 0.8469599482288155,
+      "ret_step": null,
+      "ret_step_pct": null,
+      "btc_price": 63819.50494183307
+    },
+    {
+      "block": 24394140,
+      "timestamp": 1770336911,
+      "datetime": "2026-02-06T03:15:11",
+      "pps_btc": 0.8019383102417639,
+      "ret_step": null,
+      "ret_step_pct": null,
+      "btc_price": 62822.26414504872
+    },
+    {
+      "block": 24394438,
+      "timestamp": 1770340511,
+      "datetime": "2026-02-06T04:15:11",
+      "pps_btc": 0.8460031612336096,
+      "ret_step": null,
+      "ret_step_pct": null,
+      "btc_price": 63474.177236593816
+    },
+    {
+      "block": 24394737,
+      "timestamp": 1770344111,
+      "datetime": "2026-02-06T05:15:11",
+      "pps_btc": 0.8619053984885028,
+      "ret_step": null,
+      "ret_step_pct": null,
+      "btc_price": 65564.69260917806
+    },
+    {
+      "block": 24395036,
+      "timestamp": 1770347711,
+      "datetime": "2026-02-06T06:15:11",
+      "pps_btc": 0.8584594853940366,
+      "ret_step": null,
+      "ret_step_pct": null,
+      "btc_price": 64816.18565684104
+    },
+    {
+      "block": 24395334,
+      "timestamp": 1770351311,
+      "datetime": "2026-02-06T07:15:11",
+      "pps_btc": 0.8543825615456807,
+      "ret_step": null,
+      "ret_step_pct": null,
+      "btc_price": 64091.22967946813
+    },
+    {
+      "block": 24395630,
+      "timestamp": 1770354911,
+      "datetime": "2026-02-06T08:15:11",
+      "pps_btc": 0.8572977810159034,
+      "ret_step": null,
+      "ret_step_pct": null,
+      "btc_price": 64822.456067695086
+    },
+    {
+      "block": 24395928,
+      "timestamp": 1770358511,
+      "datetime": "2026-02-06T09:15:11",
+      "pps_btc": 0.873961662448794,
+      "ret_step": null,
+      "ret_step_pct": null,
+      "btc_price": 66360.16683425578
+    },
+    {
+      "block": 24396226,
+      "timestamp": 1770362111,
+      "datetime": "2026-02-06T10:15:11",
+      "pps_btc": 0.8641236424530305,
+      "ret_step": null,
+      "ret_step_pct": null,
+      "btc_price": 64760.099244767305
+    },
+    {
+      "block": 24396524,
+      "timestamp": 1770365711,
+      "datetime": "2026-02-06T11:15:11",
+      "pps_btc": 0.8627398265395801,
+      "ret_step": null,
+      "ret_step_pct": null,
+      "btc_price": 64762.31745067788
+    },
+    {
+      "block": 24396822,
+      "timestamp": 1770369311,
+      "datetime": "2026-02-06T12:15:11",
+      "pps_btc": 0.8625264607768747,
+      "ret_step": null,
+      "ret_step_pct": null,
+      "btc_price": 64812.45812521936
+    },
+    {
+      "block": 24397120,
+      "timestamp": 1770372911,
+      "datetime": "2026-02-06T13:15:11",
+      "pps_btc": 0.8643922544324488,
+      "ret_step": null,
+      "ret_step_pct": null,
+      "btc_price": 65743.1389952177
+    },
+    {
+      "block": 24397420,
+      "timestamp": 1770376511,
+      "datetime": "2026-02-06T14:15:11",
+      "pps_btc": 0.8657802295494262,
+      "ret_step": null,
+      "ret_step_pct": null,
+      "btc_price": 65852.64638550671
+    },
+    {
+      "block": 24397719,
+      "timestamp": 1770380111,
+      "datetime": "2026-02-06T15:15:11",
+      "pps_btc": 0.8719177905720936,
+      "ret_step": null,
+      "ret_step_pct": null,
+      "btc_price": 66468.2306680357
+    },
+    {
+      "block": 24398017,
+      "timestamp": 1770383711,
+      "datetime": "2026-02-06T16:15:11",
+      "pps_btc": 0.8769744350010039,
+      "ret_step": null,
+      "ret_step_pct": null,
+      "btc_price": 66475.34350850893
+    },
+    {
+      "block": 24398314,
+      "timestamp": 1770387311,
+      "datetime": "2026-02-06T17:15:11",
+      "pps_btc": 0.8859472328278338,
+      "ret_step": null,
+      "ret_step_pct": null,
+      "btc_price": 67249.23666728205
+    },
+    {
+      "block": 24398614,
+      "timestamp": 1770390911,
+      "datetime": "2026-02-06T18:15:11",
+      "pps_btc": 0.9004430293313778,
+      "ret_step": null,
+      "ret_step_pct": null,
+      "btc_price": 68114.36357083579
+    },
+    {
+      "block": 24398913,
+      "timestamp": 1770394511,
+      "datetime": "2026-02-06T19:15:11",
+      "pps_btc": 0.9110179991299961,
+      "ret_step": null,
+      "ret_step_pct": null,
+      "btc_price": 68582.16605772382
+    },
+    {
+      "block": 24399212,
+      "timestamp": 1770398111,
+      "datetime": "2026-02-06T20:15:11",
+      "pps_btc": 0.9234568890134564,
+      "ret_step": null,
+      "ret_step_pct": null,
+      "btc_price": 69871.99988930697
+    },
+    {
+      "block": 24399509,
+      "timestamp": 1770401711,
+      "datetime": "2026-02-06T21:15:11",
+      "pps_btc": 0.9359567482386202,
+      "ret_step": null,
+      "ret_step_pct": null,
+      "btc_price": 70772.61875586561
+    },
+    {
+      "block": 24399806,
+      "timestamp": 1770405311,
+      "datetime": "2026-02-06T22:15:11",
+      "pps_btc": 0.9320859254661421,
+      "ret_step": null,
+      "ret_step_pct": null,
+      "btc_price": 69753.80678459951
+    },
+    {
+      "block": 24400103,
+      "timestamp": 1770408911,
+      "datetime": "2026-02-06T23:15:11",
+      "pps_btc": 0.9320742748895631,
+      "ret_step": null,
+      "ret_step_pct": null,
+      "btc_price": 70670.2604369606
+    },
+    {
+      "block": 24400243,
+      "timestamp": 1770410591,
+      "datetime": "2026-02-06T23:43:11",
+      "pps_btc": 0.9328237216824451,
+      "ret_step": null,
+      "ret_step_pct": null,
+      "btc_price": 70670.2604369606
     }
   ]
 };
