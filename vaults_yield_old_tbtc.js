@@ -1,20 +1,20 @@
-// Last updated: 2026-02-08 16:12:38 UTC
+// Last updated: 2026-02-08 19:25:58 UTC
 const yieldData_old_tbtc = {
   "metadata": {
     "contract": "0x2B513eBe7070Cff91cf699a0BFe5075020C732FF",
     "start_date": "2025-10-21T23:30:23",
-    "end_date": "2026-02-08T19:11:47",
-    "data_points": 2637,
+    "end_date": "2026-02-08T22:24:59",
+    "data_points": 2640,
     "step_seconds": 3600
   },
   "metrics": {
-    "total_return": -0.00758109552619586,
-    "total_return_pct": -0.758109552619586,
-    "apr": -0.02497540534853169,
-    "apr_pct": -2.4975405348531687,
-    "days": 109.82041666666667,
+    "total_return": -0.007620431182170664,
+    "total_return_pct": -0.7620431182170664,
+    "apr": -0.025073599836275377,
+    "apr_pct": -2.5073599836275378,
+    "days": 109.95458333333333,
     "start_pps": 1.0676840110546373,
-    "end_pps": 1.05958979657504
+    "end_pps": 1.0595477985240915
   },
   "data": [
     {
@@ -23742,10 +23742,37 @@ const yieldData_old_tbtc = {
       "btc_price": null
     },
     {
-      "block": 24413167,
-      "timestamp": 1770567107,
-      "datetime": "2026-02-08T19:11:47",
-      "pps_btc": 1.05958979657504,
+      "block": 24413269,
+      "timestamp": 1770568331,
+      "datetime": "2026-02-08T19:32:11",
+      "pps_btc": 1.059585362563904,
+      "ret_step": null,
+      "ret_step_pct": null,
+      "btc_price": null
+    },
+    {
+      "block": 24413566,
+      "timestamp": 1770571931,
+      "datetime": "2026-02-08T20:32:11",
+      "pps_btc": 1.0595723163938247,
+      "ret_step": null,
+      "ret_step_pct": null,
+      "btc_price": null
+    },
+    {
+      "block": 24413866,
+      "timestamp": 1770575531,
+      "datetime": "2026-02-08T21:32:11",
+      "pps_btc": 1.0595592748994496,
+      "ret_step": null,
+      "ret_step_pct": null,
+      "btc_price": null
+    },
+    {
+      "block": 24414128,
+      "timestamp": 1770578699,
+      "datetime": "2026-02-08T22:24:59",
+      "pps_btc": 1.0595477985240915,
       "ret_step": null,
       "ret_step_pct": null,
       "btc_price": null
