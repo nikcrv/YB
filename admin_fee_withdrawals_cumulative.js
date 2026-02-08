@@ -1,4 +1,4 @@
-// Last updated: 2026-02-06 20:45:52 UTC
+// Last updated: 2026-02-08 16:12:38 UTC
 const adminFeeWithdrawalsData = [
   {
     "block": 23784237,
@@ -802,5 +802,60 @@ const adminFeeWithdrawalsData = [
     "cumulative_cbbtc": 6.148312525220002,
     "cumulative_tbtc": 3.2741545625776682,
     "cumulative_total": 13.882814586933232
+  },
+  {
+    "block": 24408385,
+    "timestamp": 1770508811,
+    "datetime": "2026-02-08T00:00:11",
+    "market": "cbBTC",
+    "withdrawal_btc": 0.0441075252970881,
+    "cumulative_wbtc": 4.460347499135562,
+    "cumulative_cbbtc": 6.19242005051709,
+    "cumulative_tbtc": 3.2741545625776682,
+    "cumulative_total": 13.926922112230319
+  },
+  {
+    "block": 24411928,
+    "timestamp": 1770552011,
+    "datetime": "2026-02-08T12:00:11",
+    "market": "tBTC",
+    "withdrawal_btc": 0.015714292269050214,
+    "cumulative_wbtc": 4.460347499135562,
+    "cumulative_cbbtc": 6.19242005051709,
+    "cumulative_tbtc": 3.2898688548467185,
+    "cumulative_total": 13.94263640449937
+  },
+  {
+    "block": 24412518,
+    "timestamp": 1770559211,
+    "datetime": "2026-02-08T14:00:11",
+    "market": "WBTC",
+    "withdrawal_btc": 0.041244572474739435,
+    "cumulative_wbtc": 4.501592071610301,
+    "cumulative_cbbtc": 6.19242005051709,
+    "cumulative_tbtc": 3.2898688548467185,
+    "cumulative_total": 13.98388097697411
+  },
+  {
+    "block": 24412518,
+    "timestamp": 1770559211,
+    "datetime": "2026-02-08T14:00:11",
+    "market": "cbBTC",
+    "withdrawal_btc": 0.0806868671277799,
+    "cumulative_wbtc": 4.501592071610301,
+    "cumulative_cbbtc": 6.273106917644871,
+    "cumulative_tbtc": 3.2898688548467185,
+    "cumulative_total": 14.064567844101889
+  },
+  {
+    "block": 24412518,
+    "timestamp": 1770559211,
+    "datetime": "2026-02-08T14:00:11",
+    "market": "tBTC",
+    "withdrawal_btc": 0.047803301795093095,
+    "cumulative_wbtc": 4.501592071610301,
+    "cumulative_cbbtc": 6.273106917644871,
+    "cumulative_tbtc": 3.3376721566418115,
+    "cumulative_total": 14.112371145896983
   }
 ];
