@@ -321,8 +321,8 @@
     </style>
 </head>
 <body>
-<div id="update-time" style="position:fixed;bottom:5px;left:10px;font-size:10px;color:#666;z-index:50;">Updated: 2026-02-14 23:23:07 UTC</div>
-<script>(function(){var u=new Date("2026-02-14 23:23:07 UTC"),n=function(){var d=Math.floor((Date.now()-u)/1e3),t="";if(d<60)t=d+"s ago";else if(d<3600)t=Math.floor(d/60)+"m ago";else if(d<86400)t=Math.floor(d/3600)+"h ago";else t=Math.floor(d/86400)+"d ago";document.getElementById("update-time").textContent="Updated: "+t;setTimeout(n,d<3600?1e4:6e4)};n()})();</script>
+<div id="update-time" style="position:fixed;bottom:5px;left:10px;font-size:10px;color:#666;z-index:50;">Updated: 2026-02-14 23:27:13 UTC</div>
+<script>(function(){var u=new Date("2026-02-14 23:27:13 UTC"),n=function(){var d=Math.floor((Date.now()-u)/1e3),t="";if(d<60)t=d+"s ago";else if(d<3600)t=Math.floor(d/60)+"m ago";else if(d<86400)t=Math.floor(d/3600)+"h ago";else t=Math.floor(d/86400)+"d ago";document.getElementById("update-time").textContent="Updated: "+t;setTimeout(n,d<3600?1e4:6e4)};n()})();</script>
     <div class="container">
         <div class="header">
             <a href="index.html" class="back-button">Back</a>
@@ -1508,6 +1508,26 @@
                     if (priceData[i].btc_usd) {
                         btcUsdPrice = priceData[i].btc_usd;
                         break;
+                    }
+                }
+            }
+            // Fallback: get BTC/USD price from vault yield data
+            if (!btcUsdPrice) {
+                const btcSources = [
+                    typeof yieldData_wbtc !== 'undefined' ? yieldData_wbtc : null,
+                    typeof yieldData_cbbtc !== 'undefined' ? yieldData_cbbtc : null,
+                    typeof yieldData_tbtc !== 'undefined' ? yieldData_tbtc : null
+                ].filter(Boolean);
+                for (const src of btcSources) {
+                    if (src.data && src.data.length > 0) {
+                        for (let i = src.data.length - 1; i >= 0; i--) {
+                            if (src.data[i].btc_price) {
+                                btcUsdPrice = src.data[i].btc_price;
+                                console.log('BTC/USD price from vault yield:', btcUsdPrice);
+                                break;
+                            }
+                        }
+                        if (btcUsdPrice) break;
                     }
                 }
             }
