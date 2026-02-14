@@ -1,0 +1,2085 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>veYB Revenue Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns"></script>
+    <!-- Separate data files -->
+    <script src="veyb_supply_data.js"></script>
+    <script src="admin_fee_withdrawals_cumulative.js"></script>
+    <!-- UNIFIED DATA -->
+    <script src="unified_data.js?v=1"></script>
+    <script src="unified_data_adapter.js?v=1"></script>
+    <script src="denomination-utils.js?v=1"></script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #0f172a;
+            color: #e2e8f0;
+            padding: 20px 15px;
+        }
+        .container { max-width: 1400px; margin: 0 auto; }
+        .header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; }
+        h1 { font-size: 2em; color: #94a3b8; font-weight: 400; flex-grow: 1; text-align: center; margin: 0; }
+        .back-button {
+            background: #334155;
+            border: 1px solid #475569;
+            color: #e2e8f0;
+            padding: 10px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 0.9em;
+            font-weight: 500;
+            transition: all 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .back-button:hover {
+            background: #475569;
+            border-color: #667eea;
+            transform: translateX(-2px);
+        }
+        .back-button::before {
+            content: '\2190';
+            font-size: 1.2em;
+        }
+        .loading { text-align: center; font-size: 1.5em; color: #667eea; padding: 50px; }
+
+        .notice-container {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            z-index: 100;
+        }
+        .notice-banner {
+            background: rgba(51, 65, 85, 0.95);
+            border: 1px solid #64748b;
+            border-radius: 4px;
+            padding: 6px 10px;
+            color: #94a3b8;
+            font-size: 0.75em;
+            display: flex;
+            align-items: flex-start;
+            gap: 6px;
+            max-width: 300px;
+        }
+        .notice-banner::before {
+            content: '\2139';
+            font-size: 1em;
+            flex-shrink: 0;
+        }
+
+        /* Main metrics row */
+        .main-metrics-row {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        @media (max-width: 900px) {
+            .main-metrics-row {
+                grid-template-columns: 1fr;
+            }
+        }
+        .main-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 16px;
+            padding: 25px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+        }
+        .main-card.apr-card {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            box-shadow: 0 10px 30px rgba(16, 185, 129, 0.3);
+        }
+        .main-card.fees-card {
+            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+            box-shadow: 0 10px 30px rgba(245, 158, 11, 0.3);
+        }
+        .main-card-label {
+            font-size: 0.95em;
+            color: rgba(255,255,255,0.85);
+            margin-bottom: 8px;
+        }
+        .main-card-value {
+            font-size: 2.2em;
+            font-weight: 700;
+            color: white;
+        }
+        .main-card-sub {
+            font-size: 1.1em;
+            color: rgba(255,255,255,0.85);
+            margin-top: 8px;
+            font-weight: 500;
+        }
+
+        /* Stats grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+        .stat-card {
+            background: #1e293b;
+            border: 2px solid #334155;
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+        }
+        .stat-label {
+            font-size: 0.85em;
+            color: #64748b;
+            margin-bottom: 8px;
+        }
+        .stat-value {
+            font-size: 1.5em;
+            font-weight: 600;
+            color: #e2e8f0;
+        }
+        .stat-value.positive { color: #10b981; }
+        .stat-value.negative { color: #ef4444; }
+
+        /* Chart container */
+        .chart-container {
+            background: #1e293b;
+            border: 2px solid #334155;
+            border-radius: 16px;
+            padding: 20px;
+            margin-bottom: 30px;
+        }
+        .chart-title {
+            font-size: 1.2em;
+            color: #94a3b8;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        .chart-wrapper { position: relative; height: 400px; }
+
+        /* Period buttons */
+        .period-buttons {
+            display: flex;
+            gap: 6px;
+            margin-bottom: 12px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        .period-label {
+            color: #64748b;
+            font-size: 0.85em;
+            margin-right: 8px;
+        }
+        .period-button {
+            background: #0f172a;
+            color: #94a3b8;
+            border: 1px solid #334155;
+            padding: 4px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.8em;
+            transition: all 0.2s;
+        }
+        .period-button:hover {
+            border-color: #667eea;
+            color: #e2e8f0;
+        }
+        .period-button.active {
+            background: #667eea;
+            border-color: #667eea;
+            color: white;
+            font-weight: 500;
+        }
+
+        /* Contract info */
+        .contract-info {
+            background: #1e293b;
+            border: 1px solid #334155;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+        .contract-info-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid #334155;
+        }
+        .contract-info-row:last-child { border-bottom: none; }
+        .contract-info-label { color: #64748b; }
+        .contract-info-value {
+            color: #e2e8f0;
+            font-family: monospace;
+            font-size: 0.9em;
+        }
+        .contract-info-value a {
+            color: #667eea;
+            text-decoration: none;
+        }
+        .contract-info-value a:hover { text-decoration: underline; }
+
+        .footer {
+            text-align: center;
+            color: #64748b;
+            padding: 20px;
+            font-size: 0.9em;
+        }
+
+        /* Range slider */
+        .compact-range {
+            margin-top: 15px;
+            padding-top: 10px;
+            border-top: 1px solid #334155;
+        }
+        .range-slider {
+            width: 100%;
+            height: 4px;
+            background: #334155;
+            border-radius: 2px;
+            position: relative;
+            margin: 15px 0 8px 0;
+        }
+        .range-slider input[type="range"] {
+            position: absolute;
+            width: 100%;
+            height: 4px;
+            background: transparent;
+            pointer-events: none;
+            -webkit-appearance: none;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        .range-slider input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 14px;
+            height: 14px;
+            background: #667eea;
+            border-radius: 50%;
+            cursor: pointer;
+            pointer-events: all;
+            border: 2px solid #0f172a;
+        }
+        .range-slider input[type="range"]::-moz-range-thumb {
+            width: 14px;
+            height: 14px;
+            background: #667eea;
+            border-radius: 50%;
+            cursor: pointer;
+            pointer-events: all;
+            border: 2px solid #0f172a;
+        }
+        .range-fill {
+            position: absolute;
+            height: 4px;
+            background: #667eea;
+            border-radius: 2px;
+            pointer-events: none;
+        }
+        .range-labels {
+            display: flex;
+            justify-content: space-between;
+            color: #64748b;
+            font-size: 0.75em;
+        }
+
+        /* Denomination switcher */
+        .denomination-switcher {
+            display: inline-flex;
+            gap: 4px;
+            background: rgba(30, 41, 59, 0.8);
+            padding: 4px;
+            border-radius: 8px;
+            position: relative;
+            z-index: 101;
+        }
+        .denom-btn {
+            padding: 6px 14px;
+            border: none;
+            background: transparent;
+            color: #94a3b8;
+            cursor: pointer;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+        .denom-btn:hover {
+            background: rgba(139, 92, 246, 0.2);
+            color: #c4b5fd;
+        }
+        .denom-btn.active {
+            background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+            color: white;
+        }
+    </style>
+</head>
+<body>
+<div id="update-time" style="position:fixed;bottom:5px;left:10px;font-size:10px;color:#666;z-index:50;">Updated: 2026-02-14 22:01:17 UTC</div>
+<script>(function(){var u=new Date("2026-02-14 22:01:17 UTC"),n=function(){var d=Math.floor((Date.now()-u)/1e3),t="";if(d<60)t=d+"s ago";else if(d<3600)t=Math.floor(d/60)+"m ago";else if(d<86400)t=Math.floor(d/3600)+"h ago";else t=Math.floor(d/86400)+"d ago";document.getElementById("update-time").textContent="Updated: "+t;setTimeout(n,d<3600?1e4:6e4)};n()})();</script>
+    <div class="container">
+        <div class="header">
+            <a href="index.html" class="back-button">Back</a>
+            <h1>veYB Revenue Dashboard</h1>
+            <div class="denomination-switcher" id="denomSwitcher">
+                <button class="denom-btn" data-denom="btc" onclick="switchDenomination('btc')">BTC</button>
+                <button class="denom-btn" data-denom="eth" onclick="switchDenomination('eth')">ETH</button>
+                <button class="denom-btn" data-denom="usd" onclick="switchDenomination('usd')">USD</button>
+            </div>
+        </div>
+
+        <div class="notice-container">
+            <div class="notice-banner">
+                Reward distribution for veYB has not started yet, but rewards are already accumulating
+            </div>
+            <div class="notice-banner">
+                Data from new markets only. Deprecated markets contain additional admin fees (exact amount TBD)
+            </div>
+        </div>
+
+        <div id="loading" class="loading">Loading data...</div>
+        <div id="content" style="display: none;">
+
+            <!-- Main metrics row -->
+            <div class="main-metrics-row">
+                <div class="main-card">
+                    <div class="main-card-label">Total Voting Power</div>
+                    <div class="main-card-value" id="totalVotingPower">-</div>
+                    <div class="main-card-sub" id="lockedYbInfo" style="font-size: 0.85em;">-</div>
+                </div>
+                <div class="main-card apr-card">
+                    <div class="main-card-label">Current APR</div>
+                    <div class="main-card-value" id="currentApr">-</div>
+                    <div class="main-card-sub" style="font-size: 0.8em;">annualized yield</div>
+                </div>
+                <div class="main-card fees-card">
+                    <div class="main-card-label">Total Revenue</div>
+                    <div class="main-card-value" id="totalAdminFees">-</div>
+                    <div class="main-card-sub" id="feesBreakdown" style="font-size: 1.1em; font-weight: 600;">-</div>
+                </div>
+            </div>
+
+            <!-- Secondary stats grid -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-label">veYB Change (24h)</div>
+                    <div class="stat-value" id="change24h">-</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">veYB Change (7d)</div>
+                    <div class="stat-value" id="change7d">-</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">Daily Revenue (14d avg)</div>
+                    <div class="stat-value positive" id="dailyRevenue">-</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">Days Since Launch</div>
+                    <div class="stat-value" id="daysActive">-</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">YB Price</div>
+                    <div class="stat-value" id="ybPrice">-</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">Avg Lock Duration</div>
+                    <div class="stat-value" id="avgLockDuration">-</div>
+                </div>
+            </div>
+
+            <!-- APR Chart -->
+            <div class="chart-container">
+                <div class="chart-title">veYB APR</div>
+                <div class="chart-wrapper">
+                    <canvas id="aprChart"></canvas>
+                </div>
+
+                <div class="compact-range">
+                    <div class="period-buttons" id="aprPeriodButtons">
+                        <span class="period-label">Period:</span>
+                        <button class="period-button" data-days="7">7d</button>
+                        <button class="period-button" data-days="14">14d</button>
+                        <button class="period-button" data-days="30">30d</button>
+                        <button class="period-button active" data-days="all">All</button>
+                    </div>
+                    <div class="range-slider">
+                        <div class="range-fill" id="aprRangeFill"></div>
+                        <input type="range" id="aprRangeStart" min="0" max="100" value="0">
+                        <input type="range" id="aprRangeEnd" min="0" max="100" value="100">
+                    </div>
+                    <div class="range-labels">
+                        <span id="aprStartLabel">Start</span>
+                        <span id="aprEndLabel">End</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- YB/BTC Price Chart -->
+            <div class="chart-container">
+                <div class="chart-title">YB/BTC Price</div>
+                <div class="chart-wrapper">
+                    <canvas id="priceChart"></canvas>
+                </div>
+                <div class="compact-range">
+                    <div class="period-buttons" id="pricePeriodButtons">
+                        <span class="period-label">Period:</span>
+                        <button class="period-button" data-days="7">7d</button>
+                        <button class="period-button" data-days="14">14d</button>
+                        <button class="period-button" data-days="30">30d</button>
+                        <button class="period-button active" data-days="all">All</button>
+                    </div>
+                    <div class="range-slider">
+                        <div class="range-fill" id="priceRangeFill"></div>
+                        <input type="range" id="priceRangeStart" min="0" max="100" value="0">
+                        <input type="range" id="priceRangeEnd" min="0" max="100" value="100">
+                    </div>
+                    <div class="range-labels">
+                        <span id="priceStartLabel">Start</span>
+                        <span id="priceEndLabel">End</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cumulative Admin Fees Chart -->
+            <div class="chart-container">
+                <div class="chart-title" id="adminFeesTitle">Cumulative Admin Fees</div>
+                <div class="chart-wrapper">
+                    <canvas id="adminFeesChart"></canvas>
+                </div>
+                <div class="compact-range">
+                    <div class="period-buttons" id="adminFeesPeriodButtons">
+                        <span class="period-label">Period:</span>
+                        <button class="period-button" data-days="7">7d</button>
+                        <button class="period-button" data-days="14">14d</button>
+                        <button class="period-button" data-days="30">30d</button>
+                        <button class="period-button active" data-days="all">All</button>
+                    </div>
+                    <div class="range-slider">
+                        <div class="range-fill" id="adminFeesRangeFill"></div>
+                        <input type="range" id="adminFeesRangeStart" min="0" max="100" value="0">
+                        <input type="range" id="adminFeesRangeEnd" min="0" max="100" value="100">
+                    </div>
+                    <div class="range-labels">
+                        <span id="adminFeesStartLabel">Start</span>
+                        <span id="adminFeesEndLabel">End</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Supply Chart -->
+            <div class="chart-container">
+                <div class="chart-title">Total Locked veYB</div>
+                <div class="chart-wrapper">
+                    <canvas id="supplyChart"></canvas>
+                </div>
+                <div class="compact-range">
+                    <div class="period-buttons" id="supplyPeriodButtons">
+                        <span class="period-label">Period:</span>
+                        <button class="period-button" data-days="7">7d</button>
+                        <button class="period-button" data-days="14">14d</button>
+                        <button class="period-button" data-days="30">30d</button>
+                        <button class="period-button active" data-days="all">All</button>
+                    </div>
+                    <div class="range-slider">
+                        <div class="range-fill" id="supplyRangeFill"></div>
+                        <input type="range" id="supplyRangeStart" min="0" max="100" value="0">
+                        <input type="range" id="supplyRangeEnd" min="0" max="100" value="100">
+                    </div>
+                    <div class="range-labels">
+                        <span id="supplyStartLabel">Start</span>
+                        <span id="supplyEndLabel">End</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Lock Ratio Chart -->
+            <div class="chart-container">
+                <div class="chart-title">veYB/YB Lock Ratio</div>
+                <div class="chart-wrapper">
+                    <canvas id="lockRatioChart"></canvas>
+                </div>
+                <div class="compact-range">
+                    <div class="period-buttons" id="lockRatioPeriodButtons">
+                        <span class="period-label">Period:</span>
+                        <button class="period-button" data-days="7">7d</button>
+                        <button class="period-button" data-days="14">14d</button>
+                        <button class="period-button" data-days="30">30d</button>
+                        <button class="period-button active" data-days="all">All</button>
+                    </div>
+                    <div class="range-slider">
+                        <div class="range-fill" id="lockRatioRangeFill"></div>
+                        <input type="range" id="lockRatioRangeStart" min="0" max="100" value="0">
+                        <input type="range" id="lockRatioRangeEnd" min="0" max="100" value="100">
+                    </div>
+                    <div class="range-labels">
+                        <span id="lockRatioStartLabel">Start</span>
+                        <span id="lockRatioEndLabel">End</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contract info -->
+            <div class="contract-info">
+                <div class="contract-info-row">
+                    <span class="contract-info-label">veYB</span>
+                    <span class="contract-info-value">
+                        <a href="https://etherscan.io/address/0x8235c179e9e84688fbd8b12295efc26834dac211" target="_blank">
+                            0x8235...c211
+                        </a>
+                        <span style="color:#64748b;margin-left:8px;">Vote-Escrowed YB</span>
+                    </span>
+                </div>
+                <div class="contract-info-row">
+                    <span class="contract-info-label">YB Token</span>
+                    <span class="contract-info-value">
+                        <a href="https://etherscan.io/token/0x01791F726B4103694969820be083196cC7c045fF" target="_blank">
+                            0x0179...45fF
+                        </a>
+                        <span style="color:#64748b;margin-left:8px;">Locked in veYB</span>
+                    </span>
+                </div>
+                <div class="contract-info-row">
+                    <span class="contract-info-label">Factory</span>
+                    <span class="contract-info-value">
+                        <a href="https://etherscan.io/address/0x370a449FeBb9411c95bf897021377fe0B7D100c0" target="_blank">
+                            0x370a...100c0
+                        </a>
+                        <span style="color:#64748b;margin-left:8px;">YieldBasis Factory</span>
+                    </span>
+                </div>
+                <div class="contract-info-row">
+                    <span class="contract-info-label">Vaults</span>
+                    <span class="contract-info-value" style="display:flex;gap:12px;flex-wrap:wrap;">
+                        <a href="https://etherscan.io/address/0xfBF3C16676055776Ab9B286492D8f13e30e2E763" target="_blank" title="WBTC Vault">WBTC</a>
+                        <a href="https://etherscan.io/address/0xAC0cfa7742069a8af0c63e14FFD0fe6b3e1Bf8D2" target="_blank" title="cbBTC Vault">cbBTC</a>
+                        <a href="https://etherscan.io/address/0xaC0a340C1644321D0BBc6404946d828c1EBfAC92" target="_blank" title="tBTC Vault">tBTC</a>
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <div>Data updates every 10 minutes</div>
+        </div>
+    </div>
+
+    <script>
+        let supplyChart = null;
+        let aprChart = null;
+        let priceChart = null;
+        let lockRatioChart = null;
+        let adminFeesChart = null;
+        let allData = [];
+        let aprData = [];
+        let priceData = [];
+        let lockRatioData = [];
+        let adminFeesData = [];
+
+        // Genesis timestamp for new contracts (Nov 12, 2025)
+        const CONTRACTS_GENESIS_TIMESTAMP = 1762963200;
+
+        // Denomination switcher
+        const currentDenom = localStorage.getItem('denomination') || 'usd';
+        let btcUsdPrice = null;
+        let ethUsdPrice = null;
+
+        // Update denomination buttons on load
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('.denom-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.getAttribute('data-denom') === currentDenom);
+            });
+        });
+
+        function switchDenomination(denom) {
+            localStorage.setItem('denomination', denom);
+            location.reload();
+        }
+
+        // Denomination conversion helper
+        function convertBtcToDenom(btcValue, denom) {
+            if (!btcValue || isNaN(btcValue)) return 0;
+            if (denom === 'btc') return btcValue;
+            if (denom === 'usd') return btcUsdPrice ? btcValue * btcUsdPrice : 0;
+            if (denom === 'eth') return (btcUsdPrice && ethUsdPrice) ? btcValue * btcUsdPrice / ethUsdPrice : 0;
+            return btcValue;
+        }
+
+        function formatDenom(value, denom) {
+            if (value === null || value === undefined || isNaN(value)) return '-';
+            if (denom === 'btc') return value.toFixed(4) + ' BTC';
+            if (denom === 'eth') return value.toFixed(4) + ' ETH';
+            return '$' + value.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2});
+        }
+
+        // Загружаем настройку timezone из localStorage или используем local по умолчанию
+        let useUTC = localStorage.getItem('useUTC') === 'true';
+
+        // Parse datetime string - treat strings without timezone as local time
+        // (server generates timestamps in local time without timezone indicator)
+        function parseAsUTC(dateString) {
+            if (!dateString) return new Date();
+            // Parse as-is - don't add 'Z' since data is in local server time
+            return new Date(dateString);
+        }
+
+        // Форматирование даты (UTC или Local в зависимости от useUTC)
+        function formatDateUTC(date) {
+            const d = date instanceof Date ? date : new Date(date);
+            if (useUTC) {
+                const day = String(d.getUTCDate()).padStart(2, '0');
+                const month = String(d.getUTCMonth() + 1).padStart(2, '0');
+                const year = d.getUTCFullYear();
+                const hours = String(d.getUTCHours()).padStart(2, '0');
+                const minutes = String(d.getUTCMinutes()).padStart(2, '0');
+                return `${day}.${month}.${year} ${hours}:${minutes} UTC`;
+            } else {
+                const day = String(d.getDate()).padStart(2, '0');
+                const month = String(d.getMonth() + 1).padStart(2, '0');
+                const year = d.getFullYear();
+                const hours = String(d.getHours()).padStart(2, '0');
+                const minutes = String(d.getMinutes()).padStart(2, '0');
+                return `${day}.${month}.${year} ${hours}:${minutes}`;
+            }
+        }
+
+        // Функция переключения UTC/Local
+        function toggleTimezone() {
+            useUTC = !useUTC;
+            localStorage.setItem('useUTC', useUTC);
+            location.reload();
+        }
+
+        // Обновляем кнопку при загрузке
+        document.addEventListener('DOMContentLoaded', function() {
+            const btn = document.getElementById('timezone-toggle');
+            if (btn) {
+                btn.textContent = useUTC ? '🕐 UTC' : '🕐 Local';
+                btn.style.background = useUTC ? '#2a4a3a' : '#333';
+            }
+        });
+
+        function destroyCharts() {
+            if (supplyChart) { supplyChart.destroy(); supplyChart = null; }
+            if (aprChart) { aprChart.destroy(); aprChart = null; }
+            if (priceChart) { priceChart.destroy(); priceChart = null; }
+            if (lockRatioChart) { lockRatioChart.destroy(); lockRatioChart = null; }
+            if (adminFeesChart) { adminFeesChart.destroy(); adminFeesChart = null; }
+        }
+
+        function formatNumber(num, decimals = 2) {
+            if (num >= 1e9) return (num / 1e9).toFixed(decimals) + 'B';
+            if (num >= 1e6) return (num / 1e6).toFixed(decimals) + 'M';
+            if (num >= 1e3) return (num / 1e3).toFixed(decimals) + 'K';
+            return num.toFixed(decimals);
+        }
+
+        function getYbBtcPrice(timestamp) {
+            // Get YB/BTC price from emission data at given timestamp
+            if (typeof ybEmissionData === 'undefined' || !ybEmissionData.length) return null;
+
+            // Find closest point
+            let closest = ybEmissionData[0];
+            for (const point of ybEmissionData) {
+                if (Math.abs(point.timestamp - timestamp) < Math.abs(closest.timestamp - timestamp)) {
+                    closest = point;
+                }
+            }
+
+            // Use stored yb_btc_price if available, otherwise calculate from cumulative
+            if (closest.yb_btc_price) return closest.yb_btc_price;
+            if (closest.cumulative_total && closest.cumulative_total_btc && closest.cumulative_total > 0) {
+                return closest.cumulative_total_btc / closest.cumulative_total;
+            }
+            return null;
+        }
+
+        function getAdminFeesAtTimestamp(timestamp) {
+            // Total Admin Fees = Current admin_fees_btc (in contracts) + Cumulative withdrawn fees
+            let totalFees = 0;
+
+            // 1. Get current admin_fees_btc from revenue_yield_*_sync.js
+            const sources = [
+                typeof yieldData_wbtc !== 'undefined' ? yieldData_wbtc.data : null,
+                typeof yieldData_cbbtc !== 'undefined' ? yieldData_cbbtc.data : null,
+                typeof yieldData_tbtc !== 'undefined' ? yieldData_tbtc.data : null
+            ].filter(Boolean);
+
+            for (const data of sources) {
+                // Find closest point <= timestamp
+                let closest = null;
+                for (const point of data) {
+                    if (point.timestamp <= timestamp) {
+                        closest = point;
+                    } else {
+                        break;
+                    }
+                }
+                if (closest) {
+                    totalFees += (closest.admin_fees_btc || 0);
+                }
+            }
+
+            // 2. Add cumulative withdrawn fees from admin_fee_withdrawals_cumulative.js
+            if (typeof adminFeeWithdrawalsData !== 'undefined' && adminFeeWithdrawalsData.length > 0) {
+                // Find latest withdrawal record <= timestamp
+                let closestWithdrawal = null;
+                for (const point of adminFeeWithdrawalsData) {
+                    if (point.timestamp <= timestamp) {
+                        closestWithdrawal = point;
+                    } else {
+                        break;
+                    }
+                }
+                if (closestWithdrawal) {
+                    totalFees += (closestWithdrawal.cumulative_total || 0);
+                }
+            }
+
+            return totalFees;
+        }
+
+        function getLatestYbBtcPrice() {
+            // Get the latest YB/BTC price from emission data
+            if (typeof ybEmissionData === 'undefined' || !ybEmissionData.length) return null;
+
+            const sorted = [...ybEmissionData].sort((a, b) => b.timestamp - a.timestamp);
+            for (const point of sorted) {
+                if (point.yb_btc_price) return point.yb_btc_price;
+                if (point.cumulative_total && point.cumulative_total_btc && point.cumulative_total > 0) {
+                    return point.cumulative_total_btc / point.cumulative_total;
+                }
+            }
+            return null;
+        }
+
+        function calculateAprData(useHistoricalPrice = true) {
+            // Calculate APR for each veYB supply point
+            // APR = ((Admin Fees Total) / Days * 365) / (veYB Supply * YB/BTC Price)
+
+            const result = [];
+
+            // Sort allData by timestamp first
+            const sortedData = [...allData].sort((a, b) => a.timestamp - b.timestamp);
+
+            // Get latest price for non-historical mode
+            const latestPrice = useHistoricalPrice ? null : getLatestYbBtcPrice();
+
+            for (const point of sortedData) {
+                const timestamp = point.timestamp;
+                const supplyYb = point.supply_yb;
+
+                // Skip points before contracts genesis or with zero supply
+                if (timestamp < CONTRACTS_GENESIS_TIMESTAMP || supplyYb <= 0) continue;
+
+                const ybBtcPrice = useHistoricalPrice ? getYbBtcPrice(timestamp) : latestPrice;
+                const adminFees = getAdminFeesAtTimestamp(timestamp);
+                const daysSinceGenesis = (timestamp - CONTRACTS_GENESIS_TIMESTAMP) / 86400;
+
+                if (!ybBtcPrice || daysSinceGenesis <= 0) continue;
+
+                // veYB value in BTC
+                const veyBtcValue = supplyYb * ybBtcPrice;
+
+                // APR calculation
+                const dailyRevenue = adminFees / daysSinceGenesis;
+                const annualRevenue = dailyRevenue * 365;
+                const apr = veyBtcValue > 0 ? (annualRevenue / veyBtcValue) * 100 : 0;
+
+                result.push({
+                    timestamp,
+                    datetime: point.datetime,
+                    apr,
+                    adminFees,
+                    veyBtcValue,
+                    ybBtcPrice,
+                    daysSinceGenesis
+                });
+            }
+
+            return result;
+        }
+
+        function formatChange(current, previous) {
+            if (!previous || previous === 0) return { text: 'N/A', class: '' };
+            const change = current - previous;
+            const pct = (change / previous) * 100;
+            const sign = change >= 0 ? '+' : '';
+            return {
+                text: `${sign}${formatNumber(change)} (${sign}${pct.toFixed(2)}%)`,
+                class: change >= 0 ? 'positive' : 'negative'
+            };
+        }
+
+        function findDataAtHoursAgo(data, hours) {
+            if (data.length === 0) return null;
+            const targetTime = data[data.length - 1].timestamp - (hours * 3600);
+            let closest = data[0];
+            for (const point of data) {
+                if (Math.abs(point.timestamp - targetTime) < Math.abs(closest.timestamp - targetTime)) {
+                    closest = point;
+                }
+            }
+            // Only return if within 2 hours of target
+            if (Math.abs(closest.timestamp - targetTime) > 7200) return null;
+            return closest;
+        }
+
+        function filterDataByPeriod(data, period) {
+            if (period === 'all' || data.length === 0) return data;
+
+            const now = data[data.length - 1].timestamp;
+            let cutoff;
+
+            switch (period) {
+                case '1d': cutoff = now - 86400; break;
+                case '7d': cutoff = now - 7 * 86400; break;
+                case '30d': cutoff = now - 30 * 86400; break;
+                default: return data;
+            }
+
+            return data.filter(d => d.timestamp >= cutoff);
+        }
+
+        function updateSupplyChart(period = 'all') {
+            const filteredData = filterDataByPeriod(allData, period);
+
+            // Sort by block number (always correct order) instead of timestamp
+            const sortedData = [...filteredData].sort((a, b) => a.block - b.block);
+            const chartData = sortedData.map(d => ({
+                x: d.datetime ? parseAsUTC(d.datetime) : new Date(d.timestamp * 1000),
+                y: d.supply_yb
+            }));
+
+            if (supplyChart) {
+                supplyChart.data.datasets[0].data = chartData;
+                supplyChart.update('none');
+            }
+        }
+
+        // Store both APR datasets globally for filtering
+        let aprDataLatest = [];
+
+        function updateAprChart(period = 'all') {
+            const filteredHistorical = filterDataByPeriod(aprData, period);
+            const filteredLatest = filterDataByPeriod(aprDataLatest, period);
+
+            const labels = filteredLatest.map(d => new Date(d.timestamp * 1000));
+            const valuesHistorical = filteredHistorical.map(d => d.apr);
+            const valuesLatest = filteredLatest.map(d => d.apr);
+
+            if (aprChart) {
+                aprChart.data.labels = labels;
+                aprChart.data.datasets[0].data = valuesHistorical;  // Historical price (main)
+                aprChart.data.datasets[1].data = valuesLatest;      // Current price
+                aprChart.update('none');
+            }
+        }
+
+        function createSupplyChart(data) {
+            const ctx = document.getElementById('supplyChart').getContext('2d');
+
+            // Use {x, y} format for proper time scale positioning
+            // Sort by block number (always correct order)
+            const sortedData = [...data].sort((a, b) => a.block - b.block);
+            const chartData = sortedData.map(d => ({
+                x: new Date(d.timestamp * 1000),
+                y: d.supply_yb
+            }));
+
+            supplyChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    datasets: [{
+                        label: 'Total Locked veYB',
+                        data: chartData,
+                        borderColor: '#667eea',
+                        backgroundColor: 'rgba(102, 126, 234, 0.1)',
+                        fill: true,
+                        tension: 0,
+                        pointRadius: chartData.length < 50 ? 4 : 0,
+                        pointHoverRadius: 6,
+                        borderWidth: 2
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    interaction: {
+                        intersect: false,
+                        mode: 'index'
+                    },
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: {
+                            backgroundColor: '#1e293b',
+                            titleColor: '#e2e8f0',
+                            bodyColor: '#94a3b8',
+                            borderColor: '#334155',
+                            borderWidth: 1,
+                            callbacks: {
+                                title: (items) => {
+                                    const date = new Date(items[0].parsed.x);
+                                    return formatDateUTC(date);
+                                },
+                                label: (item) => `Locked: ${formatNumber(item.parsed.y)} veYB`
+                            }
+                        }
+                    },
+                    scales: {
+                        x: {
+                            type: 'time',
+                            time: {
+                                displayFormats: {
+                                    hour: 'MMM d, HH:mm',
+                                    day: 'MMM d'
+                                }
+                            },
+                            grid: { color: '#334155' },
+                            ticks: { color: '#64748b' }
+                        },
+                        y: {
+                            grid: { color: '#334155' },
+                            ticks: {
+                                color: '#64748b',
+                                callback: (value) => formatNumber(value)
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        function createAprChart(data) {
+            const ctx = document.getElementById('aprChart').getContext('2d');
+
+            const labels = data.map(d => new Date(d.timestamp * 1000));
+            const values = data.map(d => d.apr);
+            const valuesLatest = aprDataLatest.map(d => d.apr);
+
+            aprChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'APR (Historical YB/BTC price)',
+                        data: values,
+                        borderColor: '#10b981',
+                        backgroundColor: 'rgba(16, 185, 129, 0.1)',
+                        fill: true,
+                        tension: 0.4,
+                        pointRadius: data.length < 50 ? 4 : 0,
+                        pointHoverRadius: 6,
+                        borderWidth: 2
+                    }, {
+                        label: 'APR (Current YB/BTC price)',
+                        data: valuesLatest,
+                        borderColor: '#f59e0b',
+                        backgroundColor: 'transparent',
+                        fill: false,
+                        tension: 0.4,
+                        pointRadius: 0,
+                        pointHoverRadius: 4,
+                        borderWidth: 2,
+                        borderDash: [5, 5]
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    interaction: {
+                        intersect: false,
+                        mode: 'index'
+                    },
+                    plugins: {
+                        legend: {
+                            display: true,
+                            labels: { color: '#94a3b8' }
+                        },
+                        tooltip: {
+                            backgroundColor: '#1e293b',
+                            titleColor: '#e2e8f0',
+                            bodyColor: '#94a3b8',
+                            borderColor: '#334155',
+                            borderWidth: 1,
+                            callbacks: {
+                                title: (items) => {
+                                    const date = new Date(items[0].parsed.x);
+                                    return formatDateUTC(date);
+                                },
+                                label: (item) => {
+                                    const dataArr = item.datasetIndex === 0 ? aprData : aprDataLatest;
+                                    const point = dataArr.find(d => d.timestamp === Math.floor(item.parsed.x / 1000));
+                                    let lines = [`${item.dataset.label}: ${item.raw.toFixed(2)}%`];
+                                    if (point) {
+                                        lines.push(`YB/BTC: ${point.ybBtcPrice.toFixed(8)}`);
+                                        lines.push(`veYB Value: ${formatDenom(convertBtcToDenom(point.veyBtcValue, currentDenom), currentDenom)}`);
+                                    }
+                                    return lines;
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        x: {
+                            type: 'time',
+                            time: {
+                                displayFormats: {
+                                    hour: 'MMM d, HH:mm',
+                                    day: 'MMM d'
+                                }
+                            },
+                            grid: { color: '#334155' },
+                            ticks: { color: '#64748b' }
+                        },
+                        y: {
+                            grid: { color: '#334155' },
+                            ticks: {
+                                color: '#64748b',
+                                callback: (value) => value.toFixed(0) + '%'
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        function extractPriceData() {
+            // Extract YB/BTC price data from ybEmissionData
+            if (typeof ybEmissionData === 'undefined' || !ybEmissionData.length) return [];
+
+            const result = [];
+            const sortedData = [...ybEmissionData].sort((a, b) => a.timestamp - b.timestamp);
+
+            for (const point of sortedData) {
+                // Only use actual yb_btc_price from DeFiLlama
+                // Don't use fallback calculation as it gives misleading average historical price
+                if (point.yb_btc_price && point.yb_btc_price > 0) {
+                    result.push({
+                        timestamp: point.timestamp,
+                        datetime: point.datetime,
+                        price: point.yb_btc_price,
+                        yb_usd: point.yb_usd_price || null,
+                        btc_usd: point.btc_usd_price || null
+                    });
+                }
+            }
+
+            return result;
+        }
+
+        function updatePriceChart(period = 'all') {
+            const filteredData = filterDataByPeriod(priceData, period);
+
+            const labels = filteredData.map(d => new Date(d.timestamp * 1000));
+            const values = filteredData.map(d => d.price);
+
+            if (priceChart) {
+                priceChart.data.labels = labels;
+                priceChart.data.datasets[0].data = values;
+                priceChart.update('none');
+            }
+        }
+
+        function createPriceChart(data) {
+            const ctx = document.getElementById('priceChart').getContext('2d');
+
+            const labels = data.map(d => new Date(d.timestamp * 1000));
+            const valuesBtc = data.map(d => d.price);
+            const valuesUsd = data.map(d => d.yb_usd);
+
+            priceChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'YB/BTC',
+                        data: valuesBtc,
+                        borderColor: '#f59e0b',
+                        backgroundColor: 'rgba(245, 158, 11, 0.1)',
+                        fill: true,
+                        tension: 0.4,
+                        pointRadius: 0,
+                        pointHoverRadius: 6,
+                        borderWidth: 2,
+                        yAxisID: 'yBtc'
+                    }, {
+                        label: 'YB/USD',
+                        data: valuesUsd,
+                        borderColor: '#10b981',
+                        backgroundColor: 'transparent',
+                        fill: false,
+                        tension: 0.4,
+                        pointRadius: 0,
+                        pointHoverRadius: 4,
+                        borderWidth: 2,
+                        borderDash: [5, 5],
+                        yAxisID: 'yUsd'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    interaction: {
+                        intersect: false,
+                        mode: 'index'
+                    },
+                    plugins: {
+                        legend: {
+                            display: true,
+                            labels: { color: '#94a3b8' }
+                        },
+                        tooltip: {
+                            backgroundColor: '#1e293b',
+                            titleColor: '#e2e8f0',
+                            bodyColor: '#94a3b8',
+                            borderColor: '#334155',
+                            borderWidth: 1,
+                            callbacks: {
+                                title: (items) => {
+                                    const date = new Date(items[0].parsed.x);
+                                    return formatDateUTC(date);
+                                },
+                                label: (item) => {
+                                    if (item.datasetIndex === 0) {
+                                        return `1 YB = ${formatDenom(convertBtcToDenom(item.raw, currentDenom), currentDenom)}`;
+                                    } else {
+                                        return item.raw ? `1 YB = $${item.raw.toFixed(4)}` : 'N/A';
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        x: {
+                            type: 'time',
+                            time: {
+                                displayFormats: {
+                                    hour: 'MMM d, HH:mm',
+                                    day: 'MMM d'
+                                }
+                            },
+                            grid: { color: '#334155' },
+                            ticks: { color: '#64748b' }
+                        },
+                        yBtc: {
+                            type: 'linear',
+                            position: 'left',
+                            grid: { color: '#334155' },
+                            ticks: {
+                                color: '#f59e0b',
+                                callback: (value) => value.toFixed(8)
+                            }
+                        },
+                        yUsd: {
+                            type: 'linear',
+                            position: 'right',
+                            grid: { display: false },
+                            ticks: {
+                                color: '#10b981',
+                                callback: (value) => '$' + value.toFixed(2)
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        function extractLockRatioData() {
+            // Extract lock ratio data from veYBSupplyData
+            const result = [];
+            for (const point of allData) {
+                if (point.lock_ratio && point.lock_ratio > 0) {
+                    result.push({
+                        timestamp: point.timestamp,
+                        datetime: point.datetime,
+                        lock_ratio: point.lock_ratio,
+                        supply_yb: point.supply_yb,
+                        yb_locked: point.yb_locked
+                    });
+                }
+            }
+            return result;
+        }
+
+        function updateLockRatioChart(period = 'all') {
+            const filteredData = filterDataByPeriod(lockRatioData, period);
+
+            // Sort by block number (always correct order) instead of timestamp
+            const sortedData = [...filteredData].sort((a, b) => a.block - b.block);
+            const chartData = sortedData.map(d => ({
+                x: new Date(d.timestamp * 1000),
+                y: d.lock_ratio * 100
+            }));
+
+            if (lockRatioChart) {
+                lockRatioChart.data.datasets[0].data = chartData;
+                lockRatioChart.update('none');
+            }
+        }
+
+        function createLockRatioChart(data) {
+            const ctx = document.getElementById('lockRatioChart').getContext('2d');
+
+            // Use {x, y} format for proper time scale positioning
+            // Sort by block number (always correct order) instead of timestamp
+            const sortedData = [...data].sort((a, b) => a.block - b.block);
+            const chartData = sortedData.map(d => ({
+                x: new Date(d.timestamp * 1000),
+                y: d.lock_ratio * 100
+            }));
+
+            lockRatioChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    datasets: [{
+                        label: 'veYB/YB Ratio',
+                        data: chartData,
+                        borderColor: '#8b5cf6',
+                        backgroundColor: 'rgba(139, 92, 246, 0.1)',
+                        fill: true,
+                        tension: 0.4,
+                        pointRadius: chartData.length < 50 ? 4 : 0,
+                        pointHoverRadius: 6,
+                        borderWidth: 2
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    interaction: {
+                        intersect: false,
+                        mode: 'index'
+                    },
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: {
+                            backgroundColor: '#1e293b',
+                            titleColor: '#e2e8f0',
+                            bodyColor: '#94a3b8',
+                            borderColor: '#334155',
+                            borderWidth: 1,
+                            callbacks: {
+                                title: (items) => {
+                                    const date = new Date(items[0].parsed.x);
+                                    return formatDateUTC(date);
+                                },
+                                label: (item) => {
+                                    const point = lockRatioData.find(d => d.timestamp === Math.floor(item.parsed.x / 1000));
+                                    let lines = [`Ratio: ${item.parsed.y.toFixed(2)}%`];
+                                    if (point) {
+                                        lines.push(`veYB: ${formatNumber(point.total_votes || point.supply_yb)}`);
+                                        lines.push(`YB Locked: ${formatNumber(point.yb_locked)}`);
+                                        // Estimate avg lock duration (assuming max lock = 4 years)
+                                        const avgLockYears = point.lock_ratio * 4;
+                                        lines.push(`Avg Lock: ~${avgLockYears.toFixed(1)} years`);
+                                    }
+                                    return lines;
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        x: {
+                            type: 'time',
+                            time: {
+                                displayFormats: {
+                                    hour: 'MMM d, HH:mm',
+                                    day: 'MMM d'
+                                }
+                            },
+                            grid: { color: '#334155' },
+                            ticks: { color: '#64748b' }
+                        },
+                        y: {
+                            grid: { color: '#334155' },
+                            ticks: {
+                                color: '#64748b',
+                                callback: (value) => value.toFixed(0) + '%'
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        function extractAdminFeesData() {
+            // Build cumulative admin fees from revenue_yield data (continuous) + withdrawals
+            const result = [];
+
+            const sources = [
+                typeof yieldData_wbtc !== 'undefined' ? yieldData_wbtc.data : null,
+                typeof yieldData_cbbtc !== 'undefined' ? yieldData_cbbtc.data : null,
+                typeof yieldData_tbtc !== 'undefined' ? yieldData_tbtc.data : null
+            ].filter(Boolean);
+
+            if (sources.length === 0) return result;
+
+            // Build withdrawal lookup by timestamp
+            const withdrawalsByTimestamp = {};
+            if (typeof adminFeeWithdrawalsData !== 'undefined' && adminFeeWithdrawalsData.length) {
+                for (const w of adminFeeWithdrawalsData) {
+                    withdrawalsByTimestamp[w.timestamp] = w.cumulative_total;
+                }
+            }
+
+            // Collect all unique timestamps from all sources (filter out invalid timestamps)
+            const timestampSet = new Set();
+            for (const data of sources) {
+                for (const point of data) {
+                    // Skip invalid timestamps (0 or too old - before 2025)
+                    if (point.timestamp > 1700000000) {
+                        timestampSet.add(point.timestamp);
+                    }
+                }
+            }
+
+            const timestamps = Array.from(timestampSet).sort((a, b) => a - b);
+
+            // For each timestamp, sum admin_fees_btc from all markets + cumulative withdrawn
+            let lastCumulativeWithdrawn = 0;
+            for (const ts of timestamps) {
+                let inContracts = 0;
+
+                // Sum admin_fees_btc from each market at this timestamp
+                for (const data of sources) {
+                    // Find closest point <= timestamp
+                    let closest = null;
+                    for (const point of data) {
+                        if (point.timestamp <= ts) {
+                            closest = point;
+                        } else {
+                            break;
+                        }
+                    }
+                    if (closest) {
+                        inContracts += (closest.admin_fees_btc || 0);
+                    }
+                }
+
+                // Get cumulative withdrawn at this timestamp
+                let cumulativeWithdrawn = lastCumulativeWithdrawn;
+                if (typeof adminFeeWithdrawalsData !== 'undefined') {
+                    for (const w of adminFeeWithdrawalsData) {
+                        if (w.timestamp <= ts) {
+                            cumulativeWithdrawn = w.cumulative_total;
+                        } else {
+                            break;
+                        }
+                    }
+                }
+                lastCumulativeWithdrawn = cumulativeWithdrawn;
+
+                const total = inContracts + cumulativeWithdrawn;
+
+                result.push({
+                    timestamp: ts,
+                    datetime: new Date(ts * 1000).toISOString().slice(0, 19),
+                    in_contracts: inContracts,
+                    cumulative_withdrawn: cumulativeWithdrawn,
+                    total: total
+                });
+            }
+
+            return result;
+        }
+
+        function createAdminFeesChart(data) {
+            const ctx = document.getElementById('adminFeesChart').getContext('2d');
+
+            const labels = data.map(d => new Date(d.timestamp * 1000));
+            const values = data.map(d => d.total || d.cumulative_withdrawn);
+
+            adminFeesChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'Cumulative Admin Fees',
+                        data: values,
+                        borderColor: '#f59e0b',
+                        backgroundColor: 'rgba(245, 158, 11, 0.1)',
+                        fill: true,
+                        tension: 0.4,
+                        pointRadius: 0,
+                        pointHoverRadius: 6,
+                        borderWidth: 2
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    interaction: {
+                        intersect: false,
+                        mode: 'index'
+                    },
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: {
+                            backgroundColor: '#1e293b',
+                            titleColor: '#e2e8f0',
+                            bodyColor: '#94a3b8',
+                            borderColor: '#334155',
+                            borderWidth: 1,
+                            callbacks: {
+                                title: (items) => {
+                                    const date = new Date(items[0].parsed.x);
+                                    return formatDateUTC(date);
+                                },
+                                label: (item) => {
+                                    return `Total: ${formatDenom(convertBtcToDenom(item.raw, currentDenom), currentDenom)}`;
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        x: {
+                            type: 'time',
+                            time: {
+                                displayFormats: {
+                                    hour: 'MMM d, HH:mm',
+                                    day: 'MMM d'
+                                }
+                            },
+                            grid: { color: '#334155' },
+                            ticks: { color: '#64748b' }
+                        },
+                        y: {
+                            grid: { color: '#334155' },
+                            ticks: {
+                                color: '#64748b',
+                                callback: (value) => formatDenom(convertBtcToDenom(value, currentDenom), currentDenom)
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        function init() {
+            // Check if data exists
+            if (typeof veYBSupplyData === 'undefined' || veYBSupplyData.length === 0) {
+                document.getElementById('loading').textContent = 'No data available';
+                return;
+            }
+
+            allData = veYBSupplyData;
+
+            // Extract lock ratio data
+            lockRatioData = extractLockRatioData();
+            console.log('Lock ratio data extracted:', lockRatioData.length, 'points');
+
+            // Calculate APR data (both with historical and current price)
+            aprData = calculateAprData(true);
+            aprDataLatest = calculateAprData(false);
+            console.log('APR data calculated:', aprData.length, 'points (historical), ', aprDataLatest.length, 'points (latest)');
+
+            // Extract price data
+            priceData = extractPriceData();
+            console.log('Price data extracted:', priceData.length, 'points');
+
+            // Set global prices for denomination conversion
+            if (priceData.length > 0) {
+                for (let i = priceData.length - 1; i >= 0; i--) {
+                    if (priceData[i].btc_usd) {
+                        btcUsdPrice = priceData[i].btc_usd;
+                        break;
+                    }
+                }
+            }
+            // Get ETH price from yieldData_eth
+            if (typeof yieldData_eth !== 'undefined' && yieldData_eth.data && yieldData_eth.data.length > 0) {
+                const lastEth = yieldData_eth.data[yieldData_eth.data.length - 1];
+                ethUsdPrice = lastEth.eth_price || null;
+            }
+            // Fallback: calculate ETH price from BTC price using typical ETH/BTC ratio (~0.035)
+            if (!ethUsdPrice && btcUsdPrice) {
+                const ethBtcRatio = 0.035; // Approximate ETH/BTC ratio
+                ethUsdPrice = btcUsdPrice * ethBtcRatio;
+                console.log('ETH price calculated from BTC using ratio:', ethBtcRatio);
+            }
+            console.log('Prices for denomination:', btcUsdPrice, 'BTC/USD,', ethUsdPrice, 'ETH/USD');
+
+            // Extract admin fees data
+            adminFeesData = extractAdminFeesData();
+            console.log('Admin fees data extracted:', adminFeesData.length, 'points');
+
+            // Update metrics
+            const latest = allData[allData.length - 1];
+            const first = allData[0];
+
+            // Total Voting Power (veYB - decays over time)
+            const totalVotes = latest.total_votes || latest.supply_yb;
+            document.getElementById('totalVotingPower').textContent = formatNumber(totalVotes) + ' veYB';
+
+            // APR metrics
+            if (aprData.length > 0) {
+                const latestApr = aprData[aprData.length - 1];
+                document.getElementById('currentApr').textContent = latestApr.apr.toFixed(2) + '%';
+
+                // Convert admin fees to selected denomination
+                const feesConverted = convertBtcToDenom(latestApr.adminFees, currentDenom);
+                document.getElementById('totalAdminFees').textContent = formatDenom(feesConverted, currentDenom);
+                document.getElementById('daysActive').textContent = latestApr.daysSinceGenesis.toFixed(1);
+
+                // Locked YB with valuation in selected denomination
+                const ybLocked = latest.supply_yb;
+                const ybBtcValue = ybLocked * latestApr.ybBtcPrice;
+                const lockedConverted = convertBtcToDenom(ybBtcValue, currentDenom);
+                let lockedYbText = `Locked: ${formatNumber(ybLocked)} YB ≈ ${formatDenom(lockedConverted, currentDenom)}`;
+                document.getElementById('lockedYbInfo').textContent = lockedYbText;
+
+                // Show original BTC value under Total Revenue (always show BTC for reference)
+                if (currentDenom !== 'btc') {
+                    document.getElementById('feesBreakdown').textContent = `(${latestApr.adminFees.toFixed(4)} BTC)`;
+                } else if (btcUsdPrice) {
+                    const feesUsd = latestApr.adminFees * btcUsdPrice;
+                    document.getElementById('feesBreakdown').textContent = `≈ $${feesUsd.toLocaleString(undefined, {maximumFractionDigits: 0})}`;
+                } else {
+                    document.getElementById('feesBreakdown').textContent = '';
+                }
+
+                // YB Price in BTC and USD
+                const ybBtcPrice = latestApr.ybBtcPrice;
+                let ybPriceText = (ybBtcPrice * 1e8).toFixed(0) + ' sats';
+                if (btcUsdPrice) {
+                    const ybUsdPrice = ybBtcPrice * btcUsdPrice;
+                    ybPriceText += ` / $${ybUsdPrice.toFixed(2)}`;
+                }
+                document.getElementById('ybPrice').textContent = ybPriceText;
+
+                // Daily Revenue (average over last 14 days)
+                let avgDaily = latestApr.adminFees / latestApr.daysSinceGenesis; // fallback
+                if (aprData.length > 1) {
+                    const now = latestApr.timestamp;
+                    const days14ago = now - (14 * 24 * 60 * 60);
+                    // Find data point closest to 14 days ago
+                    let data14d = aprData[0];
+                    for (const point of aprData) {
+                        if (point.timestamp <= days14ago) {
+                            data14d = point;
+                        } else {
+                            break;
+                        }
+                    }
+                    const feesIn14d = latestApr.adminFees - data14d.adminFees;
+                    const actualDays = (latestApr.timestamp - data14d.timestamp) / (24 * 60 * 60);
+                    if (actualDays > 0) {
+                        avgDaily = feesIn14d / actualDays;
+                    }
+                }
+                // Convert daily revenue to selected denomination
+                const dailyConverted = convertBtcToDenom(avgDaily, currentDenom);
+                document.getElementById('dailyRevenue').textContent = formatDenom(dailyConverted, currentDenom);
+            }
+
+            // Average Lock Duration (from lock ratio)
+            if (lockRatioData.length > 0) {
+                const latestLockRatio = lockRatioData[lockRatioData.length - 1];
+                // Assuming max lock = 4 years, ratio shows average lock duration
+                const avgLockYears = latestLockRatio.lock_ratio * 4;
+                if (avgLockYears >= 1) {
+                    document.getElementById('avgLockDuration').textContent = `~${avgLockYears.toFixed(1)} years`;
+                } else {
+                    const avgLockMonths = avgLockYears * 12;
+                    document.getElementById('avgLockDuration').textContent = `~${avgLockMonths.toFixed(0)} months`;
+                }
+            } else {
+                document.getElementById('avgLockDuration').textContent = 'N/A';
+            }
+
+            // 24h change
+            const data24h = findDataAtHoursAgo(allData, 24);
+            if (data24h) {
+                const change = formatChange(latest.supply_yb, data24h.supply_yb);
+                document.getElementById('change24h').textContent = change.text;
+                document.getElementById('change24h').className = 'stat-value ' + change.class;
+            }
+
+            // 7d change
+            const data7d = findDataAtHoursAgo(allData, 168);
+            if (data7d) {
+                const change = formatChange(latest.supply_yb, data7d.supply_yb);
+                document.getElementById('change7d').textContent = change.text;
+                document.getElementById('change7d').className = 'stat-value ' + change.class;
+            }
+
+            // Create charts
+            createSupplyChart(allData);
+            if (aprData.length > 0) {
+                createAprChart(aprData);
+            }
+            if (priceData.length > 0) {
+                createPriceChart(priceData);
+            }
+            if (lockRatioData.length > 0) {
+                createLockRatioChart(lockRatioData);
+            }
+            if (adminFeesData.length > 0) {
+                createAdminFeesChart(adminFeesData);
+                // Update chart title with current denomination
+                document.getElementById('adminFeesTitle').textContent =
+                    `Cumulative Admin Fees (${currentDenom.toUpperCase()})`;
+            }
+
+            // ====== APR RANGE SLIDER LOGIC ======
+            let aprRangeStart = 0;
+            let aprRangeEnd = aprDataLatest.length - 1;
+
+            function updateAprSliderUI() {
+                const rangeStart = document.getElementById('aprRangeStart');
+                const rangeEnd = document.getElementById('aprRangeEnd');
+                const rangeFill = document.getElementById('aprRangeFill');
+
+                const startPercent = (parseInt(rangeStart.value) / parseInt(rangeStart.max)) * 100;
+                const endPercent = (parseInt(rangeEnd.value) / parseInt(rangeEnd.max)) * 100;
+
+                rangeFill.style.left = startPercent + '%';
+                rangeFill.style.width = (endPercent - startPercent) + '%';
+
+                if (aprDataLatest.length > 0 && aprRangeStart < aprDataLatest.length && aprRangeEnd < aprDataLatest.length) {
+                    const startDate = new Date(aprDataLatest[aprRangeStart].timestamp * 1000).toLocaleDateString('en-US', useUTC ? { month: 'short', day: 'numeric', timeZone: 'UTC' } : { month: 'short', day: 'numeric' });
+                    const endDate = new Date(aprDataLatest[aprRangeEnd].timestamp * 1000).toLocaleDateString('en-US', useUTC ? { month: 'short', day: 'numeric', timeZone: 'UTC' } : { month: 'short', day: 'numeric' });
+                    document.getElementById('aprStartLabel').textContent = startDate;
+                    document.getElementById('aprEndLabel').textContent = endDate;
+                }
+            }
+
+            function filterAprByRange() {
+                if (aprDataLatest.length === 0) return;
+
+                const filteredLatest = aprDataLatest.slice(aprRangeStart, aprRangeEnd + 1);
+                const filteredHistorical = aprData.slice(aprRangeStart, aprRangeEnd + 1);
+
+                const labels = filteredLatest.map(d => new Date(d.timestamp * 1000));
+                const valuesLatest = filteredLatest.map(d => d.apr);
+                const valuesHistorical = filteredHistorical.map(d => d.apr);
+
+                if (aprChart) {
+                    aprChart.data.labels = labels;
+                    aprChart.data.datasets[0].data = valuesHistorical;
+                    aprChart.data.datasets[1].data = valuesLatest;
+                    aprChart.update('none');
+                }
+            }
+
+            document.getElementById('aprRangeStart').addEventListener('input', function() {
+                let startValue = parseInt(this.value);
+                let endValue = parseInt(document.getElementById('aprRangeEnd').value);
+
+                if (startValue >= endValue - 2) {
+                    startValue = endValue - 2;
+                    this.value = startValue;
+                }
+
+                aprRangeStart = Math.floor((startValue / 100) * (aprDataLatest.length - 1));
+                updateAprSliderUI();
+            });
+
+            document.getElementById('aprRangeEnd').addEventListener('input', function() {
+                let startValue = parseInt(document.getElementById('aprRangeStart').value);
+                let endValue = parseInt(this.value);
+
+                if (endValue <= startValue + 2) {
+                    endValue = startValue + 2;
+                    this.value = endValue;
+                }
+
+                aprRangeEnd = Math.floor((endValue / 100) * (aprDataLatest.length - 1));
+                updateAprSliderUI();
+            });
+
+            document.getElementById('aprRangeStart').addEventListener('change', filterAprByRange);
+            document.getElementById('aprRangeEnd').addEventListener('change', filterAprByRange);
+
+            // Period buttons reset slider
+            document.querySelectorAll('#aprPeriodButtons .period-button').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    document.querySelectorAll('#aprPeriodButtons .period-button').forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    const days = btn.dataset.days;
+                    if (days === 'all') {
+                        aprRangeStart = 0;
+                        aprRangeEnd = aprDataLatest.length - 1;
+                    } else {
+                        aprRangeEnd = aprDataLatest.length - 1;
+                        const endTimestamp = aprDataLatest[aprRangeEnd].timestamp;
+                        const targetTimestamp = endTimestamp - (parseInt(days) * 86400);
+                        aprRangeStart = aprDataLatest.findIndex(p => p.timestamp >= targetTimestamp);
+                        if (aprRangeStart === -1) aprRangeStart = 0;
+                    }
+
+                    const startPercent = (aprRangeStart / (aprDataLatest.length - 1)) * 100;
+                    const endPercent = (aprRangeEnd / (aprDataLatest.length - 1)) * 100;
+
+                    document.getElementById('aprRangeStart').value = startPercent;
+                    document.getElementById('aprRangeEnd').value = endPercent;
+
+                    updateAprSliderUI();
+                    filterAprByRange();
+                });
+            });
+
+            updateAprSliderUI();
+            // ====== END APR RANGE SLIDER LOGIC ======
+
+            // ====== PRICE RANGE SLIDER LOGIC ======
+            let priceRangeStart = 0;
+            let priceRangeEnd = priceData.length - 1;
+
+            function updatePriceSliderUI() {
+                const rangeStart = document.getElementById('priceRangeStart');
+                const rangeEnd = document.getElementById('priceRangeEnd');
+                const rangeFill = document.getElementById('priceRangeFill');
+
+                const startPercent = (parseInt(rangeStart.value) / parseInt(rangeStart.max)) * 100;
+                const endPercent = (parseInt(rangeEnd.value) / parseInt(rangeEnd.max)) * 100;
+
+                rangeFill.style.left = startPercent + '%';
+                rangeFill.style.width = (endPercent - startPercent) + '%';
+
+                if (priceData.length > 0 && priceRangeStart < priceData.length && priceRangeEnd < priceData.length) {
+                    const startDate = new Date(priceData[priceRangeStart].timestamp * 1000).toLocaleDateString('en-US', useUTC ? { month: 'short', day: 'numeric', timeZone: 'UTC' } : { month: 'short', day: 'numeric' });
+                    const endDate = new Date(priceData[priceRangeEnd].timestamp * 1000).toLocaleDateString('en-US', useUTC ? { month: 'short', day: 'numeric', timeZone: 'UTC' } : { month: 'short', day: 'numeric' });
+                    document.getElementById('priceStartLabel').textContent = startDate;
+                    document.getElementById('priceEndLabel').textContent = endDate;
+                }
+            }
+
+            function filterPriceByRange() {
+                if (priceData.length === 0) return;
+
+                const filtered = priceData.slice(priceRangeStart, priceRangeEnd + 1);
+                const labels = filtered.map(d => new Date(d.timestamp * 1000));
+                const valuesBtc = filtered.map(d => d.price);
+                const valuesUsd = filtered.map(d => d.yb_usd);
+
+                if (priceChart) {
+                    priceChart.data.labels = labels;
+                    priceChart.data.datasets[0].data = valuesBtc;
+                    priceChart.data.datasets[1].data = valuesUsd;
+                    priceChart.update('none');
+                }
+            }
+
+            document.getElementById('priceRangeStart').addEventListener('input', function() {
+                let startValue = parseInt(this.value);
+                let endValue = parseInt(document.getElementById('priceRangeEnd').value);
+                if (startValue >= endValue - 2) { startValue = endValue - 2; this.value = startValue; }
+                priceRangeStart = Math.floor((startValue / 100) * (priceData.length - 1));
+                updatePriceSliderUI();
+            });
+
+            document.getElementById('priceRangeEnd').addEventListener('input', function() {
+                let startValue = parseInt(document.getElementById('priceRangeStart').value);
+                let endValue = parseInt(this.value);
+                if (endValue <= startValue + 2) { endValue = startValue + 2; this.value = endValue; }
+                priceRangeEnd = Math.floor((endValue / 100) * (priceData.length - 1));
+                updatePriceSliderUI();
+            });
+
+            document.getElementById('priceRangeStart').addEventListener('change', filterPriceByRange);
+            document.getElementById('priceRangeEnd').addEventListener('change', filterPriceByRange);
+
+            document.querySelectorAll('#pricePeriodButtons .period-button').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    document.querySelectorAll('#pricePeriodButtons .period-button').forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    const days = btn.dataset.days;
+                    if (days === 'all') {
+                        priceRangeStart = 0;
+                        priceRangeEnd = priceData.length - 1;
+                    } else {
+                        priceRangeEnd = priceData.length - 1;
+                        const endTimestamp = priceData[priceRangeEnd].timestamp;
+                        const targetTimestamp = endTimestamp - (parseInt(days) * 86400);
+                        priceRangeStart = priceData.findIndex(p => p.timestamp >= targetTimestamp);
+                        if (priceRangeStart === -1) priceRangeStart = 0;
+                    }
+                    const startPercent = (priceRangeStart / (priceData.length - 1)) * 100;
+                    const endPercent = (priceRangeEnd / (priceData.length - 1)) * 100;
+                    document.getElementById('priceRangeStart').value = startPercent;
+                    document.getElementById('priceRangeEnd').value = endPercent;
+                    updatePriceSliderUI();
+                    filterPriceByRange();
+                });
+            });
+
+            if (priceData.length > 0) updatePriceSliderUI();
+            // ====== END PRICE RANGE SLIDER LOGIC ======
+
+            // ====== SUPPLY RANGE SLIDER LOGIC ======
+            let supplyRangeStart = 0;
+            let supplyRangeEnd = allData.length - 1;
+
+            function updateSupplySliderUI() {
+                const rangeStart = document.getElementById('supplyRangeStart');
+                const rangeEnd = document.getElementById('supplyRangeEnd');
+                const rangeFill = document.getElementById('supplyRangeFill');
+
+                const startPercent = (parseInt(rangeStart.value) / parseInt(rangeStart.max)) * 100;
+                const endPercent = (parseInt(rangeEnd.value) / parseInt(rangeEnd.max)) * 100;
+
+                rangeFill.style.left = startPercent + '%';
+                rangeFill.style.width = (endPercent - startPercent) + '%';
+
+                if (allData.length > 0 && supplyRangeStart < allData.length && supplyRangeEnd < allData.length) {
+                    const startDate = new Date(allData[supplyRangeStart].timestamp * 1000).toLocaleDateString('en-US', useUTC ? { month: 'short', day: 'numeric', timeZone: 'UTC' } : { month: 'short', day: 'numeric' });
+                    const endDate = new Date(allData[supplyRangeEnd].timestamp * 1000).toLocaleDateString('en-US', useUTC ? { month: 'short', day: 'numeric', timeZone: 'UTC' } : { month: 'short', day: 'numeric' });
+                    document.getElementById('supplyStartLabel').textContent = startDate;
+                    document.getElementById('supplyEndLabel').textContent = endDate;
+                }
+            }
+
+            function filterSupplyByRange() {
+                if (allData.length === 0) return;
+
+                const filtered = allData.slice(supplyRangeStart, supplyRangeEnd + 1);
+                // Sort by block number (always correct order) instead of timestamp
+                const sortedData = [...filtered].sort((a, b) => a.block - b.block);
+                const chartData = sortedData.map(d => ({
+                    x: d.datetime ? parseAsUTC(d.datetime) : new Date(d.timestamp * 1000),
+                    y: d.supply_yb
+                }));
+
+                if (supplyChart) {
+                    supplyChart.data.datasets[0].data = chartData;
+                    supplyChart.update('none');
+                }
+            }
+
+            document.getElementById('supplyRangeStart').addEventListener('input', function() {
+                let startValue = parseInt(this.value);
+                let endValue = parseInt(document.getElementById('supplyRangeEnd').value);
+                if (startValue >= endValue - 2) { startValue = endValue - 2; this.value = startValue; }
+                supplyRangeStart = Math.floor((startValue / 100) * (allData.length - 1));
+                updateSupplySliderUI();
+            });
+
+            document.getElementById('supplyRangeEnd').addEventListener('input', function() {
+                let startValue = parseInt(document.getElementById('supplyRangeStart').value);
+                let endValue = parseInt(this.value);
+                if (endValue <= startValue + 2) { endValue = startValue + 2; this.value = endValue; }
+                supplyRangeEnd = Math.floor((endValue / 100) * (allData.length - 1));
+                updateSupplySliderUI();
+            });
+
+            document.getElementById('supplyRangeStart').addEventListener('change', filterSupplyByRange);
+            document.getElementById('supplyRangeEnd').addEventListener('change', filterSupplyByRange);
+
+            document.querySelectorAll('#supplyPeriodButtons .period-button').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    document.querySelectorAll('#supplyPeriodButtons .period-button').forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    const days = btn.dataset.days;
+                    if (days === 'all') {
+                        supplyRangeStart = 0;
+                        supplyRangeEnd = allData.length - 1;
+                    } else {
+                        supplyRangeEnd = allData.length - 1;
+                        const endTimestamp = allData[supplyRangeEnd].timestamp;
+                        const targetTimestamp = endTimestamp - (parseInt(days) * 86400);
+                        supplyRangeStart = allData.findIndex(p => p.timestamp >= targetTimestamp);
+                        if (supplyRangeStart === -1) supplyRangeStart = 0;
+                    }
+                    const startPercent = (supplyRangeStart / (allData.length - 1)) * 100;
+                    const endPercent = (supplyRangeEnd / (allData.length - 1)) * 100;
+                    document.getElementById('supplyRangeStart').value = startPercent;
+                    document.getElementById('supplyRangeEnd').value = endPercent;
+                    updateSupplySliderUI();
+                    filterSupplyByRange();
+                });
+            });
+
+            updateSupplySliderUI();
+            // ====== END SUPPLY RANGE SLIDER LOGIC ======
+
+            // ====== LOCK RATIO RANGE SLIDER LOGIC ======
+            let lockRatioRangeStart = 0;
+            let lockRatioRangeEnd = lockRatioData.length - 1;
+
+            function updateLockRatioSliderUI() {
+                const rangeStart = document.getElementById('lockRatioRangeStart');
+                const rangeEnd = document.getElementById('lockRatioRangeEnd');
+                const rangeFill = document.getElementById('lockRatioRangeFill');
+
+                const startPercent = (parseInt(rangeStart.value) / parseInt(rangeStart.max)) * 100;
+                const endPercent = (parseInt(rangeEnd.value) / parseInt(rangeEnd.max)) * 100;
+
+                rangeFill.style.left = startPercent + '%';
+                rangeFill.style.width = (endPercent - startPercent) + '%';
+
+                if (lockRatioData.length > 0 && lockRatioRangeStart < lockRatioData.length && lockRatioRangeEnd < lockRatioData.length) {
+                    const startDate = new Date(lockRatioData[lockRatioRangeStart].timestamp * 1000).toLocaleDateString('en-US', useUTC ? { month: 'short', day: 'numeric', timeZone: 'UTC' } : { month: 'short', day: 'numeric' });
+                    const endDate = new Date(lockRatioData[lockRatioRangeEnd].timestamp * 1000).toLocaleDateString('en-US', useUTC ? { month: 'short', day: 'numeric', timeZone: 'UTC' } : { month: 'short', day: 'numeric' });
+                    document.getElementById('lockRatioStartLabel').textContent = startDate;
+                    document.getElementById('lockRatioEndLabel').textContent = endDate;
+                }
+            }
+
+            function filterLockRatioByRange() {
+                if (lockRatioData.length === 0) return;
+
+                const filtered = lockRatioData.slice(lockRatioRangeStart, lockRatioRangeEnd + 1);
+                // Sort by block number (always correct order) instead of timestamp
+                const sortedData = [...filtered].sort((a, b) => a.block - b.block);
+                const chartData = sortedData.map(d => ({
+                    x: new Date(d.timestamp * 1000),
+                    y: d.lock_ratio * 100
+                }));
+
+                if (lockRatioChart) {
+                    lockRatioChart.data.datasets[0].data = chartData;
+                    lockRatioChart.update('none');
+                }
+            }
+
+            document.getElementById('lockRatioRangeStart').addEventListener('input', function() {
+                let startValue = parseInt(this.value);
+                let endValue = parseInt(document.getElementById('lockRatioRangeEnd').value);
+                if (startValue >= endValue - 2) { startValue = endValue - 2; this.value = startValue; }
+                lockRatioRangeStart = Math.floor((startValue / 100) * (lockRatioData.length - 1));
+                updateLockRatioSliderUI();
+            });
+
+            document.getElementById('lockRatioRangeEnd').addEventListener('input', function() {
+                let startValue = parseInt(document.getElementById('lockRatioRangeStart').value);
+                let endValue = parseInt(this.value);
+                if (endValue <= startValue + 2) { endValue = startValue + 2; this.value = endValue; }
+                lockRatioRangeEnd = Math.floor((endValue / 100) * (lockRatioData.length - 1));
+                updateLockRatioSliderUI();
+            });
+
+            document.getElementById('lockRatioRangeStart').addEventListener('change', filterLockRatioByRange);
+            document.getElementById('lockRatioRangeEnd').addEventListener('change', filterLockRatioByRange);
+
+            document.querySelectorAll('#lockRatioPeriodButtons .period-button').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    document.querySelectorAll('#lockRatioPeriodButtons .period-button').forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    const days = btn.dataset.days;
+                    if (days === 'all') {
+                        lockRatioRangeStart = 0;
+                        lockRatioRangeEnd = lockRatioData.length - 1;
+                    } else {
+                        lockRatioRangeEnd = lockRatioData.length - 1;
+                        const endTimestamp = lockRatioData[lockRatioRangeEnd].timestamp;
+                        const targetTimestamp = endTimestamp - (parseInt(days) * 86400);
+                        lockRatioRangeStart = lockRatioData.findIndex(p => p.timestamp >= targetTimestamp);
+                        if (lockRatioRangeStart === -1) lockRatioRangeStart = 0;
+                    }
+                    const startPercent = (lockRatioRangeStart / (lockRatioData.length - 1)) * 100;
+                    const endPercent = (lockRatioRangeEnd / (lockRatioData.length - 1)) * 100;
+                    document.getElementById('lockRatioRangeStart').value = startPercent;
+                    document.getElementById('lockRatioRangeEnd').value = endPercent;
+                    updateLockRatioSliderUI();
+                    filterLockRatioByRange();
+                });
+            });
+
+            if (lockRatioData.length > 0) updateLockRatioSliderUI();
+            // ====== END LOCK RATIO RANGE SLIDER LOGIC ======
+
+            // ====== ADMIN FEES RANGE SLIDER LOGIC ======
+            let adminFeesRangeStart = 0;
+            let adminFeesRangeEnd = adminFeesData.length - 1;
+
+            function updateAdminFeesSliderUI() {
+                const rangeStart = document.getElementById('adminFeesRangeStart');
+                const rangeEnd = document.getElementById('adminFeesRangeEnd');
+                const rangeFill = document.getElementById('adminFeesRangeFill');
+
+                const startPercent = (parseInt(rangeStart.value) / parseInt(rangeStart.max)) * 100;
+                const endPercent = (parseInt(rangeEnd.value) / parseInt(rangeEnd.max)) * 100;
+
+                rangeFill.style.left = startPercent + '%';
+                rangeFill.style.width = (endPercent - startPercent) + '%';
+
+                if (adminFeesData.length > 0 && adminFeesRangeStart < adminFeesData.length && adminFeesRangeEnd < adminFeesData.length) {
+                    const startDate = new Date(adminFeesData[adminFeesRangeStart].timestamp * 1000).toLocaleDateString('en-US', useUTC ? { month: 'short', day: 'numeric', timeZone: 'UTC' } : { month: 'short', day: 'numeric' });
+                    const endDate = new Date(adminFeesData[adminFeesRangeEnd].timestamp * 1000).toLocaleDateString('en-US', useUTC ? { month: 'short', day: 'numeric', timeZone: 'UTC' } : { month: 'short', day: 'numeric' });
+                    document.getElementById('adminFeesStartLabel').textContent = startDate;
+                    document.getElementById('adminFeesEndLabel').textContent = endDate;
+                }
+            }
+
+            function filterAdminFeesByRange() {
+                if (adminFeesData.length === 0) return;
+
+                const filtered = adminFeesData.slice(adminFeesRangeStart, adminFeesRangeEnd + 1);
+                const labels = filtered.map(d => new Date(d.timestamp * 1000));
+                const values = filtered.map(d => d.total || d.cumulative_withdrawn);
+
+                if (adminFeesChart) {
+                    adminFeesChart.data.labels = labels;
+                    adminFeesChart.data.datasets[0].data = values;
+                    adminFeesChart.update('none');
+                }
+            }
+
+            document.getElementById('adminFeesRangeStart').addEventListener('input', function() {
+                let startValue = parseInt(this.value);
+                let endValue = parseInt(document.getElementById('adminFeesRangeEnd').value);
+                if (startValue >= endValue - 2) { startValue = endValue - 2; this.value = startValue; }
+                adminFeesRangeStart = Math.floor((startValue / 100) * (adminFeesData.length - 1));
+                updateAdminFeesSliderUI();
+            });
+
+            document.getElementById('adminFeesRangeEnd').addEventListener('input', function() {
+                let startValue = parseInt(document.getElementById('adminFeesRangeStart').value);
+                let endValue = parseInt(this.value);
+                if (endValue <= startValue + 2) { endValue = startValue + 2; this.value = endValue; }
+                adminFeesRangeEnd = Math.floor((endValue / 100) * (adminFeesData.length - 1));
+                updateAdminFeesSliderUI();
+            });
+
+            document.getElementById('adminFeesRangeStart').addEventListener('change', filterAdminFeesByRange);
+            document.getElementById('adminFeesRangeEnd').addEventListener('change', filterAdminFeesByRange);
+
+            document.querySelectorAll('#adminFeesPeriodButtons .period-button').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    document.querySelectorAll('#adminFeesPeriodButtons .period-button').forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    const days = btn.dataset.days;
+                    if (days === 'all') {
+                        adminFeesRangeStart = 0;
+                        adminFeesRangeEnd = adminFeesData.length - 1;
+                    } else {
+                        adminFeesRangeEnd = adminFeesData.length - 1;
+                        const endTimestamp = adminFeesData[adminFeesRangeEnd].timestamp;
+                        const targetTimestamp = endTimestamp - (parseInt(days) * 86400);
+                        adminFeesRangeStart = adminFeesData.findIndex(p => p.timestamp >= targetTimestamp);
+                        if (adminFeesRangeStart === -1) adminFeesRangeStart = 0;
+                    }
+                    const startPercent = (adminFeesRangeStart / (adminFeesData.length - 1)) * 100;
+                    const endPercent = (adminFeesRangeEnd / (adminFeesData.length - 1)) * 100;
+                    document.getElementById('adminFeesRangeStart').value = startPercent;
+                    document.getElementById('adminFeesRangeEnd').value = endPercent;
+                    updateAdminFeesSliderUI();
+                    filterAdminFeesByRange();
+                });
+            });
+
+            if (adminFeesData.length > 0) updateAdminFeesSliderUI();
+            // ====== END ADMIN FEES RANGE SLIDER LOGIC ======
+
+            // Show content
+            document.getElementById('loading').style.display = 'none';
+            document.getElementById('content').style.display = 'block';
+        }
+
+        // Initialize when DOM is ready
+        document.addEventListener('DOMContentLoaded', init);
+    </script>
+
+    <!-- Timezone Toggle -->
+    <div id="timezone-panel" style="position: fixed; bottom: 8px; right: 10px; font-size: 11px; color: #888; z-index: 100; display: flex; align-items: center; gap: 8px;">
+        <span id="timezone-toggle" onclick="toggleTimezone()" style="cursor: pointer; padding: 2px 6px; border: 1px solid #555; border-radius: 3px; background: #333;" title="Click to toggle UTC/Local time">🕐 Local</span>
+    </div>
+</body>
+</html>

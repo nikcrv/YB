@@ -1,0 +1,4333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YieldBasis Terminal</title>
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns"></script>
+    <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+
+    <!-- System.css base -->
+    <link rel="stylesheet" href="https://unpkg.com/@sakun/system.css">
+
+    <style>
+        /* ═══════════════════════════════════════════════════════════════
+           YIELDBASIS TERMINAL - RETRO-FUTURISTIC DARK THEME
+           Combining System.css aesthetics with modern dark mode
+        ═══════════════════════════════════════════════════════════════ */
+
+        @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap');
+
+        :root {
+            /* Core palette */
+            --bg-primary: #0a0a0f;
+            --bg-secondary: #12121a;
+            --bg-tertiary: #1a1a24;
+            --bg-elevated: #22222e;
+
+            /* Accent colors */
+            --accent-purple: #8b5cf6;
+            --accent-purple-dim: #6d43d8;
+            --accent-blue: #3b82f6;
+            --accent-cyan: #22d3ee;
+            --accent-green: #10b981;
+            --accent-orange: #f97316;
+            --accent-yellow: #eab308;
+            --accent-red: #ef4444;
+            --accent-pink: #ec4899;
+
+            /* Market colors */
+            --color-wbtc: #f7931a;
+            --color-cbbtc: #0052ff;
+            --color-tbtc: #7b1fa2;
+            --color-eth: #627eea;
+            --color-crvusd: #00c853;
+
+            /* Text */
+            --text-primary: #f1f5f9;
+            --text-secondary: #94a3b8;
+            --text-muted: #64748b;
+            --text-dim: #475569;
+
+            /* Borders & effects */
+            --border-subtle: rgba(139, 92, 246, 0.15);
+            --border-active: rgba(139, 92, 246, 0.4);
+            --glow-purple: 0 0 20px rgba(139, 92, 246, 0.3);
+            --glow-cyan: 0 0 20px rgba(34, 211, 238, 0.3);
+
+            /* System.css overrides */
+            --window-border: var(--border-active);
+            --title-bar-bg: linear-gradient(90deg, var(--accent-purple) 0%, var(--accent-pink) 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            height: 100%;
+            overflow: hidden;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* ═══════════════════════════════════════════════════════════════
+           ANIMATED BACKGROUND
+        ═══════════════════════════════════════════════════════════════ */
+
+        .bg-grid {
+            position: fixed;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(139, 92, 246, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(139, 92, 246, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .bg-glow {
+            position: fixed;
+            width: 600px;
+            height: 600px;
+            border-radius: 50%;
+            filter: blur(150px);
+            opacity: 0.15;
+            pointer-events: none;
+            z-index: 0;
+            animation: float 20s ease-in-out infinite;
+        }
+
+        .bg-glow-1 {
+            background: var(--accent-purple);
+            top: -200px;
+            left: -200px;
+        }
+
+        .bg-glow-2 {
+            background: var(--accent-cyan);
+            bottom: -200px;
+            right: -200px;
+            animation-delay: -10s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(50px, 30px) scale(1.1); }
+        }
+
+        /* ═══════════════════════════════════════════════════════════════
+           TOP MENU BAR (System.css inspired)
+        ═══════════════════════════════════════════════════════════════ */
+
+        .menu-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 16px;
+            height: 32px;
+            background: var(--bg-secondary);
+            border-bottom: 1px solid var(--border-subtle);
+            position: relative;
+            z-index: 1000;
+        }
+
+        .menu-bar-left {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .menu-bar-center {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .menu-bar-right {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 700;
+            font-size: 14px;
+            color: var(--text-primary);
+            padding: 4px 12px;
+            background: linear-gradient(135deg, var(--accent-purple) 0%, var(--accent-pink) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .logo-icon {
+            width: 20px;
+            height: 20px;
+            background: linear-gradient(135deg, var(--accent-purple) 0%, var(--accent-pink) 100%);
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 12px;
+            font-weight: bold;
+            -webkit-background-clip: unset;
+            -webkit-text-fill-color: unset;
+        }
+
+        .menu-item {
+            padding: 6px 12px;
+            font-size: 13px;
+            color: var(--text-secondary);
+            cursor: pointer;
+            border-radius: 4px;
+            transition: all 0.15s ease;
+            position: relative;
+        }
+
+        .menu-item:hover {
+            background: var(--bg-tertiary);
+            color: var(--text-primary);
+        }
+
+        .menu-item.active {
+            background: var(--accent-purple);
+            color: white;
+        }
+
+        /* Status indicators */
+        .status-pill {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 4px 10px;
+            font-size: 11px;
+            font-family: 'JetBrains Mono', monospace;
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border-subtle);
+            border-radius: 20px;
+            color: var(--text-secondary);
+        }
+
+        .status-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--accent-green);
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        /* ═══════════════════════════════════════════════════════════════
+           MAIN CONTAINER
+        ═══════════════════════════════════════════════════════════════ */
+
+        .main-container {
+            flex: 1;
+            display: flex;
+            overflow: hidden;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* ═══════════════════════════════════════════════════════════════
+           SIDEBAR NAVIGATION
+        ═══════════════════════════════════════════════════════════════ */
+
+        .sidebar {
+            width: 220px;
+            background: var(--bg-secondary);
+            border-right: 1px solid var(--border-subtle);
+            display: flex;
+            flex-direction: column;
+            padding: 16px 12px;
+            gap: 8px;
+        }
+
+        .sidebar-section {
+            margin-bottom: 16px;
+        }
+
+        .sidebar-title {
+            font-size: 10px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-muted);
+            padding: 8px 12px 4px;
+        }
+
+        .nav-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            color: var(--text-secondary);
+            font-size: 13px;
+            font-weight: 500;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-item:hover {
+            background: var(--bg-tertiary);
+            color: var(--text-primary);
+        }
+
+        .nav-item.active {
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.2) 0%, rgba(236, 72, 153, 0.1) 100%);
+            color: var(--text-primary);
+            border: 1px solid var(--border-active);
+        }
+
+        .nav-item.active::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(180deg, var(--accent-purple) 0%, var(--accent-pink) 100%);
+            border-radius: 0 4px 4px 0;
+        }
+
+        .nav-icon {
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+        }
+
+        .nav-badge {
+            margin-left: auto;
+            font-size: 10px;
+            padding: 2px 6px;
+            border-radius: 10px;
+            background: var(--accent-purple);
+            color: white;
+        }
+
+        /* Contract selector in sidebar */
+        .contract-selector {
+            display: flex;
+            gap: 4px;
+            padding: 4px;
+            background: var(--bg-tertiary);
+            border-radius: 8px;
+            margin-top: auto;
+        }
+
+        .contract-btn {
+            flex: 1;
+            padding: 8px;
+            font-size: 11px;
+            font-weight: 600;
+            text-align: center;
+            border: none;
+            background: transparent;
+            color: var(--text-muted);
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .contract-btn:hover {
+            background: var(--bg-elevated);
+            color: var(--text-secondary);
+        }
+
+        .contract-btn.active {
+            background: var(--accent-purple);
+            color: white;
+        }
+
+        /* ═══════════════════════════════════════════════════════════════
+           CONTENT AREA
+        ═══════════════════════════════════════════════════════════════ */
+
+        .content {
+            flex: 1;
+            overflow-y: auto;
+            overflow-x: hidden;
+            padding: 20px;
+        }
+
+        .content::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .content::-webkit-scrollbar-track {
+            background: var(--bg-secondary);
+        }
+
+        .content::-webkit-scrollbar-thumb {
+            background: var(--bg-elevated);
+            border-radius: 4px;
+        }
+
+        .content::-webkit-scrollbar-thumb:hover {
+            background: var(--text-dim);
+        }
+
+        /* Page sections - initially hidden */
+        .page-section {
+            display: none;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .page-section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ═══════════════════════════════════════════════════════════════
+           WINDOW COMPONENT (System.css inspired, modernized)
+        ═══════════════════════════════════════════════════════════════ */
+
+        .window {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-subtle);
+            border-radius: 12px;
+            overflow: hidden;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .window-title-bar {
+            display: flex;
+            align-items: center;
+            padding: 10px 16px;
+            background: linear-gradient(135deg, var(--bg-tertiary) 0%, var(--bg-elevated) 100%);
+            border-bottom: 1px solid var(--border-subtle);
+            gap: 10px;
+        }
+
+        .window-controls {
+            display: flex;
+            gap: 6px;
+        }
+
+        .window-control {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            border: none;
+            cursor: pointer;
+            transition: all 0.15s ease;
+        }
+
+        .window-control.close { background: #ff5f57; }
+        .window-control.minimize { background: #febc2e; }
+        .window-control.maximize { background: #28c840; }
+
+        .window-control:hover {
+            filter: brightness(1.2);
+            transform: scale(1.1);
+        }
+
+        .window-title {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--text-primary);
+            flex: 1;
+        }
+
+        .window-actions {
+            display: flex;
+            gap: 8px;
+        }
+
+        .window-content {
+            padding: 20px;
+        }
+
+        /* ═══════════════════════════════════════════════════════════════
+           METRICS CARDS
+        ═══════════════════════════════════════════════════════════════ */
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+            margin-bottom: 20px;
+        }
+
+        .metric-card {
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border-subtle);
+            border-radius: 12px;
+            padding: 20px;
+            transition: all 0.2s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .metric-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent-purple) 0%, var(--accent-cyan) 100%);
+            opacity: 0;
+            transition: opacity 0.2s ease;
+        }
+
+        .metric-card:hover {
+            border-color: var(--border-active);
+            transform: translateY(-2px);
+            box-shadow: var(--glow-purple);
+        }
+
+        .metric-card:hover::before {
+            opacity: 1;
+        }
+
+        .metric-label {
+            font-size: 12px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 8px;
+        }
+
+        .metric-value {
+            font-size: 24px;
+            font-weight: 700;
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--text-primary);
+            margin-bottom: 4px;
+        }
+
+        .metric-change {
+            font-size: 12px;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .metric-change.positive { color: var(--accent-green); }
+        .metric-change.negative { color: var(--accent-red); }
+        .metric-value.positive { color: var(--accent-green); }
+        .metric-value.negative { color: var(--accent-red); }
+
+        /* Hero metric card */
+        .metric-card.hero {
+            background: linear-gradient(135deg, var(--accent-purple) 0%, var(--accent-pink) 100%);
+            border: none;
+        }
+
+        .metric-card.hero .metric-label {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .metric-card.hero .metric-value {
+            color: white;
+            font-size: 32px;
+        }
+
+        .metric-card.hero .metric-change {
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        /* ═══════════════════════════════════════════════════════════════
+           CHART CONTAINER
+        ═══════════════════════════════════════════════════════════════ */
+
+        .chart-container {
+            position: relative;
+            height: 400px;
+            margin-bottom: 16px;
+        }
+
+        .chart-controls {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 16px;
+            padding: 12px;
+            background: var(--bg-tertiary);
+            border-radius: 8px;
+        }
+
+        .chart-control-group {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .chart-control-label {
+            font-size: 11px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* ═══════════════════════════════════════════════════════════════
+           BUTTONS (System.css inspired)
+        ═══════════════════════════════════════════════════════════════ */
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            padding: 8px 16px;
+            font-size: 13px;
+            font-weight: 500;
+            border-radius: 6px;
+            border: 1px solid var(--border-subtle);
+            background: var(--bg-tertiary);
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: all 0.15s ease;
+            font-family: inherit;
+        }
+
+        .btn:hover {
+            background: var(--bg-elevated);
+            border-color: var(--border-active);
+            color: var(--text-primary);
+        }
+
+        .btn.primary {
+            background: var(--accent-purple);
+            border-color: var(--accent-purple);
+            color: white;
+        }
+
+        .btn.primary:hover {
+            background: var(--accent-purple-dim);
+            box-shadow: var(--glow-purple);
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 4px;
+            padding: 4px;
+            background: var(--bg-tertiary);
+            border-radius: 8px;
+        }
+
+        .btn-group .btn {
+            border: none;
+            background: transparent;
+            padding: 6px 12px;
+        }
+
+        .btn-group .btn.active {
+            background: var(--accent-purple);
+            color: white;
+        }
+
+        /* ═══════════════════════════════════════════════════════════════
+           FORM ELEMENTS
+        ═══════════════════════════════════════════════════════════════ */
+
+        /* Checkbox */
+        .checkbox-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            padding: 4px 0;
+        }
+
+        .checkbox-wrapper input[type="checkbox"] {
+            appearance: none;
+            width: 16px;
+            height: 16px;
+            border: 2px solid var(--text-dim);
+            border-radius: 4px;
+            background: var(--bg-tertiary);
+            cursor: pointer;
+            transition: all 0.15s ease;
+            position: relative;
+        }
+
+        .checkbox-wrapper input[type="checkbox"]:checked {
+            background: var(--accent-purple);
+            border-color: var(--accent-purple);
+        }
+
+        .checkbox-wrapper input[type="checkbox"]:checked::after {
+            content: '✓';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 10px;
+            font-weight: bold;
+        }
+
+        .checkbox-wrapper label {
+            font-size: 13px;
+            color: var(--text-secondary);
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .checkbox-wrapper:hover label {
+            color: var(--text-primary);
+        }
+
+        /* Range Slider */
+        .range-slider-container {
+            padding: 16px;
+            background: var(--bg-tertiary);
+            border-radius: 8px;
+        }
+
+        .range-slider-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        .range-slider-title {
+            font-size: 12px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .range-slider-wrapper {
+            position: relative;
+            height: 24px;
+            margin-bottom: 8px;
+        }
+
+        .range-track {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 100%;
+            height: 4px;
+            background: var(--bg-elevated);
+            border-radius: 2px;
+        }
+
+        .range-fill {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent-purple) 0%, var(--accent-cyan) 100%);
+            border-radius: 2px;
+        }
+
+        .range-input {
+            position: absolute;
+            width: 100%;
+            height: 24px;
+            background: transparent;
+            pointer-events: none;
+            -webkit-appearance: none;
+        }
+
+        .range-input::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: white;
+            border: 2px solid var(--accent-purple);
+            cursor: pointer;
+            pointer-events: auto;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+            transition: all 0.15s ease;
+        }
+
+        .range-input::-webkit-slider-thumb:hover {
+            transform: scale(1.2);
+            box-shadow: var(--glow-purple);
+        }
+
+        .range-labels {
+            display: flex;
+            justify-content: space-between;
+            font-size: 11px;
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--text-muted);
+        }
+
+        /* Period buttons */
+        .period-buttons {
+            display: flex;
+            gap: 4px;
+        }
+
+        .period-btn {
+            padding: 6px 12px;
+            font-size: 11px;
+            font-weight: 600;
+            border: none;
+            background: transparent;
+            color: var(--text-muted);
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.15s ease;
+        }
+
+        .period-btn:hover {
+            background: var(--bg-elevated);
+            color: var(--text-secondary);
+        }
+
+        .period-btn.active {
+            background: var(--accent-purple);
+            color: white;
+        }
+
+        /* ═══════════════════════════════════════════════════════════════
+           DENOMINATION SWITCHER
+        ═══════════════════════════════════════════════════════════════ */
+
+        .denom-switcher {
+            display: flex;
+            gap: 2px;
+            padding: 3px;
+            background: var(--bg-tertiary);
+            border-radius: 6px;
+        }
+
+        .denom-btn {
+            padding: 5px 10px;
+            font-size: 11px;
+            font-weight: 600;
+            border: none;
+            background: transparent;
+            color: var(--text-muted);
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.15s ease;
+        }
+
+        .denom-btn:hover {
+            color: var(--text-secondary);
+        }
+
+        .denom-btn.active {
+            background: var(--accent-purple);
+            color: white;
+        }
+
+        /* ═══════════════════════════════════════════════════════════════
+           MARKET SELECTOR (Pills)
+        ═══════════════════════════════════════════════════════════════ */
+
+        .market-selector {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            padding: 12px;
+            background: var(--bg-tertiary);
+            border-radius: 8px;
+            margin-bottom: 16px;
+        }
+
+        .market-pill {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 14px;
+            border-radius: 20px;
+            border: 1px solid var(--border-subtle);
+            background: var(--bg-secondary);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .market-pill:hover {
+            border-color: var(--border-active);
+        }
+
+        .market-pill.active {
+            border-color: transparent;
+        }
+
+        .market-pill.wbtc.active { background: var(--color-wbtc); }
+        .market-pill.cbbtc.active { background: var(--color-cbbtc); }
+        .market-pill.tbtc.active { background: var(--color-tbtc); }
+        .market-pill.eth.active { background: var(--color-eth); }
+
+        .market-pill .dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+        }
+
+        .market-pill.wbtc .dot { background: var(--color-wbtc); }
+        .market-pill.cbbtc .dot { background: var(--color-cbbtc); }
+        .market-pill.tbtc .dot { background: var(--color-tbtc); }
+        .market-pill.eth .dot { background: var(--color-eth); }
+
+        .market-pill.active .dot { background: white; }
+
+        .market-pill span {
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--text-secondary);
+        }
+
+        .market-pill.active span { color: white; }
+
+        /* ═══════════════════════════════════════════════════════════════
+           TAB NAVIGATION (for Pools)
+        ═══════════════════════════════════════════════════════════════ */
+
+        .tabs {
+            display: flex;
+            gap: 4px;
+            padding: 4px;
+            background: var(--bg-tertiary);
+            border-radius: 8px;
+            margin-bottom: 16px;
+        }
+
+        .tab {
+            flex: 1;
+            padding: 10px 16px;
+            font-size: 13px;
+            font-weight: 600;
+            text-align: center;
+            border: none;
+            background: transparent;
+            color: var(--text-muted);
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .tab:hover {
+            background: var(--bg-elevated);
+            color: var(--text-secondary);
+        }
+
+        .tab.active {
+            color: white;
+        }
+
+        .tab.active.wbtc { background: var(--color-wbtc); }
+        .tab.active.cbbtc { background: var(--color-cbbtc); }
+        .tab.active.tbtc { background: var(--color-tbtc); }
+
+        /* ═══════════════════════════════════════════════════════════════
+           BALANCE BAR (for Pools)
+        ═══════════════════════════════════════════════════════════════ */
+
+        .balance-bar-container {
+            padding: 16px;
+            background: var(--bg-tertiary);
+            border-radius: 8px;
+            margin-bottom: 16px;
+        }
+
+        .balance-bar-labels {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            font-size: 12px;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .balance-bar {
+            height: 24px;
+            border-radius: 12px;
+            overflow: hidden;
+            display: flex;
+            position: relative;
+        }
+
+        .balance-bar .token1 {
+            transition: width 0.3s ease;
+        }
+
+        .balance-bar .token0 {
+            transition: width 0.3s ease;
+            background: var(--color-crvusd);
+        }
+
+        .balance-bar.wbtc .token1 { background: var(--color-wbtc); }
+        .balance-bar.cbbtc .token1 { background: var(--color-cbbtc); }
+        .balance-bar.tbtc .token1 { background: var(--color-tbtc); }
+
+        .balance-bar .center-marker {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: white;
+            opacity: 0.5;
+            transform: translateX(-50%);
+        }
+
+        /* ═══════════════════════════════════════════════════════════════
+           NOTICE BANNERS
+        ═══════════════════════════════════════════════════════════════ */
+
+        .notice {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            padding: 12px 16px;
+            border-radius: 8px;
+            margin-bottom: 16px;
+            font-size: 13px;
+        }
+
+        .notice.info {
+            background: rgba(59, 130, 246, 0.1);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            color: var(--accent-blue);
+        }
+
+        .notice.warning {
+            background: rgba(234, 179, 8, 0.1);
+            border: 1px solid rgba(234, 179, 8, 0.3);
+            color: var(--accent-yellow);
+        }
+
+        .notice-icon {
+            font-size: 16px;
+            flex-shrink: 0;
+        }
+
+        /* ═══════════════════════════════════════════════════════════════
+           SHARE BUTTONS
+        ═══════════════════════════════════════════════════════════════ */
+
+        .share-buttons {
+            display: flex;
+            gap: 6px;
+        }
+
+        .share-btn {
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 6px;
+            border: 1px solid var(--border-subtle);
+            background: var(--bg-tertiary);
+            color: var(--text-muted);
+            cursor: pointer;
+            transition: all 0.15s ease;
+        }
+
+        .share-btn:hover {
+            border-color: var(--border-active);
+            color: var(--text-primary);
+        }
+
+        .share-btn.copy:hover { color: var(--accent-green); }
+        .share-btn.telegram:hover { color: var(--accent-cyan); }
+        .share-btn.twitter:hover { color: var(--text-primary); }
+
+        .share-btn svg {
+            width: 14px;
+            height: 14px;
+        }
+
+        /* ═══════════════════════════════════════════════════════════════
+           CONTRACT INFO SECTION
+        ═══════════════════════════════════════════════════════════════ */
+
+        .contract-info {
+            padding: 16px;
+            background: var(--bg-tertiary);
+            border-radius: 8px;
+        }
+
+        .contract-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid var(--border-subtle);
+        }
+
+        .contract-row:last-child {
+            border-bottom: none;
+        }
+
+        .contract-label {
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+
+        .contract-value {
+            font-size: 12px;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .contract-value a {
+            color: var(--accent-purple);
+            text-decoration: none;
+        }
+
+        .contract-value a:hover {
+            text-decoration: underline;
+        }
+
+        /* ═══════════════════════════════════════════════════════════════
+           EXTERNAL TOOLTIP
+        ═══════════════════════════════════════════════════════════════ */
+
+        .chart-tooltip {
+            position: fixed;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-active);
+            border-radius: 8px;
+            padding: 16px;
+            pointer-events: none;
+            z-index: 9999;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            color: var(--text-primary);
+            white-space: pre;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+            max-width: 400px;
+        }
+
+        .chart-tooltip-line {
+            position: fixed;
+            width: 1px;
+            background: var(--accent-purple);
+            pointer-events: none;
+            z-index: 9998;
+            opacity: 0.5;
+        }
+
+        /* ═══════════════════════════════════════════════════════════════
+           LOADING STATE
+        ═══════════════════════════════════════════════════════════════ */
+
+        .loading {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 60px;
+            color: var(--text-muted);
+        }
+
+        .loading-spinner {
+            width: 40px;
+            height: 40px;
+            border: 3px solid var(--bg-elevated);
+            border-top-color: var(--accent-purple);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-bottom: 16px;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* ═══════════════════════════════════════════════════════════════
+           TIMEZONE TOGGLE (Bottom right)
+        ═══════════════════════════════════════════════════════════════ */
+
+        .timezone-toggle {
+            position: fixed;
+            bottom: 16px;
+            right: 16px;
+            padding: 6px 12px;
+            font-size: 11px;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-subtle);
+            border-radius: 6px;
+            color: var(--text-muted);
+            cursor: pointer;
+            transition: all 0.15s ease;
+            z-index: 100;
+        }
+
+        .timezone-toggle:hover {
+            border-color: var(--border-active);
+            color: var(--text-primary);
+        }
+
+        /* ═══════════════════════════════════════════════════════════════
+           RESPONSIVE
+        ═══════════════════════════════════════════════════════════════ */
+
+        @media (max-width: 1024px) {
+            .sidebar {
+                width: 60px;
+                padding: 12px 8px;
+            }
+
+            .sidebar-title,
+            .nav-item span,
+            .contract-selector {
+                display: none;
+            }
+
+            .nav-item {
+                justify-content: center;
+                padding: 12px;
+            }
+
+            .nav-icon {
+                font-size: 18px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .menu-bar-center {
+                display: none;
+            }
+
+            .metrics-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .chart-container {
+                height: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+<div id="update-time" style="position:fixed;bottom:5px;left:10px;font-size:10px;color:#666;z-index:50;">Updated: 2026-02-14 22:01:17 UTC</div>
+<script>(function(){var u=new Date("2026-02-14 22:01:17 UTC"),n=function(){var d=Math.floor((Date.now()-u)/1e3),t="";if(d<60)t=d+"s ago";else if(d<3600)t=Math.floor(d/60)+"m ago";else if(d<86400)t=Math.floor(d/3600)+"h ago";else t=Math.floor(d/86400)+"d ago";document.getElementById("update-time").textContent="Updated: "+t;setTimeout(n,d<3600?1e4:6e4)};n()})();</script>
+    <!-- Animated background -->
+    <div class="bg-grid"></div>
+    <div class="bg-glow bg-glow-1"></div>
+    <div class="bg-glow bg-glow-2"></div>
+
+    <!-- Top Menu Bar -->
+    <div class="menu-bar">
+        <div class="menu-bar-left">
+            <div class="logo">
+                <div class="logo-icon">YB</div>
+                <span>YieldBasis Terminal</span>
+            </div>
+        </div>
+
+        <div class="menu-bar-center">
+            <div class="denom-switcher" id="denomSwitcher">
+                <button class="denom-btn" data-denom="btc" onclick="switchDenomination('btc')">BTC</button>
+                <button class="denom-btn" data-denom="eth" onclick="switchDenomination('eth')">ETH</button>
+                <button class="denom-btn active" data-denom="usd" onclick="switchDenomination('usd')">USD</button>
+            </div>
+        </div>
+
+        <div class="menu-bar-right">
+            <div class="status-pill">
+                <span class="status-dot"></span>
+                <span id="lastUpdate">Synced</span>
+            </div>
+            <div class="share-buttons">
+                <button class="share-btn copy" onclick="copyScreenshot()" title="Copy Screenshot">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
+                </button>
+                <button class="share-btn telegram" onclick="shareToTelegram()" title="Share to Telegram">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+                </button>
+                <button class="share-btn twitter" onclick="shareToTwitter()" title="Share to X">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Container -->
+    <div class="main-container">
+        <!-- Sidebar Navigation -->
+        <nav class="sidebar">
+            <div class="sidebar-section">
+                <div class="sidebar-title">Analytics</div>
+                <div class="nav-item active" data-page="yield" onclick="switchPage('yield')">
+                    <span class="nav-icon">📊</span>
+                    <span>Yield Analytics</span>
+                </div>
+                <div class="nav-item" data-page="revenue" onclick="switchPage('revenue')">
+                    <span class="nav-icon">💰</span>
+                    <span>Revenue</span>
+                </div>
+                <div class="nav-item" data-page="pps" onclick="switchPage('pps')">
+                    <span class="nav-icon">📈</span>
+                    <span>Fundamental PPS</span>
+                </div>
+            </div>
+
+            <div class="sidebar-section">
+                <div class="sidebar-title">Protocol</div>
+                <div class="nav-item" data-page="veyb" onclick="switchPage('veyb')">
+                    <span class="nav-icon">🔒</span>
+                    <span>veYB</span>
+                    <span class="nav-badge">NEW</span>
+                </div>
+                <div class="nav-item" data-page="pools" onclick="switchPage('pools')">
+                    <span class="nav-icon">🌊</span>
+                    <span>Pools</span>
+                </div>
+            </div>
+
+            <div class="contract-selector">
+                <button class="contract-btn active" data-version="new" onclick="switchContract('new')">NEW</button>
+                <button class="contract-btn" data-version="old" onclick="switchContract('old')">OLD</button>
+            </div>
+        </nav>
+
+        <!-- Content Area -->
+        <main class="content">
+            <!-- Loading State -->
+            <div id="loadingState" class="loading">
+                <div class="loading-spinner"></div>
+                <span>Loading data...</span>
+            </div>
+
+            <!-- ═══════════════════════════════════════════════════════════════
+                 PAGE: YIELD ANALYTICS
+            ═══════════════════════════════════════════════════════════════ -->
+            <section id="page-yield" class="page-section">
+                <div class="window">
+                    <div class="window-title-bar">
+                        <div class="window-controls">
+                            <button class="window-control close"></button>
+                            <button class="window-control minimize"></button>
+                            <button class="window-control maximize"></button>
+                        </div>
+                        <div class="window-title">Yield Analytics — Price Per Share Growth</div>
+                        <div class="window-actions">
+                            <div class="share-buttons">
+                                <button class="share-btn copy" onclick="copyChartScreenshot('yieldChart')"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg></button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="window-content">
+                        <!-- Market Selector -->
+                        <div class="market-selector" id="marketSelector">
+                            <div class="market-pill cbbtc active" data-market="cbbtc" onclick="switchMarket('cbbtc')">
+                                <span class="dot"></span>
+                                <span>yb-cbBTC</span>
+                            </div>
+                            <div class="market-pill wbtc" data-market="wbtc" onclick="switchMarket('wbtc')">
+                                <span class="dot"></span>
+                                <span>yb-WBTC</span>
+                            </div>
+                            <div class="market-pill tbtc" data-market="tbtc" onclick="switchMarket('tbtc')">
+                                <span class="dot"></span>
+                                <span>yb-tBTC</span>
+                            </div>
+                            <div class="market-pill cbbtc" data-market="syb_cbbtc" onclick="switchMarket('syb_cbbtc')">
+                                <span class="dot"></span>
+                                <span>syb-cbBTC</span>
+                            </div>
+                            <div class="market-pill wbtc" data-market="syb_wbtc" onclick="switchMarket('syb_wbtc')">
+                                <span class="dot"></span>
+                                <span>syb-WBTC</span>
+                            </div>
+                            <div class="market-pill tbtc" data-market="syb_tbtc" onclick="switchMarket('syb_tbtc')">
+                                <span class="dot"></span>
+                                <span>syb-tBTC</span>
+                            </div>
+                            <span style="color: var(--text-dim); padding: 0 8px;">|</span>
+                            <div class="market-pill eth" data-market="eth" onclick="switchMarket('eth')">
+                                <span class="dot"></span>
+                                <span>yb-ETH</span>
+                            </div>
+                            <div class="market-pill eth" data-market="syb_eth" onclick="switchMarket('syb_eth')">
+                                <span class="dot"></span>
+                                <span>syb-ETH</span>
+                            </div>
+                        </div>
+
+                        <!-- Chart Controls -->
+                        <div class="chart-controls">
+                            <div class="chart-control-group">
+                                <span class="chart-control-label">Show:</span>
+                                <label class="checkbox-wrapper">
+                                    <input type="checkbox" id="showWithdrawable" checked onchange="updateYieldChart()">
+                                    <label for="showWithdrawable">Withdrawable PPS</label>
+                                </label>
+                                <label class="checkbox-wrapper">
+                                    <input type="checkbox" id="showFundamental" checked onchange="updateYieldChart()">
+                                    <label for="showFundamental">Fundamental PPS</label>
+                                </label>
+                                <label class="checkbox-wrapper">
+                                    <input type="checkbox" id="showEmission" onchange="updateYieldChart()">
+                                    <label for="showEmission">+ YB Emission</label>
+                                </label>
+                            </div>
+                            <div class="chart-control-group">
+                                <label class="checkbox-wrapper">
+                                    <input type="checkbox" id="showBtcPrice" checked onchange="updateYieldChart()">
+                                    <label for="showBtcPrice">BTC Price</label>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Main Chart -->
+                        <div class="chart-container">
+                            <canvas id="yieldChart"></canvas>
+                        </div>
+
+                        <!-- Range Slider -->
+                        <div class="range-slider-container">
+                            <div class="range-slider-header">
+                                <span class="range-slider-title">Time Range</span>
+                                <div class="period-buttons">
+                                    <button class="period-btn" data-days="7" onclick="setYieldPeriod(7)">7D</button>
+                                    <button class="period-btn" data-days="14" onclick="setYieldPeriod(14)">14D</button>
+                                    <button class="period-btn" data-days="30" onclick="setYieldPeriod(30)">30D</button>
+                                    <button class="period-btn active" data-days="all" onclick="setYieldPeriod('all')">ALL</button>
+                                </div>
+                            </div>
+                            <div class="range-slider-wrapper">
+                                <div class="range-track"></div>
+                                <div class="range-fill" id="yieldRangeFill" style="left: 0%; width: 100%;"></div>
+                                <input type="range" class="range-input" id="yieldRangeStart" min="0" max="100" value="0">
+                                <input type="range" class="range-input" id="yieldRangeEnd" min="0" max="100" value="100">
+                            </div>
+                            <div class="range-labels">
+                                <span id="yieldStartLabel">-</span>
+                                <span id="yieldEndLabel">-</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Metrics Windows (side by side) -->
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                    <!-- Fundamental Metrics -->
+                    <div class="window" id="fundamentalWindow">
+                        <div class="window-title-bar">
+                            <div class="window-controls">
+                                <button class="window-control close"></button>
+                                <button class="window-control minimize"></button>
+                                <button class="window-control maximize"></button>
+                            </div>
+                            <div class="window-title">Fundamental (PPS-based)</div>
+                            <div class="window-actions">
+                                <label class="checkbox-wrapper" id="emissionFundamentalLabel" style="display: none;">
+                                    <input type="checkbox" id="emissionFundamentalToggle" checked onchange="updateYieldChart()">
+                                    <label>+ Emission</label>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="window-content">
+                            <div class="metrics-grid" id="fundamentalMetrics">
+                                <div class="metric-card hero">
+                                    <div class="metric-label">Total Return</div>
+                                    <div class="metric-value" id="fundTotalReturn">-</div>
+                                    <div class="metric-change positive" id="fundApr">APR: -</div>
+                                </div>
+                                <div class="metric-card">
+                                    <div class="metric-label">Start PPS</div>
+                                    <div class="metric-value" id="fundStartPps">-</div>
+                                </div>
+                                <div class="metric-card">
+                                    <div class="metric-label">End PPS</div>
+                                    <div class="metric-value" id="fundEndPps">-</div>
+                                </div>
+                                <div class="metric-card">
+                                    <div class="metric-label">Yield Delta</div>
+                                    <div class="metric-value" id="yieldDelta">-</div>
+                                </div>
+                                <div class="metric-card">
+                                    <div class="metric-label">APR Delta</div>
+                                    <div class="metric-value" id="aprDelta">-</div>
+                                </div>
+                            </div>
+                            <div id="emissionMetricsFund" style="display: none; margin-top: 12px; padding: 8px; background: var(--bg-elevated); border-radius: 6px;">
+                                <span style="color: var(--accent-green); font-size: 11px; font-family: 'JetBrains Mono', monospace;">
+                                    Emission: <span id="emissionBoostFund">-</span> | APR: <span id="emissionAprFund">-</span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Withdrawable Metrics -->
+                    <div class="window" id="withdrawableWindow">
+                        <div class="window-title-bar">
+                            <div class="window-controls">
+                                <button class="window-control close"></button>
+                                <button class="window-control minimize"></button>
+                                <button class="window-control maximize"></button>
+                            </div>
+                            <div class="window-title">Withdrawable (Trading)</div>
+                            <div class="window-actions">
+                                <label class="checkbox-wrapper" id="emissionWithdrawableLabel" style="display: none;">
+                                    <input type="checkbox" id="emissionWithdrawableToggle" checked onchange="updateYieldChart()">
+                                    <label>+ Emission</label>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="window-content">
+                            <div class="metrics-grid" id="withdrawableMetrics">
+                                <div class="metric-card hero">
+                                    <div class="metric-label">Total Return</div>
+                                    <div class="metric-value" id="wdTotalReturn">-</div>
+                                    <div class="metric-change positive" id="wdApr">APR: -</div>
+                                </div>
+                                <div class="metric-card">
+                                    <div class="metric-label">Start PPS</div>
+                                    <div class="metric-value" id="wdStartPps">-</div>
+                                </div>
+                                <div class="metric-card">
+                                    <div class="metric-label">End PPS</div>
+                                    <div class="metric-value" id="wdEndPps">-</div>
+                                </div>
+                                <div class="metric-card">
+                                    <div class="metric-label">Period</div>
+                                    <div class="metric-value" id="yieldPeriod">-</div>
+                                </div>
+                                <div class="metric-card">
+                                    <div class="metric-label">Data Points</div>
+                                    <div class="metric-value" id="yieldDataPoints">-</div>
+                                </div>
+                            </div>
+                            <div id="emissionMetricsWd" style="display: none; margin-top: 12px; padding: 8px; background: var(--bg-elevated); border-radius: 6px;">
+                                <span style="color: var(--accent-green); font-size: 11px; font-family: 'JetBrains Mono', monospace;">
+                                    Emission: <span id="emissionBoostWd">-</span> | APR: <span id="emissionAprWd">-</span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Secondary Charts -->
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                    <div class="window">
+                        <div class="window-title-bar">
+                            <div class="window-controls">
+                                <button class="window-control close"></button>
+                                <button class="window-control minimize"></button>
+                                <button class="window-control maximize"></button>
+                            </div>
+                            <div class="window-title">Price Comparison</div>
+                        </div>
+                        <div class="window-content">
+                            <div class="chart-container" style="height: 250px;">
+                                <canvas id="priceComparisonChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="window">
+                        <div class="window-title-bar">
+                            <div class="window-controls">
+                                <button class="window-control close"></button>
+                                <button class="window-control minimize"></button>
+                                <button class="window-control maximize"></button>
+                            </div>
+                            <div class="window-title">Period Returns</div>
+                        </div>
+                        <div class="window-content">
+                            <div class="chart-container" style="height: 250px;">
+                                <canvas id="returnsChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ═══════════════════════════════════════════════════════════════
+                 PAGE: REVENUE DASHBOARD
+            ═══════════════════════════════════════════════════════════════ -->
+            <section id="page-revenue" class="page-section">
+                <div class="window">
+                    <div class="window-title-bar">
+                        <div class="window-controls">
+                            <button class="window-control close"></button>
+                            <button class="window-control minimize"></button>
+                            <button class="window-control maximize"></button>
+                        </div>
+                        <div class="window-title">Revenue Dashboard — Accumulated Protocol Revenue</div>
+                    </div>
+                    <div class="window-content">
+                        <!-- Hero Metric -->
+                        <div class="metrics-grid" style="margin-bottom: 20px;">
+                            <div class="metric-card hero" style="grid-column: span 2;">
+                                <div class="metric-label">Total Accumulated Revenue</div>
+                                <div class="metric-value" id="totalRevenue">-</div>
+                                <div class="metric-change" id="revenueFormula">TVL - Net Deposits + Admin Fees</div>
+                            </div>
+                        </div>
+
+                        <!-- Chart Controls -->
+                        <div class="chart-controls">
+                            <div class="chart-control-group">
+                                <span class="chart-control-label">Components:</span>
+                                <label class="checkbox-wrapper">
+                                    <input type="checkbox" id="revTvl" checked onchange="updateRevenueChart()">
+                                    <label for="revTvl">TVL</label>
+                                </label>
+                                <label class="checkbox-wrapper">
+                                    <input type="checkbox" id="revDeposits" checked onchange="updateRevenueChart()">
+                                    <label for="revDeposits">Deposits</label>
+                                </label>
+                                <label class="checkbox-wrapper">
+                                    <input type="checkbox" id="revWithdrawals" checked onchange="updateRevenueChart()">
+                                    <label for="revWithdrawals">Withdrawals</label>
+                                </label>
+                                <label class="checkbox-wrapper">
+                                    <input type="checkbox" id="revAdminFees" checked onchange="updateRevenueChart()">
+                                    <label for="revAdminFees">Admin Fees</label>
+                                </label>
+                                <label class="checkbox-wrapper">
+                                    <input type="checkbox" id="revEmission" checked onchange="updateRevenueChart()">
+                                    <label for="revEmission">YB Emission</label>
+                                </label>
+                            </div>
+                            <div class="chart-control-group">
+                                <span class="chart-control-label">Markets:</span>
+                                <label class="checkbox-wrapper">
+                                    <input type="checkbox" id="revWbtc" checked onchange="updateRevenueChart()">
+                                    <label for="revWbtc">WBTC</label>
+                                </label>
+                                <label class="checkbox-wrapper">
+                                    <input type="checkbox" id="revCbbtc" checked onchange="updateRevenueChart()">
+                                    <label for="revCbbtc">cbBTC</label>
+                                </label>
+                                <label class="checkbox-wrapper">
+                                    <input type="checkbox" id="revTbtc" checked onchange="updateRevenueChart()">
+                                    <label for="revTbtc">tBTC</label>
+                                </label>
+                                <label class="checkbox-wrapper">
+                                    <input type="checkbox" id="revEth" checked onchange="updateRevenueChart()">
+                                    <label for="revEth">ETH</label>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="chart-container">
+                            <canvas id="revenueChart"></canvas>
+                        </div>
+
+                        <!-- Range Slider -->
+                        <div class="range-slider-container">
+                            <div class="range-slider-header">
+                                <span class="range-slider-title">Time Range</span>
+                                <div class="period-buttons">
+                                    <button class="period-btn" data-days="7" onclick="setRevenuePeriod(7)">7D</button>
+                                    <button class="period-btn" data-days="14" onclick="setRevenuePeriod(14)">14D</button>
+                                    <button class="period-btn" data-days="30" onclick="setRevenuePeriod(30)">30D</button>
+                                    <button class="period-btn active" data-days="all" onclick="setRevenuePeriod('all')">ALL</button>
+                                </div>
+                            </div>
+                            <div class="range-slider-wrapper">
+                                <div class="range-track"></div>
+                                <div class="range-fill" id="revenueRangeFill" style="left: 0%; width: 100%;"></div>
+                                <input type="range" class="range-input" id="revenueRangeStart" min="0" max="100" value="0">
+                                <input type="range" class="range-input" id="revenueRangeEnd" min="0" max="100" value="100">
+                            </div>
+                            <div class="range-labels">
+                                <span id="revenueStartLabel">-</span>
+                                <span id="revenueEndLabel">-</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Breakdown Metrics -->
+                <div class="metrics-grid">
+                    <div class="metric-card">
+                        <div class="metric-label">TVL (Withdrawable)</div>
+                        <div class="metric-value" id="revMetricTvl">-</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-label">Total Deposits</div>
+                        <div class="metric-value" id="revMetricDeposits">-</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-label">Total Withdrawals</div>
+                        <div class="metric-value" id="revMetricWithdrawals">-</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-label">Net Deposited</div>
+                        <div class="metric-value" id="revMetricNet">-</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-label">Admin Fees</div>
+                        <div class="metric-value" id="revMetricFees">-</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-label">YB Emission</div>
+                        <div class="metric-value" id="revMetricEmission">-</div>
+                    </div>
+                </div>
+
+                <!-- TVL by Market Chart -->
+                <div class="window">
+                    <div class="window-title-bar">
+                        <div class="window-controls">
+                            <button class="window-control close"></button>
+                            <button class="window-control minimize"></button>
+                            <button class="window-control maximize"></button>
+                        </div>
+                        <div class="window-title">TVL by Market</div>
+                    </div>
+                    <div class="window-content">
+                        <div class="chart-container" style="height: 300px;">
+                            <canvas id="tvlByMarketChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ═══════════════════════════════════════════════════════════════
+                 PAGE: veYB DASHBOARD
+            ═══════════════════════════════════════════════════════════════ -->
+            <section id="page-veyb" class="page-section">
+                <!-- Notice Banners -->
+                <div class="notice info">
+                    <span class="notice-icon">ℹ️</span>
+                    <span>Reward distribution for veYB has not started yet, but rewards are already accumulating</span>
+                </div>
+
+                <!-- Main Metrics -->
+                <div class="metrics-grid" style="grid-template-columns: repeat(3, 1fr);">
+                    <div class="metric-card hero" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                        <div class="metric-label">Total Voting Power</div>
+                        <div class="metric-value" id="veybTotalPower">-</div>
+                        <div class="metric-change" id="veybLockedInfo">-</div>
+                    </div>
+                    <div class="metric-card hero" style="background: linear-gradient(135deg, #10b981 0%, #059669 100%);">
+                        <div class="metric-label">Current APR</div>
+                        <div class="metric-value" id="veybApr">-</div>
+                        <div class="metric-change">annualized yield</div>
+                    </div>
+                    <div class="metric-card hero" style="background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);">
+                        <div class="metric-label">Total Revenue</div>
+                        <div class="metric-value" id="veybRevenue">-</div>
+                        <div class="metric-change" id="veybRevenueUsd">-</div>
+                    </div>
+                </div>
+
+                <!-- Secondary Stats -->
+                <div class="metrics-grid">
+                    <div class="metric-card">
+                        <div class="metric-label">veYB Change (24h)</div>
+                        <div class="metric-value" id="veyb24h">-</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-label">veYB Change (7d)</div>
+                        <div class="metric-value" id="veyb7d">-</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-label">Daily Revenue (14d avg)</div>
+                        <div class="metric-value" id="veybDaily">-</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-label">Days Since Launch</div>
+                        <div class="metric-value" id="veybDays">-</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-label">YB Price</div>
+                        <div class="metric-value" id="veybPrice">-</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-label">Avg Lock Duration</div>
+                        <div class="metric-value" id="veybLockDuration">-</div>
+                    </div>
+                </div>
+
+                <!-- veYB Charts -->
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                    <div class="window">
+                        <div class="window-title-bar">
+                            <div class="window-controls">
+                                <button class="window-control close"></button>
+                                <button class="window-control minimize"></button>
+                                <button class="window-control maximize"></button>
+                            </div>
+                            <div class="window-title">veYB APR</div>
+                        </div>
+                        <div class="window-content">
+                            <div class="chart-container" style="height: 280px;">
+                                <canvas id="veybAprChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="window">
+                        <div class="window-title-bar">
+                            <div class="window-controls">
+                                <button class="window-control close"></button>
+                                <button class="window-control minimize"></button>
+                                <button class="window-control maximize"></button>
+                            </div>
+                            <div class="window-title">YB/BTC Price</div>
+                        </div>
+                        <div class="window-content">
+                            <div class="chart-container" style="height: 280px;">
+                                <canvas id="veybPriceChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="window">
+                        <div class="window-title-bar">
+                            <div class="window-controls">
+                                <button class="window-control close"></button>
+                                <button class="window-control minimize"></button>
+                                <button class="window-control maximize"></button>
+                            </div>
+                            <div class="window-title">Cumulative Admin Fees</div>
+                        </div>
+                        <div class="window-content">
+                            <div class="chart-container" style="height: 280px;">
+                                <canvas id="veybFeesChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="window">
+                        <div class="window-title-bar">
+                            <div class="window-controls">
+                                <button class="window-control close"></button>
+                                <button class="window-control minimize"></button>
+                                <button class="window-control maximize"></button>
+                            </div>
+                            <div class="window-title">Total Locked veYB</div>
+                        </div>
+                        <div class="window-content">
+                            <div class="chart-container" style="height: 280px;">
+                                <canvas id="veybSupplyChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contract Info -->
+                <div class="window">
+                    <div class="window-title-bar">
+                        <div class="window-controls">
+                            <button class="window-control close"></button>
+                            <button class="window-control minimize"></button>
+                            <button class="window-control maximize"></button>
+                        </div>
+                        <div class="window-title">Contract Information</div>
+                    </div>
+                    <div class="window-content">
+                        <div class="contract-info">
+                            <div class="contract-row">
+                                <span class="contract-label">veYB</span>
+                                <span class="contract-value">
+                                    <a href="https://etherscan.io/address/0x8235c179e9e84688fbd8b12295efc26834dac211" target="_blank">0x8235...c211</a>
+                                    <span style="color: var(--text-muted); margin-left: 8px;">Vote-Escrowed YB</span>
+                                </span>
+                            </div>
+                            <div class="contract-row">
+                                <span class="contract-label">YB Token</span>
+                                <span class="contract-value">
+                                    <a href="https://etherscan.io/token/0x01791F726B4103694969820be083196cC7c045fF" target="_blank">0x0179...45fF</a>
+                                </span>
+                            </div>
+                            <div class="contract-row">
+                                <span class="contract-label">Factory</span>
+                                <span class="contract-value">
+                                    <a href="https://etherscan.io/address/0x370a449FeBb9411c95bf897021377fe0B7D100c0" target="_blank">0x370a...100c0</a>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ═══════════════════════════════════════════════════════════════
+                 PAGE: POOLS
+            ═══════════════════════════════════════════════════════════════ -->
+            <section id="page-pools" class="page-section">
+                <!-- Pool Tabs -->
+                <div class="tabs" id="poolTabs">
+                    <button class="tab wbtc active" data-pool="wbtc" onclick="switchPool('wbtc')">WBTC/crvUSD</button>
+                    <button class="tab cbbtc" data-pool="cbbtc" onclick="switchPool('cbbtc')">cbBTC/crvUSD</button>
+                    <button class="tab tbtc" data-pool="tbtc" onclick="switchPool('tbtc')">tBTC/crvUSD</button>
+                </div>
+
+                <!-- Pool Stats -->
+                <div class="metrics-grid" id="poolMetrics">
+                    <div class="metric-card">
+                        <div class="metric-label">TVL</div>
+                        <div class="metric-value" id="poolTvl">-</div>
+                        <div class="metric-change" id="poolTvlChange">-</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-label" id="poolToken1Label">WBTC</div>
+                        <div class="metric-value" id="poolToken1Bal">-</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-label">crvUSD</div>
+                        <div class="metric-value" id="poolToken0Bal">-</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-label">Imbalance</div>
+                        <div class="metric-value" id="poolImbalance">-</div>
+                        <div class="metric-change" id="poolImbalanceStatus">-</div>
+                    </div>
+                </div>
+
+                <!-- Balance Bar -->
+                <div class="balance-bar-container">
+                    <div class="balance-bar-labels">
+                        <span id="poolRatioLeft">-% WBTC</span>
+                        <span id="poolRatioRight">-% crvUSD</span>
+                    </div>
+                    <div class="balance-bar wbtc" id="poolBalanceBar">
+                        <div class="token1" id="poolBarToken1" style="width: 50%;"></div>
+                        <div class="token0" id="poolBarToken0" style="width: 50%;"></div>
+                        <div class="center-marker"></div>
+                    </div>
+                </div>
+
+                <!-- Pool Charts -->
+                <div style="display: grid; grid-template-columns: 1fr; gap: 20px;">
+                    <div class="window">
+                        <div class="window-title-bar">
+                            <div class="window-controls">
+                                <button class="window-control close"></button>
+                                <button class="window-control minimize"></button>
+                                <button class="window-control maximize"></button>
+                            </div>
+                            <div class="window-title">Balance Ratio Over Time</div>
+                        </div>
+                        <div class="window-content">
+                            <div class="chart-container" style="height: 300px;">
+                                <canvas id="poolRatioChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                        <div class="window">
+                            <div class="window-title-bar">
+                                <div class="window-controls">
+                                    <button class="window-control close"></button>
+                                    <button class="window-control minimize"></button>
+                                    <button class="window-control maximize"></button>
+                                </div>
+                                <div class="window-title">Pool TVL</div>
+                            </div>
+                            <div class="window-content">
+                                <div class="chart-container" style="height: 250px;">
+                                    <canvas id="poolTvlChart"></canvas>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="window">
+                            <div class="window-title-bar">
+                                <div class="window-controls">
+                                    <button class="window-control close"></button>
+                                    <button class="window-control minimize"></button>
+                                    <button class="window-control maximize"></button>
+                                </div>
+                                <div class="window-title">Imbalance from 50/50</div>
+                            </div>
+                            <div class="window-content">
+                                <div class="chart-container" style="height: 250px;">
+                                    <canvas id="poolImbalanceChart"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ═══════════════════════════════════════════════════════════════
+                 PAGE: FUNDAMENTAL PPS
+            ═══════════════════════════════════════════════════════════════ -->
+            <section id="page-pps" class="page-section">
+                <div class="window" style="margin-bottom: 20px;">
+                    <div class="window-title-bar">
+                        <div class="window-controls">
+                            <button class="window-control close"></button>
+                            <button class="window-control minimize"></button>
+                            <button class="window-control maximize"></button>
+                        </div>
+                        <div class="window-title">Current Fundamental Values</div>
+                    </div>
+                    <div class="window-content">
+                        <div class="metrics-grid" id="ppsMetrics" style="grid-template-columns: repeat(6, 1fr);">
+                            <!-- Will be populated dynamically -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PPS Charts Grid - BTC Markets -->
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                    <div class="window">
+                        <div class="window-title-bar">
+                            <div class="window-controls">
+                                <button class="window-control close"></button>
+                                <button class="window-control minimize"></button>
+                                <button class="window-control maximize"></button>
+                            </div>
+                            <div class="window-title">NEW Contracts — Unstaked (yb-tokens)</div>
+                        </div>
+                        <div class="window-content">
+                            <div class="chart-container" style="height: 280px;">
+                                <canvas id="ppsNewUnstakedChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="window">
+                        <div class="window-title-bar">
+                            <div class="window-controls">
+                                <button class="window-control close"></button>
+                                <button class="window-control minimize"></button>
+                                <button class="window-control maximize"></button>
+                            </div>
+                            <div class="window-title">NEW Contracts — Staked (sYB-tokens)</div>
+                        </div>
+                        <div class="window-content">
+                            <div class="chart-container" style="height: 280px;">
+                                <canvas id="ppsNewStakedChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="window">
+                        <div class="window-title-bar">
+                            <div class="window-controls">
+                                <button class="window-control close"></button>
+                                <button class="window-control minimize"></button>
+                                <button class="window-control maximize"></button>
+                            </div>
+                            <div class="window-title">OLD Contracts — Unstaked (yb-tokens)</div>
+                        </div>
+                        <div class="window-content">
+                            <div class="chart-container" style="height: 280px;">
+                                <canvas id="ppsOldUnstakedChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="window">
+                        <div class="window-title-bar">
+                            <div class="window-controls">
+                                <button class="window-control close"></button>
+                                <button class="window-control minimize"></button>
+                                <button class="window-control maximize"></button>
+                            </div>
+                            <div class="window-title">OLD Contracts — Staked (sYB-tokens)</div>
+                        </div>
+                        <div class="window-content">
+                            <div class="chart-container" style="height: 280px;">
+                                <canvas id="ppsOldStakedChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ETH Charts -->
+                <div id="ethPpsSection" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 20px;">
+                    <div class="window">
+                        <div class="window-title-bar">
+                            <div class="window-controls">
+                                <button class="window-control close"></button>
+                                <button class="window-control minimize"></button>
+                                <button class="window-control maximize"></button>
+                            </div>
+                            <div class="window-title">ETH — Unstaked (yb-tokens)</div>
+                        </div>
+                        <div class="window-content">
+                            <div class="chart-container" style="height: 280px;">
+                                <canvas id="ppsEthUnstakedChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="window">
+                        <div class="window-title-bar">
+                            <div class="window-controls">
+                                <button class="window-control close"></button>
+                                <button class="window-control minimize"></button>
+                                <button class="window-control maximize"></button>
+                            </div>
+                            <div class="window-title">ETH — Staked (sYB-tokens)</div>
+                        </div>
+                        <div class="window-content">
+                            <div class="chart-container" style="height: 280px;">
+                                <canvas id="ppsEthStakedChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Timezone Toggle -->
+    <button class="timezone-toggle" id="timezoneToggle" onclick="toggleTimezone()">🕐 Local</button>
+
+    <!-- Data Scripts -->
+    <script src="unified_data.js?v=1"></script>
+    <script src="unified_data_adapter.js?v=1"></script>
+    <script src="pools_data.js"></script>
+    <script src="veyb_supply_data.js"></script>
+    <script src="admin_fee_withdrawals_cumulative.js"></script>
+
+    <script>
+        // ═══════════════════════════════════════════════════════════════
+        // GLOBAL STATE
+        // ═══════════════════════════════════════════════════════════════
+
+        let currentPage = 'yield';
+        let currentMarket = 'cbbtc';
+        let currentContract = 'new';
+        let currentDenom = localStorage.getItem('denomination') || 'usd';
+        let currentPool = 'wbtc';
+        let useUTC = localStorage.getItem('useUTC') === 'true';
+
+        // Yield Analytics state
+        let currentYieldData = null;
+        let originalYieldData = null;
+        let yieldRangeStart = 0;
+        let yieldRangeEnd = 100;
+        let showBtcPrice = true;
+        let showFundamentalYield = true;
+        let showWithdrawableYield = true;
+        let showEmission = true;
+
+        // Chart instances
+        const charts = {};
+
+        // ═══════════════════════════════════════════════════════════════
+        // MARKET CONFIGURATIONS (from index.html)
+        // ═══════════════════════════════════════════════════════════════
+
+        // Note: Variables are declared with const in unified_data_adapter.js
+        // so we access them directly without window. prefix
+        const MARKETS = {
+            new: {
+                wbtc: {
+                    name: 'yb-WBTC',
+                    data: () => yieldData_wbtc,
+                    ppsData: () => ppsData_wbtc,
+                    assetType: 'btc'
+                },
+                cbbtc: {
+                    name: 'yb-cbBTC',
+                    data: () => yieldData_cbbtc,
+                    ppsData: () => ppsData_cbbtc,
+                    assetType: 'btc'
+                },
+                tbtc: {
+                    name: 'yb-tBTC',
+                    data: () => yieldData_tbtc,
+                    ppsData: () => ppsData_tbtc,
+                    assetType: 'btc'
+                },
+                syb_wbtc: {
+                    name: 'syb-WBTC',
+                    data: () => yieldData_syb_wbtc,
+                    ppsData: () => ppsData_wbtc,
+                    emissionData: () => ybEmissionData,
+                    emissionField: 'cumulative_WBTC_btc',
+                    baseMarket: 'wbtc',
+                    assetType: 'btc'
+                },
+                syb_cbbtc: {
+                    name: 'syb-cbBTC',
+                    data: () => yieldData_syb_cbbtc,
+                    ppsData: () => ppsData_cbbtc,
+                    emissionData: () => ybEmissionData,
+                    emissionField: 'cumulative_cbBTC_btc',
+                    baseMarket: 'cbbtc',
+                    assetType: 'btc'
+                },
+                syb_tbtc: {
+                    name: 'syb-tBTC',
+                    data: () => yieldData_syb_tbtc,
+                    ppsData: () => ppsData_tbtc,
+                    emissionData: () => ybEmissionData,
+                    emissionField: 'cumulative_tBTC_btc',
+                    baseMarket: 'tbtc',
+                    assetType: 'btc'
+                }
+            },
+            old: {
+                wbtc: {
+                    name: 'yb-WBTC',
+                    data: () => yieldData_old_wbtc,
+                    ppsData: () => ppsData_old_wbtc,
+                    assetType: 'btc'
+                },
+                cbbtc: {
+                    name: 'yb-cbBTC',
+                    data: () => yieldData_old_cbbtc,
+                    ppsData: () => ppsData_old_cbbtc,
+                    assetType: 'btc'
+                },
+                tbtc: {
+                    name: 'yb-tBTC',
+                    data: () => yieldData_old_tbtc,
+                    ppsData: () => ppsData_old_tbtc,
+                    assetType: 'btc'
+                },
+                syb_wbtc: {
+                    name: 'syb-WBTC',
+                    data: () => yieldData_old_syb_wbtc,
+                    ppsData: () => ppsData_old_wbtc,
+                    emissionData: () => oldYbEmissionData,
+                    emissionField: 'cumulative_WBTC_btc',
+                    baseMarket: 'wbtc',
+                    assetType: 'btc'
+                },
+                syb_cbbtc: {
+                    name: 'syb-cbBTC',
+                    data: () => yieldData_old_syb_cbbtc,
+                    ppsData: () => ppsData_old_cbbtc,
+                    emissionData: () => oldYbEmissionData,
+                    emissionField: 'cumulative_cbBTC_btc',
+                    baseMarket: 'cbbtc',
+                    assetType: 'btc'
+                },
+                syb_tbtc: {
+                    name: 'syb-tBTC',
+                    data: () => yieldData_old_syb_tbtc,
+                    ppsData: () => ppsData_old_tbtc,
+                    emissionData: () => oldYbEmissionData,
+                    emissionField: 'cumulative_tBTC_btc',
+                    baseMarket: 'tbtc',
+                    assetType: 'btc'
+                }
+            },
+            eth: {
+                eth: {
+                    name: 'yb-ETH',
+                    data: () => yieldData_eth,
+                    ppsData: () => ppsData_eth,
+                    assetType: 'eth'
+                },
+                syb_eth: {
+                    name: 'syb-ETH',
+                    data: () => yieldData_syb_eth,
+                    ppsData: () => ppsData_eth,
+                    emissionData: () => ethEmissionData,
+                    emissionField: 'cumulative_eth',
+                    baseMarket: 'eth',
+                    assetType: 'eth'
+                }
+            }
+        };
+
+        // ═══════════════════════════════════════════════════════════════
+        // HELPER FUNCTIONS
+        // ═══════════════════════════════════════════════════════════════
+
+        function isEthMarket() {
+            return currentMarket === 'eth' || currentMarket === 'syb_eth';
+        }
+
+        function getAssetType() {
+            return isEthMarket() ? 'eth' : 'btc';
+        }
+
+        function getPpsField() {
+            return isEthMarket() ? 'pps_eth' : 'pps_btc';
+        }
+
+        function getPriceField() {
+            return isEthMarket() ? 'eth_price' : 'btc_price';
+        }
+
+        function getAssetLabel() {
+            return isEthMarket() ? 'ETH' : 'BTC';
+        }
+
+        function parseAsUTC(dateString) {
+            if (!dateString) return new Date();
+            return new Date(dateString);
+        }
+
+        // Binary search helper
+        function binarySearchFloor(arr, targetTimestamp) {
+            if (!arr || arr.length === 0) return -1;
+            let left = 0, right = arr.length - 1, result = -1;
+            while (left <= right) {
+                const mid = Math.floor((left + right) / 2);
+                if (arr[mid].timestamp <= targetTimestamp) {
+                    result = mid;
+                    left = mid + 1;
+                } else {
+                    right = mid - 1;
+                }
+            }
+            return result;
+        }
+
+        function binarySearchClosest(arr, targetTimestamp) {
+            if (!arr || arr.length === 0) return null;
+            const floorIdx = binarySearchFloor(arr, targetTimestamp);
+            if (floorIdx === -1) return arr[0];
+            if (floorIdx === arr.length - 1) return arr[floorIdx];
+            const before = arr[floorIdx];
+            const after = arr[floorIdx + 1];
+            return Math.abs(targetTimestamp - before.timestamp) <= Math.abs(after.timestamp - targetTimestamp) ? before : after;
+        }
+
+        // Get TVL at timestamp with interpolation
+        function getTVLAt(timestamp, market) {
+            const isOld = currentContract === 'old';
+            const tvlDataMap = isOld ? {
+                'wbtc': gaugeTvlData_old_wbtc,
+                'cbbtc': gaugeTvlData_old_cbbtc,
+                'tbtc': gaugeTvlData_old_tbtc
+            } : {
+                'wbtc': gaugeTvlData_new_wbtc,
+                'cbbtc': gaugeTvlData_new_cbbtc,
+                'tbtc': gaugeTvlData_new_tbtc
+            };
+
+            const tvlData = tvlDataMap[market] || [];
+            if (tvlData.length === 0) return 300.0;
+
+            let closestBefore = null, closestAfter = null;
+            for (let i = 0; i < tvlData.length; i++) {
+                if (tvlData[i].timestamp <= timestamp) closestBefore = tvlData[i];
+                else { closestAfter = tvlData[i]; break; }
+            }
+
+            if (closestBefore && closestAfter) {
+                const t = (timestamp - closestBefore.timestamp) / (closestAfter.timestamp - closestBefore.timestamp);
+                return closestBefore.tvl_btc + t * (closestAfter.tvl_btc - closestBefore.tvl_btc);
+            }
+            return closestBefore?.tvl_btc || closestAfter?.tvl_btc || 300.0;
+        }
+
+        // Get emission with interpolation
+        function getEmissionInterpolated(sortedArr, targetTimestamp, field) {
+            if (!sortedArr || sortedArr.length === 0) return 0;
+
+            // If timestamp is before first emission point, return 0 (no emission yet)
+            if (targetTimestamp < sortedArr[0].timestamp) return 0;
+
+            const floorIdx = binarySearchFloor(sortedArr, targetTimestamp);
+            const closestBefore = floorIdx >= 0 ? sortedArr[floorIdx] : null;
+            const closestAfter = floorIdx + 1 < sortedArr.length ? sortedArr[floorIdx + 1] : null;
+
+            // Handle case where field might be undefined
+            const beforeVal = closestBefore?.[field];
+            const afterVal = closestAfter?.[field];
+
+            if (closestBefore && closestBefore.timestamp === targetTimestamp && beforeVal !== undefined) {
+                return beforeVal;
+            }
+            if (beforeVal !== undefined && afterVal !== undefined) {
+                const t = (targetTimestamp - closestBefore.timestamp) / (closestAfter.timestamp - closestBefore.timestamp);
+                return beforeVal + t * (afterVal - beforeVal);
+            }
+            return beforeVal !== undefined ? beforeVal : 0;
+        }
+
+        // Calculate emission per token (integrated formula)
+        function calculateEmissionPerToken(startTimestamp, endTimestamp, emissionDataSource, emissionField, baseMarket) {
+            if (!emissionDataSource || !currentYieldData?.data) return 0;
+
+            const emissionSorted = emissionDataSource
+                .filter(e => e[emissionField] !== null && e[emissionField] !== undefined)
+                .sort((a, b) => a.timestamp - b.timestamp);
+            if (emissionSorted.length === 0) return 0;
+
+            let accumulatedEmission = 0;
+            const startEmissionTotal = getEmissionInterpolated(emissionSorted, startTimestamp, emissionField);
+            let prevEmission = startEmissionTotal;
+
+            for (const point of currentYieldData.data) {
+                const pointTimestamp = Math.floor(parseAsUTC(point.datetime).getTime() / 1000);
+                if (pointTimestamp <= startTimestamp) continue;
+                if (pointTimestamp > endTimestamp) break;
+
+                const currentEmission = getEmissionInterpolated(emissionSorted, pointTimestamp, emissionField);
+                const emissionDelta = currentEmission - prevEmission;
+
+                if (emissionDelta > 0) {
+                    const tvlCurrent = getTVLAt(pointTimestamp, baseMarket);
+                    accumulatedEmission += emissionDelta / Math.max(tvlCurrent, 1.0);
+                }
+                prevEmission = currentEmission;
+            }
+            return accumulatedEmission;
+        }
+
+        // ═══════════════════════════════════════════════════════════════
+        // INITIALIZATION
+        // ═══════════════════════════════════════════════════════════════
+
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize denomination switcher
+            document.querySelectorAll('.denom-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.denom === currentDenom);
+            });
+
+            // Initialize timezone toggle
+            updateTimezoneButton();
+
+            // Setup yield range slider listeners
+            const yieldRangeStart = document.getElementById('yieldRangeStart');
+            const yieldRangeEnd = document.getElementById('yieldRangeEnd');
+
+            if (yieldRangeStart && yieldRangeEnd) {
+                yieldRangeStart.addEventListener('input', handleYieldRangeChange);
+                yieldRangeEnd.addEventListener('input', handleYieldRangeChange);
+            }
+
+            // Load data and initialize
+            setTimeout(() => {
+                document.getElementById('loadingState').style.display = 'none';
+                document.getElementById('page-yield').classList.add('active');
+                initializeAllCharts();
+            }, 500);
+        });
+
+        function handleYieldRangeChange() {
+            if (!originalYieldData || !originalYieldData.data) return;
+
+            const startPct = parseFloat(document.getElementById('yieldRangeStart').value);
+            const endPct = parseFloat(document.getElementById('yieldRangeEnd').value);
+
+            // Ensure start < end
+            if (startPct >= endPct) return;
+
+            // Reset period buttons
+            document.querySelectorAll('#page-yield .period-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+
+            // Calculate indices
+            const totalPoints = originalYieldData.data.length;
+            const startIdx = Math.floor((startPct / 100) * totalPoints);
+            const endIdx = Math.floor((endPct / 100) * totalPoints);
+
+            // Filter data
+            currentYieldData.data = originalYieldData.data.slice(startIdx, endIdx + 1);
+
+            // Update fill bar
+            updateYieldRangeFill();
+
+            // Update labels
+            updateYieldRangeLabels();
+
+            // Recreate charts
+            initYieldCharts();
+        }
+
+        // ═══════════════════════════════════════════════════════════════
+        // NAVIGATION
+        // ═══════════════════════════════════════════════════════════════
+
+        function switchPage(page) {
+            currentPage = page;
+
+            // Update nav items
+            document.querySelectorAll('.nav-item').forEach(item => {
+                item.classList.toggle('active', item.dataset.page === page);
+            });
+
+            // Update page sections
+            document.querySelectorAll('.page-section').forEach(section => {
+                section.classList.remove('active');
+            });
+            document.getElementById(`page-${page}`).classList.add('active');
+
+            // Initialize charts for this page if needed
+            initializePageCharts(page);
+        }
+
+        function switchContract(version) {
+            currentContract = version;
+
+            document.querySelectorAll('.contract-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.version === version);
+            });
+
+            // Reload current page data
+            initializePageCharts(currentPage);
+        }
+
+        function switchMarket(market) {
+            currentMarket = market;
+
+            // Update active pill
+            document.querySelectorAll('.market-pill').forEach(pill => {
+                pill.classList.toggle('active', pill.dataset.market === market);
+            });
+
+            // Handle ETH markets - they use 'eth' contract version
+            if (market === 'eth' || market === 'syb_eth') {
+                // Hide contract selector for ETH
+                document.querySelector('.contract-selector').style.opacity = '0.3';
+            } else {
+                document.querySelector('.contract-selector').style.opacity = '1';
+            }
+
+            // Update chart and metrics
+            updateYieldChart();
+        }
+
+        function switchPool(pool) {
+            currentPool = pool;
+
+            document.querySelectorAll('.tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            document.querySelector(`.tab[data-pool="${pool}"]`).classList.add('active');
+
+            // Update balance bar class
+            const balanceBar = document.getElementById('poolBalanceBar');
+            balanceBar.className = `balance-bar ${pool}`;
+
+            updatePoolData();
+        }
+
+        function switchDenomination(denom) {
+            localStorage.setItem('denomination', denom);
+            location.reload();
+        }
+
+        function toggleTimezone() {
+            useUTC = !useUTC;
+            localStorage.setItem('useUTC', useUTC);
+            updateTimezoneButton();
+            // Refresh charts
+            initializePageCharts(currentPage);
+        }
+
+        function updateTimezoneButton() {
+            const btn = document.getElementById('timezoneToggle');
+            btn.textContent = useUTC ? '🕐 UTC' : '🕐 Local';
+        }
+
+        // ═══════════════════════════════════════════════════════════════
+        // CHART INITIALIZATION
+        // ═══════════════════════════════════════════════════════════════
+
+        function initializeAllCharts() {
+            initializePageCharts('yield');
+        }
+
+        function initializePageCharts(page) {
+            switch(page) {
+                case 'yield':
+                    initYieldCharts();
+                    break;
+                case 'revenue':
+                    initRevenueCharts();
+                    break;
+                case 'veyb':
+                    initVeybCharts();
+                    break;
+                case 'pools':
+                    initPoolCharts();
+                    break;
+                case 'pps':
+                    initPpsCharts();
+                    break;
+            }
+        }
+
+        // ═══════════════════════════════════════════════════════════════
+        // YIELD ANALYTICS CHARTS
+        // ═══════════════════════════════════════════════════════════════
+
+        function loadYieldMarketData(market) {
+            const contractVersion = isEthMarket() ? 'eth' : currentContract;
+            const marketKey = market.startsWith('syb_') ? market : market;
+            const config = MARKETS[contractVersion]?.[marketKey];
+
+            if (!config) {
+                console.log('No market config for', market, contractVersion);
+                return false;
+            }
+
+            const dataSource = config.data();
+            if (!dataSource || !dataSource.data || dataSource.data.length === 0) {
+                console.log('No data for market', market);
+                return false;
+            }
+
+            originalYieldData = dataSource;
+            currentYieldData = {
+                ...dataSource,
+                data: [...dataSource.data],
+                metadata: { ...dataSource.metadata },
+                metrics: { ...dataSource.metrics }
+            };
+
+            console.log('Loaded yield data for', market, ':', currentYieldData.data.length, 'points');
+            return true;
+        }
+
+        function initYieldCharts() {
+            if (!loadYieldMarketData(currentMarket)) {
+                console.log('Failed to load data for', currentMarket);
+                return;
+            }
+
+            const data = currentYieldData.data;
+            const contractVersion = isEthMarket() ? 'eth' : currentContract;
+            const config = MARKETS[contractVersion]?.[currentMarket];
+            const ppsField = getPpsField();
+
+            // Show/hide emission toggles for syb markets
+            const isSybMarket = currentMarket.startsWith('syb_');
+            document.getElementById('emissionFundamentalLabel').style.display = isSybMarket ? 'flex' : 'none';
+            document.getElementById('emissionWithdrawableLabel').style.display = isSybMarket ? 'flex' : 'none';
+            document.getElementById('showEmission').parentElement.style.display = isSybMarket ? 'flex' : 'none';
+
+            // Destroy existing charts
+            if (charts.yield) charts.yield.destroy();
+            if (charts.priceComparison) charts.priceComparison.destroy();
+            if (charts.returns) charts.returns.destroy();
+
+            // Build datasets
+            const datasets = [];
+            const showWd = document.getElementById('showWithdrawable').checked;
+            const showFund = document.getElementById('showFundamental').checked;
+            const showPrice = document.getElementById('showBtcPrice').checked;
+
+            // Withdrawable PPS line
+            if (showWd) {
+                datasets.push({
+                    label: `Withdrawable PPS (${getAssetLabel()})`,
+                    data: data.map(d => ({ x: d.timestamp * 1000, y: d[ppsField] || 1 })),
+                    borderColor: '#8b5cf6',
+                    backgroundColor: 'rgba(139, 92, 246, 0.1)',
+                    borderWidth: 2,
+                    fill: false,
+                    tension: 0.3,
+                    pointRadius: 0,
+                    yAxisID: 'y'
+                });
+            }
+
+            // Fundamental PPS (from ppsData)
+            if (showFund && config?.ppsData) {
+                const ppsDataSource = config.ppsData();
+                if (ppsDataSource?.data) {
+                    const ppsFieldFund = currentMarket.startsWith('syb_') ? 'pps_staked' : 'pps_unstaked';
+                    const fundData = ppsDataSource.data
+                        .filter(d => d[ppsFieldFund] !== null)
+                        .map(d => ({ x: d.timestamp * 1000, y: d[ppsFieldFund] }));
+
+                    if (fundData.length > 0) {
+                        datasets.push({
+                            label: `Fundamental PPS (${getAssetLabel()})`,
+                            data: fundData,
+                            borderColor: '#22d3ee',
+                            backgroundColor: 'rgba(34, 211, 238, 0.1)',
+                            borderWidth: 2,
+                            fill: false,
+                            tension: 0.3,
+                            pointRadius: 0,
+                            yAxisID: 'y'
+                        });
+                    }
+                }
+            }
+
+            // YB Emission line for syb markets
+            const showEmissionLine = document.getElementById('showEmission')?.checked && isSybMarket;
+            if (showEmissionLine && config?.emissionData) {
+                const emissionDataSource = config.emissionData();
+                const emissionField = config.emissionField;
+                if (emissionDataSource && emissionDataSource.length > 0 && emissionField) {
+                    // Filter emission data to valid points
+                    const validEmission = emissionDataSource
+                        .filter(e => e[emissionField] !== undefined && e[emissionField] !== null)
+                        .sort((a, b) => a.timestamp - b.timestamp);
+
+                    if (validEmission.length > 0) {
+                        // Normalize emission to PPS scale (start from 1.0, add emission per token)
+                        const startTs = data[0]?.timestamp || 0;
+                        const baseValue = 1.0;
+
+                        const emissionLine = data.map(d => {
+                            const ts = d.timestamp;
+                            // Find emission at this timestamp
+                            let emissionVal = 0;
+                            for (const ep of validEmission) {
+                                if (ep.timestamp <= ts) {
+                                    emissionVal = ep[emissionField] || 0;
+                                } else {
+                                    break;
+                                }
+                            }
+                            // Get TVL at this point to calculate per-token emission
+                            const tvl = getTVLAt(ts, config.baseMarket) || 1;
+                            const perTokenEmission = emissionVal / Math.max(tvl, 1);
+                            return { x: ts * 1000, y: baseValue + perTokenEmission };
+                        });
+
+                        datasets.push({
+                            label: `PPS + Emission (${getAssetLabel()})`,
+                            data: emissionLine,
+                            borderColor: '#10b981',
+                            backgroundColor: 'rgba(16, 185, 129, 0.1)',
+                            borderWidth: 2,
+                            borderDash: [3, 3],
+                            fill: false,
+                            tension: 0.3,
+                            pointRadius: 0,
+                            yAxisID: 'y'
+                        });
+                    }
+                }
+            }
+
+            // BTC/ETH Price overlay
+            if (showPrice && data[0]) {
+                const priceField = getPriceField();
+                if (data[0][priceField]) {
+                    datasets.push({
+                        label: `${getAssetLabel()} Price (USD)`,
+                        data: data.map(d => ({ x: d.timestamp * 1000, y: d[priceField] })),
+                        borderColor: 'rgba(251, 191, 36, 0.6)',
+                        borderWidth: 1,
+                        borderDash: [5, 5],
+                        fill: false,
+                        tension: 0.3,
+                        pointRadius: 0,
+                        yAxisID: 'y1'
+                    });
+                }
+            }
+
+            // Create main chart
+            const ctx = document.getElementById('yieldChart').getContext('2d');
+            charts.yield = new Chart(ctx, {
+                type: 'line',
+                data: { datasets },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    interaction: { mode: 'index', intersect: false },
+                    plugins: {
+                        legend: {
+                            display: true,
+                            position: 'top',
+                            labels: { color: '#94a3b8', font: { size: 11 }, usePointStyle: true }
+                        },
+                        tooltip: {
+                            backgroundColor: 'rgba(30, 41, 59, 0.95)',
+                            titleColor: '#e2e8f0',
+                            bodyColor: '#e2e8f0',
+                            borderColor: '#8b5cf6',
+                            borderWidth: 1,
+                            padding: 12,
+                            displayColors: true,
+                            callbacks: {
+                                label: function(context) {
+                                    const label = context.dataset.label || '';
+                                    const value = context.parsed.y;
+                                    if (label.includes('Price')) return label + ': $' + value.toLocaleString();
+                                    return label + ': ' + value.toFixed(8);
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        x: {
+                            type: 'time',
+                            time: {
+                                unit: 'day',
+                                displayFormats: { day: 'MMM dd' },
+                                tooltipFormat: 'MMM dd, yyyy HH:mm'
+                            },
+                            ticks: { color: '#64748b', maxTicksLimit: 10 },
+                            grid: { color: 'rgba(139, 92, 246, 0.08)' }
+                        },
+                        y: {
+                            type: 'linear',
+                            position: 'left',
+                            ticks: {
+                                color: '#8b5cf6',
+                                callback: v => v.toFixed(6)
+                            },
+                            grid: { color: 'rgba(139, 92, 246, 0.08)' },
+                            title: { display: true, text: `PPS (${getAssetLabel()})`, color: '#8b5cf6' }
+                        },
+                        y1: {
+                            type: 'linear',
+                            position: 'right',
+                            display: showPrice,
+                            ticks: {
+                                color: 'rgba(251, 191, 36, 0.8)',
+                                callback: v => '$' + v.toLocaleString()
+                            },
+                            grid: { drawOnChartArea: false },
+                            title: { display: true, text: `${getAssetLabel()} Price (USD)`, color: 'rgba(251, 191, 36, 0.8)' }
+                        }
+                    }
+                }
+            });
+
+            // Update metrics
+            updateYieldMetrics();
+
+            // Update range slider labels
+            updateYieldRangeLabels();
+
+            // Create secondary charts
+            createPriceComparisonChart(data);
+            createReturnsChart(data);
+        }
+
+        function createPriceComparisonChart(data) {
+            const ctx = document.getElementById('priceComparisonChart').getContext('2d');
+            const priceField = getPriceField();
+
+            if (!data[0]?.[priceField]) return;
+
+            charts.priceComparison = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    datasets: [{
+                        label: `${getAssetLabel()} Price`,
+                        data: data.map(d => ({ x: d.timestamp * 1000, y: d[priceField] })),
+                        borderColor: isEthMarket() ? '#627eea' : '#f7931a',
+                        backgroundColor: isEthMarket() ? 'rgba(98, 126, 234, 0.1)' : 'rgba(247, 147, 26, 0.1)',
+                        fill: true,
+                        tension: 0.3,
+                        pointRadius: 0
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: { legend: { display: false } },
+                    scales: {
+                        x: {
+                            type: 'time',
+                            ticks: { color: '#64748b', maxTicksLimit: 6 },
+                            grid: { color: 'rgba(139, 92, 246, 0.08)' }
+                        },
+                        y: {
+                            ticks: { color: '#64748b', callback: v => '$' + v.toLocaleString() },
+                            grid: { color: 'rgba(139, 92, 246, 0.08)' }
+                        }
+                    }
+                }
+            });
+        }
+
+        function createReturnsChart(data) {
+            const ctx = document.getElementById('returnsChart').getContext('2d');
+            const ppsField = getPpsField();
+
+            // Calculate step returns
+            const returns = [];
+            for (let i = 1; i < data.length; i++) {
+                const prev = data[i - 1][ppsField] || 1;
+                const curr = data[i][ppsField] || 1;
+                const ret = ((curr - prev) / prev) * 100;
+                returns.push({
+                    x: data[i].timestamp * 1000,
+                    y: ret
+                });
+            }
+
+            charts.returns = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    datasets: [{
+                        label: 'Step Return',
+                        data: returns,
+                        backgroundColor: returns.map(r => r.y >= 0 ? 'rgba(16, 185, 129, 0.7)' : 'rgba(239, 68, 68, 0.7)'),
+                        borderColor: returns.map(r => r.y >= 0 ? '#10b981' : '#ef4444'),
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: { legend: { display: false } },
+                    scales: {
+                        x: {
+                            type: 'time',
+                            ticks: { color: '#64748b', maxTicksLimit: 6 },
+                            grid: { color: 'rgba(139, 92, 246, 0.08)' }
+                        },
+                        y: {
+                            ticks: { color: '#64748b', callback: v => v.toFixed(4) + '%' },
+                            grid: { color: 'rgba(139, 92, 246, 0.08)' }
+                        }
+                    }
+                }
+            });
+        }
+
+        function updateYieldMetrics() {
+            if (!currentYieldData || !currentYieldData.data || currentYieldData.data.length < 2) return;
+
+            const data = currentYieldData.data;
+            const first = data[0];
+            const last = data[data.length - 1];
+            const ppsField = getPpsField();
+            const contractVersion = isEthMarket() ? 'eth' : currentContract;
+            const config = MARKETS[contractVersion]?.[currentMarket];
+
+            // Withdrawable calculations
+            const startPpsWd = first[ppsField] || 1;
+            const endPpsWd = last[ppsField] || 1;
+            let totalReturnWd = (endPpsWd - startPpsWd) / startPpsWd;
+            const days = (last.timestamp - first.timestamp) / 86400;
+            let aprWd = days > 0 ? Math.pow(1 + totalReturnWd, 365 / days) - 1 : 0;
+
+            // Add emission for syb markets
+            const isSybMarket = currentMarket.startsWith('syb_');
+            let emissionBoost = 0;
+
+            if (isSybMarket && config?.emissionData && document.getElementById('emissionWithdrawableToggle')?.checked) {
+                const emissionDataSource = config.emissionData();
+                const emissionField = config.emissionField;
+                const baseMarket = config.baseMarket;
+
+                if (emissionDataSource && emissionDataSource.length > 0) {
+                    const startTs = first.timestamp;
+                    const endTs = last.timestamp;
+                    emissionBoost = calculateEmissionPerToken(startTs, endTs, emissionDataSource, emissionField, baseMarket);
+                    totalReturnWd += emissionBoost;
+                    aprWd = days > 0 ? Math.pow(1 + totalReturnWd, 365 / days) - 1 : 0;
+                }
+            }
+
+            // Update Withdrawable UI
+            const wdReturnEl = document.getElementById('wdTotalReturn');
+            const wdAprEl = document.getElementById('wdApr');
+            wdReturnEl.textContent = (totalReturnWd * 100).toFixed(4) + '%';
+            wdReturnEl.className = 'metric-value ' + (totalReturnWd >= 0 ? 'positive' : 'negative');
+            wdAprEl.textContent = 'APR: ' + (aprWd * 100).toFixed(2) + '%';
+            wdAprEl.className = 'metric-change ' + (aprWd >= 0 ? 'positive' : 'negative');
+            document.getElementById('wdStartPps').textContent = startPpsWd.toFixed(8) + ' ' + getAssetLabel();
+            document.getElementById('wdEndPps').textContent = endPpsWd.toFixed(8) + ' ' + getAssetLabel();
+            document.getElementById('yieldPeriod').textContent = days.toFixed(2) + ' days';
+            document.getElementById('yieldDataPoints').textContent = data.length;
+
+            // Show emission metrics for Withdrawable
+            if (isSybMarket && emissionBoost > 0) {
+                document.getElementById('emissionMetricsWd').style.display = 'block';
+                document.getElementById('emissionBoostWd').textContent = (emissionBoost * 100).toFixed(4) + '%';
+                document.getElementById('emissionAprWd').textContent = (emissionBoost * 365 / days * 100).toFixed(2) + '%';
+            } else {
+                document.getElementById('emissionMetricsWd').style.display = 'none';
+            }
+
+            // Fundamental calculations
+            let totalReturnFund = totalReturnWd;
+            let aprFund = aprWd;
+            let startPpsFund = startPpsWd;
+            let endPpsFund = endPpsWd;
+
+            if (config?.ppsData) {
+                const ppsDataSource = config.ppsData();
+                if (ppsDataSource?.data && ppsDataSource.data.length > 0) {
+                    const ppsFieldFund = isSybMarket ? 'pps_staked' : 'pps_unstaked';
+                    const ppsSorted = ppsDataSource.data
+                        .filter(p => p[ppsFieldFund] !== null)
+                        .sort((a, b) => a.timestamp - b.timestamp);
+
+                    const startPpsPoint = binarySearchClosest(ppsSorted, first.timestamp);
+                    const endPpsPoint = binarySearchClosest(ppsSorted, last.timestamp);
+
+                    if (startPpsPoint && endPpsPoint) {
+                        startPpsFund = startPpsPoint[ppsFieldFund];
+                        endPpsFund = endPpsPoint[ppsFieldFund];
+                        totalReturnFund = (endPpsFund - startPpsFund) / startPpsFund;
+
+                        // Add emission for fundamental
+                        if (isSybMarket && config?.emissionData && document.getElementById('emissionFundamentalToggle')?.checked) {
+                            totalReturnFund += emissionBoost;
+                        }
+
+                        const daysFund = (endPpsPoint.timestamp - startPpsPoint.timestamp) / 86400;
+                        aprFund = daysFund > 0 ? Math.pow(1 + totalReturnFund, 365 / daysFund) - 1 : 0;
+                    }
+                }
+            }
+
+            // Update Fundamental UI
+            const fundReturnEl = document.getElementById('fundTotalReturn');
+            const fundAprEl = document.getElementById('fundApr');
+            fundReturnEl.textContent = (totalReturnFund * 100).toFixed(4) + '%';
+            fundReturnEl.className = 'metric-value ' + (totalReturnFund >= 0 ? 'positive' : 'negative');
+            fundAprEl.textContent = 'APR: ' + (aprFund * 100).toFixed(2) + '%';
+            fundAprEl.className = 'metric-change ' + (aprFund >= 0 ? 'positive' : 'negative');
+            document.getElementById('fundStartPps').textContent = startPpsFund.toFixed(8) + ' ' + getAssetLabel();
+            document.getElementById('fundEndPps').textContent = endPpsFund.toFixed(8) + ' ' + getAssetLabel();
+
+            // Deltas
+            const yieldDelta = totalReturnWd - totalReturnFund;
+            const aprDelta = aprWd - aprFund;
+            const yieldDeltaEl = document.getElementById('yieldDelta');
+            const aprDeltaEl = document.getElementById('aprDelta');
+            yieldDeltaEl.textContent = (yieldDelta * 100).toFixed(4) + '%';
+            yieldDeltaEl.className = 'metric-value ' + (yieldDelta >= 0 ? 'positive' : 'negative');
+            aprDeltaEl.textContent = (aprDelta * 100).toFixed(2) + '%';
+            aprDeltaEl.className = 'metric-value ' + (aprDelta >= 0 ? 'positive' : 'negative');
+
+            // Show emission metrics for Fundamental
+            if (isSybMarket && emissionBoost > 0) {
+                document.getElementById('emissionMetricsFund').style.display = 'block';
+                document.getElementById('emissionBoostFund').textContent = (emissionBoost * 100).toFixed(4) + '%';
+                document.getElementById('emissionAprFund').textContent = (emissionBoost * 365 / days * 100).toFixed(2) + '%';
+            } else {
+                document.getElementById('emissionMetricsFund').style.display = 'none';
+            }
+        }
+
+        function updateYieldRangeLabels() {
+            if (!currentYieldData || !currentYieldData.data || currentYieldData.data.length === 0) return;
+
+            const data = currentYieldData.data;
+            const startDate = new Date(data[0].timestamp * 1000);
+            const endDate = new Date(data[data.length - 1].timestamp * 1000);
+
+            const opts = useUTC
+                ? { month: 'short', day: 'numeric', timeZone: 'UTC' }
+                : { month: 'short', day: 'numeric' };
+
+            document.getElementById('yieldStartLabel').textContent = startDate.toLocaleDateString('en-US', opts);
+            document.getElementById('yieldEndLabel').textContent = endDate.toLocaleDateString('en-US', opts);
+        }
+
+        function updateYieldChart() {
+            initYieldCharts();
+        }
+
+        function setYieldPeriod(days) {
+            document.querySelectorAll('#page-yield .period-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.days === String(days));
+            });
+
+            if (!originalYieldData || !originalYieldData.data) return;
+
+            if (days === 'all') {
+                currentYieldData.data = [...originalYieldData.data];
+            } else {
+                const now = originalYieldData.data[originalYieldData.data.length - 1].timestamp;
+                const cutoff = now - (days * 86400);
+                currentYieldData.data = originalYieldData.data.filter(d => d.timestamp >= cutoff);
+            }
+
+            // Update range slider
+            const pct = days === 'all' ? 0 : Math.max(0, 100 - (currentYieldData.data.length / originalYieldData.data.length) * 100);
+            document.getElementById('yieldRangeStart').value = pct;
+            document.getElementById('yieldRangeEnd').value = 100;
+            updateYieldRangeFill();
+
+            // Recreate charts with new data
+            initYieldCharts();
+        }
+
+        function updateYieldRangeFill() {
+            const start = parseFloat(document.getElementById('yieldRangeStart').value);
+            const end = parseFloat(document.getElementById('yieldRangeEnd').value);
+            const fill = document.getElementById('yieldRangeFill');
+            fill.style.left = start + '%';
+            fill.style.width = (end - start) + '%';
+        }
+
+        // ═══════════════════════════════════════════════════════════════
+        // REVENUE DASHBOARD CHARTS
+        // ═══════════════════════════════════════════════════════════════
+
+        let revenueData = {
+            wbtc: [],
+            cbbtc: [],
+            tbtc: [],
+            eth: [],
+            combined: []
+        };
+
+        function initRevenueCharts() {
+            console.log('Initializing Revenue charts, contract mode:', currentContract);
+
+            // Load data based on contract mode (NEW or OLD)
+            const isOld = currentContract === 'old';
+            const wbtcRevenue = isOld
+                ? (oldRevenueYieldData_wbtc?.data || [])
+                : (revenueYieldData_wbtc?.data || []);
+            const cbbtcRevenue = isOld
+                ? (oldRevenueYieldData_cbbtc?.data || [])
+                : (revenueYieldData_cbbtc?.data || []);
+            const tbtcRevenue = isOld
+                ? (oldRevenueYieldData_tbtc?.data || [])
+                : (revenueYieldData_tbtc?.data || []);
+            const ethRevenue = revenueYieldData_eth?.data || []; // ETH doesn't have old contracts
+
+            // Load emission data based on contract mode
+            const emissionData = isOld
+                ? (typeof oldYbEmissionData !== 'undefined' ? oldYbEmissionData : [])
+                : (typeof ybEmissionData !== 'undefined' ? ybEmissionData : []);
+            // ETH emission data (no old contracts for ETH)
+            const ethEmission = typeof ethEmissionData !== 'undefined' ? ethEmissionData : [];
+
+            revenueData.wbtc = wbtcRevenue;
+            revenueData.cbbtc = cbbtcRevenue;
+            revenueData.tbtc = tbtcRevenue;
+            revenueData.eth = ethRevenue;
+            revenueData.emission = emissionData;
+
+            // Helper to get emission at a timestamp (interpolation)
+            // useEthOnly: if true, returns only ETH emission (converted to BTC), otherwise returns BTC emission
+            const getEmissionAtTimestamp = (ts, useEthOnly = false) => {
+                if (useEthOnly) {
+                    // ETH emission only - currently no ETH emission data available
+                    // When ETH emission data is available, it would be in ethEmission
+                    // For now, return 0 since ETH vault doesn't have YB emission rewards
+                    return 0;
+                }
+
+                if (!emissionData || emissionData.length === 0) return 0;
+
+                // Filter to only points with valid cumulative_total_btc
+                const validEmission = emissionData
+                    .filter(e => e.cumulative_total_btc !== undefined && e.cumulative_total_btc !== null)
+                    .sort((a, b) => a.timestamp - b.timestamp);
+
+                if (validEmission.length === 0) return 0;
+
+                // If timestamp is before first emission point, return 0 (no emission yet)
+                if (ts < validEmission[0].timestamp) return 0;
+
+                // Find the emission point at or before this timestamp
+                let lastEmission = validEmission[0];
+                for (const point of validEmission) {
+                    if (point.timestamp <= ts) {
+                        lastEmission = point;
+                    } else {
+                        break;
+                    }
+                }
+
+                return lastEmission.cumulative_total_btc;
+            };
+
+            // Check if emission should be included
+            const includeEmission = document.getElementById('revEmission')?.checked ?? true;
+
+            // Calculate combined profit (BTC markets + ETH market)
+            // Formula: Profit = TVL - (Cumulative Deposits - Cumulative Withdrawals) + Admin Fees + Emission
+            const combineMarketData = () => {
+                // Check which markets should be included
+                const showWbtc = document.getElementById('revWbtc')?.checked ?? true;
+                const showCbbtc = document.getElementById('revCbbtc')?.checked ?? true;
+                const showTbtc = document.getElementById('revTbtc')?.checked ?? true;
+                const showEth = document.getElementById('revEth')?.checked ?? true;
+
+                // Determine if any BTC market is enabled
+                const anyBtcEnabled = showWbtc || showCbbtc || showTbtc;
+
+                // Choose base data: use BTC timestamps if any BTC market enabled, otherwise use ETH
+                let baseData;
+                let useEthAsBase = false;
+
+                if (anyBtcEnabled) {
+                    // Use BTC timestamps as base
+                    baseData = cbbtcRevenue.length > 0 ? cbbtcRevenue : wbtcRevenue;
+                } else if (showEth && ethRevenue.length > 0) {
+                    // Only ETH is enabled - use ETH data as base
+                    baseData = ethRevenue;
+                    useEthAsBase = true;
+                } else {
+                    return [];
+                }
+
+                if (baseData.length === 0) return [];
+
+                // Helper to get value from market at index
+                const getVal = (arr, idx, field) => arr[idx]?.[field] || 0;
+
+                // Get ETH/BTC conversion rate from available price data
+                // Use yield data for ETH price, emission data for BTC price
+                const getEthBtcRate = (timestamp) => {
+                    // Try to get prices from yield/emission data closest to timestamp
+                    const ethYield = yieldData_eth?.data || [];
+                    const emissions = emissionData || [];
+
+                    // Find closest ETH price
+                    let ethUsd = 3200; // fallback
+                    for (const point of ethYield) {
+                        if (point.timestamp <= timestamp && point.eth_price) {
+                            ethUsd = point.eth_price;
+                        }
+                    }
+
+                    // Find closest BTC price
+                    let btcUsd = 100000; // fallback
+                    for (const point of emissions) {
+                        if (point.timestamp <= timestamp && point.btc_usd_price) {
+                            btcUsd = point.btc_usd_price;
+                        }
+                    }
+
+                    return ethUsd / btcUsd;
+                };
+
+                // Track cumulative values across all points
+                // deposits_btc, withdrawals_btc, admin_fee_withdrawals_btc are INCREMENTAL (accumulate)
+                // admin_fees_btc is CURRENT claimable amount (use directly)
+                let cumulativeDeposits = 0;
+                let cumulativeWithdrawals = 0;
+                let cumulativeAdminFeeWithdrawals = 0;
+                // ETH cumulative values (tracked separately, converted to BTC when summing)
+                let cumulativeEthDeposits = 0;
+                let cumulativeEthWithdrawals = 0;
+                let cumulativeEthAdminFeeWithdrawals = 0;
+                let ethInitialized = false; // Track if we've initialized ETH historical deposits
+
+                // Process data points
+                const btcResults = baseData.map((point, i) => {
+                    const ts = point.timestamp;
+                    const ethBtcRate = getEthBtcRate(ts);
+
+                    let wbtcTvl = 0, cbbtcTvl = 0, tbtcTvl = 0, ethTvlBtc = 0;
+                    let tvl = 0;
+                    let pointDeposits = 0, pointWithdrawals = 0, pointAdminFeeWithdrawals = 0, currentClaimableAdminFees = 0;
+
+                    if (useEthAsBase) {
+                        // ETH is the base - use cumulative values converted at CURRENT rate
+                        // This ensures TVL and deposits use the same conversion rate
+                        const ethTvl = point.total_withdrawable_eth || 0;
+                        const ethCumulativeDeposits = point.cumulative_deposits_eth || 0;
+                        const ethCumulativeWithdrawals = point.cumulative_withdrawals_eth || 0;
+                        const ethAdminFees = point.admin_fees_eth || 0;
+
+                        ethTvlBtc = ethTvl * ethBtcRate;
+                        tvl = ethTvlBtc;
+
+                        // Skip points with no TVL data
+                        if (ethTvl > 0) {
+                            // Set cumulative values directly (converted at current rate)
+                            // Don't accumulate - use the data's cumulative values
+                            cumulativeDeposits = ethCumulativeDeposits * ethBtcRate;
+                            cumulativeWithdrawals = ethCumulativeWithdrawals * ethBtcRate;
+                            ethInitialized = true;
+                        }
+
+                        // These are not accumulated for ETH-only mode
+                        pointDeposits = 0;
+                        pointWithdrawals = 0;
+                        pointAdminFeeWithdrawals = 0;
+                        currentClaimableAdminFees = ethAdminFees * ethBtcRate;
+                    } else {
+                        // BTC is the base - sum enabled BTC markets
+                        wbtcTvl = showWbtc ? getVal(wbtcRevenue, i, 'total_withdrawable_btc') : 0;
+                        cbbtcTvl = showCbbtc ? getVal(cbbtcRevenue, i, 'total_withdrawable_btc') : 0;
+                        tbtcTvl = showTbtc ? getVal(tbtcRevenue, i, 'total_withdrawable_btc') : 0;
+                        tvl = wbtcTvl + cbbtcTvl + tbtcTvl;
+
+                        // Get incremental deposits/withdrawals for this point (BTC markets - only if enabled)
+                        pointDeposits = (showWbtc ? getVal(wbtcRevenue, i, 'deposits_btc') : 0) +
+                                           (showCbbtc ? getVal(cbbtcRevenue, i, 'deposits_btc') : 0) +
+                                           (showTbtc ? getVal(tbtcRevenue, i, 'deposits_btc') : 0);
+
+                        pointWithdrawals = (showWbtc ? getVal(wbtcRevenue, i, 'withdrawals_btc') : 0) +
+                                              (showCbbtc ? getVal(cbbtcRevenue, i, 'withdrawals_btc') : 0) +
+                                              (showTbtc ? getVal(tbtcRevenue, i, 'withdrawals_btc') : 0);
+
+                        // admin_fee_withdrawals_btc is incremental (fees that were withdrawn)
+                        pointAdminFeeWithdrawals = (showWbtc ? getVal(wbtcRevenue, i, 'admin_fee_withdrawals_btc') : 0) +
+                                                      (showCbbtc ? getVal(cbbtcRevenue, i, 'admin_fee_withdrawals_btc') : 0) +
+                                                      (showTbtc ? getVal(tbtcRevenue, i, 'admin_fee_withdrawals_btc') : 0);
+
+                        // admin_fees_btc is current claimable amount (use directly, not accumulated)
+                        currentClaimableAdminFees = (showWbtc ? getVal(wbtcRevenue, i, 'admin_fees_btc') : 0) +
+                                                       (showCbbtc ? getVal(cbbtcRevenue, i, 'admin_fees_btc') : 0) +
+                                                       (showTbtc ? getVal(tbtcRevenue, i, 'admin_fees_btc') : 0);
+
+                        // Add ETH market data (converted to BTC) if enabled and data available
+                        if (showEth && ethRevenue.length > 0) {
+                            // Find ETH data point closest to this timestamp (within 1 day)
+                            const ethPoint = ethRevenue.find(e => e.timestamp >= ts && e.timestamp <= ts + 86400);
+                            if (ethPoint && (ethPoint.total_withdrawable_eth || 0) > 0) {
+                                // Convert ETH values to BTC
+                                ethTvlBtc = (ethPoint.total_withdrawable_eth || 0) * ethBtcRate;
+                                tvl += ethTvlBtc;
+
+                                // ETH deposits/withdrawals handling:
+                                // On first ETH data point with TVL, set initial deposits = TVL (start at 0 profit)
+                                // After that, only add incremental changes
+                                if (!ethInitialized) {
+                                    // First time seeing ETH data - set deposits = TVL to start at 0 profit
+                                    // This avoids issues with incomplete historical data
+                                    pointDeposits += ethTvlBtc; // TVL in BTC as initial deposit
+                                    ethInitialized = true;
+                                } else {
+                                    // After initialization, only add incremental values
+                                    const ethDeposit = (ethPoint.deposits_eth || 0) * ethBtcRate;
+                                    const ethWithdrawal = (ethPoint.withdrawals_eth || 0) * ethBtcRate;
+                                    pointDeposits += ethDeposit;
+                                    pointWithdrawals += ethWithdrawal;
+                                }
+
+                                const ethAdminFeeWd = (ethPoint.admin_fee_withdrawals_eth || 0) * ethBtcRate;
+                                const ethAdminFees = (ethPoint.admin_fees_eth || 0) * ethBtcRate;
+                                pointAdminFeeWithdrawals += ethAdminFeeWd;
+                                currentClaimableAdminFees += ethAdminFees;
+                            }
+                        }
+                    }
+
+                    // Accumulate over time
+                    cumulativeDeposits += pointDeposits;
+                    cumulativeWithdrawals += pointWithdrawals;
+                    cumulativeAdminFeeWithdrawals += pointAdminFeeWithdrawals;
+
+                    // Total admin fees = current claimable + all withdrawn fees
+                    const totalAdminFees = currentClaimableAdminFees + cumulativeAdminFeeWithdrawals;
+
+                    // Get emission at this timestamp
+                    // When only ETH is selected (useEthAsBase), don't include BTC emission
+                    const emission = getEmissionAtTimestamp(point.timestamp, useEthAsBase);
+
+                    // Calculate profit: TVL - Cumulative Net Deposits + Total Admin Fees + Emission
+                    const netDeposited = cumulativeDeposits - cumulativeWithdrawals;
+                    const profit = tvl - netDeposited + totalAdminFees + (includeEmission ? emission : 0);
+
+                    return {
+                        timestamp: point.timestamp,
+                        datetime: point.datetime,
+                        profit,
+                        tvl,
+                        deposits: cumulativeDeposits,
+                        withdrawals: cumulativeWithdrawals,
+                        adminFees: totalAdminFees,
+                        emission,
+                        netDeposited,
+                        // Individual market values (respecting checkboxes)
+                        wbtcTvl: wbtcTvl,
+                        cbbtcTvl: cbbtcTvl,
+                        tbtcTvl: tbtcTvl,
+                        ethTvlBtc: ethTvlBtc,
+                        btcPrice: point.btc_price
+                    };
+                });
+
+                // Add ETH data points that are beyond BTC data range (only when BTC is base)
+                if (!useEthAsBase && showEth && ethRevenue.length > 0 && btcResults.length > 0) {
+                    const lastBtcTimestamp = btcResults[btcResults.length - 1].timestamp;
+                    const lastBtcResult = btcResults[btcResults.length - 1];
+
+                    // Find ETH points after last BTC timestamp
+                    const ethPointsAfterBtc = ethRevenue.filter(e => e.timestamp > lastBtcTimestamp);
+
+                    for (const ethPoint of ethPointsAfterBtc) {
+                        const ts = ethPoint.timestamp;
+                        const ethBtcRate = getEthBtcRate(ts);
+
+                        // Use last known BTC values
+                        const btcTvl = lastBtcResult.wbtcTvl + lastBtcResult.cbbtcTvl + lastBtcResult.tbtcTvl;
+
+                        // Convert ETH values to BTC
+                        const ethTvlBtc = (ethPoint.total_withdrawable_eth || 0) * ethBtcRate;
+                        const tvl = btcTvl + ethTvlBtc;
+
+                        // ETH deposits/withdrawals handling:
+                        // If ETH wasn't initialized in main loop, set deposits = TVL first
+                        let ethDeposit, ethWithdrawal;
+                        if (!ethInitialized && (ethPoint.total_withdrawable_eth || 0) > 0) {
+                            ethDeposit = ethTvlBtc; // TVL as initial deposit
+                            ethWithdrawal = 0;
+                            ethInitialized = true;
+                        } else {
+                            ethDeposit = (ethPoint.deposits_eth || 0) * ethBtcRate;
+                            ethWithdrawal = (ethPoint.withdrawals_eth || 0) * ethBtcRate;
+                        }
+                        const ethAdminFeeWd = (ethPoint.admin_fee_withdrawals_eth || 0) * ethBtcRate;
+                        const ethAdminFees = (ethPoint.admin_fees_eth || 0) * ethBtcRate;
+
+                        // Update cumulative values
+                        cumulativeDeposits += ethDeposit;
+                        cumulativeWithdrawals += ethWithdrawal;
+                        cumulativeAdminFeeWithdrawals += ethAdminFeeWd;
+
+                        // Use last BTC admin fees + current ETH admin fees
+                        const btcClaimableAdminFees = lastBtcResult.adminFees - cumulativeAdminFeeWithdrawals + ethAdminFeeWd;
+                        const totalAdminFees = btcClaimableAdminFees + ethAdminFees + cumulativeAdminFeeWithdrawals;
+
+                        // Get emission at this timestamp
+                        const emission = getEmissionAtTimestamp(ts);
+
+                        // Calculate profit
+                        const netDeposited = cumulativeDeposits - cumulativeWithdrawals;
+                        const profit = tvl - netDeposited + totalAdminFees + (includeEmission ? emission : 0);
+
+                        btcResults.push({
+                            timestamp: ts,
+                            datetime: new Date(ts * 1000).toISOString(),
+                            profit,
+                            tvl,
+                            deposits: cumulativeDeposits,
+                            withdrawals: cumulativeWithdrawals,
+                            adminFees: totalAdminFees,
+                            emission,
+                            netDeposited,
+                            // Individual market values (use last known BTC values)
+                            wbtcTvl: lastBtcResult.wbtcTvl,
+                            cbbtcTvl: lastBtcResult.cbbtcTvl,
+                            tbtcTvl: lastBtcResult.tbtcTvl,
+                            ethTvlBtc: ethTvlBtc,
+                            btcPrice: lastBtcResult.btcPrice
+                        });
+                    }
+                }
+
+                return btcResults;
+            };
+
+            revenueData.combined = combineMarketData();
+
+            // Filter out invalid data points (timestamp = 0 or before 2024)
+            const minValidTimestamp = 1704067200; // Jan 1, 2024
+            revenueData.combined = revenueData.combined.filter(d => d.timestamp > minValidTimestamp);
+
+            if (revenueData.combined.length === 0) {
+                console.log('No revenue data available');
+                return;
+            }
+
+            // Destroy existing charts
+            if (charts.revenue) charts.revenue.destroy();
+            if (charts.tvlByMarket) charts.tvlByMarket.destroy();
+
+            // Get checkbox states
+            const showWbtc = document.getElementById('revWbtc')?.checked ?? true;
+            const showCbbtc = document.getElementById('revCbbtc')?.checked ?? true;
+            const showTbtc = document.getElementById('revTbtc')?.checked ?? true;
+            const showEth = document.getElementById('revEth')?.checked ?? true;
+
+            // Build combined dataset
+            const profitData = revenueData.combined.map(d => ({
+                x: d.timestamp * 1000,
+                y: d.profit
+            }));
+
+            // Main revenue chart
+            const ctx = document.getElementById('revenueChart').getContext('2d');
+            charts.revenue = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    datasets: [{
+                        label: 'Accumulated Revenue (BTC)',
+                        data: profitData,
+                        borderColor: '#10b981',
+                        backgroundColor: 'rgba(16, 185, 129, 0.1)',
+                        borderWidth: 2,
+                        fill: true,
+                        tension: 0.3,
+                        pointRadius: 0
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    interaction: { mode: 'index', intersect: false },
+                    plugins: {
+                        legend: {
+                            display: true,
+                            labels: { color: '#94a3b8', font: { size: 11 } }
+                        },
+                        tooltip: {
+                            backgroundColor: 'rgba(30, 41, 59, 0.95)',
+                            titleColor: '#e2e8f0',
+                            bodyColor: '#e2e8f0',
+                            borderColor: '#10b981',
+                            borderWidth: 1,
+                            padding: 12,
+                            callbacks: {
+                                label: function(context) {
+                                    const idx = context.dataIndex;
+                                    const point = revenueData.combined[idx];
+                                    if (!point) return '';
+
+                                    return [
+                                        `Profit: ${point.profit.toFixed(8)} BTC`,
+                                        `TVL: ${point.tvl.toFixed(4)} BTC`,
+                                        `Net Deposited: ${point.netDeposited.toFixed(4)} BTC`,
+                                        `Admin Fees: ${point.adminFees.toFixed(8)} BTC`,
+                                        `YB Emission: ${(point.emission || 0).toFixed(8)} BTC`
+                                    ];
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        x: {
+                            type: 'time',
+                            time: { unit: 'day', displayFormats: { day: 'MMM dd' } },
+                            ticks: { color: '#64748b', maxTicksLimit: 10 },
+                            grid: { color: 'rgba(139, 92, 246, 0.08)' }
+                        },
+                        y: {
+                            ticks: {
+                                color: '#10b981',
+                                callback: v => v.toFixed(6) + ' BTC'
+                            },
+                            grid: { color: 'rgba(139, 92, 246, 0.08)' },
+                            title: { display: true, text: 'Revenue (BTC)', color: '#10b981' }
+                        }
+                    }
+                }
+            });
+
+            // TVL by Market chart
+            const tvlCtx = document.getElementById('tvlByMarketChart').getContext('2d');
+            const tvlDatasets = [];
+
+            if (showWbtc && revenueData.wbtc.length > 0) {
+                tvlDatasets.push({
+                    label: 'WBTC',
+                    data: revenueData.wbtc.map(d => ({ x: d.timestamp * 1000, y: d.total_withdrawable_btc })),
+                    borderColor: '#f7931a',
+                    backgroundColor: 'rgba(247, 147, 26, 0.1)',
+                    borderWidth: 2,
+                    tension: 0.3,
+                    pointRadius: 0
+                });
+            }
+
+            if (showCbbtc && revenueData.cbbtc.length > 0) {
+                tvlDatasets.push({
+                    label: 'cbBTC',
+                    data: revenueData.cbbtc.map(d => ({ x: d.timestamp * 1000, y: d.total_withdrawable_btc })),
+                    borderColor: '#0052ff',
+                    backgroundColor: 'rgba(0, 82, 255, 0.1)',
+                    borderWidth: 2,
+                    tension: 0.3,
+                    pointRadius: 0
+                });
+            }
+
+            if (showTbtc && revenueData.tbtc.length > 0) {
+                tvlDatasets.push({
+                    label: 'tBTC',
+                    data: revenueData.tbtc.map(d => ({ x: d.timestamp * 1000, y: d.total_withdrawable_btc })),
+                    borderColor: '#7b1fa2',
+                    backgroundColor: 'rgba(123, 31, 162, 0.1)',
+                    borderWidth: 2,
+                    tension: 0.3,
+                    pointRadius: 0
+                });
+            }
+
+            charts.tvlByMarket = new Chart(tvlCtx, {
+                type: 'line',
+                data: { datasets: tvlDatasets },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    interaction: { mode: 'index', intersect: false },
+                    plugins: {
+                        legend: { labels: { color: '#94a3b8' } }
+                    },
+                    scales: {
+                        x: {
+                            type: 'time',
+                            time: { unit: 'day' },
+                            ticks: { color: '#64748b' },
+                            grid: { color: 'rgba(139, 92, 246, 0.08)' }
+                        },
+                        y: {
+                            ticks: { color: '#64748b', callback: v => v.toFixed(2) + ' BTC' },
+                            grid: { color: 'rgba(139, 92, 246, 0.08)' }
+                        }
+                    }
+                }
+            });
+
+            // Update metrics
+            updateRevenueMetrics();
+        }
+
+        function updateRevenueMetrics() {
+            if (!revenueData.combined || revenueData.combined.length === 0) return;
+
+            const last = revenueData.combined[revenueData.combined.length - 1];
+
+            // Format value based on current denomination
+            const formatVal = (val) => {
+                if (currentDenom === 'usd' && last.btcPrice) {
+                    return '$' + (val * last.btcPrice).toLocaleString(undefined, {maximumFractionDigits: 2});
+                }
+                return val.toFixed(8) + ' BTC';
+            };
+
+            // Update hero metric
+            document.getElementById('totalRevenue').textContent = formatVal(last.profit);
+
+            // Update breakdown metrics
+            document.getElementById('revMetricTvl').textContent = formatVal(last.tvl);
+            document.getElementById('revMetricDeposits').textContent = formatVal(last.deposits);
+            document.getElementById('revMetricWithdrawals').textContent = formatVal(last.withdrawals);
+            document.getElementById('revMetricNet').textContent = formatVal(last.netDeposited);
+            document.getElementById('revMetricFees').textContent = formatVal(last.adminFees);
+            document.getElementById('revMetricEmission').textContent = formatVal(last.emission || 0);
+
+            // Update range labels
+            if (revenueData.combined.length > 0) {
+                const first = revenueData.combined[0];
+                const opts = useUTC ? { month: 'short', day: 'numeric', timeZone: 'UTC' } : { month: 'short', day: 'numeric' };
+                document.getElementById('revenueStartLabel').textContent = new Date(first.timestamp * 1000).toLocaleDateString('en-US', opts);
+                document.getElementById('revenueEndLabel').textContent = new Date(last.timestamp * 1000).toLocaleDateString('en-US', opts);
+            }
+        }
+
+        function updateRevenueChart() {
+            initRevenueCharts();
+        }
+
+        function setRevenuePeriod(days) {
+            document.querySelectorAll('#page-revenue .period-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.days === String(days));
+            });
+
+            // Update range slider and data filter
+            // For now, just reinitialize with full data
+            initRevenueCharts();
+        }
+
+        // ═══════════════════════════════════════════════════════════════
+        // veYB DASHBOARD CHARTS
+        // ═══════════════════════════════════════════════════════════════
+
+        let veybData = {
+            supply: [],
+            adminFees: [],
+            apr: [],
+            price: []
+        };
+
+        function initVeybCharts() {
+            console.log('Initializing veYB charts');
+
+            // Load data sources
+            const supplyData = (typeof veYBSupplyData !== 'undefined' ? veYBSupplyData : []);
+            const adminFeesData = (typeof adminFeeWithdrawalsData !== 'undefined' ? adminFeeWithdrawalsData : []);
+
+            veybData.supply = supplyData;
+            veybData.adminFees = adminFeesData;
+
+            // Update metrics
+            updateVeybMetrics();
+
+            // Destroy existing charts
+            ['veybAprChart', 'veybPriceChart', 'veybFeesChart', 'veybSupplyChart'].forEach(id => {
+                if (charts[id]) { charts[id].destroy(); charts[id] = null; }
+            });
+
+            // Supply Chart
+            if (supplyData.length > 0) {
+                const supplyCtx = document.getElementById('veybSupplyChart').getContext('2d');
+                charts.veybSupplyChart = new Chart(supplyCtx, {
+                    type: 'line',
+                    data: {
+                        datasets: [{
+                            label: 'veYB Supply',
+                            data: supplyData.map(d => ({
+                                x: d.timestamp * 1000,
+                                y: d.yb_locked || d.total_locked_yb || d.supply
+                            })),
+                            borderColor: '#8b5cf6',
+                            backgroundColor: 'rgba(139, 92, 246, 0.1)',
+                            fill: true,
+                            tension: 0.3,
+                            pointRadius: 0
+                        }]
+                    },
+                    options: getVeybChartOptions('veYB Supply')
+                });
+            }
+
+            // Admin Fees Chart
+            if (adminFeesData.length > 0) {
+                const feesCtx = document.getElementById('veybFeesChart').getContext('2d');
+                charts.veybFeesChart = new Chart(feesCtx, {
+                    type: 'line',
+                    data: {
+                        datasets: [
+                            {
+                                label: 'WBTC Fees',
+                                data: adminFeesData.map(d => ({ x: d.timestamp * 1000, y: d.cumulative_wbtc || d.wbtc_btc || 0 })),
+                                borderColor: '#f7931a',
+                                tension: 0.3,
+                                pointRadius: 0
+                            },
+                            {
+                                label: 'cbBTC Fees',
+                                data: adminFeesData.map(d => ({ x: d.timestamp * 1000, y: d.cumulative_cbbtc || d.cbbtc_btc || 0 })),
+                                borderColor: '#0052ff',
+                                tension: 0.3,
+                                pointRadius: 0
+                            },
+                            {
+                                label: 'tBTC Fees',
+                                data: adminFeesData.map(d => ({ x: d.timestamp * 1000, y: d.cumulative_tbtc || d.tbtc_btc || 0 })),
+                                borderColor: '#7b1fa2',
+                                tension: 0.3,
+                                pointRadius: 0
+                            },
+                            {
+                                label: 'Total',
+                                data: adminFeesData.map(d => ({
+                                    x: d.timestamp * 1000,
+                                    y: (d.cumulative_wbtc || d.wbtc_btc || 0) + (d.cumulative_cbbtc || d.cbbtc_btc || 0) + (d.cumulative_tbtc || d.tbtc_btc || 0)
+                                })),
+                                borderColor: '#10b981',
+                                borderWidth: 2,
+                                tension: 0.3,
+                                pointRadius: 0
+                            }
+                        ]
+                    },
+                    options: getVeybChartOptions('Admin Fees (BTC)')
+                });
+            }
+
+            // APR Chart (calculated from fees and supply)
+            if (adminFeesData.length > 0 && supplyData.length > 0) {
+                const aprPoints = calculateVeybApr(adminFeesData, supplyData);
+                veybData.apr = aprPoints;
+
+                if (aprPoints.length > 0) {
+                    const aprCtx = document.getElementById('veybAprChart').getContext('2d');
+                    charts.veybAprChart = new Chart(aprCtx, {
+                        type: 'line',
+                        data: {
+                            datasets: [{
+                                label: 'APR %',
+                                data: aprPoints.map(d => ({ x: d.timestamp * 1000, y: d.apr * 100 })),
+                                borderColor: '#22d3ee',
+                                backgroundColor: 'rgba(34, 211, 238, 0.1)',
+                                fill: true,
+                                tension: 0.3,
+                                pointRadius: 0
+                            }]
+                        },
+                        options: {
+                            ...getVeybChartOptions('APR (%)'),
+                            scales: {
+                                ...getVeybChartOptions('APR (%)').scales,
+                                y: {
+                                    ticks: { color: '#64748b', callback: v => v.toFixed(1) + '%' },
+                                    grid: { color: 'rgba(139, 92, 246, 0.08)' }
+                                }
+                            }
+                        }
+                    });
+                }
+            }
+
+            // YB/BTC Price Chart
+            const emissionData = (typeof ybEmissionData !== 'undefined' ? ybEmissionData : []);
+            if (emissionData.length > 0) {
+                const pricePoints = emissionData
+                    .filter(d => d.yb_btc_price && d.yb_btc_price > 0)
+                    .map(d => ({ x: d.timestamp * 1000, y: d.yb_btc_price }));
+
+                veybData.price = pricePoints;
+
+                if (pricePoints.length > 0) {
+                    const priceCtx = document.getElementById('veybPriceChart').getContext('2d');
+                    charts.veybPriceChart = new Chart(priceCtx, {
+                        type: 'line',
+                        data: {
+                            datasets: [{
+                                label: 'YB/BTC Price',
+                                data: pricePoints,
+                                borderColor: '#fbbf24',
+                                backgroundColor: 'rgba(251, 191, 36, 0.1)',
+                                fill: true,
+                                tension: 0.3,
+                                pointRadius: 0
+                            }]
+                        },
+                        options: {
+                            ...getVeybChartOptions('YB/BTC'),
+                            scales: {
+                                ...getVeybChartOptions('YB/BTC').scales,
+                                y: {
+                                    ticks: { color: '#64748b', callback: v => v.toExponential(2) },
+                                    grid: { color: 'rgba(139, 92, 246, 0.08)' }
+                                }
+                            }
+                        }
+                    });
+                }
+            }
+        }
+
+        function getVeybChartOptions(title) {
+            return {
+                responsive: true,
+                maintainAspectRatio: false,
+                interaction: { mode: 'index', intersect: false },
+                plugins: {
+                    legend: { labels: { color: '#94a3b8', font: { size: 11 } } },
+                    tooltip: {
+                        backgroundColor: 'rgba(30, 41, 59, 0.95)',
+                        titleColor: '#e2e8f0',
+                        bodyColor: '#e2e8f0',
+                        borderColor: '#8b5cf6',
+                        borderWidth: 1
+                    }
+                },
+                scales: {
+                    x: {
+                        type: 'time',
+                        time: { unit: 'day' },
+                        ticks: { color: '#64748b', maxTicksLimit: 8 },
+                        grid: { color: 'rgba(139, 92, 246, 0.08)' }
+                    },
+                    y: {
+                        ticks: { color: '#64748b' },
+                        grid: { color: 'rgba(139, 92, 246, 0.08)' }
+                    }
+                }
+            };
+        }
+
+        function calculateVeybApr(adminFeesData, supplyData) {
+            // Calculate rolling APR based on fee growth rate
+            const aprPoints = [];
+            const windowDays = 14; // 14-day rolling window
+
+            for (let i = windowDays; i < adminFeesData.length; i++) {
+                const current = adminFeesData[i];
+                const past = adminFeesData[i - windowDays];
+
+                const currentTotal = (current.cumulative_wbtc || current.wbtc_btc || 0) + (current.cumulative_cbbtc || current.cbbtc_btc || 0) + (current.cumulative_tbtc || current.tbtc_btc || 0);
+                const pastTotal = (past.cumulative_wbtc || past.wbtc_btc || 0) + (past.cumulative_cbbtc || past.cbbtc_btc || 0) + (past.cumulative_tbtc || past.tbtc_btc || 0);
+
+                const feeDelta = currentTotal - pastTotal;
+                const daysDiff = (current.timestamp - past.timestamp) / 86400;
+
+                // Find supply at this timestamp
+                const supplyPoint = supplyData.find(s => s.timestamp <= current.timestamp) || supplyData[0];
+                const supply = supplyPoint?.yb_locked || supplyPoint?.total_locked_yb || supplyPoint?.supply || 1;
+
+                // Get YB/BTC price
+                const ybPrice = getYbBtcPriceAt(current.timestamp);
+
+                if (ybPrice && supply > 0 && daysDiff > 0) {
+                    const supplyInBtc = supply * ybPrice;
+                    const dailyReturn = feeDelta / daysDiff;
+                    const apr = (dailyReturn / supplyInBtc) * 365;
+
+                    if (apr >= 0 && apr < 10) { // Filter unrealistic values
+                        aprPoints.push({
+                            timestamp: current.timestamp,
+                            apr
+                        });
+                    }
+                }
+            }
+
+            return aprPoints;
+        }
+
+        function getYbBtcPriceAt(timestamp) {
+            const emissionData = (typeof ybEmissionData !== 'undefined' ? ybEmissionData : []);
+            if (emissionData.length === 0) return null;
+
+            // Find closest point
+            let closest = emissionData[0];
+            for (const point of emissionData) {
+                if (Math.abs(point.timestamp - timestamp) < Math.abs(closest.timestamp - timestamp)) {
+                    closest = point;
+                }
+            }
+
+            return closest?.yb_btc_price || null;
+        }
+
+        function updateVeybMetrics() {
+            const supplyData = veybData.supply || (typeof veYBSupplyData !== 'undefined' ? veYBSupplyData : []);
+            const adminFeesData = veybData.adminFees || (typeof adminFeeWithdrawalsData !== 'undefined' ? adminFeeWithdrawalsData : []);
+
+            if (supplyData.length === 0) return;
+
+            const latest = supplyData[supplyData.length - 1];
+            const supply = latest?.yb_locked || latest?.total_locked_yb || latest?.supply || 0;
+
+            // Total Voting Power
+            document.getElementById('veybTotalPower').textContent = formatNumber(supply, 0) + ' veYB';
+            document.getElementById('veybLockedInfo').textContent = formatNumber(supply, 0) + ' YB locked';
+
+            // Calculate APR from latest data
+            if (veybData.apr && veybData.apr.length > 0) {
+                const latestApr = veybData.apr[veybData.apr.length - 1].apr;
+                document.getElementById('veybApr').textContent = (latestApr * 100).toFixed(2) + '%';
+            }
+
+            // Total Revenue from admin fees
+            if (adminFeesData.length > 0) {
+                const latestFees = adminFeesData[adminFeesData.length - 1];
+                const totalFees = latestFees.cumulative_total || ((latestFees.cumulative_wbtc || latestFees.wbtc_btc || 0) + (latestFees.cumulative_cbbtc || latestFees.cbbtc_btc || 0) + (latestFees.cumulative_tbtc || latestFees.tbtc_btc || 0));
+                document.getElementById('veybRevenue').textContent = totalFees.toFixed(4) + ' BTC';
+
+                // Get BTC price for USD conversion
+                const btcPrice = revenueYieldData_wbtc?.data?.[revenueYieldData_wbtc.data.length - 1]?.btc_price;
+                if (btcPrice) {
+                    document.getElementById('veybRevenueUsd').textContent = '$' + (totalFees * btcPrice).toLocaleString(undefined, {maximumFractionDigits: 0});
+                }
+            }
+
+            // Calculate 24h and 7d changes
+            if (supplyData.length >= 2) {
+                const oneDayAgo = latest.timestamp - 86400;
+                const sevenDaysAgo = latest.timestamp - 7 * 86400;
+
+                const point24h = supplyData.find(d => d.timestamp <= oneDayAgo) || supplyData[0];
+                const point7d = supplyData.find(d => d.timestamp <= sevenDaysAgo) || supplyData[0];
+
+                const supply24h = point24h?.yb_locked || point24h?.total_locked_yb || point24h?.supply || supply;
+                const supply7d = point7d?.yb_locked || point7d?.total_locked_yb || point7d?.supply || supply;
+
+                const change24h = supply - supply24h;
+                const change7d = supply - supply7d;
+
+                document.getElementById('veyb24h').textContent = (change24h >= 0 ? '+' : '') + formatNumber(change24h, 0);
+                document.getElementById('veyb24h').className = 'metric-value ' + (change24h >= 0 ? 'positive' : 'negative');
+
+                document.getElementById('veyb7d').textContent = (change7d >= 0 ? '+' : '') + formatNumber(change7d, 0);
+                document.getElementById('veyb7d').className = 'metric-value ' + (change7d >= 0 ? 'positive' : 'negative');
+            }
+
+            // Days since launch
+            if (supplyData.length > 0) {
+                const firstTimestamp = supplyData[0].timestamp;
+                const days = Math.floor((latest.timestamp - firstTimestamp) / 86400);
+                document.getElementById('veybDays').textContent = days + ' days';
+            }
+
+            // YB Price
+            const ybPrice = getYbBtcPriceAt(latest.timestamp);
+            if (ybPrice) {
+                document.getElementById('veybPrice').textContent = ybPrice.toExponential(4) + ' BTC';
+            }
+
+            // Avg Lock Duration (estimate based on veYB/YB ratio)
+            const lockRatio = latest.veyb_yb_ratio || 0.5; // default to 0.5 if not available
+            const avgLockYears = lockRatio * 4; // Max lock is 4 years
+            document.getElementById('veybLockDuration').textContent = avgLockYears.toFixed(1) + ' years';
+        }
+
+        function formatNumber(num, decimals = 2) {
+            if (num >= 1e9) return (num / 1e9).toFixed(decimals) + 'B';
+            if (num >= 1e6) return (num / 1e6).toFixed(decimals) + 'M';
+            if (num >= 1e3) return (num / 1e3).toFixed(decimals) + 'K';
+            return num.toFixed(decimals);
+        }
+
+        // ═══════════════════════════════════════════════════════════════
+        // POOLS CHARTS
+        // ═══════════════════════════════════════════════════════════════
+
+        function initPoolCharts() {
+            console.log('Initializing Pool charts');
+            updatePoolData();
+        }
+
+        function updatePoolData() {
+            // Get pool data
+            if (typeof POOLS_DATA === 'undefined') {
+                console.log('POOLS_DATA not loaded');
+                return;
+            }
+
+            const poolKey = currentPool + '_crvusd';
+            const pool = POOLS_DATA.pools[poolKey];
+            if (!pool || !pool.data || pool.data.length === 0) return;
+
+            const latest = pool.data[pool.data.length - 1];
+
+            // Update metrics
+            document.getElementById('poolTvl').textContent = formatCurrency(latest.total_value);
+            document.getElementById('poolToken1Label').textContent = pool.token1;
+            document.getElementById('poolToken1Bal').textContent = latest.token1_bal.toFixed(2);
+            document.getElementById('poolToken0Bal').textContent = (latest.token0_bal / 1e6).toFixed(2) + 'M';
+            document.getElementById('poolImbalance').textContent = latest.imbalance.toFixed(1) + '%';
+            document.getElementById('poolImbalanceStatus').textContent = latest.imbalance < 10 ? 'Normal' : 'High';
+            document.getElementById('poolImbalanceStatus').className = 'metric-change ' + (latest.imbalance < 10 ? 'positive' : 'negative');
+
+            // Update balance bar
+            document.getElementById('poolRatioLeft').textContent = latest.token1_ratio.toFixed(1) + '% ' + pool.token1;
+            document.getElementById('poolRatioRight').textContent = latest.token0_ratio.toFixed(1) + '% crvUSD';
+            document.getElementById('poolBarToken1').style.width = latest.token1_ratio + '%';
+            document.getElementById('poolBarToken0').style.width = latest.token0_ratio + '%';
+
+            // Create charts
+            createPoolCharts(pool);
+        }
+
+        function createPoolCharts(pool) {
+            const data = pool.data;
+            const colors = {
+                wbtc: '#f7931a',
+                cbbtc: '#0052ff',
+                tbtc: '#7b1fa2'
+            };
+            const color = colors[currentPool];
+
+            // Ratio chart
+            if (charts.poolRatio) charts.poolRatio.destroy();
+            const ratioCtx = document.getElementById('poolRatioChart').getContext('2d');
+            charts.poolRatio = new Chart(ratioCtx, {
+                type: 'bar',
+                data: {
+                    labels: data.map(d => new Date(d.timestamp).toLocaleDateString('en', { month: 'short', day: 'numeric' })),
+                    datasets: [
+                        {
+                            label: pool.token1,
+                            data: data.map(d => d.token1_ratio),
+                            backgroundColor: color
+                        },
+                        {
+                            label: 'crvUSD',
+                            data: data.map(d => d.token0_ratio),
+                            backgroundColor: '#00c853'
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        x: { stacked: true, ticks: { color: '#64748b' }, grid: { color: 'rgba(139, 92, 246, 0.1)' } },
+                        y: { stacked: true, min: 0, max: 100, ticks: { color: '#64748b', callback: v => v + '%' }, grid: { color: 'rgba(139, 92, 246, 0.1)' } }
+                    },
+                    plugins: { legend: { labels: { color: '#94a3b8' } } }
+                }
+            });
+
+            // TVL chart
+            if (charts.poolTvl) charts.poolTvl.destroy();
+            const tvlCtx = document.getElementById('poolTvlChart').getContext('2d');
+            charts.poolTvl = new Chart(tvlCtx, {
+                type: 'line',
+                data: {
+                    labels: data.map(d => new Date(d.timestamp).toLocaleDateString('en', { month: 'short', day: 'numeric' })),
+                    datasets: [{
+                        label: 'TVL',
+                        data: data.map(d => d.total_value / 1e6),
+                        borderColor: '#4caf50',
+                        backgroundColor: 'rgba(76, 175, 80, 0.1)',
+                        fill: true,
+                        tension: 0.3
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        x: { ticks: { color: '#64748b' }, grid: { color: 'rgba(139, 92, 246, 0.1)' } },
+                        y: { ticks: { color: '#64748b', callback: v => '$' + v + 'M' }, grid: { color: 'rgba(139, 92, 246, 0.1)' } }
+                    },
+                    plugins: { legend: { display: false } }
+                }
+            });
+
+            // Imbalance chart
+            if (charts.poolImbalance) charts.poolImbalance.destroy();
+            const imbCtx = document.getElementById('poolImbalanceChart').getContext('2d');
+            charts.poolImbalance = new Chart(imbCtx, {
+                type: 'bar',
+                data: {
+                    labels: data.map(d => new Date(d.timestamp).toLocaleDateString('en', { month: 'short', day: 'numeric' })),
+                    datasets: [{
+                        label: 'Imbalance',
+                        data: data.map(d => d.imbalance),
+                        backgroundColor: data.map(d => d.imbalance > 20 ? 'rgba(244,67,54,0.7)' : d.imbalance > 10 ? 'rgba(255,152,0,0.7)' : 'rgba(76,175,80,0.7)')
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        x: { ticks: { color: '#64748b' }, grid: { color: 'rgba(139, 92, 246, 0.1)' } },
+                        y: { ticks: { color: '#64748b', callback: v => v + '%' }, grid: { color: 'rgba(139, 92, 246, 0.1)' } }
+                    },
+                    plugins: { legend: { display: false } }
+                }
+            });
+        }
+
+        // ═══════════════════════════════════════════════════════════════
+        // PPS DASHBOARD CHARTS
+        // ═══════════════════════════════════════════════════════════════
+
+        const PPS_COLORS = {
+            wbtc: '#f7931a',
+            cbbtc: '#0052ff',
+            tbtc: '#7b1fa2',
+            eth: '#627eea'
+        };
+
+        function initPpsCharts() {
+            console.log('Initializing PPS charts');
+
+            // Destroy existing charts
+            ['ppsNewUnstakedChart', 'ppsNewStakedChart', 'ppsOldUnstakedChart', 'ppsOldStakedChart'].forEach(id => {
+                if (charts[id]) { charts[id].destroy(); charts[id] = null; }
+            });
+
+            // NEW Contracts - Unstaked
+            createPpsChart('ppsNewUnstakedChart', [
+                { data: ppsData_wbtc?.data || [], field: 'pps_unstaked', label: 'WBTC', color: PPS_COLORS.wbtc },
+                { data: ppsData_cbbtc?.data || [], field: 'pps_unstaked', label: 'cbBTC', color: PPS_COLORS.cbbtc },
+                { data: ppsData_tbtc?.data || [], field: 'pps_unstaked', label: 'tBTC', color: PPS_COLORS.tbtc }
+            ]);
+
+            // NEW Contracts - Staked
+            createPpsChart('ppsNewStakedChart', [
+                { data: ppsData_wbtc?.data || [], field: 'pps_staked', label: 'sYB-WBTC', color: PPS_COLORS.wbtc },
+                { data: ppsData_cbbtc?.data || [], field: 'pps_staked', label: 'sYB-cbBTC', color: PPS_COLORS.cbbtc },
+                { data: ppsData_tbtc?.data || [], field: 'pps_staked', label: 'sYB-tBTC', color: PPS_COLORS.tbtc }
+            ]);
+
+            // OLD Contracts - Unstaked
+            createPpsChart('ppsOldUnstakedChart', [
+                { data: ppsData_old_wbtc?.data || [], field: 'pps_unstaked', label: 'WBTC (OLD)', color: PPS_COLORS.wbtc },
+                { data: ppsData_old_cbbtc?.data || [], field: 'pps_unstaked', label: 'cbBTC (OLD)', color: PPS_COLORS.cbbtc },
+                { data: ppsData_old_tbtc?.data || [], field: 'pps_unstaked', label: 'tBTC (OLD)', color: PPS_COLORS.tbtc }
+            ]);
+
+            // OLD Contracts - Staked
+            createPpsChart('ppsOldStakedChart', [
+                { data: ppsData_old_wbtc?.data || [], field: 'pps_staked', label: 'sYB-WBTC (OLD)', color: PPS_COLORS.wbtc },
+                { data: ppsData_old_cbbtc?.data || [], field: 'pps_staked', label: 'sYB-cbBTC (OLD)', color: PPS_COLORS.cbbtc },
+                { data: ppsData_old_tbtc?.data || [], field: 'pps_staked', label: 'sYB-tBTC (OLD)', color: PPS_COLORS.tbtc }
+            ]);
+
+            // ETH Charts (if data available)
+            const ethData = ppsData_eth?.data || [];
+            const ethSection = document.getElementById('ethPpsSection');
+
+            if (ethData.length > 0) {
+                ethSection.style.display = 'grid';
+
+                // ETH Unstaked
+                createPpsChart('ppsEthUnstakedChart', [
+                    { data: ethData, field: 'pps_unstaked', label: 'yb-ETH', color: PPS_COLORS.eth }
+                ]);
+
+                // ETH Staked
+                createPpsChart('ppsEthStakedChart', [
+                    { data: ethData, field: 'pps_staked', label: 'sYB-ETH', color: PPS_COLORS.eth }
+                ]);
+            } else {
+                ethSection.style.display = 'none';
+            }
+
+            // Update PPS metrics
+            updatePpsMetrics();
+        }
+
+        function createPpsChart(canvasId, configs) {
+            const canvas = document.getElementById(canvasId);
+            if (!canvas) return;
+
+            const ctx = canvas.getContext('2d');
+            const datasets = [];
+
+            configs.forEach(config => {
+                if (config.data.length === 0) return;
+
+                const chartData = config.data
+                    .filter(d => d[config.field] !== null && d[config.field] !== undefined)
+                    .map(d => ({ x: d.timestamp * 1000, y: d[config.field] }));
+
+                if (chartData.length > 0) {
+                    datasets.push({
+                        label: config.label,
+                        data: chartData,
+                        borderColor: config.color,
+                        backgroundColor: config.color + '20',
+                        borderWidth: 2,
+                        tension: 0.3,
+                        pointRadius: 0
+                    });
+                }
+            });
+
+            if (datasets.length === 0) return;
+
+            charts[canvasId] = new Chart(ctx, {
+                type: 'line',
+                data: { datasets },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    interaction: { mode: 'index', intersect: false },
+                    plugins: {
+                        legend: {
+                            display: true,
+                            labels: { color: '#94a3b8', font: { size: 10 }, usePointStyle: true }
+                        },
+                        tooltip: {
+                            backgroundColor: 'rgba(30, 41, 59, 0.95)',
+                            titleColor: '#e2e8f0',
+                            bodyColor: '#e2e8f0',
+                            borderColor: '#8b5cf6',
+                            borderWidth: 1,
+                            callbacks: {
+                                label: function(context) {
+                                    return context.dataset.label + ': ' + context.parsed.y.toFixed(8);
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        x: {
+                            type: 'time',
+                            time: { unit: 'day', displayFormats: { day: 'MMM dd' } },
+                            ticks: { color: '#64748b', maxTicksLimit: 8 },
+                            grid: { color: 'rgba(139, 92, 246, 0.08)' }
+                        },
+                        y: {
+                            ticks: {
+                                color: '#64748b',
+                                callback: v => v.toFixed(6)
+                            },
+                            grid: { color: 'rgba(139, 92, 246, 0.08)' }
+                        }
+                    }
+                }
+            });
+        }
+
+        function updatePpsMetrics() {
+            const metricsContainer = document.getElementById('ppsMetrics');
+            if (!metricsContainer) return;
+
+            const btcMarkets = [
+                { name: 'WBTC', data: ppsData_wbtc?.data, color: '#f7931a' },
+                { name: 'cbBTC', data: ppsData_cbbtc?.data, color: '#0052ff' },
+                { name: 'tBTC', data: ppsData_tbtc?.data, color: '#7b1fa2' }
+            ];
+
+            const ethMarkets = [
+                { name: 'ETH', data: ppsData_eth?.data, color: '#627eea' }
+            ];
+
+            let html = '';
+
+            // BTC Markets
+            btcMarkets.forEach(market => {
+                if (!market.data || market.data.length === 0) return;
+
+                const latest = market.data[market.data.length - 1];
+                const unstaked = latest.pps_unstaked?.toFixed(8) || '-';
+                const staked = latest.pps_staked?.toFixed(8) || '-';
+
+                html += `
+                    <div class="metric-card" style="border-left: 3px solid ${market.color};">
+                        <div class="metric-label">yb-${market.name}</div>
+                        <div class="metric-value" style="font-size: 0.9em;">${unstaked}</div>
+                    </div>
+                    <div class="metric-card" style="border-left: 3px solid ${market.color};">
+                        <div class="metric-label">syb-${market.name}</div>
+                        <div class="metric-value" style="font-size: 0.9em;">${staked}</div>
+                    </div>
+                `;
+            });
+
+            // ETH Markets
+            ethMarkets.forEach(market => {
+                if (!market.data || market.data.length === 0) return;
+
+                const latest = market.data[market.data.length - 1];
+                const unstaked = latest.pps_unstaked?.toFixed(8) || '-';
+                const staked = latest.pps_staked?.toFixed(8) || '-';
+
+                html += `
+                    <div class="metric-card" style="border-left: 3px solid ${market.color};">
+                        <div class="metric-label">yb-${market.name}</div>
+                        <div class="metric-value" style="font-size: 0.9em;">${unstaked}</div>
+                    </div>
+                    <div class="metric-card" style="border-left: 3px solid ${market.color};">
+                        <div class="metric-label">syb-${market.name}</div>
+                        <div class="metric-value" style="font-size: 0.9em;">${staked}</div>
+                    </div>
+                `;
+            });
+
+            metricsContainer.innerHTML = html || '<div class="metric-card"><div class="metric-label">No data available</div></div>';
+        }
+
+        // ═══════════════════════════════════════════════════════════════
+        // UTILITY FUNCTIONS
+        // ═══════════════════════════════════════════════════════════════
+
+        function formatCurrency(value) {
+            if (value >= 1e9) return '$' + (value / 1e9).toFixed(2) + 'B';
+            if (value >= 1e6) return '$' + (value / 1e6).toFixed(2) + 'M';
+            if (value >= 1e3) return '$' + (value / 1e3).toFixed(2) + 'K';
+            return '$' + value.toFixed(2);
+        }
+
+        function copyScreenshot() {
+            html2canvas(document.querySelector('.content')).then(canvas => {
+                canvas.toBlob(blob => {
+                    navigator.clipboard.write([new ClipboardItem({ 'image/png': blob })]);
+                });
+            });
+        }
+
+        function shareToTelegram() {
+            window.open('https://t.me/share/url?url=' + encodeURIComponent(window.location.href), '_blank');
+        }
+
+        function shareToTwitter() {
+            window.open('https://twitter.com/intent/tweet?url=' + encodeURIComponent(window.location.href), '_blank');
+        }
+
+        function copyChartScreenshot(containerId) {
+            const container = document.getElementById(containerId)?.closest('.window');
+            if (container) {
+                html2canvas(container).then(canvas => {
+                    canvas.toBlob(blob => {
+                        navigator.clipboard.write([new ClipboardItem({ 'image/png': blob })]);
+                    });
+                });
+            }
+        }
+    </script>
+</body>
+</html>
