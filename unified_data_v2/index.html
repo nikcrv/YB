@@ -773,8 +773,8 @@
     </style>
 </head>
 <body>
-<div id="update-time" style="position:fixed;bottom:5px;left:10px;font-size:10px;color:#666;z-index:50;">Updated: 2026-02-14 22:01:17 UTC</div>
-<script>(function(){var u=new Date("2026-02-14 22:01:17 UTC"),n=function(){var d=Math.floor((Date.now()-u)/1e3),t="";if(d<60)t=d+"s ago";else if(d<3600)t=Math.floor(d/60)+"m ago";else if(d<86400)t=Math.floor(d/3600)+"h ago";else t=Math.floor(d/86400)+"d ago";document.getElementById("update-time").textContent="Updated: "+t;setTimeout(n,d<3600?1e4:6e4)};n()})();</script>
+<div id="update-time" style="position:fixed;bottom:5px;left:10px;font-size:10px;color:#666;z-index:50;">Updated: 2026-02-14 23:01:57 UTC</div>
+<script>(function(){var u=new Date("2026-02-14 23:01:57 UTC"),n=function(){var d=Math.floor((Date.now()-u)/1e3),t="";if(d<60)t=d+"s ago";else if(d<3600)t=Math.floor(d/60)+"m ago";else if(d<86400)t=Math.floor(d/3600)+"h ago";else t=Math.floor(d/86400)+"d ago";document.getElementById("update-time").textContent="Updated: "+t;setTimeout(n,d<3600?1e4:6e4)};n()})();</script>
     <div class="container">
         <header>
             <div class="header-top">
@@ -1206,6 +1206,16 @@
             originalData = config.data;
             // Shallow copy - data array can be replaced but individual objects aren't mutated
             currentYieldData = {...config.data, data: [...config.data.data]};
+
+            // Ensure metadata.start_date and end_date are set from data
+            if (currentYieldData.data.length > 0 && currentYieldData.metadata) {
+                if (!currentYieldData.metadata.start_date) {
+                    currentYieldData.metadata.start_date = currentYieldData.data[0].datetime;
+                }
+                if (!currentYieldData.metadata.end_date) {
+                    currentYieldData.metadata.end_date = currentYieldData.data[currentYieldData.data.length - 1].datetime;
+                }
+            }
         }
 
         // Switch contract version

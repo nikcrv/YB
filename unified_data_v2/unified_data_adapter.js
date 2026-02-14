@@ -1,4 +1,4 @@
-// Last updated: 2026-02-14 22:01:17 UTC
+// Last updated: 2026-02-14 23:01:57 UTC
 /**
  * Adapter: converts unifiedData to individual variable names
  * that existing HTML dashboards expect.
@@ -33,10 +33,11 @@ const gaugeTvlData_new_tbtc = unifiedData.new.tvl.tbtc || [];
 // Emission Data
 const ybEmissionData = unifiedData.new.emission || [];
 
-// Revenue Yield
-const revenueYieldData_wbtc = { data: unifiedData.new.revenue_yield.wbtc || [] };
-const revenueYieldData_cbbtc = { data: unifiedData.new.revenue_yield.cbbtc || [] };
-const revenueYieldData_tbtc = { data: unifiedData.new.revenue_yield.tbtc || [] };
+// Revenue Yield (handle both formats: plain array or {metadata, data})
+function _extractData(src) { return Array.isArray(src) ? src : (src?.data || []); }
+const revenueYieldData_wbtc = { data: _extractData(unifiedData.new.revenue_yield.wbtc) };
+const revenueYieldData_cbbtc = { data: _extractData(unifiedData.new.revenue_yield.cbbtc) };
+const revenueYieldData_tbtc = { data: _extractData(unifiedData.new.revenue_yield.tbtc) };
 
 // ========== OLD CONTRACTS ==========
 
@@ -65,9 +66,9 @@ const oldYbEmissionData = unifiedData.old?.emission || [];
 const old_ybEmissionData = oldYbEmissionData; // Alias
 
 // Revenue Yield Old (for dashboard.html profit charts)
-const oldRevenueYieldData_wbtc = { data: unifiedData.old?.revenue_yield?.wbtc || [] };
-const oldRevenueYieldData_cbbtc = { data: unifiedData.old?.revenue_yield?.cbbtc || [] };
-const oldRevenueYieldData_tbtc = { data: unifiedData.old?.revenue_yield?.tbtc || [] };
+const oldRevenueYieldData_wbtc = { data: _extractData(unifiedData.old?.revenue_yield?.wbtc) };
+const oldRevenueYieldData_cbbtc = { data: _extractData(unifiedData.old?.revenue_yield?.cbbtc) };
+const oldRevenueYieldData_tbtc = { data: _extractData(unifiedData.old?.revenue_yield?.tbtc) };
 
 // Aliases for dashboard.html that uses old_ prefix (points to revenue_yield)
 const old_yieldData_wbtc = oldRevenueYieldData_wbtc;
@@ -92,7 +93,7 @@ const gaugeTvlData_eth = unifiedData.eth?.tvl?.eth || [];
 const ethEmissionData = unifiedData.eth?.emission || [];
 
 // Revenue Yield ETH
-const revenueYieldData_eth = { data: unifiedData.eth?.revenue_yield?.eth || [] };
+const revenueYieldData_eth = { data: _extractData(unifiedData.eth?.revenue_yield?.eth) };
 
 // ========== veYB DATA ==========
 
