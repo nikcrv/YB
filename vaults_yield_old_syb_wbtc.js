@@ -1,18 +1,18 @@
-// Last updated: 2026-02-16 11:35:06 UTC
+// Last updated: 2026-02-16 11:49:01 UTC
 const yieldData_old_syb_wbtc = {
   "metadata": {
     "contract": "0x37f45E64935e7B8383D2f034048B32770B04E8bd",
     "start_date": "2025-10-21T23:30:23",
-    "end_date": "2026-02-16T14:34:35",
+    "end_date": "2026-02-16T14:48:35",
     "data_points": 2825,
     "step_seconds": 3600
   },
   "metrics": {
     "total_return": -0.2650413895070449,
     "total_return_pct": -26.504138950704494,
-    "apr": -0.6153966431421912,
-    "apr_pct": -61.539664314219124,
-    "days": 117.62791666666666,
+    "apr": -0.6153662693113148,
+    "apr_pct": -61.53662693113148,
+    "days": 117.63763888888889,
     "start_pps": 0.9402118766090538,
     "end_pps": 0.6910168144015639
   },
@@ -25434,9 +25434,9 @@ const yieldData_old_syb_wbtc = {
       "btc_price": 68766.4623978235
     },
     {
-      "block": 24469113,
-      "timestamp": 1771241675,
-      "datetime": "2026-02-16T14:34:35",
+      "block": 24469182,
+      "timestamp": 1771242515,
+      "datetime": "2026-02-16T14:48:35",
       "pps_btc": 0.6910168144015639,
       "ret_step": null,
       "ret_step_pct": null,
