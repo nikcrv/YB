@@ -170,8 +170,20 @@ const ethEmissionData = (unifiedData.eth?.emission || []).map(e => {
     return e;
 });
 
-// Revenue Yield ETH
-const revenueYieldData_eth = { data: _extractData(unifiedData.eth?.revenue_yield?.eth) };
+// Revenue Yield ETH — enrich with cumulative fields expected by unified.html and dashboard_eth_test.html
+const _ethRevRaw = _extractData(unifiedData.eth?.revenue_yield?.eth);
+let _cumDepEth = 0, _cumWdrEth = 0;
+const _ethRevEnriched = _ethRevRaw.map(d => {
+    _cumDepEth += d.deposits_eth || 0;
+    _cumWdrEth += d.withdrawals_eth || 0;
+    return {
+        ...d,
+        cumulative_deposits_eth: _cumDepEth,
+        cumulative_withdrawals_eth: _cumWdrEth,
+        net_deposited_eth: _cumDepEth - _cumWdrEth
+    };
+});
+const revenueYieldData_eth = { data: _ethRevEnriched };
 
 // ========== veYB DATA ==========
 
